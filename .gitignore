@@ -3,3 +3,5 @@ output/random/
 output/collection/
 output/oneofones/
 output/clay/
+node_modules/
+clay3d/*.png

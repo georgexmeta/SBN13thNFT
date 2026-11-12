@@ -1,0 +1,264 @@
+<!doctype html>
+<html><body style="margin:0;background:#000">
+<script type="module">
+import * as THREE from './node_modules/three/build/three.module.js';
+
+const P = Object.fromEntries(new URLSearchParams(location.search));
+const SEED = +(P.seed || 7);
+let s = SEED; const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647;
+
+// ---------- clay textures ----------
+function clayBump(size = 512) {
+  const c = document.createElement('canvas'); c.width = c.height = size;
+  const g = c.getContext('2d'); g.fillStyle = '#808080'; g.fillRect(0, 0, size, size);
+  for (let i = 0; i < 2600; i++) {               // dabs and smears
+    const x = rnd() * size, y = rnd() * size, r = 2 + rnd() * 9;
+    g.fillStyle = `rgba(${rnd() < .5 ? 255 : 0},${rnd() < .5 ? 255 : 0},0,0)`;
+    const v = rnd() < .5 ? 60 : 200;
+    g.fillStyle = `rgba(${v},${v},${v},${.08 + rnd() * .12})`;
+    g.beginPath(); g.ellipse(x, y, r, r * (.4 + rnd() * .6), rnd() * 3, 0, 7); g.fill();
+  }
+  for (let i = 0; i < 70; i++) {                  // fingerprint arcs
+    const x = rnd() * size, y = rnd() * size, a = rnd() * 6;
+    g.strokeStyle = `rgba(40,40,40,.18)`; g.lineWidth = 1.2;
+    for (let k = 0; k < 6; k++) { g.beginPath(); g.arc(x, y, 6 + k * 3.2, a, a + 1.6); g.stroke(); }
+  }
+  const t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(3, 3);
+  return t;
+}
+let OUTLINE;
+const BUMP = clayBump();
+function pressedClay(size = 1024) {     // flat-pressed plasticine backdrop: thumb dents, prints, hairline cracks
+  const c = document.createElement('canvas'); c.width = c.height = size; const g = c.getContext('2d');
+  g.fillStyle = '#808080'; g.fillRect(0, 0, size, size);
+  for (let i = 0; i < 60; i++) {
+    const x = rnd() * size, y = rnd() * size, r = 25 + rnd() * 60;
+    const gr = g.createRadialGradient(x, y, 0, x, y, r); gr.addColorStop(0, 'rgba(40,40,40,.35)'); gr.addColorStop(1, 'rgba(40,40,40,0)');
+    g.fillStyle = gr; g.beginPath(); g.ellipse(x, y, r, r * .7, rnd() * 3, 0, 7); g.fill();
+    g.strokeStyle = 'rgba(30,30,30,.12)'; g.lineWidth = 1.5;
+    for (let k = 1; k < 9; k++) { g.beginPath(); g.ellipse(x, y, k * r / 10, k * r / 14, .3, 0, 7); g.stroke(); }
+  }
+  g.strokeStyle = 'rgba(20,20,20,.5)'; g.lineWidth = 1.5;
+  for (let i = 0; i < 40; i++) { let x = rnd() * size, y = rnd() * size; g.beginPath(); g.moveTo(x, y);
+    for (let k = 0; k < 5; k++) { x += rnd() * 30 - 15; y += rnd() * 30 - 5; g.lineTo(x, y); } g.stroke(); }
+  const t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(3, 3); return t;
+}
+function clay(color, opts = {}) {
+  return new THREE.MeshStandardMaterial({ color, roughness: opts.rough ?? .82, metalness: opts.metal ?? 0,
+    bumpMap: BUMP, bumpScale: opts.bump ?? 2.6, map: opts.map || null, side: opts.side || THREE.FrontSide,
+    emissive: opts.emissive || 0x000000, emissiveIntensity: opts.ei || 0 });
+}
+
+// ---------- noise ----------
+function hash(x, y, z) { const h = Math.sin(x * 127.1 + y * 311.7 + z * 74.7 + SEED) * 43758.5453; return h - Math.floor(h); }
+function vnoise(x, y, z) {
+  const xi = Math.floor(x), yi = Math.floor(y), zi = Math.floor(z), xf = x - xi, yf = y - yi, zf = z - zi;
+  const f = t => t * t * (3 - 2 * t), u = f(xf), v = f(yf), w = f(zf); let r = 0;
+  for (let i = 0; i < 2; i++) for (let j = 0; j < 2; j++) for (let k = 0; k < 2; k++)
+    r += hash(xi + i, yi + j, zi + k) * (i ? u : 1 - u) * (j ? v : 1 - v) * (k ? w : 1 - w);
+  return r;
+}
+
+// ---------- scene ----------
+const W = 1000;
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+renderer.setSize(W, W); renderer.setPixelRatio(1);
+renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+document.body.appendChild(renderer.domElement);
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(P.bg || '#d9893c');
+const cam = new THREE.PerspectiveCamera(30, 1, .1, 100); cam.position.set(0, .2, 10.5); cam.lookAt(0, -.35, 0);
+
+scene.add(new THREE.HemisphereLight(0xfff1e0, 0x3a2a20, .4));
+const key = new THREE.DirectionalLight(0xfff0dc, 2.4); key.position.set(-2.5, 4.5, 7.5); key.castShadow = true;
+key.shadow.mapSize.set(2048, 2048); key.shadow.radius = 6; key.shadow.bias = -.002; key.shadow.normalBias = .03;
+Object.assign(key.shadow.camera, { left: -4, right: 4, top: 4, bottom: -4 }); scene.add(key);
+const fill = new THREE.DirectionalLight(0xc8d8ff, .45); fill.position.set(6, 0, 4); scene.add(fill);
+const rim = new THREE.DirectionalLight(0xffe0b0, 1.6); rim.position.set(4, 4, -5); scene.add(rim);
+// backdrop that catches a soft shadow
+const wall = new THREE.Mesh(new THREE.PlaneGeometry(40, 40), new THREE.MeshStandardMaterial({ color: P.bg || '#d9893c', roughness: 1, bumpMap: pressedClay(), bumpScale: 4 }));
+wall.position.z = -3.2; wall.receiveShadow = true; scene.add(wall);
+
+const SKIN = P.skin || '#b07a5e', MASK = P.mask || '#e2d9bb';
+function add(mesh, parent = scene) { mesh.castShadow = mesh.receiveShadow = true; parent.add(mesh); return mesh; }
+
+// ---------- head (lumpy swollen skull), local face points +z ----------
+const headG = new THREE.Group(); headG.position.set(-.05, .0, 0); headG.scale.setScalar(1.12); headG.rotation.y = Math.PI * .19; headG.rotation.x = .04; scene.add(headG);
+{
+  const g = new THREE.SphereGeometry(1, 160, 120), p = g.attributes.position, v = new THREE.Vector3();
+  const lumps = Array.from({ length: 11 }, () => {
+    const th = rnd() * Math.PI * 1.2 + Math.PI * .4, ph = rnd() * .9 + .15;   // over the back/top
+    return [new THREE.Vector3(Math.sin(ph * Math.PI / 2) * Math.cos(th), Math.cos(ph * Math.PI / 2), Math.sin(ph * Math.PI / 2) * Math.sin(th)).normalize(), .08 + rnd() * .14, .32 + rnd() * .2];
+  });
+  for (let i = 0; i < p.count; i++) {
+    v.fromBufferAttribute(p, i); const n = v.clone().normalize();
+    let r = 1;
+    r += .3 * Math.max(0, -n.z + .2) * Math.max(0, n.y + .4);    // swollen back of the skull
+    r += .1 * Math.max(0, n.y) * Math.max(0, -n.z + .5);           // bulging crown
+    const ridge = 1 - 2 * Math.abs(vnoise(n.x * 4 + 9, n.y * 4, n.z * 4) - .5);   // brain-like folds
+    r += .07 * ridge * ridge * Math.max(0, n.y + .1) * Math.max(0, .6 - n.z);
+    for (const [d, a, w] of lumps) r += a * Math.exp(-(1 - n.dot(d)) / (w * w) * 2);
+    r += (vnoise(n.x * 3, n.y * 3, n.z * 3) - .5) * .22 + (vnoise(n.x * 7, n.y * 7, n.z * 7) - .5) * .07 * Math.max(0, n.y + .2);           // lumpy surface
+    let x = n.x * r * .98, y = n.y * r * .95, z = n.z * r * 1.05;
+    if (y < -.2) { const t = (-.2 - y); x *= 1 - t * .35; z = z > 0 ? z + t * .15 : z * (1 - t * .5); }  // jaw tapers
+    x *= 1 - .22 * Math.max(0, n.z);
+    if (z > .72) z = .72 + (z - .72) * .2;   // flat face plate for the mask to sit on
+    p.setXYZ(i, x, y, z);
+  }
+  g.computeVertexNormals();
+  add(new THREE.Mesh(g, clay(SKIN)), headG);
+}
+// ear on the near side
+{
+  const e = add(new THREE.Mesh(new THREE.SphereGeometry(.26, 48, 32), clay(SKIN)), headG);
+  e.scale.set(.35, 1, .7); e.position.set(-.86, -.08, -.12);
+  const rimE = add(new THREE.Mesh(new THREE.TorusGeometry(.19, .06, 16, 40), clay(SKIN)), headG);
+  rimE.position.set(-.93, -.06, -.12); rimE.rotation.y = Math.PI / 2; rimE.scale.set(1, 1.3, 1);
+}
+
+// ---------- goalie mask: bent shell with real cut-out holes ----------
+const HOLES = [[-.2, .42], [-.27, .3], [-.3, .18], [-.08, .36], [-.09, .24], [.13, .36], [.14, .24], [.24, .42], [.3, .3], [.32, .18], [-.04, .12], [.08, .12],
+  [-.34, .02], [-.34, -.14], [-.3, -.28], [.34, -.12], [.3, -.28], [-.14, -.42], [0, -.46], [.14, -.42], [-.07, -.56], [.07, -.56], [0, -.32]];
+const EYES = [[-.16, .02, .085, .075], [.16, .02, .085, .075]];
+function maskOutline(g, S) {   // u,v in [-.5,.5] -> canvas
+  const X = u => (u + .5) * S, Y = v => (.5 - v * .78) * S;
+  g.beginPath(); g.moveTo(X(0), Y(.62));
+  g.bezierCurveTo(X(.3), Y(.62), X(.43), Y(.45), X(.42), Y(.15));
+  g.bezierCurveTo(X(.42), Y(-.2), X(.36), Y(-.45), X(.2), Y(-.58));
+  g.bezierCurveTo(X(.1), Y(-.65), X(-.1), Y(-.65), X(-.2), Y(-.58));
+  g.bezierCurveTo(X(-.36), Y(-.45), X(-.42), Y(-.2), X(-.42), Y(.15));
+  g.bezierCurveTo(X(-.43), Y(.45), X(-.3), Y(.62), X(0), Y(.62)); g.closePath();
+  return [X, Y];
+}
+function maskTextures() {
+  const S = 1024, a = document.createElement('canvas'); a.width = a.height = S; const g = a.getContext('2d');
+  g.fillStyle = '#000'; g.fillRect(0, 0, S, S); g.fillStyle = '#fff';
+  const [X, Y] = maskOutline(g, S); g.fill();
+  g.fillStyle = '#000';
+  for (const [u, v] of HOLES) { g.beginPath(); g.ellipse(X(u), Y(v), .022 * S, .022 * S / .78 * .78, 0, 0, 7); g.fill(); }
+  for (const [u, v, rx, ry] of EYES) { g.beginPath(); g.ellipse(X(u), Y(v), rx * S, ry * S, 0, 0, 7); g.fill(); }
+  // colour: grime, scratches and a blood smear (no chevrons; our own markings)
+  const c = document.createElement('canvas'); c.width = c.height = S; const h = c.getContext('2d');
+  h.fillStyle = MASK; h.fillRect(0, 0, S, S);
+  for (let i = 0; i < 160; i++) { h.fillStyle = `rgba(90,70,40,${.04 + rnd() * .08})`; h.beginPath(); h.ellipse(rnd() * S, rnd() * S, 8 + rnd() * 40, 4 + rnd() * 20, rnd() * 3, 0, 7); h.fill(); }
+  h.strokeStyle = 'rgba(80,60,40,.35)'; h.lineWidth = 2;
+  for (let i = 0; i < 30; i++) { const x = rnd() * S, y = rnd() * S; h.beginPath(); h.moveTo(x, y); h.lineTo(x + rnd() * 60 - 30, y + rnd() * 20); h.stroke(); }
+  h.fillStyle = 'rgba(120,14,14,.85)';
+  for (const [u, v] of [[-.16, .02], [.16, .02]]) {        // tear drips from the eye holes
+    h.beginPath(); h.roundRect(X(u) - 7, Y(v) + 40, 14, 120 + rnd() * 120, 7); h.fill();
+  }
+  h.beginPath(); h.ellipse(X(.1), Y(.5), 90, 40, .4, 0, 7); h.fill();
+  const o = document.createElement('canvas'); o.width = o.height = S; const og = o.getContext('2d'); og.fillStyle = '#000'; og.fillRect(0, 0, S, S); og.fillStyle = '#fff'; maskOutline(og, S); og.fill(); OUTLINE = new THREE.CanvasTexture(o);
+  return [new THREE.CanvasTexture(a), Object.assign(new THREE.CanvasTexture(c), { colorSpace: THREE.SRGBColorSpace })];
+}
+function shellGeometry(off = 0) {
+  const g = new THREE.PlaneGeometry(1.0, 1.28, 140, 180), p = g.attributes.position;
+  for (let i = 0; i < p.count; i++) {
+    const u = p.getX(i), v = p.getY(i) / 1.28 * 1;   // v in [-.5,.5]
+    let z = -(u * u) * 1.15 - Math.max(0, -v - .1) ** 2 * .9 - Math.max(0, v - .25) ** 2 * 1.2;
+    z += .2 * Math.exp(-(u * u / .006 + (v + .1) ** 2 / .03));          // moulded nose
+    z += .05 * Math.exp(-((v - .12) ** 2 / .003)) * Math.exp(-u * u / .2);  // brow ridge
+    for (const [eu, ev] of EYES) z -= .04 * Math.exp(-((u - eu) ** 2 + (v - ev) ** 2) / .008);  // sockets
+    z += .04 * Math.exp(-(u * u / .02 + (v + .44) ** 2 / .004));        // chin ledge
+    p.setXYZ(i, u, p.getY(i), z - off);
+  }
+  g.computeVertexNormals(); return g;
+}
+const [ALPHA, MCOL] = maskTextures();
+const maskG = new THREE.Group(); maskG.position.set(0, -.04, .92); maskG.scale.set(1.4, 1.3, 1.25); headG.add(maskG);
+add(new THREE.Mesh(shellGeometry(), Object.assign(clay(MASK, { map: MCOL, rough: .55, bump: 1.0, side: THREE.DoubleSide }), { alphaMap: ALPHA, alphaTest: .5 })), maskG);
+add(new THREE.Mesh(shellGeometry(.035), Object.assign(new THREE.MeshStandardMaterial({ color: '#1a1210', roughness: 1, side: THREE.DoubleSide }),
+  { alphaMap: OUTLINE, alphaTest: .5 })), maskG).scale.set(1.0, 1.0, 1);
+// dark cavity behind the holes, glowing eyes inside
+const cav = add(new THREE.Mesh(new THREE.SphereGeometry(.62, 48, 32), new THREE.MeshStandardMaterial({ color: '#0b0707', roughness: 1 })), maskG);
+cav.scale.set(.5, .6, .2); cav.position.z = -.25;
+const GLOW = P.glow || '#ff2a1a';
+for (const [u, v] of EYES) {
+  const e = new THREE.Mesh(new THREE.SphereGeometry(.05, 24, 16), new THREE.MeshStandardMaterial({ color: GLOW, emissive: GLOW, emissiveIntensity: 2.5 }));
+  e.position.set(u, v * 1.28 + .01, -.08 - Math.abs(u) * .3); maskG.add(e);
+  const l = new THREE.PointLight(GLOW, .6, .6); l.position.copy(e.position); maskG.add(l);
+}
+// leather straps sunk into the skull, with swollen flesh rolls either side
+const HEAD = headG.children[0];
+function surfaceRing(normal, offset, from, to, n = 90) {
+  const ray = new THREE.Raycaster(), pts = [], nrm = normal.clone().normalize();
+  const a = new THREE.Vector3(1, 0, 0); if (Math.abs(nrm.dot(a)) > .9) a.set(0, 1, 0);
+  const e1 = a.clone().cross(nrm).normalize(), e2 = nrm.clone().cross(e1);
+  for (let i = 0; i <= n; i++) {
+    const t = from + (to - from) * i / n, dir = e1.clone().multiplyScalar(Math.cos(t)).add(e2.clone().multiplyScalar(Math.sin(t))).normalize();
+    const o = nrm.clone().multiplyScalar(offset).add(headG.getWorldPosition(new THREE.Vector3()));
+    ray.set(o.clone().add(dir.clone().multiplyScalar(3)), dir.clone().negate());
+    const hit = ray.intersectObject(HEAD)[0]; if (hit) pts.push(hit.point.clone().add(dir.clone().multiplyScalar(.01)));
+  }
+  return pts;
+}
+headG.updateMatrixWorld(true);
+function band(pts, w) {
+  const local = pts.map(p => headG.worldToLocal(p.clone()));
+  const c = new THREE.CatmullRomCurve3(local);
+  add(new THREE.Mesh(new THREE.TubeGeometry(c, 160, w, 12), clay('#4a3022', { rough: .7 })), headG).scale.set(1, .55, 1);
+}
+function strapAround(normal, offset, from, to, w, rolls = true) {
+  const pts = surfaceRing(normal.clone().applyQuaternion(headG.quaternion), offset, from, to);
+  const local = pts.map(p => headG.worldToLocal(p.clone()).multiplyScalar(.985));
+  const curve = new THREE.CatmullRomCurve3(local);
+  const t = add(new THREE.Mesh(new THREE.TubeGeometry(curve, 200, w, 14), clay('#4a3022', { rough: .7 })), headG);
+  // swollen flesh rolls pushed up on both sides of the band
+  for (const d of rolls ? [-1, 1] : []) {
+    const sh = normal.clone().normalize().multiplyScalar(d * w * 1.25);
+    const c2 = new THREE.CatmullRomCurve3(local.map(p => p.clone().add(sh).multiplyScalar(.995)));
+    add(new THREE.Mesh(new THREE.TubeGeometry(c2, 200, w * .8, 12), clay(SKIN)), headG);
+  }
+}
+strapAround(new THREE.Vector3(0, 1, .05), .42, 0, Math.PI * 2, .05);     // temple band
+strapAround(new THREE.Vector3(1, 0, 0), 0, -.2, Math.PI * .95, .06, false);    // crown band
+// rivet tabs
+for (const [x, y, z] of [[-.48, .48, .74], [.48, .48, .74], [0, .78, .78], [-.42, -.42, .66], [.42, -.42, .66]]) {
+  const r = add(new THREE.Mesh(new THREE.CylinderGeometry(.045, .045, .03, 24), clay('#c9ccd0', { metal: .7, rough: .35, bump: .3 })), headG);
+  r.position.set(x, y, z); r.lookAt(r.position.clone().multiplyScalar(2)); r.rotateX(Math.PI / 2);
+}
+// flesh grown over the near edge of the mask
+{
+  const pts = []; for (let i = 0; i <= 14; i++) { const t = i / 14, v = .55 - t * 1.05, u = -.42 + Math.sin(t * Math.PI) * -.0 + (t > .7 ? (t - .7) * .5 : 0);
+    pts.push(new THREE.Vector3(u + (rnd() - .5) * .03, v * 1.28 * .78 / .78 * .62 / .62 - .05, .93 - u * u * 1.7 - .02)); }
+  add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), 80, .065, 16), clay(SKIN)), headG);
+  add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts.map(p => p.clone().add(new THREE.Vector3(.05, 0, .01)))), 80, .03, 12), clay('#6e1010', { rough: .4 })), headG);
+}
+
+// ---------- neck and flannel ----------
+function plaid(base, line) {
+  const S = 256, c = document.createElement('canvas'); c.width = c.height = S; const g = c.getContext('2d');
+  g.fillStyle = base; g.fillRect(0, 0, S, S);
+  g.fillStyle = line; g.globalAlpha = .55; g.fillRect(0, 90, S, 60); g.fillRect(90, 0, 60, S);
+  g.globalAlpha = .35; g.fillStyle = '#000'; g.fillRect(0, 20, S, 14); g.fillRect(20, 0, 14, S);
+  g.globalAlpha = .4; g.fillStyle = '#e8d9b0'; g.fillRect(0, 118, S, 4); g.fillRect(118, 0, 4, S);
+  const t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(7, 7); t.colorSpace = THREE.SRGBColorSpace; return t;
+}
+const FLAN = clay('#ffffff', { map: plaid(P.shirt || '#8e1d1d', '#2a1414') });
+const neck = add(new THREE.Mesh(new THREE.CylinderGeometry(.5, .62, 1.0, 48), clay(SKIN))); neck.position.set(-.05, -1.1, -.1);
+const torso = add(new THREE.Mesh(new THREE.CapsuleGeometry(.95, 2.3, 24, 64), FLAN)); torso.rotation.set(0, .3, Math.PI / 2); torso.scale.set(1.25, 1, 1.05); torso.position.set(-.1, -2.25, -.4);
+for (const sgn of [-1, 1]) {      // collar flaps
+  const c = add(new THREE.Mesh(new THREE.BoxGeometry(.55, .5, .08, 8, 8, 2), FLAN));
+  c.position.set(-.05 + sgn * .5, -1.3, .42); c.rotation.set(-.5, sgn * -.5, sgn * .5);
+}
+// ---------- right fist in front of the chest gripping a machete ----------
+const fistG = new THREE.Group(); fistG.position.set(-1.05, -1.75, 1.1); fistG.rotation.set(0, .35, -.08); scene.add(fistG);
+const arm = add(new THREE.Mesh(new THREE.CylinderGeometry(.3, .36, 2.2, 32), FLAN), fistG); arm.rotation.z = Math.PI / 2 - .35; arm.position.set(-1.05, -.38, -.1);
+const palm = add(new THREE.Mesh(new THREE.SphereGeometry(.34, 48, 32), clay(SKIN)), fistG); palm.scale.set(1.0, .95, .85);
+for (let i = 0; i < 4; i++) {
+  const f = add(new THREE.Mesh(new THREE.CapsuleGeometry(.1, .2, 8, 16), clay(SKIN)), fistG);
+  f.rotation.z = Math.PI / 2; f.position.set(.08, .2 - i * .14, .26 - Math.abs(i - 1.5) * .02);
+}
+const th = add(new THREE.Mesh(new THREE.CapsuleGeometry(.09, .22, 8, 16), clay(SKIN)), fistG); th.rotation.set(0, 0, .3); th.position.set(-.05, .26, .3);
+// machete: handle in the fist, blade rising past the near side of the face
+const handle = add(new THREE.Mesh(new THREE.CylinderGeometry(.075, .075, .9, 24), clay('#3b2618')), fistG); handle.position.set(.03, 0, .1);
+{
+  const sh = new THREE.Shape(); sh.moveTo(-.12, 0); sh.lineTo(.1, 0); sh.bezierCurveTo(.2, .9, .3, 1.6, .26, 2.15); sh.lineTo(-.04, 2.25); sh.bezierCurveTo(-.06, 1.5, -.1, .8, -.12, 0);
+  const b = add(new THREE.Mesh(new THREE.ExtrudeGeometry(sh, { depth: .03, bevelEnabled: true, bevelThickness: .02, bevelSize: .02, bevelSegments: 3 }), clay('#a9adb2', { metal: .6, rough: .35, bump: .5 })), fistG);
+  b.position.set(.02, .42, .08); b.rotation.set(0, .6, .12);
+}
+renderer.render(scene, cam);
+window.done = true;
+</script></body></html>
