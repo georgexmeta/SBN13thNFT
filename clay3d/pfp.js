@@ -19,8 +19,8 @@ const SKIN = PAL.skins[A['Skin Tone']] || '#e9b49a';
 const HAIR = PAL.hair[A['Hair Color']] || '#c8622c';
 const BG = PAL.backgrounds[A['Background']] || '#c96b3c';
 const MASKED = A['Mask'] && A['Mask'] !== 'None';
-const MSTYLE = { 'Zipper Leather Mask': 'zip', 'Clown Mask': 'clown', 'Iron Plate Mask': 'iron', 'Gas Mask': 'gas', 'Sack Hood': 'sack', 'Long Nose Mask': 'nose' }[A['Mask']];
-const FULLFACE = ['zip', 'clown', 'sack', 'nose'].includes(MSTYLE);
+const MSTYLE = { 'Zipper Leather Mask': 'zip', 'Clown Mask': 'clown', 'Iron Plate Mask': 'iron', 'Gas Mask': 'gas', 'Sack Hood': 'sack', 'Long Nose Mask': 'nose', 'Burlap Pig Mask': 'pig', 'Patchwork Mask': 'patch' }[A['Mask']];
+const FULLFACE = ['zip', 'clown', 'sack', 'nose', 'pig', 'patch'].includes(MSTYLE);
 const BANDANA = !MASKED && A['Bandana'] && A['Bandana'] !== 'None';
 const GLOW = { 'Glowing Red': '#ff3a1a', 'Glowing Green': '#7dff3a' }[A['Eyes']];
 
@@ -831,6 +831,73 @@ if (MASKED) {
   const noseBump = (h, len = .44) => (fx, fy) => { const k = THREE.MathUtils.clamp((.14 - fy) / len, 0, 1), wx = .045 + .085 * k, under = fy < .14 - len ? Math.exp(-(((fy - .14 + len) / .07) ** 2)) : 1;
     return h * Math.pow(k, 1.4) * under * Math.exp(-((fx - .01) ** 2) / (wx * wx)); };
 
+  // burlap weave shared by the pig and patchwork masks
+  const burlap = (sh, base = '#b39466') => paintTex(sh, base, g => {
+    for (let y = 0; y < sh.S; y += 12) { g.fillStyle = 'rgba(55,35,18,.45)'; g.fillRect(0, y, sh.S, 4); }
+    for (let x = 0; x < sh.S; x += 12) { g.fillStyle = 'rgba(55,35,18,.38)'; g.fillRect(x, 0, 4, sh.S); }
+    for (let i = 0; i < 400; i++) { g.strokeStyle = `rgba(${rnd() < .5 ? '210,180,130' : '70,50,30'},.5)`; g.lineWidth = 1.5; g.beginPath(); const x = rnd() * sh.S, y = rnd() * sh.S; g.moveTo(x, y); g.lineTo(x + rnd() * 20 - 10, y + rnd() * 20 - 10); g.stroke(); }
+    for (let i = 0; i < 7; i++) { const x = rnd() * sh.S, y = rnd() * sh.S, w = 60 + rnd() * 90, h = 50 + rnd() * 80; g.fillStyle = rnd() < .5 ? 'rgba(90,60,35,.45)' : 'rgba(200,170,120,.35)'; g.fillRect(x, y, w, h);   // sewn-on patches
+      g.strokeStyle = 'rgba(40,25,15,.8)'; g.lineWidth = 3; g.setLineDash([8, 7]); g.strokeRect(x + 5, y + 5, w - 10, h - 10); g.setLineDash([]); }
+    for (let i = 0; i < 4; i++) { const x = rnd() * sh.S, y = rnd() * sh.S * .7; g.fillStyle = 'rgba(110,14,14,.55)'; g.beginPath(); g.ellipse(x, y, 30 + rnd() * 30, 20, rnd() * 3, 0, 7); g.fill(); }
+  });
+  const fray = (sh, outline, n, mat) => { for (let i = 0; i < n; i++) { const [u, v] = outline[Math.floor(rnd() * outline.length)], p = sh.at(u, v), d = V(u, v + .1, 0).normalize();
+    tube([p, p.clone().add(d.multiplyScalar(.03 + rnd() * .05)).add(V(0, -.04 - rnd() * .05, .01))], .006 + rnd() * .005, mat, head).userData.rigid = true; } };
+  const topStrap = () => {     // leather strap with a buckle over the crown, ear to ear
+    const pts = []; for (let i = 0; i <= 60; i++) { const a = -1.25 + 2.5 * i / 60, d = V(Math.sin(a), Math.cos(a), -.15).normalize(); ray.set(d.clone().multiplyScalar(4), d.clone().negate());
+      const h = ray.intersectObject(PROBE)[0]; if (h) pts.push(h.point.clone().addScaledVector(h.face.normal, .025)); }
+    const LM = clay('#6e4428', { rough: .9, bump: 1.6 }); const c = new THREE.CatmullRomCurve3(pts);
+    { const geo = new THREE.TubeGeometry(c, 80, .075, 12, false); geo.scale(1, 1, 1); const m = mesh(geo, LM, head); m.scale.set(1, 1, 1); m.userData.rigid = true;
+      const pp = geo.attributes.position, cp = V(0, 0, 0), q = V(0, 0, 0), n = V(0, 0, 0);   // flatten the tube into a strap lying on the skull
+      for (let i = 0; i <= 80; i++) { c.getPointAt(i / 80, cp); n.copy(cp).normalize(); for (let j = 0; j <= 12; j++) { const vi = i * 13 + j; q.fromBufferAttribute(pp, vi).sub(cp); const k = q.dot(n); q.addScaledVector(n, -k * .7).add(cp); pp.setXYZ(vi, q.x, q.y, q.z); } } geo.computeVertexNormals(); }
+    const b = c.getPointAt(.62), T = c.getTangentAt(.62), bk = group(); bk.position.copy(b); bk.lookAt(head.localToWorld(b.clone().add(T))); head.add(bk);
+    const RM = clay('#8d8a84', { metal: .35, rough: .65 }); for (const [x, y, w, h] of [[0, -.1, .2, .025], [0, .1, .2, .025], [-.1, 0, .025, .2], [.1, 0, .025, .2]]) mesh(new THREE.BoxGeometry(w, h, .04), RM, bk, [x, y, .0]);
+    mesh(new THREE.BoxGeometry(.18, .025, .025), RM, bk, [0, 0, .03], [0, 0, 0]).userData.rigid = true;
+  };
+  if (MSTYLE === 'pig') {          // stitched burlap pig face: snout, floppy ears, blocky grin
+    const sh = faceShell(-.9, .9, -1.05, .95, .06, 3), OUTL = fullOutline();
+    const PE = [[-.31, .1, .11, .1], [.3, .1, .1, .09]];
+    const MOUTH = g => { g.beginPath(); g.moveTo(sh.MX(-.36), sh.MY(-.5)); g.quadraticCurveTo(sh.MX(0), sh.MY(-.72), sh.MX(.38), sh.MY(-.48)); g.quadraticCurveTo(sh.MX(0), sh.MY(-.95), sh.MX(-.36), sh.MY(-.5)); g.fill(); };
+    shellMeshes(sh, burlap(sh), cutTex(sh, OUTL, PE, MOUTH), cutTex(sh, OUTL), { rough: 1, bump: 2.4, inner: '#1a0c0a' });
+    const bm = clay('#a88a5c', { rough: 1, bump: 2.6 }); rim(sh, OUTL, .025, bm); fray(sh, OUTL, 70, clay('#c2a472', { bump: .5 }));
+    for (const [u, v, rx, ry] of PE) { const pts = []; for (let i = 0; i < 30; i++) { const t = i / 30 * Math.PI * 2; pts.push([u + rx * Math.cos(t), v + ry * Math.sin(t)]); } rim(sh, pts, .022, clay('#5a3a24', { rough: 1, bump: 2 })); }
+    const sn = sh.at(.03, -.3), sg = group(); sg.position.copy(sn); head.add(sg);
+    const pink = clay('#c98f86', { rough: .8, bump: 1.4 }); mesh(new THREE.CylinderGeometry(.2, .23, .22, 30), pink, sg, [0, 0, .08], [Math.PI / 2, 0, 0], [1.15, 1, .85]).userData.rigid = true;
+    for (const x of [-.07, .08]) mesh(sph(.05, 16, 12), clay('#3a1a16'), sg, [x, -.01, .19], null, [.8, 1.2, .5]).userData.rigid = true;
+    const tm = clay('#c9ad78', { rough: 1, bump: 2 }); for (let i = 0; i < 8; i++) { const fx = -.27 + .54 * i / 7, fy = -.6 - .04 * (1 - (fx / .3) ** 2), p = sh.at(fx, fy); mesh(new THREE.BoxGeometry(.06, .08, .05), tm, head, [p.x, p.y + .03, p.z - .02], [0, 0, (rnd() - .5) * .3]).userData.rigid = true;
+      const q = sh.at(fx * .8, fy - .12); mesh(new THREE.BoxGeometry(.055, .065, .05), tm, head, [q.x, q.y, q.z - .03], [0, 0, (rnd() - .5) * .3]).userData.rigid = true; }
+    for (const sx of [-1, 1]) { const e = sh.at(sx * .62, .62), eg = group(); eg.position.copy(e); eg.rotation.set(-.5, sx * .5, sx * -.7); head.add(eg);
+      const shp = new THREE.Shape(); shp.moveTo(-.2, 0); shp.quadraticCurveTo(-.15, .35, .05, .45); shp.quadraticCurveTo(.25, .3, .2, 0); shp.closePath();
+      mesh(new THREE.ExtrudeGeometry(shp, { depth: .03, bevelEnabled: true, bevelThickness: .02, bevelSize: .02, bevelSegments: 2 }), clay('#b39466', { rough: 1, bump: 2.4 }), eg).userData.rigid = true;
+      mesh(new THREE.ExtrudeGeometry(shp, { depth: .01, bevelEnabled: false }), clay('#c98f86', { rough: .9 }), eg, [0, .04, .045], null, [.65, .7, 1]).userData.rigid = true; }
+    topStrap();
+  }
+  if (MSTYLE === 'patch') {        // burlap face patched with riveted scrap-metal plates, goggle eyes, wire-stitched mouth
+    const sh = faceShell(-.9, .9, -1.05, .95, .06, 3, noseBump(.12, .38)), OUTL = fullOutline();
+    const GE = [[-.31, .1, .13, .12], [.3, .1, .12, .11]];
+    shellMeshes(sh, burlap(sh, '#a98d62'), cutTex(sh, OUTL, GE), cutTex(sh, OUTL), { rough: 1, bump: 2.4 });
+    rim(sh, OUTL, .025, clay('#9a7e56', { rough: 1, bump: 2 }));
+    const MT = paintTex(sh, '#7b7a76', g => { for (let i = 0; i < 260; i++) { g.fillStyle = `rgba(${115 + rnd() * 40 | 0},${55 + rnd() * 25 | 0},20,${.3 + rnd() * .5})`; g.beginPath(); g.arc(rnd() * sh.S, rnd() * sh.S, 3 + rnd() * 20, 0, 7); g.fill(); }
+      g.fillStyle = 'rgba(220,220,210,.25)'; for (let i = 0; i < 30; i++) { g.fillRect(rnd() * sh.S, rnd() * sh.S, 40 + rnd() * 60, 3); } });
+    const PLATES = [[[-.55, .85], [.1, .9], [.16, .45], [-.05, .3], [-.62, .4]], [[.2, .88], [.62, .7], [.72, .35], [.48, .22], [.18, .4]], [[.45, -.05], [.74, -.1], [.68, -.6], [.48, -.5]], [[-.8, -.1], [-.5, -.08], [-.46, -.4], [-.7, -.5]]];
+    const pm = clay('#fff', { map: MT, metal: .35, rough: .62, bump: 1.4, side: THREE.DoubleSide });
+    for (const P of PLATES) { const a = cutTex(sh, P, GE); const m = mesh(sh.geo(.025), pm.clone(), head); m.material.alphaMap = a; m.material.transparent = true; m.material.alphaTest = .5; m.userData.rigid = true;
+      rim(sh, P.concat([P[0]]).map(([u, v]) => [u, v]), .014, clay('#5c5a56', { metal: .35, rough: .6 })).position.z += .035;
+      for (const [u, v] of P) { const q = sh.at(u * .9 + .0, v * .92 + .02); mesh(sph(.025, 12, 8), clay('#9a9890', { metal: .4, rough: .5 }), head, [q.x, q.y, q.z + .05], null, [1, 1, .6]).userData.rigid = true; } }
+    const GM = clay('#8f8d88', { metal: .45, rough: .5 });
+    for (const [u, v, rx, ry] of GE) { const p = sh.at(u, v), g = group(); g.position.set(p.x, p.y, p.z + .04); head.add(g);
+      mesh(new THREE.TorusGeometry(rx * 1.05, .04, 14, 40), GM, g, null, null, [1, ry / rx, 1]).userData.rigid = true;
+      mesh(new THREE.TorusGeometry(rx * .82, .02, 10, 40), GM, g, [0, 0, .03], null, [1, ry / rx, 1]).userData.rigid = true;
+      const lens = mesh(new THREE.CircleGeometry(rx * .8, 30), new THREE.MeshStandardMaterial({ color: '#b01818', roughness: .2, metalness: .1, transparent: true, opacity: .55 }), g, [0, 0, .02], null, [1, ry / rx, 1]); lens.userData.rigid = true;
+      for (let i = 0; i < 6; i++) { const a = i / 6 * Math.PI * 2; mesh(sph(.018, 10, 8), GM, g, [Math.cos(a) * rx * 1.05, Math.sin(a) * ry * 1.05, .04]).userData.rigid = true; } }
+    for (const [u, v] of [[-.55, .55], [.52, .5]]) { const p = sh.at(u, v); const g = group(); g.position.set(p.x, p.y, p.z + .05); head.add(g);     // small sensor ports
+      mesh(new THREE.TorusGeometry(.06, .022, 10, 24), GM, g).userData.rigid = true; mesh(new THREE.CircleGeometry(.045, 20), clay('#2a0c0c'), g, [0, 0, .005]).userData.rigid = true; }
+    const mp = []; for (let i = 0; i <= 24; i++) { const fx = -.4 + .8 * i / 24; mp.push(sh.at(fx, -.58 + .04 * (fx / .4) ** 2).add(V(0, 0, .01))); }
+    tube(mp, .025, clay('#1a0e0a'), head).userData.rigid = true;
+    const wire = clay('#a7a49c', { metal: .5, rough: .4 }); for (let i = 0; i < 12; i++) { const fx = -.37 + .74 * i / 11, a = sh.at(fx - .03, -.5 + .04 * (fx / .4) ** 2), b = sh.at(fx + .03, -.67 + .04 * (fx / .4) ** 2);
+      tube([a.add(V(0, 0, .01)), a.clone().lerp(b, .5).add(V(0, 0, .04)), b.add(V(0, 0, .01))], .011, wire, head).userData.rigid = true; }
+    const lace = clay('#c8642a', { rough: .8 }); for (let i = 0; i < 5; i++) { const a = sh.at(-.72, -.05 - i * .1), b = sh.at(-.6, -.1 - i * .1); tube([a.add(V(0, 0, .01)), b.add(V(0, 0, .01))], .014, lace, head).userData.rigid = true; }
+    topStrap();
+  }
   if (MSTYLE === 'zip') {          // stitched black leather face, zipped mouth, laced seams
     const sh = faceShell(-.9, .9, -1.05, .95, .05, 3, noseBump(.18, .4)), OUTL = fullOutline();
     const map = paintTex(sh, '#2a211d', g => { g.strokeStyle = 'rgba(120,100,85,.35)'; g.lineWidth = 3; for (let i = 0; i < 120; i++) { const x = rnd() * sh.S, y = rnd() * sh.S; g.beginPath(); g.moveTo(x, y); g.lineTo(x + rnd() * 30 - 15, y + rnd() * 30 - 15); g.stroke(); }
