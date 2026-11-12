@@ -10,5 +10,6 @@ else {
   window.PFP = { attrs, seed: meta.seed, name: meta.name };
 }
 window.PIXEL_RATIO = +(q.get('pr') || 2);
+window.SILHOUETTE = q.has('sil');
 try { await import('./pfp.js'); } catch (e) { console.log('err: ' + e.message + '\n' + e.stack); window.failed = e.message; }
 </script></body></html>

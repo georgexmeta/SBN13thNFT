@@ -232,7 +232,8 @@ const sph = (r, a = 32, b = 24) => new THREE.SphereGeometry(r, a, b);
 }
 
 // ------------------------------------------------------------------ head: lobed swollen skull with a face
-const head = new THREE.Group(); head.position.set(.15, .22, 0); head.rotation.set(.03, .62, 0); head.scale.setScalar(1.6); scene.add(head);
+const HEAD_Y = .08, BODY_Y = -1.75;
+const head = new THREE.Group(); head.position.set(.32, HEAD_Y, 0); head.rotation.set(.03, .62, 0); head.scale.setScalar(1.45); scene.add(head);
 const SW = { Mild: .6, Lumpy: 1, Grotesque: 1.45 }[A['Swelling']] * (A['Hair'] === 'Backwards Cap' ? .6 : 1);
 const SHAPE = A['Head Shape'];
 const dir = (x, y, z) => V(x, y, z).normalize();
@@ -245,6 +246,10 @@ if (SHAPE === 'Lopsided') LOBES.push([dir(-.75, .45, -.45), .48, .42]);
 // tumors are sculpted into the skull as swollen mounds (no separate balls)
 const TUMORS = SHAPE === 'Tumor Cluster' ? [dir(-.5, .7, -.4), dir(.3, .85, -.3), dir(-.8, .2, -.3), dir(.1, .5, -.85)].map(d => [d, .24 + rnd() * .08, .2 + rnd() * .04]) : [];
 const CHEEK = [-.42 + rnd() * .1, -.22, .07 + .06 * SW];    // swollen near cheek (George's reference)
+const HX = .9, HY = 1.3;   // tall dome: George's silhouette
+// broad flat-ish crown, long jaw, the back of the skull bulging behind the ear
+const stretchY = y => y > 0 ? y * 1.2 : y * 1.38;
+const stretchX = (x, y) => x * HX * (1 + .1 * Math.max(0, y)) * (x < 0 ? 1.07 : 1);
 function headPoint(n) {
   let best = 0;
   const faceW = THREE.MathUtils.smoothstep(n.z, .25, .65);           // keep the face smooth
@@ -256,6 +261,7 @@ function headPoint(n) {
     r += .06 * Math.exp(-((n.y - .25) ** 2) / .006) * THREE.MathUtils.smoothstep(n.z, .5, .8);           // brow ridge
     r += CHEEK[2] * Math.exp(-((n.x - CHEEK[0]) ** 2 + (n.y - CHEEK[1]) ** 2) / .03);                   // swollen cheek
     r += .07 * Math.exp(-(n.x ** 2 / .04 + (n.y + .7) ** 2 / .02));                                    // chin
+    r += .07 * Math.exp(-((n.x - .6) ** 2 + (n.y + .28) ** 2) / .03);                                  // far cheek bulge (silhouette)
     for (const ex of [-.33, .33]) r -= .05 * Math.exp(-((n.x - ex) ** 2 + (n.y - .1) ** 2) / .012);     // eye sockets
   }
   for (const [d, h, w] of TUMORS) { const t = Math.exp(-(1 - n.dot(d)) / (w * w)); r += h * t * t * (3 - 2 * t); }
@@ -266,7 +272,7 @@ function headPoint(n) {
   if (y < -.15) { const t = -.15 - y; x *= 1 - t * .45; if (z < 0) z *= 1 - t * .6; }
   if (MASKED) { if (z > .62) z = .62 + (z - .62) * .15; }
   else if (z > 0) z *= .9;
-  return V(x, y, z);
+  return V(stretchX(x, y), stretchY(y), z);
 }
 const HEADGEO = (() => {
   const g = new THREE.SphereGeometry(1, 200, 150), p = g.attributes.position, n = V(0, 0, 0);
@@ -278,6 +284,7 @@ const PROBE = new THREE.Mesh(HEADGEO); PROBE.updateMatrixWorld(true);
 const ray = new THREE.Raycaster();
 // a point on the face: cast straight back from in front of the head
 function onFace(x, y, extra = []) {
+  x = stretchX(x, y); y = stretchY(y);
   ray.set(V(x, y, 3), V(0, 0, -1)); const h = ray.intersectObjects([PROBE, ...extra], true)[0];
   return h ? { p: h.point.clone(), n: h.face.normal.clone().transformDirection(h.object.matrixWorld) } : { p: V(x, y, .6), n: V(0, 0, 1) };
 }
@@ -302,11 +309,12 @@ if (SHAPE === 'Split Skull') for (const t of [.35, .55, .75]) {
 
 // ------------------------------------------------------------------ ears
 function buildEar() {
-  const ear = group(); ear.position.set(-.86, -.05, -.02); ear.rotation.set(0, -Math.PI / 2 + .25, .1); ear.scale.setScalar(1.4); head.add(ear);
+  const ear = group(); ear.position.set(-.86 * HX - .02, -.32, -.02); ear.rotation.set(0, -Math.PI / 2 + .25, .1); ear.scale.setScalar(1.4); head.add(ear);
   const kind = A['Ear'];
   mesh(sph(.2, 40, 30), SKINMAT, ear, null, null, [.8, 1.25, .35]);
   const rimE = mesh(new THREE.TorusGeometry(.17, .065, 18, 50, Math.PI * (kind === 'Torn' ? 1.15 : 1.55)), SKINMAT, ear, [0, 0, .03], [0, 0, Math.PI * .55], [.85, 1.2, 1]);
   mesh(sph(.06, 16, 12), skinShade(.45), ear, [-.02, -.02, .05], null, [1, 1, .4]);
+  if (kind === 'Normal' || kind === 'Cauliflower') mesh(sph(.1, 24, 18), SKINMAT, ear, [.03, -.3, .03], null, [1, 1.1, .7]);   // fat hanging lobe (silhouette)
   if (kind === 'Cauliflower') for (const [x, y] of [[.12, .12], [.15, -.02], [.06, .2], [.0, .1], [.1, -.12]]) mesh(sph(.06), SKINMAT, ear, [x, y, .07]);
   if (kind === 'Torn') { mesh(sph(.05), clay('#7a1212', { rough: .4 }), ear, [.1, .16, .06], null, [1, .5, .5]); }
   if (kind === 'Gauged') {
@@ -615,7 +623,7 @@ if (BANDANA) {
   head.updateMatrixWorld(true);
   const RIGHT = V(1, 0, 0).transformDirection(head.matrixWorld).setY(0).normalize(), FWD = V(0, 0, 1).transformDirection(head.matrixWorld).setY(0).normalize();
   const PROF = [[.12, .6], [.04, .8], [-.1, 1.25], [-.4, 1.7], [-.85, 1.93], [-1.5, 2.0]];   // torso profile (body-local y, radius)
-  const chestZ = yw => { const yb = yw + 1.05; let r = 2; for (let k = 1; k < PROF.length; k++) if (yb >= PROF[k][0]) { const [y0, r0] = PROF[k - 1], [y1, r1] = PROF[k]; r = r0 + (r1 - r0) * (yb - y0) / (y1 - y0); break; } return r * .62 - .25; };
+  const chestZ = yw => { const yb = yw - BODY_Y; let r = 2; for (let k = 1; k < PROF.length; k++) if (yb >= PROF[k][0]) { const [y0, r0] = PROF[k - 1], [y1, r1] = PROF[k]; r = r0 + (r1 - r0) * (yb - y0) / (y1 - y0); break; } return r * .62 - .25; };
   for (let j = 0; j <= M1; j++) for (let i = 0; i <= N; i++) {          // snug part, cast onto the face
     const v = j / M1, u = i / N * 2 - 1, phi = u * (1.9 - v * .25), y = -.02 - v * .8;
     const d = V(Math.sin(phi), 0, Math.cos(phi));
@@ -768,8 +776,8 @@ if (MASKED) {
 }
 
 // ------------------------------------------------------------------ neck and clothing
-mesh(new THREE.CylinderGeometry(.6, .7, 1.0, 40), SKINMAT, scene, [.05, -.7, -.05]);
-const body = group(); body.position.set(0, -1.05, -.25); body.rotation.y = .35; scene.add(body);
+mesh(new THREE.CylinderGeometry(.72, .8, 1.6, 40), SKINMAT, scene, [.12, BODY_Y + .55, -.1]);   // thick neck
+const body = group(); body.position.set(0, BODY_Y, -.25); body.rotation.y = .35; scene.add(body);
 const CL = A['Clothing'];
 const KIND = PAL.flannels[CL] ? 'flannel' : PAL.hoodie[CL] ? 'hoodie' : PAL.trench[CL] ? 'trench' : PAL.tee[CL] ? 'tee'
   : { 'Denim Shirt': 'denim', 'Chore Coat': 'chore', 'Stained Undershirt': 'undershirt', 'Butcher Apron': 'apron' }[CL];
@@ -783,7 +791,7 @@ const CM = clothMat();
 CM.map.repeat.set(6, 3);
 function torso() {
   const prof = new THREE.SplineCurve([[.6, .12], [.8, .04], [1.25, -.1], [1.7, -.4], [1.93, -.85], [2.0, -1.5], [2.0, -3]].map(([r, y]) => new THREE.Vector2(r, y))).getPoints(60);
-  const t = mesh(new THREE.LatheGeometry([new THREE.Vector2(0, .12), ...prof], 160), CM, body); t.scale.set(1, 1, .62);
+  const t = mesh(new THREE.LatheGeometry([new THREE.Vector2(0, .12), ...prof], 160), CM, body); t.scale.set(1.2, 1, .62);
 }
 const small = (() => { const m = clothMat(); m.map.repeat.set(2, 2); return m; })();
 const frontZ = y => Math.sqrt(Math.max(0, 1.93 ** 2 - 0)) * .62;   // chest front ~1.2
@@ -855,7 +863,7 @@ function blade(shape, mat, parent, pos, rotY = -.3) {
 }
 function shapeFrom(pts) { const sh = new THREE.Shape(); pts.forEach(([x, y], i) => i ? sh.lineTo(x, y) : sh.moveTo(x, y)); sh.closePath(); return sh; }
 if (HELD) {
-  const hand = group(); hand.position.set(.8, -2.1, 1.85); hand.rotation.set(0, -.15, -.42); scene.add(hand);
+  const hand = group(); hand.position.set(.85, -2.5, 1.85); hand.rotation.set(0, -.15, -.42); scene.add(hand);
   const sleeveM = (() => { const m = clothMat(); m.map.repeat.set(3, 3); return m; })();
   mesh(new THREE.CylinderGeometry(.3, .33, .7, 30), SKINMAT, hand, [-.02, -.5, -.12], [0, 0, 3.01]);
   mesh(new THREE.CylinderGeometry(.46, .52, 2.4, 40), KIND === 'tee' || KIND === 'undershirt' ? SKINMAT : sleeveM, hand, [-.18, -1.95, -.2], [0, 0, 3.01]);
@@ -933,5 +941,9 @@ scene.traverse(o => {
   p.needsUpdate = true; g.computeVertexNormals();
 });
 
+if (window.SILHOUETTE) {   // debug: flat black figure on green, to check the outline against the reference
+  const blk = new THREE.MeshBasicMaterial({ color: '#000' }); scene.background = new THREE.Color('#55b848');
+  scene.traverse(o => { if (o.isMesh) { if (o.position.z < -5 || o.geometry.type === 'PlaneGeometry') o.visible = false; else o.material = blk; } });
+}
 renderer.render(scene, cam);
 window.done = true;
