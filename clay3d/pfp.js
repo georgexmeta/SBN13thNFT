@@ -177,7 +177,7 @@ renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadow
 renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.outputColorSpace = THREE.SRGBColorSpace;
 document.body.appendChild(renderer.domElement);
 const scene = new THREE.Scene(); scene.background = new THREE.Color(BG);
-const cam = new THREE.PerspectiveCamera(26, 1, .1, 100); cam.position.set(0, .2, 12.5); cam.lookAt(0, -.2, 0);
+const cam = new THREE.PerspectiveCamera(window.FOV || 34, 1, .1, 100); cam.position.set(0, -.4, 12.5); cam.lookAt(0, -1.0, 0);
 const dark = ['Midnight', 'Full Moon', 'Blood Red'].includes(A['Background']);
 scene.add(new THREE.HemisphereLight(0xfff6ee, 0x8a7060, dark ? 1.0 : 1.45));
 const key = new THREE.DirectionalLight(0xfff2e4, 1.7); key.position.set(-2, 3.5, 9); key.castShadow = true;
@@ -1097,8 +1097,8 @@ function clothMat(rep = 6) {
 const CM = clothMat();
 CM.map.repeat.set(6, 3);
 function torso() {
-  const prof = new THREE.SplineCurve([[.6, .12], [.8, .04], [1.25, -.1], [1.7, -.4], [1.93, -.85], [2.0, -1.5], [2.0, -3]].map(([r, y]) => new THREE.Vector2(r, y))).getPoints(60);
-  const t = mesh(new THREE.LatheGeometry([new THREE.Vector2(0, .12), ...prof], 160), CM, body); t.scale.set(1.2, 1, .62);
+  const prof = new THREE.SplineCurve([[.6, .12], [.8, .04], [1.25, -.1], [1.7, -.4], [1.93, -.85], [2.0, -1.5], [2.0, -3], [1.9, -5.5]].map(([r, y]) => new THREE.Vector2(r, y))).getPoints(60);
+  const t = mesh(new THREE.LatheGeometry([new THREE.Vector2(0, .12), ...prof], 160), CM, body); t.scale.set(1.0, 1, .62);
 }
 const small = (() => { const m = clothMat(); m.map.repeat.set(2, 2); return m; })();
 const frontZ = y => Math.sqrt(Math.max(0, 1.93 ** 2 - 0)) * .62;   // chest front ~1.2
@@ -1170,10 +1170,9 @@ function blade(shape, mat, parent, pos, rotY = -.3) {
 }
 function shapeFrom(pts) { const sh = new THREE.Shape(); pts.forEach(([x, y], i) => i ? sh.lineTo(x, y) : sh.moveTo(x, y)); sh.closePath(); return sh; }
 if (HELD) {
-  const hand = group(); hand.position.set(-1.3, -1.1, 1.75); hand.rotation.set(0, .6, -.45); hand.scale.setScalar(1.3); scene.add(hand);   // fist raised beside the near cheek
+  const hand = group(); hand.position.set(.85, -3.25, 2.15); hand.rotation.set(0, .55, -.8); hand.scale.setScalar(1.2); hand.userData.fist = true; scene.add(hand); hand.updateMatrixWorld(true);   // fist at the lower chest, knuckles out, blade raised up and out
   const sleeveM = (() => { const m = clothMat(); m.map.repeat.set(3, 3); return m; })();
-  mesh(new THREE.CylinderGeometry(.3, .33, .7, 30), SKINMAT, hand, [-.02, -.5, -.12], [0, 0, 3.01]);
-  mesh(new THREE.CylinderGeometry(.46, .52, 2.4, 40), KIND === 'tee' || KIND === 'undershirt' ? SKINMAT : sleeveM, hand, [-.18, -1.95, -.2], [0, 0, 3.01]);
+  mesh(new THREE.CylinderGeometry(.3, .33, .7, 30), SKINMAT, hand, [-.02, -.5, -.12], [0, 0, 3.01]);   // wrist
   // fist seen from the back: the back of the hand and the knuckle row face the viewer, fingers curl away behind the grip
   mesh(sph(.42, 40, 30), SKINMAT, hand, [-.1, 0, .05], null, [1, 1.02, .62]);                                       // back of the hand
   for (let i = 0; i < 4; i++) { const y = .27 - i * .175, zk = .26 - Math.abs(i - 1.5) * .035;
@@ -1184,8 +1183,8 @@ if (HELD) {
     for (const dz of [-.04, .04]) tube([V(.14, y + .07, zk + dz), V(.2, y + .085, zk + dz + .02)], .006, skinShade(.75), hand);   // knuckle creases
   }
   mesh(new THREE.CapsuleGeometry(.1, .26, 8, 20), SKINMAT, hand, [0, .44, .18], [0, 0, Math.PI / 2 - .3]);       // thumb resting over the top
-  // reverse grip: handle rises out of the top of the fist, blade angles down across the chest
-  const wg = group(); hand.add(wg); wg.rotation.set(0, 0, 4.3); if (WEAPON === 'Machete' || WEAPON === 'Golden Machete') wg.scale.setScalar(.85);
+  // blade rises out of the top of the fist
+  const wg = group(); hand.add(wg); if (WEAPON === 'Machete' || WEAPON === 'Golden Machete') wg.scale.setScalar(.9);
   const grip = (col, r = .12) => { mesh(new THREE.CylinderGeometry(r, r + .01, 1.0, 28), clay(col, { rough: .5, bump: .5 }), wg, [.05, .05, .1]); mesh(new THREE.CylinderGeometry(r + .03, r + .02, .16, 28), clay(col, { rough: .5 }), wg, [.05, .6, .1]); };
   if (WEAPON === 'Machete') { grip('#e8592e'); blade(shapeFrom([[-.17, 0], [.17, 0], [.2, 3.6], [-.14, 3.72]]), clay('#fff', { map: rustTex(), metal: .08, rough: .85, bump: 1.2 }), wg, [.05, .66, .09]); }
   if (WEAPON === 'Golden Machete') { grip('#1a1a1a'); blade(shapeFrom([[-.17, 0], [.17, 0], [.2, 3.6], [-.14, 3.72]]), clay('#e2b84a', { metal: 1, rough: .22, bump: .3 }), wg, [.05, .66, .09]);
@@ -1200,9 +1199,36 @@ if (HELD) {
     tube(pts, .06, steel({ c: '#9aa0a6' }), wg); mesh(new THREE.ConeGeometry(.08, .22, 12), steel({ c: '#9aa0a6' }), wg, [.62, 1.85, .1], [0, 0, Math.PI + .3]);
     mesh(sph(.06, 12, 8), clay('#7a1010', { rough: .3 }), wg, [.6, 2.0, .16]); }
 }
+// arms: the near arm crosses the belly to the weapon fist, the far arm hangs with an open hand
+{
+  const bare = KIND === 'tee' || KIND === 'undershirt', SM = bare ? SKINMAT : (() => { const m = clothMat(); m.map.repeat.set(3, 3); return m; })();
+  const arm = (pts, r0, r1) => { const c = new THREE.CatmullRomCurve3(pts), geo = new THREE.TubeGeometry(c, 60, 1, 24, false), pp = geo.attributes.position, cp = V(0, 0, 0), q = V(0, 0, 0);
+    for (let i = 0; i <= 60; i++) { const t = i / 60, r = r0 + (r1 - r0) * t + .05 * Math.sin(t * 9); c.getPointAt(t, cp); for (let j = 0; j <= 24; j++) { const vi = i * 25 + j; q.fromBufferAttribute(pp, vi).sub(cp).normalize().multiplyScalar(r).add(cp); pp.setXYZ(vi, q.x, q.y, q.z); } }
+    geo.computeVertexNormals(); return mesh(geo, SM, scene); };
+  const cuff = (p, d, r) => { if (bare) return; const m = mesh(new THREE.TorusGeometry(r, .07, 10, 30), SM, scene, [p.x, p.y, p.z]); m.quaternion.setFromUnitVectors(V(0, 0, 1), d.clone().normalize()); };
+  if (typeof HELD !== 'undefined' && HELD) {
+    const hand = scene.children.find(o => o.userData.fist); const w = hand.localToWorld(V(-.02, -.75, -.12));
+    const pts = [V(-1.4, -1.95, .2), V(-1.75, -3.1, .9), V(-.9, -3.85, 1.9), w];
+    arm(pts, .46, .36); cuff(w.clone().lerp(pts[2], .08), w.clone().sub(pts[2]), .37);
+  } else {
+    const pts = [V(-1.4, -1.95, .2), V(-1.85, -3.2, .5), V(-1.8, -4.6, .9)]; arm(pts, .46, .38);
+  }
+  // far arm hanging down, open clay hand with curled fingers
+  const fp = [V(2.05, -1.95, -.4), V(2.45, -3.1, -.1), V(2.45, -4.25, .45)]; arm(fp, .44, .36);
+  const oh = group(); oh.position.set(2.47, -4.55, .6); oh.rotation.set(.2, -.5, .15); oh.scale.setScalar(1.15); scene.add(oh);
+  cuff(V(2.46, -4.3, .5), V(0, -1, .3), .37);
+  mesh(new THREE.CylinderGeometry(.28, .3, .4, 24), SKINMAT, oh, [0, .25, 0]);
+  mesh(sph(.34, 32, 24), SKINMAT, oh, [0, -.15, 0], null, [1, 1.05, .5]);
+  for (let i = 0; i < 4; i++) { const x = -.2 + i * .135, L = .2 + (i === 1 || i === 2 ? .06 : 0);
+    const f = group(); f.position.set(x, -.45, .02); f.rotation.x = .5; oh.add(f);
+    mesh(new THREE.CapsuleGeometry(.07, L, 6, 12), SKINMAT, f, [0, -L / 2, 0]);
+    const f2 = group(); f2.position.set(0, -L, 0); f2.rotation.x = .7; f.add(f2); mesh(new THREE.CapsuleGeometry(.062, L * .7, 6, 12), SKINMAT, f2, [0, -L * .35, 0]);
+    mesh(sph(.075, 12, 8), SKINMAT, oh, [x, -.42, .1], null, [1, .8, .8]); }   // knuckle bumps
+  const th = group(); th.position.set(-.3, -.05, .08); th.rotation.set(.3, 0, -.9); oh.add(th); mesh(new THREE.CapsuleGeometry(.08, .28, 6, 12), SKINMAT, th, [0, -.15, 0]);
+}
 if (SLUNG) {
   const back = group(); back.position.set(WEAPON === 'Pitchfork' ? -1.05 : -1.25, WEAPON === 'Pitchfork' ? -1.95 : -.9, -1.9); back.rotation.set(0, .35, WEAPON === 'Pitchfork' ? .26 : .32); scene.add(back);
-  ribbon([V(-1.0, .2, 1.0), V(-.6, -.3, 1.35), V(0, -.9, 1.55), V(.7, -1.6, 1.5), V(1.1, -2.2, 1.4)], .13, '#3a2a1e', body);    // flat sling strap across the chest
+  if (WEAPON !== 'Weed Whacker') ribbon([V(-1.0, .2, 1.0), V(-.6, -.3, 1.35), V(0, -.9, 1.55), V(.7, -1.6, 1.5), V(1.1, -2.2, 1.4)], .13, '#3a2a1e', body);    // flat sling strap across the chest
   if (WEAPON === 'Pitchfork') {
     // bold farm fork: thick ash shaft, forged socket, chunky curved tines with sharp points
     const fs = steel({ c: '#5d6266' }), rust = clay('#7a3f1e', { rough: .8, bump: 1.4 });
@@ -1219,7 +1245,22 @@ if (SLUNG) {
     mesh(sph(.09, 14, 10), rust, back, [.1, 3.35, .05], null, [1.6, .8, 1]);
   }
   if (WEAPON === 'Weed Whacker') {
-    const sm = steel({ c: '#9a9fa4' }), orange = clay('#e8592e', { rough: .5 }), blk = clay('#262626', { rough: .6 });
+    const RT = (() => { const [c, g] = canvas(512); g.fillStyle = '#8b8378'; g.fillRect(0, 0, 512, 512);
+      for (let i = 0; i < 900; i++) { g.fillStyle = rnd() < .6 ? `rgba(${110 + rnd() * 40 | 0},${52 + rnd() * 20 | 0},22,${.3 + rnd() * .5})` : `rgba(50,40,30,${.2 + rnd() * .3})`; g.beginPath(); g.ellipse(rnd() * 512, rnd() * 512, 2 + rnd() * 14, 2 + rnd() * 8, rnd() * 3, 0, 7); g.fill(); }
+      return tex(c, 1); })();
+    const sm = clay('#fff', { map: RT, metal: .1, rough: .8, bump: 1.3 }), orange = clay('#fff', { map: RT, rough: .85, bump: 1.4 }), blk = clay('#2e2a26', { rough: .8 });
+    // engine pack strapped to the back, peeking out behind the near shoulder
+    const pk = group(); pk.position.set(-2.35, -2.9, -.5); pk.rotation.set(.1, .6, .15); pk.scale.setScalar(1.3); scene.add(pk);
+    mesh(new THREE.BoxGeometry(.95, 1.05, .8, 4, 4, 4), orange, pk, null, null, null);
+    mesh(new THREE.CylinderGeometry(.36, .36, .3, 30), sm, pk, [-.35, -.05, .35], [0, 0, Math.PI / 2]);          // recoil starter
+    for (let i = 0; i < 7; i++) mesh(new THREE.BoxGeometry(.04, .5, .05), clay('#9a2a1e', { rough: .8 }), pk, [-.2 + i * .07, .2, .42]);   // cooling fins
+    mesh(new THREE.CylinderGeometry(.13, .13, .14, 18), blk, pk, [.1, .62, 0]);                                  // fuel cap
+    mesh(new THREE.CylinderGeometry(.08, .08, .3, 12), sm, pk, [-.62, -.25, .2], [0, 0, Math.PI / 2]);           // pull handle stub
+    tube([V(-1.6, -1.9, -.6), V(-1.35, -1.0, -1.2), V(-1.25, -.4, -1.85)], .09, blk, scene);                        // drive hose up to the shaft
+    // padded harness over the near shoulder, down the front of the chest
+    ribbon([V(-1.15, -1.55, .85), V(-1.05, -2.0, 1.3), V(-1.0, -2.8, 1.45), V(-1.05, -3.8, 1.4), V(-1.1, -4.8, 1.3)], .4, '#7a5434', scene, .09);   // padded harness down the front
+    tube([V(-1.15, -1.55, .85), V(-1.45, -1.45, .2), V(-1.75, -1.7, -.4), V(-2.0, -2.3, -.5)], .13, clay('#7a5434', { bump: 1.8 }), scene);   // over the shoulder to the pack
+    for (let i = 0; i < 26; i++) { const p = V(-1.75 + rnd() * .9, -1.3 - rnd() * 1.6, 1.0 + rnd() * .6); mesh(new THREE.CapsuleGeometry(.012, .05 + rnd() * .05, 3, 6), clay(rnd() < .5 ? '#9ab35a' : '#c6c46a'), scene, [p.x, p.y, p.z], [rnd() * 3, rnd() * 3, rnd() * 3]); }   // grass clippings
     mesh(new THREE.CylinderGeometry(.075, .075, 5.0, 16), sm, back, [0, 0, 0]);
     const top = group(); top.position.set(0, 2.5, 0); top.rotation.z = -.55; back.add(top);              // bent neck
     mesh(new THREE.CylinderGeometry(.075, .075, .7, 16), sm, top, [0, .35, 0]);
@@ -1228,7 +1269,7 @@ if (SLUNG) {
     mesh(new THREE.CylinderGeometry(.2, .2, .14, 30), blk, hd, [0, -.2, 0]);                            // line spool
     mesh(new THREE.CylinderGeometry(.08, .08, .08, 20), orange, hd, [0, -.3, 0]);                       // bump knob
     mesh(new THREE.CylinderGeometry(.55, .55, .05, 36, 1, false, -Math.PI / 2, Math.PI), orange, hd, [0, -.08, -.1]);   // guard
-    for (const a of [.2, 3.3]) tube([V(0, -.2, 0), V(Math.cos(a) * .5, -.21, Math.sin(a) * .5), V(Math.cos(a) * .75, -.25, Math.sin(a) * .7)], .013, clay('#c6e85a', { rough: .4 }), hd);
+    for (const a of [.2, 3.3]) tube([V(0, -.2, 0), V(Math.cos(a) * .5, -.15, Math.sin(a) * .5), V(Math.cos(a) * .8, -.05, Math.sin(a) * .6)], .015, clay('#c8201e', { rough: .5 }), hd);
     mesh(new THREE.TorusGeometry(.28, .045, 10, 30), blk, back, [0, .9, .15], [0, Math.PI / 2, 0]);       // D-handle
   }
 }
