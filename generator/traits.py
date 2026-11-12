@@ -919,26 +919,77 @@ def bandana(kind, rng):
 
 
 # --------------------------------------------------------------------------
-# Goalie masks (1/1 exclusive). Original design: breathing holes, straps and
-# rivets, each finish with its own markings.
+# Goalie masks (1/1 exclusive). Original design: a moulded face shell with rows
+# of breathing holes, leather straps sunk into the swollen skull, swollen flesh
+# grown over the near edge, and per-finish markings (no chevrons).
+# All coordinates are head space (inside HEAD_T).
 # --------------------------------------------------------------------------
-MASK_D = ("M 548 236 C 620 214 720 222 770 262 C 800 300 806 370 796 420 "
-          "C 812 470 812 520 800 560 C 806 600 790 660 752 700 "
-          "C 716 734 650 748 600 736 C 556 724 528 690 518 640 "
-          "C 506 560 504 460 510 380 C 514 310 522 256 548 236 Z")
-MASK_HOLES = ([(572, 282), (606, 264), (644, 258), (682, 264), (716, 280), (748, 302),
-               (566, 322), (762, 338), (560, 364), (772, 382)]
-              + [(540, 520), (544, 566), (556, 608), (788, 604), (772, 644)]
-              + [(600, 676), (640, 690), (682, 690), (720, 672), (622, 716), (668, 722)])
+MASK_D = ("M 556 214 C 620 196 712 204 760 236 C 800 264 812 330 808 392 "
+          "C 806 420 792 436 790 452 C 800 476 830 508 834 540 "
+          "C 836 562 818 576 802 580 C 808 600 808 628 798 650 "
+          "C 790 690 760 726 712 742 C 660 758 600 752 566 728 "
+          "C 534 704 518 650 516 590 C 512 500 514 400 522 320 "
+          "C 528 262 536 228 556 214 Z")
+EYE_N, EYE_F = (606, 462, 38, 32), (744, 452, 23, 31)
+MASK_HOLES = [  # forehead columns
+    (584, 262), (576, 306), (572, 350), (628, 290), (626, 334), (712, 286), (716, 330),
+    (762, 266), (778, 308), (786, 352), (656, 392), (700, 388),
+    # near cheek beside the eye, then down toward the jaw
+    (562, 420), (562, 512), (572, 556), (588, 600), (612, 632),
+    # mouth and chin rows
+    (772, 612), (652, 664), (696, 668), (740, 656), (676, 708), (720, 700), (630, 704)]
 MASKS = {
-    "Chrome Mask": "chrome", "Bloody Mask": "#e3dcc0", "Broken Mask": "#e3dcc0", "Gold Mask": "gold",
-    "Charred Mask": "#3a332e", "Bone Mask": "#efe8d5", "Rusted Mask": "#c9c2a8", "Stitched Mask": "#ddd6bc",
+    "Chrome Mask": "chrome", "Bloody Mask": "#e6dfc4", "Broken Mask": "#e6dfc4", "Gold Mask": "gold",
+    "Charred Mask": "#3a332e", "Bone Mask": "#efe8d5", "Rusted Mask": "#cfc8ac", "Stitched Mask": "#ddd6bc",
     "Muddy Mask": "#d8cfb2", "Lipstick Mask": "#ece6d4", "Toxic Mask": "#c9e3a0", "Jack-o'-Lantern Mask": "#e07a1f",
     "Mossy Mask": "#a7ad92",
 }
+LEATHER = "#4a3022"
+RAW = "#7a1212"
+
+# strap centre lines (temple band round the skull, crown band, jaw band)
+_STRAPS = (("M 540 352 C 430 326 300 318 90 352", 36),
+           ("M 652 222 C 610 150 540 96 430 40", 30),
+           ("M 536 650 C 490 628 452 610 420 598", 26))
+
+
+def _drip(x, y, L, color, w=9):
+    return (f'<path d="M {x} {y} C {x - 3} {y + L * 0.5:.0f} {x + 3} {y + L * 0.8:.0f} {x} {y + L:.0f}" fill="none" '
+            f'stroke="{color}" stroke-width="{w}" stroke-linecap="round"/><circle cx="{x}" cy="{y + L + w * 0.6:.0f}" r="{w * 0.8:.0f}" fill="{color}"/>')
+
+
+def mask_straps(kind, skin):
+    """Leather straps cutting into the swollen skull. Drawn before the hair."""
+    if kind not in MASKS:
+        return ""
+    dark, light = shade(skin, 0.62), shade(skin, 1.25)
+    out = ['<g clip-path="url(#headclip)">']
+    for d, w in _STRAPS:
+        # swollen, raw flesh pushed up either side of the band
+        out.append(f'<path d="{d}" fill="none" stroke="{RAW}" stroke-width="{w + 22}" stroke-linecap="round" opacity="0.55"/>'
+                   f'<path d="{d}" fill="none" stroke="{dark}" stroke-width="{w + 12}" stroke-linecap="round"/>'
+                   f'<path d="{d}" fill="none" stroke="{OUT}" stroke-width="{w + 8}" stroke-linecap="round"/>'
+                   f'<path d="{d}" fill="none" stroke="{LEATHER}" stroke-width="{w}" stroke-linecap="round"/>'
+                   f'<path d="{d}" fill="none" stroke="{shade(LEATHER, 1.5)}" stroke-width="{w * 0.25:.0f}" stroke-linecap="round" transform="translate(0 -{w * 0.22:.0f})" opacity="0.7"/>'
+                   f'<path d="{d}" fill="none" stroke="#c9a77a" stroke-width="2.5" stroke-dasharray="7 7" transform="translate(0 {w * 0.3:.0f})"/>'
+                   f'<path d="{d}" fill="none" stroke="{light}" stroke-width="5" stroke-linecap="round" transform="translate(0 -{w * 0.5 + 12:.0f})" opacity="0.7"/>')
+    # rivets along the temple band
+    for x, y in ((420, 333), (300, 330), (190, 340)):
+        out.append(f'<circle cx="{x}" cy="{y}" r="6" fill="#c8ccd0" stroke="{OUT}" stroke-width="3"/>')
+    out.append('</g>')
+    return "".join(out)
+
+
+def _hole(x, y, edge, rx_scale=1.0):
+    # holes are foreshortened toward the far side of the face
+    rx = max(4.5, (9.5 - (x - 540) / 300 * 4)) * rx_scale
+    return (f'<ellipse cx="{x}" cy="{y}" rx="{rx:.1f}" ry="9.5" fill="#140d0d"/>'
+            f'<path d="M {x - rx:.1f} {y + 1} A {rx:.1f} 9.5 0 0 0 {x + rx:.1f} {y + 1}" fill="none" stroke="{edge}" stroke-width="3" opacity="0.9"/>'
+            f'<path d="M {x - rx:.1f} {y} A {rx:.1f} 9.5 0 0 1 {x + rx:.1f} {y}" fill="none" stroke="#000" stroke-width="3" opacity="0.6"/>')
 
 
 def mask(kind, skin, eyes_kind, rng):
+    """The mask shell, its markings, the flesh grown over its edge and the rivet tabs."""
     if kind not in MASKS:
         return ""
     base = MASKS[kind]
@@ -948,123 +999,169 @@ def mask(kind, skin, eyes_kind, rng):
                  '<stop offset="0" stop-color="#f7f9fb"/><stop offset="0.35" stop-color="#8a929a"/>'
                  '<stop offset="0.55" stop-color="#eef1f4"/><stop offset="0.8" stop-color="#5c636b"/>'
                  '<stop offset="1" stop-color="#c9ced3"/></linearGradient>')
-        fill, edge = "url(#maskfill)", "#4a5058"
+        fill, edge, rim = "url(#maskfill)", "#4a5058", "#ffffff"
     elif base == "gold":
         defs += ('<linearGradient id="maskfill" x1="0" y1="0" x2="1" y2="1">'
                  '<stop offset="0" stop-color="#fff1a8"/><stop offset="0.4" stop-color="#d4a017"/>'
                  '<stop offset="0.6" stop-color="#ffe27a"/><stop offset="1" stop-color="#8a6510"/></linearGradient>')
-        fill, edge = "url(#maskfill)", "#7a5a10"
+        fill, edge, rim = "url(#maskfill)", "#7a5a10", "#fff3b0"
     else:
-        fill, edge = base, shade(base, 0.7)
-    light = "#ffffff"
+        defs += (f'<radialGradient id="maskfill" cx="0.66" cy="0.42" r="0.75">'
+                 f'<stop offset="0" stop-color="{shade(base, 1.08)}"/><stop offset="0.5" stop-color="{base}"/>'
+                 f'<stop offset="1" stop-color="{shade(base, 0.74)}"/></radialGradient>')
+        fill, edge, rim = "url(#maskfill)", shade(base, 0.62), shade(base, 1.18)
+    sh = "#000"
     out = [f'<defs>{defs}</defs>',
-           # strap band running back around the skull, and the side tabs
-           f'<path d="M 516 330 C 450 318 380 312 320 330 M 516 600 C 470 590 430 576 400 560" fill="none" stroke="{OUT}" stroke-width="22" stroke-linecap="round"/>',
-           f'<path d="M 516 330 C 450 318 380 312 320 330 M 516 600 C 470 590 430 576 400 560" fill="none" stroke="#2a2a2a" stroke-width="14" stroke-linecap="round"/>',
            f'<path d="{MASK_D}" fill="{fill}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>',
            '<g clip-path="url(#maskclip)">',
-           # cel shading: near side turning away, far edge, under the chin
-           f'<path d="M 500 220 C 540 300 556 420 552 520 C 548 620 580 700 640 760 L 480 760 L 480 220 Z" fill="#000" opacity="0.18"/>',
-           f'<path d="M 812 300 C 790 400 800 520 780 640 L 830 640 L 830 300 Z" fill="#000" opacity="0.15"/>',
-           f'<path d="M 600 248 C 660 236 730 246 760 280" fill="none" stroke="{light}" stroke-width="10" stroke-linecap="round" opacity="0.6"/>',
-           # moulded nose ridge
-           f'<path d="M 676 440 C 700 490 730 540 752 586 C 744 600 726 606 708 600" fill="none" stroke="{edge}" stroke-width="5" stroke-linecap="round"/>',
-           f'<path d="M 690 450 C 712 494 734 534 748 572" fill="none" stroke="{light}" stroke-width="6" stroke-linecap="round" opacity="0.55"/>',
-           f'<ellipse cx="726" cy="616" rx="9" ry="6" fill="#1a1414"/>',
-           ]
-    # breathing holes, foreshortened toward the far side
-    for x, y in MASK_HOLES:
-        rx = 8 if x < 700 else 6
-        out.append(f'<ellipse cx="{x}" cy="{y}" rx="{rx}" ry="9" fill="#1a1414"/>'
-                   f'<path d="M {x - rx} {y - 2} A {rx} 9 0 0 1 {x + rx} {y - 2}" fill="none" stroke="#000" stroke-width="2.5" opacity="0.5"/>')
-    # eye holes, with whatever eyes are behind them
+           # near side of the shell turning away from the light
+           f'<path d="M 500 200 C 548 300 560 420 556 520 C 552 620 586 700 650 770 L 480 770 L 480 200 Z" fill="{sh}" opacity="0.2"/>',
+           # moulded brow ridge over both eye holes
+           f'<path d="M 552 410 C 590 380 650 384 680 410 C 700 396 740 386 790 400 L 790 420 C 740 404 704 414 684 432 C 650 404 590 400 552 430 Z" fill="{sh}" opacity="0.14"/>',
+           f'<path d="M 566 398 C 604 374 652 378 676 398 M 696 392 C 730 378 766 380 792 392" fill="none" stroke="{rim}" stroke-width="7" stroke-linecap="round" opacity="0.7"/>',
+           # moulded nose: shadow down its near flank, highlight along the ridge, nostril
+           f'<path d="M 690 436 C 712 480 748 540 772 570 C 790 584 812 584 820 572 C 800 590 760 590 736 566 C 708 530 688 480 678 440 Z" fill="{sh}" opacity="0.2"/>',
+           f'<path d="M 706 438 C 736 480 790 520 818 540" fill="none" stroke="{rim}" stroke-width="7" stroke-linecap="round" opacity="0.75"/>',
+           f'<ellipse cx="790" cy="578" rx="10" ry="6" fill="#140d0d" transform="rotate(-20 790 578)"/>',
+           # cheekbones and the chin ledge
+           f'<path d="M 576 540 C 610 556 650 556 680 544" fill="none" stroke="{edge}" stroke-width="4" stroke-linecap="round" opacity="0.6"/>',
+           f'<path d="M 620 690 C 670 700 730 692 770 670" fill="none" stroke="{edge}" stroke-width="4" stroke-linecap="round" opacity="0.5"/>',
+           # forehead gloss
+           f'<path d="M 600 236 C 660 220 728 230 768 266" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity="0.55"/>',
+           f'<path d="M 816 400 C 822 340 806 290 784 262" fill="none" stroke="{sh}" stroke-width="12" opacity="0.15"/>']
+    out += [_hole(x, y, rim) for x, y in MASK_HOLES]
+    # eye holes with a bevelled rim and whatever is behind them
     glow = {"Glowing Red": "#ff2a1a", "Glowing Green": "#7dff3a"}.get(eyes_kind)
-    for cx, cy, rx, ry in ((586, 478, 40, 30), (724, 466, 24, 30)):
-        out.append(f'<ellipse cx="{cx}" cy="{cy}" rx="{rx}" ry="{ry}" fill="#120c0c" stroke="{OUT}" stroke-width="5" transform="rotate(-6 {cx} {cy})"/>')
+    for cx, cy, rx, ry in (EYE_N, EYE_F):
+        t = f'transform="rotate(-8 {cx} {cy})"'
+        out.append(f'<ellipse cx="{cx}" cy="{cy}" rx="{rx + 7}" ry="{ry + 7}" fill="{sh}" opacity="0.18" {t}/>'
+                   f'<ellipse cx="{cx}" cy="{cy}" rx="{rx}" ry="{ry}" fill="#0d0808" stroke="{OUT}" stroke-width="5" {t}/>'
+                   f'<path d="M {cx - rx + 4} {cy + 6} A {rx - 4} {ry - 4} 0 0 0 {cx + rx - 4} {cy + 6}" fill="none" stroke="{rim}" stroke-width="4" opacity="0.8" {t}/>')
         if glow:
-            out.append(f'<circle cx="{cx + 6}" cy="{cy + 2}" r="{ry * 0.9:.0f}" fill="{glow}" opacity="0.25"/>'
-                       f'<circle cx="{cx + 6}" cy="{cy + 2}" r="7" fill="{glow}"/><circle cx="{cx + 8}" cy="{cy}" r="2.5" fill="#fff"/>')
+            out.append(f'<circle cx="{cx + 4}" cy="{cy + 2}" r="{ry * 0.85:.0f}" fill="{glow}" opacity="0.28"/>'
+                       f'<circle cx="{cx + 4}" cy="{cy + 2}" r="8" fill="{glow}"/><circle cx="{cx + 6}" cy="{cy}" r="2.5" fill="#fff"/>')
         elif eyes_kind != "Hollow Sockets":
-            out.append(f'<ellipse cx="{cx + 6}" cy="{cy + 4}" rx="{rx * 0.5:.0f}" ry="{ry * 0.35:.0f}" fill="#e9e3cf" opacity="0.85"/>'
-                       f'<circle cx="{cx + 10}" cy="{cy + 4}" r="5" fill="#111"/>')
+            out.append(f'<ellipse cx="{cx + 4}" cy="{cy + 6}" rx="{rx * 0.55:.0f}" ry="{ry * 0.38:.0f}" fill="#d9cfa8" opacity="0.85"/>'
+                       f'<circle cx="{cx + 8}" cy="{cy + 6}" r="6" fill="#111"/><circle cx="{cx + 10}" cy="{cy + 4}" r="2" fill="#fff"/>')
+    (nx, ny, _, nry), (fx, fy, _, fry) = EYE_N, EYE_F
     # finishes
     if kind == "Chrome Mask":
-        out.append('<path d="M 560 250 L 640 760 M 620 230 L 700 760 M 760 260 L 800 420" stroke="#ffffff" stroke-width="10" opacity="0.55"/>')
-        out.append('<path d="M 600 300 l 6 -16 l 6 16 l 16 6 l -16 6 l -6 16 l -6 -16 l -16 -6 Z" fill="#fff"/>')
+        out.append('<path d="M 560 230 L 660 770 M 630 210 L 730 770 M 770 250 L 830 470" stroke="#ffffff" stroke-width="12" opacity="0.5"/>')
+        out += [f'<path d="M {x} {y} l 6 -16 l 6 16 l 16 6 l -16 6 l -6 16 l -6 -16 l -16 -6 Z" fill="#fff"/>' for x, y in ((612, 300), (800, 520))]
+        out.append(f'<ellipse cx="{nx}" cy="{ny + nry + 20}" rx="30" ry="8" fill="#2a2f35" opacity="0.35"/>')
     elif kind == "Bloody Mask":
-        out.append('<path d="M 600 236 C 640 300 600 360 650 400 C 690 430 660 470 700 500 L 720 236 Z" fill="#8e1414" opacity="0.85"/>')
-        for x, y, L in ((566, 504, 120), (604, 508, 80), (722, 492, 140), (744, 600, 70)):
-            out.append(f'<path d="M {x} {y} C {x - 3} {y + L * 0.5:.0f} {x + 3} {y + L * 0.8:.0f} {x} {y + L}" fill="none" stroke="#8e1414" stroke-width="9" stroke-linecap="round"/>'
-                       f'<circle cx="{x}" cy="{y + L + 6}" r="7" fill="#8e1414"/>')
-        out.append(_grime(rng, 520, 790, 260, 720, 14, "#8e1414", 0.8))
+        out.append('<path d="M 610 196 C 650 290 610 350 660 392 C 700 420 670 470 712 500 L 740 196 Z" fill="#8e1414" opacity="0.85"/>')
+        for x, y, L in ((nx - 14, ny + nry, 130), (nx + 18, ny + nry - 2, 80), (fx, fy + fry, 150), (796, 590, 70)):
+            out.append(_drip(x, y, L, "#8e1414"))
+        out.append(_grime(rng, 520, 800, 240, 730, 16, "#8e1414", 0.8))
         # bloody hand print smeared across the near cheek
-        out.append('<path d="M 520 560 C 560 540 600 560 610 600 C 618 640 580 670 540 660 Z" fill="#7a1010" opacity="0.8"/>'
-                   + "".join(f'<path d="M {x} {y} l {dx} -54" stroke="#7a1010" stroke-width="13" stroke-linecap="round" opacity="0.8"/>'
-                             for x, y, dx in ((552, 560, -14), (572, 552, -2), (592, 556, 10), (608, 570, 22))))
+        out.append('<path d="M 530 560 C 570 540 610 560 620 600 C 628 640 590 670 550 660 Z" fill="#7a1010" opacity="0.85"/>'
+                   + "".join(f'<path d="M {x} {y} l {dx} -54" stroke="#7a1010" stroke-width="13" stroke-linecap="round" opacity="0.85"/>'
+                             for x, y, dx in ((562, 560, -14), (582, 552, -2), (602, 556, 10), (618, 570, 22))))
     elif kind == "Broken Mask":
         # a chunk broken out of the near cheek shows the wounded face beneath
-        chunk = "M 512 520 L 560 540 L 548 584 L 600 602 L 590 652 L 620 690 L 600 736 C 556 724 528 690 518 640 Z"
+        chunk = "M 516 500 L 572 524 L 556 572 L 612 590 L 600 640 L 640 676 L 620 740 C 590 744 570 736 566 728 C 534 704 518 650 516 590 Z"
         out.append(f'<path d="{chunk}" fill="{skin}" stroke="{OUT}" stroke-width="6" stroke-linejoin="round"/>'
-                   f'<path d="M 530 600 C 550 620 560 650 576 680" fill="none" stroke="#8e1414" stroke-width="10" stroke-linecap="round"/>'
-                   f'<path d="M 524 560 L 560 600 L 540 630" fill="none" stroke="{shade(skin, 0.6)}" stroke-width="6"/>')
-        for c in ("M 560 540 L 610 500 L 640 520 L 700 470",
-                  "M 600 602 L 660 620 L 690 600 L 760 640",
-                  "M 620 690 L 660 700 L 680 736",
-                  "M 640 258 L 660 320 L 640 360 L 670 410"):
+                   f'<path d="{chunk}" fill="{RAW}" opacity="0.35"/>'
+                   f'<path d="M 540 590 C 560 620 572 650 590 690" fill="none" stroke="#5e0a0a" stroke-width="12" stroke-linecap="round"/>'
+                   f'<path d="M 546 596 C 562 622 574 650 588 684" fill="none" stroke="#c23a2a" stroke-width="4" stroke-linecap="round"/>'
+                   f'<path d="M 530 540 L 566 584 L 548 616" fill="none" stroke="{shade(skin, 0.6)}" stroke-width="6"/>'
+                   f'<path d="M 572 524 L 556 572 L 612 590 L 600 640 L 640 676" fill="none" stroke="{shade(base, 0.5)}" stroke-width="5" transform="translate(5 -3)"/>')
+        for c in ("M 572 524 L 620 488 L 650 506 L 708 452", "M 612 590 L 670 606 L 700 588 L 780 632",
+                  "M 640 676 L 690 690 L 712 742", "M 650 206 L 668 270 L 646 320 L 676 384"):
             out.append(f'<path d="{c}" fill="none" stroke="{OUT}" stroke-width="5" stroke-linejoin="round"/>')
-        out.append('<path d="M 760 640 L 790 630 M 700 470 L 720 450" stroke="#8e1414" stroke-width="5"/>')
+        out.append(_drip(600, 650, 70, "#8e1414", 8))
     elif kind == "Gold Mask":
         out += [f'<path d="M {x} {y - 14} L {x + 4} {y - 4} L {x + 14} {y} L {x + 4} {y + 4} L {x} {y + 14} L {x - 4} {y + 4} L {x - 14} {y} L {x - 4} {y - 4} Z" fill="#fff8d0" stroke="#111" stroke-width="2"/>'
-                for x, y in ((610, 300), (760, 520))]
-        out.append('<path d="M 560 250 L 620 760" stroke="#fff6c0" stroke-width="12" opacity="0.5"/>')
+                for x, y in ((612, 300), (806, 520))]
+        out.append('<path d="M 560 230 L 640 770" stroke="#fff6c0" stroke-width="14" opacity="0.5"/>')
     elif kind == "Charred Mask":
-        for c in ("M 540 300 L 600 340 L 590 400 L 640 430", "M 700 280 L 690 340 L 740 380",
-                  "M 560 620 L 620 600 L 660 640 L 720 620", "M 760 450 L 780 520"):
+        for c in ("M 540 300 L 600 340 L 590 400 L 640 430", "M 700 260 L 690 330 L 740 370",
+                  "M 560 640 L 620 610 L 660 650 L 720 630", "M 800 440 L 810 520"):
             out.append(f'<path d="{c}" fill="none" stroke="#ff7a1a" stroke-width="7" stroke-linejoin="round"/>'
                        f'<path d="{c}" fill="none" stroke="#ffd06a" stroke-width="2.5" stroke-linejoin="round"/>')
-        out.append(_grime(rng, 520, 790, 240, 720, 10, "#000", 0.5))
+        out.append(_grime(rng, 520, 800, 230, 730, 12, "#000", 0.5))
     elif kind == "Bone Mask":
-        for c in ("M 600 236 L 610 290 L 596 330", "M 790 520 L 760 540 L 770 580", "M 560 680 L 590 650"):
+        for c in ("M 610 206 L 620 270 L 604 312", "M 806 560 L 770 590 L 780 630", "M 570 700 L 600 668"):
             out.append(f'<path d="{c}" fill="none" stroke="{edge}" stroke-width="3"/>')
-        out.append(_grime(rng, 520, 790, 240, 720, 8, "#8a7a52", 0.3))
+        out.append(_grime(rng, 520, 800, 230, 730, 10, "#8a7a52", 0.3))
     elif kind == "Rusted Mask":
-        out.append(_grime(rng, 520, 790, 240, 720, 22, "#8a4a22", 0.75))
-        out.append('<path d="M 586 512 C 584 560 590 600 586 640 M 724 500 C 722 540 726 570 722 600" fill="none" stroke="#8a4a22" stroke-width="7" stroke-linecap="round" opacity="0.8"/>')
+        out.append(_grime(rng, 520, 800, 230, 730, 26, "#8a4a22", 0.75))
+        out += [_drip(x, y, L, "#8a4a22", 7) for x, y, L in ((nx - 6, ny + nry, 110), (fx, fy + fry, 90), (660, 400, 50))]
     elif kind == "Stitched Mask":
-        for c, pts in (("M 600 236 C 620 300 600 360 640 420", ((606, 270), (610, 310), (616, 350), (628, 390))),
-                       ("M 520 600 C 580 610 640 650 700 640", ((550, 604), (590, 616), (630, 636), (670, 644)))):
+        for c, pts in (("M 610 206 C 630 280 610 350 650 420", ((616, 246), (620, 290), (626, 334), (640, 380))),
+                       ("M 524 620 C 584 630 650 670 712 660", ((554, 624), (594, 636), (634, 656), (674, 664)))):
             out.append(f'<path d="{c}" fill="none" stroke="{OUT}" stroke-width="5"/>')
             out += [f'<path d="M {x - 10} {y - 8} L {x + 10} {y + 8} M {x - 10} {y + 8} L {x + 10} {y - 8}" stroke="#9aa0a6" stroke-width="4" stroke-linecap="round"/>' for x, y in pts]
     elif kind == "Muddy Mask":
-        out.append('<path d="M 506 640 C 560 600 620 660 680 640 C 740 620 780 680 800 640 L 800 760 L 506 760 Z" fill="#5e4430" opacity="0.8"/>')
-        out.append(_grime(rng, 520, 790, 240, 640, 16, "#5e4430", 0.6))
+        out.append('<path d="M 506 650 C 560 610 620 670 680 650 C 740 630 780 690 820 650 L 820 770 L 506 770 Z" fill="#5e4430" opacity="0.8"/>')
+        out.append(_grime(rng, 520, 800, 230, 650, 18, "#5e4430", 0.6))
     elif kind == "Lipstick Mask":
-        out.append('<path d="M 586 650 C 630 690 700 690 752 640" fill="none" stroke="#c21f3a" stroke-width="14" stroke-linecap="round"/>'
-                   '<path d="M 600 660 C 640 700 700 696 740 652" fill="none" stroke="#c21f3a" stroke-width="5" opacity="0.6"/>'
-                   '<ellipse cx="560" cy="560" rx="26" ry="18" fill="#e86a8a" opacity="0.6"/>'
-                   '<ellipse cx="770" cy="560" rx="14" ry="16" fill="#e86a8a" opacity="0.6"/>'
-                   '<path d="M 556 430 C 570 420 600 420 616 430 M 704 424 C 714 416 732 416 740 424" fill="none" stroke="#2a1a2a" stroke-width="5" stroke-linecap="round"/>')
+        out.append('<path d="M 596 652 C 640 696 720 700 790 640" fill="none" stroke="#c21f3a" stroke-width="15" stroke-linecap="round"/>'
+                   '<path d="M 610 664 C 650 706 720 706 780 652" fill="none" stroke="#c21f3a" stroke-width="5" opacity="0.6"/>'
+                   '<ellipse cx="584" cy="566" rx="26" ry="18" fill="#e86a8a" opacity="0.6"/>'
+                   '<ellipse cx="800" cy="610" rx="12" ry="14" fill="#e86a8a" opacity="0.5"/>'
+                   f'<path d="M {nx - 34} {ny - 30} C {nx - 16} {ny - 44} {nx + 16} {ny - 44} {nx + 34} {ny - 32} '
+                   f'M {fx - 20} {fy - 32} C {fx - 8} {fy - 42} {fx + 10} {fy - 42} {fx + 22} {fy - 34}" fill="none" stroke="#2a1a2a" stroke-width="5" stroke-linecap="round"/>')
     elif kind == "Toxic Mask":
-        for x, y, L in ((560, 236, 90), (640, 236, 140), (720, 240, 70), (586, 508, 60), (724, 496, 90)):
-            out.append(f'<path d="M {x} {y} C {x - 3} {y + L * 0.5:.0f} {x + 3} {y + L * 0.8:.0f} {x} {y + L}" fill="none" stroke="#5ee82a" stroke-width="10" stroke-linecap="round"/>'
-                       f'<circle cx="{x}" cy="{y + L + 6}" r="8" fill="#5ee82a"/>')
+        for x, y, L in ((570, 206, 90), (650, 200, 150), (730, 212, 70), (nx, ny + nry, 70), (fx, fy + fry, 100)):
+            out.append(_drip(x, y, L, "#5ee82a", 10))
         out.append('<path d="' + MASK_D + '" fill="#7dff3a" opacity="0.12"/>')
     elif kind == "Jack-o'-Lantern Mask":
-        out.append('<path d="M 580 650 L 600 670 L 620 650 L 640 674 L 662 650 L 686 676 L 708 652 L 730 672 L 750 646 '
-                   'C 730 700 660 720 600 690 Z" fill="#1a1414"/>'
-                   '<path d="M 560 290 C 600 250 700 250 750 290" fill="none" stroke="#5a8a2a" stroke-width="10" stroke-linecap="round"/>'
-                   '<path d="M 620 250 C 640 230 660 220 690 224" fill="none" stroke="#5a8a2a" stroke-width="8" stroke-linecap="round"/>')
-        out.append('<path d="M 600 236 C 590 400 600 600 620 740 M 700 230 C 720 400 720 600 700 740" fill="none" stroke="#b85a10" stroke-width="5" opacity="0.6"/>')
+        out.append('<path d="M 590 650 L 612 672 L 634 650 L 656 676 L 680 650 L 704 678 L 728 652 L 752 674 L 790 640 '
+                   'C 770 710 680 730 610 694 Z" fill="#1a1414"/>'
+                   '<path d="M 590 650 L 612 672 L 634 650 L 656 676 L 680 650 L 704 678 L 728 652 L 752 674 L 790 640" fill="none" stroke="#ffb340" stroke-width="3" opacity="0.7"/>'
+                   '<path d="M 570 270 C 610 236 710 232 770 270" fill="none" stroke="#5a8a2a" stroke-width="10" stroke-linecap="round"/>'
+                   '<path d="M 630 236 C 650 214 670 204 700 208" fill="none" stroke="#5a8a2a" stroke-width="8" stroke-linecap="round"/>')
+        out.append('<path d="M 610 206 C 600 400 610 600 630 750 M 716 206 C 736 400 736 600 716 750" fill="none" stroke="#b85a10" stroke-width="5" opacity="0.6"/>')
     elif kind == "Mossy Mask":
-        for x, y, r in ((560, 260, 34), (530, 420, 26), (780, 440, 22), (620, 720, 30), (760, 660, 24)):
+        for x, y, r in ((580, 240, 34), (546, 420, 24), (800, 440, 20), (640, 730, 30), (780, 660, 24)):
             out.append(f'<circle cx="{x}" cy="{y}" r="{r}" fill="#4f7a2a"/>'
                        f'<circle cx="{x + r * 0.3:.0f}" cy="{y - r * 0.3:.0f}" r="{r * 0.5:.0f}" fill="#79a83a"/>')
-        out.append('<path d="M 760 700 C 762 730 756 750 760 780" fill="none" stroke="#4f7a2a" stroke-width="5"/>')
+        out.append('<path d="M 780 700 C 782 730 776 750 780 780" fill="none" stroke="#4f7a2a" stroke-width="5"/>')
     out.append('</g>')
     out.append(f'<path d="{MASK_D}" fill="none" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>')
-    # strap tabs with rivets
-    for x, y, w, h in ((632, 228, 34, 30), (506, 318, 26, 34), (506, 586, 26, 34)):
-        out.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="4" fill="#2a2a2a" stroke="{OUT}" stroke-width="4"/>'
-                   f'<circle cx="{x + w / 2:.0f}" cy="{y + h / 2:.0f}" r="7" fill="#d8dde1" stroke="{OUT}" stroke-width="3"/>'
+    out.append(_overgrowth(skin, rng))
+    # rivet tabs: crown, temple and jaw
+    for x, y, w, h in ((636, 204, 32, 34), (526, 334, 30, 36), (522, 632, 28, 34)):
+        out.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="5" fill="{LEATHER}" stroke="{OUT}" stroke-width="4"/>'
+                   f'<circle cx="{x + w / 2:.0f}" cy="{y + h / 2:.0f}" r="8" fill="#c8ccd0" stroke="{OUT}" stroke-width="3"/>'
                    f'<circle cx="{x + w / 2 - 2:.0f}" cy="{y + h / 2 - 2:.0f}" r="2.5" fill="#fff"/>')
+    return "".join(out)
+
+
+# points down the near edge of the mask, each with the inward direction
+_EDGE = [(566, 212), (544, 248), (530, 300), (522, 360), (518, 430), (516, 500),
+         (516, 570), (520, 630), (532, 680)]
+
+
+def _overgrowth(skin, rng):
+    """Swollen flesh grown over the near edge of the mask, with a raw bloody seam."""
+    dark, light = shade(skin, 0.62), shade(skin, 1.25)
+    inner, outer = [], []
+    for i, (x, y) in enumerate(_EDGE):
+        # inward normal: right for the side, up-right along the jaw
+        a = math.atan2(-(i / len(_EDGE)) ** 2 * 1.2, 1)
+        nx, ny = math.cos(a), math.sin(a)
+        k = rng.uniform(6, 16)
+        inner.append((x + nx * k, y + ny * k))
+        outer.append((x - nx * 3, y - ny * 3))
+
+    def bumpy(pts):
+        d = f"M {pts[0][0]:.0f} {pts[0][1]:.0f} "
+        for (x0, y0), (x1, y1) in zip(pts, pts[1:]):
+            mx, my = (x0 + x1) / 2 + rng.uniform(4, 10), (y0 + y1) / 2
+            d += f"Q {mx:.0f} {my:.0f} {x1:.0f} {y1:.0f} "
+        return d
+    seam = bumpy(inner)
+    shape = seam + "".join(f"L {x:.0f} {y:.0f} " for x, y in reversed(outer)) + "Z"
+    out = [f'<path d="{seam}" fill="none" stroke="{RAW}" stroke-width="16" stroke-linecap="round" transform="translate(5 0)"/>',
+           f'<path d="{seam}" fill="none" stroke="#3a0606" stroke-width="5" stroke-linecap="round" transform="translate(9 0)"/>',
+           f'<path d="{shape}" fill="{skin}"/>',
+           f'<path d="{seam}" fill="none" stroke="{OUT}" stroke-width="5" stroke-linecap="round"/>']
+    # glossy highlights on the swollen ridge and a few blood beads
+    for (x, y) in inner[1:-1:2]:
+        out.append(f'<ellipse cx="{x - 8:.0f}" cy="{y:.0f}" rx="4" ry="9" fill="{light}" opacity="0.8"/>')
+    for (x, y) in rng.sample(inner[2:-2], 3):
+        out.append(_drip(round(x + 8), round(y + 4), rng.uniform(18, 40), RAW, 6))
     return "".join(out)

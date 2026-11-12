@@ -25,7 +25,8 @@ node generator/render.js output/samples
 1,300 PFPs: 1,287 generic ones with weighted traits (Common to Legendary) and 13
 named 1/1s that use exclusive traits (Full Moon, Cornfield and Blood Drip
 backgrounds; Charred, Gilded and Albino skin; Glowing Green eyes) and each wears
-one of 13 original goalie-mask finishes (Chrome, Bloody, Broken and more). Every PFP is a
+one of 13 original goalie-mask finishes (Chrome, Bloody, Broken and more),
+strapped into the swollen skull with flesh grown over its edge. Every PFP is a
 unique trait combination. Weights live in `WEIGHTS` in `generator/generate.py`;
 the generated breakdown is in `docs/RARITY.md`. The build is seeded, so it is
 reproducible.
