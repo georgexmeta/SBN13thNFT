@@ -1223,11 +1223,15 @@ const WEAPON = A['Weapon'];
 const HELD = ['Machete', 'Golden Machete', 'Hunting Knife', 'Butcher Knife', 'Fish Hook'].includes(WEAPON);
 const SLUNG = ['Pitchfork', 'Weed Whacker'].includes(WEAPON);
 const steel = (o = {}) => clay(o.c || '#aeb3b8', { metal: .12, rough: .78, bump: 1.1, ...o });   // grey plasticine 'metal'
-function rustTex() {
+function rustTex(blood) {
   const [c, g] = canvas(512); g.fillStyle = '#7d736a'; g.fillRect(0, 0, 512, 512);
   for (let i = 0; i < 1400; i++) { g.fillStyle = rnd() < .5 ? `rgba(110,62,30,${.15 + rnd() * .3})` : `rgba(200,195,185,${.08 + rnd() * .15})`;
     g.beginPath(); g.ellipse(rnd() * 512, rnd() * 512, 1 + rnd() * 6, 1 + rnd() * 3, rnd() * 3, 0, 7); g.fill(); }
-  g.fillStyle = 'rgba(225,222,215,.7)'; g.fillRect(0, 0, 512, 22); return tex(c);
+  g.fillStyle = 'rgba(225,222,215,.7)'; g.fillRect(0, 0, 512, 22);
+  for (let i = 0; i < 700; i++) { g.fillStyle = `rgba(${100 + rnd() * 50 | 0},${45 + rnd() * 20 | 0},18,${.3 + rnd() * .4})`; g.beginPath(); g.arc(rnd() * 512, rnd() * 512, 2 + rnd() * 10, 0, 7); g.fill(); }   // heavy rust
+  if (blood) { g.fillStyle = 'rgba(120,8,8,.92)'; for (let i = 0; i < 26; i++) { g.beginPath(); g.ellipse(300 + rnd() * 212, rnd() * 512, 14 + rnd() * 40, 10 + rnd() * 30, rnd() * 3, 0, 7); g.fill(); }
+    for (let i = 0; i < 8; i++) { const x = 330 + rnd() * 170, y = rnd() * 300; g.beginPath(); g.roundRect(x - 60 - rnd() * 80, y, 70 + rnd() * 80, 9, 4); g.fill(); } }
+  return tex(c);
 }
 function blade(shape, mat, parent, pos, rotY = -.3) {
   const g = new THREE.ExtrudeGeometry(shape, { depth: .02, bevelEnabled: true, bevelThickness: .025, bevelSize: .025, bevelSegments: 3, curveSegments: 20 });
@@ -1253,7 +1257,13 @@ if (HELD) {
   // blade rises out of the top of the fist
   const wg = group(); hand.add(wg); if (WEAPON === 'Machete' || WEAPON === 'Golden Machete') wg.scale.setScalar(.9);
   const grip = (col, r = .12) => { mesh(new THREE.CylinderGeometry(r, r + .01, 1.0, 28), clay(col, { rough: .5, bump: .5 }), wg, [.05, .05, .1]); mesh(new THREE.CylinderGeometry(r + .03, r + .02, .16, 28), clay(col, { rough: .5 }), wg, [.05, .6, .1]); };
-  if (WEAPON === 'Machete') { grip('#e8592e'); blade(shapeFrom([[-.17, 0], [.17, 0], [.2, 3.6], [-.14, 3.72]]), clay('#fff', { map: rustTex(), metal: .08, rough: .85, bump: 1.2 }), wg, [.05, .66, .09]); }
+  if (WEAPON === 'Machete') { grip('#5a3a22');   // rusty farm machete with a bellied tip, blood running off the edge
+    const sh = new THREE.Shape(); sh.moveTo(-.2, 0); sh.lineTo(.2, 0); sh.quadraticCurveTo(.36, 2.2, .34, 3.1); sh.quadraticCurveTo(.3, 3.65, -.02, 3.95); sh.quadraticCurveTo(-.2, 3.4, -.2, 2.6); sh.closePath();
+    blade(sh, clay('#fff', { map: rustTex(true), metal: .06, rough: .85, bump: 1.6 }), wg, [.05, .66, .09]);
+    for (const y of [.25, .5]) mesh(new THREE.CylinderGeometry(.03, .03, .32, 10), clay('#b9a77a', { metal: .3, rough: .5 }), wg, [.05, y - .3, .1], [Math.PI / 2, 0, 0]);   // handle rivets
+    wg.updateMatrixWorld(true); const BL = clay('#7a0b0b', { rough: .3, bump: .2 });
+    for (const [x, y, L] of [[.36, 2.6, .5], [.37, 2.95, .8], [.33, 3.3, .35], [.3, 2.2, .25]]) { const p = wg.localToWorld(V(x + .05, y + .66, .1)), q = scene.worldToLocal(p.clone());
+      tube([q, q.clone().add(V(.01, -L * .5, .02)), q.clone().add(V(.02, -L, .03))], .035, BL, scene); mesh(sph(.06, 14, 10), BL, scene, [q.x + .02, q.y - L - .03, q.z + .03], null, [1, 1.25, 1]); } }
   if (WEAPON === 'Golden Machete') { grip('#1a1a1a'); blade(shapeFrom([[-.17, 0], [.17, 0], [.2, 3.6], [-.14, 3.72]]), clay('#e2b84a', { metal: 1, rough: .22, bump: .3 }), wg, [.05, .66, .09]);
     for (let i = 0; i < 4; i++) mesh(sph(.03, 8, 6), clay('#fff', { emissive: '#fff8d0', ei: 2 }), wg, [.05 + (rnd() - .5) * .2, 1 + rnd() * 2.4, .16]); }
   if (WEAPON === 'Hunting Knife') { grip('#5a3a22', .11); mesh(new THREE.BoxGeometry(.5, .07, .12), clay('#b08a3a', { metal: .2, rough: .75 }), wg, [.05, .7, .1]);
@@ -1318,7 +1328,10 @@ if (SLUNG) {
     const sm = clay('#fff', { map: RT, metal: .1, rough: .8, bump: 1.3 }), orange = clay('#fff', { map: RT, rough: .85, bump: 1.4 }), blk = clay('#2e2a26', { rough: .8 });
     // engine pack strapped to the back, peeking out behind the near shoulder
     const pk = group(); pk.position.set(-2.35, -2.9, -.5); pk.rotation.set(.1, .6, .15); pk.scale.setScalar(1.3); scene.add(pk);
-    mesh(new THREE.BoxGeometry(.95, 1.05, .8, 4, 4, 4), orange, pk, null, null, null);
+    mesh(sph(.5, 32, 24), orange, pk, [0, 0, 0], null, [1, 1.1, .85]);                                     // engine shroud
+    mesh(sph(.38, 28, 20), orange, pk, [.2, -.45, .05], null, [1.2, .7, 1]);                                 // fuel tank
+    mesh(new THREE.BoxGeometry(.5, .14, .9), blk, pk, [0, -.75, -.1]);                                       // frame foot
+    mesh(new THREE.CylinderGeometry(.12, .14, .35, 16), sm, pk, [.45, .25, .1], [0, 0, Math.PI / 2]);        // muffler
     mesh(new THREE.CylinderGeometry(.36, .36, .3, 30), sm, pk, [-.35, -.05, .35], [0, 0, Math.PI / 2]);          // recoil starter
     for (let i = 0; i < 7; i++) mesh(new THREE.BoxGeometry(.04, .5, .05), clay('#9a2a1e', { rough: .8 }), pk, [-.2 + i * .07, .2, .42]);   // cooling fins
     mesh(new THREE.CylinderGeometry(.13, .13, .14, 18), blk, pk, [.1, .62, 0]);                                  // fuel cap
