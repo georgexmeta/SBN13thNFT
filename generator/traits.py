@@ -38,6 +38,7 @@ BACKGROUNDS = {
     "Midnight": "#232637",
     "Toxic Slime": "#9bd23a",
     "Gold": "#d4a017",
+    "Blood Splatter": "#e6dccb",
     # 1/1 exclusives (drawn by background())
     "Full Moon": "#1b2033",
     "Cornfield": "#e39b48",
@@ -87,6 +88,19 @@ def background(name):
             out += (f'<path d="M {x} 1000 L {x + 6} 600 M {x + 4} 700 L {x - 26} 660 M {x + 5} 760 L {x + 34} 716 M {x + 6} 640 L {x - 18} 600" '
                     f'stroke="#6f5a22" stroke-width="9" stroke-linecap="round"/>')
         out += '<path d="M 60 120 l 30 -14 l 30 14 M 900 90 l 24 -12 l 24 12 M 840 160 l 18 -9 l 18 9" fill="none" stroke="#111" stroke-width="6" stroke-linecap="round"/>'
+    elif name == "Blood Splatter":
+        import random as _r
+        rr = _r.Random(13)
+        for cx, cy, R in ((140, 160, 70), (860, 120, 60), (90, 520, 50), (900, 450, 64), (520, 70, 44), (330, 110, 36)):
+            out += f'<circle cx="{cx}" cy="{cy}" r="{R}" fill="#8a0c0c"/>'
+            for _ in range(10):
+                a, d = rr.uniform(0, 6.283), rr.uniform(0.7, 2.2) * R
+                import math as _m
+                out += f'<circle cx="{cx + _m.cos(a) * d:.0f}" cy="{cy + _m.sin(a) * d:.0f}" r="{R * (0.1 if d > 1.4 * R else 0.35):.0f}" fill="#8a0c0c"/>'
+            for _ in range(rr.randint(1, 3)):
+                x, L = cx + rr.uniform(-0.6, 0.6) * R, rr.uniform(80, 260)
+                out += (f'<path d="M {x:.0f} {cy} L {x:.0f} {cy + L:.0f}" stroke="#8a0c0c" stroke-width="{rr.randint(8, 14)}" stroke-linecap="round"/>'
+                        f'<circle cx="{x:.0f}" cy="{cy + L + 6:.0f}" r="11" fill="#8a0c0c"/>')
     elif name == "Blood Drip":
         d = "M 0 0 L 1000 0 L 1000 60"
         for x in range(1000, -1, -50):
@@ -588,6 +602,17 @@ def eyes(kind, skin, rng):
                        for x, y in ((599, 482), (722, 466)) for r, o in ((46, 0.18), (30, 0.25)))
         return (_eye(585, 478, 36, 26, 0.35, 14, 7, c, skin, 6)
                 + _eye(712, 462, 24, 20, 0.28, 10, 5, c, skin, 0) + glow)
+    if kind == "Popped Out":
+        # near eye torn out of its socket, hanging on the cheek by its nerve
+        return (f'<ellipse cx="588" cy="478" rx="44" ry="36" fill="{shade(skin, 0.6)}"/>'
+                f'<ellipse cx="588" cy="478" rx="32" ry="26" fill="#3a0606" stroke="#7e1c1c" stroke-width="8"/>'
+                f'<path d="M 588 492 C 600 530 570 560 585 590" fill="none" stroke="{OUT}" stroke-width="22" stroke-linecap="round"/>'
+                f'<path d="M 588 492 C 600 530 570 560 585 590" fill="none" stroke="#b8333a" stroke-width="14" stroke-linecap="round"/>'
+                f'<circle cx="590" cy="618" r="40" fill="#efe5cf" stroke="{OUT}" stroke-width="6"/>'
+                f'<path d="M 556 600 l 18 8 l 6 -10 M 560 640 l 16 -6 l 8 8 M 622 600 l -14 10" fill="none" stroke="#b8222a" stroke-width="3"/>'
+                f'<circle cx="604" cy="618" r="17" fill="{iris}" stroke="{OUT}" stroke-width="4"/><circle cx="606" cy="618" r="9" fill="#111"/>'
+                f'<circle cx="611" cy="611" r="4" fill="#fff"/>'
+                + _eye(712, 462, 24, 20, 0.30, 8, 6, iris, skin, 0))
     if kind == "Hollow Sockets":
         dark = shade(skin, 0.6)
         return "".join(f'<ellipse cx="{x}" cy="{y}" rx="{rx + 14}" ry="{ry + 12}" fill="{dark}"/>'

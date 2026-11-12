@@ -53,6 +53,11 @@ WEIGHTS = {
 
 TOTAL = 1300
 
+# Traits added after George reviewed the first clay samples. They are dealt out by a separate RNG after the main
+# draw, so every other token keeps the traits George has already seen. Tokens he picked out stay as they are.
+LATE_TRAITS = [("Background", "Blood Splatter", 0.09), ("Eyes", "Popped Out", 0.035)]
+LATE_KEEP = {10, 49, 100}
+
 
 def _o(bg, skin, swell, ear, eyes, brows, nose, mouth, hair, hair_c, cloth, detail, weapon, bandana="None",
        shape="Swollen Dome"):
@@ -212,6 +217,18 @@ def build_collection(root):
     tokens = [(None, a) for a in generics] + list(ONE_OF_ONES)
     rng.shuffle(tokens)  # spread the 1/1s through the token ids
     seeds = [rng.randrange(1 << 30) for _ in tokens]
+    late = random.Random(2026)
+    for trait, value, share in LATE_TRAITS:
+        for idx, (name, attrs) in enumerate(tokens, 1):
+            if name or idx in LATE_KEEP or late.random() >= share:
+                continue
+            if trait == "Eyes" and attrs["Eyes"].startswith("Glowing"):
+                continue
+            new = dict(attrs, **{trait: value})
+            dna = tuple(sorted(new.items()))
+            if dna not in seen:
+                seen.add(dna)
+                attrs[trait] = value
     for idx, ((name, attrs), seed) in enumerate(zip(tokens, seeds), 1):
         write(root, idx, attrs, seed=seed, name=name)
     report(root, tokens, n_generic)
