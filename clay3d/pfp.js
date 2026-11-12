@@ -150,7 +150,19 @@ function skinMat() {
     for (let i = 0; i < 30; i++) { let x = rnd() * 512, y = rnd() * 512; g.beginPath(); g.moveTo(x, y); for (let k = 0; k < 5; k++) { x += rnd() * 50 - 25; y += rnd() * 50 - 25; g.lineTo(x, y); } g.stroke(); }
     return clay(SKIN, { emissive: '#ff7a1a', ei: 1.4, emissiveMap: tex(c, 1), rough: .9 });
   }
-  return clay(SKIN);
+  return clay('#fff', { map: tex(mottle(SKIN), 1) });
+}
+// age spots, flushed blotches and pitting painted into the skin colour
+function mottle(base) {
+  const S = 1024, [c, g] = canvas(S); g.fillStyle = base; g.fillRect(0, 0, S, S);
+  const blob = (col, n, r0, r1) => { for (let i = 0; i < n; i++) { const x = rnd() * S, y = rnd() * S, r = r0 + rnd() * (r1 - r0), gr = g.createRadialGradient(x, y, 0, x, y, r);
+    gr.addColorStop(0, col); gr.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = gr; g.beginPath(); g.ellipse(x, y, r, r * (.6 + rnd() * .4), rnd() * 3, 0, 7); g.fill(); } };
+  blob('rgba(200,70,70,.12)', 34, 40, 110);       // flushed patches
+  blob('rgba(110,70,45,.2)', 55, 4, 14);         // age spots
+  blob('rgba(90,55,40,.3)', 30, 2, 5);           // freckles and moles
+  blob('rgba(255,240,225,.12)', 30, 30, 90);      // pale patches
+  for (let i = 0; i < 400; i++) { g.fillStyle = 'rgba(80,40,30,.18)'; g.beginPath(); g.arc(rnd() * S, rnd() * S, .8 + rnd() * 1.6, 0, 7); g.fill(); }   // pores and pits
+  return c;
 }
 const SKINMAT = skinMat();
 const skinShade = k => clay(shade(SKIN, k));
@@ -250,7 +262,7 @@ const sph = (r, a = 32, b = 24) => new THREE.SphereGeometry(r, a, b);
 
 // ------------------------------------------------------------------ head: lobed swollen skull with a face
 const HEAD_Y = .08, BODY_Y = -1.75;
-const head = new THREE.Group(); head.position.set(.33, HEAD_Y, 0); head.rotation.set(.03, .62, 0); head.scale.setScalar(1.45); scene.add(head);
+const head = new THREE.Group(); head.position.set(.33, HEAD_Y, 0); head.rotation.set(.03, .4, 0); head.scale.setScalar(1.45); scene.add(head);
 const SW = { Mild: .6, Lumpy: 1, Grotesque: 1.45 }[A['Swelling']] * (A['Hair'] === 'Backwards Cap' ? .6 : 1);
 const SHAPE = A['Head Shape'];
 const dir = (x, y, z) => V(x, y, z).normalize();
@@ -272,7 +284,7 @@ function headPoint(n) {
   let best = 0;
   const faceW = THREE.MathUtils.smoothstep(n.z, .25, .65);           // keep the face smooth
   let sum = 0;
-  for (const [d, a, w] of LOBES) sum += Math.exp(a * (1 - faceW * .85) * Math.exp(-(1 - n.dot(d)) / (w * w)) / .045);
+  for (const [d, a, w] of LOBES) sum += Math.exp(a * (1 - faceW * .6) * Math.exp(-(1 - n.dot(d)) / (w * w)) / .045);
   best = .045 * Math.log(sum / LOBES.length * 1.0 + 1e-9) + .045 * Math.log(LOBES.length) * .55;
   let r = 1 + Math.max(0, best);
   if (n.z > 0) {
@@ -292,6 +304,10 @@ function headPoint(n) {
       r += .055 * Math.exp(-(nx * nx / .06 + (ny + .48) ** 2 / .03));
       // nasolabial folds: creases from the nose wings round the muzzle
       for (const sx of [-1, 1]) { const cx = sx * (.2 + (-.2 - ny) * .35); if (ny < -.15 && ny > -.62) r -= .025 * Math.exp(-((n.x - cx) ** 2) / .0012) * Math.sin(Math.PI * (-.15 - ny) / .47); }
+      // carved wrinkles: forehead furrows, crow's feet, lines bracketing the mouth
+      if (ny > .3 && ny < .66) r -= .014 * Math.pow(Math.max(0, Math.sin((ny - .3) * 52 + nx * 3)), 8) * Math.exp(-(nx * nx) / .12);
+      for (const sx of [-1, 1]) { const dx = n.x - sx * .5; if (Math.abs(dx) < .08 && ny > -.05 && ny < .22) r -= .008 * Math.pow(Math.max(0, Math.sin(ny * 70 + dx * 10)), 8) * (1 - Math.abs(dx) / .08); }
+      for (const sx of [-1, 1]) { const cx = sx * .27; if (ny < -.6 && ny > -.85) r -= .015 * Math.exp(-((n.x - cx - sx * (-.6 - ny) * .1) ** 2) / .0008); }
       // under-eye hollows
       for (const ex of [-.33, .33]) r -= .02 * Math.exp(-((n.x - ex) ** 2 / .012 + (ny + .1) ** 2 / .003));
     }
@@ -435,9 +451,11 @@ function eyeball(size, o = {}, parent) {
   mesh(sph(size * .085, 12, 8), clay('#fff', { emissive: '#fff', ei: 1.2, noBump: true }), gaze, [size * .2, size * .2, sz + size * .2]).castShadow = false;
   return e;
 }
+const LIDMAT = clay('#' + new THREE.Color(SKIN).lerp(new THREE.Color('#c84e50'), .55).getHexString(), { bump: 1 });
+const RIMMAT = clay('#b23a3c', { rough: .6, bump: .4 });
 function eye(x, y, size, o = {}) {
   o.col ??= x < 0 ? IRIS : IRIS_FAR;
-  size *= 1.35; const at = onFace(x, y + (o.dy || 0)), e = placed(group(), at, 0);
+  size *= 1.6; const at = onFace(x, y + (o.dy || 0)), e = placed(group(), at, 0);
   mesh(sph(size * 1.45, 32, 24), clay(shade(SKIN, o.socket ?? .6)), e, [0, 0, -size * .35], null, [1, .9, .3]);      // socket
   if (o.hollow || o.popped) {
     mesh(sph(size * 1.1), new THREE.MeshStandardMaterial({ color: o.popped ? '#3a0606' : '#050303', roughness: o.popped ? .35 : 1 }), e, [0, 0, -size * .1], null, [1, .9, .35]);
@@ -445,13 +463,17 @@ function eye(x, y, size, o = {}) {
       mesh(new THREE.TorusGeometry(size * .98, size * .13, 12, 36), clay('#7e1c1c', { rough: .3, bump: .3 }), e, [0, 0, size * .02], null, [1, .9, .4]);
     }
     if (!o.popped) return e;
-  } else eyeball(size, o, e).position.z = size * .05;
+  } else eyeball(size * .92, o, e).position.z = -size * .28;        // sunk into the socket
   if (!o.popped) {
-    const lid = o.lid ?? .35;
-    const lidG = new THREE.SphereGeometry(size * 1.12, 32, 16, 0, Math.PI * 2, 0, Math.PI * Math.max(.05, lid));
-    mesh(lidG, SKINMAT, e, [0, 0, size * .05], [.35 + (o.tilt || 0), 0, o.roll || 0]);
+    const lid = Math.max(o.lid ?? .35, .42);   // heavy, drooping upper lids
+    const lidG = new THREE.SphereGeometry(size * 1.02, 32, 16, 0, Math.PI * 2, 0, Math.PI * Math.max(.05, lid));
+    mesh(lidG, LIDMAT, e, [0, 0, -size * .26], [.35 + (o.tilt || 0), 0, o.roll || 0]);
   }
-  mesh(new THREE.TorusGeometry(size * .95, size * .22, 12, 30, Math.PI * .9), SKINMAT, e, [0, -size * .25, size * .3], [0, 0, Math.PI * 1.05 + (o.roll || 0)], [1, .55, 1]);
+  // swollen, inflamed lids all round: wet red rim, puffy upper lid, heavy lower bag (George's target head)
+  const rot = [0, 0, o.roll || 0];
+  if (!o.hollow) mesh(new THREE.TorusGeometry(size * .9, size * .12, 12, 40), RIMMAT, e, [0, 0, size * .12], rot, [1.12, .78, .6]);
+  mesh(new THREE.TorusGeometry(size * .98, size * .42, 16, 36, Math.PI), LIDMAT, e, [0, size * .1, size * .02], rot, [1.15, .8, .75]);
+  mesh(new THREE.TorusGeometry(size * .98, size * .38, 16, 36, Math.PI), LIDMAT, e, [0, -size * .12, size * .0], [0, 0, Math.PI + (o.roll || 0)], [1.12, .7, .75]);
   return e;
 }
 // popped out eye: the ball hangs out of its socket onto the cheek on a raw optic stalk
@@ -512,6 +534,16 @@ function buildEyes() {
 }
 buildEyes();
 
+function foreheadRolls() {
+  if (MASKED || A['Hair'] === 'Backwards Cap') return;
+  const m = clay(shade(SKIN, .82), { bump: 1.4 });
+  for (let i = 0; i < 4; i++) {
+    const y = .4 + i * .075, w = .28 - i * .03 + rnd() * .05, pts = [];
+    for (let k = 0; k <= 6; k++) { const x = -w + 2 * w * k / 6, at = onFace(x + .02, y + .02 * Math.sin(k * 1.3 + i) - .03 * (x * x / (w * w))); pts.push(at.p.addScaledVector(at.n, .008)); }
+    tube(pts, .014 + rnd() * .006, m, head);
+  }
+}
+foreheadRolls();
 function buildBrows() {
   const k = A['Brows']; if (MASKED || k === 'None') return;
   const m = clay(A['Hair Color'] === 'Blood-Matted' ? HAIR : HAIR, { bump: 2.4 });
@@ -529,7 +561,7 @@ buildBrows();
 const NOSE = group(); head.add(NOSE);
 function buildNose() {
   if (MASKED) return;
-  const k = A['Nose'], at = onFace(.02, -.15), g = placed(group(), at, 0, NOSE); g.scale.setScalar(1.3);
+  const k = A['Nose'], at = onFace(.02, -.17), g = placed(group(), at, 0, NOSE); g.scale.setScalar(1.5);
   const nost = clay('#2a1414', { rough: .9 });
   const bridge = onFace(0, .02);
   if (k === 'Missing') {
@@ -557,21 +589,21 @@ function buildNose() {
 buildNose();
 
 function teeth(g, n, w, y0, gaps, up = 1) {
-  const tm = clay('#e9dcb0', { rough: .9, bump: .9 }), rot = clay('#9a7a3a', { rough: .9, bump: .9 });
+  const tm = clay('#e2cd6a', { rough: .9, bump: .9 }), rot = clay('#9a7a3a', { rough: .9, bump: .9 });
   for (let i = 0; i < n; i++) {
     if (gaps.includes(i)) continue;
-    const x = -w / 2 + (i + .5) * w / n, h = .05 + rnd() * .035;
-    mesh(new THREE.CapsuleGeometry(.022, h, 4, 8), rnd() < .2 ? rot : tm, g, [x, y0 + up * (h / 2), .03 - Math.abs(x) * .25], [0, 0, (rnd() - .5) * .35], [1.2, 1, .8]);
+    const x = -w / 2 + (i + .5) * w / n, h = .022 + rnd() * .02;   // short, chunky clay teeth
+    mesh(new THREE.CapsuleGeometry(.03, h, 4, 8), rnd() < .2 ? rot : tm, g, [x, y0 + up * (h / 2), .03 - Math.abs(x) * .25], [0, 0, (rnd() - .5) * .35], [1.2, 1, .8]);
   }
 }
 function buildMouth() {
   if (MASKED || BANDANA) return;
-  const k = A['Mouth'], at = onFace(.02, -.5), g = placed(group(), at, 0); g.scale.setScalar(1.35);
+  const k = A['Mouth'], at = onFace(.02, -.52), g = placed(group(), at, 0); g.scale.setScalar(1.65);
   const cav = new THREE.MeshStandardMaterial({ color: '#2a0808', roughness: .9 }), lipM = clay('#' + new THREE.Color(SKIN).lerp(new THREE.Color('#a8463e'), .3).multiplyScalar(.85).getHexString(), { rough: .55, bump: .8 });
   const gum = clay('#b84a4a', { rough: .4 });
   const lip = (pts, r) => {      // fat, rounded lips that taper into creased corners
     const curve = new THREE.CatmullRomCurve3(pts.map(([x, y]) => V(x, y, .02 - Math.abs(x) * .25)));
-    const geo = new THREE.TubeGeometry(curve, 48, r * 1.35, 14, false), pp = geo.attributes.position, c = V(0, 0, 0), q = V(0, 0, 0);
+    const geo = new THREE.TubeGeometry(curve, 48, r * 1.05, 14, false), pp = geo.attributes.position, c = V(0, 0, 0), q = V(0, 0, 0);
     for (let i = 0; i <= 48; i++) { const t = i / 48, k = .35 + .65 * Math.sin(Math.PI * t); curve.getPointAt(t, c);
       for (let j = 0; j <= 14; j++) { const vi = i * 15 + j; q.fromBufferAttribute(pp, vi).sub(c).multiplyScalar(k).add(c); pp.setXYZ(vi, q.x, q.y, q.z); } }
     geo.computeVertexNormals(); const m = mesh(geo, lipM, g);
@@ -865,7 +897,7 @@ if (MASKED) {
   for (const sx of [-1, 1]) tube([V(sx * .55, .75, -.25), V(sx * .45, .2, .35), V(sx * .22, -.6, .72)], .13, SKINMAT, nk);   // neck cords
   mesh(sph(.12, 20, 14), SKINMAT, nk, [0, .05, .72], null, [.9, 1.2, .7]);                                              // Adam's apple
 }
-const body = group(); body.position.set(.2, BODY_Y, -.25); body.rotation.y = .35; scene.add(body);
+const body = group(); body.position.set(.2, BODY_Y, -.25); body.rotation.y = .2; scene.add(body);
 const CL = A['Clothing'];
 const KIND = PAL.flannels[CL] ? 'flannel' : PAL.hoodie[CL] ? 'hoodie' : PAL.trench[CL] ? 'trench' : PAL.tee[CL] ? 'tee'
   : { 'Denim Shirt': 'denim', 'Chore Coat': 'chore', 'Stained Undershirt': 'undershirt', 'Butcher Apron': 'apron' }[CL];
