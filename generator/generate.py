@@ -15,6 +15,7 @@ import random
 import sys
 from collections import Counter
 
+from clay import claify
 import traits as T
 import weapons as W
 
@@ -102,6 +103,7 @@ EXCLUSIVE = {"Background": {"Full Moon", "Cornfield", "Blood Drip"},
              "Mask": set(ONE_OF_ONE_MASKS.values())}
 
 HEAD_T = "translate(-35 25) scale(1.07)"
+CLAY = False  # set by the clay-* modes
 SWELL = {"Mild": 14, "Lumpy": 34, "Grotesque": 58}
 
 
@@ -142,6 +144,8 @@ def compose(attrs, seed):
         W.held(attrs.get("Weapon", "None"), skin, T.sleeve_fill(attrs["Clothing"])),
         '</g>',
     ]
+    if CLAY:
+        layers = claify(layers)
     return ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">'
             + "".join(layers) + "</svg>")
 
@@ -248,8 +252,14 @@ def report(root, tokens, n_generic):
 
 
 def main():
+    global CLAY
     mode = sys.argv[1] if len(sys.argv) > 1 else "samples"
-    root = os.path.join(os.path.dirname(__file__), "..", "output", mode)
+    if mode.startswith("clay-"):
+        CLAY = True
+        mode = mode[5:]
+        root = os.path.join(os.path.dirname(__file__), "..", "output", "clay", mode)
+    else:
+        root = os.path.join(os.path.dirname(__file__), "..", "output", mode)
     if mode == "samples":
         for i, attrs in enumerate(SAMPLES, 1):
             write(root, i, attrs, seed=1300 + i)
