@@ -1,0 +1,54 @@
+{
+  "name": "SBN13th #5",
+  "seed": 1305,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Bruise Purple"
+    },
+    {
+      "trait_type": "Skin Tone",
+      "value": "Pale Wax"
+    },
+    {
+      "trait_type": "Swelling",
+      "value": "Grotesque"
+    },
+    {
+      "trait_type": "Ear",
+      "value": "Normal"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "Pinprick"
+    },
+    {
+      "trait_type": "Brows",
+      "value": "None"
+    },
+    {
+      "trait_type": "Nose",
+      "value": "Split Nostril"
+    },
+    {
+      "trait_type": "Mouth",
+      "value": "Snarl"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Greasy Comb-over"
+    },
+    {
+      "trait_type": "Hair Color",
+      "value": "Dirty Blonde"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Green Flannel"
+    },
+    {
+      "trait_type": "Skin Detail",
+      "value": "Burn Scar"
+    }
+  ]
+}

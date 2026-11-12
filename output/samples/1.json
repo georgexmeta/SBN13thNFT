@@ -1,0 +1,54 @@
+{
+  "name": "SBN13th #1",
+  "seed": 1301,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Swamp Green"
+    },
+    {
+      "trait_type": "Skin Tone",
+      "value": "Pink Flesh"
+    },
+    {
+      "trait_type": "Swelling",
+      "value": "Grotesque"
+    },
+    {
+      "trait_type": "Ear",
+      "value": "Cauliflower"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "Droopy Mismatch"
+    },
+    {
+      "trait_type": "Brows",
+      "value": "None"
+    },
+    {
+      "trait_type": "Nose",
+      "value": "Split Nostril"
+    },
+    {
+      "trait_type": "Mouth",
+      "value": "Lipless"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Bald"
+    },
+    {
+      "trait_type": "Hair Color",
+      "value": "Mud Brown"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Chore Coat"
+    },
+    {
+      "trait_type": "Skin Detail",
+      "value": "Veins"
+    }
+  ]
+}

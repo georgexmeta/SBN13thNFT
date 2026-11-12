@@ -1,0 +1,54 @@
+{
+  "name": "SBN13th #6",
+  "seed": 1306,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Bone"
+    },
+    {
+      "trait_type": "Skin Tone",
+      "value": "Leather"
+    },
+    {
+      "trait_type": "Swelling",
+      "value": "Mild"
+    },
+    {
+      "trait_type": "Ear",
+      "value": "Torn"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "Droopy Mismatch"
+    },
+    {
+      "trait_type": "Brows",
+      "value": "Scarred"
+    },
+    {
+      "trait_type": "Nose",
+      "value": "Bulbous"
+    },
+    {
+      "trait_type": "Mouth",
+      "value": "Lipless"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Stringy Long"
+    },
+    {
+      "trait_type": "Hair Color",
+      "value": "Greasy Black"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Chore Coat"
+    },
+    {
+      "trait_type": "Skin Detail",
+      "value": "Wart"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "name": "SBN13th #3",
+  "seed": 1303,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Dusty Teal"
+    },
+    {
+      "trait_type": "Skin Tone",
+      "value": "Corpse Grey"
+    },
+    {
+      "trait_type": "Swelling",
+      "value": "Grotesque"
+    },
+    {
+      "trait_type": "Ear",
+      "value": "Torn"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "Swollen Shut"
+    },
+    {
+      "trait_type": "Brows",
+      "value": "Scarred"
+    },
+    {
+      "trait_type": "Nose",
+      "value": "Missing"
+    },
+    {
+      "trait_type": "Mouth",
+      "value": "Snarl"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Patchy Tufts"
+    },
+    {
+      "trait_type": "Hair Color",
+      "value": "Ash Grey"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Red Flannel"
+    },
+    {
+      "trait_type": "Skin Detail",
+      "value": "Stitches"
+    }
+  ]
+}

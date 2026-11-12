@@ -1,0 +1,54 @@
+{
+  "name": "SBN13th #2",
+  "seed": 1302,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Mustard"
+    },
+    {
+      "trait_type": "Skin Tone",
+      "value": "Sallow"
+    },
+    {
+      "trait_type": "Swelling",
+      "value": "Lumpy"
+    },
+    {
+      "trait_type": "Ear",
+      "value": "Normal"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "Sunken Socket"
+    },
+    {
+      "trait_type": "Brows",
+      "value": "Bushy"
+    },
+    {
+      "trait_type": "Nose",
+      "value": "Bulbous"
+    },
+    {
+      "trait_type": "Mouth",
+      "value": "Crooked Grin"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Stringy Long"
+    },
+    {
+      "trait_type": "Hair Color",
+      "value": "Ginger"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Denim Shirt"
+    },
+    {
+      "trait_type": "Skin Detail",
+      "value": "None"
+    }
+  ]
+}

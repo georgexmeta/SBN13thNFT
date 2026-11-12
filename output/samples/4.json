@@ -1,0 +1,54 @@
+{
+  "name": "SBN13th #4",
+  "seed": 1304,
+  "attributes": [
+    {
+      "trait_type": "Background",
+      "value": "Rust"
+    },
+    {
+      "trait_type": "Skin Tone",
+      "value": "Ruddy"
+    },
+    {
+      "trait_type": "Swelling",
+      "value": "Lumpy"
+    },
+    {
+      "trait_type": "Ear",
+      "value": "Cauliflower"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "Lazy Eye"
+    },
+    {
+      "trait_type": "Brows",
+      "value": "Bushy"
+    },
+    {
+      "trait_type": "Nose",
+      "value": "Smashed Flat"
+    },
+    {
+      "trait_type": "Mouth",
+      "value": "Slack Jaw"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Trucker Cap"
+    },
+    {
+      "trait_type": "Hair Color",
+      "value": "Greasy Black"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Stained Undershirt"
+    },
+    {
+      "trait_type": "Skin Detail",
+      "value": "Boils"
+    }
+  ]
+}
