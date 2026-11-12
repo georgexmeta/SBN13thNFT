@@ -32,7 +32,7 @@ const BUMP = (() => {             // hand-worked plasticine: thumb dents, tool s
   const S = 1024, [c, g] = canvas(S); g.fillStyle = '#808080'; g.fillRect(0, 0, S, S);
   for (let i = 0; i < 70; i++) {   // shallow thumb dents
     const x = rnd() * S, y = rnd() * S, r = 25 + rnd() * 45, gr = g.createRadialGradient(x, y, 0, x, y, r);
-    gr.addColorStop(0, 'rgba(70,70,70,.35)'); gr.addColorStop(.75, 'rgba(110,110,110,.1)'); gr.addColorStop(.9, 'rgba(170,170,170,.25)'); gr.addColorStop(1, 'rgba(128,128,128,0)');
+    gr.addColorStop(0, 'rgba(60,60,60,.5)'); gr.addColorStop(.75, 'rgba(110,110,110,.1)'); gr.addColorStop(.9, 'rgba(170,170,170,.25)'); gr.addColorStop(1, 'rgba(128,128,128,0)');
     g.fillStyle = gr; g.beginPath(); g.ellipse(x, y, r, r * .8, rnd() * 3, 0, 7); g.fill();
   }
   for (let i = 0; i < 160; i++) {  // modelling-tool smears: short bundles of parallel strokes
@@ -46,8 +46,20 @@ const BUMP = (() => {             // hand-worked plasticine: thumb dents, tool s
     const x = rnd() * S, y = rnd() * S, a = rnd() * 6;
     for (let k = 0; k < 10; k++) { g.strokeStyle = `rgba(${k % 2 ? 90 : 160},${k % 2 ? 90 : 160},${k % 2 ? 90 : 160},.18)`; g.beginPath(); g.ellipse(x, y, 4 + k * 2.6, 3 + k * 1.9, a, 0, 6.3); g.stroke(); }
   }
+  // the "peak clay" look: dense fingerprint whorls and wavy smoothing ridges pressed into every surface
+  for (let i = 0; i < 260; i++) {
+    const x = rnd() * S, y = rnd() * S, a = rnd() * 6, n = 6 + rnd() * 10 | 0, sx = 3 + rnd() * 1.5, sy = sx * (.6 + rnd() * .3);
+    g.lineWidth = 1.5;
+    for (let k = 1; k <= n; k++) { const v = k % 2 ? 92 : 168; g.strokeStyle = `rgba(${v},${v},${v},.28)`; g.beginPath(); g.ellipse(x, y, k * sx, k * sy, a, rnd() * .6, 5.4 + rnd() * .8); g.stroke(); }
+  }
+  for (let i = 0; i < 140; i++) {
+    let x = rnd() * S, y = rnd() * S; const a = rnd() * 6.28, L = 60 + rnd() * 120, w = 3 + rnd() * 2;
+    for (let k = 0; k < 6; k++) { const v = k % 2 ? 100 : 160; g.strokeStyle = `rgba(${v},${v},${v},.2)`; g.lineWidth = 1.3; g.beginPath();
+      for (let t = 0; t <= 1.001; t += .1) { const px = x + Math.cos(a) * L * t - Math.sin(a) * (k * w + Math.sin(t * 6 + i) * 4), py = y + Math.sin(a) * L * t + Math.cos(a) * (k * w + Math.sin(t * 6 + i) * 4); t ? g.lineTo(px, py) : g.moveTo(px, py); }
+      g.stroke(); }
+  }
   for (let i = 0; i < 6000; i++) { const v = rnd() < .5 ? 60 : 200; g.fillStyle = `rgba(${v},${v},${v},.18)`; g.fillRect(rnd() * S, rnd() * S, 1.5, 1.5); }
-  return tex(c, 3.5, false);
+  return tex(c, 2.2, false);
 })();
 function pressedClay() {
   const [c, g] = canvas(1024); g.fillStyle = '#808080'; g.fillRect(0, 0, 1024, 1024);
@@ -61,6 +73,11 @@ function pressedClay() {
   g.strokeStyle = 'rgba(30,30,30,.35)'; g.lineWidth = 1.2;
   for (let i = 0; i < 22; i++) { let x = rnd() * 1024, y = rnd() * 1024; g.beginPath(); g.moveTo(x, y);
     for (let k = 0; k < 4; k++) { x += rnd() * 40 - 20; y += rnd() * 30; g.lineTo(x, y); } g.stroke(); }
+  for (let i = 0; i < 160; i++) {          // fine swirling finger-smoothing ridges over the whole sheet
+    const x = rnd() * 1024, y = rnd() * 1024, a = rnd() * 6, n = 8 + rnd() * 10 | 0, sx = 5 + rnd() * 4;
+    g.lineWidth = 1.6;
+    for (let k = 1; k <= n; k++) { g.strokeStyle = k % 2 ? 'rgba(40,40,40,.14)' : 'rgba(210,210,210,.14)'; g.beginPath(); g.ellipse(x, y, k * sx, k * sx * .7, a, rnd(), 4 + rnd() * 2); g.stroke(); }
+  }
   return tex(c, 2, false);
 }
 function plaid(base) {
@@ -119,8 +136,8 @@ function paisley(base) {
 }
 
 function clay(color, o = {}) {
-  return new THREE.MeshStandardMaterial({ color: o.map ? '#ffffff' : color, roughness: o.rough ?? .78, metalness: o.metal ?? 0,
-    map: o.map || null, bumpMap: o.noBump ? null : BUMP, bumpScale: (o.bump ?? 1.2) * 3.2, roughnessMap: o.noBump ? null : BUMP, side: o.side ?? THREE.FrontSide,
+  return new THREE.MeshStandardMaterial({ color: o.map ? '#ffffff' : color, roughness: Math.max(o.rough ?? .95, o.metal || o.rough < .5 ? 0 : .9), metalness: o.metal ?? 0,
+    map: o.map || null, bumpMap: o.noBump ? null : BUMP, bumpScale: (o.bump ?? 1.2) * 6, roughnessMap: null, side: o.side ?? THREE.FrontSide,
     emissive: o.emissive || '#000000', emissiveIntensity: o.ei ?? 0, emissiveMap: o.emissiveMap || null,
     transparent: !!o.alpha, alphaMap: o.alpha || null, alphaTest: o.alpha ? .5 : 0 });
 }
@@ -148,11 +165,11 @@ document.body.appendChild(renderer.domElement);
 const scene = new THREE.Scene(); scene.background = new THREE.Color(BG);
 const cam = new THREE.PerspectiveCamera(26, 1, .1, 100); cam.position.set(0, .2, 12.5); cam.lookAt(0, -.2, 0);
 const dark = ['Midnight', 'Full Moon', 'Blood Red'].includes(A['Background']);
-scene.add(new THREE.HemisphereLight(0xfff4e8, 0x6a4a36, dark ? .8 : 1.0));
-const key = new THREE.DirectionalLight(0xfff0de, 2.1); key.position.set(-3, 5, 8); key.castShadow = true;
-key.shadow.mapSize.set(2048, 2048); key.shadow.radius = 10; key.shadow.bias = -.0015; key.shadow.normalBias = .03;
+scene.add(new THREE.HemisphereLight(0xfff6ee, 0x8a7060, dark ? 1.0 : 1.45));
+const key = new THREE.DirectionalLight(0xfff2e4, 1.7); key.position.set(-2, 3.5, 9); key.castShadow = true;
+key.shadow.mapSize.set(2048, 2048); key.shadow.radius = 18; key.shadow.bias = -.0015; key.shadow.normalBias = .03;
 Object.assign(key.shadow.camera, { left: -6, right: 6, top: 6, bottom: -6, near: 1, far: 30 }); scene.add(key);
-const fill = new THREE.DirectionalLight(0xdfe8ff, .8); fill.position.set(5, -1, 7); scene.add(fill);
+const fill = new THREE.DirectionalLight(0xeef0ff, 1.0); fill.position.set(5, 0, 8); scene.add(fill);
 const rim = new THREE.DirectionalLight(dark ? 0xbfd0ff : 0xffe4c0, dark ? 1.8 : 1.2); rim.position.set(5, 4, -6); scene.add(rim);
 
 function add(m, parent = scene) { m.castShadow = m.receiveShadow = true; parent.add(m); return m; }
@@ -181,7 +198,7 @@ const sph = (r, a = 32, b = 24) => new THREE.SphereGeometry(r, a, b);
 {
   const bgName = A['Background'];
   const wall = mesh(new THREE.PlaneGeometry(40, 40), new THREE.MeshStandardMaterial({ color: BG, roughness: bgName === 'Gold' ? .45 : 1,
-    metalness: bgName === 'Gold' ? .5 : 0, bumpMap: pressedClay(), bumpScale: 9 }), scene, [0, 0, -6]);
+    metalness: bgName === 'Gold' ? .5 : 0, bumpMap: pressedClay(), bumpScale: 14 }), scene, [0, 0, -6]);
   wall.castShadow = false;
   const Z = -5.85;
   if (bgName === 'Full Moon') {
@@ -1006,7 +1023,7 @@ scene.traverse(o => {
   seen.add(g); o.getWorldScale(ws); const sc = (ws.x + ws.y + ws.z) / 3; if (sc > 3) return;
   for (let i = 0; i < p.count; i++) {
     wp.fromBufferAttribute(p, i).applyMatrix4(o.matrixWorld);
-    const d = (vnoise(wp.x * 1.8, wp.y * 1.8, wp.z * 1.8) * .06 + vnoise(wp.x * 5, wp.y * 5, wp.z * 5) * .018) / sc;
+    const d = (vnoise(wp.x * 1.8, wp.y * 1.8, wp.z * 1.8) * .075 + vnoise(wp.x * 5, wp.y * 5, wp.z * 5) * .025) / sc;   // hand-pressed lumpiness
     p.setXYZ(i, p.getX(i) + n.getX(i) * d, p.getY(i) + n.getY(i) * d, p.getZ(i) + n.getZ(i) * d);
   }
   p.needsUpdate = true; g.computeVertexNormals();
