@@ -62,18 +62,35 @@ def background(color):
 
 
 # --------------------------------------------------------------------------
-# Body / clothing
+# Body / clothing  (canvas coordinates; the body is turned 3/4 like the head)
 # --------------------------------------------------------------------------
-TORSO = ("M 120 1010 C 130 900 190 840 300 815 C 360 800 410 790 440 775 "
-         "L 600 770 C 660 790 740 805 800 830 C 880 860 900 930 905 1010 Z")
+# Torso: near (viewer-left) shoulder is broad and close, far shoulder is
+# foreshortened. The neck base runs from ~(380,815) to ~(690,850).
+TORSO = ("M 40 1075 C 50 925 110 872 230 852 C 300 840 350 828 382 812 "
+         "L 690 846 C 760 860 840 876 890 910 C 940 945 960 980 965 1075 Z")
+# Opening of the shirt below the neck, between the two collar points
+OPENING = "M 400 838 C 470 872 600 884 690 858 L 628 914 L 602 968 L 498 905 Z"
+NEAR_COLLAR = "M 398 818 C 370 836 342 852 312 868 L 470 970 L 502 904 C 460 884 425 860 398 818 Z"
+FAR_COLLAR = "M 684 848 C 708 860 728 870 748 880 L 656 970 L 628 914 C 650 896 670 876 684 848 Z"
+BACK_BAND = "M 330 864 C 336 832 356 806 388 786 L 402 830 L 398 852 Z"
 
 
 def neck(skin):
-    d = "M 410 620 C 420 700 410 760 390 815 L 625 815 C 610 760 610 720 620 660 Z"
+    """Thick neck: back edge drops from behind the ear into the shoulders,
+    front edge comes out from under the jaw with an Adam's apple."""
+    dark = shade(skin, 0.75)
+    d = ("M 392 600 C 400 690 396 770 372 852 L 694 868 "
+         "C 676 846 668 830 664 812 C 670 800 668 790 658 782 C 655 760 656 740 660 720 Z")
     return (f'<path d="{d}" fill="{skin}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
-            # neck shadow under jaw
-            f'<path d="M 430 655 C 500 720 560 720 607 690 L 604 740 C 560 760 480 755 428 720 Z" fill="{shade(skin, 0.78)}"/>'
-            f'<path d="M 470 760 C 500 775 540 776 570 765" fill="none" stroke="{OUT}" stroke-width="4" stroke-linecap="round"/>')
+            '<clipPath id="neckclip"><path d="' + d + '"/></clipPath><g clip-path="url(#neckclip)">'
+            # shadow cast by the jaw, following the jaw line
+            f'<path d="M 380 630 C 450 735 540 800 670 795 L 670 835 C 540 845 440 790 380 715 Z" fill="{dark}"/>'
+            # back of the neck in shadow
+            f'<path d="M 380 600 C 420 700 430 780 420 870 L 360 870 L 360 600 Z" fill="{dark}"/>'
+            '</g>'
+            # neck muscle running from behind the ear toward the collarbone
+            f'<path d="M 515 800 C 540 818 560 836 574 856" fill="none" stroke="{OUT}" stroke-width="4" stroke-linecap="round"/>'
+            f'<path d="M 654 806 C 647 812 647 819 652 824" fill="none" stroke="{OUT}" stroke-width="4" stroke-linecap="round"/>')
 
 
 def _grime(rng, x0, x1, y0, y1, n, color, opacity=0.35):
@@ -87,73 +104,99 @@ def _grime(rng, x0, x1, y0, y1, n, color, opacity=0.35):
     return "".join(out)
 
 
+def _plaid(pid, base, rotate, skew=0, size=56):
+    dark = shade(base, 0.55)
+    s, t = size, size * 0.32
+    return (f'<pattern id="{pid}" width="{s}" height="{s}" patternUnits="userSpaceOnUse" '
+            f'patternTransform="rotate({rotate}) skewY({skew})">'
+            f'<rect width="{s}" height="{s}" fill="{base}"/>'
+            f'<rect x="0" y="{t:.0f}" width="{s}" height="{t:.0f}" fill="{dark}" opacity="0.8"/>'
+            f'<rect x="{t:.0f}" y="0" width="{t:.0f}" height="{s}" fill="{dark}" opacity="0.8"/>'
+            f'<rect x="0" y="{s * 0.75:.0f}" width="{s}" height="3" fill="#1c1c1c" opacity="0.7"/>'
+            f'<rect x="{s * 0.75:.0f}" y="0" width="3" height="{s}" fill="#1c1c1c" opacity="0.7"/>'
+            f'<rect x="0" y="{s * 0.1:.0f}" width="{s}" height="2" fill="#e8d9b0" opacity="0.5"/>'
+            '</pattern>')
+
+
+def _shirt_folds(base):
+    """Shoulder seams, armpit creases and the shadow side of the torso."""
+    return ('<g clip-path="url(#torso)">'
+            # near side turned away from the light
+            '<path d="M 40 1075 C 50 925 110 872 230 852 C 262 900 280 960 292 1075 Z" fill="#000" opacity="0.28"/>'
+            # shadow the head and neck throw on the chest
+            '<path d="M 370 812 C 420 880 560 900 700 852 L 720 900 C 560 950 420 930 360 860 Z" fill="#000" opacity="0.22"/>'
+            '</g>'
+            # shoulder seams
+            f'<path d="M 232 852 C 252 905 258 960 252 1075" fill="none" stroke="{OUT}" stroke-width="5" stroke-linecap="round"/>'
+            f'<path d="M 862 896 C 850 940 850 978 856 1075" fill="none" stroke="{OUT}" stroke-width="5" stroke-linecap="round"/>'
+            # fabric creases
+            f'<path d="M 300 930 C 330 950 350 975 360 1000 M 150 930 C 170 950 180 975 182 1000 M 800 960 C 815 975 825 990 830 1005" '
+            f'fill="none" stroke="{OUT}" stroke-width="4" stroke-linecap="round"/>')
+
+
+def _collared_shirt(fill_body, fill_near, fill_far, inner, rng, grime_n=12, pocket=True):
+    """Back layer (torso + collar band) and front layer (opening + collars)."""
+    back = (f'<clipPath id="torso"><path d="{TORSO}"/></clipPath>'
+            f'<path d="{TORSO}" fill="{fill_body}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
+            + _shirt_folds(fill_body)
+            + '<g clip-path="url(#torso)">' + _grime(rng, 80, 920, 860, 1000, grime_n, "#3b2a18", 0.32) + '</g>'
+            + f'<path d="{BACK_BAND}" fill="{fill_near}" stroke="{OUT}" stroke-width="6" stroke-linejoin="round"/>')
+    front = (inner
+             + f'<path d="{NEAR_COLLAR}" fill="{fill_near}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
+             + f'<path d="M 400 836 C 380 848 360 858 340 866" fill="none" stroke="{OUT}" stroke-width="4" stroke-linecap="round"/>'
+             + f'<path d="{FAR_COLLAR}" fill="{fill_far}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
+             # placket and buttons following the turned chest
+             + f'<path d="M 602 968 C 606 985 608 998 609 1075" fill="none" stroke="{OUT}" stroke-width="5"/>'
+             + f'<circle cx="618" cy="992" r="8" fill="#e5dcc4" stroke="{OUT}" stroke-width="4"/>')
+    if pocket:
+        front += (f'<path d="M 690 948 L 800 958 L 796 1075 M 690 948 L 688 1075 M 690 972 L 798 980" '
+                  f'fill="none" stroke="{OUT}" stroke-width="5" stroke-linejoin="round"/>')
+    return back, front
+
+
+def _tee(color="#2a2a2a"):
+    return (f'<path d="{OPENING}" fill="{color}" stroke="{OUT}" stroke-width="6" stroke-linejoin="round"/>'
+            f'<path d="M 420 860 C 490 892 600 902 676 872" fill="none" stroke="{shade(color, 1.4)}" stroke-width="5"/>')
+
+
 def clothing(kind, rng):
-    clip = '<clipPath id="torso"><path d="' + TORSO + '"/></clipPath>'
-    inner_tee = ('<path d="M 410 800 L 470 905 L 560 905 L 615 800 Z" fill="#2a2a2a" '
-                 f'stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>')
+    """Returns (back, front): back goes under the neck, front over it."""
     if kind == "Denim Shirt":
         base = "#4f6fa3"
-        body = (f'<path d="{TORSO}" fill="{base}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
-                f'<g clip-path="url(#torso)">'
-                f'<path d="M 120 1010 C 130 900 190 840 300 815 L 330 1010 Z" fill="{shade(base, 0.75)}"/>'
-                + _grime(rng, 150, 880, 840, 1000, 14, "#3b2a18")
-                + '</g>' + inner_tee +
-                # collar flaps
-                f'<path d="M 410 790 L 330 820 L 395 900 L 470 905 Z" fill="{shade(base, 1.12)}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
-                f'<path d="M 610 785 L 720 815 L 640 905 L 560 905 Z" fill="{shade(base, 1.12)}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
-                # placket + buttons + pocket
-                f'<path d="M 515 905 L 525 1010" stroke="{OUT}" stroke-width="5"/>'
-                f'<circle cx="535" cy="950" r="8" fill="#d8d0b8" stroke="{OUT}" stroke-width="4"/>'
-                f'<path d="M 640 930 L 770 925 L 775 1010 M 640 930 L 642 1010 M 640 960 L 772 955" fill="none" stroke="{OUT}" stroke-width="5"/>'
-                f'<path d="M 230 900 C 250 940 260 980 262 1010" fill="none" stroke="{shade(base, 1.35)}" stroke-width="3" stroke-dasharray="8 7"/>')
-        return clip + body
-    if kind == "Red Flannel" or kind == "Green Flannel":
+        back, front = _collared_shirt(base, shade(base, 1.1), shade(base, 0.92), _tee(), rng, 14)
+        front += (f'<path d="M 120 940 C 140 960 150 985 152 1075" fill="none" stroke="{shade(base, 1.4)}" stroke-width="3" stroke-dasharray="8 7"/>'
+                  f'<path d="M 330 870 L 460 955" fill="none" stroke="{shade(base, 1.45)}" stroke-width="3" stroke-dasharray="7 6"/>')
+        return back, front
+    if kind in ("Red Flannel", "Green Flannel"):
         base = "#a8322d" if kind == "Red Flannel" else "#3f6b3a"
-        dark = shade(base, 0.55)
         pid = "plaid" + base[1:]
-        pat = (f'<pattern id="{pid}" width="70" height="70" patternUnits="userSpaceOnUse" patternTransform="rotate(-4)">'
-               f'<rect width="70" height="70" fill="{base}"/>'
-               f'<rect x="0" y="22" width="70" height="22" fill="{dark}" opacity="0.8"/>'
-               f'<rect x="22" y="0" width="22" height="70" fill="{dark}" opacity="0.8"/>'
-               f'<rect x="0" y="52" width="70" height="4" fill="#1c1c1c" opacity="0.7"/>'
-               f'<rect x="52" y="0" width="4" height="70" fill="#1c1c1c" opacity="0.7"/>'
-               f'<rect x="0" y="8" width="70" height="3" fill="#e8d9b0" opacity="0.5"/>'
-               '</pattern>')
-        body = (f'<defs>{pat}</defs>'
-                f'<path d="{TORSO}" fill="url(#{pid})" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
-                f'<g clip-path="url(#torso)"><path d="M 120 1010 C 130 900 190 840 300 815 L 340 1010 Z" fill="#000" opacity="0.28"/>'
-                + _grime(rng, 150, 880, 840, 1000, 10, "#3b2a18", 0.3) + '</g>'
-                + inner_tee +
-                f'<path d="M 410 790 L 340 825 L 400 895 L 470 905 Z" fill="url(#{pid})" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
-                f'<path d="M 610 785 L 715 818 L 635 900 L 560 905 Z" fill="url(#{pid})" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
-                f'<circle cx="535" cy="955" r="8" fill="#e5dcc4" stroke="{OUT}" stroke-width="4"/>')
-        return clip + body
+        defs = ('<defs>' + _plaid(pid + "b", base, -8, 6)
+                + _plaid(pid + "n", base, 34, 0, 40) + _plaid(pid + "f", base, -40, 0, 36) + '</defs>')
+        back, front = _collared_shirt(f"url(#{pid}b)", f"url(#{pid}n)", f"url(#{pid}f)", _tee(), rng, 10)
+        return defs + back, front
     if kind == "Chore Coat":
         base = "#3e4752"
-        body = (f'<path d="{TORSO}" fill="{base}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
-                f'<g clip-path="url(#torso)"><path d="M 120 1010 C 130 900 190 840 300 815 L 340 1010 Z" fill="#000" opacity="0.3"/>'
-                + _grime(rng, 150, 880, 830, 1000, 22, "#6b5638", 0.45) + '</g>'
-                # plaid shirt underneath
-                '<path d="M 420 795 L 470 905 L 560 905 L 605 795 Z" fill="#8e8e8e" stroke="#111" stroke-width="8" stroke-linejoin="round"/>'
-                '<path d="M 440 815 L 590 815 M 455 850 L 580 850 M 470 885 L 565 885 M 480 800 L 500 905 M 530 800 L 525 905" stroke="#3a3a3a" stroke-width="7"/>'
-                # big corduroy collar
-                f'<path d="M 415 780 L 300 815 L 360 920 L 470 905 Z" fill="#5a4630" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
-                f'<path d="M 605 778 L 740 810 L 660 920 L 560 905 Z" fill="#5a4630" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
-                f'<circle cx="585" cy="960" r="10" fill="#9a9a9a" stroke="{OUT}" stroke-width="4"/>'
-                f'<path d="M 650 950 L 790 945 L 795 1010 M 650 950 L 652 1010" fill="none" stroke="{OUT}" stroke-width="5"/>')
-        return clip + body
+        cord = "#5a4630"
+        # grey plaid work shirt shows in the opening
+        inner = ('<defs>' + _plaid("plaidgrey", "#8e8e8e", -8, 0, 34) + '</defs>'
+                 f'<path d="{OPENING}" fill="url(#plaidgrey)" stroke="{OUT}" stroke-width="6" stroke-linejoin="round"/>'
+                 f'<path d="M 430 858 L 540 935 L 556 886 Z M 668 866 L 612 932 L 600 890 Z" fill="#7a7a7a" stroke="{OUT}" stroke-width="5" stroke-linejoin="round"/>')
+        back, front = _collared_shirt(base, cord, shade(cord, 0.85), inner, rng, 24)
+        return back, front
     if kind == "Stained Undershirt":
         base = "#e6e1cf"
-        body = (f'<path d="{TORSO}" fill="{base}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
-                f'<g clip-path="url(#torso)"><path d="M 120 1010 C 130 900 190 840 300 815 L 340 1010 Z" fill="#000" opacity="0.15"/>'
-                + _grime(rng, 150, 880, 830, 1000, 18, "#8a6a2c", 0.45)
-                + _grime(rng, 400, 700, 860, 1000, 5, "#7a1f1a", 0.55) + '</g>'
-                f'<path d="M 410 790 C 450 860 570 860 610 785" fill="none" stroke="{OUT}" stroke-width="{SW}"/>'
-                # suspenders
-                f'<path d="M 330 820 L 360 1010 M 690 815 L 660 1010" stroke="#5b3a22" stroke-width="34"/>'
-                f'<path d="M 330 820 L 360 1010 M 690 815 L 660 1010" stroke="{OUT}" stroke-width="4" fill="none" transform="translate(-17 0)"/>'
-                f'<path d="M 330 820 L 360 1010 M 690 815 L 660 1010" stroke="{OUT}" stroke-width="4" fill="none" transform="translate(17 0)"/>')
-        return clip + body
+        back = (f'<clipPath id="torso"><path d="{TORSO}"/></clipPath>'
+                f'<path d="{TORSO}" fill="{base}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
+                '<g clip-path="url(#torso)">'
+                '<path d="M 40 1075 C 50 925 110 872 230 852 C 262 900 280 960 292 1075 Z" fill="#000" opacity="0.15"/>'
+                + _grime(rng, 80, 920, 860, 1000, 18, "#8a6a2c", 0.45)
+                + _grime(rng, 450, 750, 900, 1000, 5, "#7a1f1a", 0.55) + '</g>')
+        front = ( # crew neckline sitting on the neck base
+                 f'<path d="M 372 846 C 440 905 600 915 694 866 L 700 890 C 600 945 430 935 365 870 Z" fill="{shade(base, 0.9)}" stroke="{OUT}" stroke-width="6" stroke-linejoin="round"/>'
+                 # suspenders follow the turned torso
+                 f'<path d="M 300 862 C 320 920 335 970 340 1075 L 378 1075 C 372 965 358 915 338 858 Z" fill="#5b3a22" stroke="{OUT}" stroke-width="5" stroke-linejoin="round"/>'
+                 f'<path d="M 760 868 C 748 920 735 970 730 1075 L 762 1075 C 768 970 778 925 790 876 Z" fill="#5b3a22" stroke="{OUT}" stroke-width="5" stroke-linejoin="round"/>')
+        return back, front
     raise ValueError(kind)
 
 

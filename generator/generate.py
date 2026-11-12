@@ -40,13 +40,16 @@ def compose(attrs, seed):
     skin = T.SKINS[attrs["Skin Tone"]]
     hair_c = T.HAIR_COLORS[attrs["Hair Color"]]
     details = [] if attrs["Skin Detail"] == "None" else [attrs["Skin Detail"]]
+    cloth_back, cloth_front = T.clothing(attrs["Clothing"], rng)
     layers = [
         T.background(T.BACKGROUNDS[attrs["Background"]]),
+        '<g transform="translate(0 -55)">',
         f'<g transform="{HEAD_T}">',
         T.hair_back(attrs["Hair"], hair_c, rng),
-        T.neck(skin),
         '</g>',
-        T.clothing(attrs["Clothing"], rng),
+        cloth_back,
+        T.neck(skin),
+        cloth_front,
         f'<g transform="{HEAD_T}">',
         T.head(skin, rng, SWELL[attrs["Swelling"]]),
         T.skin_details(details, skin, rng),
@@ -56,6 +59,7 @@ def compose(attrs, seed):
         T.nose(attrs["Nose"], skin),
         T.mouth(attrs["Mouth"], skin, rng),
         T.hair(attrs["Hair"], hair_c, rng),
+        '</g>',
         '</g>',
     ]
     return ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">'
