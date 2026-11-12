@@ -15,6 +15,10 @@
       "value": "Sallow"
     },
     {
+      "trait_type": "Head Shape",
+      "value": "Lopsided"
+    },
+    {
       "trait_type": "Swelling",
       "value": "Lumpy"
     },
@@ -40,7 +44,7 @@
     },
     {
       "trait_type": "Hair",
-      "value": "Stringy Long"
+      "value": "Patchy Tufts"
     },
     {
       "trait_type": "Hair Color",

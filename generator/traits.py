@@ -368,41 +368,68 @@ def sleeve_fill(kind):
 # --------------------------------------------------------------------------
 # Head
 # --------------------------------------------------------------------------
-def _lumpy_cranium(rng, swell):
-    """Build the head outline. The back/top of the skull gets random lumps."""
-    # anchor points along the skull from the ear (back) over the top to the brow
-    pts = [(395, 560), (330, 470), (300, 360), (325, 255), (395, 175),
-           (500, 135), (610, 145), (700, 195), (750, 290)]
+# Head shapes: anchor points along the skull from behind the jaw (back), over
+# the top, to the start of the brow. Points listed in NOLUMP stay put (notches).
+HEAD_SHAPES = {
+    "Swollen Dome": [(395, 560), (330, 470), (300, 360), (325, 255), (395, 175),
+                     (500, 135), (610, 145), (700, 195), (750, 290)],
+    "Cone Head": [(395, 560), (330, 470), (300, 370), (318, 268), (366, 160),
+                  (440, 62), (560, 112), (680, 192), (750, 290)],
+    "Lopsided": [(395, 560), (288, 500), (212, 380), (236, 238), (338, 150),
+                 (480, 130), (610, 150), (700, 200), (750, 290)],
+    "Flat Top": [(395, 560), (330, 470), (296, 360), (312, 246), (382, 204),
+                 (500, 212), (620, 198), (705, 216), (750, 290)],
+    "Split Skull": [(395, 560), (330, 470), (300, 360), (325, 255), (395, 165),
+                    (478, 124), (532, 218), (590, 128), (700, 195), (750, 290)],
+    "Brow Bulge": [(395, 560), (330, 470), (300, 360), (325, 255), (395, 175),
+                   (500, 140), (620, 138), (742, 178), (818, 292)],
+    "Tumor Cluster": [(395, 560), (330, 470), (300, 360), (325, 255), (395, 175),
+                      (500, 135), (610, 145), (700, 195), (750, 290)],
+}
+NOLUMP = {"Split Skull": {6}}
+CAP_OK = {"Swollen Dome", "Flat Top", "Split Skull", "Brow Bulge"}
+# the last head drawn, so hair can follow its outline
+_HEAD = {}
+
+
+def _lumpy_cranium(rng, swell, shape="Swollen Dome"):
+    """Build the head outline for a head shape; the back/top gets random lumps."""
+    pts = HEAD_SHAPES[shape]
+    k_scale = 0.35 if shape == "Flat Top" else 1.0
     lumped = []
     for i, (x, y) in enumerate(pts):
-        if 1 <= i <= 7:
+        if 1 <= i <= len(pts) - 2 and i not in NOLUMP.get(shape, ()):
             # push outward from the skull centre by a random swelling
             cx, cy = 520, 420
             dx, dy = x - cx, y - cy
             m = math.hypot(dx, dy)
-            k = rng.uniform(0, 1) * swell
+            k = rng.uniform(0, 1) * swell * k_scale
             x, y = x + dx / m * k, y + dy / m * k
         lumped.append((x, y))
     d = f"M {lumped[0][0]:.0f} {lumped[0][1]:.0f} "
-    for (x0, y0), (x1, y1) in zip(lumped, lumped[1:]):
-        # bulge each segment outward to make lumps
+    for j, ((x0, y0), (x1, y1)) in enumerate(zip(lumped, lumped[1:])):
+        # bulge each segment outward to make lumps (not into a notch)
         mx, my = (x0 + x1) / 2, (y0 + y1) / 2
         nx, ny = mx - 520, my - 420
         m = math.hypot(nx, ny)
-        b = rng.uniform(10, 18 + swell * 0.6)
+        b = rng.uniform(10, 18 + swell * 0.6) * k_scale
+        if shape == "Split Skull" and j in (5, 6):
+            b = 4
         d += f"Q {mx + nx / m * b:.0f} {my + ny / m * b:.0f} {x1:.0f} {y1:.0f} "
     # far-side face contour: brow ridge, eye dip, cheekbone, cheek, chin, jaw
-    d += ("C 770 330 790 370 785 410 "     # brow ridge
+    brow = "C 846 340 812 402 785 414 " if shape == "Brow Bulge" else "C 770 330 790 370 785 410 "
+    d += (brow +
           "C 778 440 762 450 765 470 "     # eye socket dip
           "C 790 500 795 540 780 570 "     # cheekbone
           "C 772 620 760 660 720 690 "     # cheek -> jaw
           "C 690 715 640 725 600 715 "     # chin
           "C 520 700 450 650 395 560 Z")   # jaw line back to ear
+    _HEAD.update(d=d, pts=lumped, shape=shape)
     return d
 
 
-def head(skin, rng, swell):
-    d = _lumpy_cranium(rng, swell)
+def head(skin, rng, swell, shape="Swollen Dome"):
+    d = _lumpy_cranium(rng, swell, shape)
     dark = shade(skin, 0.78)
     darker = shade(skin, 0.62)
     light = shade(skin, 1.25)
@@ -410,15 +437,19 @@ def head(skin, rng, swell):
              f'<path d="{d}" fill="{skin}"/>',
              '<g clip-path="url(#headclip)">',
              # cel shadow on the back half (light comes from front-right)
-             f'<path d="M 250 100 C 420 160 450 300 455 420 C 460 520 520 600 560 760 L 250 760 Z" fill="{dark}"/>',
+             f'<path d="M 120 0 L 300 30 C 420 160 450 300 455 420 C 460 520 520 600 560 760 L 120 760 Z" fill="{dark}"/>',
              # under-jaw shadow
              f'<path d="M 420 600 C 520 690 640 700 760 650 L 760 760 L 400 760 Z" fill="{dark}"/>',
              # highlight on the forehead
              f'<path d="M 560 190 C 640 200 700 250 715 300 C 660 270 600 245 545 240 Z" fill="{light}" opacity="0.8"/>',
              ]
+    lump_y = (175, 330)
+    if shape == "Cone Head":
+        lump_y = (110, 320)
+        parts.append(f'<path d="M 470 90 C 520 140 600 200 690 230" fill="none" stroke="{light}" stroke-width="8" stroke-linecap="round" opacity="0.8"/>')
     # lumps / swellings: filled bulges with a cel-shaded crescent underneath
     for _ in range(int(3 + swell / 10)):
-        cx, cy = rng.uniform(380, 650), rng.uniform(175, 330)
+        cx, cy = rng.uniform(380, 650), rng.uniform(*lump_y)
         r = rng.uniform(28, 55)
         parts.append(f'<path d="M {cx - r:.0f} {cy:.0f} A {r:.0f} {r * 0.75:.0f} 0 0 0 {cx + r:.0f} {cy:.0f} '
                      f'A {r * 1.1:.0f} {r * 0.95:.0f} 0 0 1 {cx - r:.0f} {cy:.0f} Z" fill="{darker}" opacity="0.85"/>')
@@ -426,6 +457,25 @@ def head(skin, rng, swell):
                      f'fill="none" stroke="{OUT}" stroke-width="4" stroke-linecap="round" opacity="0.8"/>')
         parts.append(f'<ellipse cx="{cx + r * 0.25:.0f}" cy="{cy - r * 0.45:.0f}" rx="{r * 0.35:.0f}" ry="{r * 0.18:.0f}" '
                      f'transform="rotate(-20 {cx:.0f} {cy:.0f})" fill="{light}" opacity="0.9"/>')
+    if shape == "Lopsided":
+        # the swollen back lobe, with a deep fold where it meets the skull
+        parts.append(f'<path d="M 380 160 C 330 260 320 380 360 480" fill="none" stroke="{OUT}" stroke-width="5" stroke-linecap="round"/>')
+        parts.append(f'<path d="M 386 168 C 340 262 332 380 368 476 L 300 476 L 300 168 Z" fill="{darker}" opacity="0.5"/>')
+        parts.append(f'<path d="M 260 280 C 270 240 300 210 330 200" fill="none" stroke="{light}" stroke-width="7" stroke-linecap="round"/>')
+    if shape == "Flat Top":
+        # crushed top: a dent and crease across the crown
+        parts.append(f'<path d="M 330 250 C 420 236 560 240 690 236" fill="none" stroke="{OUT}" stroke-width="5" stroke-linecap="round"/>')
+        parts.append(f'<path d="M 330 254 C 420 240 560 244 690 240 L 690 270 C 560 270 420 268 330 280 Z" fill="{darker}" opacity="0.6"/>')
+    if shape == "Split Skull":
+        # cleft running down the crown, held together with staples
+        parts.append(f'<path d="M 532 214 C 540 250 552 290 566 340" fill="none" stroke="{OUT}" stroke-width="7" stroke-linecap="round"/>')
+        parts.append(f'<path d="M 510 200 C 520 240 532 290 546 340 L 566 340 C 552 290 540 250 532 214 Z" fill="{darker}"/>')
+        parts += [f'<path d="M {x - 16} {y + 4} L {x - 16} {y - 6} L {x + 16} {y - 12} L {x + 16} {y - 2}" fill="none" stroke="#9aa0a6" stroke-width="5" stroke-linejoin="round"/>'
+                  for x, y in ((540, 240), (548, 278), (558, 316))]
+    if shape == "Brow Bulge":
+        # heavy overhanging forehead casting a shadow over the eyes
+        parts.append(f'<path d="M 560 400 C 640 420 720 420 800 400 L 800 440 C 720 450 640 450 560 430 Z" fill="{darker}" opacity="0.55"/>')
+        parts.append(f'<path d="M 620 230 C 700 230 780 260 805 300" fill="none" stroke="{light}" stroke-width="9" stroke-linecap="round"/>')
     # forehead wrinkles / folds above the brow
     parts.append(f'<path d="M 560 365 C 610 340 680 340 745 360" fill="none" stroke="{darker}" stroke-width="6" stroke-linecap="round"/>')
     parts.append(f'<path d="M 590 335 C 640 318 690 320 730 330" fill="none" stroke="{darker}" stroke-width="5" stroke-linecap="round"/>')
@@ -433,6 +483,13 @@ def head(skin, rng, swell):
     parts.append(f'<path d="M 600 545 C 585 590 600 625 615 650" fill="none" stroke="{darker}" stroke-width="6" stroke-linecap="round"/>')
     parts.append('</g>')
     parts.append(f'<path d="{d}" fill="none" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>')
+    if shape == "Tumor Cluster":
+        # knobbly growths bursting out of the skull
+        for (x, y), r in zip([_HEAD["pts"][i] for i in (2, 3, 5, 6)], (40, 56, 46, 34)):
+            parts.append(f'<circle cx="{x:.0f}" cy="{y:.0f}" r="{r}" fill="{skin}" stroke="{OUT}" stroke-width="{SW}"/>'
+                         f'<path d="M {x - r * 0.8:.0f} {y + r * 0.3:.0f} A {r} {r} 0 0 0 {x + r * 0.7:.0f} {y + r * 0.6:.0f}" fill="none" stroke="{darker}" stroke-width="8" stroke-linecap="round"/>'
+                         f'<ellipse cx="{x + r * 0.25:.0f}" cy="{y - r * 0.4:.0f}" rx="{r * 0.3:.0f}" ry="{r * 0.17:.0f}" fill="{light}"/>'
+                         f'<path d="M {x - r * 0.3:.0f} {y - r * 0.1:.0f} l 8 6 M {x + r * 0.1:.0f} {y + r * 0.2:.0f} l -6 8" stroke="#6b7fa8" stroke-width="3" stroke-linecap="round"/>')
     return "".join(parts)
 
 
@@ -720,7 +777,12 @@ def hair(kind, color, rng):
         return "".join(out)
     if kind == "Patchy Tufts":
         out = []
-        for (x, y, n) in [(400, 210, 7), (560, 150, 6), (340, 330, 5), (660, 190, 4)]:
+        pts = _HEAD.get("pts") or HEAD_SHAPES["Swollen Dome"]
+        anchors = []
+        for i, n in ((3, 5), (4, 7), (5, 6), (len(pts) - 2, 4)):
+            px, py = pts[i]
+            anchors.append((px + (520 - px) * 0.06, py + (420 - py) * 0.06, n))
+        for (x, y, n) in anchors:
             for j in range(n):
                 a = -math.pi / 2 + rng.uniform(-0.7, 0.7)
                 L = rng.uniform(30, 60)
@@ -730,12 +792,16 @@ def hair(kind, color, rng):
                            f'fill="none" stroke="{color}" stroke-width="5" stroke-linecap="round"/>')
         return "".join(out)
     if kind == "Greasy Comb-over":
-        return (f'<path d="M 310 380 C 300 260 360 170 460 140 C 560 120 650 140 700 200 '
-                f'C 640 190 580 195 520 215 C 450 240 400 300 380 380 C 370 420 340 430 310 380 Z" '
-                f'fill="{color}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
-                f'<path d="M 340 330 C 380 230 470 175 600 170 M 360 360 C 400 270 470 210 640 185 M 330 280 C 380 200 440 165 520 150" '
+        # plastered to the scalp: clipped to the head so it follows any head shape
+        hp = ("M 290 420 C 200 220 300 -20 480 -30 C 640 -40 760 60 790 210 "
+              "C 700 190 600 196 520 215 C 450 240 400 300 380 380 C 370 420 340 440 290 420 Z")
+        return ('<g clip-path="url(#headclip)">'
+                f'<path d="{hp}" fill="{color}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
+                f'<path d="M 340 330 C 380 230 470 175 600 170 M 360 360 C 400 270 470 210 640 185 M 330 280 C 380 200 440 165 520 150 M 330 220 C 400 140 480 100 600 110" '
                 f'fill="none" stroke="{dark}" stroke-width="6" stroke-linecap="round"/>'
-                f'<path d="M 420 200 C 470 175 520 165 560 162" fill="none" stroke="{shade(color, 1.5)}" stroke-width="6" stroke-linecap="round"/>')
+                f'<path d="M 420 200 C 470 175 520 165 560 162" fill="none" stroke="{shade(color, 1.5)}" stroke-width="6" stroke-linecap="round"/>'
+                '</g>'
+                f'<path d="{_HEAD.get("d", "")}" fill="none" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>')
     if kind == "Backwards Cap":
         cap = rng.choice(["#2f4f3a", "#7a2f2a", "#c9b27a", "#2a3550"])
         mesh = rng.choice(["#e8e2cf", "#1f1f1f", shade(cap, 1.35)])

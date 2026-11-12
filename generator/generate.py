@@ -34,7 +34,9 @@ WEIGHTS = {
     "Brows": {"Bushy": 50, "None": 30, "Scarred": 20},
     "Nose": {"Bulbous": 35, "Smashed Flat": 30, "Split Nostril": 25, "Missing": 10},
     "Mouth": {"Crooked Grin": 30, "Snarl": 28, "Slack Jaw": 24, "Lipless": 14, "Stitched Shut": 4},
-    "Hair": {"Bald": 22, "Greasy Comb-over": 22, "Patchy Tufts": 22, "Stringy Long": 20, "Backwards Cap": 14},
+    "Head Shape": {"Swollen Dome": 30, "Brow Bulge": 18, "Lopsided": 16, "Flat Top": 14, "Cone Head": 12,
+                   "Split Skull": 7, "Tumor Cluster": 3},
+    "Hair": {"Bald": 28, "Greasy Comb-over": 26, "Patchy Tufts": 26, "Backwards Cap": 20},
     "Hair Color": {"Ginger": 19, "Dirty Blonde": 19, "Greasy Black": 20, "Ash Grey": 19, "Mud Brown": 19,
                    "Blood-Matted": 4},
     "Clothing": {"Red Flannel": 9, "Green Flannel": 7, "Blue Flannel": 7, "Mustard Flannel": 5,
@@ -51,8 +53,9 @@ WEIGHTS = {
 TOTAL = 1300
 
 
-def _o(bg, skin, swell, ear, eyes, brows, nose, mouth, hair, hair_c, cloth, detail, weapon, bandana="None"):
-    return {"Background": bg, "Skin Tone": skin, "Swelling": swell, "Ear": ear, "Eyes": eyes,
+def _o(bg, skin, swell, ear, eyes, brows, nose, mouth, hair, hair_c, cloth, detail, weapon, bandana="None",
+       shape="Swollen Dome"):
+    return {"Background": bg, "Skin Tone": skin, "Head Shape": shape, "Swelling": swell, "Ear": ear, "Eyes": eyes,
             "Brows": brows, "Nose": nose, "Mouth": mouth, "Hair": hair, "Hair Color": hair_c,
             "Clothing": cloth, "Skin Detail": detail, "Weapon": weapon, "Bandana": bandana}
 
@@ -69,7 +72,7 @@ ONE_OF_ONES = [
     ("Cinder", _o("Blood Red", "Charred", "Grotesque", "Torn", "Glowing Red", "None", "Missing",
                   "Snarl", "Bald", "Greasy Black", "Torn Black Tee", "Burn Scar", "Machete")),
     ("The Pale Deacon", _o("Midnight", "Albino", "Mild", "Normal", "Pinprick", "Scarred", "Smashed Flat",
-                           "Stitched Shut", "Stringy Long", "Ash Grey", "Black Trench Coat", "Stitches", "Butcher Knife")),
+                           "Stitched Shut", "Patchy Tufts", "Ash Grey", "Black Trench Coat", "Stitches", "Butcher Knife")),
     ("Hookjaw", _o("Blood Drip", "Corpse Grey", "Lumpy", "Cauliflower", "Swollen Shut", "Bushy", "Split Nostril",
                    "Slack Jaw", "Backwards Cap", "Mud Brown", "Butcher Apron", "Boils", "Fish Hook")),
     ("Silo Sam", _o("Cornfield", "Ruddy", "Grotesque", "Cauliflower", "Glowing Green", "Bushy", "Bulbous",
@@ -77,16 +80,19 @@ ONE_OF_ONES = [
     ("Mother's Boy", _o("Blood Drip", "Pale Wax", "Grotesque", "Normal", "Glowing Green", "None", "Smashed Flat",
                         "Lipless", "Greasy Comb-over", "Greasy Black", "Grey Hoodie", "Veins", "Butcher Knife")),
     ("The Thirteenth", _o("Full Moon", "Charred", "Grotesque", "Torn", "Glowing Green", "Scarred", "Missing",
-                          "Snarl", "Stringy Long", "Blood-Matted", "Olive Trench Coat", "Burn Scar", "Golden Machete")),
+                          "Snarl", "Bald", "Blood-Matted", "Olive Trench Coat", "Burn Scar", "Golden Machete")),
     ("Gristle", _o("Toxic Slime", "Radioactive", "Grotesque", "Cauliflower", "Glowing Green", "None", "Split Nostril",
                    "Lipless", "Bald", "Mud Brown", "Torn Army Tee", "Boils", "Hunting Knife")),
     ("Crow Bait", _o("Cornfield", "Bloodless Blue", "Lumpy", "Torn", "Sunken Socket", "Scarred", "Smashed Flat",
                      "Stitched Shut", "Patchy Tufts", "Greasy Black", "Purple Flannel", "Stitches", "Machete", "Black Bandana")),
     ("Lantern Jack", _o("Midnight", "Albino", "Grotesque", "Normal", "Glowing Red", "Bushy", "Bulbous",
-                        "Crooked Grin", "Stringy Long", "Ginger", "Orange Flannel", "Wart", "Weed Whacker")),
+                        "Crooked Grin", "Patchy Tufts", "Ginger", "Orange Flannel", "Wart", "Weed Whacker")),
     ("Swamp Saint", _o("Full Moon", "Corpse Grey", "Grotesque", "Cauliflower", "Glowing Green", "None", "Missing",
                        "Slack Jaw", "Greasy Comb-over", "Blood-Matted", "Maroon Hoodie", "Veins", "Pitchfork")),
 ]
+ONE_OF_ONE_SHAPES = {'The Harvester': 'Lopsided', 'Moonface': 'Cone Head', 'Old Gilded': 'Brow Bulge', 'Cinder': 'Tumor Cluster', 'The Pale Deacon': 'Cone Head', 'Hookjaw': 'Flat Top', 'Silo Sam': 'Split Skull', "Mother's Boy": 'Lopsided', 'The Thirteenth': 'Split Skull', 'Gristle': 'Tumor Cluster', 'Crow Bait': 'Flat Top', 'Lantern Jack': 'Brow Bulge', 'Swamp Saint': 'Cone Head'}
+for _name, _a in ONE_OF_ONES:
+    _a["Head Shape"] = ONE_OF_ONE_SHAPES[_name]
 EXCLUSIVE = {"Background": {"Full Moon", "Cornfield", "Blood Drip"},
              "Skin Tone": {"Charred", "Gilded", "Albino"},
              "Eyes": {"Glowing Green"}}
@@ -117,7 +123,7 @@ def compose(attrs, seed):
         cloth_front,
         W.sling_strap(attrs.get("Weapon", "None")),
         f'<g transform="{HEAD_T}">',
-        T.head(skin, rng, swell),
+        T.head(skin, rng, swell, attrs.get("Head Shape", "Swollen Dome")),
         T.skin_details(details, skin, rng),
         T.ear(skin, attrs["Ear"]),
         T.eyes(attrs["Eyes"], skin, rng),
@@ -138,15 +144,15 @@ SAMPLES = [
     _o("Swamp Green", "Pink Flesh", "Grotesque", "Cauliflower", "Droopy Mismatch", "None", "Split Nostril",
        "Lipless", "Bald", "Mud Brown", "Chore Coat", "Veins", "Machete"),
     _o("Mustard", "Sallow", "Lumpy", "Normal", "Sunken Socket", "Bushy", "Bulbous", "Crooked Grin",
-       "Stringy Long", "Ginger", "Denim Shirt", "None", "Pitchfork"),
+       "Patchy Tufts", "Ginger", "Denim Shirt", "None", "Pitchfork", "None", "Lopsided"),
     _o("Dusty Teal", "Corpse Grey", "Grotesque", "Torn", "Swollen Shut", "Scarred", "Missing", "Snarl",
-       "Patchy Tufts", "Ash Grey", "Red Flannel", "Stitches", "Fish Hook", "Red Bandana"),
+       "Patchy Tufts", "Ash Grey", "Red Flannel", "Stitches", "Fish Hook", "Red Bandana", "Split Skull"),
     _o("Rust", "Ruddy", "Lumpy", "Cauliflower", "Lazy Eye", "Bushy", "Smashed Flat", "Slack Jaw",
        "Backwards Cap", "Greasy Black", "Stained Undershirt", "Boils", "Weed Whacker"),
     _o("Bruise Purple", "Pale Wax", "Grotesque", "Normal", "Pinprick", "None", "Split Nostril", "Snarl",
-       "Greasy Comb-over", "Dirty Blonde", "Green Flannel", "Burn Scar", "Butcher Knife"),
+       "Greasy Comb-over", "Dirty Blonde", "Green Flannel", "Burn Scar", "Butcher Knife", "None", "Brow Bulge"),
     _o("Bone", "Leather", "Mild", "Torn", "Droopy Mismatch", "Scarred", "Bulbous", "Lipless",
-       "Stringy Long", "Greasy Black", "Chore Coat", "Wart", "Hunting Knife", "Faded Paisley"),
+       "Bald", "Greasy Black", "Chore Coat", "Wart", "Hunting Knife", "Faded Paisley", "Cone Head"),
 ]
 
 
@@ -187,6 +193,8 @@ def build_collection(root):
     while len(generics) < n_generic:
         attrs = {k: _pick(rng, w) for k, w in WEIGHTS.items()}
         dna = tuple(sorted(attrs.items()))
+        if attrs["Hair"] == "Backwards Cap" and attrs["Head Shape"] not in T.CAP_OK:
+            continue  # the cap only fits some skulls
         if dna in seen:  # every PFP is unique
             continue
         seen.add(dna)

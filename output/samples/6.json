@@ -15,6 +15,10 @@
       "value": "Leather"
     },
     {
+      "trait_type": "Head Shape",
+      "value": "Cone Head"
+    },
+    {
       "trait_type": "Swelling",
       "value": "Mild"
     },
@@ -40,7 +44,7 @@
     },
     {
       "trait_type": "Hair",
-      "value": "Stringy Long"
+      "value": "Bald"
     },
     {
       "trait_type": "Hair Color",
