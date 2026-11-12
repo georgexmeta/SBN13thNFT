@@ -23,7 +23,7 @@ BLOOD = "#8e1414"
 WOOD = "#7a4a25"
 
 # where the fist sits and how the weapon leans (outward, away from the face)
-HOLD_T = "translate(250 965) rotate(-12) scale(1.3)"
+HOLD_T = "translate(250 930) rotate(-8) scale(1.3)"
 # back-slung weapons run from behind the far hip up past the near shoulder
 SLING_T = {"Pitchfork": "translate(560 1120) rotate(-24)",
            "Weed Whacker": "translate(422 1411) rotate(-20)"}
@@ -59,14 +59,14 @@ def _fist(skin, sleeve):
     dark = shade(skin, 0.74)
     light = shade(skin, 1.18)
     # forearm runs from the wrist down-right toward the body
-    arm_d = "M 30 36 L 92 270 L 208 270 L 96 4 Z"
+    arm_d = "M 28 40 L 44 270 L 158 270 L 98 10 Z"
     arm = (f'<path d="{arm_d}" fill="{skin}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
-           f'<path d="M 30 36 L 92 270 L 128 270 L 58 30 Z" fill="{dark}"/>'
-           f'<path d="M 74 70 C 84 110 92 140 100 170" fill="none" stroke="{dark}" stroke-width="5" stroke-linecap="round"/>')
+           f'<path d="M 28 40 L 44 270 L 80 270 L 56 34 Z" fill="{dark}"/>'
+           f'<path d="M 70 80 C 76 120 80 150 84 180" fill="none" stroke="{dark}" stroke-width="5" stroke-linecap="round"/>')
     if sleeve:
-        arm += (f'<path d="M 36 86 C 76 68 118 60 144 70 L 222 270 L 76 270 Z" fill="{sleeve}" '
+        arm += (f'<path d="M 22 96 C 62 80 104 74 128 82 L 172 270 L 34 270 Z" fill="{sleeve}" '
                 f'stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
-                f'<path d="M 36 86 C 76 68 118 60 144 70 L 152 88 C 122 80 80 88 44 106 Z" fill="#000" opacity="0.28"/>')
+                f'<path d="M 22 96 C 62 80 104 74 128 82 L 134 100 C 106 92 64 98 28 116 Z" fill="#000" opacity="0.28"/>')
     # back of the hand / palm mass behind the fingers, flowing into the wrist
     back = (f'<path d="M 18 -60 C 60 -66 92 -44 98 -6 C 102 26 92 44 70 52 L 30 50 Z" '
             f'fill="{skin}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
@@ -171,7 +171,10 @@ def held(kind, skin, sleeve):
     weapon = {"Machete": _machete, "Hunting Knife": _hunting_knife,
               "Butcher Knife": _butcher_knife, "Fish Hook": _fish_hook}[kind]()
     arm, fist = _fist(skin, sleeve)
-    return f'<g transform="{HOLD_T}">' + arm + weapon + fist + '</g>'
+    # the fist is drawn as a left hand and mirrored: right hand, knuckles
+    # facing out (viewer-left), fingertips curling in toward the body
+    m = '<g transform="scale(-1 1)">'
+    return f'<g transform="{HOLD_T}">' + m + arm + '</g>' + weapon + m + fist + '</g></g>'
 
 
 # --------------------------------------------------------------------------
