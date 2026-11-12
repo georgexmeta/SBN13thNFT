@@ -49,6 +49,10 @@
     {
       "trait_type": "Skin Detail",
       "value": "Wart"
+    },
+    {
+      "trait_type": "Weapon",
+      "value": "Hunting Knife"
     }
   ]
 }

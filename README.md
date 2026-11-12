@@ -5,6 +5,8 @@ characters drawn in a three-quarter view (head turned ~45° right): bold black
 outlines, flat cel shading, solid backgrounds.
 
 ## Layout
+- `generator/weapons.py`: Weapon trait. Held weapons (machete, hunting knife, butcher knife,
+  fish hook) are gripped in a fist; long ones (pitchfork, weed whacker) are slung on the back.
 - `generator/traits.py`: every trait layer as SVG (background, clothing, neck, lumpy head,
   ear, skin details, eyes, brows, nose, mouth, hair).
 - `generator/generate.py`: composes characters and writes SVG + metadata JSON.

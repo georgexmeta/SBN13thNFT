@@ -13,6 +13,7 @@ import random
 import sys
 
 import traits as T
+import weapons as W
 
 LAYER_ORDER = ["Background", "Clothing", "Head", "Ear", "Skin", "Eyes",
                "Brows", "Nose", "Mouth", "Hair"]
@@ -30,7 +31,12 @@ CHOICES = {
     "Hair Color": list(T.HAIR_COLORS),
     "Clothing": ["Denim Shirt", "Red Flannel", "Green Flannel", "Chore Coat", "Stained Undershirt"],
     "Skin Detail": ["None", "Stitches", "Veins", "Boils", "Burn Scar", "Wart"],
+    "Weapon": W.WEAPONS,
 }
+# sleeve fill for the arm that holds a weapon (bare arm for the undershirt)
+SLEEVES = {"Denim Shirt": "#4f6fa3", "Red Flannel": "url(#plaida8322db)",
+           "Green Flannel": "url(#plaid3f6b3ab)", "Chore Coat": "#3e4752",
+           "Stained Undershirt": None}
 HEAD_T = "translate(-35 25) scale(1.07)"
 SWELL = {"Mild": 14, "Lumpy": 34, "Grotesque": 58}
 
@@ -44,12 +50,14 @@ def compose(attrs, seed):
     layers = [
         T.background(T.BACKGROUNDS[attrs["Background"]]),
         '<g transform="translate(0 -55)">',
+        W.slung(attrs.get("Weapon", "None")),
         f'<g transform="{HEAD_T}">',
         T.hair_back(attrs["Hair"], hair_c, rng),
         '</g>',
         T.neck(skin),
         cloth_back,
         cloth_front,
+        W.sling_strap(attrs.get("Weapon", "None")),
         f'<g transform="{HEAD_T}">',
         T.head(skin, rng, min(SWELL[attrs["Swelling"]], 34) if attrs["Hair"] == "Backwards Cap" else SWELL[attrs["Swelling"]]),
         T.skin_details(details, skin, rng),
@@ -60,6 +68,7 @@ def compose(attrs, seed):
         T.mouth(attrs["Mouth"], skin, rng),
         T.hair(attrs["Hair"], hair_c, rng),
         '</g>',
+        W.held(attrs.get("Weapon", "None"), skin, SLEEVES[attrs["Clothing"]]),
         '</g>',
     ]
     return ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000">'
@@ -69,22 +78,22 @@ def compose(attrs, seed):
 SAMPLES = [
     {"Background": "Swamp Green", "Skin Tone": "Pink Flesh", "Swelling": "Grotesque", "Ear": "Cauliflower",
      "Eyes": "Droopy Mismatch", "Brows": "None", "Nose": "Split Nostril", "Mouth": "Lipless",
-     "Hair": "Bald", "Hair Color": "Mud Brown", "Clothing": "Chore Coat", "Skin Detail": "Veins"},
+     "Hair": "Bald", "Hair Color": "Mud Brown", "Clothing": "Chore Coat", "Skin Detail": "Veins", "Weapon": "Machete"},
     {"Background": "Mustard", "Skin Tone": "Sallow", "Swelling": "Lumpy", "Ear": "Normal",
      "Eyes": "Sunken Socket", "Brows": "Bushy", "Nose": "Bulbous", "Mouth": "Crooked Grin",
-     "Hair": "Stringy Long", "Hair Color": "Ginger", "Clothing": "Denim Shirt", "Skin Detail": "None"},
+     "Hair": "Stringy Long", "Hair Color": "Ginger", "Clothing": "Denim Shirt", "Skin Detail": "None", "Weapon": "Pitchfork"},
     {"Background": "Dusty Teal", "Skin Tone": "Corpse Grey", "Swelling": "Grotesque", "Ear": "Torn",
      "Eyes": "Swollen Shut", "Brows": "Scarred", "Nose": "Missing", "Mouth": "Snarl",
-     "Hair": "Patchy Tufts", "Hair Color": "Ash Grey", "Clothing": "Red Flannel", "Skin Detail": "Stitches"},
+     "Hair": "Patchy Tufts", "Hair Color": "Ash Grey", "Clothing": "Red Flannel", "Skin Detail": "Stitches", "Weapon": "Fish Hook"},
     {"Background": "Rust", "Skin Tone": "Ruddy", "Swelling": "Lumpy", "Ear": "Cauliflower",
      "Eyes": "Lazy Eye", "Brows": "Bushy", "Nose": "Smashed Flat", "Mouth": "Slack Jaw",
-     "Hair": "Backwards Cap", "Hair Color": "Greasy Black", "Clothing": "Stained Undershirt", "Skin Detail": "Boils"},
+     "Hair": "Backwards Cap", "Hair Color": "Greasy Black", "Clothing": "Stained Undershirt", "Skin Detail": "Boils", "Weapon": "Weed Whacker"},
     {"Background": "Bruise Purple", "Skin Tone": "Pale Wax", "Swelling": "Grotesque", "Ear": "Normal",
      "Eyes": "Pinprick", "Brows": "None", "Nose": "Split Nostril", "Mouth": "Snarl",
-     "Hair": "Greasy Comb-over", "Hair Color": "Dirty Blonde", "Clothing": "Green Flannel", "Skin Detail": "Burn Scar"},
+     "Hair": "Greasy Comb-over", "Hair Color": "Dirty Blonde", "Clothing": "Green Flannel", "Skin Detail": "Burn Scar", "Weapon": "Butcher Knife"},
     {"Background": "Bone", "Skin Tone": "Leather", "Swelling": "Mild", "Ear": "Torn",
      "Eyes": "Droopy Mismatch", "Brows": "Scarred", "Nose": "Bulbous", "Mouth": "Lipless",
-     "Hair": "Stringy Long", "Hair Color": "Greasy Black", "Clothing": "Chore Coat", "Skin Detail": "Wart"},
+     "Hair": "Stringy Long", "Hair Color": "Greasy Black", "Clothing": "Chore Coat", "Skin Detail": "Wart", "Weapon": "Hunting Knife"},
 ]
 
 

@@ -49,6 +49,10 @@
     {
       "trait_type": "Skin Detail",
       "value": "Burn Scar"
+    },
+    {
+      "trait_type": "Weapon",
+      "value": "Butcher Knife"
     }
   ]
 }

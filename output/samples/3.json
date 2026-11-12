@@ -49,6 +49,10 @@
     {
       "trait_type": "Skin Detail",
       "value": "Stitches"
+    },
+    {
+      "trait_type": "Weapon",
+      "value": "Fish Hook"
     }
   ]
 }
