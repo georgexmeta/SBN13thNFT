@@ -59,7 +59,7 @@ const BUMP = (() => {             // hand-worked plasticine: thumb dents, tool s
       g.stroke(); }
   }
   for (let i = 0; i < 6000; i++) { const v = rnd() < .5 ? 60 : 200; g.fillStyle = `rgba(${v},${v},${v},.18)`; g.fillRect(rnd() * S, rnd() * S, 1.5, 1.5); }
-  return tex(c, 2.2, false);
+  return tex(c, 1.8, false);
 })();
 function pressedClay() {
   const [c, g] = canvas(1024); g.fillStyle = '#808080'; g.fillRect(0, 0, 1024, 1024);
@@ -137,7 +137,7 @@ function paisley(base) {
 
 function clay(color, o = {}) {
   return new THREE.MeshStandardMaterial({ color: o.map ? '#ffffff' : color, roughness: Math.max(o.rough ?? .95, o.metal || o.rough < .5 ? 0 : .9), metalness: o.metal ?? 0,
-    map: o.map || null, bumpMap: o.noBump ? null : BUMP, bumpScale: (o.bump ?? 1.2) * 6, roughnessMap: null, side: o.side ?? THREE.FrontSide,
+    map: o.map || null, bumpMap: o.noBump ? null : BUMP, bumpScale: (o.bump ?? 1.2) * 7.5, roughnessMap: null, side: o.side ?? THREE.FrontSide,
     emissive: o.emissive || '#000000', emissiveIntensity: o.ei ?? 0, emissiveMap: o.emissiveMap || null,
     transparent: !!o.alpha, alphaMap: o.alpha || null, alphaTest: o.alpha ? .5 : 0 });
 }
@@ -393,7 +393,7 @@ function scleraMat(blood = 1) {
   const n = Math.round(14 + 16 * blood);
   for (let i = 0; i < n; i++) { const a = rnd() * Math.PI * 2, r = 75 + rnd() * 20;
     vein(Math.cos(a) * r, Math.sin(a) * r * .9, a + Math.PI + (rnd() - .5) * .5, 40 + rnd() * 25, 2.2 + rnd() * 2.2 * blood); }
-  return clay('#fff', { map: tex(c), rough: .22, bump: .12 });
+  return clay('#fff', { map: tex(c), rough: .6, bump: .45 });   // moist clay, not glass
 }
 const eyeballMat = scleraMat(A['Eyes'] === 'Pinprick' || A['Eyes'] === 'Popped Out' ? 1.6 : 1);
 // iris: radial fibres, dark limbal ring, flecks and the pupil, painted onto a slightly domed disc
@@ -421,7 +421,7 @@ function irisDisc(r, pupil, h, col) {
   const key = pupil.toFixed(2) + col, m = clay('#fff', { map: IRISTEX[key] ||= irisTex(pupil, col), rough: .35, bump: .08 });
   const o = new THREE.Mesh(geo, m); o.userData.rigid = true; return o;
 }
-const CORNEA = new THREE.MeshPhysicalMaterial({ color: '#ffffff', roughness: .04, metalness: 0, transparent: true, opacity: .18, clearcoat: 1, clearcoatRoughness: .03 });
+const CORNEA = new THREE.MeshPhysicalMaterial({ color: '#ffffff', roughness: .04, metalness: 0, transparent: true, opacity: .07, clearcoat: .5, clearcoatRoughness: .2 });
 // the eyeball itself: sclera, iris that turns with the gaze, wet cornea and a hot highlight
 function eyeball(size, o = {}, parent) {
   const e = group(); parent.add(e);
@@ -479,7 +479,7 @@ function socketScar(x, y, size) {
 // cybernetic replacement: a bolted steel housing with a glowing red lens
 function cyborgEye(x, y, size) {
   size *= 1.35; const at = onFace(x, y), e = placed(group(), at, 0);
-  const st = clay('#9aa1a7', { metal: .7, rough: .35, bump: .3 }), dk = clay('#2b2e33', { metal: .6, rough: .4, bump: .2 });
+  const st = clay('#9aa1a7', { metal: .2, rough: .7, bump: 1 }), dk = clay('#2b2e33', { metal: .15, rough: .75, bump: .8 });
   mesh(sph(size * 1.5, 32, 24), clay(shade(SKIN, .55)), e, [0, 0, -size * .35], null, [1, .9, .3]);             // scarred socket
   mesh(new THREE.CylinderGeometry(size * 1.35, size * 1.5, size * .55, 40), st, e, [0, 0, size * .1], [Math.PI / 2, 0, 0]);   // housing
   mesh(new THREE.TorusGeometry(size * 1.38, size * .12, 12, 48), dk, e, [0, 0, size * .38]);
@@ -557,7 +557,7 @@ function buildNose() {
 buildNose();
 
 function teeth(g, n, w, y0, gaps, up = 1) {
-  const tm = clay('#e9dcb0', { rough: .45, bump: .3 }), rot = clay('#9a7a3a', { rough: .6, bump: .3 });
+  const tm = clay('#e9dcb0', { rough: .9, bump: .9 }), rot = clay('#9a7a3a', { rough: .9, bump: .9 });
   for (let i = 0; i < n; i++) {
     if (gaps.includes(i)) continue;
     const x = -w / 2 + (i + .5) * w / n, h = .05 + rnd() * .035;
@@ -936,7 +936,7 @@ if (KIND === 'trench') {
 const WEAPON = A['Weapon'];
 const HELD = ['Machete', 'Golden Machete', 'Hunting Knife', 'Butcher Knife', 'Fish Hook'].includes(WEAPON);
 const SLUNG = ['Pitchfork', 'Weed Whacker'].includes(WEAPON);
-const steel = (o = {}) => clay(o.c || '#aeb3b8', { metal: .55, rough: .38, bump: .4, ...o });
+const steel = (o = {}) => clay(o.c || '#aeb3b8', { metal: .12, rough: .78, bump: 1.1, ...o });   // grey plasticine 'metal'
 function rustTex() {
   const [c, g] = canvas(512); g.fillStyle = '#7d736a'; g.fillRect(0, 0, 512, 512);
   for (let i = 0; i < 1400; i++) { g.fillStyle = rnd() < .5 ? `rgba(110,62,30,${.15 + rnd() * .3})` : `rgba(200,195,185,${.08 + rnd() * .15})`;
@@ -955,17 +955,21 @@ if (HELD) {
   const sleeveM = (() => { const m = clothMat(); m.map.repeat.set(3, 3); return m; })();
   mesh(new THREE.CylinderGeometry(.3, .33, .7, 30), SKINMAT, hand, [-.02, -.5, -.12], [0, 0, 3.01]);
   mesh(new THREE.CylinderGeometry(.46, .52, 2.4, 40), KIND === 'tee' || KIND === 'undershirt' ? SKINMAT : sleeveM, hand, [-.18, -1.95, -.2], [0, 0, 3.01]);
-  mesh(sph(.42, 40, 30), SKINMAT, hand, [-.05, 0, 0], null, [1, 1, .75]);
-  for (let i = 0; i < 4; i++) { const y = .27 - i * .175, z = .3 - Math.abs(i - 1.5) * .03;
-    mesh(new THREE.CapsuleGeometry(.115, .3, 8, 20), SKINMAT, hand, [.08, y, z], [0, 0, Math.PI / 2]);
-    mesh(sph(.07, 16, 12), SKINMAT, hand, [-.2, y + .02, z - .02]);
-    mesh(sph(.06, 16, 12), clay(shade(SKIN, 1.1), { rough: .4 }), hand, [.3, y, z + .07], null, [.6, .75, .4]); }
-  mesh(new THREE.CapsuleGeometry(.1, .26, 8, 20), SKINMAT, hand, [.1, .45, .2], [0, 0, Math.PI / 2 - .25]);
+  // fist seen from the back: the back of the hand and the knuckle row face the viewer, fingers curl away behind the grip
+  mesh(sph(.42, 40, 30), SKINMAT, hand, [-.1, 0, .05], null, [1, 1.02, .62]);                                       // back of the hand
+  for (let i = 0; i < 4; i++) { const y = .27 - i * .175, zk = .26 - Math.abs(i - 1.5) * .035;
+    mesh(sph(.1, 20, 14), SKINMAT, hand, [.22, y, zk], null, [1, .95, .9]);                                         // knuckle
+    mesh(new THREE.CapsuleGeometry(.095, .22, 8, 16), SKINMAT, hand, [.33, y, zk - .2], [Math.PI / 2, 0, 0]);       // finger folding back
+    mesh(new THREE.CapsuleGeometry(.085, .12, 8, 16), SKINMAT, hand, [.24, y, -.18], [0, 0, Math.PI / 2]);          // fingertip tucked behind the grip
+    tube([V(-.42, y * .55, .2), V(-.1, y * .8, .28), V(.14, y, zk + .05)], .018, SKINMAT, hand);                    // tendon ridge
+    for (const dz of [-.04, .04]) tube([V(.14, y + .07, zk + dz), V(.2, y + .085, zk + dz + .02)], .006, skinShade(.75), hand);   // knuckle creases
+  }
+  mesh(new THREE.CapsuleGeometry(.1, .26, 8, 20), SKINMAT, hand, [0, .44, .18], [0, 0, Math.PI / 2 - .3]);       // thumb resting over the top
   const grip = (col, r = .12) => { mesh(new THREE.CylinderGeometry(r, r + .01, 1.0, 28), clay(col, { rough: .5, bump: .5 }), hand, [.05, .05, .1]); mesh(new THREE.CylinderGeometry(r + .03, r + .02, .16, 28), clay(col, { rough: .5 }), hand, [.05, .6, .1]); };
-  if (WEAPON === 'Machete') { grip('#e8592e'); blade(shapeFrom([[-.17, 0], [.17, 0], [.2, 3.6], [-.14, 3.72]]), clay('#fff', { map: rustTex(), metal: .35, rough: .6, bump: .8 }), hand, [.05, .66, .09]); }
+  if (WEAPON === 'Machete') { grip('#e8592e'); blade(shapeFrom([[-.17, 0], [.17, 0], [.2, 3.6], [-.14, 3.72]]), clay('#fff', { map: rustTex(), metal: .08, rough: .85, bump: 1.2 }), hand, [.05, .66, .09]); }
   if (WEAPON === 'Golden Machete') { grip('#1a1a1a'); blade(shapeFrom([[-.17, 0], [.17, 0], [.2, 3.6], [-.14, 3.72]]), clay('#e2b84a', { metal: 1, rough: .22, bump: .3 }), hand, [.05, .66, .09]);
     for (let i = 0; i < 4; i++) mesh(sph(.03, 8, 6), clay('#fff', { emissive: '#fff8d0', ei: 2 }), hand, [.05 + (rnd() - .5) * .2, 1 + rnd() * 2.4, .16]); }
-  if (WEAPON === 'Hunting Knife') { grip('#5a3a22', .11); mesh(new THREE.BoxGeometry(.5, .07, .12), clay('#b08a3a', { metal: .8, rough: .3 }), hand, [.05, .7, .1]);
+  if (WEAPON === 'Hunting Knife') { grip('#5a3a22', .11); mesh(new THREE.BoxGeometry(.5, .07, .12), clay('#b08a3a', { metal: .2, rough: .75 }), hand, [.05, .7, .1]);
     blade(shapeFrom([[-.12, 0], [.13, 0], [.14, 1.0], [0, 1.55], [-.04, 1.25], [-.12, 1.1]]), steel(), hand, [.05, .72, .09]); }
   if (WEAPON === 'Butcher Knife') { grip('#4a2e1a', .11);
     const sh = shapeFrom([[-.14, 0], [.14, 0], [.14, .15], [.42, .2], [.42, 1.45], [-.14, 1.45]]); const hole = new THREE.Path(); hole.absarc(.25, 1.25, .07, 0, Math.PI * 2, true); sh.holes.push(hole);
@@ -1023,7 +1027,7 @@ scene.traverse(o => {
   seen.add(g); o.getWorldScale(ws); const sc = (ws.x + ws.y + ws.z) / 3; if (sc > 3) return;
   for (let i = 0; i < p.count; i++) {
     wp.fromBufferAttribute(p, i).applyMatrix4(o.matrixWorld);
-    const d = (vnoise(wp.x * 1.8, wp.y * 1.8, wp.z * 1.8) * .075 + vnoise(wp.x * 5, wp.y * 5, wp.z * 5) * .025) / sc;   // hand-pressed lumpiness
+    const d = (vnoise(wp.x * 1.8, wp.y * 1.8, wp.z * 1.8) * .09 + vnoise(wp.x * 5, wp.y * 5, wp.z * 5) * .03) / sc;   // hand-pressed lumpiness
     p.setXYZ(i, p.getX(i) + n.getX(i) * d, p.getY(i) + n.getY(i) * d, p.getZ(i) + n.getZ(i) * d);
   }
   p.needsUpdate = true; g.computeVertexNormals();
