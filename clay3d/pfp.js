@@ -19,7 +19,7 @@ const SKIN = PAL.skins[A['Skin Tone']] || '#e9b49a';
 const HAIR = PAL.hair[A['Hair Color']] || '#c8622c';
 const BG = PAL.backgrounds[A['Background']] || '#c96b3c';
 const MASKED = A['Mask'] && A['Mask'] !== 'None';
-const MSTYLE = { 'Zipper Leather Mask': 'zip', 'Clown Mask': 'clown', 'Iron Plate Mask': 'iron', 'Gas Mask': 'gas', 'Sack Hood': 'sack', 'Long Nose Mask': 'nose', 'Burlap Pig Mask': 'pig', 'Patchwork Mask': 'patch' }[A['Mask']];
+const MSTYLE = { 'Zipper Leather Mask': 'zip', 'Clown Mask': 'clown', 'Iron Plate Mask': 'iron', 'Gas Mask': 'gas', 'Sack Hood': 'sack', 'Long Nose Mask': 'nose', 'Killer Clown Mask': 'clown', 'Burlap Pig Mask': 'pig', 'Patchwork Mask': 'patch' }[A['Mask']];
 const FULLFACE = ['zip', 'clown', 'sack', 'nose', 'pig', 'patch'].includes(MSTYLE);
 const BANDANA = !MASKED && A['Bandana'] && A['Bandana'] !== 'None';
 const GLOW = { 'Glowing Red': '#ff3a1a', 'Glowing Green': '#7dff3a' }[A['Eyes']];
@@ -660,6 +660,16 @@ function buildDetail() {
     for (let j = 1; j < 8; j += 2) { const a = pts[j], t = pts[j + 1].p.clone().sub(pts[j - 1].p).normalize(), b = t.clone().cross(a.n).normalize();
       tube([a.p.clone().addScaledVector(b, .06).addScaledVector(a.n, .01), a.p.clone().addScaledVector(a.n, .03), a.p.clone().addScaledVector(b, -.06).addScaledVector(a.n, .01)], .009, clay('#1a1a1a'), head); }
   }
+  if (k === 'Rusty Nails') {   // bent, rusty nails and screws hammered unevenly into the skull, blood weeping round each
+    const NM = clay('#fff', { map: rustTex(), metal: .15, rough: .75, bump: .8 }), BL = clay('#7a0b0b', { rough: .3 });
+    for (let i = 0; i < 26; i++) { const d = dir(-.95 + rnd() * 1.9, -.1 + rnd() * 1.1, -.7 + rnd() * 1.2); if (d.z > .55 && d.y < .45) continue;   // keep the face clear
+      const at2 = onSkull(d), L = .25 + rnd() * .35, g = placed(group(), at2, 0); g.rotation.x += (rnd() - .5) * .7; g.rotation.y += (rnd() - .5) * .7;
+      mesh(new THREE.CylinderGeometry(.018, .022, L, 8), NM, g, [0, 0, L / 2 - .05], [Math.PI / 2, 0, 0]);
+      if (rnd() < .3) { const b = mesh(new THREE.CylinderGeometry(.018, .018, .15, 8), NM, g, [.05, 0, L - .03], [0, 0, Math.PI / 2 - .4]); }   // bent over
+      else mesh(new THREE.CylinderGeometry(.055, .055, .02, 14), NM, g, [0, 0, L - .05], [Math.PI / 2, 0, 0]);
+      mesh(sph(.05, 10, 8), BL, g, [0, 0, .0], null, [1, 1, .3]);
+      if (rnd() < .5) { const s2 = placed(group(), at2, 0); tube([V(0, 0, .01), V(0, -.12 - rnd() * .15, .01)], .016, BL, s2); } }
+  }
   if (k === 'Burn Scar') for (let i = 0; i < 9; i++) { const at = MASKED || BANDANA ? onSkull(dir(-.8 + rnd() * .2, .1 + rnd() * .3, rnd() * .3)) : onSkull(dir(-.65 + rnd() * .25, -.1 + rnd() * .35, .55 + rnd() * .2));
     placed(mesh(sph(.06 + rnd() * .05, 20, 14), clay(i % 2 ? '#c46a6a' : '#e09a8a', { rough: .3, bump: 2 }), group(), null, null, [1, 1, .3]), at, 0); }
 }
@@ -929,6 +939,19 @@ if (MASKED) {
     const tm = clay('#e6d58a', { rough: .85 }); for (let i = 0; i < 9; i++) { const fx = -.24 + .48 * i / 8, p = sh.at(fx, -.53); mesh(new THREE.BoxGeometry(.045, .06, .03), tm, head, [p.x, p.y, p.z - .02]).userData.rigid = true; }
     for (let i = 0; i < 10; i++) { const at2 = onSkull(dir(-.8 + 1.6 * rnd(), .55 + rnd() * .35, -.4 + rnd() * .6)); tube([at2.p, at2.p.clone().addScaledVector(at2.n, .35 + rnd() * .2).add(V(rnd() * .3 - .15, .1, 0))], .05, clay(i % 2 ? '#d1361e' : '#e0561e', { bump: 2 }), head); }
   }
+  if (A['Mask'] === 'Killer Clown Mask') {   // crazed killer clown: slashed grin full of fangs, bloodshot paint, wild hair puffs
+    const sh = faceShell(-.9, .9, -1.05, .95, .065, 3);
+    const OUTL = []; for (let i = 0; i < 60; i++) { const t = i / 59, fx = -.62 + 1.24 * t; OUTL.push([fx, -.42 - .3 * Math.sin(Math.PI * t) + .08 * Math.cos(Math.PI * 2 * t)]); }
+    for (let i = 59; i >= 0; i--) { const t = i / 59, fx = -.62 + 1.24 * t; OUTL.push([fx, -.42 - .08 * Math.sin(Math.PI * t)]); }
+    const map = paintTex(sh, '#c8101c', g => { g.fillStyle = 'rgba(90,0,0,.6)'; for (let i = 0; i < 30; i++) { g.beginPath(); g.arc(rnd() * sh.S, rnd() * sh.S, 6 + rnd() * 20, 0, 7); g.fill(); } });
+    const lip = mesh(sh.geo(.012), clay('#fff', { map, rough: .35, bump: .5, side: THREE.DoubleSide, alpha: cutTex(sh, OUTL, [[0, -.6, .5, .1]]) }), head); lip.userData.rigid = true;
+    const fang = clay('#efe6c8', { rough: .5 }), FG = new THREE.ConeGeometry(.032, .12, 8);
+    for (let i = 0; i < 13; i++) { const t = (i + .5) / 13, fx = -.56 + 1.12 * t, top = sh.at(fx, -.45 - .07 * Math.sin(Math.PI * t)), bot = sh.at(fx * .95, -.52 - .26 * Math.sin(Math.PI * t));
+      mesh(FG, fang, head, [top.x, top.y - .05, top.z + .0], [Math.PI, 0, (rnd() - .5) * .3]).userData.rigid = true; mesh(FG, fang, head, [bot.x, bot.y + .05, bot.z - .01], [0, 0, (rnd() - .5) * .3]).userData.rigid = true; }
+    const BL = clay('#7a0b0b', { rough: .3 }); for (let i = 0; i < 7; i++) { const fx = -.5 + rnd(), p = sh.at(fx, -.72 - rnd() * .1), L = .15 + rnd() * .35; tube([p.clone().add(V(0, 0, .02)), p.clone().add(V(0, -L, .03))], .025, BL, head); mesh(sph(.045, 12, 8), BL, head, [p.x, p.y - L - .02, p.z + .03]); }
+    const HM = clay('#2fa83a', { bump: 2.4 }), HM2 = clay('#c8101c', { bump: 2.4 });
+    for (const sx of [-1, 1]) for (let i = 0; i < 14; i++) { const at2 = onSkull(dir(sx * (.85 + rnd() * .2), .2 + rnd() * .5, -.4 + rnd() * .6)); mesh(sph(.16 + rnd() * .1, 16, 12), i % 3 ? HM : HM2, head, at2.p.clone().addScaledVector(at2.n, .12).toArray()); }
+  }
   if (MSTYLE === 'nose') {         // grey latex face with a long, crooked, warty nose
     const sh = faceShell(-.9, .9, -1.05, .95, .05, 3), OUTL = fullOutline();
     const map = paintTex(sh, '#c9c2b4', g => { g.fillStyle = 'rgba(30,24,20,.85)'; g.beginPath(); g.ellipse(sh.MX(.02), sh.MY(-.58), .22 * sh.PX, .035 * sh.PX, .05, 0, 7); g.fill();
@@ -1154,10 +1177,17 @@ if (MASKED) {
 const body = group(); body.position.set(.2, BODY_Y, -.25); body.rotation.y = .2; scene.add(body);
 const CL = A['Clothing'];
 const KIND = PAL.flannels[CL] ? 'flannel' : PAL.hoodie[CL] ? 'hoodie' : PAL.trench[CL] ? 'trench' : PAL.tee[CL] ? 'tee'
-  : { 'Denim Shirt': 'denim', 'Chore Coat': 'chore', 'Stained Undershirt': 'undershirt', 'Butcher Apron': 'apron' }[CL];
+  : { 'Denim Shirt': 'denim', 'Chore Coat': 'chore', 'Stained Undershirt': 'undershirt', 'Butcher Apron': 'apron', 'Clown Suit': 'clown' }[CL];
 const CCOL = PAL.flannels[CL] || PAL.hoodie[CL] || PAL.trench[CL] || PAL.tee[CL] || PAL.other[CL] || '#555';
+function clownCloth() {   // baggy harlequin clown suit: red and cream halves, fat polka dots, dried blood
+  const S = 1024, [c, g] = canvas(S); g.fillStyle = '#e8e0cc'; g.fillRect(0, 0, S, S); g.fillStyle = '#b8161e'; g.fillRect(0, 0, S / 2, S);
+  for (let i = 0; i < 40; i++) { g.fillStyle = ['#1f5fb8', '#f0c020', '#2fa83a', '#e8e0cc'][i % 4]; g.beginPath(); g.arc(rnd() * S, rnd() * S, 22 + rnd() * 14, 0, 7); g.fill(); }
+  for (let i = 0; i < 25; i++) { g.fillStyle = 'rgba(100,6,6,.8)'; g.beginPath(); g.ellipse(rnd() * S, rnd() * S, 20 + rnd() * 60, 12 + rnd() * 40, rnd() * 3, 0, 7); g.fill(); }
+  for (let i = 0; i < 12; i++) { g.fillStyle = 'rgba(100,6,6,.85)'; g.beginPath(); g.roundRect(rnd() * S, rnd() * S, 10, 80 + rnd() * 160, 5); g.fill(); }
+  return c;
+}
 function clothMat(rep = 6) {
-  const c = KIND === 'flannel' ? plaid(CCOL) : KIND === 'denim' ? fabric(CCOL, 'denim') : KIND === 'chore' ? fabric(CCOL, 'canvas')
+  const c = KIND === 'clown' ? clownCloth() : KIND === 'flannel' ? plaid(CCOL) : KIND === 'denim' ? fabric(CCOL, 'denim') : KIND === 'chore' ? fabric(CCOL, 'canvas')
     : KIND === 'undershirt' ? torn(stained(CCOL)) : KIND === 'apron' ? stained('#5a5a5e') : KIND === 'tee' ? torn(fabric(CCOL, '')) : fabric(CCOL, '');
   return clay('#fff', { map: tex(c, 1), bump: 1.4 });
 }
@@ -1188,6 +1218,12 @@ function holes(n) { for (let i = 0; i < n; i++) { const a = (rnd() - .5) * 1.6, 
   mesh(sph(.12 + rnd() * .08, 20, 14), SKINMAT, body, hp.toArray(), null, [1, 1.3, .3]).lookAt(hp.clone().multiplyScalar(2).add(body.position));
   mesh(new THREE.TorusGeometry(.15, .03, 8, 20), clay(shade(CCOL, .6)), body, hp.toArray()).lookAt(hp.clone().multiplyScalar(2)); } }
 torso();
+if (KIND === 'clown') {   // ruffled collar and pom-pom buttons
+  const RF = [clay('#e8e0cc', { bump: 1.6 }), clay('#b8161e', { bump: 1.6 })];
+  for (let i = 0; i < 26; i++) { const a = i / 26 * Math.PI * 2; mesh(sph(.32, 18, 12), RF[i % 2], body, [Math.cos(a) * 1.0, .05 + .06 * Math.sin(a * 4), Math.sin(a) * .72], [0, -a, 0], [.45, .42, 1]); }
+  for (let i = 0; i < 26; i++) { const a = (i + .5) / 26 * Math.PI * 2; mesh(sph(.24, 16, 10), RF[(i + 1) % 2], body, [Math.cos(a) * .92, .22, Math.sin(a) * .66], [0, -a, 0], [.4, .35, .9]); }
+  for (const [y, col] of [[-.75, '#f0c020'], [-1.45, '#1f5fb8'], [-2.15, '#2fa83a']]) { const pm = mesh(sph(.2, 20, 14), clay(col, { bump: 3 }), body, [0, y, 1.27]); mesh(sph(.08, 10, 8), clay('#7a0b0b', { rough: .3 }), body, [.1, y - .1, 1.4]); }
+}
 if (KIND === 'flannel') { undershirtV(); collarPoints(small); placket(small); buttons(); pocket(small, .85, -1.3, true); }
 if (KIND === 'denim') { undershirtV(); collarPoints(small); placket(small); buttons('#c9ccd0', 3, 0, .8); pocket(small, .85, -1.3, true); pocket(small, -.85, -1.3, true); }
 if (KIND === 'chore') { undershirtV('#3a2f28'); collarPoints(clay('#4a3324', { bump: 2.5 }), 1.15); placket(small); buttons('#3a3a3a', 3); pocket(small, .9, -2.1); pocket(small, -.9, -2.1); pocket(small, .85, -1.2); }
@@ -1275,6 +1311,17 @@ if (HELD) {
     const pts = [V(.05, .6, .1), V(.05, 1.6, .1), V(.05, 2.2, .1), V(.15, 2.5, .1), V(.45, 2.55, .1), V(.62, 2.3, .1), V(.6, 1.95, .1)];
     tube(pts, .06, steel({ c: '#9aa0a6' }), wg); mesh(new THREE.ConeGeometry(.08, .22, 12), steel({ c: '#9aa0a6' }), wg, [.62, 1.85, .1], [0, 0, Math.PI + .3]);
     mesh(sph(.06, 12, 8), clay('#7a1010', { rough: .3 }), wg, [.6, 2.0, .16]); }
+}
+if (A['Back Weapon'] === 'Circus Mallet') {   // giant striped circus mallet slung behind the back, head above the near shoulder
+  const bk = group(); bk.position.set(-1.25, -2.2, -1.7); bk.rotation.set(0, .3, .3); scene.add(bk);
+  mesh(new THREE.CylinderGeometry(.11, .13, 5.2, 18), clay('#8a5a2e', { bump: 1.8 }), bk, [0, .2, 0]);
+  const hd = group(); hd.position.set(0, 2.9, 0); hd.rotation.z = Math.PI / 2 + .1; bk.add(hd);
+  const [c, g] = canvas(512); g.fillStyle = '#e8e0cc'; g.fillRect(0, 0, 512, 512); for (let i = 0; i < 8; i += 2) { g.fillStyle = '#b8161e'; g.fillRect(i * 64, 0, 64, 512); }
+  for (let i = 0; i < 18; i++) { g.fillStyle = 'rgba(100,6,6,.85)'; g.beginPath(); g.ellipse(rnd() * 512, rnd() * 512, 15 + rnd() * 40, 10 + rnd() * 25, rnd() * 3, 0, 7); g.fill(); }
+  const hm = clay('#fff', { map: tex(c, 1), bump: 1.4 });
+  mesh(new THREE.CylinderGeometry(.6, .6, 1.5, 40), hm, hd);
+  for (const y of [-.78, .78]) { mesh(new THREE.CylinderGeometry(.66, .66, .12, 40), clay('#f0c020', { bump: 1.4 }), hd, [0, y, 0]); mesh(sph(.6, 32, 16), hm, hd, [0, y * 1.02, 0], null, [1, .18, 1]); }
+  ribbon([V(-1.0, .2, 1.0), V(-.6, -.3, 1.35), V(0, -.9, 1.55), V(.7, -1.6, 1.5), V(1.1, -2.2, 1.4)], .13, '#3a2a1e', body);
 }
 // arms: the near arm crosses the belly to the weapon fist, the far arm hangs with an open hand
 {
