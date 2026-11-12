@@ -3,6 +3,10 @@
   "seed": 1304,
   "attributes": [
     {
+      "trait_type": "Type",
+      "value": "Generic"
+    },
+    {
       "trait_type": "Background",
       "value": "Rust"
     },
@@ -53,6 +57,10 @@
     {
       "trait_type": "Weapon",
       "value": "Weed Whacker"
+    },
+    {
+      "trait_type": "Bandana",
+      "value": "None"
     }
   ]
 }

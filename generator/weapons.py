@@ -12,7 +12,7 @@ poke out above the near shoulder, and a strap crosses the chest.
 """
 from traits import OUT, SW, shade
 
-HELD = ["Machete", "Hunting Knife", "Butcher Knife", "Fish Hook"]
+HELD = ["Machete", "Hunting Knife", "Butcher Knife", "Fish Hook", "Golden Machete"]
 SLUNG = ["Pitchfork", "Weed Whacker"]
 WEAPONS = ["None"] + HELD + SLUNG
 
@@ -147,6 +147,16 @@ def _fist(skin, sleeve):
     return arm, back + f_svg + thumb
 
 
+def _golden_machete():
+    gold = ('<defs><linearGradient id="goldblade" x1="0" x2="1"><stop offset="0" stop-color="#9c7414"/>'
+            '<stop offset="0.5" stop-color="#ffd75a"/><stop offset="1" stop-color="#c99a24"/></linearGradient></defs>')
+    svg = _machete().replace(f'fill="{STEEL}"', 'fill="url(#goldblade)"').replace(f'fill="{STEEL_DARK}"', 'fill="#a87c18"')
+    svg = svg.replace('fill="#2f2f2f"', 'fill="#3a1414"').replace('fill="#3a3a3a"', 'fill="#d4a017"')
+    sparkle = "".join(f'<path d="M {x} {y - 14} L {x + 4} {y - 4} L {x + 14} {y} L {x + 4} {y + 4} L {x} {y + 14} L {x - 4} {y + 4} L {x - 14} {y} L {x - 4} {y - 4} Z" fill="#fff8d0" stroke="#111" stroke-width="2"/>'
+                      for x, y in ((40, -470), (-4, -250)))
+    return gold + svg + sparkle
+
+
 def _machete():
     blade = ("M -16 -70 L 22 -70 C 36 -200 44 -330 52 -430 C 40 -470 10 -500 -18 -505 "
              "C -20 -380 -18 -220 -16 -70 Z")
@@ -218,7 +228,8 @@ def held(kind, skin, sleeve):
     if kind not in HELD:
         return ""
     weapon = {"Machete": _machete, "Hunting Knife": _hunting_knife,
-              "Butcher Knife": _butcher_knife, "Fish Hook": _fish_hook}[kind]()
+              "Butcher Knife": _butcher_knife, "Fish Hook": _fish_hook,
+              "Golden Machete": _golden_machete}[kind]()
     arm, fist = _fist(skin, sleeve)
     return f'<g transform="{HOLD_T}">' + arm + weapon + fist + '</g>'
 

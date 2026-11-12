@@ -34,6 +34,14 @@ BACKGROUNDS = {
     "Fog Grey": "#a9b0ad",
     "Bone": "#e3d6b4",
     "Blood Orange": "#e0603f",
+    "Blood Red": "#8e1c1c",
+    "Midnight": "#232637",
+    "Toxic Slime": "#9bd23a",
+    "Gold": "#d4a017",
+    # 1/1 exclusives (drawn by background())
+    "Full Moon": "#1b2033",
+    "Cornfield": "#e39b48",
+    "Blood Drip": "#efe6d2",
 }
 
 SKINS = {
@@ -43,6 +51,12 @@ SKINS = {
     "Corpse Grey": "#b6b79a",
     "Leather": "#a8735a",
     "Pale Wax": "#efd7c3",
+    "Bloodless Blue": "#a9c3cf",
+    "Radioactive": "#a8d870",
+    # 1/1 exclusives
+    "Charred": "#5a4a42",
+    "Gilded": "#e2b84a",
+    "Albino": "#f7f1ec",
 }
 
 HAIR_COLORS = {
@@ -51,14 +65,36 @@ HAIR_COLORS = {
     "Greasy Black": "#2b2522",
     "Ash Grey": "#8d8a84",
     "Mud Brown": "#5e4430",
+    "Blood-Matted": "#7a1a14",
 }
 
 
 # --------------------------------------------------------------------------
 # Background
 # --------------------------------------------------------------------------
-def background(color):
-    return f'<rect width="1000" height="1000" fill="{color}"/>'
+def background(name):
+    color = BACKGROUNDS[name]
+    out = f'<rect width="1000" height="1000" fill="{color}"/>'
+    if name == "Full Moon":
+        out += ('<circle cx="760" cy="200" r="150" fill="#f3ecc8" stroke="#111" stroke-width="8"/>'
+                '<circle cx="710" cy="160" r="26" fill="#d9cf9f"/><circle cx="820" cy="250" r="34" fill="#d9cf9f"/>'
+                '<circle cx="790" cy="140" r="14" fill="#d9cf9f"/>'
+                '<path d="M 0 760 C 120 700 220 740 300 700 C 380 660 460 690 520 650 L 520 1000 L 0 1000 Z" fill="#11141f"/>'
+                '<path d="M 120 720 L 120 560 M 120 600 L 80 560 M 120 630 L 160 590" stroke="#11141f" stroke-width="12" stroke-linecap="round"/>')
+    elif name == "Cornfield":
+        out += '<rect y="620" width="1000" height="380" fill="#b8742f"/>'
+        for x in range(-20, 1040, 46):
+            out += (f'<path d="M {x} 1000 L {x + 6} 600 M {x + 4} 700 L {x - 26} 660 M {x + 5} 760 L {x + 34} 716 M {x + 6} 640 L {x - 18} 600" '
+                    f'stroke="#6f5a22" stroke-width="9" stroke-linecap="round"/>')
+        out += '<path d="M 60 120 l 30 -14 l 30 14 M 900 90 l 24 -12 l 24 12 M 840 160 l 18 -9 l 18 9" fill="none" stroke="#111" stroke-width="6" stroke-linecap="round"/>'
+    elif name == "Blood Drip":
+        d = "M 0 0 L 1000 0 L 1000 60"
+        for x in range(1000, -1, -50):
+            h = 60 + (x * 37 % 170)
+            d += f" L {x} 60 C {x - 6} {h - 20} {x - 14} {h} {x - 22} {h} C {x - 30} {h} {x - 36} {h - 20} {x - 40} 60"
+        d += " L 0 60 Z"
+        out += f'<path d="{d}" fill="#9a1414" stroke="#111" stroke-width="6" stroke-linejoin="round"/>'
+    return out
 
 
 # --------------------------------------------------------------------------
@@ -164,7 +200,7 @@ def _tee(color="#2a2a2a"):
             f'<path d="M 418 832 C 465 892 600 910 680 866" fill="none" stroke="{shade(color, 1.4)}" stroke-width="5"/>')
 
 
-def clothing(kind, rng):
+def _clothing_base(kind, rng):
     """Returns (back, front): back goes under the neck, front over it."""
     if kind == "Denim Shirt":
         base = "#4f6fa3"
@@ -172,8 +208,8 @@ def clothing(kind, rng):
         front += (f'<path d="M 120 940 C 140 960 150 985 152 1075" fill="none" stroke="{shade(base, 1.4)}" stroke-width="3" stroke-dasharray="8 7"/>'
                   f'<path d="M 362 856 C 400 896 440 930 482 955" fill="none" stroke="{shade(base, 1.45)}" stroke-width="3" stroke-dasharray="7 6"/>')
         return back, front
-    if kind in ("Red Flannel", "Green Flannel"):
-        base = "#a8322d" if kind == "Red Flannel" else "#3f6b3a"
+    if kind in FLANNELS:
+        base = FLANNELS[kind]
         pid = "plaid" + base[1:]
         defs = ('<defs>' + _plaid(pid + "b", base, -8, 6)
                 + _plaid(pid + "n", base, 34, 0, 40) + _plaid(pid + "f", base, -40, 0, 36) + '</defs>')
@@ -203,6 +239,130 @@ def clothing(kind, rng):
                  f'<path d="M 760 868 C 748 920 735 970 730 1075 L 762 1075 C 768 970 778 925 790 876 Z" fill="#5b3a22" stroke="{OUT}" stroke-width="5" stroke-linejoin="round"/>')
         return back, front
     raise ValueError(kind)
+
+
+FLANNELS = {
+    "Red Flannel": "#a8322d", "Green Flannel": "#3f6b3a", "Blue Flannel": "#2f4f8a",
+    "Mustard Flannel": "#c9a227", "Purple Flannel": "#5b3d7a", "Orange Flannel": "#c4621f",
+    "Grey Flannel": "#8a8a8a",
+}
+TRENCH = {"Khaki Trench Coat": "#b89a66", "Black Trench Coat": "#2b2b2e", "Olive Trench Coat": "#5b5f3a"}
+HOODIE = {"Grey Hoodie": "#8d9096", "Black Hoodie": "#2c2c30", "Maroon Hoodie": "#6e2230"}
+TORN_TEE = {"Torn White Tee": "#e8e4d8", "Torn Black Tee": "#2f2f33", "Torn Army Tee": "#5d6b45"}
+
+
+def _plain_torso(base, rng, grime_color="#3b2a18", n=14):
+    return (f'<clipPath id="torso"><path d="{TORSO}"/></clipPath>'
+            f'<path d="{TORSO}" fill="{base}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
+            + _shirt_folds(base)
+            + '<g clip-path="url(#torso)">' + _grime(rng, 80, 920, 870, 1000, n, grime_color, 0.32) + '</g>')
+
+
+def _crew_neck(base):
+    return (f'<path d="M 398 800 C 450 880 600 900 690 845 L 702 868 C 600 928 432 908 382 822 Z" '
+            f'fill="{shade(base, 0.85)}" stroke="{OUT}" stroke-width="6" stroke-linejoin="round"/>')
+
+
+def _trench(base, rng):
+    lapel = shade(base, 1.12)
+    behind = (  # popped collar standing up behind the neck
+        f'<path d="M 318 884 C 318 806 344 744 396 708 L 432 752 C 410 796 404 840 408 884 Z" fill="{shade(base, 0.85)}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
+        f'<path d="M 690 868 C 706 806 728 766 760 742 L 776 800 C 766 830 752 858 736 884 Z" fill="{shade(base, 0.85)}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>')
+    back = _plain_torso(base, rng, n=18)
+    inner = (f'<path d="{OPENING}" fill="#d9d4c4" stroke="{OUT}" stroke-width="6" stroke-linejoin="round"/>'
+             f'<path d="M 560 905 L 584 930 L 576 975 L 590 990 L 604 975 L 598 930 L 616 905 Z" fill="#4a2a2a" stroke="{OUT}" stroke-width="4" stroke-linejoin="round"/>')
+    front = (inner
+             # wide lapels
+             + f'<path d="M 392 786 C 425 850 472 886 525 908 L 520 1075 L 420 1075 C 380 990 340 920 300 872 C 330 834 360 806 392 786 Z" fill="{lapel}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
+             + f'<path d="M 360 860 L 330 900 L 380 905 Z" fill="{base}" stroke="{OUT}" stroke-width="5" stroke-linejoin="round"/>'
+             + f'<path d="M 690 838 C 668 874 642 898 612 912 L 640 1075 L 712 1075 C 730 980 750 920 770 880 C 744 862 716 848 690 838 Z" fill="{shade(base, 0.95)}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
+             # double-breasted buttons, gun flap, epaulette
+             + "".join(f'<circle cx="{x}" cy="{y}" r="9" fill="{shade(base, 0.6)}" stroke="{OUT}" stroke-width="4"/>' for x, y in ((548, 1030), (650, 1035)))
+             + f'<path d="M 760 900 L 880 920 L 870 990 L 770 980 Z" fill="{shade(base, 1.05)}" stroke="{OUT}" stroke-width="5" stroke-linejoin="round"/>'
+             + f'<path d="M 150 900 L 290 868 L 296 892 L 158 926 Z" fill="{shade(base, 1.05)}" stroke="{OUT}" stroke-width="5" stroke-linejoin="round"/>'
+             + f'<circle cx="276" cy="882" r="6" fill="{shade(base, 0.6)}" stroke="{OUT}" stroke-width="3"/>')
+    return behind, back, front
+
+
+def _hoodie(base, rng):
+    behind = (  # hood bunched up behind the neck
+        f'<path d="M 286 880 C 270 790 320 720 410 700 C 520 680 640 720 730 800 C 760 830 760 860 740 880 Z" '
+        f'fill="{shade(base, 0.82)}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
+        f'<path d="M 320 840 C 320 780 360 740 420 726" fill="none" stroke="{OUT}" stroke-width="4" stroke-linecap="round"/>')
+    back = _plain_torso(base, rng, n=16)
+    rim = "M 380 796 C 440 890 600 912 704 842 L 724 868 C 600 950 420 930 352 818 Z"
+    front = (f'<path d="{rim}" fill="{shade(base, 0.9)}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
+             f'<path d="M 372 812 C 440 905 600 928 712 856" fill="none" stroke="{OUT}" stroke-width="3" stroke-dasharray="6 6"/>'
+             # drawstrings with metal tips
+             + "".join(f'<path d="M {x} {y} C {x - 4} {y + 40} {x + 6} {y + 80} {x + 2} {y + 120}" fill="none" stroke="{OUT}" stroke-width="10" stroke-linecap="round"/>'
+                       f'<path d="M {x} {y} C {x - 4} {y + 40} {x + 6} {y + 80} {x + 2} {y + 120}" fill="none" stroke="#e8e2cf" stroke-width="5" stroke-linecap="round"/>'
+                       f'<rect x="{x - 5}" y="{y + 116}" width="14" height="22" rx="3" fill="#9aa0a6" stroke="{OUT}" stroke-width="3"/>'
+                       for x, y in ((512, 900), (604, 902)))
+             + f'<circle cx="512" cy="900" r="7" fill="#9aa0a6" stroke="{OUT}" stroke-width="3"/>'
+             + f'<circle cx="604" cy="902" r="7" fill="#9aa0a6" stroke="{OUT}" stroke-width="3"/>')
+    return behind, back, front
+
+
+def _torn_tee(base, rng, skin):
+    back = _plain_torso(base, rng, n=14)
+    holes = ""
+    spots = [(rng.uniform(130, 300), rng.uniform(930, 1010)), (rng.uniform(430, 560), rng.uniform(960, 1030)),
+             (rng.uniform(700, 860), rng.uniform(930, 1010))]
+    for cx, cy in spots:
+        pts = []
+        for k in range(9):
+            import math as _m
+            a = k / 9 * 2 * _m.pi
+            r = rng.uniform(16, 34) if k % 2 else rng.uniform(8, 16)
+            pts.append(f"{cx + _m.cos(a) * r * 1.4:.0f} {cy + _m.sin(a) * r:.0f}")
+        holes += (f'<path d="M {" L ".join(pts)} Z" fill="{skin}" stroke="{OUT}" stroke-width="5" stroke-linejoin="round"/>'
+                  f'<path d="M {cx - 10:.0f} {cy + 4:.0f} l 6 -10 M {cx + 12:.0f} {cy - 2:.0f} l 4 8" stroke="{shade(skin, 0.7)}" stroke-width="3"/>')
+    front = (_crew_neck(base)
+             # ripped collar and frayed threads
+             + f'<path d="M 470 890 L 488 922 L 500 896 L 512 930 L 522 900" fill="none" stroke="{OUT}" stroke-width="4" stroke-linejoin="round"/>'
+             + f'<path d="M 470 890 L 488 922 L 500 896 L 512 930 L 522 900 Z" fill="{skin}"/>'
+             + "".join(f'<path d="M {x} {y} l {dx} 14" stroke="{OUT}" stroke-width="2.5" stroke-linecap="round"/>'
+                       for x, y, dx in ((430, 880, -4), (560, 912, 3), (640, 888, 5), (690, 860, 4)))
+             + holes
+             + '<g clip-path="url(#torso)">' + _grime(rng, 400, 800, 900, 1000, 4, "#7a1f1a", 0.5) + '</g>')
+    return "", back, front
+
+
+def _butcher_apron(rng):
+    back, front = _clothing_base("Stained Undershirt", rng)
+    apron = "#ddd6c2"
+    bib = "M 430 905 C 520 925 640 925 740 895 L 770 1075 L 400 1075 Z"
+    front += (f'<path d="M 440 910 C 420 870 400 830 392 800 M 730 900 C 716 870 704 850 694 840" fill="none" stroke="{OUT}" stroke-width="16" stroke-linecap="round"/>'
+              f'<path d="M 440 910 C 420 870 400 830 392 800 M 730 900 C 716 870 704 850 694 840" fill="none" stroke="#b9ae94" stroke-width="9" stroke-linecap="round"/>'
+              f'<path d="{bib}" fill="{apron}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
+              f'<clipPath id="bib"><path d="{bib}"/></clipPath><g clip-path="url(#bib)">'
+              f'<path d="M 400 905 L 470 905 L 450 1075 L 400 1075 Z" fill="#000" opacity="0.12"/>'
+              '<path d="M 520 930 C 560 960 540 1000 600 1020 C 640 1035 620 1060 660 1075 L 560 1075 C 540 1040 500 1010 520 930 Z" fill="#8e1414" opacity="0.85"/>'
+              '<path d="M 680 930 C 690 960 700 990 690 1020" fill="none" stroke="#8e1414" stroke-width="10" stroke-linecap="round"/>'
+              + _grime(rng, 430, 760, 920, 1070, 8, "#8e1414", 0.6) + '</g>')
+    return "", back, front
+
+
+def clothing(kind, rng, skin):
+    """Returns (behind, back, front): behind goes under the neck too (hoods,
+    popped collars), back under the neck, front over it."""
+    if kind in TRENCH:
+        return _trench(TRENCH[kind], rng)
+    if kind in HOODIE:
+        return _hoodie(HOODIE[kind], rng)
+    if kind in TORN_TEE:
+        return _torn_tee(TORN_TEE[kind], rng, skin)
+    if kind == "Butcher Apron":
+        return _butcher_apron(rng)
+    back, front = _clothing_base(kind, rng)
+    return "", back, front
+
+
+def sleeve_fill(kind):
+    """Fill for the sleeve of the arm holding a weapon (None = bare arm)."""
+    if kind in FLANNELS:
+        return f"url(#plaid{FLANNELS[kind][1:]}b)"
+    return {**TRENCH, **HOODIE, "Denim Shirt": "#4f6fa3", "Chore Coat": "#3e4752"}.get(kind)
 
 
 # --------------------------------------------------------------------------
@@ -356,6 +516,19 @@ def eyes(kind, skin, rng):
     if kind == "Pinprick":
         return (_eye(585, 472, 36, 28, 0.25, 10, 3, "#d8d0b0", skin, 3)
                 + _eye(713, 465, 25, 21, 0.25, 8, 3, "#d8d0b0", skin, 3))
+    if kind in ("Glowing Red", "Glowing Green"):
+        c = "#ff2a1a" if kind == "Glowing Red" else "#7dff3a"
+        glow = "".join(f'<circle cx="{x}" cy="{y}" r="{r}" fill="{c}" opacity="{o}"/>'
+                       for x, y in ((599, 482), (722, 466)) for r, o in ((46, 0.18), (30, 0.25)))
+        return (_eye(585, 478, 36, 26, 0.35, 14, 7, c, skin, 6)
+                + _eye(712, 462, 24, 20, 0.28, 10, 5, c, skin, 0) + glow)
+    if kind == "Hollow Sockets":
+        dark = shade(skin, 0.6)
+        return "".join(f'<ellipse cx="{x}" cy="{y}" rx="{rx + 14}" ry="{ry + 12}" fill="{dark}"/>'
+                       f'<ellipse cx="{x}" cy="{y}" rx="{rx}" ry="{ry}" fill="#120808" stroke="{OUT}" stroke-width="6"/>'
+                       f'<circle cx="{x + 8}" cy="{y + 2}" r="4" fill="#d43a2a"/>'
+                       f'<path d="M {x - rx + 6} {y + ry - 2} C {x - 8} {y + ry + 14} {x - 2} {y + ry + 26} {x - 6} {y + ry + 40}" fill="none" stroke="#3a1010" stroke-width="5" stroke-linecap="round"/>'
+                       for x, y, rx, ry in ((588, 478, 34, 28), (713, 464, 22, 22)))
     raise ValueError(kind)
 
 
@@ -443,6 +616,14 @@ def _teeth(rng, x0, x1, y, h, style):
 
 def mouth(kind, skin, rng):
     lip = shade(skin, 0.82)
+    if kind == "Stitched Shut":
+        d = "M 588 632 C 630 620 690 614 748 624"
+        return (f'<path d="M 584 626 C 630 604 700 600 752 616 C 740 650 700 662 660 662 C 620 660 594 648 584 626 Z" fill="{lip}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
+                f'<path d="{d}" fill="none" stroke="#3a1010" stroke-width="7" stroke-linecap="round"/>'
+                + "".join(f'<path d="M {x} {y - 18} L {x + 6} {y + 18}" stroke="#111" stroke-width="4" stroke-linecap="round"/>'
+                          f'<circle cx="{x}" cy="{y - 18}" r="2.5" fill="#7a1a14"/><circle cx="{x + 6}" cy="{y + 18}" r="2.5" fill="#7a1a14"/>'
+                          for x, y in ((604, 628), (630, 624), (656, 620), (682, 618), (708, 618), (732, 620)))
+                + f'<path d="M 650 662 C 652 680 646 694 650 708" fill="none" stroke="#8e1414" stroke-width="5" stroke-linecap="round"/>')
     if kind == "Snarl":
         clip = ('<clipPath id="mclip"><path d="M 585 625 C 620 610 680 600 745 618 '
                 'C 740 650 700 668 650 668 C 615 666 590 650 585 625 Z"/></clipPath>')
@@ -620,4 +801,52 @@ def hair_back(kind, color, rng):
                    f'fill="none" stroke="{OUT}" stroke-width="17" stroke-linecap="round"/>'
                    f'<path d="M {x0:.0f} 260 C {x0 - 30:.0f} {260 + L * 0.4:.0f} {x1 + 15:.0f} {260 + L * 0.7:.0f} {x1:.0f} {260 + L:.0f}" '
                    f'fill="none" stroke="{color if i % 3 else dark}" stroke-width="9" stroke-linecap="round"/>')
+    return "".join(out)
+
+
+# --------------------------------------------------------------------------
+# Bandana (face covering, worn over the nose and mouth like an outlaw)
+# --------------------------------------------------------------------------
+BANDANAS = {"Red Bandana": "#b8322e", "Black Bandana": "#232326",
+            "Blue Bandana": "#2d4f8f", "Faded Paisley": "#cf6f6c"}
+
+
+def bandana(kind, rng):
+    if kind not in BANDANAS:
+        return ""
+    base = BANDANAS[kind]
+    ink = shade(base, 1.6) if kind != "Black Bandana" else "#d9d4c4"
+    dark = shade(base, 0.7)
+    pid = "bandana" + base[1:]
+    # paisley-ish print: teardrops, rings and dots
+    pat = (f'<pattern id="{pid}" width="64" height="64" patternUnits="userSpaceOnUse" patternTransform="rotate(-12)">'
+           f'<rect width="64" height="64" fill="{base}"/>'
+           f'<path d="M 18 30 C 6 22 10 6 24 8 C 34 10 34 24 26 30 C 22 34 26 40 30 38" fill="none" stroke="{ink}" stroke-width="2.5"/>'
+           f'<circle cx="22" cy="18" r="4" fill="none" stroke="{ink}" stroke-width="2"/>'
+           f'<circle cx="48" cy="46" r="7" fill="none" stroke="{ink}" stroke-width="2"/>'
+           f'<circle cx="48" cy="46" r="2" fill="{ink}"/>'
+           + "".join(f'<circle cx="{x}" cy="{y}" r="1.8" fill="{ink}"/>' for x, y in ((40, 12), (54, 22), (8, 50), (30, 56), (58, 6)))
+           + '</pattern>')
+    shape = ("M 418 516 C 520 504 680 500 792 512 C 808 540 814 570 802 592 "
+             "C 792 640 772 680 746 700 C 722 760 684 820 642 872 "
+             "C 600 800 522 722 472 652 C 442 612 426 562 418 516 Z")
+    out = [f'<defs>{pat}<clipPath id="bandclip"><path d="{shape}"/></clipPath></defs>',
+           # knot and tails behind the near ear
+           f'<path d="M 420 520 C 392 520 378 540 382 560 C 360 580 352 610 360 640 L 380 636 C 378 610 386 590 400 576 '
+           f'C 396 600 404 630 418 650 L 434 640 C 424 612 422 584 432 560 Z" fill="{dark}" stroke="{OUT}" stroke-width="6" stroke-linejoin="round"/>',
+           f'<path d="{shape}" fill="url(#{pid})" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>',
+           '<g clip-path="url(#bandclip)">',
+           # cloth tented over the nose, shadow on the side turned away
+           f'<path d="M 418 516 C 470 520 520 560 560 640 C 590 700 620 790 642 872 L 400 872 L 400 516 Z" fill="#000" opacity="0.22"/>',
+           f'<path d="M 790 512 C 770 560 740 600 700 620 C 660 640 630 700 620 760" fill="none" stroke="#000" stroke-width="10" opacity="0.18"/>',
+           # folds hanging from the nose and chin
+           f'<path d="M 760 595 C 720 640 690 700 668 790 M 700 590 C 670 640 650 700 645 760 M 560 560 C 590 620 610 690 620 760" '
+           f'fill="none" stroke="{OUT}" stroke-width="3.5" stroke-linecap="round"/>',
+           f'<path d="M 800 560 C 790 540 770 528 740 524" fill="none" stroke="{shade(base, 1.35)}" stroke-width="6" stroke-linecap="round"/>',
+           # grime and a blood stain soaking through
+           _grime(rng, 480, 760, 560, 760, 6, "#3b2a18", 0.3),
+           f'<ellipse cx="{rng.uniform(640, 720):.0f}" cy="{rng.uniform(640, 700):.0f}" rx="22" ry="14" fill="#5e0e0e" opacity="0.45"/>',
+           '</g>',
+           # rolled top hem
+           f'<path d="M 420 520 C 520 508 680 504 792 516" fill="none" stroke="{OUT}" stroke-width="3" stroke-dasharray="7 6"/>']
     return "".join(out)

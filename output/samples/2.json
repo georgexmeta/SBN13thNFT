@@ -3,6 +3,10 @@
   "seed": 1302,
   "attributes": [
     {
+      "trait_type": "Type",
+      "value": "Generic"
+    },
+    {
       "trait_type": "Background",
       "value": "Mustard"
     },
@@ -53,6 +57,10 @@
     {
       "trait_type": "Weapon",
       "value": "Pitchfork"
+    },
+    {
+      "trait_type": "Bandana",
+      "value": "None"
     }
   ]
 }

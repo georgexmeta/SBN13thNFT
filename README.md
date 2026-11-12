@@ -16,6 +16,15 @@ outlines, flat cel shading, solid backgrounds.
 ## Usage
 ```bash
 python3 generator/generate.py samples        # hand-picked review samples
-python3 generator/generate.py random 1300    # full random run (seeded)
+python3 generator/generate.py oneofones      # the 13 named 1/1s
+python3 generator/generate.py collection     # all 1,300 (1,287 generic + 13 1/1s) + RARITY.md
 node generator/render.js output/samples
 ```
+
+## Collection
+1,300 PFPs: 1,287 generic ones with weighted traits (Common to Legendary) and 13
+named 1/1s that use exclusive traits (Full Moon, Cornfield and Blood Drip
+backgrounds; Charred, Gilded and Albino skin; Glowing Green eyes). Every PFP is a
+unique trait combination. Weights live in `WEIGHTS` in `generator/generate.py`;
+the generated breakdown is in `docs/RARITY.md`. The build is seeded, so it is
+reproducible.

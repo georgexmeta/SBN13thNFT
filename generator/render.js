@@ -16,9 +16,11 @@ const path = require('path');
     await page.screenshot({ path: path.join(dir, f.replace('.svg', '.png')), clip: { x: 0, y: 0, width: 1000, height: 1000 } });
   }
   // contact sheet: 3 per row at 500px
-  const cols = 3, size = 500, rows = Math.ceil(files.length / cols);
+  const sheetFiles = files.slice(0, 64);
+  const big = sheetFiles.length > 13;
+  const cols = big ? 8 : 3, size = big ? 250 : 500, rows = Math.ceil(sheetFiles.length / cols);
   await page.setViewportSize({ width: cols * size, height: rows * size });
-  const imgs = files.map(f => {
+  const imgs = sheetFiles.map(f => {
     const b64 = fs.readFileSync(path.join(dir, f.replace('.svg', '.png'))).toString('base64');
     return `<img src="data:image/png;base64,${b64}" width="${size}" height="${size}" style="display:block;float:left">`;
   }).join('');
