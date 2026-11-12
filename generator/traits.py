@@ -550,16 +550,52 @@ def hair(kind, color, rng):
                 f'<path d="M 340 330 C 380 230 470 175 600 170 M 360 360 C 400 270 470 210 640 185 M 330 280 C 380 200 440 165 520 150" '
                 f'fill="none" stroke="{dark}" stroke-width="6" stroke-linecap="round"/>'
                 f'<path d="M 420 200 C 470 175 520 165 560 162" fill="none" stroke="{shade(color, 1.5)}" stroke-width="6" stroke-linecap="round"/>')
-    if kind == "Trucker Cap":
+    if kind == "Backwards Cap":
         cap = rng.choice(["#2f4f3a", "#7a2f2a", "#c9b27a", "#2a3550"])
-        return (f'<path d="M 285 345 C 270 180 390 75 525 75 C 660 75 760 170 770 300 L 285 345 Z" '
-                f'fill="{cap}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
-                f'<path d="M 285 345 C 275 200 340 120 410 95 C 370 180 360 260 375 335 Z" fill="#000" opacity="0.25"/>'
-                f'<path d="M 470 85 C 440 170 440 260 460 330 M 610 85 C 625 170 630 250 625 312" fill="none" stroke="#e8e0c8" stroke-width="5" stroke-dasharray="6 6"/>'
-                f'<path d="M 720 290 C 790 280 870 295 910 325 C 870 345 790 340 730 325 Z" fill="{shade(cap, 0.8)}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
-                + _grime(rng, 350, 700, 150, 300, 6, "#3b2a18", 0.35)
-                + f'<path d="M 300 345 C 290 390 295 430 310 470" fill="none" stroke="{OUT}" stroke-width="16" stroke-linecap="round"/>'
-                + f'<path d="M 300 345 C 290 390 295 430 310 470" fill="none" stroke="{rng.choice(list(HAIR_COLORS.values()))}" stroke-width="9" stroke-linecap="round"/>')
+        mesh = rng.choice(["#e8e2cf", "#1f1f1f", shade(cap, 1.35)])
+        dark = shade(cap, 0.7)
+        hair_c = color
+        crown = ("M 288 372 C 262 200 385 78 528 78 C 670 78 770 175 778 312 "
+                 "C 610 322 440 345 288 372 Z")
+        # front panels (now facing the back) are solid; mesh panels face forward
+        mesh_area = ("M 560 82 C 660 92 760 180 778 312 C 700 316 620 320 548 326 "
+                     "C 560 250 565 160 560 82 Z")
+        out = [
+            '<defs><pattern id="capmesh" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(20)">'
+            f'<rect width="12" height="12" fill="{mesh}"/><circle cx="6" cy="6" r="3.2" fill="{shade(mesh, 0.55)}"/></pattern>'
+            f'<clipPath id="capclip"><path d="{crown}"/></clipPath></defs>',
+            # brim sticking out behind the head, seen from below-side
+            f'<path d="M 372 352 C 300 334 205 340 140 372 C 175 404 270 410 362 392 Z" '
+            f'fill="{dark}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>',
+            f'<path d="M 362 380 C 290 392 210 392 160 378" fill="none" stroke="{shade(cap, 1.2)}" stroke-width="5" stroke-linecap="round"/>',
+            f'<path d="{crown}" fill="{cap}"/>',
+            '<g clip-path="url(#capclip)">',
+            f'<path d="{mesh_area}" fill="url(#capmesh)"/>',
+            f'<path d="M 560 82 C 565 160 560 250 548 326" fill="none" stroke="{OUT}" stroke-width="5"/>',
+            # back-of-head shadow side
+            f'<path d="M 280 380 C 270 220 340 120 420 92 C 385 180 378 280 392 360 Z" fill="#000" opacity="0.25"/>',
+            # stitched panel seams converging on the top button
+            f'<path d="M 528 80 C 450 140 420 250 430 352 M 528 80 C 640 120 700 200 720 316" fill="none" stroke="{shade(cap, 1.4)}" stroke-width="4" stroke-dasharray="7 6"/>',
+            # snapback opening over the forehead showing skin/hair
+            f'<path d="M 626 326 C 628 240 718 214 756 314 Z" fill="{hair_c}" stroke="{OUT}" stroke-width="6" stroke-linejoin="round"/>',
+            f'<path d="M 646 300 l 8 20 M 664 268 l 8 44 M 690 254 l 4 56 M 716 262 l -2 46 M 738 288 l -6 22" stroke="{shade(hair_c, 0.6)}" stroke-width="4" stroke-linecap="round"/>',
+            # adjustable strap with snaps
+            f'<path d="M 624 308 L 756 298 L 758 316 L 626 326 Z" fill="{dark}" stroke="{OUT}" stroke-width="5" stroke-linejoin="round"/>',
+            f'<circle cx="660" cy="316" r="5" fill="{shade(cap, 1.5)}" stroke="{OUT}" stroke-width="2.5"/>'
+            f'<circle cx="685" cy="314" r="5" fill="{shade(cap, 1.5)}" stroke="{OUT}" stroke-width="2.5"/>'
+            f'<circle cx="710" cy="312" r="5" fill="{shade(cap, 1.5)}" stroke="{OUT}" stroke-width="2.5"/>',
+            _grime(rng, 330, 560, 140, 340, 6, "#3b2a18", 0.35),
+            '</g>',
+            f'<path d="{crown}" fill="none" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>',
+            # sweat band edge
+            f'<path d="M 296 362 C 450 336 610 318 772 306" fill="none" stroke="{OUT}" stroke-width="4"/>',
+            f'<ellipse cx="528" cy="80" rx="18" ry="9" fill="{cap}" stroke="{OUT}" stroke-width="5"/>',
+            # greasy tuft of hair poking out over the ear
+            f'<path d="M 292 368 C 284 410 290 450 304 486 L 316 452 L 330 474 L 336 428 L 352 446 L 352 362 Z" '
+            f'fill="{hair_c}" stroke="{OUT}" stroke-width="6" stroke-linejoin="round"/>',
+            f'<path d="M 306 380 C 302 410 306 440 312 456 M 330 378 C 328 400 330 415 334 424" fill="none" stroke="{shade(hair_c, 0.6)}" stroke-width="4" stroke-linecap="round"/>',
+        ]
+        return "".join(out)
     raise ValueError(kind)
 
 
