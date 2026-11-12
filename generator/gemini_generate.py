@@ -57,7 +57,7 @@ def generate(row, refs, key):
             raise RuntimeError("no image in response: " + json.dumps(res)[:400])
         except urllib.error.HTTPError as e:
             msg = e.read().decode()[:400]
-            if e.code in (429, 500, 503) and attempt < 4:
+            if e.code in (429, 500, 503) and attempt < 4 and "limit: 0" not in msg:
                 time.sleep(10 * 2 ** attempt); continue
             raise RuntimeError(f"HTTP {e.code}: {msg}")
 
@@ -79,7 +79,7 @@ def main():
         if os.path.exists(out) and not force:
             continue
         try:
-            open(out, "wb").write(generate(rows[i], refs, key)); print(f"#{i} ok", flush=True)
+            img = generate(rows[i], refs, key); open(out, "wb").write(img); print(f"#{i} ok", flush=True)
         except Exception as e:
             print(f"#{i} failed: {e}", flush=True)
 
