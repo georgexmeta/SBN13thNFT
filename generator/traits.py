@@ -65,32 +65,37 @@ def background(color):
 # Body / clothing  (canvas coordinates; the body is turned 3/4 like the head)
 # --------------------------------------------------------------------------
 # Torso: near (viewer-left) shoulder is broad and close, far shoulder is
-# foreshortened. The neck base runs from ~(380,815) to ~(690,850).
-TORSO = ("M 40 1075 C 50 925 110 872 230 852 C 300 840 350 828 382 812 "
-         "L 690 846 C 760 860 840 876 890 910 C 940 945 960 980 965 1075 Z")
-# Opening of the shirt below the neck, between the two collar points
-OPENING = "M 400 838 C 470 872 600 884 690 858 L 628 914 L 602 968 L 498 905 Z"
-NEAR_COLLAR = "M 398 818 C 370 836 342 852 312 868 L 470 970 L 502 904 C 460 884 425 860 398 818 Z"
-FAR_COLLAR = "M 684 848 C 708 860 728 870 748 880 L 656 970 L 628 914 C 650 896 670 876 684 848 Z"
-BACK_BAND = "M 330 864 C 336 832 356 806 388 786 L 402 830 L 398 852 Z"
+# foreshortened. The top edge dips in front of the neck (the neckline), so the
+# torso, drawn over the neck, hides the base of the neck.
+NECKLINE = "C 450 880 600 900 690 845"
+TORSO = ("M 40 1075 C 50 925 110 872 230 852 C 300 840 350 822 398 800 "
+         + NECKLINE + " C 760 860 840 876 890 910 C 940 945 960 980 965 1075 Z")
+# Undershirt showing in the V between the collar points
+OPENING = "M 405 806 C 450 880 600 900 688 846 L 612 912 L 582 975 L 525 908 Z"
+# Collars: each starts behind the neck, wraps the neck base and folds down
+# to a point at the V.
+NEAR_COLLAR = ("M 392 786 C 425 850 472 886 525 908 L 490 972 "
+               "C 438 934 382 884 346 852 C 360 826 374 804 392 786 Z")
+FAR_COLLAR = ("M 690 838 C 668 874 642 898 612 912 L 642 972 "
+              "C 682 936 716 902 740 872 C 724 858 708 846 690 838 Z")
 
 
 def neck(skin):
-    """Thick neck: back edge drops from behind the ear into the shoulders,
-    front edge comes out from under the jaw with an Adam's apple."""
+    """Thick neck: back edge drops from behind the ear and flares into the
+    trapezius, front edge comes out from under the jaw. The base is hidden
+    by the clothing."""
     dark = shade(skin, 0.75)
-    d = ("M 392 600 C 400 690 396 770 372 852 L 694 868 "
-         "C 676 846 668 830 664 812 C 670 800 668 790 658 782 C 655 760 656 740 660 720 Z")
+    d = ("M 392 600 C 402 690 402 760 385 815 C 360 840 320 856 290 868 L 720 920 "
+         "C 700 880 690 850 684 826 C 688 812 684 798 672 790 C 664 770 660 745 662 720 Z")
     return (f'<path d="{d}" fill="{skin}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
             '<clipPath id="neckclip"><path d="' + d + '"/></clipPath><g clip-path="url(#neckclip)">'
             # shadow cast by the jaw, following the jaw line
-            f'<path d="M 380 630 C 450 735 540 800 670 795 L 670 835 C 540 845 440 790 380 715 Z" fill="{dark}"/>'
+            f'<path d="M 380 630 C 450 735 540 800 690 795 L 690 832 C 540 845 440 790 380 715 Z" fill="{dark}"/>'
             # back of the neck in shadow
-            f'<path d="M 380 600 C 420 700 430 780 420 870 L 360 870 L 360 600 Z" fill="{dark}"/>'
+            f'<path d="M 380 600 C 425 700 435 790 430 900 L 280 900 L 280 600 Z" fill="{dark}"/>'
             '</g>'
             # neck muscle running from behind the ear toward the collarbone
-            f'<path d="M 515 800 C 540 818 560 836 574 856" fill="none" stroke="{OUT}" stroke-width="4" stroke-linecap="round"/>'
-            f'<path d="M 654 806 C 647 812 647 819 652 824" fill="none" stroke="{OUT}" stroke-width="4" stroke-linecap="round"/>')
+            f'<path d="M 520 805 C 545 825 565 845 578 870" fill="none" stroke="{OUT}" stroke-width="4" stroke-linecap="round"/>')
 
 
 def _grime(rng, x0, x1, y0, y1, n, color, opacity=0.35):
@@ -139,11 +144,11 @@ def _collared_shirt(fill_body, fill_near, fill_far, inner, rng, grime_n=12, pock
     back = (f'<clipPath id="torso"><path d="{TORSO}"/></clipPath>'
             f'<path d="{TORSO}" fill="{fill_body}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
             + _shirt_folds(fill_body)
-            + '<g clip-path="url(#torso)">' + _grime(rng, 80, 920, 860, 1000, grime_n, "#3b2a18", 0.32) + '</g>'
-            + f'<path d="{BACK_BAND}" fill="{fill_near}" stroke="{OUT}" stroke-width="6" stroke-linejoin="round"/>')
+            + '<g clip-path="url(#torso)">' + _grime(rng, 80, 920, 870, 1000, grime_n, "#3b2a18", 0.32) + '</g>')
     front = (inner
              + f'<path d="{NEAR_COLLAR}" fill="{fill_near}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
-             + f'<path d="M 400 836 C 380 848 360 858 340 866" fill="none" stroke="{OUT}" stroke-width="4" stroke-linecap="round"/>'
+             # fold line where the collar turns over
+             + f'<path d="M 392 800 C 418 846 452 878 500 904" fill="none" stroke="{OUT}" stroke-width="3.5" stroke-linecap="round" opacity="0.7"/>'
              + f'<path d="{FAR_COLLAR}" fill="{fill_far}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
              # placket and buttons following the turned chest
              + f'<path d="M 602 968 C 606 985 608 998 609 1075" fill="none" stroke="{OUT}" stroke-width="5"/>'
@@ -156,7 +161,7 @@ def _collared_shirt(fill_body, fill_near, fill_far, inner, rng, grime_n=12, pock
 
 def _tee(color="#2a2a2a"):
     return (f'<path d="{OPENING}" fill="{color}" stroke="{OUT}" stroke-width="6" stroke-linejoin="round"/>'
-            f'<path d="M 420 860 C 490 892 600 902 676 872" fill="none" stroke="{shade(color, 1.4)}" stroke-width="5"/>')
+            f'<path d="M 418 832 C 465 892 600 910 680 866" fill="none" stroke="{shade(color, 1.4)}" stroke-width="5"/>')
 
 
 def clothing(kind, rng):
@@ -165,7 +170,7 @@ def clothing(kind, rng):
         base = "#4f6fa3"
         back, front = _collared_shirt(base, shade(base, 1.1), shade(base, 0.92), _tee(), rng, 14)
         front += (f'<path d="M 120 940 C 140 960 150 985 152 1075" fill="none" stroke="{shade(base, 1.4)}" stroke-width="3" stroke-dasharray="8 7"/>'
-                  f'<path d="M 330 870 L 460 955" fill="none" stroke="{shade(base, 1.45)}" stroke-width="3" stroke-dasharray="7 6"/>')
+                  f'<path d="M 362 856 C 400 896 440 930 482 955" fill="none" stroke="{shade(base, 1.45)}" stroke-width="3" stroke-dasharray="7 6"/>')
         return back, front
     if kind in ("Red Flannel", "Green Flannel"):
         base = "#a8322d" if kind == "Red Flannel" else "#3f6b3a"
@@ -180,7 +185,7 @@ def clothing(kind, rng):
         # grey plaid work shirt shows in the opening
         inner = ('<defs>' + _plaid("plaidgrey", "#8e8e8e", -8, 0, 34) + '</defs>'
                  f'<path d="{OPENING}" fill="url(#plaidgrey)" stroke="{OUT}" stroke-width="6" stroke-linejoin="round"/>'
-                 f'<path d="M 430 858 L 540 935 L 556 886 Z M 668 866 L 612 932 L 600 890 Z" fill="#7a7a7a" stroke="{OUT}" stroke-width="5" stroke-linejoin="round"/>')
+                 f'<path d="M 455 868 L 552 950 L 562 902 Z M 668 860 L 604 944 L 596 902 Z" fill="#7a7a7a" stroke="{OUT}" stroke-width="5" stroke-linejoin="round"/>')
         back, front = _collared_shirt(base, cord, shade(cord, 0.85), inner, rng, 24)
         return back, front
     if kind == "Stained Undershirt":
@@ -192,7 +197,7 @@ def clothing(kind, rng):
                 + _grime(rng, 80, 920, 860, 1000, 18, "#8a6a2c", 0.45)
                 + _grime(rng, 450, 750, 900, 1000, 5, "#7a1f1a", 0.55) + '</g>')
         front = ( # crew neckline sitting on the neck base
-                 f'<path d="M 372 846 C 440 905 600 915 694 866 L 700 890 C 600 945 430 935 365 870 Z" fill="{shade(base, 0.9)}" stroke="{OUT}" stroke-width="6" stroke-linejoin="round"/>'
+                 f'<path d="M 398 800 C 450 880 600 900 690 845 L 702 868 C 600 928 432 908 382 822 Z" fill="{shade(base, 0.9)}" stroke="{OUT}" stroke-width="6" stroke-linejoin="round"/>'
                  # suspenders follow the turned torso
                  f'<path d="M 300 862 C 320 920 335 970 340 1075 L 378 1075 C 372 965 358 915 338 858 Z" fill="#5b3a22" stroke="{OUT}" stroke-width="5" stroke-linejoin="round"/>'
                  f'<path d="M 760 868 C 748 920 735 970 730 1075 L 762 1075 C 768 970 778 925 790 876 Z" fill="#5b3a22" stroke="{OUT}" stroke-width="5" stroke-linejoin="round"/>')
