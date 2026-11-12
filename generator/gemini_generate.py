@@ -1,6 +1,6 @@
 """Generate token images with Gemini's image model, anchored to George's reference images.
 
-    GEMINI_API_KEY=... python3 generator/gemini_generate.py 1-20          # writes output/ai/images/<id>.png
+    python3 generator/gemini_generate.py 1-20   # key from GEMINI_API_KEY or a network secret header          # writes output/ai/images/<id>.png
     python3 generator/gemini_generate.py 10,76 --refs refs/master.jpg refs/mask.jpg --force
 
 Every call sends the reference image(s) plus the token's prompt from output/ai/manifest.json (run prompts.py
@@ -45,7 +45,7 @@ def generate(row, refs, key):
     body = {"contents": [{"parts": [part_for(r) for r in refs] + [{"text": LEAD + row["prompt"] + " Avoid: " + row["negative"]}]}],
             "generationConfig": {"responseModalities": ["IMAGE"], "seed": row["seed"], "imageConfig": {"aspectRatio": "1:1"}}}
     req = urllib.request.Request(f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent",
-                                 data=json.dumps(body).encode(), headers={"Content-Type": "application/json", "x-goog-api-key": key})
+                                 data=json.dumps(body).encode(), headers={"Content-Type": "application/json", **({"x-goog-api-key": key} if key else {})})
     for attempt in range(5):
         try:
             res = json.load(urllib.request.urlopen(req, timeout=180))
@@ -63,9 +63,7 @@ def generate(row, refs, key):
 
 
 def main():
-    key = os.environ.get("GEMINI_API_KEY")
-    if not key:
-        sys.exit("Set GEMINI_API_KEY first.")
+    key = os.environ.get("GEMINI_API_KEY")   # optional: a network secret can add the x-goog-api-key header instead
     args = sys.argv[1:]
     force = "--force" in args
     refs = DEFAULT_REFS
