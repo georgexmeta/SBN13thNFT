@@ -265,6 +265,19 @@ function headPoint(n) {
     r += .07 * Math.exp(-((n.x - .6) ** 2 + (n.y + .28) ** 2) / .03);                                  // far cheek bulge (silhouette)
     r += .1 * Math.exp(-((n.x - .3) ** 2 / .08 + (n.y + .62) ** 2 / .05));                            // heavy lower jaw
     r += .09 * Math.exp(-((n.x - .3) ** 2 / .05 + (n.y + .85) ** 2 / .03));                           // jutting chin
+    if (!MASKED) {
+      const ny = n.y, nx = n.x - .01;
+      // nose bridge sculpted out of the face: a ridge from between the brows widening into the nose
+      const along = THREE.MathUtils.smoothstep(ny, -.22, .12) * (1 - THREE.MathUtils.smoothstep(ny, .12, .2));
+      r += (.05 + .07 * (1 - THREE.MathUtils.smoothstep(ny, -.2, .1))) * along * Math.exp(-(nx * nx) / (.004 + .006 * (1 - THREE.MathUtils.smoothstep(ny, -.2, .1))));
+      // cheekbones and the soft muzzle round the mouth
+      for (const sx of [-1, 1]) r += .045 * Math.exp(-((n.x - sx * .4) ** 2 / .02 + (ny + .08) ** 2 / .012));
+      r += .055 * Math.exp(-(nx * nx / .06 + (ny + .48) ** 2 / .03));
+      // nasolabial folds: creases from the nose wings round the muzzle
+      for (const sx of [-1, 1]) { const cx = sx * (.2 + (-.2 - ny) * .35); if (ny < -.15 && ny > -.62) r -= .025 * Math.exp(-((n.x - cx) ** 2) / .0012) * Math.sin(Math.PI * (-.15 - ny) / .47); }
+      // under-eye hollows
+      for (const ex of [-.33, .33]) r -= .02 * Math.exp(-((n.x - ex) ** 2 / .012 + (ny + .1) ** 2 / .003));
+    }
   }
   {
     const b = n.dot(BACKLOBE); if (b > 0) r += .1 * Math.exp(-(1 - b) / .1);                         // full back-top of the skull
@@ -315,19 +328,24 @@ if (SHAPE === 'Split Skull') for (const t of [.35, .55, .75]) {
 
 // ------------------------------------------------------------------ ears
 function buildEar() {
-  const ear = group(); ear.position.set(-.86 * HX + .02, -.41, -.12); ear.rotation.set(0, -Math.PI / 2 + .25, .1); ear.scale.setScalar(1.4); head.add(ear);
+  const ear = group(); ear.position.set(-.86 * HX - .03, -.41, -.08); ear.rotation.set(0, -Math.PI / 2 + .5, .1); ear.scale.setScalar(1.4); head.add(ear);
   const kind = A['Ear'];
   mesh(sph(.2, 40, 30), SKINMAT, ear, null, null, [.8, 1.25, .35]);
   const rimE = mesh(new THREE.TorusGeometry(.17, .065, 18, 50, Math.PI * (kind === 'Torn' ? 1.15 : 1.55)), SKINMAT, ear, [0, 0, .03], [0, 0, Math.PI * .55], [.85, 1.2, 1]);
   mesh(sph(.06, 16, 12), skinShade(.45), ear, [-.02, -.02, .05], null, [1, 1, .4]);
-  if (kind === 'Normal' || kind === 'Cauliflower') mesh(sph(.1, 24, 18), SKINMAT, ear, [.03, -.3, .03], null, [1, 1.1, .7]);   // fat hanging lobe (silhouette)
+  // antihelix ridge with its upper fork, tragus flap, and a shadowed bowl leading into the canal
+  tube([V(.06, -.13, .06), V(.1, -.02, .07), V(.08, .1, .07), V(.0, .15, .06)], .028, SKINMAT, ear);
+  tube([V(.09, .05, .07), V(-.02, .07, .065)], .02, SKINMAT, ear);
+  mesh(sph(.045, 16, 12), SKINMAT, ear, [-.12, -.06, .05], null, [.8, 1.1, .7]);
+  mesh(sph(.1, 20, 14), skinShade(.62), ear, [-.01, -.03, .035], null, [.8, 1, .3]);
+  if (kind === 'Normal' || kind === 'Cauliflower') mesh(sph(.11, 24, 18), SKINMAT, ear, [.0, -.27, .03], null, [1, 1.15, .7]);   // fat hanging lobe (silhouette)
   if (kind === 'Cauliflower') for (const [x, y] of [[.12, .12], [.15, -.02], [.06, .2], [.0, .1], [.1, -.12]]) mesh(sph(.06), SKINMAT, ear, [x, y, .07]);
   if (kind === 'Torn') { mesh(sph(.05), clay('#7a1212', { rough: .4 }), ear, [.1, .16, .06], null, [1, .5, .5]); }
   if (kind === 'Gauged') {
     mesh(new THREE.TorusGeometry(.085, .045, 18, 40), SKINMAT, ear, [-.02, -.3, .03], null, [1, 1.15, 1]);
     mesh(new THREE.TorusGeometry(.075, .028, 18, 48), clay('#151515', { rough: .3, bump: .2 }), ear, [-.02, -.3, .035]);
     mesh(new THREE.TorusGeometry(.052, .008, 10, 40), clay('#c9ccd0', { metal: .8, rough: .25, bump: .1 }), ear, [-.02, -.3, .06]);
-  } else mesh(sph(.075), SKINMAT, ear, [-.02, -.22, .03]);
+  } else if (kind === 'Torn') mesh(sph(.075), SKINMAT, ear, [-.02, -.22, .03]);
 }
 buildEar();
 
@@ -505,7 +523,6 @@ function buildNose() {
     return;
   }
   // bridge running down from between the eyes
-  tube([bridge.p.clone().addScaledVector(bridge.n, -.02), at.p.clone().addScaledVector(at.n, .08)], .085, SKINMAT, NOSE);
   if (k === 'Smashed Flat') {
     mesh(sph(.2, 32, 24), SKINMAT, g, [.03, 0, .06], [0, 0, .35], [1.15, .6, .5]);
     for (const x of [-.07, .09]) mesh(sph(.045), nost, g, [x, -.09, .11], null, [1.3, .6, .6]);
@@ -533,9 +550,17 @@ function teeth(g, n, w, y0, gaps, up = 1) {
 function buildMouth() {
   if (MASKED || BANDANA) return;
   const k = A['Mouth'], at = onFace(.02, -.5), g = placed(group(), at, 0); g.scale.setScalar(1.35);
-  const cav = new THREE.MeshStandardMaterial({ color: '#2a0808', roughness: .9 }), lipM = clay(shade(SKIN, .75), { rough: .5 });
+  const cav = new THREE.MeshStandardMaterial({ color: '#2a0808', roughness: .9 }), lipM = clay('#' + new THREE.Color(SKIN).lerp(new THREE.Color('#a8463e'), .3).multiplyScalar(.85).getHexString(), { rough: .55, bump: .8 });
   const gum = clay('#b84a4a', { rough: .4 });
-  const lip = (pts, r) => tube(pts.map(([x, y]) => V(x, y, .02 - Math.abs(x) * .25)), r, lipM, g);
+  const lip = (pts, r) => {      // fat, rounded lips that taper into creased corners
+    const curve = new THREE.CatmullRomCurve3(pts.map(([x, y]) => V(x, y, .02 - Math.abs(x) * .25)));
+    const geo = new THREE.TubeGeometry(curve, 48, r * 1.35, 14, false), pp = geo.attributes.position, c = V(0, 0, 0), q = V(0, 0, 0);
+    for (let i = 0; i <= 48; i++) { const t = i / 48, k = .35 + .65 * Math.sin(Math.PI * t); curve.getPointAt(t, c);
+      for (let j = 0; j <= 14; j++) { const vi = i * 15 + j; q.fromBufferAttribute(pp, vi).sub(c).multiplyScalar(k).add(c); pp.setXYZ(vi, q.x, q.y, q.z); } }
+    geo.computeVertexNormals(); const m = mesh(geo, lipM, g);
+    for (const e of [pts[0], pts[pts.length - 1]]) mesh(sph(r * .9, 12, 8), SKINMAT, g, [e[0] * 1.04, e[1], .0 - Math.abs(e[0]) * .25], null, [1, 1.3, .6]);   // corner creases
+    return m;
+  };
   if (k === 'Slack Jaw') {
     mesh(sph(.16, 32, 24), cav, g, [0, -.05, -.02], null, [1.2, 1, .3]);
     mesh(sph(.08, 24, 16), clay('#c45a5a', { rough: .35 }), g, [.02, -.12, .02], null, [1.2, .6, .6]);
@@ -816,7 +841,13 @@ if (MASKED) {
 }
 
 // ------------------------------------------------------------------ neck and clothing
-mesh(new THREE.CylinderGeometry(.72, .8, 1.6, 40), SKINMAT, scene, [.26, BODY_Y + .55, -.1]);   // thick neck
+{ // thick neck: flares into the trapezius, cords running down from behind the ears, a lump of Adam's apple
+  const nk = group(); nk.position.set(.26, BODY_Y + .55, -.1); nk.rotation.y = .5; scene.add(nk);
+  const prof = [[.86, -.8], [.8, -.5], [.74, -.1], [.73, .3], [.78, .8]].map(([r, y]) => new THREE.Vector2(r, y));
+  mesh(new THREE.LatheGeometry(new THREE.SplineCurve(prof).getPoints(24), 60), SKINMAT, nk, null, null, [1, 1, .92]);
+  for (const sx of [-1, 1]) tube([V(sx * .55, .75, -.25), V(sx * .45, .2, .35), V(sx * .22, -.6, .72)], .13, SKINMAT, nk);   // neck cords
+  mesh(sph(.12, 20, 14), SKINMAT, nk, [0, .05, .72], null, [.9, 1.2, .7]);                                              // Adam's apple
+}
 const body = group(); body.position.set(.2, BODY_Y, -.25); body.rotation.y = .35; scene.add(body);
 const CL = A['Clothing'];
 const KIND = PAL.flannels[CL] ? 'flannel' : PAL.hoodie[CL] ? 'hoodie' : PAL.trench[CL] ? 'trench' : PAL.tee[CL] ? 'tee'
