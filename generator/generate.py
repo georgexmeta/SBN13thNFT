@@ -29,7 +29,7 @@ WEIGHTS = {
     "Skin Tone": {"Pink Flesh": 16, "Sallow": 16, "Ruddy": 16, "Corpse Grey": 16, "Leather": 15,
                   "Pale Wax": 14, "Bloodless Blue": 5, "Radioactive": 1.6},
     "Swelling": {"Mild": 40, "Lumpy": 40, "Grotesque": 20},
-    "Ear": {"Normal": 55, "Cauliflower": 30, "Torn": 15},
+    "Ear": {"Normal": 55, "Cauliflower": 30, "Torn": 15, "Gauged": 4},
     "Eyes": {"Droopy Mismatch": 26, "Lazy Eye": 26, "Sunken Socket": 18, "Swollen Shut": 14,
              "Pinprick": 11, "Hollow Sockets": 4, "Glowing Red": 1},
     "Brows": {"Bushy": 50, "None": 30, "Scarred": 20},

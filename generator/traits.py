@@ -507,6 +507,15 @@ def ear(skin, kind):
         inner = (f'<path d="M 390 490 C 360 480 350 520 370 540 C 360 560 380 575 395 570" fill="none" '
                  f'stroke="{OUT}" stroke-width="5" stroke-linecap="round"/>'
                  '<path d="M 330 495 L 345 490" stroke="#7a1f1a" stroke-width="5"/>')
+    elif kind == "Gauged":
+        # stretched lobe with a black tunnel gauge (George's reference)
+        d = ("M 405 470 C 370 430 325 440 325 495 C 325 555 338 590 345 618 "
+             "C 345 680 405 685 404 632 C 404 600 410 570 405 540 C 418 515 418 490 405 470 Z")
+        inner = (f'<path d="M 390 485 C 355 475 350 520 370 540 C 360 560 380 575 395 568" fill="none" '
+                 f'stroke="{OUT}" stroke-width="5" stroke-linecap="round"/>'
+                 f'<circle cx="374" cy="640" r="25" fill="#1b1b1b" stroke="{OUT}" stroke-width="5"/>'
+                 f'<circle cx="374" cy="640" r="15" fill="{shade(skin, 0.4)}" stroke="#9aa0a6" stroke-width="3"/>'
+                 f'<path d="M 358 625 A 21 21 0 0 1 388 622" fill="none" stroke="#e8eaec" stroke-width="3" stroke-linecap="round"/>')
     else:  # "Normal"
         d = "M 405 470 C 370 430 325 440 325 495 C 325 560 355 605 390 600 C 405 590 410 570 405 540 C 418 515 418 490 405 470 Z"
         inner = (f'<path d="M 390 485 C 355 475 350 520 370 540 C 360 560 380 575 395 568" fill="none" '

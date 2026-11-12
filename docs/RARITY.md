@@ -70,9 +70,10 @@ Tiers by share of the collection: Common >= 10%, Uncommon 5-10%, Rare 2-5%, Epic
 
 | Value | Count | Share | Tier |
 |---|---|---|---|
-| Normal | 725 | 55.8% | Common |
-| Cauliflower | 384 | 29.5% | Common |
-| Torn | 191 | 14.7% | Common |
+| Normal | 705 | 54.2% | Common |
+| Cauliflower | 353 | 27.2% | Common |
+| Torn | 197 | 15.2% | Common |
+| Gauged | 45 | 3.5% | Rare |
 
 ## Eyes
 
@@ -232,10 +233,10 @@ Tiers by share of the collection: Common >= 10%, Uncommon 5-10%, Rare 2-5%, Epic
 | 2 | #425 - Old Gilded | 2869 |
 | 3 | #732 - Moonface | 2304 |
 | 4 | #305 - Mother's Boy | 2289 |
-| 5 | #432 - Cinder | 2174 |
+| 5 | #432 - Cinder | 2173 |
 | 6 | #797 - Swamp Saint | 2118 |
 | 7 | #444 - Hookjaw | 2078 |
-| 8 | #1245 - Silo Sam | 2070 |
+| 8 | #1245 - Silo Sam | 2071 |
 | 9 | #76 - Lantern Jack | 1909 |
 | 10 | #415 - The Harvester | 1905 |
 | 11 | #85 - The Pale Deacon | 1877 |
@@ -250,6 +251,6 @@ Tiers by share of the collection: Common >= 10%, Uncommon 5-10%, Rare 2-5%, Epic
 | 20 | #529 | 284 |
 | 21 | #964 | 284 |
 | 22 | #178 | 261 |
-| 23 | #1138 | 212 |
-| 24 | #765 | 202 |
-| 25 | #986 | 199 |
+| 23 | #986 | 221 |
+| 24 | #1138 | 212 |
+| 25 | #921 | 203 |
