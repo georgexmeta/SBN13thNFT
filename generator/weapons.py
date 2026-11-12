@@ -26,7 +26,7 @@ WOOD = "#7a4a25"
 HOLD_T = "translate(250 965) rotate(-12) scale(1.3)"
 # back-slung weapons run from behind the far hip up past the near shoulder
 SLING_T = {"Pitchfork": "translate(560 1120) rotate(-24)",
-           "Weed Whacker": "translate(502 1337) rotate(-28)"}
+           "Weed Whacker": "translate(422 1411) rotate(-20)"}
 
 
 def _blood(points):
@@ -49,29 +49,53 @@ def _wood_grip(y0, y1, w, color=WOOD, rivets=True):
 
 
 def _fist(skin, sleeve):
-    """Fist around a vertical grip at the origin, forearm and sleeve below."""
-    dark = shade(skin, 0.75)
-    arm = (f'<path d="M -48 30 C -55 90 -62 160 -66 260 L 70 260 C 66 160 60 90 52 30 Z" '
-           f'fill="{skin}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
-           f'<path d="M -48 30 C -55 90 -62 160 -66 260 L -30 260 C -28 160 -26 90 -20 40 Z" fill="{dark}"/>')
+    """Fist wrapped around a vertical grip at the origin.
+
+    We see the front of the fist: four stacked fingers curl around the
+    handle, their tips tucked in on the left, the thumb locks over the index
+    finger, and the back of the hand runs right into the wrist. The forearm
+    angles down and to the right, back toward the body.
+    """
+    dark = shade(skin, 0.74)
+    light = shade(skin, 1.18)
+    # forearm runs from the wrist down-right toward the body
+    arm_d = "M 30 36 L 92 270 L 208 270 L 96 4 Z"
+    arm = (f'<path d="{arm_d}" fill="{skin}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
+           f'<path d="M 30 36 L 92 270 L 128 270 L 58 30 Z" fill="{dark}"/>'
+           f'<path d="M 74 70 C 84 110 92 140 100 170" fill="none" stroke="{dark}" stroke-width="5" stroke-linecap="round"/>')
     if sleeve:
-        arm += (f'<path d="M -78 120 C -70 112 70 112 82 120 L 92 260 L -88 260 Z" fill="{sleeve}" '
+        arm += (f'<path d="M 36 86 C 76 68 118 60 144 70 L 222 270 L 76 270 Z" fill="{sleeve}" '
                 f'stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
-                f'<path d="M -78 120 C -70 112 70 112 82 120 L 84 142 C 60 134 -60 134 -80 142 Z" fill="#000" opacity="0.25"/>')
-    fist = (f'<path d="M -52 -38 C -60 -10 -58 30 -46 46 C -10 56 30 56 58 44 C 70 20 70 -20 60 -40 '
-            f'C 30 -50 -20 -50 -52 -38 Z" fill="{skin}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
-            # knuckle shading on the back of the hand
-            f'<path d="M -52 -38 C -60 -10 -58 30 -46 46 C -36 48 -30 40 -32 20 C -36 0 -36 -20 -30 -42 Z" fill="{dark}"/>'
-            # curled fingers on the front of the grip
-            + "".join(f'<path d="M 18 {y} C 50 {y - 4} 64 {y + 4} 62 {y + 18}" fill="none" stroke="{OUT}" '
-                      f'stroke-width="5" stroke-linecap="round"/>' for y in (-34, -12, 10, 30))
-            # thumb wrapped over the top
-            + f'<path d="M -46 -30 C -30 -54 10 -56 34 -40 C 40 -30 30 -24 18 -26 C 0 -30 -24 -24 -40 -16 Z" '
-              f'fill="{skin}" stroke="{OUT}" stroke-width="6" stroke-linejoin="round"/>'
-            # dirty fingernail and a scab
-            + f'<path d="M 22 -40 C 30 -44 38 -40 36 -32" fill="none" stroke="#5a4a2a" stroke-width="4"/>'
-            + f'<circle cx="-20" cy="20" r="6" fill="{BLOOD}" opacity="0.7"/>')
-    return arm, fist
+                f'<path d="M 36 86 C 76 68 118 60 144 70 L 152 88 C 122 80 80 88 44 106 Z" fill="#000" opacity="0.28"/>')
+    # back of the hand / palm mass behind the fingers, flowing into the wrist
+    back = (f'<path d="M 18 -60 C 60 -66 92 -44 98 -6 C 102 26 92 44 70 52 L 30 50 Z" '
+            f'fill="{skin}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
+            f'<path d="M 60 -40 C 80 -20 84 10 74 40 L 92 30 C 100 6 96 -26 80 -48 Z" fill="{dark}"/>')
+    # fingers: (top y, height, left end) from pinky (bottom) up to index (top)
+    fingers = [(26, 26, -30), (0, 28, -40), (-28, 29, -44), (-56, 30, -44)]
+    f_svg = ""
+    for y, h, x0 in fingers:
+        x1 = 62
+        r = h / 2
+        f_svg += (f'<rect x="{x0}" y="{y}" width="{x1 - x0}" height="{h}" rx="{r}" fill="{skin}" '
+                  f'stroke="{OUT}" stroke-width="6"/>'
+                  # knuckle crease and the shadow where the finger rolls under
+                  f'<path d="M {x0 + 26} {y + 5} C {x0 + 22} {y + h * 0.4:.0f} {x0 + 22} {y + h * 0.6:.0f} {x0 + 26} {y + h - 5}" '
+                  f'fill="none" stroke="{OUT}" stroke-width="3.5" stroke-linecap="round"/>'
+                  f'<path d="M {x0 + 8} {y + h - 6} L {x1 - 8} {y + h - 6}" stroke="{dark}" stroke-width="6" stroke-linecap="round"/>'
+                  f'<path d="M {x0 + 34} {y + 7} L {x1 - 10} {y + 7}" stroke="{light}" stroke-width="4" stroke-linecap="round"/>'
+                  # grimy fingernail on the tucked-in tip
+                  f'<path d="M {x0 + 5} {y + 6} C {x0 + 12} {y + 4} {x0 + 15} {y + h * 0.5:.0f} {x0 + 10} {y + h - 6}" '
+                  f'fill="#6b5a3a" stroke="{OUT}" stroke-width="2.5"/>')
+    # thumb comes from the back of the hand and locks over the index finger
+    thumb = (f'<path d="M 92 -40 C 80 -74 40 -84 0 -74 C -22 -68 -30 -54 -20 -46 C -8 -38 20 -46 46 -42 '
+             f'C 62 -40 74 -30 84 -20 Z" fill="{skin}" stroke="{OUT}" stroke-width="6" stroke-linejoin="round"/>'
+             f'<path d="M -18 -66 C -10 -72 0 -72 6 -66 C 2 -58 -8 -54 -18 -58 Z" fill="#6b5a3a" stroke="{OUT}" stroke-width="2.5"/>'
+             f'<path d="M 30 -70 C 50 -72 66 -66 76 -54" fill="none" stroke="{light}" stroke-width="4" stroke-linecap="round"/>'
+             # scab and dirt
+             f'<circle cx="40" cy="-14" r="6" fill="{BLOOD}" opacity="0.75"/>'
+             f'<ellipse cx="78" cy="10" rx="10" ry="6" fill="#3b2a18" opacity="0.35"/>')
+    return arm, back + f_svg + thumb
 
 
 def _machete():
@@ -170,27 +194,37 @@ def _pitchfork():
 
 
 def _weed_whacker():
-    shaft = (f'<rect x="-11" y="-760" width="22" height="900" rx="10" fill="#9aa0a6" stroke="{OUT}" stroke-width="{SW}"/>'
-             f'<path d="M -3 -740 L -3 120" stroke="#e1e4e7" stroke-width="5"/>')
-    # D-handle sticking off the shaft
-    handle = (f'<path d="M 0 -520 C 70 -540 110 -500 100 -440 C 92 -400 40 -400 0 -420" fill="none" '
-              f'stroke="{OUT}" stroke-width="26" stroke-linecap="round"/>'
-              f'<path d="M 0 -520 C 70 -540 110 -500 100 -440 C 92 -400 40 -400 0 -420" fill="none" '
-              f'stroke="#2d2d2d" stroke-width="14" stroke-linecap="round"/>')
-    # engine at the top end, poking up above the shoulder
-    engine = (f'<path d="M -70 -760 C -80 -830 -60 -900 0 -910 C 60 -905 90 -850 80 -770 C 60 -745 -50 -742 -70 -760 Z" '
-              f'fill="#e07a1f" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
-              f'<path d="M -70 -760 C -80 -830 -60 -900 0 -910 C -30 -880 -40 -820 -36 -752 Z" fill="#000" opacity="0.2"/>'
-              f'<rect x="-38" y="-870" width="70" height="60" rx="10" fill="#2d2d2d" stroke="{OUT}" stroke-width="5"/>'
-              + "".join(f'<path d="M -30 {y} L 24 {y}" stroke="#555" stroke-width="5"/>' for y in (-858, -842, -826))
-              # fuel cap, pull cord
-              + f'<circle cx="52" cy="-800" r="14" fill="#2d2d2d" stroke="{OUT}" stroke-width="5"/>'
-              f'<path d="M -66 -800 C -100 -800 -110 -780 -112 -760" fill="none" stroke="{OUT}" stroke-width="4"/>'
-              f'<rect x="-130" y="-764" width="38" height="16" rx="8" fill="#2d2d2d" stroke="{OUT}" stroke-width="4"/>'
-              # grime and a splash of blood on the housing
-              f'<ellipse cx="30" cy="-880" rx="18" ry="8" fill="#3b2a18" opacity="0.4"/>'
-              + _blood([(-50, -790, 7), (-36, -776, 4)]))
-    return shaft + handle + engine
+    """String trimmer: long shaft, loop handle, bent neck with the spool head,
+    half-moon guard and trimmer line at the top end (poking over the shoulder).
+    The engine end hangs down behind the body."""
+    shaft = (f'<rect x="-11" y="-830" width="22" height="960" rx="10" fill="#9aa0a6" stroke="{OUT}" stroke-width="{SW}"/>'
+             f'<path d="M -3 -810 L -3 120" stroke="#e1e4e7" stroke-width="5"/>')
+    # loop (bike) handle clamped onto the shaft
+    loop = "M 0 -730 C -70 -760 -120 -710 -100 -660 C -86 -624 -30 -632 0 -660"
+    handle = (f'<path d="{loop}" fill="none" stroke="{OUT}" stroke-width="26" stroke-linecap="round"/>'
+              f'<path d="{loop}" fill="none" stroke="#2d2d2d" stroke-width="14" stroke-linecap="round"/>'
+              f'<rect x="-18" y="-740" width="36" height="90" rx="8" fill="#e07a1f" stroke="{OUT}" stroke-width="5"/>')
+    # gearbox and bent neck
+    neck = (f'<rect x="-20" y="-860" width="40" height="50" rx="8" fill="#3a3a3a" stroke="{OUT}" stroke-width="6"/>'
+            f'<path d="M 0 -846 L 42 -918" stroke="{OUT}" stroke-width="30" stroke-linecap="round"/>'
+            f'<path d="M 0 -846 L 42 -918" stroke="#3a3a3a" stroke-width="18" stroke-linecap="round"/>')
+    # cutter head in a frame rotated so the neck comes in along +y
+    head = ('<g transform="translate(56 -940) rotate(30) scale(1.35)">'
+            # half-moon guard on the shaft side
+            f'<path d="M -80 0 A 80 46 0 0 0 80 0 L 80 -8 L -80 -8 Z" fill="#e07a1f" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
+            f'<path d="M -64 10 A 64 32 0 0 0 64 10 M -30 6 L -26 38 M 30 6 L 26 38" fill="none" stroke="#000" stroke-width="8" opacity="0.2"/>'
+            # trimmer line whipping out of the spool
+            f'<path d="M -30 -10 C -60 -16 -80 -10 -100 -22 M 30 -10 C 60 -6 80 -18 102 -10" fill="none" stroke="{OUT}" stroke-width="11" stroke-linecap="round"/>'
+            f'<path d="M -30 -10 C -60 -16 -80 -10 -100 -22 M 30 -10 C 60 -6 80 -18 102 -10" fill="none" stroke="#b5e61d" stroke-width="5" stroke-linecap="round"/>'
+            # spool
+            f'<ellipse cx="0" cy="-10" rx="38" ry="14" fill="#2d2d2d" stroke="{OUT}" stroke-width="6"/>'
+            f'<ellipse cx="0" cy="-22" rx="22" ry="8" fill="#555" stroke="{OUT}" stroke-width="4"/>'
+            f'<ellipse cx="0" cy="-30" rx="9" ry="4" fill="#9aa0a6" stroke="{OUT}" stroke-width="3"/>'
+            '</g>')
+    # grass clippings and blood stuck to the guard
+    gunk = (_blood([(10, -880, 7), (70, -880, 5), (30, -950, 4)])
+            + f'<path d="M -10 -900 l 10 -14 M 90 -900 l 8 -16 M 60 -870 l 14 -6" stroke="#5f8a2a" stroke-width="5" stroke-linecap="round"/>')
+    return shaft + handle + neck + head + gunk
 
 
 def slung(kind):
