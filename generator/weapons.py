@@ -49,53 +49,62 @@ def _wood_grip(y0, y1, w, color=WOOD, rivets=True):
 
 
 def _fist(skin, sleeve):
-    """Fist wrapped around a vertical grip at the origin.
+    """Character's RIGHT fist around a vertical grip at the origin, blade up.
 
-    We see the front of the fist: four stacked fingers curl around the
-    handle, their tips tucked in on the left, the thumb locks over the index
-    finger, and the back of the hand runs right into the wrist. The forearm
-    angles down and to the right, back toward the body.
+    Palm faces the body (viewer-right), back of the hand faces out
+    (viewer-left). From the front we see the knuckle ridge on the left, the
+    middle segments of the four fingers rolled across the front of the
+    handle with their tips curling in on the right, and the thumb coming
+    from the palm side and locking over the index finger, nail pointing out.
+    The forearm rises from below.
     """
-    dark = shade(skin, 0.74)
-    light = shade(skin, 1.18)
-    # forearm runs from the wrist down-right toward the body
-    arm_d = "M 28 40 L 44 270 L 158 270 L 98 10 Z"
-    arm = (f'<path d="{arm_d}" fill="{skin}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
-           f'<path d="M 28 40 L 44 270 L 80 270 L 56 34 Z" fill="{dark}"/>'
-           f'<path d="M 70 80 C 76 120 80 150 84 180" fill="none" stroke="{dark}" stroke-width="5" stroke-linecap="round"/>')
+    dark = shade(skin, 0.72)
+    mid = shade(skin, 0.86)
+    light = shade(skin, 1.2)
+    # forearm and sleeve
+    arm = (f'<path d="M -74 40 L -90 280 L 50 280 L 46 40 Z" fill="{skin}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
+           f'<path d="M -74 40 L -90 280 L -52 280 L -40 40 Z" fill="{dark}"/>'
+           f'<path d="M -20 90 C -22 130 -24 160 -26 190" fill="none" stroke="{mid}" stroke-width="5" stroke-linecap="round"/>')
     if sleeve:
-        arm += (f'<path d="M 22 96 C 62 80 104 74 128 82 L 172 270 L 34 270 Z" fill="{sleeve}" '
+        arm += (f'<path d="M -88 110 C -50 98 20 96 60 108 L 66 280 L -102 280 Z" fill="{sleeve}" '
                 f'stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
-                f'<path d="M 22 96 C 62 80 104 74 128 82 L 134 100 C 106 92 64 98 28 116 Z" fill="#000" opacity="0.28"/>')
-    # back of the hand / palm mass behind the fingers, flowing into the wrist
-    back = (f'<path d="M 18 -60 C 60 -66 92 -44 98 -6 C 102 26 92 44 70 52 L 30 50 Z" '
+                f'<path d="M -88 110 C -50 98 20 96 60 108 L 61 128 C 20 118 -50 120 -88 132 Z" fill="#000" opacity="0.28"/>')
+    # back of the hand: the knuckle ridge on the outside edge, in shadow
+    back = (f'<path d="M -30 -66 C -66 -64 -86 -36 -86 0 C -86 36 -74 62 -44 70 L -30 70 Z" '
+            f'fill="{dark}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
+            + "".join(f'<path d="M -78 {y} C -82 {y + 6} -82 {y + 12} -78 {y + 16}" fill="none" stroke="{OUT}" stroke-width="3" stroke-linecap="round"/>'
+                      for y in (-40, -12, 16)))
+    # palm heel / base of the thumb on the inside edge
+    palm = (f'<path d="M 30 -58 C 64 -56 82 -26 80 10 C 78 44 64 64 40 70 L 20 70 Z" '
             f'fill="{skin}" stroke="{OUT}" stroke-width="{SW}" stroke-linejoin="round"/>'
-            f'<path d="M 60 -40 C 80 -20 84 10 74 40 L 92 30 C 100 6 96 -26 80 -48 Z" fill="{dark}"/>')
-    # fingers: (top y, height, left end) from pinky (bottom) up to index (top)
-    fingers = [(26, 26, -30), (0, 28, -40), (-28, 29, -44), (-56, 30, -44)]
+            f'<path d="M 58 10 C 66 30 62 48 50 58" fill="none" stroke="{mid}" stroke-width="5" stroke-linecap="round"/>')
+    # fingers, pinky (bottom) first so each upper finger overlaps the one below
+    fingers = [(30, 24, -60, 40), (2, 28, -68, 50), (-26, 29, -70, 52), (-54, 29, -66, 48)]
     f_svg = ""
-    for y, h, x0 in fingers:
-        x1 = 62
+    for y, h, x0, x1 in fingers:
         r = h / 2
-        f_svg += (f'<rect x="{x0}" y="{y}" width="{x1 - x0}" height="{h}" rx="{r}" fill="{skin}" '
+        f_svg += (f'<rect x="{x0}" y="{y}" width="{x1 - x0}" height="{h}" rx="{r:.1f}" fill="{skin}" '
                   f'stroke="{OUT}" stroke-width="6"/>'
-                  # knuckle crease and the shadow where the finger rolls under
-                  f'<path d="M {x0 + 26} {y + 5} C {x0 + 22} {y + h * 0.4:.0f} {x0 + 22} {y + h * 0.6:.0f} {x0 + 26} {y + h - 5}" '
+                  # underside shadow of the curled finger
+                  f'<path d="M {x0 + r:.0f} {y + h - 6} L {x1 - r:.0f} {y + h - 6}" stroke="{mid}" stroke-width="7" stroke-linecap="round"/>'
+                  # the bent middle joint
+                  f'<path d="M {x0 + 30} {y + 6} C {x0 + 25} {y + h * 0.4:.0f} {x0 + 25} {y + h * 0.6:.0f} {x0 + 30} {y + h - 6}" '
                   f'fill="none" stroke="{OUT}" stroke-width="3.5" stroke-linecap="round"/>'
-                  f'<path d="M {x0 + 8} {y + h - 6} L {x1 - 8} {y + h - 6}" stroke="{dark}" stroke-width="6" stroke-linecap="round"/>'
-                  f'<path d="M {x0 + 34} {y + 7} L {x1 - 10} {y + 7}" stroke="{light}" stroke-width="4" stroke-linecap="round"/>'
-                  # grimy fingernail on the tucked-in tip
-                  f'<path d="M {x0 + 5} {y + 6} C {x0 + 12} {y + 4} {x0 + 15} {y + h * 0.5:.0f} {x0 + 10} {y + h - 6}" '
-                  f'fill="#6b5a3a" stroke="{OUT}" stroke-width="2.5"/>')
-    # thumb comes from the back of the hand and locks over the index finger
-    thumb = (f'<path d="M 92 -40 C 80 -74 40 -84 0 -74 C -22 -68 -30 -54 -20 -46 C -8 -38 20 -46 46 -42 '
-             f'C 62 -40 74 -30 84 -20 Z" fill="{skin}" stroke="{OUT}" stroke-width="6" stroke-linejoin="round"/>'
-             f'<path d="M -18 -66 C -10 -72 0 -72 6 -66 C 2 -58 -8 -54 -18 -58 Z" fill="#6b5a3a" stroke="{OUT}" stroke-width="2.5"/>'
-             f'<path d="M 30 -70 C 50 -72 66 -66 76 -54" fill="none" stroke="{light}" stroke-width="4" stroke-linecap="round"/>'
-             # scab and dirt
-             f'<circle cx="40" cy="-14" r="6" fill="{BLOOD}" opacity="0.75"/>'
-             f'<ellipse cx="78" cy="10" rx="10" ry="6" fill="#3b2a18" opacity="0.35"/>')
-    return arm, back + f_svg + thumb
+                  # fingertip curling back into the palm
+                  f'<path d="M {x1 - 14} {y + 5} C {x1 - 20} {y + h * 0.4:.0f} {x1 - 20} {y + h * 0.6:.0f} {x1 - 14} {y + h - 5}" '
+                  f'fill="none" stroke="{OUT}" stroke-width="3" stroke-linecap="round"/>'
+                  f'<path d="M {x0 + 36} {y + 7} L {x1 - 24} {y + 7}" stroke="{light}" stroke-width="4" stroke-linecap="round"/>')
+    # thumb: from the palm side, over the index finger, nail toward the outside
+    thumb = (f'<path d="M 74 -20 C 82 -60 52 -84 4 -82 C -34 -80 -52 -70 -50 -58 C -48 -46 -26 -46 0 -48 '
+             f'C 30 -50 48 -40 54 -18 Z" fill="{skin}" stroke="{OUT}" stroke-width="6" stroke-linejoin="round"/>'
+             f'<path d="M -46 -64 C -40 -76 -24 -78 -14 -72 C -16 -62 -30 -58 -44 -58 Z" fill="#c9a98a" stroke="{OUT}" stroke-width="3"/>'
+             f'<path d="M -44 -62 C -36 -66 -26 -66 -18 -66" fill="none" stroke="#5a4a2a" stroke-width="3"/>'
+             f'<path d="M 10 -76 C 34 -78 56 -70 66 -54" fill="none" stroke="{light}" stroke-width="4" stroke-linecap="round"/>'
+             f'<path d="M 10 -48 C 8 -56 10 -64 16 -70" fill="none" stroke="{OUT}" stroke-width="3" stroke-linecap="round"/>'
+             # grime and a scab
+             f'<circle cx="-30" cy="16" r="6" fill="{BLOOD}" opacity="0.75"/>'
+             f'<ellipse cx="10" cy="40" rx="12" ry="5" fill="#3b2a18" opacity="0.35"/>')
+    return arm, back + palm + f_svg + thumb
 
 
 def _machete():
@@ -171,10 +180,7 @@ def held(kind, skin, sleeve):
     weapon = {"Machete": _machete, "Hunting Knife": _hunting_knife,
               "Butcher Knife": _butcher_knife, "Fish Hook": _fish_hook}[kind]()
     arm, fist = _fist(skin, sleeve)
-    # the fist is drawn as a left hand and mirrored: right hand, knuckles
-    # facing out (viewer-left), fingertips curling in toward the body
-    m = '<g transform="scale(-1 1)">'
-    return f'<g transform="{HOLD_T}">' + m + arm + '</g>' + weapon + m + fist + '</g></g>'
+    return f'<g transform="{HOLD_T}">' + arm + weapon + fist + '</g>'
 
 
 # --------------------------------------------------------------------------
