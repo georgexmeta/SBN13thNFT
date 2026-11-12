@@ -233,7 +233,7 @@ const sph = (r, a = 32, b = 24) => new THREE.SphereGeometry(r, a, b);
 
 // ------------------------------------------------------------------ head: lobed swollen skull with a face
 const HEAD_Y = .08, BODY_Y = -1.75;
-const head = new THREE.Group(); head.position.set(.32, HEAD_Y, 0); head.rotation.set(.03, .62, 0); head.scale.setScalar(1.45); scene.add(head);
+const head = new THREE.Group(); head.position.set(.33, HEAD_Y, 0); head.rotation.set(.03, .62, 0); head.scale.setScalar(1.45); scene.add(head);
 const SW = { Mild: .6, Lumpy: 1, Grotesque: 1.45 }[A['Swelling']] * (A['Hair'] === 'Backwards Cap' ? .6 : 1);
 const SHAPE = A['Head Shape'];
 const dir = (x, y, z) => V(x, y, z).normalize();
@@ -244,12 +244,13 @@ for (const l of LOBES) { l[1] *= SW * (.75 + rnd() * .5); l[0].add(V(rnd() - .5,
 if (SHAPE === 'Brow Bulge') LOBES.push([dir(0, .5, .85), .28, .3]);
 if (SHAPE === 'Lopsided') LOBES.push([dir(-.75, .45, -.45), .48, .42]);
 // tumors are sculpted into the skull as swollen mounds (no separate balls)
-const TUMORS = SHAPE === 'Tumor Cluster' ? [dir(-.5, .7, -.4), dir(.3, .85, -.3), dir(-.8, .2, -.3), dir(.1, .5, -.85)].map(d => [d, .24 + rnd() * .08, .2 + rnd() * .04]) : [];
+const TUMORS = SHAPE === 'Tumor Cluster' ? [dir(-.5, .7, -.4), dir(.3, .85, -.3), dir(-.8, .2, -.3), dir(.1, .5, -.85)].map(d => [d, .16 + rnd() * .06, .2 + rnd() * .04]) : [];
 const CHEEK = [-.42 + rnd() * .1, -.22, .07 + .06 * SW];    // swollen near cheek (George's reference)
-const HX = .9, HY = 1.3;   // tall dome: George's silhouette
+const HX = 1.0, HY = 1.3;   // tall dome: George's silhouette
 // broad flat-ish crown, long jaw, the back of the skull bulging behind the ear
-const stretchY = y => y > 0 ? y * 1.2 : y * 1.38;
+const stretchY = y => y > 0 ? y * 1.2 : y * 1.45;
 const stretchX = (x, y) => x * HX * (1 + .1 * Math.max(0, y)) * (x < 0 ? 1.07 : 1);
+const BACKLOBE = V(-.75, .55, -.35).normalize();
 function headPoint(n) {
   let best = 0;
   const faceW = THREE.MathUtils.smoothstep(n.z, .25, .65);           // keep the face smooth
@@ -262,6 +263,11 @@ function headPoint(n) {
     r += CHEEK[2] * Math.exp(-((n.x - CHEEK[0]) ** 2 + (n.y - CHEEK[1]) ** 2) / .03);                   // swollen cheek
     r += .07 * Math.exp(-(n.x ** 2 / .04 + (n.y + .7) ** 2 / .02));                                    // chin
     r += .07 * Math.exp(-((n.x - .6) ** 2 + (n.y + .28) ** 2) / .03);                                  // far cheek bulge (silhouette)
+    r += .1 * Math.exp(-((n.x - .3) ** 2 / .08 + (n.y + .62) ** 2 / .05));                            // heavy lower jaw
+    r += .09 * Math.exp(-((n.x - .3) ** 2 / .05 + (n.y + .85) ** 2 / .03));                           // jutting chin
+  }
+  {
+    const b = n.dot(BACKLOBE); if (b > 0) r += .1 * Math.exp(-(1 - b) / .1);                         // full back-top of the skull
     for (const ex of [-.33, .33]) r -= .05 * Math.exp(-((n.x - ex) ** 2 + (n.y - .1) ** 2) / .012);     // eye sockets
   }
   for (const [d, h, w] of TUMORS) { const t = Math.exp(-(1 - n.dot(d)) / (w * w)); r += h * t * t * (3 - 2 * t); }
@@ -309,7 +315,7 @@ if (SHAPE === 'Split Skull') for (const t of [.35, .55, .75]) {
 
 // ------------------------------------------------------------------ ears
 function buildEar() {
-  const ear = group(); ear.position.set(-.86 * HX - .02, -.32, -.02); ear.rotation.set(0, -Math.PI / 2 + .25, .1); ear.scale.setScalar(1.4); head.add(ear);
+  const ear = group(); ear.position.set(-.86 * HX + .02, -.41, -.12); ear.rotation.set(0, -Math.PI / 2 + .25, .1); ear.scale.setScalar(1.4); head.add(ear);
   const kind = A['Ear'];
   mesh(sph(.2, 40, 30), SKINMAT, ear, null, null, [.8, 1.25, .35]);
   const rimE = mesh(new THREE.TorusGeometry(.17, .065, 18, 50, Math.PI * (kind === 'Torn' ? 1.15 : 1.55)), SKINMAT, ear, [0, 0, .03], [0, 0, Math.PI * .55], [.85, 1.2, 1]);
@@ -326,7 +332,11 @@ function buildEar() {
 buildEar();
 
 // ------------------------------------------------------------------ face: eyes, brows, nose, mouth
-const IRIS = A['Skin Tone'] === 'Albino' ? '#d77a8a' : pick(['#6f8f6a', '#7d9bb8', '#8a7a52', '#5a4632', '#9aa3a8', '#4f7a8c']);
+const EYE_COLORS = { 'Swamp Green': '#6f8f4a', 'Ice Blue': '#8fb8de', 'Mud Brown': '#5a3f28', 'Hazel': '#8a7638', 'Steel Grey': '#9aa3a8',
+  'Jaundice Yellow': '#d1a91c', 'Milky White': '#d8d4c8' };
+const EC = A['Eye Color'] || 'Mud Brown', MILKY = EC === 'Milky White';
+const IRIS = A['Skin Tone'] === 'Albino' ? '#d77a8a' : EC === 'Mismatched' ? '#8fb8de' : (EYE_COLORS[EC] || '#5a3f28');   // near eye
+const IRIS_FAR = A['Skin Tone'] === 'Albino' ? '#d77a8a' : EC === 'Mismatched' ? '#5a3f28' : IRIS;
 // bloodshot sclera: veins in angular space converging on the front of the ball (sphere UV front = u .25, v .5)
 function scleraMat(blood = 1) {
   const S = 512, [c, g] = canvas(S), P = (az, el) => [S * .25 + az * S / 360, S * .5 - el * S / 180];
@@ -352,7 +362,7 @@ function scleraMat(blood = 1) {
 }
 const eyeballMat = scleraMat(A['Eyes'] === 'Pinprick' || A['Eyes'] === 'Popped Out' ? 1.6 : 1);
 // iris: radial fibres, dark limbal ring, flecks and the pupil, painted onto a slightly domed disc
-function irisTex(pupil) {
+function irisTex(pupil, IRIS) {
   const S = 256, [c, g] = canvas(S), C = S / 2;
   g.fillStyle = shade(IRIS, .45); g.fillRect(0, 0, S, S);
   const base = g.createRadialGradient(C, C, 0, C, C, C);
@@ -364,15 +374,16 @@ function irisTex(pupil) {
   for (let i = 0; i < 6; i++) { const a = rnd() * 7, r = C * (pupil + .1 + rnd() * .4); g.fillStyle = '#5a3a1a88'; g.beginPath(); g.arc(C + Math.cos(a) * r, C + Math.sin(a) * r, 3 + rnd() * 5, 0, 7); g.fill(); }
   g.strokeStyle = shade(IRIS, .25); g.lineWidth = S * .07; g.beginPath(); g.arc(C, C, C - S * .035, 0, 7); g.stroke();   // limbal ring
   g.fillStyle = shade(IRIS, .6); g.beginPath(); g.arc(C, C, C * pupil * 1.18, 0, 7); g.fill();                         // collarette
-  g.fillStyle = '#060404'; g.beginPath(); g.arc(C, C, C * pupil, 0, 7); g.fill();                                     // pupil
+  g.fillStyle = MILKY ? '#6e6c66' : '#060404'; g.beginPath(); g.arc(C, C, C * pupil, 0, 7); g.fill();                // pupil
+  if (MILKY) { const fog = g.createRadialGradient(C, C, 0, C, C, C); fog.addColorStop(0, 'rgba(240,238,230,.75)'); fog.addColorStop(1, 'rgba(225,222,212,.35)'); g.fillStyle = fog; g.fillRect(0, 0, S, S); }   // clouded, blind
   return tex(c);
 }
 const IRISTEX = {};
-function irisDisc(r, pupil, h) {
+function irisDisc(r, pupil, h, col) {
   const geo = new THREE.RingGeometry(r * .001, r, 48, 10), p = geo.attributes.position;
   for (let i = 0; i < p.count; i++) { const d = Math.hypot(p.getX(i), p.getY(i)) / r; p.setZ(i, h * (1 - d * d)); }
   geo.computeVertexNormals();
-  const key = pupil.toFixed(2), m = clay('#fff', { map: IRISTEX[key] ||= irisTex(pupil), rough: .35, bump: .08 });
+  const key = pupil.toFixed(2) + col, m = clay('#fff', { map: IRISTEX[key] ||= irisTex(pupil, col), rough: .35, bump: .08 });
   const o = new THREE.Mesh(geo, m); o.userData.rigid = true; return o;
 }
 const CORNEA = new THREE.MeshPhysicalMaterial({ color: '#ffffff', roughness: .04, metalness: 0, transparent: true, opacity: .18, clearcoat: 1, clearcoatRoughness: .03 });
@@ -383,13 +394,14 @@ function eyeball(size, o = {}, parent) {
   if (GLOW) { const l = new THREE.PointLight(GLOW, .5, 1.2); l.position.set(0, 0, size * 1.5); e.add(l); return e; }
   const look = o.look || [0, 0], ir = size * (o.iris ?? .52), gaze = group();
   gaze.rotation.set(-look[1] * .45 + Math.max(0, (o.lid ?? .35) - .2) * 1.1, look[0] * .45, 0); e.add(gaze);   // heavy lids push the gaze down so the iris peeks out
-  const sz = Math.sqrt(size * size - ir * ir), disc = irisDisc(ir, o.pupil ?? .42, (size - sz) * 1.15 + size * .03); disc.position.z = sz - size * .005; gaze.add(disc);
+  const sz = Math.sqrt(size * size - ir * ir), disc = irisDisc(ir, o.pupil ?? .42, (size - sz) * 1.15 + size * .03, o.col || IRIS); disc.position.z = sz - size * .005; gaze.add(disc);
   const cor = mesh(new THREE.SphereGeometry(size * 1.025, 32, 16, 0, Math.PI * 2, 0, Math.asin(ir / size) * 1.25), CORNEA, gaze, null, [Math.PI / 2, 0, 0]);
   cor.userData.rigid = true; cor.castShadow = false;
   mesh(sph(size * .085, 12, 8), clay('#fff', { emissive: '#fff', ei: 1.2, noBump: true }), gaze, [size * .2, size * .2, sz + size * .2]).castShadow = false;
   return e;
 }
 function eye(x, y, size, o = {}) {
+  o.col ??= x < 0 ? IRIS : IRIS_FAR;
   size *= 1.35; const at = onFace(x, y + (o.dy || 0)), e = placed(group(), at, 0);
   mesh(sph(size * 1.45, 32, 24), clay(shade(SKIN, o.socket ?? .6)), e, [0, 0, -size * .35], null, [1, .9, .3]);      // socket
   if (o.hollow || o.popped) {
@@ -422,6 +434,31 @@ function poppedEye(x, y, size) {
   mesh(sph(size * .55, 20, 14), sm, ball, [0, 0, -size * .75]);                                           // nerve root on the back
   mesh(sph(size * .1, 12, 8), clay('#8a0c0c', { rough: .15, noBump: true }), head, hang.p.clone().addScaledVector(hang.n, .02).add(V(0, -.07, 0)).toArray());   // drip of blood
 }
+// a slash of scar tissue across an emptied socket
+function socketScar(x, y, size) {
+  const pts = [[-1.7, 1.6], [-.6, .55], [.6, -.55], [1.7, -1.7]].map(([a, b]) => { const at = onFace(x + a * size, y + b * size); return at.p.addScaledVector(at.n, .025); });
+  tube(pts, size * .09, clay('#b4626a', { rough: .5, bump: .6 }), head);
+  for (let i = 0; i < 4; i++) { const t = .15 + i * .23, p = pts[0].clone().lerp(pts[3], t), d = pts[3].clone().sub(pts[0]).normalize(), q = V(-d.y, d.x, 0).multiplyScalar(size * .45);
+    tube([p.clone().sub(q), p.clone().add(q).addScaledVector(V(0, 0, 1), .01)], size * .05, clay('#2a1a14'), head); }      // crude stitches
+}
+// cybernetic replacement: a bolted steel housing with a glowing red lens
+function cyborgEye(x, y, size) {
+  size *= 1.35; const at = onFace(x, y), e = placed(group(), at, 0);
+  const st = clay('#9aa1a7', { metal: .7, rough: .35, bump: .3 }), dk = clay('#2b2e33', { metal: .6, rough: .4, bump: .2 });
+  mesh(sph(size * 1.5, 32, 24), clay(shade(SKIN, .55)), e, [0, 0, -size * .35], null, [1, .9, .3]);             // scarred socket
+  mesh(new THREE.CylinderGeometry(size * 1.35, size * 1.5, size * .55, 40), st, e, [0, 0, size * .1], [Math.PI / 2, 0, 0]);   // housing
+  mesh(new THREE.TorusGeometry(size * 1.38, size * .12, 12, 48), dk, e, [0, 0, size * .38]);
+  mesh(new THREE.CylinderGeometry(size * .8, size * .9, size * .5, 32), dk, e, [0, 0, size * .55], [Math.PI / 2, 0, 0]);       // lens barrel
+  mesh(sph(size * .55, 28, 20), clay('#ff2a1a', { emissive: '#ff2a1a', ei: 2.2, rough: .15, noBump: true }), e, [0, 0, size * .72], null, [1, 1, .55]);
+  mesh(sph(size * .16, 12, 8), clay('#fff', { emissive: '#fff', ei: 1.5, noBump: true }), e, [size * .2, size * .2, size * 1.0]);
+  const l = new THREE.PointLight('#ff3a1a', .6, 1.4); l.position.set(0, 0, size * 1.6); e.add(l);
+  e.updateMatrixWorld(true);
+  for (let i = 0; i < 6; i++) { const a = i / 6 * Math.PI * 2 + .3; mesh(new THREE.CylinderGeometry(size * .12, size * .12, size * .1, 6), clay('#cfd5da', { metal: .8, rough: .3, noBump: true }), e, [Math.cos(a) * size * 1.1, Math.sin(a) * size * 1.1, size * .4], [Math.PI / 2, 0, 0]); }
+  for (const [dy, c] of [[.3, '#b8332e'], [-.1, '#2b2e33']]) {                                                      // wires into the temple
+    const p0 = e.localToWorld(V(-size * 1.3, size * dy, size * .2)), p1 = onFace(x - .3, y + dy * .4 + .05);
+    tube([head.worldToLocal(p0), p1.p.clone().addScaledVector(p1.n, .05).lerp(head.worldToLocal(p0), .5).addScaledVector(p1.n, .06), p1.p.clone().addScaledVector(p1.n, .01)], size * .07, clay(c, { rough: .4 }), head);
+  }
+}
 function buildEyes() {
   if (MASKED) return;
   const k = A['Eyes'];
@@ -432,6 +469,9 @@ function buildEyes() {
     for (const [x, sz] of [[-.33, .1], [.31, .08]]) placed(mesh(sph(sz, 24, 16), SKINMAT, group(), null, null, [1.4, .9, .7]), onFace(x, .15), .04); }
   else if (k === 'Pinprick') { eye(-.33, .08, .125, { lid: .15, iris: .32, pupil: .3 }); eye(.31, .08, .11, { lid: .18, iris: .32, pupil: .3 }); }
   else if (k === 'Popped Out') { eye(-.33, .08, .125, { popped: true }); poppedEye(-.33, .08, .125); eye(.31, .06, .105, { lid: .3, look: [.4, 0] }); }
+  else if (k === 'Cyborg Eye') { cyborgEye(-.33, .08, .12); eye(.31, .06, .105, { lid: .3 }); }
+  else if (k === 'Missing Right Eye') { eye(-.33, .08, .12, { hollow: true }); socketScar(-.33, .08, .12); eye(.31, .06, .105, { lid: .32 }); }
+  else if (k === 'Missing Left Eye') { eye(-.33, .08, .125, { lid: .38 }); eye(.31, .08, .1, { hollow: true }); socketScar(.31, .08, .1); }
   else if (k === 'Hollow Sockets') { eye(-.33, .08, .12, { hollow: true }); eye(.31, .08, .1, { hollow: true }); }
   else { eye(-.33, .08, .11, { lid: .3 }); eye(.31, .08, .1, { lid: .3 }); }   // glowing
 }
@@ -776,8 +816,8 @@ if (MASKED) {
 }
 
 // ------------------------------------------------------------------ neck and clothing
-mesh(new THREE.CylinderGeometry(.72, .8, 1.6, 40), SKINMAT, scene, [.12, BODY_Y + .55, -.1]);   // thick neck
-const body = group(); body.position.set(0, BODY_Y, -.25); body.rotation.y = .35; scene.add(body);
+mesh(new THREE.CylinderGeometry(.72, .8, 1.6, 40), SKINMAT, scene, [.26, BODY_Y + .55, -.1]);   // thick neck
+const body = group(); body.position.set(.2, BODY_Y, -.25); body.rotation.y = .35; scene.add(body);
 const CL = A['Clothing'];
 const KIND = PAL.flannels[CL] ? 'flannel' : PAL.hoodie[CL] ? 'hoodie' : PAL.trench[CL] ? 'trench' : PAL.tee[CL] ? 'tee'
   : { 'Denim Shirt': 'denim', 'Chore Coat': 'chore', 'Stained Undershirt': 'undershirt', 'Butcher Apron': 'apron' }[CL];

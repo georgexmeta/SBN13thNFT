@@ -55,7 +55,12 @@ TOTAL = 1300
 
 # Traits added after George reviewed the first clay samples. They are dealt out by a separate RNG after the main
 # draw, so every other token keeps the traits George has already seen. Tokens he picked out stay as they are.
-LATE_TRAITS = [("Background", "Blood Splatter", 0.09), ("Eyes", "Popped Out", 0.035)]
+LATE_TRAITS = [("Background", "Blood Splatter", 0.09), ("Eyes", "Popped Out", 0.035),
+               ("Eyes", "Cyborg Eye", 0.03), ("Eyes", "Missing Left Eye", 0.035), ("Eyes", "Missing Right Eye", 0.035)]
+# iris colour, dealt to every token the same way (its own RNG, so nothing else moves)
+EYE_COLORS = {"Swamp Green": 20, "Ice Blue": 18, "Mud Brown": 22, "Hazel": 16, "Steel Grey": 10,
+              "Jaundice Yellow": 6, "Mismatched": 5, "Milky White": 3}
+NO_IRIS = {"Glowing Red", "Glowing Green", "Hollow Sockets"}
 LATE_KEEP = {10, 49, 100}
 
 
@@ -217,25 +222,35 @@ def build_collection(root):
     tokens = [(None, a) for a in generics] + list(ONE_OF_ONES)
     rng.shuffle(tokens)  # spread the 1/1s through the token ids
     seeds = [rng.randrange(1 << 30) for _ in tokens]
-    late = random.Random(2026)
+    late, changed = random.Random(2026), set()
     for trait, value, share in LATE_TRAITS:
         for idx, (name, attrs) in enumerate(tokens, 1):
             if name or idx in LATE_KEEP or late.random() >= share:
                 continue
+            if (idx, trait) in changed:   # a later pass never undoes an earlier one
+                continue
             if trait == "Eyes" and attrs["Eyes"].startswith("Glowing"):
                 continue
+            changed.add((idx, trait))
             new = dict(attrs, **{trait: value})
             dna = tuple(sorted(new.items()))
             if dna not in seen:
                 seen.add(dna)
                 attrs[trait] = value
+    eye_rng = random.Random(4242)
+    for name, attrs in tokens:
+        c = _pick(eye_rng, EYE_COLORS)
+        if attrs["Eyes"] not in NO_IRIS:
+            attrs["Eye Color"] = c
+        else:
+            attrs["Eye Color"] = "None"
     for idx, ((name, attrs), seed) in enumerate(zip(tokens, seeds), 1):
         write(root, idx, attrs, seed=seed, name=name)
     report(root, tokens, n_generic)
 
 
 def report(root, tokens, n_generic):
-    counts = {k: Counter() for k in list(WEIGHTS) + ["Mask"]}
+    counts = {k: Counter() for k in list(WEIGHTS) + ["Eye Color", "Mask"]}
     for _, attrs in tokens:
         for k in counts:
             counts[k][attrs.get(k, "None")] += 1

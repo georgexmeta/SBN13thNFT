@@ -602,6 +602,22 @@ def eyes(kind, skin, rng):
                        for x, y in ((599, 482), (722, 466)) for r, o in ((46, 0.18), (30, 0.25)))
         return (_eye(585, 478, 36, 26, 0.35, 14, 7, c, skin, 6)
                 + _eye(712, 462, 24, 20, 0.28, 10, 5, c, skin, 0) + glow)
+    if kind in ("Missing Left Eye", "Missing Right Eye"):
+        # one empty, scarred socket; the near eye is the character's right
+        hole = (588, 478, 34, 28) if kind == "Missing Right Eye" else (713, 464, 22, 22)
+        x, y, rx, ry = hole
+        out = (f'<ellipse cx="{x}" cy="{y}" rx="{rx + 12}" ry="{ry + 10}" fill="{shade(skin, 0.6)}"/>'
+               f'<ellipse cx="{x}" cy="{y}" rx="{rx}" ry="{ry}" fill="#1a0808" stroke="{OUT}" stroke-width="6"/>'
+               f'<path d="M {x - rx - 6} {y - ry - 14} L {x + rx + 4} {y + ry + 16}" stroke="#a4505a" stroke-width="6" stroke-linecap="round"/>')
+        keep = _eye(712, 462, 24, 20, 0.30, 8, 6, iris, skin, 0) if kind == "Missing Right Eye" else _eye(585, 478, 36, 26, 0.35, 14, 7, iris, skin, 6)
+        return out + keep
+    if kind == "Cyborg Eye":
+        return (f'<circle cx="588" cy="478" r="44" fill="#8c9399" stroke="{OUT}" stroke-width="6"/>'
+                f'<circle cx="588" cy="478" r="28" fill="#2a2d31" stroke="{OUT}" stroke-width="4"/>'
+                f'<circle cx="588" cy="478" r="14" fill="#ff2a1a"/><circle cx="582" cy="472" r="4" fill="#fff"/>'
+                + "".join(f'<circle cx="{588 + 36 * c:.0f}" cy="{478 + 36 * s_:.0f}" r="4" fill="#cfd5da" stroke="{OUT}" stroke-width="2"/>'
+                          for c, s_ in ((0.7, 0.7), (-0.7, 0.7), (0.7, -0.7), (-0.7, -0.7)))
+                + _eye(712, 462, 24, 20, 0.30, 8, 6, iris, skin, 0))
     if kind == "Popped Out":
         # near eye torn out of its socket, hanging on the cheek by its nerve
         return (f'<ellipse cx="588" cy="478" rx="44" ry="36" fill="{shade(skin, 0.6)}"/>'
