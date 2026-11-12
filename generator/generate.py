@@ -91,11 +91,15 @@ ONE_OF_ONES = [
                        "Slack Jaw", "Greasy Comb-over", "Blood-Matted", "Maroon Hoodie", "Veins", "Pitchfork")),
 ]
 ONE_OF_ONE_SHAPES = {'The Harvester': 'Lopsided', 'Moonface': 'Cone Head', 'Old Gilded': 'Brow Bulge', 'Cinder': 'Tumor Cluster', 'The Pale Deacon': 'Cone Head', 'Hookjaw': 'Flat Top', 'Silo Sam': 'Split Skull', "Mother's Boy": 'Lopsided', 'The Thirteenth': 'Split Skull', 'Gristle': 'Tumor Cluster', 'Crow Bait': 'Flat Top', 'Lantern Jack': 'Brow Bulge', 'Swamp Saint': 'Cone Head'}
+ONE_OF_ONE_MASKS = {'The Harvester': 'Rusted Mask', 'Moonface': 'Bone Mask', 'Old Gilded': 'Gold Mask', 'Cinder': 'Charred Mask', 'The Pale Deacon': 'Stitched Mask', 'Hookjaw': 'Bloody Mask', 'Silo Sam': 'Muddy Mask', "Mother's Boy": 'Lipstick Mask', 'The Thirteenth': 'Chrome Mask', 'Gristle': 'Toxic Mask', 'Crow Bait': 'Broken Mask', 'Lantern Jack': "Jack-o'-Lantern Mask", 'Swamp Saint': 'Mossy Mask'}
 for _name, _a in ONE_OF_ONES:
     _a["Head Shape"] = ONE_OF_ONE_SHAPES[_name]
+    _a["Bandana"] = "None"  # the mask replaces it
+    _a["Mask"] = ONE_OF_ONE_MASKS[_name]
 EXCLUSIVE = {"Background": {"Full Moon", "Cornfield", "Blood Drip"},
              "Skin Tone": {"Charred", "Gilded", "Albino"},
-             "Eyes": {"Glowing Green"}}
+             "Eyes": {"Glowing Green"},
+             "Mask": set(ONE_OF_ONE_MASKS.values())}
 
 HEAD_T = "translate(-35 25) scale(1.07)"
 SWELL = {"Mild": 14, "Lumpy": 34, "Grotesque": 58}
@@ -130,7 +134,8 @@ def compose(attrs, seed):
         T.brows(attrs["Brows"], hair_c),
         T.nose(attrs["Nose"], skin),
         T.mouth(attrs["Mouth"], skin, rng),
-        T.bandana(attrs.get("Bandana", "None"), rng),
+        T.bandana(attrs.get("Bandana", "None"), rng) if attrs.get("Mask", "None") == "None" else "",
+        T.mask(attrs.get("Mask", "None"), skin, attrs["Eyes"], rng),
         T.hair(attrs["Hair"], hair_c, rng),
         '</g>',
         W.held(attrs.get("Weapon", "None"), skin, T.sleeve_fill(attrs["Clothing"])),
@@ -208,15 +213,15 @@ def build_collection(root):
 
 
 def report(root, tokens, n_generic):
-    counts = {k: Counter() for k in WEIGHTS}
+    counts = {k: Counter() for k in list(WEIGHTS) + ["Mask"]}
     for _, attrs in tokens:
-        for k, v in attrs.items():
-            counts[k][v] += 1
+        for k in counts:
+            counts[k][attrs.get(k, "None")] += 1
     total = len(tokens)
     # rarity score: sum of (total / count) over traits; 1/1s always rank first
     scored = []
     for idx, (name, attrs) in enumerate(tokens, 1):
-        score = sum(total / counts[k][v] for k, v in attrs.items())
+        score = sum(total / counts[k][attrs.get(k, "None")] for k in counts)
         scored.append((name is not None, score, idx, name))
     scored.sort(reverse=True)
     rank = {idx: r for r, (_, _, idx, _) in enumerate(scored, 1)}

@@ -8,12 +8,12 @@ Tiers by share of the collection: Common >= 10%, Uncommon 5-10%, Rare 2-5%, Epic
 
 | Token | Name | Rank |
 |---|---|---|
-| #76 | Lantern Jack | 10 |
-| #85 | The Pale Deacon | 12 |
-| #207 | Crow Bait | 11 |
+| #76 | Lantern Jack | 9 |
+| #85 | The Pale Deacon | 11 |
+| #207 | Crow Bait | 12 |
 | #305 | Mother's Boy | 4 |
 | #326 | The Thirteenth | 1 |
-| #415 | The Harvester | 9 |
+| #415 | The Harvester | 10 |
 | #425 | Old Gilded | 2 |
 | #432 | Cinder | 5 |
 | #444 | Hookjaw | 7 |
@@ -199,38 +199,57 @@ Tiers by share of the collection: Common >= 10%, Uncommon 5-10%, Rare 2-5%, Epic
 
 | Value | Count | Share | Tier |
 |---|---|---|---|
-| None | 1072 | 82.5% | Common |
+| None | 1074 | 82.6% | Common |
 | Red Bandana | 76 | 5.8% | Uncommon |
-| Black Bandana | 66 | 5.1% | Uncommon |
+| Black Bandana | 65 | 5.0% | Uncommon |
 | Blue Bandana | 60 | 4.6% | Rare |
-| Faded Paisley | 26 | 2.0% | Rare |
+| Faded Paisley | 25 | 1.9% | Epic |
+
+## Mask
+
+| Value | Count | Share | Tier |
+|---|---|---|---|
+| None | 1287 | 99.0% | Common |
+| Jack-o'-Lantern Mask (1/1 only) | 1 | 0.1% | Legendary |
+| Stitched Mask (1/1 only) | 1 | 0.1% | Legendary |
+| Broken Mask (1/1 only) | 1 | 0.1% | Legendary |
+| Lipstick Mask (1/1 only) | 1 | 0.1% | Legendary |
+| Chrome Mask (1/1 only) | 1 | 0.1% | Legendary |
+| Rusted Mask (1/1 only) | 1 | 0.1% | Legendary |
+| Gold Mask (1/1 only) | 1 | 0.1% | Legendary |
+| Charred Mask (1/1 only) | 1 | 0.1% | Legendary |
+| Bloody Mask (1/1 only) | 1 | 0.1% | Legendary |
+| Toxic Mask (1/1 only) | 1 | 0.1% | Legendary |
+| Bone Mask (1/1 only) | 1 | 0.1% | Legendary |
+| Mossy Mask (1/1 only) | 1 | 0.1% | Legendary |
+| Muddy Mask (1/1 only) | 1 | 0.1% | Legendary |
 
 ## Top 25 by rarity score
 
 | Rank | Token | Score |
 |---|---|---|
-| 1 | #326 - The Thirteenth | 1674 |
-| 2 | #425 - Old Gilded | 1569 |
-| 3 | #732 - Moonface | 1004 |
-| 4 | #305 - Mother's Boy | 989 |
-| 5 | #432 - Cinder | 874 |
-| 6 | #797 - Swamp Saint | 818 |
-| 7 | #444 - Hookjaw | 778 |
-| 8 | #1245 - Silo Sam | 770 |
-| 9 | #415 - The Harvester | 654 |
-| 10 | #76 - Lantern Jack | 609 |
-| 11 | #207 - Crow Bait | 587 |
-| 12 | #85 - The Pale Deacon | 577 |
-| 13 | #731 - Gristle | 478 |
-| 14 | #39 | 429 |
-| 15 | #582 | 425 |
-| 16 | #1090 | 421 |
-| 17 | #1208 | 420 |
-| 18 | #151 | 305 |
-| 19 | #1014 | 293 |
-| 20 | #529 | 283 |
-| 21 | #964 | 283 |
-| 22 | #178 | 260 |
-| 23 | #1138 | 211 |
-| 24 | #765 | 201 |
-| 25 | #986 | 198 |
+| 1 | #326 - The Thirteenth | 2974 |
+| 2 | #425 - Old Gilded | 2869 |
+| 3 | #732 - Moonface | 2304 |
+| 4 | #305 - Mother's Boy | 2289 |
+| 5 | #432 - Cinder | 2174 |
+| 6 | #797 - Swamp Saint | 2118 |
+| 7 | #444 - Hookjaw | 2078 |
+| 8 | #1245 - Silo Sam | 2070 |
+| 9 | #76 - Lantern Jack | 1909 |
+| 10 | #415 - The Harvester | 1905 |
+| 11 | #85 - The Pale Deacon | 1877 |
+| 12 | #207 - Crow Bait | 1869 |
+| 13 | #731 - Gristle | 1778 |
+| 14 | #39 | 430 |
+| 15 | #582 | 426 |
+| 16 | #1090 | 422 |
+| 17 | #1208 | 421 |
+| 18 | #151 | 306 |
+| 19 | #1014 | 294 |
+| 20 | #529 | 284 |
+| 21 | #964 | 284 |
+| 22 | #178 | 261 |
+| 23 | #1138 | 212 |
+| 24 | #765 | 202 |
+| 25 | #986 | 199 |
