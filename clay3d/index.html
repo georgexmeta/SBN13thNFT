@@ -1,0 +1,14 @@
+<!doctype html>
+<html><body style="margin:0;background:#000">
+<script type="module">
+// Loads one token's traits (?id=N from output/collection, or ?attrs=<json>) and renders it in clay.
+const q = new URLSearchParams(location.search);
+if (q.get('attrs')) window.PFP = { attrs: JSON.parse(q.get('attrs')), seed: +(q.get('seed') || 7) };
+else {
+  const meta = await (await fetch(`../output/collection/${q.get('id') || 1}.json`)).json();
+  const attrs = {}; for (const a of meta.attributes) attrs[a.trait_type] = a.value;
+  window.PFP = { attrs, seed: meta.seed, name: meta.name };
+}
+window.PIXEL_RATIO = +(q.get('pr') || 2);
+try { await import('./pfp.js'); } catch (e) { console.log('err: ' + e.message + '\n' + e.stack); window.failed = e.message; }
+</script></body></html>

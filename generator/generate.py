@@ -268,6 +268,15 @@ def main():
             write(root, i, attrs, seed=1300 + i, name=name)
     elif mode == "collection":
         build_collection(root)
+    elif mode == "palette":
+        # colours shared with the 3D clay renderer (clay3d/)
+        pal = {"backgrounds": T.BACKGROUNDS, "skins": T.SKINS, "hair": T.HAIR_COLORS, "flannels": T.FLANNELS,
+               "trench": T.TRENCH, "hoodie": T.HOODIE, "tee": T.TORN_TEE, "bandanas": T.BANDANAS, "masks": T.MASKS,
+               "other": {"Denim Shirt": "#4f6fa3", "Chore Coat": "#3e4752", "Stained Undershirt": "#e6dfcc"}}
+        out = os.path.join(os.path.dirname(__file__), "..", "clay3d", "palette.json")
+        with open(out, "w") as f:
+            json.dump(pal, f, indent=1)
+        root = out
     else:
         sys.exit(f"unknown mode {mode}")
     print("wrote", os.path.abspath(root))

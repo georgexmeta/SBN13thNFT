@@ -1,0 +1,90 @@
+{
+ "backgrounds": {
+  "Swamp Green": "#7fa36b",
+  "Mustard": "#d9b44a",
+  "Dusty Teal": "#5fa3a0",
+  "Rust": "#c96b3c",
+  "Bruise Purple": "#8a76a8",
+  "Fog Grey": "#a9b0ad",
+  "Bone": "#e3d6b4",
+  "Blood Orange": "#e0603f",
+  "Blood Red": "#8e1c1c",
+  "Midnight": "#232637",
+  "Toxic Slime": "#9bd23a",
+  "Gold": "#d4a017",
+  "Full Moon": "#1b2033",
+  "Cornfield": "#e39b48",
+  "Blood Drip": "#efe6d2"
+ },
+ "skins": {
+  "Pink Flesh": "#e9b49a",
+  "Sallow": "#d8c08c",
+  "Ruddy": "#d9917a",
+  "Corpse Grey": "#b6b79a",
+  "Leather": "#a8735a",
+  "Pale Wax": "#efd7c3",
+  "Bloodless Blue": "#a9c3cf",
+  "Radioactive": "#a8d870",
+  "Charred": "#5a4a42",
+  "Gilded": "#e2b84a",
+  "Albino": "#f7f1ec"
+ },
+ "hair": {
+  "Ginger": "#c8622c",
+  "Dirty Blonde": "#b89a55",
+  "Greasy Black": "#2b2522",
+  "Ash Grey": "#8d8a84",
+  "Mud Brown": "#5e4430",
+  "Blood-Matted": "#7a1a14"
+ },
+ "flannels": {
+  "Red Flannel": "#a8322d",
+  "Green Flannel": "#3f6b3a",
+  "Blue Flannel": "#2f4f8a",
+  "Mustard Flannel": "#c9a227",
+  "Purple Flannel": "#5b3d7a",
+  "Orange Flannel": "#c4621f",
+  "Grey Flannel": "#8a8a8a"
+ },
+ "trench": {
+  "Khaki Trench Coat": "#b89a66",
+  "Black Trench Coat": "#2b2b2e",
+  "Olive Trench Coat": "#5b5f3a"
+ },
+ "hoodie": {
+  "Grey Hoodie": "#8d9096",
+  "Black Hoodie": "#2c2c30",
+  "Maroon Hoodie": "#6e2230"
+ },
+ "tee": {
+  "Torn White Tee": "#e8e4d8",
+  "Torn Black Tee": "#2f2f33",
+  "Torn Army Tee": "#5d6b45"
+ },
+ "bandanas": {
+  "Red Bandana": "#b8322e",
+  "Black Bandana": "#232326",
+  "Blue Bandana": "#2d4f8f",
+  "Faded Paisley": "#cf6f6c"
+ },
+ "masks": {
+  "Chrome Mask": "chrome",
+  "Bloody Mask": "#e6dfc4",
+  "Broken Mask": "#e6dfc4",
+  "Gold Mask": "gold",
+  "Charred Mask": "#3a332e",
+  "Bone Mask": "#efe8d5",
+  "Rusted Mask": "#cfc8ac",
+  "Stitched Mask": "#ddd6bc",
+  "Muddy Mask": "#d8cfb2",
+  "Lipstick Mask": "#ece6d4",
+  "Toxic Mask": "#c9e3a0",
+  "Jack-o'-Lantern Mask": "#e07a1f",
+  "Mossy Mask": "#a7ad92"
+ },
+ "other": {
+  "Denim Shirt": "#4f6fa3",
+  "Chore Coat": "#3e4752",
+  "Stained Undershirt": "#e6dfcc"
+ }
+}
