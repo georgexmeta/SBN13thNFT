@@ -91,12 +91,30 @@ function stained(base) {          // stained/bloodied cloth
   return c;
 }
 function paisley(base) {
-  const [c, g] = canvas(256); g.fillStyle = base; g.fillRect(0, 0, 256, 256);
-  g.strokeStyle = 'rgba(255,255,255,.85)'; g.fillStyle = 'rgba(255,255,255,.85)'; g.lineWidth = 3;
-  for (let i = 0; i < 9; i++) { const x = (i % 3) * 86 + 30 + rnd() * 20, y = Math.floor(i / 3) * 86 + 30 + rnd() * 20, a = rnd() * 6;
-    g.save(); g.translate(x, y); g.rotate(a); g.beginPath(); g.ellipse(0, 0, 16, 9, 0, 0, 7); g.stroke();
-    g.beginPath(); g.arc(14, -4, 7, 0, 5); g.stroke(); g.beginPath(); g.arc(0, 0, 3, 0, 7); g.fill(); g.restore(); }
-  for (let i = 0; i < 40; i++) { g.beginPath(); g.arc(rnd() * 256, rnd() * 256, 2, 0, 7); g.fill(); }
+  const W = 1024, H = 512, c = document.createElement('canvas'); c.width = W; c.height = H; const g = c.getContext('2d');
+  g.fillStyle = base; g.fillRect(0, 0, W, H);
+  const ink = 'rgba(245,242,232,.92)'; g.strokeStyle = ink; g.fillStyle = ink; g.lineCap = 'round';
+  const tear = (x, y, s, a) => {                    // one paisley teardrop with a curled tail and inner rings
+    g.save(); g.translate(x, y); g.rotate(a); g.scale(s, s);
+    const drop = () => { g.beginPath(); g.moveTo(0, 22); g.bezierCurveTo(-26, 18, -24, -16, 2, -18); g.bezierCurveTo(20, -20, 26, -6, 18, -26); g.bezierCurveTo(34, -10, 26, 22, 0, 22); };
+    g.lineWidth = 3.2; drop(); g.stroke();
+    g.save(); g.scale(.62, .62); g.translate(-2, 4); g.lineWidth = 3; drop(); g.stroke(); g.restore();
+    g.beginPath(); g.arc(-1, 6, 4, 0, 7); g.fill();
+    for (let k = 0; k < 9; k++) { const t = k / 9 * Math.PI * 1.6 + 1.6; g.beginPath(); g.arc(Math.cos(t) * 30, 4 + Math.sin(t) * 28, 1.8, 0, 7); g.fill(); }
+    g.restore();
+  };
+  for (let y = 70; y < H - 40; y += 110) for (let x = 90 + (y / 110 % 2) * 60; x < W - 60; x += 135) tear(x + (rnd() - .5) * 20, y + (rnd() - .5) * 16, .95 + rnd() * .3, rnd() * 6.3);
+  for (let i = 0; i < 26; i++) {                     // small four-petal flowers
+    const x = 40 + rnd() * (W - 80), y = 30 + rnd() * (H - 60); g.lineWidth = 2.2;
+    for (let k = 0; k < 4; k++) { g.beginPath(); g.ellipse(x + Math.cos(k * 1.57) * 6, y + Math.sin(k * 1.57) * 6, 5, 3, k * 1.57, 0, 7); g.stroke(); }
+  }
+  for (let i = 0; i < 260; i++) { g.beginPath(); g.arc(rnd() * W, rnd() * H, .9 + rnd() * 1.6, 0, 7); g.fill(); }
+  for (const x of [22, W - 22]) {                   // border bands along the folded edges
+    g.lineWidth = 3; g.beginPath(); g.moveTo(x - 14, 0); g.lineTo(x - 14, H); g.moveTo(x + 14, 0); g.lineTo(x + 14, H); g.stroke();
+    for (let y = 8; y < H; y += 16) { g.beginPath(); g.arc(x, y, 3.2, 0, 7); g.fill(); }
+  }
+  g.lineWidth = 3; g.beginPath(); g.moveTo(0, 14); g.lineTo(W, 14); g.stroke();
+  for (let x = 8; x < W; x += 16) { g.beginPath(); g.arc(x, 28, 2.4, 0, 7); g.fill(); }
   return c;
 }
 
@@ -590,29 +608,50 @@ buildHair();
 
 // ------------------------------------------------------------------ bandana over nose and mouth
 if (BANDANA) {
-  const col = PAL.bandanas[A['Bandana']], cmap = tex(paisley(col), 2);
-  const N = 40, M = 40, pos = [], uv = [], idx = [], LAST = [];
+  // a folded triangle of soft cotton: pulled snug over the nose and mouth, the point draping down the chest,
+  // corners knotted at the side of the neck (George's reference)
+  const col = PAL.bandanas[A['Bandana']], cmap = tex(paisley(col), 1);
+  const N = 56, M1 = 26, M2 = 24, pos = [], uv = [], idx = [], LAST = [];
   head.updateMatrixWorld(true);
-  // wrap the cloth round the face (angle phi about the vertical axis), point hanging onto the chest
-  for (let j = 0; j <= M; j++) for (let i = 0; i <= N; i++) {
-    const v = j / M, u = i / N * 2 - 1, phi = u * 1.95 * (1 - Math.pow(v, 1.15) * .96), y = -.02 - v * 1.3;
+  const RIGHT = V(1, 0, 0).transformDirection(head.matrixWorld).setY(0).normalize(), FWD = V(0, 0, 1).transformDirection(head.matrixWorld).setY(0).normalize();
+  const PROF = [[.12, .6], [.04, .8], [-.1, 1.25], [-.4, 1.7], [-.85, 1.93], [-1.5, 2.0]];   // torso profile (body-local y, radius)
+  const chestZ = yw => { const yb = yw + 1.05; let r = 2; for (let k = 1; k < PROF.length; k++) if (yb >= PROF[k][0]) { const [y0, r0] = PROF[k - 1], [y1, r1] = PROF[k]; r = r0 + (r1 - r0) * (yb - y0) / (y1 - y0); break; } return r * .62 - .25; };
+  for (let j = 0; j <= M1; j++) for (let i = 0; i <= N; i++) {          // snug part, cast onto the face
+    const v = j / M1, u = i / N * 2 - 1, phi = u * (1.9 - v * .25), y = -.02 - v * .8;
     const d = V(Math.sin(phi), 0, Math.cos(phi));
     ray.set(head.localToWorld(d.clone().multiplyScalar(3).setY(y)), d.clone().negate().transformDirection(head.matrixWorld));
-    const h = y > -.82 ? ray.intersectObjects([HEADMESH, NOSE], true)[0] : null;
+    const h = ray.intersectObjects([HEADMESH, NOSE], true)[0];
     let p;
-    if (h) { p = head.worldToLocal(h.point.clone()).addScaledVector(d, .06); LAST[i] = p.clone(); }
-    else if (LAST[i]) { p = LAST[i].clone(); p.y = y; p.addScaledVector(d, (LAST[i].y - y) * .22); }
-    else { p = d.clone().multiplyScalar(.85).setY(y); }
-    pos.push(p.x, p.y, p.z); uv.push(i / N, 1 - v);
+    if (h) p = head.worldToLocal(h.point.clone()).addScaledVector(d, .055 + .012 * Math.sin(v * 22 + u * 3));   // soft tension ripples
+    else p = (LAST[i] ? LAST[i].clone().setY(y) : d.clone().multiplyScalar(.8).setY(y));
+    LAST[i] = p.clone(); pos.push(p.x, p.y, p.z); uv.push(i / N, 1 - v * .45);
   }
-  for (let j = 0; j < M; j++) for (let i = 0; i < N; i++) { const a = j * (N + 1) + i, b = a + 1, c = a + N + 1, d = c + 1; idx.push(a, c, b, b, c, d); }
+  const top = head.localToWorld(LAST[N / 2].clone()), W0 = 1.15;
+  const tip = V(top.x, top.y - 1.2, top.z).addScaledVector(RIGHT, .05).addScaledVector(FWD, -.3); tip.z = Math.max(tip.z, chestZ(tip.y) + .25);   // hangs nearly straight down off the chin
+  for (let j = 1; j <= M2; j++) for (let i = 0; i <= N; i++) {          // the hanging point
+    const t = j / M2, u = i / N * 2 - 1;
+    const c = top.clone().addScaledVector(FWD, .1).lerp(tip, t);
+    const f = c.addScaledVector(RIGHT, u * W0 * Math.pow(1 - t, .85) * (1 + .25 * Math.sin(t * Math.PI)));
+    f.z = Math.max(f.z, chestZ(f.y) + .1 + .06 * (1 - Math.abs(u)));
+    f.addScaledVector(FWD, (.035 * Math.sin(u * 7 + t * 2) + .01 * Math.sin(u * 17)) * Math.min(1, t * 3) * (1 - t * .6));   // pleats fanning to the point
+    f.y -= .07 * Math.sin(Math.abs(u) * Math.PI) * t * (1 - t) * 4;     // the cloth sags between the corners
+    const w = head.localToWorld(LAST[i].clone()), s0 = THREE.MathUtils.smoothstep(t, 0, .22);
+    const p = head.worldToLocal(w.lerp(f, s0));
+    pos.push(p.x, p.y, p.z); uv.push(i / N, .55 - t * .55);
+  }
+  const R = M1 + M2;
+  for (let j = 0; j < R; j++) for (let i = 0; i < N; i++) { const a = j * (N + 1) + i, b = a + 1, c = a + N + 1, d = c + 1; idx.push(a, c, b, b, c, d); }
   const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); g.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2));
   g.setIndex(idx); g.computeVertexNormals();
-  mesh(g, clay('#fff', { map: cmap, side: THREE.DoubleSide, bump: 1.5 }), head);
+  const BM = clay('#fff', { map: cmap, side: THREE.DoubleSide, bump: .9, rough: .95 }); BM.roughnessMap = null;   // matte cotton, no clay sheen
+  mesh(g, BM, head).userData.rigid = true;
   NOSE.visible = false;   // the cloth is already shaped over it
-  // knot at the back of the near side
-  const kn = onSkull(dir(-.7, -.15, -.6)); const k = placed(group(), kn, .03);
-  mesh(sph(.09), clay('#fff', { map: cmap }), k); mesh(new THREE.CapsuleGeometry(.05, .3, 6, 10), clay('#fff', { map: cmap }), k, [.05, -.2, .05], [0, 0, .4], [1.4, 1, .5]);
+  // knot at the side of the neck with two short tails
+  const kn = onSkull(dir(-.8, -.62, -.25)); const k = placed(group(), kn, .05);
+  const km = clay('#fff', { map: tex(paisley(col), 1), bump: 1.2, rough: .95 }); km.roughnessMap = null;
+  mesh(sph(.15, 24, 16), km, k, null, null, [1.1, .9, .8]);
+  mesh(new THREE.CapsuleGeometry(.07, .3, 6, 12), km, k, [-.12, -.18, .03], [0, 0, -.7], [1.5, 1, .45]);
+  mesh(new THREE.CapsuleGeometry(.07, .24, 6, 12), km, k, [.05, -.22, .06], [0, 0, .35], [1.4, 1, .45]);
 }
 
 // ------------------------------------------------------------------ 1/1 goalie mask
