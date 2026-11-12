@@ -28,14 +28,26 @@ function tex(c, rep = 1, srgb = true) {
   const t = new THREE.CanvasTexture(c); t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(rep, rep);
   if (srgb) t.colorSpace = THREE.SRGBColorSpace; return t;
 }
-const BUMP = (() => {             // hand-worked plasticine: smudges + faint fingerprints
-  const [c, g] = canvas(512); g.fillStyle = '#808080'; g.fillRect(0, 0, 512, 512);
-  for (let i = 0; i < 900; i++) { const v = rnd() < .5 ? 100 : 160; g.fillStyle = `rgba(${v},${v},${v},.10)`;
-    g.beginPath(); g.ellipse(rnd() * 512, rnd() * 512, 3 + rnd() * 14, 2 + rnd() * 7, rnd() * 3, 0, 7); g.fill(); }
-  g.strokeStyle = 'rgba(60,60,60,.10)'; g.lineWidth = 1;
-  for (let i = 0; i < 25; i++) { const x = rnd() * 512, y = rnd() * 512, a = rnd() * 6;
-    for (let k = 0; k < 7; k++) { g.beginPath(); g.ellipse(x, y, 5 + k * 3, 3.5 + k * 2.2, a, 0, 6.3); g.stroke(); } }
-  return tex(c, 2, false);
+const BUMP = (() => {             // hand-worked plasticine: thumb dents, tool smears, fingerprints, pitting
+  const S = 1024, [c, g] = canvas(S); g.fillStyle = '#808080'; g.fillRect(0, 0, S, S);
+  for (let i = 0; i < 70; i++) {   // shallow thumb dents
+    const x = rnd() * S, y = rnd() * S, r = 25 + rnd() * 45, gr = g.createRadialGradient(x, y, 0, x, y, r);
+    gr.addColorStop(0, 'rgba(70,70,70,.35)'); gr.addColorStop(.75, 'rgba(110,110,110,.1)'); gr.addColorStop(.9, 'rgba(170,170,170,.25)'); gr.addColorStop(1, 'rgba(128,128,128,0)');
+    g.fillStyle = gr; g.beginPath(); g.ellipse(x, y, r, r * .8, rnd() * 3, 0, 7); g.fill();
+  }
+  for (let i = 0; i < 160; i++) {  // modelling-tool smears: short bundles of parallel strokes
+    const x = rnd() * S, y = rnd() * S, a = rnd() * 6.28, L = 20 + rnd() * 50;
+    for (let k = 0; k < 4; k++) { const o = (k - 1.5) * 3, v = k % 2 ? 95 : 165;
+      g.strokeStyle = `rgba(${v},${v},${v},.22)`; g.lineWidth = 1.5 + rnd() * 1.5; g.beginPath();
+      g.moveTo(x - Math.sin(a) * o, y + Math.cos(a) * o); g.quadraticCurveTo(x + Math.cos(a) * L * .5 - Math.sin(a) * (o + 4), y + Math.sin(a) * L * .5 + Math.cos(a) * (o + 4), x + Math.cos(a) * L - Math.sin(a) * o, y + Math.sin(a) * L + Math.cos(a) * o); g.stroke(); }
+  }
+  g.lineWidth = 1.1;
+  for (let i = 0; i < 40; i++) {   // fingerprints
+    const x = rnd() * S, y = rnd() * S, a = rnd() * 6;
+    for (let k = 0; k < 10; k++) { g.strokeStyle = `rgba(${k % 2 ? 90 : 160},${k % 2 ? 90 : 160},${k % 2 ? 90 : 160},.18)`; g.beginPath(); g.ellipse(x, y, 4 + k * 2.6, 3 + k * 1.9, a, 0, 6.3); g.stroke(); }
+  }
+  for (let i = 0; i < 6000; i++) { const v = rnd() < .5 ? 60 : 200; g.fillStyle = `rgba(${v},${v},${v},.18)`; g.fillRect(rnd() * S, rnd() * S, 1.5, 1.5); }
+  return tex(c, 3.5, false);
 })();
 function pressedClay() {
   const [c, g] = canvas(1024); g.fillStyle = '#808080'; g.fillRect(0, 0, 1024, 1024);
@@ -63,7 +75,7 @@ function fabric(base, kind) {     // plain cloth with grime; denim twill; canvas
   const [c, g] = canvas(256); g.fillStyle = base; g.fillRect(0, 0, 256, 256);
   if (kind === 'denim') { g.strokeStyle = 'rgba(255,255,255,.12)'; g.lineWidth = 1; for (let i = -256; i < 256; i += 4) { g.beginPath(); g.moveTo(i, 0); g.lineTo(i + 256, 256); g.stroke(); } }
   if (kind === 'canvas') { g.fillStyle = 'rgba(0,0,0,.08)'; for (let i = 0; i < 256; i += 3) g.fillRect(0, i, 256, 1); }
-  for (let i = 0; i < 30; i++) { g.fillStyle = `rgba(60,42,22,${.05 + rnd() * .12})`; g.beginPath(); g.ellipse(rnd() * 256, rnd() * 256, 6 + rnd() * 20, 4 + rnd() * 10, rnd() * 3, 0, 7); g.fill(); }
+  for (let i = 0; i < 14; i++) { g.fillStyle = `rgba(60,42,22,${.03 + rnd() * .06})`; g.beginPath(); g.ellipse(rnd() * 256, rnd() * 256, 6 + rnd() * 20, 4 + rnd() * 10, rnd() * 3, 0, 7); g.fill(); }
   return c;
 }
 function torn(c) {          // ragged holes showing skin through the cloth
@@ -90,7 +102,7 @@ function paisley(base) {
 
 function clay(color, o = {}) {
   return new THREE.MeshStandardMaterial({ color: o.map ? '#ffffff' : color, roughness: o.rough ?? .78, metalness: o.metal ?? 0,
-    map: o.map || null, bumpMap: o.noBump ? null : BUMP, bumpScale: o.bump ?? 1.2, side: o.side ?? THREE.FrontSide,
+    map: o.map || null, bumpMap: o.noBump ? null : BUMP, bumpScale: (o.bump ?? 1.2) * 3.2, roughnessMap: o.noBump ? null : BUMP, side: o.side ?? THREE.FrontSide,
     emissive: o.emissive || '#000000', emissiveIntensity: o.ei ?? 0, emissiveMap: o.emissiveMap || null,
     transparent: !!o.alpha, alphaMap: o.alpha || null, alphaTest: o.alpha ? .5 : 0 });
 }
@@ -434,18 +446,54 @@ function buildHair() {
     tube(pts, .028, clay(HAIR, { rough: .3, bump: .8 }), head).scale.set(1, 1, 1);
   }
   if (k === 'Backwards Cap') {
-    const cap = pick(['#2f4f3a', '#7a2f2a', '#c9b27a', '#2a3550']), cm = clay(cap, { bump: 1.6 });
-    const c = group(); c.position.set(0, .34, -.08); c.rotation.order = "YXZ"; c.rotation.set(-.1, Math.PI + .8, 0); c.scale.setScalar(.95); head.add(c);
-    mesh(new THREE.SphereGeometry(1.12, 64, 32, 0, Math.PI * 2, 0, Math.PI * .5), cm, c, null, null, [.98, .82, 1.08]);
-    mesh(new THREE.TorusGeometry(1.12, .05, 12, 80), cm, c, [0, 0, 0], [Math.PI / 2, 0, 0], [.98, 1.08, 1]);
-    mesh(sph(.08), cm, c, [0, .92, 0]);
-    // brim sticking out the back (the cap is turned round, so local +z is the back of the head)
-    mesh(new THREE.CylinderGeometry(.72, .72, .07, 40, 1, false, -Math.PI / 2, Math.PI), clay(shade(cap, .8)), c, [0, -.02, .8], [.38, 0, 0], [1.05, 1, 1]);
-    for (let i = 0; i < 6; i++) { const a = i / 6 * Math.PI * 2;
-      tube([0, .3, .6, .85, 1].map(t => V(Math.cos(a) * Math.sin(t * Math.PI / 2) * 1.125 * .98, Math.cos(t * Math.PI / 2) * 1.125 * .82, Math.sin(a) * Math.sin(t * Math.PI / 2) * 1.125 * 1.08)), .008, clay(shade(cap, .6)), c); }
-    // strap opening over the forehead
-    mesh(new THREE.TorusGeometry(.18, .03, 10, 30, Math.PI), clay('#1a1a1a'), c, [0, .02, -1.0], [0, 0, 0]);
+    const cap = pick(['#2f4f3a', '#7a2f2a', '#c9b27a', '#2a3550', '#3a3a3c']), cm = clay(cap, { bump: 1.8, rough: .85 });
+    const AX = dir(0, .9, -.32), TMAX = 1.22, Q = new THREE.Quaternion().setFromUnitVectors(V(0, 1, 0), AX);
+    const capR = d => {           // fabric over the skull: follows the lumps loosely, never into the creases
+      let r = 0; const t1 = d.clone().cross(V(.3, .1, .9)).normalize(), t2 = d.clone().cross(t1).normalize();
+      for (const [a, b] of [[0, 0], [.14, 0], [-.14, 0], [0, .14], [0, -.14]]) r = Math.max(r, headPoint(d.clone().addScaledVector(t1, a).addScaledVector(t2, b).normalize()).length());
+      return r + .07;
+    };
+    const capPoint = (theta, phi, extra = 0) => { const d = V(Math.sin(theta) * Math.cos(phi), Math.cos(theta), Math.sin(theta) * Math.sin(phi)).applyQuaternion(Q);
+      const hp = headPoint(d), dirP = hp.clone().normalize(); return dirP.multiplyScalar(capR(d) + extra + .05 * Math.cos(theta / TMAX * Math.PI / 2)); };
+    // crown
+    const NT = 36, NP = 96, pos = [], idx = [];
+    for (let i = 0; i <= NT; i++) for (let j = 0; j <= NP; j++) { const p = capPoint(i / NT * TMAX, j / NP * Math.PI * 2); pos.push(p.x, p.y, p.z); }
+    for (let i = 0; i < NT; i++) for (let j = 0; j < NP; j++) { const a = i * (NP + 1) + j, b = a + 1, c = a + NP + 1, d = c + 1; idx.push(a, b, c, b, d, c); }
+    const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3)); g.setIndex(idx); g.computeVertexNormals();
+    const uv = []; for (let i = 0; i <= NT; i++) for (let j = 0; j <= NP; j++) uv.push(j / NP * 3, i / NT); g.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2));
+    mesh(g, cm, head);
+    // sweatband edge, six panel seams with stitching, eyelets, top button
+    const dk = clay(shade(cap, .65), { bump: 1 });
+    tube(Array.from({ length: 97 }, (_, j) => capPoint(TMAX, j / 96 * Math.PI * 2, .01)), .045, cm, head, true, 200);
+    for (let k = 0; k < 6; k++) { const phi = k / 6 * Math.PI * 2 + Math.PI / 6;
+      tube(Array.from({ length: 13 }, (_, i) => capPoint(i / 12 * TMAX, phi, .006)), .014, dk, head);
+      const e = capPoint(.5, phi + .45, .0); mesh(new THREE.TorusGeometry(.03, .01, 8, 16), dk, head, e.toArray()).lookAt(e.clone().multiplyScalar(2)); }
+    const top = capPoint(0, 0, .02); mesh(sph(.075, 20, 14), cm, head, top.toArray(), null, [1, .55, 1]).lookAt(top.clone().multiplyScalar(2));
+    // brim sticking out over the back of the neck, curved like a worn visor
+    const BP = [], BI = [], BU = [], NS = 24, NO = 8, back = Math.PI / 2 * -1 + Math.PI;   // phi of the back of the head
+    const phiBack = Math.atan2(-1, 0);
+    for (let i = 0; i <= NO; i++) for (let j = 0; j <= NS; j++) {
+      const sx = j / NS * 2 - 1, phi = -Math.PI / 2 + sx * 1.0;  // around the back rim
+      const base = capPoint(TMAX, phi, .02), out = V(base.x, 0, base.z).normalize();
+      const t = i / NO, p = base.clone().addScaledVector(out, t * .72 * (1 - sx * sx * .5)).add(V(0, -t * .06 - sx * sx * t * .16, 0));
+      BP.push(p.x, p.y, p.z); BU.push(j / NS, t);
+    }
+    for (let i = 0; i < NO; i++) for (let j = 0; j < NS; j++) { const a = i * (NS + 1) + j, b = a + 1, c = a + NS + 1, d = c + 1; BI.push(a, b, c, b, d, c); }
+    const bg = new THREE.BufferGeometry(); bg.setAttribute('position', new THREE.Float32BufferAttribute(BP, 3)); bg.setAttribute('uv', new THREE.Float32BufferAttribute(BU, 2)); bg.setIndex(BI); bg.computeVertexNormals();
+    mesh(bg, clay(shade(cap, .9), { bump: 1.5, side: THREE.DoubleSide }), head);
+    const edge = []; for (let j = 0; j <= NS; j++) { const k = (NO * (NS + 1) + j) * 3; edge.push(V(BP[k], BP[k + 1], BP[k + 2])); }
+    tube(edge, .03, clay(shade(cap, .9)), head);
+    // the snapback opening sits over the forehead: skin showing through an arch, plastic strap across it
+    const arch = []; for (let j = 0; j <= 16; j++) { const a = j / 16 * Math.PI; arch.push(capPoint(TMAX - Math.sin(a) * .32, Math.PI / 2 + Math.cos(a) * .3, .012)); }
+    const ag = new THREE.Shape(); // skin patch made from the arch points projected onto the crown
+    const patch = []; for (let j = 0; j <= 16; j++) for (let i = 0; i <= 4; i++) { const a = j / 16 * Math.PI; patch.push(capPoint(TMAX - Math.sin(a) * .32 * i / 4, Math.PI / 2 + Math.cos(a) * .3, .008)); }
+    const PI2 = []; for (let j = 0; j < 16; j++) for (let i = 0; i < 4; i++) { const a = j * 5 + i, b = a + 1, c = a + 5, d = c + 1; PI2.push(a, b, c, b, d, c); }
+    const pg = new THREE.BufferGeometry(); pg.setAttribute('position', new THREE.Float32BufferAttribute(patch.flatMap(p => p.toArray()), 3)); pg.setIndex(PI2); pg.computeVertexNormals();
+    mesh(pg, clay(shade(SKIN, .8), { side: THREE.DoubleSide }), head);
+    tube(arch, .022, cm, head);
+    tube(Array.from({ length: 9 }, (_, j) => capPoint(TMAX - .06, Math.PI / 2 - .3 + j / 8 * .6, .03)), .028, clay('#1c1c1c', { rough: .4, bump: .4 }), head);
   }
+
 }
 buildHair();
 
@@ -723,6 +771,27 @@ if (SLUNG) {
     mesh(new THREE.TorusGeometry(.28, .045, 10, 30), blk, back, [0, .9, .15], [0, Math.PI / 2, 0]);       // D-handle
   }
 }
+
+// hand-made wobble: nudge every sculpted surface along its normals with low-frequency noise
+function hsh(x, y, z) { const h = Math.sin(x * 127.1 + y * 311.7 + z * 74.7 + TOKEN.seed % 1000) * 43758.5453; return h - Math.floor(h); }
+function vnoise(x, y, z) {
+  const xi = Math.floor(x), yi = Math.floor(y), zi = Math.floor(z), f = t => t * t * (3 - 2 * t), u = f(x - xi), v = f(y - yi), w = f(z - zi); let r = 0;
+  for (let i = 0; i < 2; i++) for (let j = 0; j < 2; j++) for (let k = 0; k < 2; k++) r += hsh(xi + i, yi + j, zi + k) * (i ? u : 1 - u) * (j ? v : 1 - v) * (k ? w : 1 - w);
+  return r - .5;
+}
+scene.updateMatrixWorld(true);
+const seen = new Set(), wp = V(0, 0, 0), ws = V(0, 0, 0);
+scene.traverse(o => {
+  if (!o.isMesh || o === PROBE || seen.has(o.geometry) || o.material.alphaMap || o.geometry.type === 'PlaneGeometry') return;
+  const g = o.geometry, p = g.attributes.position, n = g.attributes.normal; if (!n || p.count < 150) return;
+  seen.add(g); o.getWorldScale(ws); const sc = (ws.x + ws.y + ws.z) / 3; if (sc > 3) return;
+  for (let i = 0; i < p.count; i++) {
+    wp.fromBufferAttribute(p, i).applyMatrix4(o.matrixWorld);
+    const d = (vnoise(wp.x * 1.8, wp.y * 1.8, wp.z * 1.8) * .06 + vnoise(wp.x * 5, wp.y * 5, wp.z * 5) * .018) / sc;
+    p.setXYZ(i, p.getX(i) + n.getX(i) * d, p.getY(i) + n.getY(i) * d, p.getZ(i) + n.getZ(i) * d);
+  }
+  p.needsUpdate = true; g.computeVertexNormals();
+});
 
 renderer.render(scene, cam);
 window.done = true;
