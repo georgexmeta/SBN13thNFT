@@ -64,11 +64,11 @@ def generate(row, refs, key):
                 req.data = json.dumps(body).encode(); continue
             raise RuntimeError("no image in response: " + json.dumps(res)[:400])
         except urllib.error.HTTPError as e:
-            msg = e.read().decode()[:400]
+            msg = e.read().decode()[:1200]
             if e.code == 429 and "spend" in msg and spend_waits < 12:   # account spend cap: wait it out, don't burn retries
                 spend_waits += 1; print(f"  spend limit hit, waiting 5 min ({spend_waits}/12)", flush=True)
                 time.sleep(300); continue
-            if e.code in (429, 500, 503) and attempt - spend_waits < 4 and "limit: 0" not in msg:
+            if e.code in (429, 500, 503) and attempt - spend_waits < 4 and "limit: 0" not in msg and "per_day" not in msg:
                 time.sleep(10 * 2 ** (attempt - spend_waits)); continue
             raise RuntimeError(f"HTTP {e.code}: {msg}")
         except urllib.error.URLError as e:   # proxy or network blip: wait and retry instead of skipping the token
@@ -106,7 +106,7 @@ def main():
             time.sleep(float(os.environ.get("THROTTLE", "0")))
         except Exception as e:
             print(f"#{i} failed: {e}", flush=True)
-            if "HTTP 402" in str(e):   # prepaid credits are gone: stop instead of failing every token
+            if "HTTP 402" in str(e) or "per_day" in str(e):   # prepaid credits are gone: stop instead of failing every token
                 sys.exit("stopping: Gemini prepayment credits are depleted")
 
 
