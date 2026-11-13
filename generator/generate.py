@@ -62,6 +62,15 @@ EYE_COLORS = {"Swamp Green": 20, "Ice Blue": 18, "Mud Brown": 22, "Hazel": 16, "
               "Jaundice Yellow": 6, "Mismatched": 5, "Milky White": 3}
 NO_IRIS = {"Glowing Red", "Glowing Green", "Hollow Sockets"}
 LATE_KEEP = {10, 49, 100}
+# Tiers (George, 2026-11-13): 1,157 Standard, 130 Rare, 13 Legendary 1/1s. Rare tokens are picked by their own RNG
+# after everything else, so Standard tokens keep the traits George has seen. Each Rare wears a mask style only Rare
+# tokens can have; some also get rusty nails, the golden machete, or the killer clown kit.
+N_RARE = 130
+RARE_MASKS = {"Patchwork Mask": 18, "Burlap Pig Mask": 18, "Gas Mask": 16, "Iron Plate Mask": 16, "Sack Hood": 15,
+              "Zipper Leather Mask": 15, "Clown Mask": 12, "Long Nose Mask": 10, "Killer Clown Mask": 10}
+RARE_NAILS, RARE_GOLDEN = 26, 10
+EXCLUSIVE_RARE = {"Mask": set(RARE_MASKS), "Skin Detail": {"Rusty Nails"}, "Weapon": {"Golden Machete"},
+                  "Clothing": {"Clown Suit"}, "Back Weapon": {"Circus Mallet"}}
 
 
 def _o(bg, skin, swell, ear, eyes, brows, nose, mouth, hair, hair_c, cloth, detail, weapon, bandana="None",
@@ -118,6 +127,11 @@ SWELL = {"Mild": 14, "Lumpy": 34, "Grotesque": 58}
 
 
 def compose(attrs, seed):
+    # the legacy 2D SVG has no art for the Rare-only traits: draw the nearest 2D stand-in
+    attrs = dict(attrs)
+    if attrs.get("Clothing") == "Clown Suit": attrs["Clothing"] = "Stained Undershirt"
+    if attrs.get("Skin Detail") == "Rusty Nails": attrs["Skin Detail"] = "Stitches"
+    if attrs.get("Mask") in RARE_MASKS: attrs["Mask"] = "Stitched Mask"
     rng = random.Random(seed)
     skin = T.SKINS[attrs["Skin Tone"]]
     hair_c = T.HAIR_COLORS[attrs["Hair Color"]]
@@ -176,12 +190,12 @@ SAMPLES = [
 ]
 
 
-def write(out_dir, idx, attrs, seed, name=None):
+def write(out_dir, idx, attrs, seed, name=None, rare=False):
     os.makedirs(out_dir, exist_ok=True)
     with open(os.path.join(out_dir, f"{idx}.svg"), "w") as f:
         f.write(compose(attrs, seed))
     meta = {"name": f"SBN13th #{idx}" + (f" - {name}" if name else ""), "seed": seed,
-            "attributes": ([{"trait_type": "Type", "value": "1/1" if name else "Generic"}]
+            "attributes": ([{"trait_type": "Tier", "value": "Legendary 1/1" if name else "Rare" if rare else "Standard"}]
                            + ([{"trait_type": "1/1 Name", "value": name}] if name else [])
                            + [{"trait_type": k, "value": v} for k, v in attrs.items()])}
     with open(os.path.join(out_dir, f"{idx}.json"), "w") as f:
@@ -244,13 +258,33 @@ def build_collection(root):
             attrs["Eye Color"] = c
         else:
             attrs["Eye Color"] = "None"
+    rare_rng = random.Random(130)
+    pool = [i for i, (name, _) in enumerate(tokens, 1) if not name and i not in LATE_KEEP]
+    rare = set(rare_rng.sample(pool, N_RARE))
+    masks = [m for m, n in RARE_MASKS.items() for _ in range(n)]
+    rare_rng.shuffle(masks)
+    order = sorted(rare)
+    for i, m in zip(order, masks):
+        a = tokens[i - 1][1]
+        a["Mask"], a["Bandana"] = m, "None"
+        if m == "Killer Clown Mask":
+            a["Clothing"], a["Back Weapon"], a["Weapon"] = "Clown Suit", "Circus Mallet", "Butcher Knife"
+    for i in rare_rng.sample(order, RARE_NAILS):
+        if tokens[i - 1][1]["Mask"] != "Sack Hood":
+            tokens[i - 1][1]["Skin Detail"] = "Rusty Nails"
+    golden = set(rare_rng.sample([i for i in order if tokens[i - 1][1]["Mask"] != "Killer Clown Mask"], RARE_GOLDEN))
+    for idx, (name, a) in enumerate(tokens, 1):
+        if not name and a["Weapon"] == "Golden Machete" and idx not in golden:
+            a["Weapon"] = "Machete"     # the golden machete is now Rare-only
+        if idx in golden:
+            a["Weapon"] = "Golden Machete"
     for idx, ((name, attrs), seed) in enumerate(zip(tokens, seeds), 1):
-        write(root, idx, attrs, seed=seed, name=name)
+        write(root, idx, attrs, seed=seed, name=name, rare=idx in rare)
     report(root, tokens, n_generic)
 
 
 def report(root, tokens, n_generic):
-    counts = {k: Counter() for k in list(WEIGHTS) + ["Eye Color", "Mask"]}
+    counts = {k: Counter() for k in list(WEIGHTS) + ["Eye Color", "Mask", "Back Weapon"]}
     for _, attrs in tokens:
         for k in counts:
             counts[k][attrs.get(k, "None")] += 1
@@ -272,7 +306,7 @@ def report(root, tokens, n_generic):
     for k, c in counts.items():
         lines += ["", f"## {k}", "", "| Value | Count | Share | Tier |", "|---|---|---|---|"]
         for v, n in c.most_common():
-            excl = " (1/1 only)" if v in EXCLUSIVE.get(k, ()) else ""
+            excl = " (1/1 only)" if v in EXCLUSIVE.get(k, ()) else " (Rare only)" if v in EXCLUSIVE_RARE.get(k, ()) else ""
             lines.append(f"| {v}{excl} | {n} | {n / total:.1%} | {tier(n / total)} |")
     lines += ["", "## Top 25 by rarity score", "", "| Rank | Token | Score |", "|---|---|---|"]
     for r, (_, score, idx, name) in enumerate(scored[:25], 1):

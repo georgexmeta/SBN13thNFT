@@ -17,10 +17,13 @@ OUT = os.path.join(ROOT, "output", "ai")
 STYLE = ("Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with visible fingerprints, "
          "tool marks and pressed texture, soft studio lighting, shallow depth of field, highly detailed, "
          "pressed-clay backdrop with thumbprint swirls")
+FACE_LOCK = ("Keep the exact same face sculpt, head proportions and character from the second reference image. ")
 CHARACTER = ("a grotesque, disfigured old man with a huge lumpy bald bobble-head skull covered in bumps and dents, "
              "mottled skin with age spots, raised clay forehead wrinkles, small sunken bloodshot eyes in swollen "
              "red-rimmed lids, thick neck, head turned three-quarters toward the viewer's right")
-FRAMING = ("three-quarter view from the waist up, centred, square 1:1 profile picture composition")
+FRAMING = ("three-quarter view from the waist up, the whole head and weapon inside the frame with space above the head, "
+           "figure centred, square 1:1 profile picture composition. Any held weapon is gripped in a clenched fist with the back "
+           "of the hand and the knuckles facing the viewer")
 NEGATIVE = ("ape, monkey, gorilla, cartoon outline, flat 2D, anime, text, watermark, logo, signature, "
             "red chevrons, red triangle markings, extra fingers, deformed hands, cropped head")
 
@@ -69,9 +72,10 @@ CLOTH = {
     "Stained Undershirt": "a stained, torn undershirt", "Butcher Apron": "a blood-stained butcher's apron",
     "Grey Hoodie": "a grimy grey hoodie", "Black Hoodie": "a grimy black hoodie", "Maroon Hoodie": "a grimy maroon hoodie",
     "Khaki Trench Coat": "a khaki trench coat", "Black Trench Coat": "a black trench coat", "Olive Trench Coat": "an olive trench coat",
+    "Clown Suit": "a baggy bloody harlequin clown suit, red and cream halves with polka dots, a ruffled collar and pom-pom buttons",
     "Torn White Tee": "a torn white t-shirt", "Torn Black Tee": "a torn black t-shirt", "Torn Army Tee": "a torn army-green t-shirt",
 }
-DETAIL = {"None": "", "Wart": "a hairy wart", "Veins": "bulging blue forehead veins", "Boils": "a few angry boils",
+DETAIL = {"Rusty Nails": "bent rusty nails hammered unevenly into the top and back of his skull with blood weeping around them", "None": "", "Wart": "a hairy wart", "Veins": "bulging blue forehead veins", "Boils": "a few angry boils",
           "Stitches": "a stitched gash", "Burn Scar": "a melted burn scar"}
 WEAPON = {
     "None": "both hands empty, one hanging open",
@@ -95,6 +99,20 @@ MASK_FINISH = {
     "Rusted Mask": "rust-stained", "Stitched Mask": "stitched together with black thread", "Muddy Mask": "caked in mud",
     "Lipstick Mask": "smeared with red lipstick", "Toxic Mask": "dripping glowing toxic green slime",
     "Jack-o'-Lantern Mask": "pumpkin orange with a carved glowing grin", "Mossy Mask": "overgrown with green moss",
+}
+
+
+# Rare-only masks (130 Rare tokens): original designs, full-face unless noted
+RARE_MASK = {
+    "Patchwork Mask": "a patchwork mask of stitched burlap and riveted scrap-metal plates, round brass goggle eyes with red lenses, a wire-stitched mouth, a leather strap with a buckle over the crown",
+    "Burlap Pig Mask": "a stitched burlap pig mask with frayed edges, floppy burlap ears, a pink clay pig snout, a blocky burlap-toothed grin, a leather strap with a buckle over the crown",
+    "Gas Mask": "a black rubber respirator gas mask over his nose and mouth with a round olive filter canister and ribbed hose, eyes visible above it",
+    "Iron Plate Mask": "a riveted rusty iron face plate over his nose and mouth with vertical grille slots, eyes visible above it",
+    "Sack Hood": "a filthy burlap sack hood pulled over his whole head with ragged eye holes, a cross-stitched mouth and a rope tied round the neck",
+    "Zipper Leather Mask": "a stitched black leather full-face mask with laced seams and a metal zipper across the mouth",
+    "Clown Mask": "a cracked white latex clown mask with black diamond eye paint, a red bulb nose and a painted red grin",
+    "Long Nose Mask": "a pale grey latex full-face mask with a long crooked warty nose and a dark slit mouth",
+    "Killer Clown Mask": "a crazed killer clown mask with a slashed red grin full of fangs dripping blood, black diamond eye paint, a red bulb nose and wild green and red hair puffs",
 }
 
 
@@ -122,13 +140,19 @@ def prompt(a):
     face = [SHAPE[a["Head Shape"]], SKIN[a["Skin Tone"]] + " clay skin", SWELL[a["Swelling"]], EAR[a["Ear"]],
             BROWS[a["Brows"]], DETAIL[a["Skin Detail"]], hair(a)]
     masked = a.get("Mask", "None") not in ("None", None)
-    if masked:
+    if a.get("Mask") in RARE_MASK:
+        face.append(RARE_MASK[a["Mask"]])
+        if "visible above" in RARE_MASK[a["Mask"]]:
+            face.append(EYES[a["Eyes"]])
+    elif masked:
         face.append(f"{MASK}, {MASK_FINISH[a['Mask']]}")
         face.append(EYES[a["Eyes"]] + (", " + EYE_COLOR[a["Eye Color"]] if EYE_COLOR.get(a["Eye Color"]) else "") + ", visible above the mask")
     else:
         face += [EYES[a["Eyes"]], EYE_COLOR.get(a["Eye Color"], ""), NOSE[a["Nose"]]]
         face.append(BANDANA[a["Bandana"]] if a["Bandana"] != "None" else MOUTH[a["Mouth"]])
     body = [f"wearing {clothing(a)}", WEAPON[a["Weapon"]]]
+    if a.get("Back Weapon") == "Circus Mallet":
+        body.append("a giant red-and-cream striped circus mallet slung behind his back, its head above his shoulder")
     parts = [STYLE, CHARACTER, ", ".join(p for p in face if p), ", ".join(body), f"{BG[a['Background']]} backdrop", FRAMING]
     return ". ".join(parts) + "."
 

@@ -18,11 +18,12 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MANIFEST = os.path.join(ROOT, "output", "ai", "manifest.json")
 OUTDIR = os.path.join(ROOT, "output", "ai", "images")
 MODEL = os.environ.get("GEMINI_IMAGE_MODEL", "gemini-2.5-flash-image")
-DEFAULT_REFS = [os.path.join(ROOT, "refs", "master-reference.jpg")]
+DEFAULT_REFS = [os.path.join(ROOT, "refs", "master-reference.jpg"), os.path.join(ROOT, "refs", "face-reference.png")]
 MASK_REF = os.path.join(ROOT, "refs", "mask-reference.jpg")
 
-LEAD = ("Use the attached reference photo as the exact character design, sculpting style, clay finish, lighting "
-        "and camera framing. Keep the same character, but change only what this description says: ")
+LEAD = ("The first reference photo sets the sculpting style, clay finish, lighting and camera framing. The second "
+        "reference photo is the character: keep the exact same face sculpt and head proportions. Change only what this "
+        "description says: ")
 
 
 def ids(spec):
