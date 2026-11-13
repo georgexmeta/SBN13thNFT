@@ -98,7 +98,7 @@ CLOTH_STD = {
 # Outfits George added on 2026-11-13. They are dealt in a separate late pass (outfit_pass) so tokens that were
 # already rendered (generator/rendered_keep.json) keep their traits and images.
 CLOTH_NEW = {
-    "Orange Prison Jumpsuit": (16, "a stained bright orange prison convict jumpsuit with a stencilled inmate number on the chest"),
+    "Orange Prison Jumpsuit": (16, "a stained bright orange prison convict jumpsuit with the inmate number 666 stencilled in black on a white chest patch (the only lettering in the image)"),
     "Bloody Surgeon Scrubs": (14, "blood-soaked green surgeon's scrubs with a surgical cap and a stained surgical mask hanging round his neck"),
     "Tattered Shirt": (14, "a shredded, ripped and tattered button-up shirt hanging in rags"),
     "Navy Jumpsuit": (5, "a stained one-piece navy blue work jumpsuit with a torn name patch"),
