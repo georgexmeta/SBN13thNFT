@@ -55,6 +55,9 @@ def generate(row, refs, key):
                     d = p.get("inline_data") or p.get("inlineData")
                     if d:
                         return base64.b64decode(d["data"])
+            if "PROHIBITED" in json.dumps(res) and attempt < 4:   # safety filter false positive: try another seed
+                body["generationConfig"]["seed"] += 1
+                req.data = json.dumps(body).encode(); continue
             raise RuntimeError("no image in response: " + json.dumps(res)[:400])
         except urllib.error.HTTPError as e:
             msg = e.read().decode()[:400]

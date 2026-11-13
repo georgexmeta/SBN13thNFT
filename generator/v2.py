@@ -47,11 +47,11 @@ MASK_STD = {
     "Bare Face": (22, "no mask: his disfigured face is bare, small sunken bloodshot eyes in swollen red lids, a crooked broken nose and rotten yellow teeth"),
     "Hockey Half-Mask": (18, "an aged yellowed lower-face hockey mask with blood smears, round breathing holes and a moulded beak nose, held by rusty leather straps with a riveted plate and a buckle under the ear, eyes visible above it"),
     "Burlap Pig Mask": (14, "a frayed stitched burlap pig mask with floppy ears, a pink clay snout and a blocky burlap-toothed grin, a rusty leather strap with a buckle over the crown"),
-    "Burlap Sack Hood": (12, "a filthy burlap sack pulled over the head with ragged eye holes and a cross-stitched mouth, rope tied at the neck"),
+    "Burlap Sack Hood": (12, "his huge oversized bobble head is entirely covered by a filthy lumpy burlap sack pulled all the way down over the whole skull and face, ragged cut eye holes, a cross-stitched mouth, rope tied tight at the neck; no skin or hair visible"),
     "Patchwork Goggle Mask": (12, "a patchwork mask of stitched burlap and riveted scrap-metal plates, round brass goggle eyes with red lenses, a wire-stitched mouth, a leather strap with a buckle over the crown"),
     "Gas Mask": (10, "a cracked black rubber respirator over his nose and mouth with an olive filter canister and ribbed hose, eyes visible above"),
     "Paisley Bandana": (8, "a navy paisley bandana tied snug over his nose and mouth, point hanging on the chest"),
-    "Iron Muzzle": (4, "a riveted rusty iron muzzle plate strapped over his mouth and jaw with grille slots, eyes visible above"),
+    "Iron Muzzle": (4, "a crude welded scrap-metal jaw cage made of bent rebar bars and bolts wrapped round his mouth and chin, rusty and bloody, eyes visible above"),
 }
 MASK_RARE = {   # monster-like; original takes on slasher and metal archetypes
     "Stitched Skin Mask": (16, "a crude mask of mismatched stitched leathery skin patches sewn with thick black thread, uneven eye holes, ragged edges"),
@@ -61,7 +61,7 @@ MASK_RARE = {   # monster-like; original takes on slasher and metal archetypes
     "Zipper Mouth Leather": (12, "a stitched black leather full-face mask with laced seams and a metal zipper across the mouth"),
     "Oni Demon Mask": (10, "a red lacquered demon mask with gold horns, a snarling fanged mouth and furrowed brows"),
     "Bone Skull Mask": (10, "a carved bone skull mask with cracked teeth and hollow eye sockets"),
-    "Rusted Knight Helm": (8, "a dented rusty knight's great helm with a breathing-hole visor"),
+    "Rusted Knight Helm": (8, "HIS WHOLE HEAD IS INSIDE a dented rusty medieval knight's great helm (a closed bucket-shaped steel helmet covering the entire head and face, with a narrow eye slit and breathing holes); no face or skin visible"),
     "Long Nose Latex": (4, "a pale grey latex mask with a long crooked warty nose and a dark slit mouth"),
 }
 HELD_STD = {
