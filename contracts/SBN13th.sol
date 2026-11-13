@@ -24,13 +24,15 @@ contract SBN13th is ERC721, ERC2981, Ownable {
     bytes32 public fcfsRoot;
     mapping(uint8 => mapping(address => uint256)) public mintedIn;
 
-    string private baseURI;          // pre-reveal folder first, then ipfs://<metadata CID>/ at reveal
+    string private baseURI;          // ipfs://<metadata CID>/ , set at reveal
+    string private preRevealURI;     // one shared file shown for every token until reveal
+    bool public revealed;
     string private contractMeta;     // ipfs://<CID>/collection.json, read by OpenSea
 
-    constructor(string memory baseURI_, string memory contractMeta_, address royaltyReceiver, uint96 royaltyBps)
+    constructor(string memory preRevealURI_, string memory contractMeta_, address royaltyReceiver, uint96 royaltyBps)
         ERC721("SBN13th", "SBN13") Ownable(msg.sender)
     {
-        baseURI = baseURI_;
+        preRevealURI = preRevealURI_;
         contractMeta = contractMeta_;
         _setDefaultRoyalty(royaltyReceiver, royaltyBps);   // 500 = 5%
     }
@@ -68,7 +70,9 @@ contract SBN13th is ERC721, ERC2981, Ownable {
     function setRoots(bytes32 wl, bytes32 fcfs) external onlyOwner { wlRoot = wl; fcfsRoot = fcfs; }
     function setPrice(Phase p, uint256 wei_) external onlyOwner { prices[uint8(p)] = wei_; }
     function setLimit(Phase p, uint256 n) external onlyOwner { limits[uint8(p)] = n; }
-    function setBaseURI(string calldata u) external onlyOwner { baseURI = u; }
+    // Reveal: pass ipfs://<metadata CID>/ once the art folder is pinned.
+    function reveal(string calldata u) external onlyOwner { baseURI = u; revealed = true; }
+    function setPreRevealURI(string calldata u) external onlyOwner { preRevealURI = u; }
     function setContractURI(string calldata u) external onlyOwner { contractMeta = u; }
     function setRoyalty(address r, uint96 bps) external onlyOwner { _setDefaultRoyalty(r, bps); }
     function withdraw() external onlyOwner { payable(owner()).transfer(address(this).balance); }
@@ -77,6 +81,7 @@ contract SBN13th is ERC721, ERC2981, Ownable {
     function _baseURI() internal view override returns (string memory) { return baseURI; }
     function tokenURI(uint256 id) public view override returns (string memory) {
         _requireOwned(id);
+        if (!revealed) return preRevealURI;
         return string.concat(baseURI, Strings.toString(id), ".json");
     }
     function supportsInterface(bytes4 id) public view override(ERC721, ERC2981) returns (bool) {
