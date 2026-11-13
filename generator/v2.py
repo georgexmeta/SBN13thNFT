@@ -60,6 +60,15 @@ MASK_NEW2 = {
 }
 MASK_NEW.update(MASK_NEW2)
 N_NEW2 = 25
+# Second mood board (2026-11-13): leather harness hood and flayed-muscle face, as original takes (no steel ball nose,
+# no slot-teeth grille, no band colour schemes). 25 tokens each, dealt after MASK_NEW2.
+MASK_NEW3 = {
+    "Buckled Harness Hood": (0, "a cracked black leather hood stitched from scrap panels, cinched round the skull and jaw by several rusty buckled "
+                                "straps, a short zipper on each cheek and a riveted brass vent grille over the mouth, ragged eye holes showing his bloodshot eyes"),
+    "Flayed Muscle Face": (0, "a mask sculpted like a skinned face of raw red muscle fibres and pale sinew strands, bone-white cheekbones poking "
+                              "through, a lipless grin of crooked yellow teeth, one bloodshot eye glaring through a torn hole"),
+}
+MASK_NEW.update(MASK_NEW3)
 MASK_STD = {
     "Bare Face": (22, "no mask: his disfigured face is bare, small sunken bloodshot eyes in swollen red lids, a crooked broken nose and rotten yellow teeth"),
     "Hockey Half-Mask": (18, "an aged yellowed HALF mask covering ONLY his mouth, chin and the tip of his nose, the top edge sitting just under his eyes, his eyes, brow and forehead completely bare, round breathing holes, random blood splatters (never triangles or stripes), held by rusty leather straps with a riveted plate and a buckle under the ear"),
@@ -326,6 +335,9 @@ def mask_pass(tokens):
     picks = random.Random(2626).sample(pool, N_NEW2 * len(MASK_NEW2))
     for k, i in enumerate(picks):
         tokens[i - 1][0]["Mask"] = list(MASK_NEW2)[k % len(MASK_NEW2)]
+    pool = [i for i in pool if i not in set(picks)]
+    for k, i in enumerate(random.Random(2727).sample(pool, N_NEW2 * len(MASK_NEW3))):
+        tokens[i - 1][0]["Mask"] = list(MASK_NEW3)[k % len(MASK_NEW3)]
 
 
 def report(tokens):

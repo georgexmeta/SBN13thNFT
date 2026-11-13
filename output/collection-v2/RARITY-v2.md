@@ -23,17 +23,19 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Bare Face | 257 | 19.8% |
-| Hockey Half-Mask | 185 | 14.2% |
-| Burlap Sack Hood | 136 | 10.5% |
-| Burlap Pig Mask | 133 | 10.2% |
-| Patchwork Goggle Mask | 122 | 9.4% |
-| Gas Mask | 106 | 8.2% |
-| Paisley Bandana | 82 | 6.3% |
-| Iron Muzzle | 46 | 3.5% |
+| Bare Face | 244 | 18.8% |
+| Hockey Half-Mask | 180 | 13.8% |
+| Burlap Pig Mask | 126 | 9.7% |
+| Burlap Sack Hood | 123 | 9.5% |
+| Patchwork Goggle Mask | 119 | 9.2% |
+| Gas Mask | 100 | 7.7% |
+| Paisley Bandana | 81 | 6.2% |
+| Iron Muzzle | 44 | 3.4% |
 | Bloody Bandage Wrap | 40 | 3.1% |
 | Rubber Seam Face | 25 | 1.9% |
+| Buckled Harness Hood | 25 | 1.9% |
 | Melted Wax Face | 25 | 1.9% |
+| Flayed Muscle Face | 25 | 1.9% |
 | Zipper Mouth Leather (Rare+) | 18 | 1.4% |
 | Fanged Killer Clown (Rare+) | 16 | 1.2% |
 | Nail-Studded Leather Mask (Rare+) | 15 | 1.2% |
