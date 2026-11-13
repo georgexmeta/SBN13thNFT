@@ -188,9 +188,9 @@
 | Backwards Cap | 86 | 6.6% |
 | Black Veil | 8 | 0.6% |
 | Straw Sun Bonnet | 8 | 0.6% |
-| Cropped Copper Wig | 8 | 0.6% |
+| Choppy Teal Wig | 8 | 0.6% |
 | Lace Bonnet | 8 | 0.6% |
-| Black Beehive | 8 | 0.6% |
+| Wilted Flower Crown | 8 | 0.6% |
 | Soaked Black Veil Hair | 8 | 0.6% |
 | Grey Curled Perm | 1 | 0.1% |
 
