@@ -118,6 +118,19 @@ BACKDROP = {
 }
 BACKDROP_RARE = {"Blood Moon": (50, "a dark night backdrop with a huge cratered blood-red clay moon"),
                  "Cornfield": (50, "a cornfield of dry clay corn stalks at dusk")}
+# Exclusive scene backdrops George added on 2026-11-13. Dealt by backdrop_pass (separate RNG) only to tokens not
+# yet rendered (generator/rendered_keep_bg.json): 30% of Rare and 20% of Standard tokens get one,
+# so each scene is uncommon (~2-3%), rarer than the common clay backdrops (6-16%).
+SCENE = ", sculpted as a miniature claymation diorama in matte plasticine, softly out of focus behind him, no signs or lettering"
+BACKDROP_SCENE = {
+    "Haunted Mansion": (1, "a crooked haunted Victorian mansion on a hill at night with dim glowing windows, bare twisted trees and a pale moon" + SCENE),
+    "Graveyard": (1, "a foggy moonlit graveyard of cracked tombstones, crooked crosses and dead trees" + SCENE),
+    "Lakeside Cabin": (1, "a rundown wooden cabin beside a misty dark lake at dusk with a rotting dock and pine trees" + SCENE),
+    "Doctor's Hospital Room": (1, "a grimy abandoned hospital room with a rusty bed, a flickering lamp, an IV stand and blood-smeared tiled walls" + SCENE),
+    "Abandoned Laboratory": (1, "an abandoned laboratory with cracked glass jars of murky green liquid, rusty machinery and dangling wires" + SCENE),
+    "Radioactive Wasteland": (1, "a toxic wasteland with glowing green puddles, rusted leaking barrels and a smoky orange sky" + SCENE),
+    "Nightmare Sequence": (1, "a surreal nightmare dreamscape of melting swirling deep red and purple clay, floating eyeballs and twisted staircases" + SCENE),
+}
 
 # 13 Legendary 1/1s: the hockey half-mask in a unique finish, plus unique backdrop/weapon combos
 LEGENDARY = [
@@ -152,7 +165,7 @@ NEGATIVE = ("text, logo, letters, watermark, brand marks, sports team logo, red 
             "photo of a real person, cartoon outline, flat 2D, face turned to the left, mirrored pose, long finger blades, clawed glove with four long knives, "
             "red and green striped sweater, brown fedora")
 ALL = {"Head": HEAD, "Skin": SKIN, "Hair": HAIR, "Head Mark": HEAD_MARK, "Clothing": {**CLOTH_STD, **CLOTH_NEW, **CLOTH_RARE},
-       "Belt": BELT, "Backdrop": {**BACKDROP, **BACKDROP_RARE}, "Mask": {**MASK_STD, **MASK_RARE},
+       "Belt": BELT, "Backdrop": {**BACKDROP, **BACKDROP_RARE, **BACKDROP_SCENE}, "Mask": {**MASK_STD, **MASK_RARE},
        "Held Weapon": {**HELD_STD, **HELD_RARE}, "Back Weapon": {**BACK_STD, **BACK_RARE}}
 
 
@@ -227,6 +240,7 @@ def build():
     tokens += [(deal("Standard"), None) for _ in range(TOTAL - N_RARE - len(LEGENDARY))]
     rng.shuffle(tokens)
     outfit_pass(tokens)
+    backdrop_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -257,6 +271,18 @@ def outfit_pass(tokens):
             if dna == old or dna not in dnas:
                 dnas.discard(old); dnas.add(dna); a["Clothing"] = new_val
                 break
+
+
+def backdrop_pass(tokens):
+    """Give unrendered tokens a chance at an exclusive scene backdrop. Legendaries keep their own backdrops."""
+    keep = set(json.load(open(os.path.join(ROOT, "generator", "rendered_keep_bg.json"))))
+    late = random.Random(1313)
+    for i, (a, finish) in enumerate(tokens, 1):
+        roll, val = late.random(), pick(late, BACKDROP_SCENE)   # always draw, so odds don't depend on the keep list
+        if i in keep or finish:
+            continue
+        if roll < (.3 if a["Tier"] == "Rare" else .2):
+            a["Backdrop"] = val   # a new backdrop value can't collide with an existing DNA
 
 
 def report(tokens):
