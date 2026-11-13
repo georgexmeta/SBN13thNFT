@@ -45,6 +45,10 @@
     {
       "trait_type": "Backdrop",
       "value": "Cornfield"
+    },
+    {
+      "trait_type": "Ears",
+      "value": "Natural"
     }
   ]
 }

@@ -45,6 +45,10 @@
     {
       "trait_type": "Backdrop",
       "value": "Lakeside Cabin"
+    },
+    {
+      "trait_type": "Ears",
+      "value": "Natural"
     }
   ]
 }

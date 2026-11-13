@@ -43,6 +43,9 @@ HEAD_MARK = {
     "Stitched Scar": (15, "a stitched scar across the scalp"), "Boils": (10, "a few angry boils on the scalp"),
     "Clean": (10, ""),
 }
+# Ears (George, 2026-11-13): exactly 130 tokens get stretched gauged earlobes, dealt by ear_pass to tokens not yet rendered.
+EARS = {"Natural": (0, ""), "Gauged": (0, "a stretched earlobe on his visible ear with a large dark hollow tunnel gauge plug in it")}
+N_GAUGED = 130
 MASK_STD = {
     "Bare Face": (22, "no mask: his disfigured face is bare, small sunken bloodshot eyes in swollen red lids, a crooked broken nose and rotten yellow teeth"),
     "Hockey Half-Mask": (18, "an aged yellowed HALF mask covering ONLY his mouth, chin and the tip of his nose, the top edge sitting just under his eyes, his eyes, brow and forehead completely bare, round breathing holes, random blood splatters (never triangles or stripes), held by rusty leather straps with a riveted plate and a buckle under the ear"),
@@ -164,7 +167,7 @@ NEGATIVE = ("text, logo, letters, watermark, brand marks, sports team logo, red 
             "white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, "
             "photo of a real person, cartoon outline, flat 2D, face turned to the left, mirrored pose, long finger blades, clawed glove with four long knives, "
             "red and green striped sweater, brown fedora")
-ALL = {"Head": HEAD, "Skin": SKIN, "Hair": HAIR, "Head Mark": HEAD_MARK, "Clothing": {**CLOTH_STD, **CLOTH_NEW, **CLOTH_RARE},
+ALL = {"Head": HEAD, "Skin": SKIN, "Hair": HAIR, "Head Mark": HEAD_MARK, "Ears": EARS, "Clothing": {**CLOTH_STD, **CLOTH_NEW, **CLOTH_RARE},
        "Belt": BELT, "Backdrop": {**BACKDROP, **BACKDROP_RARE, **BACKDROP_SCENE}, "Mask": {**MASK_STD, **MASK_RARE},
        "Held Weapon": {**HELD_STD, **HELD_RARE}, "Back Weapon": {**BACK_STD, **BACK_RARE}}
 
@@ -179,7 +182,7 @@ def phrase(trait, value):
 
 
 def prompt(a, legendary_finish=None):
-    head = [phrase("Head", a["Head"]), phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"]), phrase("Head Mark", a["Head Mark"])]
+    head = [phrase("Head", a["Head"]), phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"]), phrase("Head Mark", a["Head Mark"]), phrase("Ears", a.get("Ears", "Natural"))]
     if legendary_finish and legendary_finish.startswith("MASK:"):
         mask = legendary_finish.split("|", 1)[1]
     elif legendary_finish:
@@ -241,6 +244,7 @@ def build():
     rng.shuffle(tokens)
     outfit_pass(tokens)
     backdrop_pass(tokens)
+    ear_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -285,11 +289,22 @@ def backdrop_pass(tokens):
             a["Backdrop"] = val   # a new backdrop value can't collide with an existing DNA
 
 
+def ear_pass(tokens):
+    """Every token gets an Ears trait; exactly N_GAUGED unrendered, non-legendary tokens get Gauged."""
+    keep = set(json.load(open(os.path.join(ROOT, "generator", "rendered_keep_ears.json"))))
+    for a, _ in tokens:
+        a["Ears"] = "Natural"
+    hidden = {"Burlap Sack Hood", "Zipper Long Nose"}   # these cover the whole head, so a gauge wouldn't show
+    pool = [i for i, (a, finish) in enumerate(tokens, 1) if i not in keep and not finish and a["Mask"] not in hidden]
+    for i in random.Random(130).sample(pool, N_GAUGED):
+        tokens[i - 1][0]["Ears"] = "Gauged"
+
+
 def report(tokens):
     lines = ["# SBN13th v2 rarity", "", "1,300 PFPs: 1,157 Standard, 130 Rare, 13 Legendary 1/1s. Every PFP is unique.", ""]
     rare_only = {k: set(t) for k, t in [("Mask", MASK_RARE), ("Held Weapon", HELD_RARE), ("Back Weapon", BACK_RARE),
                                          ("Clothing", CLOTH_RARE), ("Backdrop", BACKDROP_RARE)]}
-    for trait in ["Tier", "Head", "Mask", "Held Weapon", "Back Weapon", "Clothing", "Belt", "Backdrop", "Skin", "Hair", "Head Mark"]:
+    for trait in ["Tier", "Head", "Mask", "Held Weapon", "Back Weapon", "Clothing", "Belt", "Backdrop", "Skin", "Hair", "Head Mark", "Ears"]:
         c = Counter(a[trait] for a, _ in tokens)
         lines += [f"## {trait}", "", "| Value | Count | Share |", "|---|---|---|"]
         for v, n in c.most_common():

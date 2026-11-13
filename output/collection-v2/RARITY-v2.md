@@ -177,3 +177,10 @@
 | Stitched Scar | 199 | 15.3% |
 | Boils | 134 | 10.3% |
 | Clean | 128 | 9.8% |
+
+## Ears
+
+| Value | Count | Share |
+|---|---|---|
+| Natural | 1170 | 90.0% |
+| Gauged | 130 | 10.0% |

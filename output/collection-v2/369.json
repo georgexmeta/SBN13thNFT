@@ -45,6 +45,10 @@
     {
       "trait_type": "Backdrop",
       "value": "Swamp Clay"
+    },
+    {
+      "trait_type": "Ears",
+      "value": "Gauged"
     }
   ]
 }
