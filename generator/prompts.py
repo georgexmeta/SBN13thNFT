@@ -22,8 +22,9 @@ CHARACTER = ("a grotesque, disfigured old man with a huge lumpy bald bobble-head
              "mottled skin with age spots, raised clay forehead wrinkles, small sunken bloodshot eyes in swollen "
              "red-rimmed lids, thick neck, head turned three-quarters toward the viewer's right")
 FRAMING = ("three-quarter view from the waist up, the whole head and weapon inside the frame with space above the head, "
-           "figure centred, square 1:1 profile picture composition. Any held weapon is gripped in a clenched fist with the back "
-           "of the hand and the knuckles facing the viewer")
+           "figure centred, square 1:1 profile picture composition. Hand pose: any held weapon is gripped in a tight clenched fist seen "
+           "from the back of the hand, the four knuckles and the back of the hand face the camera, fingers wrap around the handle on "
+           "the far side and are hidden, the palm is not visible")
 NEGATIVE = ("ape, monkey, gorilla, cartoon outline, flat 2D, anime, text, watermark, logo, signature, "
             "red chevrons, red triangle markings, extra fingers, deformed hands, cropped head")
 
@@ -107,7 +108,7 @@ RARE_MASK = {
     "Patchwork Mask": "a patchwork mask of stitched burlap and riveted scrap-metal plates, round brass goggle eyes with red lenses, a wire-stitched mouth, a leather strap with a buckle over the crown",
     "Burlap Pig Mask": "a stitched burlap pig mask with frayed edges, floppy burlap ears, a pink clay pig snout, a blocky burlap-toothed grin, a leather strap with a buckle over the crown",
     "Gas Mask": "a black rubber respirator gas mask over his nose and mouth with a round olive filter canister and ribbed hose, eyes visible above it",
-    "Iron Plate Mask": "a riveted rusty iron face plate over his nose and mouth with vertical grille slots, eyes visible above it",
+    "Iron Plate Mask": "HE WEARS A MASK: a heavy riveted rusty iron plate mask strapped over his nose, mouth and chin, with vertical grille slots over the mouth and rivets round the edge, eyes visible above it",
     "Sack Hood": "a filthy burlap sack hood pulled over his whole head with ragged eye holes, a cross-stitched mouth and a rope tied round the neck",
     "Zipper Leather Mask": "a stitched black leather full-face mask with laced seams and a metal zipper across the mouth",
     "Clown Mask": "a cracked white latex clown mask with black diamond eye paint, a red bulb nose and a painted red grin",

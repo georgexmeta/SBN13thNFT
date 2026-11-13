@@ -15,8 +15,8 @@ import urllib.error
 import urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MANIFEST = os.path.join(ROOT, "output", "ai", "manifest.json")
-OUTDIR = os.path.join(ROOT, "output", "ai", "images")
+MANIFEST = os.environ.get("MANIFEST", os.path.join(ROOT, "output", "ai", "manifest.json"))
+OUTDIR = os.environ.get("OUTDIR", os.path.join(ROOT, "output", "ai", "images"))
 MODEL = os.environ.get("GEMINI_IMAGE_MODEL", "gemini-2.5-flash-image")
 DEFAULT_REFS = [os.path.join(ROOT, "refs", "master-reference.jpg"), os.path.join(ROOT, "refs", "face-reference.png")]
 MASK_REF = os.path.join(ROOT, "refs", "mask-reference.jpg")
@@ -41,7 +41,7 @@ def part_for(path):
 
 def generate(row, refs, key):
     refs = list(refs)
-    if row["attributes"].get("Mask", "None") != "None" and os.path.exists(MASK_REF) and MASK_REF not in refs:
+    if str(row["attributes"].get("Mask", "None")).startswith(("Hockey", "Bloody", "Chrome")) and os.path.exists(MASK_REF) and MASK_REF not in refs:
         refs.append(MASK_REF)
     body = {"contents": [{"parts": [part_for(r) for r in refs] + [{"text": LEAD + row["prompt"] + " Avoid: " + row["negative"]}]}],
             "generationConfig": {"responseModalities": ["IMAGE"], "seed": row["seed"], "imageConfig": {"aspectRatio": "1:1"}}}
