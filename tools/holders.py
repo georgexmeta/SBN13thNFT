@@ -19,12 +19,12 @@ TOTAL_SUPPLY, OWNER_OF = "0x18160ddd", "0x6352211e"
 
 
 def rpc(batch):
-    req = urllib.request.Request(RPC, data=json.dumps(batch).encode(), headers={"Content-Type": "application/json"})
-    for attempt in range(6):
+    req = urllib.request.Request(RPC, data=json.dumps(batch).encode(), headers={"Content-Type": "application/json", "User-Agent": "sbn13th-snapshot/1.0"})
+    for attempt in range(10):
         try:
             return json.load(urllib.request.urlopen(req, timeout=60))
         except Exception as e:
-            err = e; time.sleep(2 * (attempt + 1))
+            err = e; time.sleep(10 * (attempt + 1))   # public RPC rate-limits; back off
     raise RuntimeError(f"RPC failed: {err}")
 
 
@@ -36,15 +36,16 @@ def holders(addr):
     supply = int(rpc([call(addr, TOTAL_SUPPLY)])[0]["result"], 16)
     owners, misses, tid = set(), 0, 0
     # ids usually run 0..supply or 1..supply; keep going until a long run of missing ids past the supply
-    while tid <= supply or misses < 200:
-        batch = [call(addr, OWNER_OF + format(t, "064x"), t) for t in range(tid, tid + 100)]
+    while tid <= supply or misses < 100:
+        batch = [call(addr, OWNER_OF + format(t, "064x"), t) for t in range(tid, tid + 25)]
+        time.sleep(0.4)
         for res in rpc(batch):
             r = res.get("result")
             if r and len(r) >= 66:
                 owners.add("0x" + r[-40:].lower()); misses = 0
             else:
                 misses += 1
-        tid += 100
+        tid += 25
         if tid > supply * 3 + 1000:
             break
     return supply, owners - BURN
