@@ -42,16 +42,17 @@ async function proofFor(list, addr){
   }
   return out;
 }
-let n = 1, signer, c;
+let n = 1, maxN = 5, signer, c;
 const $ = id => document.getElementById(id);
-function step(d){ n = Math.min(10, Math.max(1, n + d)); $("n").textContent = n; }
+function step(d){ n = Math.min(maxN, Math.max(1, n + d)); $("n").textContent = n; }
 async function load(){
   const p = new ethers.JsonRpcProvider(CHAIN.rpcUrls[0]);
   const r = new ethers.Contract(CONTRACT, ABI, p);
   const [s, pr, ph] = await Promise.all([r.totalSupply(), r.price(), r.phase()]);
   const lim = await r.limits(ph);
+  if (ph) { maxN = Number(lim); if (n > maxN) step(0); }
   $("supply").textContent = `${s} / 1300 minted`;
-  $("price").textContent = ph ? `${PHASES[ph]} phase: ${pr == 0n ? "FREE" : ethers.formatEther(pr) + " ETH each"}, up to ${lim} ${ph == 3 ? "per transaction" : "per wallet"}` : PHASES[0];
+  $("price").textContent = ph ? `${PHASES[ph]} phase: ${pr == 0n ? "FREE" : ethers.formatEther(pr) + " ETH each"}, up to ${lim} per wallet` : PHASES[0];
 }
 async function mintNow(){
   try{
