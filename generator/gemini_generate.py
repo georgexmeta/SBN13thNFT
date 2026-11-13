@@ -47,7 +47,8 @@ def generate(row, refs, key):
             "generationConfig": {"responseModalities": ["IMAGE"], "seed": row["seed"], "imageConfig": {"aspectRatio": "1:1"}}}
     req = urllib.request.Request(f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent",
                                  data=json.dumps(body).encode(), headers={"Content-Type": "application/json", **({"x-goog-api-key": key} if key else {})})
-    for attempt in range(5):
+    spend_waits = 0
+    for attempt in range(5 + 12):   # extra rounds are only used by spend-limit waits
         try:
             res = json.load(urllib.request.urlopen(req, timeout=180))
             for c in res.get("candidates", []):
@@ -55,14 +56,17 @@ def generate(row, refs, key):
                     d = p.get("inline_data") or p.get("inlineData")
                     if d:
                         return base64.b64decode(d["data"])
-            if "PROHIBITED" in json.dumps(res) and attempt < 4:   # safety filter false positive: try another seed
+            if "PROHIBITED" in json.dumps(res) and attempt - spend_waits < 4:   # safety filter false positive: try another seed
                 body["generationConfig"]["seed"] += 1
                 req.data = json.dumps(body).encode(); continue
             raise RuntimeError("no image in response: " + json.dumps(res)[:400])
         except urllib.error.HTTPError as e:
             msg = e.read().decode()[:400]
-            if e.code in (429, 500, 503) and attempt < 4 and "limit: 0" not in msg:
-                time.sleep(10 * 2 ** attempt); continue
+            if e.code == 429 and "spend" in msg and spend_waits < 12:   # account spend cap: wait it out, don't burn retries
+                spend_waits += 1; print(f"  spend limit hit, waiting 5 min ({spend_waits}/12)", flush=True)
+                time.sleep(300); continue
+            if e.code in (429, 500, 503) and attempt - spend_waits < 4 and "limit: 0" not in msg:
+                time.sleep(10 * 2 ** (attempt - spend_waits)); continue
             raise RuntimeError(f"HTTP {e.code}: {msg}")
 
 
@@ -84,6 +88,7 @@ def main():
             continue
         try:
             img = generate(rows[i], refs, key); open(out, "wb").write(img); print(f"#{i} ok", flush=True)
+            time.sleep(float(os.environ.get("THROTTLE", "0")))
         except Exception as e:
             print(f"#{i} failed: {e}", flush=True)
 
