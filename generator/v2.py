@@ -50,6 +50,16 @@ N_GAUGED = 130
 MASK_NEW = {"Bloody Bandage Wrap": (0, "his whole head and face wrapped in filthy blood-soaked medical gauze bandages, loosely wound with frayed "
                                        "dangling ends and fresh red blood seeping through, narrow gaps showing his bloodshot eyes and a torn gap over his rotten teeth")}
 N_BANDAGE = 40
+# Two more original uncommon masks from George's 2026-11-13 band-mask mood board. Broad themes only (pale rubber, seams);
+# they deliberately don't copy any band member's signature mask. 25 tokens each, dealt after the bandage wrap.
+MASK_NEW2 = {
+    "Rubber Seam Face": (0, "a pale grey-green cracked rubber full-face mask with one crude surgical seam of thick black stitches running from the "
+                            "scalp down across one cheek, two mismatched ragged eye holes of different sizes and a slack open mouth hole"),
+    "Melted Wax Face": (0, "a dirty ivory candle-wax mask that has partly melted, drooping and dripping off one side of his face in thick waxy runs, "
+                           "one eye hole stretched long by the melt, his bloodshot eyes peering out"),
+}
+MASK_NEW.update(MASK_NEW2)
+N_NEW2 = 25
 MASK_STD = {
     "Bare Face": (22, "no mask: his disfigured face is bare, small sunken bloodshot eyes in swollen red lids, a crooked broken nose and rotten yellow teeth"),
     "Hockey Half-Mask": (18, "an aged yellowed HALF mask covering ONLY his mouth, chin and the tip of his nose, the top edge sitting just under his eyes, his eyes, brow and forehead completely bare, round breathing holes, random blood splatters (never triangles or stripes), held by rusty leather straps with a riveted plate and a buckle under the ear"),
@@ -312,6 +322,10 @@ def mask_pass(tokens):
             and a["Hair"] != "Backwards Cap" and a["Mask"] not in MASK_RARE]
     for i in random.Random(1366).sample(pool, N_BANDAGE):
         tokens[i - 1][0]["Mask"] = "Bloody Bandage Wrap"
+    pool = [i for i in pool if tokens[i - 1][0]["Mask"] != "Bloody Bandage Wrap"]
+    picks = random.Random(2626).sample(pool, N_NEW2 * len(MASK_NEW2))
+    for k, i in enumerate(picks):
+        tokens[i - 1][0]["Mask"] = list(MASK_NEW2)[k % len(MASK_NEW2)]
 
 
 def report(tokens):
