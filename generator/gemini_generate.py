@@ -95,6 +95,8 @@ def main():
             time.sleep(float(os.environ.get("THROTTLE", "0")))
         except Exception as e:
             print(f"#{i} failed: {e}", flush=True)
+            if "HTTP 402" in str(e):   # prepaid credits are gone: stop instead of failing every token
+                sys.exit("stopping: Gemini prepayment credits are depleted")
 
 
 if __name__ == "__main__":
