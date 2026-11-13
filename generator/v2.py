@@ -45,7 +45,7 @@ HEAD_MARK = {
 }
 MASK_STD = {
     "Bare Face": (22, "no mask: his disfigured face is bare, small sunken bloodshot eyes in swollen red lids, a crooked broken nose and rotten yellow teeth"),
-    "Hockey Half-Mask": (18, "an aged yellowed lower-face hockey mask with blood smears, round breathing holes and a moulded beak nose, held by rusty leather straps with a riveted plate and a buckle under the ear, eyes visible above it"),
+    "Hockey Half-Mask": (18, "an aged yellowed HALF mask covering ONLY his mouth, chin and the tip of his nose, the top edge sitting just under his eyes, his eyes, brow and forehead completely bare, round breathing holes, random blood splatters (never triangles or stripes), held by rusty leather straps with a riveted plate and a buckle under the ear"),
     "Burlap Pig Mask": (14, "a frayed stitched burlap pig mask with floppy ears, a pink clay snout and a blocky burlap-toothed grin, a rusty leather strap with a buckle over the crown"),
     "Burlap Sack Hood": (12, "his huge oversized bobble head is entirely covered by a filthy lumpy burlap sack pulled all the way down over the whole skull and face, ragged cut eye holes, a cross-stitched mouth, rope tied tight at the neck; no skin or hair visible"),
     "Patchwork Goggle Mask": (12, "a patchwork mask of stitched burlap and riveted scrap-metal plates, round brass goggle eyes with red lenses, a wire-stitched mouth, a leather strap with a buckle over the crown"),
@@ -134,7 +134,7 @@ FRAMING = ("Three-quarter view from the hips up, whole head, mask and weapons in
            "above the head, figure centred, square 1:1 composition. His right hand grips the held weapon in a tight "
            "clenched fist seen from the back of the hand, knuckles toward the camera, palm hidden, the blade angled up "
            "and out; his other hand hangs open")
-NEGATIVE = ("text, logo, letters, watermark, brand marks, sports team logo, red chevrons or triangles on the mask, "
+NEGATIVE = ("text, logo, letters, watermark, brand marks, sports team logo, red chevrons or triangles on the mask, full-face goalie mask covering the forehead and eyes, "
             "white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, "
             "photo of a real person, cartoon outline, flat 2D, long finger blades, clawed glove with four long knives, "
             "red and green striped sweater, brown fedora")
@@ -157,8 +157,8 @@ def prompt(a, legendary_finish=None):
     if legendary_finish and legendary_finish.startswith("MASK:"):
         mask = legendary_finish.split("|", 1)[1]
     elif legendary_finish:
-        mask = (f"an aged lower-face hockey mask, {legendary_finish}, covering only his nose and mouth, round breathing "
-                "holes, moulded beak nose, held by rusty leather straps with a riveted plate and a buckle under the ear, "
+        mask = (f"an aged HALF mask, {legendary_finish}, covering ONLY his mouth, chin and nose with his eyes, brow and forehead "
+                "completely bare, round breathing holes, moulded beak nose, held by rusty leather straps with a riveted plate and a buckle under the ear, "
                 "eyes visible above it, no chevron markings")
     else:
         mask = phrase("Mask", a["Mask"])
