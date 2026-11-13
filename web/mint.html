@@ -16,43 +16,23 @@ button.s{background:#3a322b;padding:8px 14px}button:disabled{opacity:.5}#n{font-
 <div class="row"><button class="s" onclick="step(-1)">−</button><span id="n">1</span><button class="s" onclick="step(1)">+</button></div>
 <button id="go" onclick="mintNow()">Connect wallet</button><p id="status"></p>
 </main>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.7.0/ethers.umd.min.js"></script>
+<script src="ethers.umd.min.js"></script>
 <script>
 // Set this after deploying the contract from Remix.
-const CONTRACT = "0xBCB9570B0cc7550f160594A87335560AA55148B6";
+const CONTRACT = "0x0000000000000000000000000000000000000000";
 const CHAIN = {chainId:"0x1237", chainName:"Robinhood Chain", nativeCurrency:{name:"Ether",symbol:"ETH",decimals:18},
   rpcUrls:["https://rpc.mainnet.chain.robinhood.com"], blockExplorerUrls:["https://robinhoodchain.blockscout.com"]};
-const ABI = ["function mint(uint256,bytes32[]) payable","function price() view returns (uint256)","function totalSupply() view returns (uint256)",
-  "function phase() view returns (uint8)","function limits(uint256) view returns (uint256)"];
-const PHASES = ["Mint not open yet", "WL", "FCFS", "Public"];
-// Same tree as tools/merkle.js. wl.txt and fcfs.txt sit next to this page.
-async function proofFor(list, addr){
-  const txt = await (await fetch(list + ".txt")).text();
-  const { keccak256, getAddress, concat } = ethers;
-  let level = [...new Set(txt.split(/\s+/).filter(a => a.startsWith("0x")).map(a => getAddress(a)))].map(a => keccak256(a)).sort();
-  let idx = level.indexOf(keccak256(getAddress(addr)));
-  if (idx < 0) return null;
-  const out = [];
-  while (level.length > 1) {
-    if ((idx ^ 1) < level.length) out.push(level[idx ^ 1]);
-    const next = [];
-    for (let i = 0; i < level.length; i += 2)
-      next.push(i + 1 === level.length ? level[i] : keccak256(concat([level[i], level[i + 1]].sort())));
-    level = next; idx >>= 1;
-  }
-  return out;
-}
+const ABI = ["function mint(uint256) payable","function price() view returns (uint256)","function totalSupply() view returns (uint256)",
+  "function mintOpen() view returns (bool)","function maxPerWallet() view returns (uint256)","function mintedBy(address) view returns (uint256)"];
 let n = 1, maxN = 5, signer, c;
 const $ = id => document.getElementById(id);
 function step(d){ n = Math.min(maxN, Math.max(1, n + d)); $("n").textContent = n; }
 async function load(){
-  const p = new ethers.JsonRpcProvider(CHAIN.rpcUrls[0]);
-  const r = new ethers.Contract(CONTRACT, ABI, p);
-  const [s, pr, ph] = await Promise.all([r.totalSupply(), r.price(), r.phase()]);
-  const lim = await r.limits(ph);
-  if (ph) { maxN = Number(lim); if (n > maxN) step(0); }
+  const r = new ethers.Contract(CONTRACT, ABI, new ethers.JsonRpcProvider(CHAIN.rpcUrls[0]));
+  const [s, pr, open, lim] = await Promise.all([r.totalSupply(), r.price(), r.mintOpen(), r.maxPerWallet()]);
+  maxN = Number(lim); step(0);
   $("supply").textContent = `${s} / 1300 minted`;
-  $("price").textContent = ph ? `${PHASES[ph]} phase: ${pr == 0n ? "FREE" : ethers.formatEther(pr) + " ETH each"}, up to ${lim} ${ph == 3 ? "per transaction" : "per wallet"}` : PHASES[0];
+  $("price").textContent = open ? `${pr == 0n ? "FREE mint" : ethers.formatEther(pr) + " ETH each"}, up to ${lim} per wallet` : "Mint not open yet";
 }
 async function mintNow(){
   try{
@@ -64,15 +44,13 @@ async function mintNow(){
       signer = await new ethers.BrowserProvider(window.ethereum).getSigner();
       c = new ethers.Contract(CONTRACT, ABI, signer); $("go").textContent = "Mint"; return;
     }
-    const [pr, ph] = await Promise.all([c.price(), c.phase()]);
-    if (ph == 0) { $("status").textContent = "Mint not open yet."; return; }
-    let proof = [];
-    if (ph < 3) {
-      proof = await proofFor(ph == 1 ? "wl" : "fcfs", await signer.getAddress());
-      if (!proof) { $("status").textContent = `This wallet is not on the ${PHASES[ph]} list. Come back for the next phase.`; return; }
-    }
+    const [pr, open, lim, used] = await Promise.all([c.price(), c.mintOpen(), c.maxPerWallet(), c.mintedBy(await signer.getAddress())]);
+    if (!open) { $("status").textContent = "Mint not open yet."; return; }
+    const left = Number(lim - used);
+    if (left <= 0) { $("status").textContent = `This wallet has minted its ${lim}.`; return; }
+    if (n > left) { $("status").textContent = `This wallet can mint ${left} more.`; return; }
     $("status").textContent = "Confirm in your wallet...";
-    const tx = await c.mint(n, proof, {value: pr * BigInt(n)});
+    const tx = await c.mint(n, {value: pr * BigInt(n)});
     $("status").textContent = "Minting...";
     await tx.wait(); $("status").textContent = `Minted ${n}! View them on OpenSea.`; load();
   }catch(e){ $("status").textContent = e.shortMessage || e.message; }
