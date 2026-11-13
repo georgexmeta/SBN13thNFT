@@ -44,7 +44,7 @@ HEAD_MARK = {
     "Clean": (10, ""),
 }
 # Ears (George, 2026-11-13): exactly 130 tokens get stretched gauged earlobes, dealt by ear_pass to tokens not yet rendered.
-EARS = {"Natural": (0, ""), "Gauged": (0, "a stretched earlobe on his visible ear with a large dark hollow tunnel gauge plug in it")}
+EARS = {"Natural": (0, ""), "Gauged": (0, "a heavily stretched earlobe on his visible ear holding a large shiny polished silver steel tunnel gauge, a hollow metal ring about an inch wide with flared rims that you can see straight through, hanging just below the ear")}
 N_GAUGED = 130
 MASK_STD = {
     "Bare Face": (22, "no mask: his disfigured face is bare, small sunken bloodshot eyes in swollen red lids, a crooked broken nose and rotten yellow teeth"),
