@@ -1,5 +1,5 @@
 {
-  "name": "SBN13th #535 - Silo Sam",
+  "name": "SBN13th #535 - The Grieving Mother",
   "seed": 1730809964,
   "attributes": [
     {
@@ -8,11 +8,11 @@
     },
     {
       "trait_type": "1/1 Name",
-      "value": "Silo Sam"
+      "value": "The Grieving Mother"
     },
     {
       "trait_type": "Head",
-      "value": "Type 4 - Split Cranium"
+      "value": "Female"
     },
     {
       "trait_type": "Skin",
@@ -20,35 +20,35 @@
     },
     {
       "trait_type": "Hair",
-      "value": "Wild Grey Tufts"
+      "value": "Grey Curled Perm"
     },
     {
       "trait_type": "Head Mark",
-      "value": "Boils"
+      "value": "Clean"
     },
     {
       "trait_type": "Mask",
-      "value": "Hockey Half-Mask (caked in mud)"
+      "value": "Mad Mother's Face"
     },
     {
       "trait_type": "Held Weapon",
-      "value": "Hatchet"
+      "value": "Machete"
     },
     {
       "trait_type": "Back Weapon",
-      "value": "Weed Whacker"
+      "value": "None"
     },
     {
       "trait_type": "Clothing",
-      "value": "Patched Work Jacket"
+      "value": "Mustard Cardigan"
     },
     {
       "trait_type": "Belt",
-      "value": "Tool Belt"
+      "value": "None"
     },
     {
       "trait_type": "Backdrop",
-      "value": "Cornfield"
+      "value": "Lakeside Cabin"
     },
     {
       "trait_type": "Ears",
@@ -56,7 +56,7 @@
     },
     {
       "trait_type": "Character",
-      "value": "Classic"
+      "value": "The Grieving Mother"
     }
   ]
 }

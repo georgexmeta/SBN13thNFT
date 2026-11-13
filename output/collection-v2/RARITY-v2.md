@@ -17,8 +17,8 @@
 | Type 1 - Lumpy Dome | 447 | 34.4% |
 | Type 2 - Melted Lopsided | 321 | 24.7% |
 | Type 3 - Cone Skull | 257 | 19.8% |
-| Type 4 - Split Cranium | 227 | 17.5% |
-| Female | 48 | 3.7% |
+| Type 4 - Split Cranium | 226 | 17.4% |
+| Female | 49 | 3.8% |
 
 ## Mask
 
@@ -59,7 +59,7 @@
 | Hockey Half-Mask (charred black) | 1 | 0.1% |
 | Hockey Half-Mask (cracked) | 1 | 0.1% |
 | Hockey Half-Mask (dripping glowing toxic-green slime) | 1 | 0.1% |
-| Hockey Half-Mask (caked in mud) | 1 | 0.1% |
+| Mad Mother's Face | 1 | 0.1% |
 | Hockey Half-Mask (pumpkin orange) | 1 | 0.1% |
 | Hockey Half-Mask (overgrown) | 1 | 0.1% |
 | Hockey Half-Mask (rust-stained) | 1 | 0.1% |
@@ -72,11 +72,11 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Machete | 203 | 15.6% |
+| Machete | 204 | 15.7% |
 | Hunting Knife | 141 | 10.8% |
 | Butcher Cleaver | 128 | 9.8% |
 | Meat Hook | 117 | 9.0% |
-| Hatchet | 111 | 8.5% |
+| Hatchet | 110 | 8.5% |
 | Sickle | 107 | 8.2% |
 | Nail Bat | 94 | 7.2% |
 | Spear | 89 | 6.8% |
@@ -94,12 +94,12 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Weed Whacker | 288 | 22.2% |
+| Weed Whacker | 287 | 22.1% |
 | Pitchfork | 208 | 16.0% |
 | Sledgehammer | 168 | 12.9% |
 | Chainsaw | 158 | 12.2% |
 | Woodcutter Axe | 154 | 11.8% |
-| None | 142 | 10.9% |
+| None | 143 | 11.0% |
 | Rusty Shovel | 112 | 8.6% |
 | Circus Mallet (Rare+) | 26 | 2.0% |
 | Scythe (Rare+) | 19 | 1.5% |
@@ -110,7 +110,7 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Patched Work Jacket | 197 | 15.2% |
+| Patched Work Jacket | 196 | 15.1% |
 | Plaid Flannel | 145 | 11.2% |
 | Mechanic Coveralls | 106 | 8.2% |
 | Orange Prison Jumpsuit | 105 | 8.1% |
@@ -134,13 +134,14 @@
 | Faded Lace Gown | 8 | 0.6% |
 | Rotting Wedding Gown | 8 | 0.6% |
 | Dripping Nightgown | 8 | 0.6% |
+| Mustard Cardigan | 1 | 0.1% |
 
 ## Belt
 
 | Value | Count | Share |
 |---|---|---|
-| None | 886 | 68.2% |
-| Tool Belt | 414 | 31.8% |
+| None | 887 | 68.2% |
+| Tool Belt | 413 | 31.8% |
 
 ## Backdrop
 
@@ -154,14 +155,14 @@
 | Bruise Clay | 108 | 8.3% |
 | Blood Splatter | 91 | 7.0% |
 | Bone Clay | 87 | 6.7% |
+| Lakeside Cabin | 32 | 2.5% |
 | Haunted Mansion | 31 | 2.4% |
-| Lakeside Cabin | 31 | 2.4% |
 | Radioactive Wasteland | 26 | 2.0% |
 | Abandoned Laboratory | 26 | 2.0% |
 | Doctor's Hospital Room | 24 | 1.8% |
 | Graveyard | 24 | 1.8% |
 | Nightmare Sequence | 22 | 1.7% |
-| Cornfield (Rare+) | 16 | 1.2% |
+| Cornfield (Rare+) | 15 | 1.2% |
 | Blood Moon (Rare+) | 15 | 1.2% |
 
 ## Skin
@@ -183,7 +184,7 @@
 | Grey Side Tufts | 520 | 40.0% |
 | Bald | 290 | 22.3% |
 | Greasy Comb-over | 180 | 13.8% |
-| Wild Grey Tufts | 176 | 13.5% |
+| Wild Grey Tufts | 175 | 13.5% |
 | Backwards Cap | 86 | 6.6% |
 | Black Veil | 8 | 0.6% |
 | Straw Sun Bonnet | 8 | 0.6% |
@@ -191,6 +192,7 @@
 | Lace Bonnet | 8 | 0.6% |
 | Black Beehive | 8 | 0.6% |
 | Soaked Black Veil Hair | 8 | 0.6% |
+| Grey Curled Perm | 1 | 0.1% |
 
 ## Head Mark
 
@@ -199,8 +201,8 @@
 | Blue Veins | 518 | 39.8% |
 | Grey Wrinkles | 288 | 22.2% |
 | Stitched Scar | 195 | 15.0% |
-| Clean | 172 | 13.2% |
-| Boils | 127 | 9.8% |
+| Clean | 173 | 13.3% |
+| Boils | 126 | 9.7% |
 
 ## Ears
 
@@ -213,10 +215,11 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Classic | 1252 | 96.3% |
+| Classic | 1251 | 96.2% |
 | Hollow Sister | 8 | 0.6% |
 | Farmhouse Smile | 8 | 0.6% |
 | Glitch Android | 8 | 0.6% |
 | Cursed Porcelain Doll | 8 | 0.6% |
 | Rotten Bride | 8 | 0.6% |
 | Drowned Well Girl | 8 | 0.6% |
+| The Grieving Mother | 1 | 0.1% |

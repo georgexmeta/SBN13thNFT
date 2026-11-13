@@ -98,6 +98,13 @@ FEMALE = {   # name: (Hair value, hair phrase, Mask value, face phrase, Clothing
         "Tattered Nun Habit", "a tattered black habit with a stained white collar and a rusty chain rosary"),
 }
 N_FEMALE = 8
+# 1/1 "The Grieving Mother" (George, 2026-11-13, loosely inspired by a classic slasher mom). It replaces the unrendered 1/1
+# Silo Sam, so there are still 13 Legendaries. Original look: no blue fisherman sweater, no name or likeness of the film character.
+MOTHER = ("Silo Sam", {"1/1 Name": "The Grieving Mother", "Character": "The Grieving Mother", "Head": "Female",
+          "Hair": "Grey Curled Perm", "Mask": "Mad Mother's Face", "Clothing": "Mustard Cardigan", "Held Weapon": "Machete",
+          "Back Weapon": "None", "Belt": "None", "Head Mark": "Clean", "Ears": "Natural", "Backdrop": "Lakeside Cabin"})
+FEMALE_EXTRA = {"Grey Curled Perm": "short tight greying curled permed hair", "Mad Mother's Face": "no mask: a sweet middle-aged mother's face twisted with grief and rage, wide wet glaring eyes, a trembling forced smile, blood flecked across her cheek",
+                "Mustard Cardigan": "a mustard-yellow hand-knitted cardigan over a ruffled cream blouse, a small gold heart locket on a chain"}
 MASK_STD = {
     "Bare Face": (22, "no mask: his disfigured face is bare, small sunken bloodshot eyes in swollen red lids, a crooked broken nose and rotten yellow teeth"),
     "Hockey Half-Mask": (18, "an aged yellowed HALF mask covering ONLY his mouth, chin and the tip of his nose, the top edge sitting just under his eyes, his eyes, brow and forehead completely bare, round breathing holes, random blood splatters (never triangles or stripes), held by rusty leather straps with a riveted plate and a buckle under the ear"),
@@ -219,8 +226,8 @@ NEGATIVE = ("text, logo, letters, watermark, brand marks, sports team logo, red 
             "white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, "
             "photo of a real person, cartoon outline, flat 2D, face turned to the left, mirrored pose, long finger blades, clawed glove with four long knives, "
             "red and green striped sweater, brown fedora")
-ALL = {"Head": HEAD, "Skin": SKIN, "Hair": {**HAIR, **{v[0]: (0, v[1]) for v in FEMALE.values()}}, "Head Mark": HEAD_MARK, "Ears": EARS, "Clothing": {**CLOTH_STD, **CLOTH_NEW, **CLOTH_RARE, **{v[4]: (0, v[5]) for v in FEMALE.values()}},
-       "Belt": BELT, "Backdrop": {**BACKDROP, **BACKDROP_RARE, **BACKDROP_SCENE}, "Mask": {**MASK_STD, **MASK_RARE, **MASK_NEW, **{v[2]: (0, v[3]) for v in FEMALE.values()}},
+ALL = {"Head": HEAD, "Skin": SKIN, "Hair": {**HAIR, **{v[0]: (0, v[1]) for v in FEMALE.values()}, "Grey Curled Perm": (0, FEMALE_EXTRA["Grey Curled Perm"])}, "Head Mark": HEAD_MARK, "Ears": EARS, "Clothing": {**CLOTH_STD, **CLOTH_NEW, **CLOTH_RARE, **{v[4]: (0, v[5]) for v in FEMALE.values()}, "Mustard Cardigan": (0, FEMALE_EXTRA["Mustard Cardigan"])},
+       "Belt": BELT, "Backdrop": {**BACKDROP, **BACKDROP_RARE, **BACKDROP_SCENE}, "Mask": {**MASK_STD, **MASK_RARE, **MASK_NEW, **{v[2]: (0, v[3]) for v in FEMALE.values()}, "Mad Mother's Face": (0, FEMALE_EXTRA["Mad Mother's Face"])},
        "Held Weapon": {**HELD_STD, **HELD_RARE}, "Back Weapon": {**BACK_STD, **BACK_RARE}}
 
 
@@ -257,7 +264,7 @@ def prompt(a, legendary_finish=None):
     else:
         hand = f"his right fist grips {phrase('Held Weapon', held)}"
     body = [f"wearing {phrase('Clothing', a['Clothing'])}", phrase("Belt", a["Belt"]), hand, phrase("Back Weapon", a["Back Weapon"])]
-    female = a.get("Character", "Classic") in FEMALE
+    female = a.get("Character", "Classic") in FEMALE or a.get("Character") == "The Grieving Mother"
     if female:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"])]
     parts = [STYLE, FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
@@ -388,6 +395,9 @@ def female_pass(tokens):
         name = list(FEMALE)[k % len(FEMALE)]
         hair, _, mask, _, cloth, _ = FEMALE[name]
         tokens[i - 1][0].update({"Character": name, "Head": "Female", "Hair": hair, "Mask": mask, "Clothing": cloth, "Head Mark": "Clean", "Belt": "None"})
+    for i, (a, finish) in enumerate(tokens):
+        if a.get("1/1 Name") == MOTHER[0]:
+            a.update(MOTHER[1]); tokens[i] = (a, None)   # no hockey-mask finish: her own face is the look
 
 
 def report(tokens):
