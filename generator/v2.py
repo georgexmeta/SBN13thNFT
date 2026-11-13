@@ -61,7 +61,9 @@ MASK_RARE = {   # monster-like; original takes on slasher and metal archetypes
     "Zipper Mouth Leather": (12, "a stitched black leather full-face mask with laced seams and a metal zipper across the mouth"),
     "Oni Demon Mask": (10, "a red lacquered demon mask with gold horns, a snarling fanged mouth and furrowed brows"),
     "Bone Skull Mask": (10, "a carved bone skull mask with cracked teeth and hollow eye sockets"),
-    "Rusted Knight Helm": (8, "HIS WHOLE HEAD IS INSIDE a dented rusty medieval knight's great helm (a closed bucket-shaped steel helmet covering the entire head and face, with a narrow eye slit and breathing holes); no face or skin visible"),
+    "Sewn-On Pig Face": (8, "a pink fleshy pig-skin face (real clay pig hide, NOT burlap or fabric) crudely sewn onto his own face with thick black stitches round the edges, a raw pink pig snout, pig ears, blood seeping along the seams, his own eyes staring through"),
+    "Zipper Long Nose": (8, "a stitched black leather full-face mask covering his whole face and head, with a long rigid erect pointed nose sticking straight out horizontally toward the viewer's right like a spike, and a metal zipper across the mouth"),
+    "Crown of Nails": (8, "no mask: a ring of long rusty nails hammered into his skull all the way round like a crown, blood dripping down his forehead and face from every nail, his disfigured bloodshot face bare below"),
     "Long Nose Latex": (4, "a pale grey latex mask with a long crooked warty nose and a dark slit mouth"),
 }
 HELD_STD = {
@@ -187,7 +189,7 @@ def build():
                  "Backdrop": pick(rng, BACKDROP_RARE) if rare and rng.random() < .25 else pick(rng, BACKDROP)}
             if a["Mask"] == "Fanged Killer Clown" and rng.random() < .7:
                 a["Clothing"], a["Back Weapon"] = "Bloody Clown Suit", "Circus Mallet"
-            if a["Hair"] == "Backwards Cap" and a["Mask"] in ("Burlap Sack Hood", "Rusted Knight Helm"):
+            if a["Hair"] == "Backwards Cap" and a["Mask"] in ("Burlap Sack Hood", "Crown of Nails"):
                 continue
             dna = tuple(sorted((k, v) for k, v in a.items() if k != "Tier"))
             if dna not in seen:
