@@ -101,7 +101,10 @@ CLOTH_NEW = {
     "Orange Prison Jumpsuit": (16, "a stained bright orange prison convict jumpsuit with a stencilled inmate number on the chest"),
     "Bloody Surgeon Scrubs": (14, "blood-soaked green surgeon's scrubs with a surgical cap and a stained surgical mask hanging round his neck"),
     "Tattered Shirt": (14, "a shredded, ripped and tattered button-up shirt hanging in rags"),
-    "Work Jumpsuit": (12, "a stained one-piece navy-grey work jumpsuit with a torn name patch"),
+    "Navy Jumpsuit": (5, "a stained one-piece navy blue work jumpsuit with a torn name patch"),
+    "Black Jumpsuit": (5, "a grimy one-piece black work jumpsuit with a torn name patch"),
+    "Grey Jumpsuit": (5, "a dirty one-piece grey work jumpsuit with a torn name patch"),
+    "Tan Blood-Splatter Jumpsuit": (5, "a one-piece tan work jumpsuit covered in fresh blood splatter, with a torn name patch"),
 }
 CLOTH_RARE = {"Bloody Clown Suit": (35, "a baggy bloody harlequin clown suit with a ruffled collar and pom-pom buttons"),
               "Tattered Undertaker Suit": (35, "a tattered black undertaker's suit with a rotten flower in the lapel"),

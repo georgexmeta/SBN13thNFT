@@ -98,18 +98,21 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Patched Work Jacket | 212 | 16.3% |
-| Plaid Flannel | 143 | 11.0% |
-| Grimy Hoodie | 120 | 9.2% |
-| Orange Prison Jumpsuit | 117 | 9.0% |
-| Mechanic Coveralls | 111 | 8.5% |
-| Tattered Shirt | 96 | 7.4% |
-| Work Jumpsuit | 93 | 7.2% |
-| Bloody Surgeon Scrubs | 88 | 6.8% |
-| Butcher Apron | 82 | 6.3% |
-| Denim Jacket | 70 | 5.4% |
-| Torn Undershirt | 66 | 5.1% |
-| Trench Coat | 52 | 4.0% |
+| Patched Work Jacket | 199 | 15.3% |
+| Plaid Flannel | 147 | 11.3% |
+| Mechanic Coveralls | 110 | 8.5% |
+| Orange Prison Jumpsuit | 109 | 8.4% |
+| Grimy Hoodie | 100 | 7.7% |
+| Bloody Surgeon Scrubs | 95 | 7.3% |
+| Butcher Apron | 84 | 6.5% |
+| Tattered Shirt | 83 | 6.4% |
+| Denim Jacket | 72 | 5.5% |
+| Torn Undershirt | 65 | 5.0% |
+| Trench Coat | 41 | 3.2% |
+| Black Jumpsuit | 41 | 3.2% |
+| Tan Blood-Splatter Jumpsuit | 37 | 2.8% |
+| Grey Jumpsuit | 36 | 2.8% |
+| Navy Jumpsuit | 31 | 2.4% |
 | Bloody Clown Suit (Rare+) | 22 | 1.7% |
 | Tattered Undertaker Suit (Rare+) | 17 | 1.3% |
 | Fur-Trimmed Cape (Rare+) | 11 | 0.8% |
