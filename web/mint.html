@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SBN13th Mint</title>
+<style>
+:root{--bg:#141210;--card:#221d19;--ink:#efe6dc;--muted:#a89a8c;--accent:#b3261e}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,sans-serif;display:flex;justify-content:center;padding:24px 16px}
+main{max-width:440px;width:100%;background:var(--card);border-radius:16px;padding:24px;text-align:center}
+img,video{width:100%;border-radius:12px}h1{margin:16px 0 4px}p{color:var(--muted);margin:4px 0}
+.row{display:flex;gap:8px;justify-content:center;align-items:center;margin:16px 0}
+button{background:var(--accent);color:#fff;border:0;border-radius:10px;padding:12px 20px;font-size:16px;cursor:pointer}
+button.s{background:#3a322b;padding:8px 14px}button:disabled{opacity:.5}#n{font-size:22px;min-width:32px}
+#status{min-height:24px;word-break:break-word}
+</style></head><body><main>
+<video src="prereveal.mp4" poster="prereveal-still.png" autoplay loop muted playsinline></video>
+<h1>SBN13th</h1><p id="supply">1,300 claymation slashers on Robinhood Chain</p><p id="price"></p>
+<div class="row"><button class="s" onclick="step(-1)">−</button><span id="n">1</span><button class="s" onclick="step(1)">+</button></div>
+<button id="go" onclick="mintNow()">Connect wallet</button><p id="status"></p>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.7.0/ethers.umd.min.js"></script>
+<script>
+// Set this after deploying the contract from Remix.
+const CONTRACT = "0x0000000000000000000000000000000000000000";
+const CHAIN = {chainId:"0x1237", chainName:"Robinhood Chain", nativeCurrency:{name:"Ether",symbol:"ETH",decimals:18},
+  rpcUrls:["https://rpc.mainnet.chain.robinhood.com"], blockExplorerUrls:["https://robinhoodchain.blockscout.com"]};
+const ABI = ["function mint(uint256) payable","function price() view returns (uint256)","function totalSupply() view returns (uint256)",
+  "function publicMintOpen() view returns (bool)"];
+let n = 1, signer, c;
+const $ = id => document.getElementById(id);
+function step(d){ n = Math.min(10, Math.max(1, n + d)); $("n").textContent = n; }
+async function load(){
+  const p = new ethers.JsonRpcProvider(CHAIN.rpcUrls[0]);
+  const r = new ethers.Contract(CONTRACT, ABI, p);
+  const [s, pr, open] = await Promise.all([r.totalSupply(), r.price(), r.publicMintOpen()]);
+  $("supply").textContent = `${s} / 1300 minted`;
+  $("price").textContent = open ? `${ethers.formatEther(pr)} ETH each` : "Mint not open yet";
+}
+async function mintNow(){
+  try{
+    if(!window.ethereum){ $("status").textContent = "Open this page in Brave or a browser with a wallet."; return; }
+    if(!signer){
+      await ethereum.request({method:"eth_requestAccounts"});
+      try{ await ethereum.request({method:"wallet_switchEthereumChain",params:[{chainId:CHAIN.chainId}]}); }
+      catch(e){ await ethereum.request({method:"wallet_addEthereumChain",params:[CHAIN]}); }
+      signer = await new ethers.BrowserProvider(window.ethereum).getSigner();
+      c = new ethers.Contract(CONTRACT, ABI, signer); $("go").textContent = "Mint"; return;
+    }
+    const pr = await c.price();
+    $("status").textContent = "Confirm in your wallet...";
+    const tx = await c.mint(n, {value: pr * BigInt(n)});
+    $("status").textContent = "Minting...";
+    await tx.wait(); $("status").textContent = `Minted ${n}! View them on OpenSea.`; load();
+  }catch(e){ $("status").textContent = e.shortMessage || e.message; }
+}
+load().catch(()=>{ $("price").textContent = "Contract not set yet"; });
+</script></body></html>

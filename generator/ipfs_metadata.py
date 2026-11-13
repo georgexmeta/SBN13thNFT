@@ -13,7 +13,19 @@ NAME = os.environ.get("COLLECTION_NAME", "SBN13th")
 DESC = os.environ.get("COLLECTION_DESC", "1,300 hand-sculpted-look claymation slashers. 1,157 Standard, 130 Rare and 13 Legendary 1/1s.")
 
 
+def prereveal(cid):
+    """python3 generator/ipfs_metadata.py prereveal <CID of prereveal.mp4 + prereveal-still.png folder>"""
+    out = os.path.join(ROOT, "output", "ipfs", "prereveal"); os.makedirs(out, exist_ok=True)
+    for i in range(1, 1301):
+        json.dump({"name": f"{NAME} #{i}", "description": DESC + " Unrevealed.", "image": f"ipfs://{cid}/prereveal-still.png",
+                   "animation_url": f"ipfs://{cid}/prereveal.mp4", "attributes": [{"trait_type": "Status", "value": "Unrevealed"}]},
+                  open(os.path.join(out, f"{i}.json"), "w"))
+    print("wrote 1300 pre-reveal files to", out)
+
+
 def main():
+    if sys.argv[1] == "prereveal":
+        return prereveal(sys.argv[2])
     cid, wallet, bps = sys.argv[1], (sys.argv[2] if len(sys.argv) > 2 else ""), int(sys.argv[3]) if len(sys.argv) > 3 else 500
     out = os.path.join(ROOT, "output", "ipfs", "metadata"); os.makedirs(out, exist_ok=True)
     rows = json.load(open(os.path.join(ROOT, "output", "ai", "manifest-v2.json")))
