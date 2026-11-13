@@ -141,13 +141,15 @@ STYLE = ("Photograph of a hand-sculpted stop-motion claymation figure, matte pla
 CHARACTER = ("A grotesque disfigured old man with an oversized bobble head, mottled skin with age spots, small sunken "
              "bloodshot eyes in swollen red-rimmed lids, a large ear with a fat hanging lobe, thick neck, hunched broad "
              "shoulders, head turned three-quarters toward the viewer's right")
-FRAMING = ("Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space "
+FRAMING = ("FACING: exactly like the first reference photo, his body is in three-quarter view and his head and face are "
+           "turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned "
+           "to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space "
            "above the head, figure centred, square 1:1 composition. His right hand grips the held weapon in a tight "
            "clenched fist seen from the back of the hand, knuckles toward the camera, palm hidden, the blade angled up "
            "and out; his other hand hangs open")
 NEGATIVE = ("text, logo, letters, watermark, brand marks, sports team logo, red chevrons or triangles on the mask, full-face goalie mask covering the forehead and eyes, "
             "white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, "
-            "photo of a real person, cartoon outline, flat 2D, long finger blades, clawed glove with four long knives, "
+            "photo of a real person, cartoon outline, flat 2D, face turned to the left, mirrored pose, long finger blades, clawed glove with four long knives, "
             "red and green striped sweater, brown fedora")
 ALL = {"Head": HEAD, "Skin": SKIN, "Hair": HAIR, "Head Mark": HEAD_MARK, "Clothing": {**CLOTH_STD, **CLOTH_NEW, **CLOTH_RARE},
        "Belt": BELT, "Backdrop": {**BACKDROP, **BACKDROP_RARE}, "Mask": {**MASK_STD, **MASK_RARE},

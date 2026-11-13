@@ -14,6 +14,9 @@ import time
 import urllib.error
 import urllib.request
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from facing import facing   # noqa: E402
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MANIFEST = os.environ.get("MANIFEST", os.path.join(ROOT, "output", "ai", "manifest.json"))
 OUTDIR = os.environ.get("OUTDIR", os.path.join(ROOT, "output", "ai", "images"))
@@ -91,7 +94,15 @@ def main():
         if os.path.exists(out) and not force:
             continue
         try:
-            img = generate(rows[i], refs, key); open(out, "wb").write(img); print(f"#{i} ok", flush=True)
+            row = dict(rows[i])
+            for tries in range(3):   # every token must face ~45 degrees to the viewer's right
+                img = generate(row, refs, key)
+                tmp = out + ".check.png"; open(tmp, "wb").write(img)
+                way = facing(tmp)
+                if way == "RIGHT" or tries == 2:
+                    break
+                print(f"  #{i} faces {way}, re-rolling", flush=True); row["seed"] += 7
+            os.replace(tmp, out); print(f"#{i} ok" + ("" if way == "RIGHT" else f" (facing {way}, needs review)"), flush=True)
             time.sleep(float(os.environ.get("THROTTLE", "0")))
         except Exception as e:
             print(f"#{i} failed: {e}", flush=True)
