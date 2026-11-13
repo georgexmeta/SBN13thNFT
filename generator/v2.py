@@ -46,6 +46,10 @@ HEAD_MARK = {
 # Ears (George, 2026-11-13): exactly 130 tokens get stretched gauged earlobes, dealt by ear_pass to tokens not yet rendered.
 EARS = {"Natural": (0, ""), "Gauged": (0, "a heavily stretched earlobe on his visible ear holding a large shiny polished silver steel tunnel gauge, a hollow metal ring about an inch wide with flared rims that you can see straight through, hanging just below the ear")}
 N_GAUGED = 130
+# Bloody bandage head wrap (George, 2026-11-13): an uncommon mask on 40 unrendered tokens, dealt by mask_pass.
+MASK_NEW = {"Bloody Bandage Wrap": (0, "his whole head and face wrapped in filthy blood-soaked medical gauze bandages, loosely wound with frayed "
+                                       "dangling ends and fresh red blood seeping through, narrow gaps showing his bloodshot eyes and a torn gap over his rotten teeth")}
+N_BANDAGE = 40
 MASK_STD = {
     "Bare Face": (22, "no mask: his disfigured face is bare, small sunken bloodshot eyes in swollen red lids, a crooked broken nose and rotten yellow teeth"),
     "Hockey Half-Mask": (18, "an aged yellowed HALF mask covering ONLY his mouth, chin and the tip of his nose, the top edge sitting just under his eyes, his eyes, brow and forehead completely bare, round breathing holes, random blood splatters (never triangles or stripes), held by rusty leather straps with a riveted plate and a buckle under the ear"),
@@ -168,7 +172,7 @@ NEGATIVE = ("text, logo, letters, watermark, brand marks, sports team logo, red 
             "photo of a real person, cartoon outline, flat 2D, face turned to the left, mirrored pose, long finger blades, clawed glove with four long knives, "
             "red and green striped sweater, brown fedora")
 ALL = {"Head": HEAD, "Skin": SKIN, "Hair": HAIR, "Head Mark": HEAD_MARK, "Ears": EARS, "Clothing": {**CLOTH_STD, **CLOTH_NEW, **CLOTH_RARE},
-       "Belt": BELT, "Backdrop": {**BACKDROP, **BACKDROP_RARE, **BACKDROP_SCENE}, "Mask": {**MASK_STD, **MASK_RARE},
+       "Belt": BELT, "Backdrop": {**BACKDROP, **BACKDROP_RARE, **BACKDROP_SCENE}, "Mask": {**MASK_STD, **MASK_RARE, **MASK_NEW},
        "Held Weapon": {**HELD_STD, **HELD_RARE}, "Back Weapon": {**BACK_STD, **BACK_RARE}}
 
 
@@ -245,6 +249,7 @@ def build():
     outfit_pass(tokens)
     backdrop_pass(tokens)
     ear_pass(tokens)
+    mask_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -298,6 +303,15 @@ def ear_pass(tokens):
     pool = [i for i, (a, finish) in enumerate(tokens, 1) if i not in keep and not finish and a["Mask"] not in hidden]
     for i in random.Random(130).sample(pool, N_GAUGED):
         tokens[i - 1][0]["Ears"] = "Gauged"
+
+
+def mask_pass(tokens):
+    """Give N_BANDAGE unrendered, non-legendary tokens the bandage wrap (not over a gauge or a cap, which it would hide)."""
+    keep = set(json.load(open(os.path.join(ROOT, "generator", "rendered_keep_ears.json"))))
+    pool = [i for i, (a, finish) in enumerate(tokens, 1) if i not in keep and not finish and a["Ears"] == "Natural"
+            and a["Hair"] != "Backwards Cap" and a["Mask"] not in MASK_RARE]
+    for i in random.Random(1366).sample(pool, N_BANDAGE):
+        tokens[i - 1][0]["Mask"] = "Bloody Bandage Wrap"
 
 
 def report(tokens):
