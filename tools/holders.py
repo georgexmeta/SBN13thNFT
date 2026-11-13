@@ -1,12 +1,13 @@
-"""Snapshot holder wallets of the WL communities on Robinhood Chain via Blockscout, merged and deduped.
+"""Snapshot holder wallets of the WL communities on Robinhood Chain, merged and deduped.
 
-    python3 tools/holders.py        -> output/wl/holders.csv (one address per line) and a per-collection count
-Needs robinhoodchain.blockscout.com reachable.
+    python3 tools/holders.py        -> output/wl/holders.csv, plus a per-collection count
+Reads ownership straight from the chain over JSON-RPC (ownerOf for every token id), so it needs
+rpc.mainnet.chain.robinhood.com reachable. The Blockscout API sits behind a bot check and can't be used.
 """
-import json, os, time, urllib.parse, urllib.request
+import json, os, sys, time, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-API = "https://robinhoodchain.blockscout.com/api/v2"
+RPC = os.environ.get("RPC", "https://rpc.mainnet.chain.robinhood.com")
 COLLECTIONS = {
     "Clay Stonks": "0xde0acefc89d4cf5f4ce45a4fb8a51aa355091b44",
     "CCFF00": "0x505a22ffed8d37ebe580ffd98d2cdb0021189146",
@@ -14,37 +15,47 @@ COLLECTIONS = {
     "Hood Vandalz": "0x05780625aec3b8dd36f1260c05d6d43d8040feab",
 }
 BURN = {"0x0000000000000000000000000000000000000000", "0x000000000000000000000000000000000000dead"}
+TOTAL_SUPPLY, OWNER_OF = "0x18160ddd", "0x6352211e"
 
 
-def get(url):
-    for attempt in range(5):
+def rpc(batch):
+    req = urllib.request.Request(RPC, data=json.dumps(batch).encode(), headers={"Content-Type": "application/json"})
+    for attempt in range(6):
         try:
-            return json.load(urllib.request.urlopen(urllib.request.Request(url, headers={"Accept": "application/json"}), timeout=60))
-        except Exception:
-            time.sleep(3 * (attempt + 1))
-    raise RuntimeError("failed: " + url)
+            return json.load(urllib.request.urlopen(req, timeout=60))
+        except Exception as e:
+            err = e; time.sleep(2 * (attempt + 1))
+    raise RuntimeError(f"RPC failed: {err}")
+
+
+def call(to, data, i=1):
+    return {"jsonrpc": "2.0", "id": i, "method": "eth_call", "params": [{"to": to, "data": data}, "latest"]}
 
 
 def holders(addr):
-    out, params = set(), None
-    while True:
-        url = f"{API}/tokens/{addr}/holders" + ("?" + urllib.parse.urlencode(params) if params else "")
-        page = get(url)
-        for item in page.get("items", []):
-            a = item["address"]["hash"].lower()
-            if a not in BURN and int(item.get("value", "1") or 1) > 0:
-                out.add(a)
-        params = page.get("next_page_params")
-        if not params:
-            return out
+    supply = int(rpc([call(addr, TOTAL_SUPPLY)])[0]["result"], 16)
+    owners, misses, tid = set(), 0, 0
+    # ids usually run 0..supply or 1..supply; keep going until a long run of missing ids past the supply
+    while tid <= supply or misses < 200:
+        batch = [call(addr, OWNER_OF + format(t, "064x"), t) for t in range(tid, tid + 100)]
+        for res in rpc(batch):
+            r = res.get("result")
+            if r and len(r) >= 66:
+                owners.add("0x" + r[-40:].lower()); misses = 0
+            else:
+                misses += 1
+        tid += 100
+        if tid > supply * 3 + 1000:
+            break
+    return supply, owners - BURN
 
 
 def main():
     os.makedirs(os.path.join(ROOT, "output", "wl"), exist_ok=True)
     every = set()
     for name, addr in COLLECTIONS.items():
-        h = holders(addr); every |= h
-        print(f"{name}: {len(h)} holders", flush=True)
+        supply, h = holders(addr); every |= h
+        print(f"{name}: supply {supply}, {len(h)} holders", flush=True)
     with open(os.path.join(ROOT, "output", "wl", "holders.csv"), "w") as f:
         f.write("address\n" + "\n".join(sorted(every)) + "\n")
     print(f"merged unique wallets: {len(every)}")
