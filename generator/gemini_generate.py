@@ -68,6 +68,10 @@ def generate(row, refs, key):
             if e.code in (429, 500, 503) and attempt - spend_waits < 4 and "limit: 0" not in msg:
                 time.sleep(10 * 2 ** (attempt - spend_waits)); continue
             raise RuntimeError(f"HTTP {e.code}: {msg}")
+        except urllib.error.URLError as e:   # proxy or network blip: wait and retry instead of skipping the token
+            if attempt < 16:
+                print(f"  network error ({e.reason}), retrying in 30s", flush=True); time.sleep(30); continue
+            raise
 
 
 def main():
