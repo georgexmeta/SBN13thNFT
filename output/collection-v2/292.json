@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #292",
+  "seed": 1436428490,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Standard"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 3 - Cone Skull"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Ruddy"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Grey Side Tufts"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Boils"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Iron Muzzle"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Hunting Knife"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Weed Whacker"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Plaid Flannel"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "Tool Belt"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Sage Clay"
+    }
+  ]
+}

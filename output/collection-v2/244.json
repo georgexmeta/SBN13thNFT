@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #244",
+  "seed": 718733982,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Standard"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 4 - Split Cranium"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Bloodless Blue"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Wild Grey Tufts"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Blue Veins"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Hockey Half-Mask"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Hunting Knife"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "None"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Denim Jacket"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "None"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Slate Clay"
+    }
+  ]
+}

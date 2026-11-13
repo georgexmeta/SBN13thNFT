@@ -1,0 +1,54 @@
+{
+  "name": "SBN13th #27 - Old Gilded",
+  "seed": 196223294,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Legendary 1/1"
+    },
+    {
+      "trait_type": "1/1 Name",
+      "value": "Old Gilded"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 1 - Lumpy Dome"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Flesh Pink"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Grey Side Tufts"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Stitched Scar"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Hockey Half-Mask (solid polished gold)"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Golden Machete"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Woodcutter Axe"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Patched Work Jacket"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "Tool Belt"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Slate Clay"
+    }
+  ]
+}

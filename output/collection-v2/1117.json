@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #1117",
+  "seed": 1983042775,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Standard"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 3 - Cone Skull"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Flesh Pink"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Bald"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Grey Wrinkles"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Hockey Half-Mask"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Fish Hook"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Sledgehammer"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Patched Work Jacket"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "Tool Belt"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Teal Clay"
+    }
+  ]
+}

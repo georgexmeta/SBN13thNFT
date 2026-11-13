@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #202",
+  "seed": 1103953419,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Standard"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 2 - Melted Lopsided"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Corpse Grey"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Bald"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Grey Wrinkles"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Paisley Bandana"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Nail Bat"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Chainsaw"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Torn Undershirt"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "None"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Slate Clay"
+    }
+  ]
+}

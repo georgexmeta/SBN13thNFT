@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #504",
+  "seed": 491439476,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Standard"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 4 - Split Cranium"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Ruddy"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Greasy Comb-over"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Grey Wrinkles"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Hockey Half-Mask"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Hunting Knife"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Weed Whacker"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Patched Work Jacket"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "Tool Belt"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Slate Clay"
+    }
+  ]
+}

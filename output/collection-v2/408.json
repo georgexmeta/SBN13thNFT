@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #408",
+  "seed": 1023106668,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Standard"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 3 - Cone Skull"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Sallow"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Bald"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Clean"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Burlap Sack Hood"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Butcher Cleaver"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Woodcutter Axe"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Mechanic Coveralls"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "Tool Belt"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Blood Splatter"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #135",
+  "seed": 935091515,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Standard"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 4 - Split Cranium"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Sallow"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Greasy Comb-over"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Blue Veins"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Patchwork Goggle Mask"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Nail Bat"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "None"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Plaid Flannel"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "Tool Belt"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Bone Clay"
+    }
+  ]
+}

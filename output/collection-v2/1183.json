@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #1183",
+  "seed": 1785575071,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Rare"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 3 - Cone Skull"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Pale Wax"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Bald"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Boils"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Zipper Mouth Leather"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Hunting Knife"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Scythe"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Grimy Hoodie"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "Tool Belt"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Blood Moon"
+    }
+  ]
+}

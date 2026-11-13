@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #555",
+  "seed": 395503575,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Standard"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 3 - Cone Skull"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Flesh Pink"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Grey Side Tufts"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Boils"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Patchwork Goggle Mask"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Machete"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "None"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Mechanic Coveralls"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "None"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Teal Clay"
+    }
+  ]
+}

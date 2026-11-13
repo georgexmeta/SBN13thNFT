@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #1164",
+  "seed": 1315866702,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Standard"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 3 - Cone Skull"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Pale Wax"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Backwards Cap"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Stitched Scar"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Bare Face"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Meat Hook"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Weed Whacker"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Mechanic Coveralls"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "Tool Belt"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Rust Clay"
+    }
+  ]
+}

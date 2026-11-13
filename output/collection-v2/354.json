@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #354",
+  "seed": 1727702898,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Standard"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 2 - Melted Lopsided"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Flesh Pink"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Bald"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Grey Wrinkles"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Bare Face"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Butcher Cleaver"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Pitchfork"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Trench Coat"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "Tool Belt"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Sage Clay"
+    }
+  ]
+}

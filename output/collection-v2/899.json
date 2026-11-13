@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #899",
+  "seed": 790913544,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Standard"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 4 - Split Cranium"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Pale Wax"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Grey Side Tufts"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Stitched Scar"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Iron Muzzle"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Nail Bat"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Woodcutter Axe"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Butcher Apron"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "Tool Belt"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Swamp Clay"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #789",
+  "seed": 1278452740,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Standard"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 2 - Melted Lopsided"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Flesh Pink"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Grey Side Tufts"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Stitched Scar"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Paisley Bandana"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Meat Hook"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Weed Whacker"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Mechanic Coveralls"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "None"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Swamp Clay"
+    }
+  ]
+}

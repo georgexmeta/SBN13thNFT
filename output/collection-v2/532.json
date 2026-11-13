@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #532",
+  "seed": 1023498369,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Standard"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 4 - Split Cranium"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Flesh Pink"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Grey Side Tufts"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Clean"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Bare Face"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Butcher Cleaver"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "None"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Patched Work Jacket"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "None"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Sage Clay"
+    }
+  ]
+}

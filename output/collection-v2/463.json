@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #463",
+  "seed": 1499396187,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Rare"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 1 - Lumpy Dome"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Toxic Green"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Backwards Cap"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Blue Veins"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Zipper Mouth Leather"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Hook Hand"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Circus Mallet"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Tattered Undertaker Suit"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "Tool Belt"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Blood Splatter"
+    }
+  ]
+}

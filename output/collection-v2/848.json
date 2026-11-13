@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #848",
+  "seed": 240468760,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Standard"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 3 - Cone Skull"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Corpse Grey"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Bald"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Grey Wrinkles"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Bare Face"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Machete"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Woodcutter Axe"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Plaid Flannel"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "Tool Belt"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Teal Clay"
+    }
+  ]
+}

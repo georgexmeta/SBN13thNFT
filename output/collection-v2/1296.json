@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #1296",
+  "seed": 1559352935,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Standard"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 3 - Cone Skull"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Flesh Pink"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Grey Side Tufts"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Grey Wrinkles"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Patchwork Goggle Mask"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Hunting Knife"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Weed Whacker"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Mechanic Coveralls"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "Tool Belt"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Teal Clay"
+    }
+  ]
+}

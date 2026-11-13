@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #736",
+  "seed": 743141285,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Standard"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 2 - Melted Lopsided"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Sallow"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Bald"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Grey Wrinkles"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Burlap Sack Hood"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Bare Fist"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Pitchfork"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Plaid Flannel"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "Tool Belt"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Teal Clay"
+    }
+  ]
+}

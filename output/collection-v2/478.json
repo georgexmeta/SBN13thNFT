@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #478",
+  "seed": 196544275,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Standard"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 2 - Melted Lopsided"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Toxic Green"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Bald"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Blue Veins"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Paisley Bandana"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Hunting Knife"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Woodcutter Axe"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Butcher Apron"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "Tool Belt"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Blood Splatter"
+    }
+  ]
+}

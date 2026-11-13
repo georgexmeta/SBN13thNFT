@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #814",
+  "seed": 1191600861,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Standard"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 1 - Lumpy Dome"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Ruddy"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Wild Grey Tufts"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Boils"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Patchwork Goggle Mask"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Machete"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "None"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Mechanic Coveralls"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "None"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Teal Clay"
+    }
+  ]
+}

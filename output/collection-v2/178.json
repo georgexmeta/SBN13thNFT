@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #178",
+  "seed": 498542879,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Standard"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 4 - Split Cranium"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Ruddy"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Wild Grey Tufts"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Clean"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Patchwork Goggle Mask"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Fish Hook"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Weed Whacker"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Plaid Flannel"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "None"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Teal Clay"
+    }
+  ]
+}

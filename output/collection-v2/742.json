@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #742",
+  "seed": 634456750,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Standard"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 1 - Lumpy Dome"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Bloodless Blue"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Grey Side Tufts"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Stitched Scar"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Hockey Half-Mask"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Machete"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Rusty Shovel"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Mechanic Coveralls"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "None"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Slate Clay"
+    }
+  ]
+}

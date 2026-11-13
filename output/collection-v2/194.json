@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #194",
+  "seed": 2077812927,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Rare"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 3 - Cone Skull"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Ruddy"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Bald"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Clean"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Stitched Skin Mask"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Machete"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Harpoon Gun"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Butcher Apron"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "Tool Belt"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Teal Clay"
+    }
+  ]
+}

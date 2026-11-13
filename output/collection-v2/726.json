@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #726",
+  "seed": 135063829,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Standard"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 4 - Split Cranium"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Sallow"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Wild Grey Tufts"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Blue Veins"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Hockey Half-Mask"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Chainsaw"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Woodcutter Axe"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Grimy Hoodie"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "None"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Bruise Clay"
+    }
+  ]
+}

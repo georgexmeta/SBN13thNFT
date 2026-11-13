@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #1059",
+  "seed": 463706736,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Standard"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 1 - Lumpy Dome"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Corpse Grey"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Bald"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Boils"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Burlap Sack Hood"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Meat Hook"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Pitchfork"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Denim Jacket"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "Tool Belt"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Rust Clay"
+    }
+  ]
+}

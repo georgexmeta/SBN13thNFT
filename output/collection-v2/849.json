@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #849",
+  "seed": 58141629,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Standard"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 4 - Split Cranium"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Corpse Grey"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Bald"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Boils"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Bare Face"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Butcher Cleaver"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Pitchfork"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Denim Jacket"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "None"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Swamp Clay"
+    }
+  ]
+}

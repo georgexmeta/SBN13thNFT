@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #823",
+  "seed": 1881181902,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Rare"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 1 - Lumpy Dome"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Sallow"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Greasy Comb-over"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Stitched Scar"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Crown of Nails"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Flamethrower"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Fuel Tanks"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Fur-Trimmed Cape"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "Tool Belt"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Swamp Clay"
+    }
+  ]
+}

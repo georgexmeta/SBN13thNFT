@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #957",
+  "seed": 1296372453,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Standard"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 2 - Melted Lopsided"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Pale Wax"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Wild Grey Tufts"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Grey Wrinkles"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Burlap Pig Mask"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Butcher Cleaver"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "None"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Plaid Flannel"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "None"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Rust Clay"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #1243",
+  "seed": 1130258080,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Rare"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 2 - Melted Lopsided"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Sallow"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Wild Grey Tufts"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Grey Wrinkles"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Fanged Killer Clown"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Flamethrower"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Fuel Tanks"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Bloody Clown Suit"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "None"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Teal Clay"
+    }
+  ]
+}

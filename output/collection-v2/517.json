@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #517",
+  "seed": 1552320226,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Rare"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 1 - Lumpy Dome"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Sallow"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Bald"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Blue Veins"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Crown of Nails"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Chainsaw"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Circus Mallet"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Plaid Flannel"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "None"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Cornfield"
+    }
+  ]
+}

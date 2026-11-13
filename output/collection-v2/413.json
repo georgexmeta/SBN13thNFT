@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #413",
+  "seed": 265987958,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Rare"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 4 - Split Cranium"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Flesh Pink"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Bald"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Stitched Scar"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Porcelain Doll Face"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Hook Hand"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Rusty Shovel"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Patched Work Jacket"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "None"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Blood Moon"
+    }
+  ]
+}

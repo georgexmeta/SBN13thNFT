@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #645",
+  "seed": 1124975906,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Rare"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 3 - Cone Skull"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Pale Wax"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Grey Side Tufts"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Grey Wrinkles"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Fanged Killer Clown"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Bone Saw"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Circus Mallet"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Bloody Clown Suit"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "Tool Belt"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Teal Clay"
+    }
+  ]
+}

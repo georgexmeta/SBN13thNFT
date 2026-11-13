@@ -1,0 +1,54 @@
+{
+  "name": "SBN13th #656 - Swamp Saint",
+  "seed": 493878146,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Legendary 1/1"
+    },
+    {
+      "trait_type": "1/1 Name",
+      "value": "Swamp Saint"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 1 - Lumpy Dome"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Pale Wax"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Wild Grey Tufts"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Clean"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Hockey Half-Mask (overgrown)"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Bone Saw"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Pitchfork"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Patched Work Jacket"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "Tool Belt"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Swamp Clay"
+    }
+  ]
+}

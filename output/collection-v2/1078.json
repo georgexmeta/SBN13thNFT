@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #1078",
+  "seed": 375978536,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Rare"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 2 - Melted Lopsided"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Flesh Pink"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Bald"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Blue Veins"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Stitched Skin Mask"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Nail-Knife Glove"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Scythe"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Tattered Undertaker Suit"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "Tool Belt"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Slate Clay"
+    }
+  ]
+}

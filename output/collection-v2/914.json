@@ -1,0 +1,54 @@
+{
+  "name": "SBN13th #914 - Diamond Wraith",
+  "seed": 1415514333,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Legendary 1/1"
+    },
+    {
+      "trait_type": "1/1 Name",
+      "value": "Diamond Wraith"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 3 - Cone Skull"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Pale Wax"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Grey Side Tufts"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Blue Veins"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Diamond Wraith Mask"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Machete"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Scythe"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Patched Work Jacket"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "Tool Belt"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Blood Moon"
+    }
+  ]
+}

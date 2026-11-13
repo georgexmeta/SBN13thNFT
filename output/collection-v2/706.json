@@ -1,0 +1,54 @@
+{
+  "name": "SBN13th #706 - The Harvester",
+  "seed": 972319448,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Legendary 1/1"
+    },
+    {
+      "trait_type": "1/1 Name",
+      "value": "The Harvester"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 2 - Melted Lopsided"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Flesh Pink"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Greasy Comb-over"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Stitched Scar"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Hockey Half-Mask (rust-stained)"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Sickle"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Scythe"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Patched Work Jacket"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "Tool Belt"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Cornfield"
+    }
+  ]
+}

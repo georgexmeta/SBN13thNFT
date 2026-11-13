@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #28",
+  "seed": 1714523306,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Standard"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 3 - Cone Skull"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Bloodless Blue"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Bald"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Clean"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Iron Muzzle"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Hatchet"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Rusty Shovel"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Butcher Apron"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "None"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Bruise Clay"
+    }
+  ]
+}

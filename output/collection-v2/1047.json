@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #1047",
+  "seed": 2105498533,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Rare"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 1 - Lumpy Dome"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Flesh Pink"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Bald"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Grey Wrinkles"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Sewn-On Pig Face"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Golden Machete"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Harpoon Gun"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Bloody Clown Suit"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "Tool Belt"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Swamp Clay"
+    }
+  ]
+}

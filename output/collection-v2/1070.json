@@ -1,0 +1,50 @@
+{
+  "name": "SBN13th #1070",
+  "seed": 1698001854,
+  "attributes": [
+    {
+      "trait_type": "Tier",
+      "value": "Rare"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Type 1 - Lumpy Dome"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Pale Wax"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "Bald"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Grey Wrinkles"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Nail-Studded Leather Mask"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Flamethrower"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Fuel Tanks"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Fur-Trimmed Cape"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "None"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Cornfield"
+    }
+  ]
+}

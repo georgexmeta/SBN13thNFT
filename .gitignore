@@ -6,3 +6,5 @@ output/clay/
 node_modules/
 clay3d/*.png
 output/clay-collection/
+output/ai/images*/
+output/ipfs/
