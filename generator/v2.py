@@ -95,6 +95,14 @@ CLOTH_STD = {
     "Grimy Hoodie": (12, "a grimy torn hoodie"), "Butcher Apron": (10, "a blood-stained butcher's apron over a work shirt"),
     "Denim Jacket": (10, "a dirty denim jacket"), "Torn Undershirt": (8, "a stained torn undershirt"), "Trench Coat": (6, "a filthy long trench coat"),
 }
+# Outfits George added on 2026-11-13. They are dealt in a separate late pass (outfit_pass) so tokens that were
+# already rendered (generator/rendered_keep.json) keep their traits and images.
+CLOTH_NEW = {
+    "Orange Prison Jumpsuit": (16, "a stained bright orange prison convict jumpsuit with a stencilled inmate number on the chest"),
+    "Bloody Surgeon Scrubs": (14, "blood-soaked green surgeon's scrubs with a surgical cap and a stained surgical mask hanging round his neck"),
+    "Tattered Shirt": (14, "a shredded, ripped and tattered button-up shirt hanging in rags"),
+    "Work Jumpsuit": (12, "a stained one-piece navy-grey work jumpsuit with a torn name patch"),
+}
 CLOTH_RARE = {"Bloody Clown Suit": (35, "a baggy bloody harlequin clown suit with a ruffled collar and pom-pom buttons"),
               "Tattered Undertaker Suit": (35, "a tattered black undertaker's suit with a rotten flower in the lapel"),
               "Fur-Trimmed Cape": (30, "a ragged fur-trimmed cape over his work clothes")}
@@ -138,7 +146,7 @@ NEGATIVE = ("text, logo, letters, watermark, brand marks, sports team logo, red 
             "white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, "
             "photo of a real person, cartoon outline, flat 2D, long finger blades, clawed glove with four long knives, "
             "red and green striped sweater, brown fedora")
-ALL = {"Head": HEAD, "Skin": SKIN, "Hair": HAIR, "Head Mark": HEAD_MARK, "Clothing": {**CLOTH_STD, **CLOTH_RARE},
+ALL = {"Head": HEAD, "Skin": SKIN, "Hair": HAIR, "Head Mark": HEAD_MARK, "Clothing": {**CLOTH_STD, **CLOTH_NEW, **CLOTH_RARE},
        "Belt": BELT, "Backdrop": {**BACKDROP, **BACKDROP_RARE}, "Mask": {**MASK_STD, **MASK_RARE},
        "Held Weapon": {**HELD_STD, **HELD_RARE}, "Back Weapon": {**BACK_STD, **BACK_RARE}}
 
@@ -213,6 +221,7 @@ def build():
     tokens += [(deal("Rare"), None) for _ in range(N_RARE)]
     tokens += [(deal("Standard"), None) for _ in range(TOTAL - N_RARE - len(LEGENDARY))]
     rng.shuffle(tokens)
+    outfit_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -224,6 +233,25 @@ def build():
     os.makedirs(os.path.join(ROOT, "output", "ai"), exist_ok=True)
     json.dump(rows, open(os.path.join(ROOT, "output", "ai", "manifest-v2.json"), "w"), indent=1)
     report(tokens)
+
+
+def outfit_pass(tokens):
+    """Re-deal Clothing from the expanded table for tokens not yet rendered. Rare-only outfits are left alone."""
+    keep = set(json.load(open(os.path.join(ROOT, "generator", "rendered_keep.json"))))
+    late = random.Random(2611)
+    table = {**CLOTH_STD, **CLOTH_NEW}
+    dnas = {tuple(sorted((k, v) for k, v in a.items() if k != "Tier")) for a, _ in tokens}
+    for i, (a, finish) in enumerate(tokens, 1):
+        if i in keep or finish or a["Clothing"] in CLOTH_RARE:
+            continue
+        for _ in range(20):
+            old = tuple(sorted((k, v) for k, v in a.items() if k != "Tier"))
+            new_val = pick(late, table)
+            b = dict(a, Clothing=new_val)
+            dna = tuple(sorted((k, v) for k, v in b.items() if k != "Tier"))
+            if dna == old or dna not in dnas:
+                dnas.discard(old); dnas.add(dna); a["Clothing"] = new_val
+                break
 
 
 def report(tokens):
