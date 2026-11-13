@@ -8,7 +8,7 @@
     },
     {
       "trait_type": "Head",
-      "value": "Type 3 - Cone Skull"
+      "value": "Female"
     },
     {
       "trait_type": "Skin",
@@ -16,15 +16,15 @@
     },
     {
       "trait_type": "Hair",
-      "value": "Grey Side Tufts"
+      "value": "Soaked Black Veil Hair"
     },
     {
       "trait_type": "Head Mark",
-      "value": "Boils"
+      "value": "Clean"
     },
     {
       "trait_type": "Mask",
-      "value": "Zipper Long Nose"
+      "value": "Waterlogged Face"
     },
     {
       "trait_type": "Held Weapon",
@@ -36,7 +36,7 @@
     },
     {
       "trait_type": "Clothing",
-      "value": "Orange Prison Jumpsuit"
+      "value": "Dripping Nightgown"
     },
     {
       "trait_type": "Belt",
@@ -49,6 +49,10 @@
     {
       "trait_type": "Ears",
       "value": "Natural"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Drowned Well Girl"
     }
   ]
 }

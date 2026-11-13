@@ -14,10 +14,11 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Type 1 - Lumpy Dome | 459 | 35.3% |
-| Type 2 - Melted Lopsided | 332 | 25.5% |
-| Type 3 - Cone Skull | 278 | 21.4% |
-| Type 4 - Split Cranium | 231 | 17.8% |
+| Type 1 - Lumpy Dome | 447 | 34.4% |
+| Type 2 - Melted Lopsided | 321 | 24.7% |
+| Type 3 - Cone Skull | 257 | 19.8% |
+| Type 4 - Split Cranium | 227 | 17.5% |
+| Female | 48 | 3.7% |
 
 ## Mask
 
@@ -36,17 +37,23 @@
 | Buckled Harness Hood | 25 | 1.9% |
 | Melted Wax Face | 25 | 1.9% |
 | Flayed Muscle Face | 25 | 1.9% |
-| Zipper Mouth Leather (Rare+) | 18 | 1.4% |
-| Fanged Killer Clown (Rare+) | 16 | 1.2% |
-| Nail-Studded Leather Mask (Rare+) | 15 | 1.2% |
-| Stitched Skin Mask (Rare+) | 15 | 1.2% |
-| Porcelain Doll Face (Rare+) | 14 | 1.1% |
-| Bone Skull Mask (Rare+) | 12 | 0.9% |
-| Zipper Long Nose (Rare+) | 11 | 0.8% |
-| Oni Demon Mask (Rare+) | 10 | 0.8% |
-| Sewn-On Pig Face (Rare+) | 7 | 0.5% |
-| Long Nose Latex (Rare+) | 7 | 0.5% |
-| Crown of Nails (Rare+) | 5 | 0.4% |
+| Nail-Studded Leather Mask (Rare+) | 12 | 0.9% |
+| Zipper Mouth Leather (Rare+) | 12 | 0.9% |
+| Stitched Skin Mask (Rare+) | 9 | 0.7% |
+| Bone Skull Mask (Rare+) | 8 | 0.6% |
+| Hollow Grey Face | 8 | 0.6% |
+| Manic Grin | 8 | 0.6% |
+| Split Faceplate | 8 | 0.6% |
+| Cracked Porcelain Face | 8 | 0.6% |
+| Stitched Bride Face | 8 | 0.6% |
+| Waterlogged Face | 8 | 0.6% |
+| Fanged Killer Clown (Rare+) | 7 | 0.5% |
+| Porcelain Doll Face (Rare+) | 7 | 0.5% |
+| Zipper Long Nose (Rare+) | 6 | 0.5% |
+| Sewn-On Pig Face (Rare+) | 6 | 0.5% |
+| Oni Demon Mask (Rare+) | 6 | 0.5% |
+| Long Nose Latex (Rare+) | 5 | 0.4% |
+| Crown of Nails (Rare+) | 4 | 0.3% |
 | Hockey Half-Mask (solid polished gold) | 1 | 0.1% |
 | Hockey Half-Mask (polished chrome) | 1 | 0.1% |
 | Hockey Half-Mask (charred black) | 1 | 0.1% |
@@ -103,31 +110,37 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Patched Work Jacket | 199 | 15.3% |
-| Plaid Flannel | 147 | 11.3% |
-| Mechanic Coveralls | 110 | 8.5% |
-| Orange Prison Jumpsuit | 109 | 8.4% |
+| Patched Work Jacket | 197 | 15.2% |
+| Plaid Flannel | 145 | 11.2% |
+| Mechanic Coveralls | 106 | 8.2% |
+| Orange Prison Jumpsuit | 105 | 8.1% |
 | Grimy Hoodie | 100 | 7.7% |
-| Bloody Surgeon Scrubs | 95 | 7.3% |
+| Bloody Surgeon Scrubs | 94 | 7.2% |
 | Butcher Apron | 84 | 6.5% |
-| Tattered Shirt | 83 | 6.4% |
+| Tattered Shirt | 77 | 5.9% |
 | Denim Jacket | 72 | 5.5% |
-| Torn Undershirt | 65 | 5.0% |
-| Trench Coat | 41 | 3.2% |
-| Black Jumpsuit | 41 | 3.2% |
-| Tan Blood-Splatter Jumpsuit | 37 | 2.8% |
-| Grey Jumpsuit | 36 | 2.8% |
-| Navy Jumpsuit | 31 | 2.4% |
-| Bloody Clown Suit (Rare+) | 22 | 1.7% |
-| Tattered Undertaker Suit (Rare+) | 17 | 1.3% |
-| Fur-Trimmed Cape (Rare+) | 11 | 0.8% |
+| Torn Undershirt | 63 | 4.8% |
+| Trench Coat | 40 | 3.1% |
+| Black Jumpsuit | 40 | 3.1% |
+| Tan Blood-Splatter Jumpsuit | 36 | 2.8% |
+| Grey Jumpsuit | 35 | 2.7% |
+| Navy Jumpsuit | 30 | 2.3% |
+| Tattered Undertaker Suit (Rare+) | 12 | 0.9% |
+| Bloody Clown Suit (Rare+) | 8 | 0.6% |
+| Fur-Trimmed Cape (Rare+) | 8 | 0.6% |
+| Tattered Nun Habit | 8 | 0.6% |
+| Gingham Farm Dress | 8 | 0.6% |
+| Pastel Tracksuit | 8 | 0.6% |
+| Faded Lace Gown | 8 | 0.6% |
+| Rotting Wedding Gown | 8 | 0.6% |
+| Dripping Nightgown | 8 | 0.6% |
 
 ## Belt
 
 | Value | Count | Share |
 |---|---|---|
-| None | 866 | 66.6% |
-| Tool Belt | 434 | 33.4% |
+| None | 886 | 68.2% |
+| Tool Belt | 414 | 31.8% |
 
 ## Backdrop
 
@@ -167,21 +180,27 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Grey Side Tufts | 536 | 41.2% |
-| Bald | 307 | 23.6% |
-| Greasy Comb-over | 185 | 14.2% |
-| Wild Grey Tufts | 183 | 14.1% |
-| Backwards Cap | 89 | 6.8% |
+| Grey Side Tufts | 520 | 40.0% |
+| Bald | 290 | 22.3% |
+| Greasy Comb-over | 180 | 13.8% |
+| Wild Grey Tufts | 176 | 13.5% |
+| Backwards Cap | 86 | 6.6% |
+| Black Veil | 8 | 0.6% |
+| Straw Sun Bonnet | 8 | 0.6% |
+| Cropped Copper Wig | 8 | 0.6% |
+| Lace Bonnet | 8 | 0.6% |
+| Black Beehive | 8 | 0.6% |
+| Soaked Black Veil Hair | 8 | 0.6% |
 
 ## Head Mark
 
 | Value | Count | Share |
 |---|---|---|
-| Blue Veins | 533 | 41.0% |
-| Grey Wrinkles | 306 | 23.5% |
-| Stitched Scar | 199 | 15.3% |
-| Boils | 134 | 10.3% |
-| Clean | 128 | 9.8% |
+| Blue Veins | 518 | 39.8% |
+| Grey Wrinkles | 288 | 22.2% |
+| Stitched Scar | 195 | 15.0% |
+| Clean | 172 | 13.2% |
+| Boils | 127 | 9.8% |
 
 ## Ears
 
@@ -189,3 +208,15 @@
 |---|---|---|
 | Natural | 1170 | 90.0% |
 | Gauged | 130 | 10.0% |
+
+## Character
+
+| Value | Count | Share |
+|---|---|---|
+| Classic | 1252 | 96.3% |
+| Hollow Sister | 8 | 0.6% |
+| Farmhouse Smile | 8 | 0.6% |
+| Glitch Android | 8 | 0.6% |
+| Cursed Porcelain Doll | 8 | 0.6% |
+| Rotten Bride | 8 | 0.6% |
+| Drowned Well Girl | 8 | 0.6% |

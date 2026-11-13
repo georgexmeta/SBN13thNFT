@@ -53,6 +53,10 @@
     {
       "trait_type": "Ears",
       "value": "Natural"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Classic"
     }
   ]
 }

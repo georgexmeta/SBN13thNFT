@@ -49,6 +49,10 @@
     {
       "trait_type": "Ears",
       "value": "Gauged"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Classic"
     }
   ]
 }

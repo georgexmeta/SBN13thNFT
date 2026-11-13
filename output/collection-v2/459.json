@@ -8,7 +8,7 @@
     },
     {
       "trait_type": "Head",
-      "value": "Type 1 - Lumpy Dome"
+      "value": "Female"
     },
     {
       "trait_type": "Skin",
@@ -16,15 +16,15 @@
     },
     {
       "trait_type": "Hair",
-      "value": "Grey Side Tufts"
+      "value": "Soaked Black Veil Hair"
     },
     {
       "trait_type": "Head Mark",
-      "value": "Grey Wrinkles"
+      "value": "Clean"
     },
     {
       "trait_type": "Mask",
-      "value": "Zipper Mouth Leather"
+      "value": "Waterlogged Face"
     },
     {
       "trait_type": "Held Weapon",
@@ -36,11 +36,11 @@
     },
     {
       "trait_type": "Clothing",
-      "value": "Torn Undershirt"
+      "value": "Dripping Nightgown"
     },
     {
       "trait_type": "Belt",
-      "value": "Tool Belt"
+      "value": "None"
     },
     {
       "trait_type": "Backdrop",
@@ -49,6 +49,10 @@
     {
       "trait_type": "Ears",
       "value": "Natural"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Drowned Well Girl"
     }
   ]
 }

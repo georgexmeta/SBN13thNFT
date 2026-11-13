@@ -13,6 +13,7 @@ red-chevron hockey mask, no copied clown make-up), so the collection stays clear
 import json
 import os
 import random
+import re
 from collections import Counter
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -69,6 +70,34 @@ MASK_NEW3 = {
                               "through, a lipless grin of crooked yellow teeth, one bloodshot eye glaring through a torn hole"),
 }
 MASK_NEW.update(MASK_NEW3)
+
+# Female Claysons (George, 2026-11-13): 6 ORIGINAL archetypes loosely inspired by famous horror roles. Each deliberately
+# avoids the source character's signature look (no braided-pigtail doll, no platinum-bob android in a bow dress,
+# no blonde leather bride, no red bow dress, no white-faced fanged nun). 8 each, all on unrendered Rare tokens.
+FEMALE_BASE = ("A grotesque disfigured clay WOMAN (female, not the man in the reference: copy only the reference's clay style, pose and framing) "
+               "with an oversized bobble head, mottled skin, small sunken bloodshot eyes in swollen red-rimmed lids, a thin neck and "
+               "narrow hunched shoulders, head turned three-quarters toward the viewer's right")
+FEMALE = {   # name: (Hair value, hair phrase, Mask value, face phrase, Clothing value, clothing phrase)
+    "Cursed Porcelain Doll": ("Lace Bonnet", "a yellowed lace bonnet over a tight auburn bun",
+        "Cracked Porcelain Face", "a chipped and cracked porcelain doll face with glossy glass eyes, flaking painted rosy cheeks and a tiny painted smile",
+        "Faded Lace Gown", "a faded, mouldy cream lace doll's gown with a high collar"),
+    "Drowned Well Girl": ("Soaked Black Veil Hair", "soaked lank black hair hanging down over most of her face, one bloodshot eye showing through",
+        "Waterlogged Face", "grey waterlogged wrinkled skin with blue lips and dripping water",
+        "Dripping Nightgown", "a dripping torn grey nightgown streaked with mud and pond weed"),
+    "Glitch Android": ("Cropped Copper Wig", "a cropped messy copper-red synthetic wig, half torn away to show metal",
+        "Split Faceplate", "a cracked clay faceplate split open down one cheek to reveal wires, gears and one glowing red LED eye",
+        "Pastel Tracksuit", "a stained pastel lilac tracksuit jacket zipped to the chin"),
+    "Rotten Bride": ("Black Beehive", "a towering ratty black beehive hairdo",
+        "Stitched Bride Face", "crude black stitches across both cheeks, smeared black lipstick and running mascara",
+        "Rotting Wedding Gown", "a rotting, blood-spattered ivory wedding gown with a torn veil trailing from her hair"),
+    "Farmhouse Smile": ("Straw Sun Bonnet", "a frayed straw sun bonnet tied under the chin",
+        "Manic Grin", "a stretched manic too-wide grin of crooked teeth and wide unblinking eyes, freckles and dirt",
+        "Gingham Farm Dress", "a faded blue gingham farm dress with a blood-soaked white apron"),
+    "Hollow Sister": ("Black Veil", "a long black wimple veil covering her hair",
+        "Hollow Grey Face", "a cracked grey clay face with deep empty black eye sockets and a crudely stitched-shut mouth",
+        "Tattered Nun Habit", "a tattered black habit with a stained white collar and a rusty chain rosary"),
+}
+N_FEMALE = 8
 MASK_STD = {
     "Bare Face": (22, "no mask: his disfigured face is bare, small sunken bloodshot eyes in swollen red lids, a crooked broken nose and rotten yellow teeth"),
     "Hockey Half-Mask": (18, "an aged yellowed HALF mask covering ONLY his mouth, chin and the tip of his nose, the top edge sitting just under his eyes, his eyes, brow and forehead completely bare, round breathing holes, random blood splatters (never triangles or stripes), held by rusty leather straps with a riveted plate and a buckle under the ear"),
@@ -190,8 +219,8 @@ NEGATIVE = ("text, logo, letters, watermark, brand marks, sports team logo, red 
             "white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, "
             "photo of a real person, cartoon outline, flat 2D, face turned to the left, mirrored pose, long finger blades, clawed glove with four long knives, "
             "red and green striped sweater, brown fedora")
-ALL = {"Head": HEAD, "Skin": SKIN, "Hair": HAIR, "Head Mark": HEAD_MARK, "Ears": EARS, "Clothing": {**CLOTH_STD, **CLOTH_NEW, **CLOTH_RARE},
-       "Belt": BELT, "Backdrop": {**BACKDROP, **BACKDROP_RARE, **BACKDROP_SCENE}, "Mask": {**MASK_STD, **MASK_RARE, **MASK_NEW},
+ALL = {"Head": HEAD, "Skin": SKIN, "Hair": {**HAIR, **{v[0]: (0, v[1]) for v in FEMALE.values()}}, "Head Mark": HEAD_MARK, "Ears": EARS, "Clothing": {**CLOTH_STD, **CLOTH_NEW, **CLOTH_RARE, **{v[4]: (0, v[5]) for v in FEMALE.values()}},
+       "Belt": BELT, "Backdrop": {**BACKDROP, **BACKDROP_RARE, **BACKDROP_SCENE}, "Mask": {**MASK_STD, **MASK_RARE, **MASK_NEW, **{v[2]: (0, v[3]) for v in FEMALE.values()}},
        "Held Weapon": {**HELD_STD, **HELD_RARE}, "Back Weapon": {**BACK_STD, **BACK_RARE}}
 
 
@@ -228,9 +257,16 @@ def prompt(a, legendary_finish=None):
     else:
         hand = f"his right fist grips {phrase('Held Weapon', held)}"
     body = [f"wearing {phrase('Clothing', a['Clothing'])}", phrase("Belt", a["Belt"]), hand, phrase("Back Weapon", a["Back Weapon"])]
-    parts = [STYLE, CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
+    female = a.get("Character", "Classic") in FEMALE
+    if female:
+        head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"])]
+    parts = [STYLE, FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
              phrase("Backdrop", a["Backdrop"]), FRAMING]
-    return ". ".join(p[0].upper() + p[1:] for p in parts if p) + "."
+    text = ". ".join(p[0].upper() + p[1:] for p in parts if p) + "."
+    if female:
+        for m, f in [(r"\bhis\b", "her"), (r"\bHis\b", "Her"), (r"\bhim\b", "her"), (r"\bhimself\b", "herself"), (r"\bhe\b", "she"), (r"\bHe\b", "She")]:
+            text = re.sub(m, f, text)
+    return text
 
 
 def build():
@@ -269,6 +305,7 @@ def build():
     backdrop_pass(tokens)
     ear_pass(tokens)
     mask_pass(tokens)
+    female_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -340,11 +377,24 @@ def mask_pass(tokens):
         tokens[i - 1][0]["Mask"] = list(MASK_NEW3)[k % len(MASK_NEW3)]
 
 
+def female_pass(tokens):
+    """Every token gets a Character trait; N_FEMALE per archetype on unrendered Rare tokens (tier counts stay the same)."""
+    keep = set(json.load(open(os.path.join(ROOT, "generator", "rendered_keep_ears.json"))))
+    for a, _ in tokens:
+        a["Character"] = "Classic"
+    pool = [i for i, (a, finish) in enumerate(tokens, 1) if i not in keep and not finish and a["Tier"] == "Rare"
+            and a["Ears"] == "Natural" and a["Mask"] not in MASK_NEW]
+    for k, i in enumerate(random.Random(6666).sample(pool, N_FEMALE * len(FEMALE))):
+        name = list(FEMALE)[k % len(FEMALE)]
+        hair, _, mask, _, cloth, _ = FEMALE[name]
+        tokens[i - 1][0].update({"Character": name, "Head": "Female", "Hair": hair, "Mask": mask, "Clothing": cloth, "Head Mark": "Clean", "Belt": "None"})
+
+
 def report(tokens):
     lines = ["# SBN13th v2 rarity", "", "1,300 PFPs: 1,157 Standard, 130 Rare, 13 Legendary 1/1s. Every PFP is unique.", ""]
     rare_only = {k: set(t) for k, t in [("Mask", MASK_RARE), ("Held Weapon", HELD_RARE), ("Back Weapon", BACK_RARE),
                                          ("Clothing", CLOTH_RARE), ("Backdrop", BACKDROP_RARE)]}
-    for trait in ["Tier", "Head", "Mask", "Held Weapon", "Back Weapon", "Clothing", "Belt", "Backdrop", "Skin", "Hair", "Head Mark", "Ears"]:
+    for trait in ["Tier", "Head", "Mask", "Held Weapon", "Back Weapon", "Clothing", "Belt", "Backdrop", "Skin", "Hair", "Head Mark", "Ears", "Character"]:
         c = Counter(a[trait] for a, _ in tokens)
         lines += [f"## {trait}", "", "| Value | Count | Share |", "|---|---|---|"]
         for v, n in c.most_common():

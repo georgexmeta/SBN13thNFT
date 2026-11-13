@@ -8,7 +8,7 @@
     },
     {
       "trait_type": "Head",
-      "value": "Type 2 - Melted Lopsided"
+      "value": "Female"
     },
     {
       "trait_type": "Skin",
@@ -16,15 +16,15 @@
     },
     {
       "trait_type": "Hair",
-      "value": "Bald"
+      "value": "Black Beehive"
     },
     {
       "trait_type": "Head Mark",
-      "value": "Grey Wrinkles"
+      "value": "Clean"
     },
     {
       "trait_type": "Mask",
-      "value": "Fanged Killer Clown"
+      "value": "Stitched Bride Face"
     },
     {
       "trait_type": "Held Weapon",
@@ -36,11 +36,11 @@
     },
     {
       "trait_type": "Clothing",
-      "value": "Bloody Clown Suit"
+      "value": "Rotting Wedding Gown"
     },
     {
       "trait_type": "Belt",
-      "value": "Tool Belt"
+      "value": "None"
     },
     {
       "trait_type": "Backdrop",
@@ -49,6 +49,10 @@
     {
       "trait_type": "Ears",
       "value": "Natural"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Rotten Bride"
     }
   ]
 }

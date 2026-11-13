@@ -8,7 +8,7 @@
     },
     {
       "trait_type": "Head",
-      "value": "Type 2 - Melted Lopsided"
+      "value": "Female"
     },
     {
       "trait_type": "Skin",
@@ -16,7 +16,7 @@
     },
     {
       "trait_type": "Hair",
-      "value": "Wild Grey Tufts"
+      "value": "Black Veil"
     },
     {
       "trait_type": "Head Mark",
@@ -24,7 +24,7 @@
     },
     {
       "trait_type": "Mask",
-      "value": "Porcelain Doll Face"
+      "value": "Hollow Grey Face"
     },
     {
       "trait_type": "Held Weapon",
@@ -36,11 +36,11 @@
     },
     {
       "trait_type": "Clothing",
-      "value": "Bloody Clown Suit"
+      "value": "Tattered Nun Habit"
     },
     {
       "trait_type": "Belt",
-      "value": "Tool Belt"
+      "value": "None"
     },
     {
       "trait_type": "Backdrop",
@@ -49,6 +49,10 @@
     {
       "trait_type": "Ears",
       "value": "Natural"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Hollow Sister"
     }
   ]
 }

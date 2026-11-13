@@ -8,7 +8,7 @@
     },
     {
       "trait_type": "Head",
-      "value": "Type 3 - Cone Skull"
+      "value": "Female"
     },
     {
       "trait_type": "Skin",
@@ -16,7 +16,7 @@
     },
     {
       "trait_type": "Hair",
-      "value": "Bald"
+      "value": "Cropped Copper Wig"
     },
     {
       "trait_type": "Head Mark",
@@ -24,7 +24,7 @@
     },
     {
       "trait_type": "Mask",
-      "value": "Stitched Skin Mask"
+      "value": "Split Faceplate"
     },
     {
       "trait_type": "Held Weapon",
@@ -36,7 +36,7 @@
     },
     {
       "trait_type": "Clothing",
-      "value": "Tattered Undertaker Suit"
+      "value": "Pastel Tracksuit"
     },
     {
       "trait_type": "Belt",
@@ -49,6 +49,10 @@
     {
       "trait_type": "Ears",
       "value": "Natural"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Glitch Android"
     }
   ]
 }

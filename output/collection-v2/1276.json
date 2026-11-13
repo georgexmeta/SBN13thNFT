@@ -8,7 +8,7 @@
     },
     {
       "trait_type": "Head",
-      "value": "Type 2 - Melted Lopsided"
+      "value": "Female"
     },
     {
       "trait_type": "Skin",
@@ -16,7 +16,7 @@
     },
     {
       "trait_type": "Hair",
-      "value": "Backwards Cap"
+      "value": "Cropped Copper Wig"
     },
     {
       "trait_type": "Head Mark",
@@ -24,7 +24,7 @@
     },
     {
       "trait_type": "Mask",
-      "value": "Bone Skull Mask"
+      "value": "Split Faceplate"
     },
     {
       "trait_type": "Held Weapon",
@@ -36,11 +36,11 @@
     },
     {
       "trait_type": "Clothing",
-      "value": "Plaid Flannel"
+      "value": "Pastel Tracksuit"
     },
     {
       "trait_type": "Belt",
-      "value": "Tool Belt"
+      "value": "None"
     },
     {
       "trait_type": "Backdrop",
@@ -49,6 +49,10 @@
     {
       "trait_type": "Ears",
       "value": "Natural"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Glitch Android"
     }
   ]
 }

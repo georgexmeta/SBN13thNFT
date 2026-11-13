@@ -8,7 +8,7 @@
     },
     {
       "trait_type": "Head",
-      "value": "Type 4 - Split Cranium"
+      "value": "Female"
     },
     {
       "trait_type": "Skin",
@@ -16,15 +16,15 @@
     },
     {
       "trait_type": "Hair",
-      "value": "Grey Side Tufts"
+      "value": "Lace Bonnet"
     },
     {
       "trait_type": "Head Mark",
-      "value": "Blue Veins"
+      "value": "Clean"
     },
     {
       "trait_type": "Mask",
-      "value": "Zipper Long Nose"
+      "value": "Cracked Porcelain Face"
     },
     {
       "trait_type": "Held Weapon",
@@ -36,7 +36,7 @@
     },
     {
       "trait_type": "Clothing",
-      "value": "Bloody Clown Suit"
+      "value": "Faded Lace Gown"
     },
     {
       "trait_type": "Belt",
@@ -49,6 +49,10 @@
     {
       "trait_type": "Ears",
       "value": "Natural"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Cursed Porcelain Doll"
     }
   ]
 }

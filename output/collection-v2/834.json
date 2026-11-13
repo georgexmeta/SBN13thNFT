@@ -8,7 +8,7 @@
     },
     {
       "trait_type": "Head",
-      "value": "Type 3 - Cone Skull"
+      "value": "Female"
     },
     {
       "trait_type": "Skin",
@@ -16,15 +16,15 @@
     },
     {
       "trait_type": "Hair",
-      "value": "Greasy Comb-over"
+      "value": "Black Beehive"
     },
     {
       "trait_type": "Head Mark",
-      "value": "Blue Veins"
+      "value": "Clean"
     },
     {
       "trait_type": "Mask",
-      "value": "Oni Demon Mask"
+      "value": "Stitched Bride Face"
     },
     {
       "trait_type": "Held Weapon",
@@ -36,7 +36,7 @@
     },
     {
       "trait_type": "Clothing",
-      "value": "Mechanic Coveralls"
+      "value": "Rotting Wedding Gown"
     },
     {
       "trait_type": "Belt",
@@ -49,6 +49,10 @@
     {
       "trait_type": "Ears",
       "value": "Natural"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Rotten Bride"
     }
   ]
 }

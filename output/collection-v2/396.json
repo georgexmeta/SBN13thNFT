@@ -8,7 +8,7 @@
     },
     {
       "trait_type": "Head",
-      "value": "Type 3 - Cone Skull"
+      "value": "Female"
     },
     {
       "trait_type": "Skin",
@@ -16,15 +16,15 @@
     },
     {
       "trait_type": "Hair",
-      "value": "Grey Side Tufts"
+      "value": "Lace Bonnet"
     },
     {
       "trait_type": "Head Mark",
-      "value": "Stitched Scar"
+      "value": "Clean"
     },
     {
       "trait_type": "Mask",
-      "value": "Stitched Skin Mask"
+      "value": "Cracked Porcelain Face"
     },
     {
       "trait_type": "Held Weapon",
@@ -36,11 +36,11 @@
     },
     {
       "trait_type": "Clothing",
-      "value": "Orange Prison Jumpsuit"
+      "value": "Faded Lace Gown"
     },
     {
       "trait_type": "Belt",
-      "value": "Tool Belt"
+      "value": "None"
     },
     {
       "trait_type": "Backdrop",
@@ -49,6 +49,10 @@
     {
       "trait_type": "Ears",
       "value": "Natural"
+    },
+    {
+      "trait_type": "Character",
+      "value": "Cursed Porcelain Doll"
     }
   ]
 }
