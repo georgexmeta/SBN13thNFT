@@ -2,17 +2,29 @@
 pragma solidity ^0.8.24;
 
 // Deploy from Remix (remix.ethereum.org) with Brave Wallet on Robinhood Chain (chain ID 4663).
-// Works for both launch styles: the owner can batch-mint to any wallet, and a public mint can be switched on with a price.
+// Mint phases: Closed -> WL -> FCFS -> Public. WL and FCFS wallets are checked with Merkle proofs
+// (roots made by tools/merkle.js from tools/wl.txt and tools/fcfs.txt). The owner moves the phase forward with setPhase.
 import "@openzeppelin/contracts@5.0.2/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts@5.0.2/token/common/ERC2981.sol";
 import "@openzeppelin/contracts@5.0.2/access/Ownable.sol";
+import "@openzeppelin/contracts@5.0.2/utils/cryptography/MerkleProof.sol";
 
 contract SBN13th is ERC721, ERC2981, Ownable {
+    enum Phase { Closed, WL, FCFS, Public }
+
     uint256 public constant MAX_SUPPLY = 1300;
     uint256 public totalSupply;
-    uint256 public price;            // public mint price in wei (0 = free)
-    bool public publicMintOpen;
-    string private baseURI;          // ipfs://<metadata CID>/
+    Phase public phase;
+
+    // Prices in wei: WL 0.00013 ETH, FCFS 0.0013 ETH, Public 0.013 ETH.
+    uint256[4] public prices = [0, 0.00013 ether, 0.0013 ether, 0.013 ether];
+    // Max mints per wallet in each phase (Public is per transaction).
+    uint256[4] public limits = [0, 2, 2, 10];
+    bytes32 public wlRoot;
+    bytes32 public fcfsRoot;
+    mapping(uint8 => mapping(address => uint256)) public mintedIn;
+
+    string private baseURI;          // pre-reveal folder first, then ipfs://<metadata CID>/ at reveal
     string private contractMeta;     // ipfs://<CID>/collection.json, read by OpenSea
 
     constructor(string memory baseURI_, string memory contractMeta_, address royaltyReceiver, uint96 royaltyBps)
@@ -23,17 +35,26 @@ contract SBN13th is ERC721, ERC2981, Ownable {
         _setDefaultRoyalty(royaltyReceiver, royaltyBps);   // 500 = 5%
     }
 
-    // Owner mints the next `count` tokens (ids go up from 1) to `to`. Mint in batches of about 100 to stay under the gas limit.
-    function ownerMint(address to, uint256 count) external onlyOwner {
-        _mintMany(to, count);
-    }
+    function price() external view returns (uint256) { return prices[uint8(phase)]; }
 
-    function mint(uint256 count) external payable {
-        require(publicMintOpen, "mint closed");
-        require(count > 0 && count <= 10, "1-10 per tx");
-        require(msg.value == price * count, "wrong ETH amount");
+    // proof is empty for the Public phase.
+    function mint(uint256 count, bytes32[] calldata proof) external payable {
+        Phase p = phase;
+        require(p != Phase.Closed, "mint closed");
+        require(count > 0 && count <= limits[uint8(p)], "over limit");
+        require(msg.value == prices[uint8(p)] * count, "wrong ETH amount");
+        if (p != Phase.Public) {
+            bytes32 root = p == Phase.WL ? wlRoot : fcfsRoot;
+            require(MerkleProof.verify(proof, root, keccak256(abi.encodePacked(msg.sender))), "not on list");
+            uint256 used = mintedIn[uint8(p)][msg.sender] + count;
+            require(used <= limits[uint8(p)], "wallet limit reached");
+            mintedIn[uint8(p)][msg.sender] = used;
+        }
         _mintMany(msg.sender, count);
     }
+
+    // Owner mints the next `count` tokens to `to` (team reserve or giveaways). Use batches of about 100.
+    function ownerMint(address to, uint256 count) external onlyOwner { _mintMany(to, count); }
 
     function _mintMany(address to, uint256 count) internal {
         require(totalSupply + count <= MAX_SUPPLY, "sold out");
@@ -42,7 +63,11 @@ contract SBN13th is ERC721, ERC2981, Ownable {
         }
     }
 
-    function setPublicMint(bool open, uint256 priceWei) external onlyOwner { publicMintOpen = open; price = priceWei; }
+    // 0 Closed, 1 WL, 2 FCFS, 3 Public
+    function setPhase(Phase p) external onlyOwner { phase = p; }
+    function setRoots(bytes32 wl, bytes32 fcfs) external onlyOwner { wlRoot = wl; fcfsRoot = fcfs; }
+    function setPrice(Phase p, uint256 wei_) external onlyOwner { prices[uint8(p)] = wei_; }
+    function setLimit(Phase p, uint256 n) external onlyOwner { limits[uint8(p)] = n; }
     function setBaseURI(string calldata u) external onlyOwner { baseURI = u; }
     function setContractURI(string calldata u) external onlyOwner { contractMeta = u; }
     function setRoyalty(address r, uint96 bps) external onlyOwner { _setDefaultRoyalty(r, bps); }
