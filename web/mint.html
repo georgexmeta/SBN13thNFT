@@ -51,7 +51,7 @@ async function load(){
   const [s, pr, ph] = await Promise.all([r.totalSupply(), r.price(), r.phase()]);
   const lim = await r.limits(ph);
   $("supply").textContent = `${s} / 1300 minted`;
-  $("price").textContent = ph ? `${PHASES[ph]} phase: ${ethers.formatEther(pr)} ETH each, up to ${lim} ${ph == 3 ? "per transaction" : "per wallet"}` : PHASES[0];
+  $("price").textContent = ph ? `${PHASES[ph]} phase: ${pr == 0n ? "FREE" : ethers.formatEther(pr) + " ETH each"}, up to ${lim} ${ph == 3 ? "per transaction" : "per wallet"}` : PHASES[0];
 }
 async function mintNow(){
   try{

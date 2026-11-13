@@ -16,8 +16,8 @@ contract SBN13th is ERC721, ERC2981, Ownable {
     uint256 public totalSupply;
     Phase public phase;
 
-    // Prices in wei: WL 0.00013 ETH, FCFS 0.0013 ETH, Public 0.013 ETH.
-    uint256[4] public prices = [0, 0.00013 ether, 0.0013 ether, 0.013 ether];
+    // Prices in wei: WL free, FCFS 0.0013 ETH, Public 0.013 ETH.
+    uint256[4] public prices = [0, 0, 0.0013 ether, 0.013 ether];
     // Max mints per wallet in each phase (Public is per transaction).
     uint256[4] public limits = [0, 2, 2, 10];
     bytes32 public wlRoot;
