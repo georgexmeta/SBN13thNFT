@@ -147,7 +147,15 @@ MOTHER = ("Silo Sam", {"1/1 Name": "The Grieving Mother", "Character": "The Grie
 PROM = ("Crow Bait", {"1/1 Name": "The Prom Queen", "Character": "The Prom Queen", "Head": "Female",
         "Hair": "Blood-Matted Curls", "Mask": "Psychic Glare", "Clothing": "Blood-Drenched Prom Gown", "Held Weapon": "Telekinesis",
         "Back Weapon": "None", "Belt": "None", "Head Mark": "Clean", "Ears": "Natural", "Backdrop": "Burning Gym"})
+# "The Ringmistress" (George, 2026-11-14): a 7th female exclusive, an original ADULT woman killer clown inspired by a
+# horror clown photo but not its character: no black-and-white split costume, no mini top hat, no black lips.
+# 8 unrendered Rare tokens, dealt by ring_pass after every other pass so earlier picks don't shift.
+RINGMISTRESS = {"Character": "The Ringmistress", "Head": "Female", "Hair": "Frizzed Auburn Bunches", "Mask": "Cracked Clown Paint",
+                "Clothing": "Rotten Ruffle Pierrot Dress", "Belt": "None", "Head Mark": "Clean"}
 FEMALE_EXTRA = {"Grey Curled Perm": "short tight greying curled permed hair", "Mad Mother's Face": "no mask: a sweet middle-aged mother's face twisted with grief and rage, wide wet glaring eyes, a trembling forced smile, blood flecked across her cheek",
+                "Frizzed Auburn Bunches": "frizzy matted auburn hair in two lopsided bunches tied with dirty ribbon",
+                "Cracked Clown Paint": "no mask: a grown woman's face in cracked chalky clown greasepaint, arched painted eyebrows, smeared mauve diamonds over wild yellow eyes, a huge manic grin of rotten jagged brown teeth smeared with blood",
+                "Rotten Ruffle Pierrot Dress": "a filthy dusty-rose and mustard checkered pierrot dress with a big wilted ruffled collar and two moth-eaten pompom buttons, spattered with blood",
                 "Blood-Matted Curls": "dark brown curls matted with dripping blood under a crooked rhinestone tiara",
                 "Psychic Glare": "no mask: a teenage girl's face drenched in thick dripping blood, wide unblinking eyes glowing pure white with psychic power, a cold blank stare",
                 "Blood-Drenched Prom Gown": "a ruffled pale mint-green prom gown soaked head to toe in dripping blood, a crushed corsage on her wrist",
@@ -277,8 +285,8 @@ NEGATIVE = ("text, logo, letters, watermark, brand marks, sports team logo, red 
             "white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, "
             "photo of a real person, cartoon outline, flat 2D, face turned to the left, mirrored pose, long finger blades, clawed glove with four long knives, "
             "red and green striped sweater, brown fedora")
-ALL = {"Head": HEAD, "Skin": SKIN, "Hair": {CLOWN["Hair"][0]: (0, CLOWN["Hair"][1]), **HAIR, **{v[0]: (0, v[1]) for v in FEMALE.values()}, "Grey Curled Perm": (0, FEMALE_EXTRA["Grey Curled Perm"]), "Blood-Matted Curls": (0, FEMALE_EXTRA["Blood-Matted Curls"])}, "Head Mark": HEAD_MARK, "Ears": EARS, "Clothing": {CLOWN["Clothing"][0]: (0, CLOWN["Clothing"][1]), HOMAGE_CLOTH[0]: (0, HOMAGE_CLOTH[1]), **CLOTH_STD, **CLOTH_NEW, **CLOTH_RARE, **{v[4]: (0, v[5]) for v in FEMALE.values()}, "Mustard Cardigan": (0, FEMALE_EXTRA["Mustard Cardigan"]), "Blood-Drenched Prom Gown": (0, FEMALE_EXTRA["Blood-Drenched Prom Gown"])},
-       "Belt": BELT, "Backdrop": {**BACKDROP, **BACKDROP_RARE, **BACKDROP_SCENE, JAIL[0]: (0, JAIL[1]), **{k: (0, v) for k, v in SCENE2.items()}, "Burning Gym": (0, FEMALE_EXTRA["Burning Gym"])}, "Mask": {CLOWN["Mask"][0]: (0, CLOWN["Mask"][1]), **{k: (0, v) for k, v in HOMAGE_MASK.items()}, **MASK_STD, **MASK_RARE, **MASK_NEW, **{v[2]: (0, v[3]) for v in FEMALE.values()}, "Mad Mother's Face": (0, FEMALE_EXTRA["Mad Mother's Face"]), "Psychic Glare": (0, FEMALE_EXTRA["Psychic Glare"])},
+ALL = {"Head": HEAD, "Skin": SKIN, "Hair": {CLOWN["Hair"][0]: (0, CLOWN["Hair"][1]), **HAIR, **{v[0]: (0, v[1]) for v in FEMALE.values()}, "Grey Curled Perm": (0, FEMALE_EXTRA["Grey Curled Perm"]), "Blood-Matted Curls": (0, FEMALE_EXTRA["Blood-Matted Curls"]), "Frizzed Auburn Bunches": (0, FEMALE_EXTRA["Frizzed Auburn Bunches"])}, "Head Mark": HEAD_MARK, "Ears": EARS, "Clothing": {CLOWN["Clothing"][0]: (0, CLOWN["Clothing"][1]), HOMAGE_CLOTH[0]: (0, HOMAGE_CLOTH[1]), **CLOTH_STD, **CLOTH_NEW, **CLOTH_RARE, **{v[4]: (0, v[5]) for v in FEMALE.values()}, "Mustard Cardigan": (0, FEMALE_EXTRA["Mustard Cardigan"]), "Blood-Drenched Prom Gown": (0, FEMALE_EXTRA["Blood-Drenched Prom Gown"]), "Rotten Ruffle Pierrot Dress": (0, FEMALE_EXTRA["Rotten Ruffle Pierrot Dress"])},
+       "Belt": BELT, "Backdrop": {**BACKDROP, **BACKDROP_RARE, **BACKDROP_SCENE, JAIL[0]: (0, JAIL[1]), **{k: (0, v) for k, v in SCENE2.items()}, "Burning Gym": (0, FEMALE_EXTRA["Burning Gym"])}, "Mask": {CLOWN["Mask"][0]: (0, CLOWN["Mask"][1]), **{k: (0, v) for k, v in HOMAGE_MASK.items()}, **MASK_STD, **MASK_RARE, **MASK_NEW, **{v[2]: (0, v[3]) for v in FEMALE.values()}, "Mad Mother's Face": (0, FEMALE_EXTRA["Mad Mother's Face"]), "Psychic Glare": (0, FEMALE_EXTRA["Psychic Glare"]), "Cracked Clown Paint": (0, FEMALE_EXTRA["Cracked Clown Paint"])},
        "Held Weapon": {**HELD_STD, **HELD_RARE, "Telekinesis": (0, "")}, "Back Weapon": {**BACK_STD, **BACK_RARE}}
 
 
@@ -321,7 +329,7 @@ def prompt(a, legendary_finish=None):
     else:
         hand = f"his right fist grips {phrase('Held Weapon', held)}"
     body = [f"wearing {phrase('Clothing', a['Clothing'])}", phrase("Belt", a["Belt"]), hand, phrase("Back Weapon", a["Back Weapon"])]
-    female = a.get("Character", "Classic") in FEMALE or a.get("Character") in ("The Grieving Mother", "The Prom Queen")
+    female = a.get("Character", "Classic") in FEMALE or a.get("Character") in ("The Grieving Mother", "The Prom Queen", "The Ringmistress")
     if female:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"])]
     parts = [STYLE, FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
@@ -376,6 +384,7 @@ def build():
     head_pass(tokens)
     homage_pass(tokens)
     scene2_pass(tokens)
+    ring_pass(tokens)
     tier_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
@@ -489,6 +498,7 @@ def prom_pass(tokens):
             a.update(PROM[1]); tokens[i] = (a, None)   # no hockey-mask finish: her own face is the look
 
 
+
 def head_pass(tokens):
     """Fewer cone heads (George, 2026-11-14): 70% of unrendered, non-legendary Cone Skull tokens move to the other head types."""
     keep = set(json.load(open(os.path.join(ROOT, "generator", "rendered_keep_jail.json"))))
@@ -526,6 +536,14 @@ def scene2_pass(tokens):
         pool = [i for i, (a, finish) in enumerate(tokens, 1) if i not in keep and not finish and a["Backdrop"] in BACKDROP]
         for i in late.sample(pool, N_SCENE2):
             tokens[i - 1][0]["Backdrop"] = val
+
+
+def ring_pass(tokens):
+    keep = set(json.load(open(os.path.join(ROOT, "generator", "rendered_keep_jail.json"))))
+    pool = [i for i, (a, finish) in enumerate(tokens, 1) if i not in keep and not finish and a["Tier"] == "Rare"
+            and a["Character"] == "Classic" and a["Ears"] == "Natural" and a["Mask"] not in MASK_NEW]
+    for i in random.Random(7070).sample(pool, N_FEMALE):
+        tokens[i - 1][0].update(RINGMISTRESS)
 
 
 def tier_pass(tokens):

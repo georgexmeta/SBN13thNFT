@@ -15,11 +15,11 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Type 1 - Lumpy Dome | 477 | 36.7% |
-| Type 2 - Melted Lopsided | 355 | 27.3% |
-| Type 4 - Split Cranium | 244 | 18.8% |
-| Type 3 - Cone Skull | 174 | 13.4% |
-| Female | 50 | 3.8% |
+| Type 1 - Lumpy Dome | 474 | 36.5% |
+| Type 2 - Melted Lopsided | 353 | 27.2% |
+| Type 4 - Split Cranium | 242 | 18.6% |
+| Type 3 - Cone Skull | 173 | 13.3% |
+| Female | 58 | 4.5% |
 
 ## Mask
 
@@ -42,23 +42,24 @@
 | Blank Bone Mask | 25 | 1.9% |
 | Moaning Paper Mask | 25 | 1.9% |
 | Smeared Greasepaint | 25 | 1.9% |
-| Nail-Studded Leather Mask (Rare+) | 12 | 0.9% |
 | Zipper Mouth Leather (Rare+) | 12 | 0.9% |
-| Stitched Skin Mask (Rare+) | 9 | 0.7% |
+| Nail-Studded Leather Mask (Rare+) | 11 | 0.8% |
 | Bone Skull Mask (Rare+) | 8 | 0.6% |
+| Stitched Skin Mask (Rare+) | 8 | 0.6% |
 | Hollow Grey Face | 8 | 0.6% |
 | Manic Grin | 8 | 0.6% |
 | Split Faceplate | 8 | 0.6% |
 | Cracked Porcelain Face | 8 | 0.6% |
+| Cracked Clown Paint | 8 | 0.6% |
 | Stitched Bride Face | 8 | 0.6% |
 | Waterlogged Face | 8 | 0.6% |
-| Fanged Killer Clown (Rare+) | 7 | 0.5% |
-| Porcelain Doll Face (Rare+) | 7 | 0.5% |
 | Zipper Long Nose (Rare+) | 6 | 0.5% |
 | Sewn-On Pig Face (Rare+) | 6 | 0.5% |
+| Porcelain Doll Face (Rare+) | 6 | 0.5% |
 | Oni Demon Mask (Rare+) | 6 | 0.5% |
-| Long Nose Latex (Rare+) | 5 | 0.4% |
-| Crown of Nails (Rare+) | 4 | 0.3% |
+| Fanged Killer Clown (Rare+) | 5 | 0.4% |
+| Long Nose Latex (Rare+) | 3 | 0.2% |
+| Crown of Nails (Rare+) | 3 | 0.2% |
 | Hockey Half-Mask (solid polished gold) | 1 | 0.1% |
 | Hockey Half-Mask (polished chrome) | 1 | 0.1% |
 | Hockey Half-Mask (charred black) | 1 | 0.1% |
@@ -116,12 +117,12 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Patched Work Jacket | 187 | 14.4% |
+| Patched Work Jacket | 186 | 14.3% |
 | Plaid Flannel | 139 | 10.7% |
 | Mechanic Coveralls | 99 | 7.6% |
-| Grimy Hoodie | 98 | 7.5% |
-| Orange Prison Jumpsuit | 97 | 7.5% |
-| Bloody Surgeon Scrubs | 89 | 6.8% |
+| Grimy Hoodie | 97 | 7.5% |
+| Orange Prison Jumpsuit | 96 | 7.4% |
+| Bloody Surgeon Scrubs | 88 | 6.8% |
 | Butcher Apron | 83 | 6.4% |
 | Tattered Shirt | 74 | 5.7% |
 | Denim Jacket | 70 | 5.4% |
@@ -134,14 +135,15 @@
 | Bloody Chef Smock | 25 | 1.9% |
 | Carnival Barker Vest | 25 | 1.9% |
 | Tattered Undertaker Suit (Rare+) | 12 | 0.9% |
-| Bloody Clown Suit (Rare+) | 8 | 0.6% |
-| Fur-Trimmed Cape (Rare+) | 8 | 0.6% |
 | Tattered Nun Habit | 8 | 0.6% |
 | Gingham Farm Dress | 8 | 0.6% |
 | Pastel Tracksuit | 8 | 0.6% |
 | Faded Lace Gown | 8 | 0.6% |
+| Rotten Ruffle Pierrot Dress | 8 | 0.6% |
 | Rotting Wedding Gown | 8 | 0.6% |
 | Dripping Nightgown | 8 | 0.6% |
+| Bloody Clown Suit (Rare+) | 6 | 0.5% |
+| Fur-Trimmed Cape (Rare+) | 6 | 0.5% |
 | Blood-Drenched Prom Gown | 1 | 0.1% |
 | Mustard Cardigan | 1 | 0.1% |
 
@@ -149,8 +151,8 @@
 
 | Value | Count | Share |
 |---|---|---|
-| None | 888 | 68.3% |
-| Tool Belt | 412 | 31.7% |
+| None | 891 | 68.5% |
+| Tool Belt | 409 | 31.5% |
 
 ## Backdrop
 
@@ -194,16 +196,17 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Grey Side Tufts | 513 | 39.5% |
-| Bald | 282 | 21.7% |
-| Greasy Comb-over | 174 | 13.4% |
-| Wild Grey Tufts | 172 | 13.2% |
+| Grey Side Tufts | 511 | 39.3% |
+| Bald | 280 | 21.5% |
+| Greasy Comb-over | 172 | 13.2% |
+| Wild Grey Tufts | 170 | 13.1% |
 | Backwards Cap | 84 | 6.5% |
 | Battered Top Hat | 25 | 1.9% |
 | Black Veil | 8 | 0.6% |
 | Straw Sun Bonnet | 8 | 0.6% |
 | Choppy Teal Wig | 8 | 0.6% |
 | Lace Bonnet | 8 | 0.6% |
+| Frizzed Auburn Bunches | 8 | 0.6% |
 | Wilted Flower Crown | 8 | 0.6% |
 | Soaked Black Veil Hair | 8 | 0.6% |
 | Blood-Matted Curls | 1 | 0.1% |
@@ -213,11 +216,11 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Blue Veins | 517 | 39.8% |
-| Grey Wrinkles | 288 | 22.2% |
-| Stitched Scar | 195 | 15.0% |
-| Clean | 174 | 13.4% |
-| Boils | 126 | 9.7% |
+| Blue Veins | 515 | 39.6% |
+| Grey Wrinkles | 286 | 22.0% |
+| Stitched Scar | 192 | 14.8% |
+| Clean | 182 | 14.0% |
+| Boils | 125 | 9.6% |
 
 ## Ears
 
@@ -230,11 +233,12 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Classic | 1250 | 96.2% |
+| Classic | 1242 | 95.5% |
 | Hollow Sister | 8 | 0.6% |
 | Farmhouse Smile | 8 | 0.6% |
 | Glitch Android | 8 | 0.6% |
 | Cursed Porcelain Doll | 8 | 0.6% |
+| The Ringmistress | 8 | 0.6% |
 | Rotten Bride | 8 | 0.6% |
 | Drowned Well Girl | 8 | 0.6% |
 | The Prom Queen | 1 | 0.1% |
