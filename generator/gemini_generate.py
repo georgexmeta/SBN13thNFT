@@ -16,6 +16,8 @@ import urllib.request
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from facing import facing   # noqa: E402
+import body as _body   # noqa: E402,F401  (sets the body-direction question)
+from anatomy import check as _check   # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MANIFEST = os.environ.get("MANIFEST", os.path.join(ROOT, "output", "ai", "manifest.json"))
@@ -102,6 +104,9 @@ def main():
                 img = generate(row, refs, key)
                 tmp = out + ".check.png"; open(tmp, "wb").write(img)
                 way = facing(tmp)
+                if way == "RIGHT":   # the head can point right while the body faces front: check the body too
+                    b = _check(tmp).get("body", "RIGHT")
+                    way = "RIGHT" if b == "RIGHT" else f"body {b}"
                 if way == "RIGHT" or tries == 2:
                     break
                 print(f"  #{i} faces {way}, re-rolling", flush=True); row["seed"] += 7

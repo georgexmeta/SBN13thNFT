@@ -13,7 +13,7 @@ anatomy.Q = ("Look at this clay figure's BODY (torso, shoulders and chest), igno
 if __name__ == "__main__":
     d, out = sys.argv[1], {}
     for f in sorted(os.listdir(d), key=lambda f: int(f[:-4]) if f[:-4].isdigit() else 0):
-        if f.endswith(".png") and f[:-4].isdigit():
+        if f.endswith(".png") and f[:-4].isdigit() and int(f[:-4]) >= int(os.environ.get("FROM", "0")) and os.path.exists(os.path.join(d, f)):
             r = anatomy.check(os.path.join(d, f)); out[f[:-4]] = r
             print(f[:-4], json.dumps(r), flush=True)
     json.dump(out, open("output/ai/body.json", "w"), indent=1)
