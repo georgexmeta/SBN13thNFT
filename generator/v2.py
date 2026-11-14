@@ -108,6 +108,10 @@ CLOWN = {
     "Clothing": ("Carnival Barker Vest", "a filthy mustard-and-maroon striped carnival barker vest over a yellowed collarless shirt, a crooked polka-dot bow tie"),
 }
 N_CLOWN = 25
+# Very exclusive Jail Cell backdrop (George, 2026-11-14): exactly 13 unrendered, non-legendary tokens.
+JAIL = ("Jail Cell", "a grimy jail cell with rusty iron bars, a cracked concrete wall scratched with tally marks, a dented metal "
+        "bunk and a single bare hanging bulb, sculpted as a miniature claymation diorama in matte plasticine, softly out of focus behind him, no signs or lettering")
+N_JAIL = 13
 # 1/1 "The Grieving Mother" (George, 2026-11-13, loosely inspired by a classic slasher mom). It replaces the unrendered 1/1
 # Silo Sam, so there are still 13 Legendaries. Original look: no blue fisherman sweater, no name or likeness of the film character.
 MOTHER = ("Silo Sam", {"1/1 Name": "The Grieving Mother", "Character": "The Grieving Mother", "Head": "Female",
@@ -239,7 +243,7 @@ NEGATIVE = ("text, logo, letters, watermark, brand marks, sports team logo, red 
             "photo of a real person, cartoon outline, flat 2D, face turned to the left, mirrored pose, long finger blades, clawed glove with four long knives, "
             "red and green striped sweater, brown fedora")
 ALL = {"Head": HEAD, "Skin": SKIN, "Hair": {CLOWN["Hair"][0]: (0, CLOWN["Hair"][1]), **HAIR, **{v[0]: (0, v[1]) for v in FEMALE.values()}, "Grey Curled Perm": (0, FEMALE_EXTRA["Grey Curled Perm"])}, "Head Mark": HEAD_MARK, "Ears": EARS, "Clothing": {CLOWN["Clothing"][0]: (0, CLOWN["Clothing"][1]), **CLOTH_STD, **CLOTH_NEW, **CLOTH_RARE, **{v[4]: (0, v[5]) for v in FEMALE.values()}, "Mustard Cardigan": (0, FEMALE_EXTRA["Mustard Cardigan"])},
-       "Belt": BELT, "Backdrop": {**BACKDROP, **BACKDROP_RARE, **BACKDROP_SCENE}, "Mask": {CLOWN["Mask"][0]: (0, CLOWN["Mask"][1]), **MASK_STD, **MASK_RARE, **MASK_NEW, **{v[2]: (0, v[3]) for v in FEMALE.values()}, "Mad Mother's Face": (0, FEMALE_EXTRA["Mad Mother's Face"])},
+       "Belt": BELT, "Backdrop": {**BACKDROP, **BACKDROP_RARE, **BACKDROP_SCENE, JAIL[0]: (0, JAIL[1])}, "Mask": {CLOWN["Mask"][0]: (0, CLOWN["Mask"][1]), **MASK_STD, **MASK_RARE, **MASK_NEW, **{v[2]: (0, v[3]) for v in FEMALE.values()}, "Mad Mother's Face": (0, FEMALE_EXTRA["Mad Mother's Face"])},
        "Held Weapon": {**HELD_STD, **HELD_RARE}, "Back Weapon": {**BACK_STD, **BACK_RARE}}
 
 
@@ -329,6 +333,7 @@ def build():
     mask_pass(tokens)
     female_pass(tokens)
     clown_pass(tokens)
+    jail_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -425,6 +430,13 @@ def clown_pass(tokens):
                 and not (trait == "Hair" and a["Mask"] in ("Burlap Sack Hood", "Zipper Long Nose"))]
         for i in late.sample(pool, N_CLOWN):
             tokens[i - 1][0][trait] = val
+
+
+def jail_pass(tokens):
+    keep = set(json.load(open(os.path.join(ROOT, "generator", "rendered_keep_jail.json"))))
+    pool = [i for i, (a, finish) in enumerate(tokens, 1) if i not in keep and not finish]
+    for i in random.Random(1313131).sample(pool, N_JAIL):
+        tokens[i - 1][0]["Backdrop"] = JAIL[0]
 
 
 def report(tokens):

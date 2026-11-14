@@ -149,23 +149,24 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Sage Clay | 198 | 15.2% |
+| Sage Clay | 196 | 15.1% |
 | Swamp Clay | 188 | 14.5% |
-| Slate Clay | 166 | 12.8% |
-| Teal Clay | 137 | 10.5% |
+| Slate Clay | 164 | 12.6% |
+| Teal Clay | 135 | 10.4% |
 | Rust Clay | 110 | 8.5% |
-| Bruise Clay | 108 | 8.3% |
-| Blood Splatter | 91 | 7.0% |
-| Bone Clay | 87 | 6.7% |
-| Lakeside Cabin | 32 | 2.5% |
-| Haunted Mansion | 31 | 2.4% |
+| Bruise Clay | 106 | 8.2% |
+| Blood Splatter | 90 | 6.9% |
+| Bone Clay | 86 | 6.6% |
+| Lakeside Cabin | 31 | 2.4% |
+| Haunted Mansion | 30 | 2.3% |
 | Radioactive Wasteland | 26 | 2.0% |
 | Abandoned Laboratory | 26 | 2.0% |
-| Doctor's Hospital Room | 24 | 1.8% |
 | Graveyard | 24 | 1.8% |
+| Doctor's Hospital Room | 23 | 1.8% |
 | Nightmare Sequence | 22 | 1.7% |
 | Cornfield (Rare+) | 15 | 1.2% |
 | Blood Moon (Rare+) | 15 | 1.2% |
+| Jail Cell | 13 | 1.0% |
 
 ## Skin
 
