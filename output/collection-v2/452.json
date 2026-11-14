@@ -8,7 +8,7 @@
     },
     {
       "trait_type": "Head",
-      "value": "Type 2 - Melted Lopsided"
+      "value": "Female"
     },
     {
       "trait_type": "Skin",
@@ -16,7 +16,7 @@
     },
     {
       "trait_type": "Hair",
-      "value": "Grey Side Tufts"
+      "value": "Buzzed Scalp"
     },
     {
       "trait_type": "Head Mark",
@@ -52,7 +52,7 @@
     },
     {
       "trait_type": "Character",
-      "value": "Classic"
+      "value": "Woman"
     }
   ]
 }

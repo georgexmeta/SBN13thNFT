@@ -39,6 +39,12 @@ HAIR = {
     "Bald": (22, "completely bald"), "Greasy Comb-over": (16, "a greasy black comb-over"),
     "Wild Grey Tufts": (14, "wild spiky grey hair tufts"), "Backwards Cap": (8, "a filthy plain backwards baseball cap with no logo"),
 }
+# Hair for ordinary women (woman_pass). Short or tied back, to fit the no-long-hair look.
+HAIR_WOMAN = {
+    "Greasy Bob": (30, "a greasy chin-length black bob"), "Messy Grey Bun": (25, "thin grey hair scraped into a messy bun"),
+    "Matted Pixie Cut": (20, "a matted short auburn pixie cut"), "Thinning Pin Curls": (15, "thinning grey pin curls showing scalp"),
+    "Buzzed Scalp": (10, "a patchy buzzed scalp"),
+}
 HEAD_MARK = {
     "Blue Veins": (40, "raised blue clay veins on the forehead"), "Grey Wrinkles": (25, "raised grey clay wrinkle ridges on the forehead"),
     "Stitched Scar": (15, "a stitched scar across the scalp"), "Boils": (10, "a few angry boils on the scalp"),
@@ -285,7 +291,7 @@ NEGATIVE = ("text, logo, letters, watermark, brand marks, sports team logo, red 
             "white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, "
             "photo of a real person, cartoon outline, flat 2D, face turned to the left, mirrored pose, long finger blades, clawed glove with four long knives, "
             "red and green striped sweater, brown fedora")
-ALL = {"Head": HEAD, "Skin": SKIN, "Hair": {CLOWN["Hair"][0]: (0, CLOWN["Hair"][1]), **HAIR, **{v[0]: (0, v[1]) for v in FEMALE.values()}, "Grey Curled Perm": (0, FEMALE_EXTRA["Grey Curled Perm"]), "Blood-Matted Curls": (0, FEMALE_EXTRA["Blood-Matted Curls"]), "Frizzed Auburn Bunches": (0, FEMALE_EXTRA["Frizzed Auburn Bunches"])}, "Head Mark": HEAD_MARK, "Ears": EARS, "Clothing": {CLOWN["Clothing"][0]: (0, CLOWN["Clothing"][1]), HOMAGE_CLOTH[0]: (0, HOMAGE_CLOTH[1]), **CLOTH_STD, **CLOTH_NEW, **CLOTH_RARE, **{v[4]: (0, v[5]) for v in FEMALE.values()}, "Mustard Cardigan": (0, FEMALE_EXTRA["Mustard Cardigan"]), "Blood-Drenched Prom Gown": (0, FEMALE_EXTRA["Blood-Drenched Prom Gown"]), "Rotten Ruffle Pierrot Dress": (0, FEMALE_EXTRA["Rotten Ruffle Pierrot Dress"])},
+ALL = {"Head": HEAD, "Skin": SKIN, "Hair": {CLOWN["Hair"][0]: (0, CLOWN["Hair"][1]), **HAIR, **HAIR_WOMAN, **{v[0]: (0, v[1]) for v in FEMALE.values()}, "Grey Curled Perm": (0, FEMALE_EXTRA["Grey Curled Perm"]), "Blood-Matted Curls": (0, FEMALE_EXTRA["Blood-Matted Curls"]), "Frizzed Auburn Bunches": (0, FEMALE_EXTRA["Frizzed Auburn Bunches"])}, "Head Mark": HEAD_MARK, "Ears": EARS, "Clothing": {CLOWN["Clothing"][0]: (0, CLOWN["Clothing"][1]), HOMAGE_CLOTH[0]: (0, HOMAGE_CLOTH[1]), **CLOTH_STD, **CLOTH_NEW, **CLOTH_RARE, **{v[4]: (0, v[5]) for v in FEMALE.values()}, "Mustard Cardigan": (0, FEMALE_EXTRA["Mustard Cardigan"]), "Blood-Drenched Prom Gown": (0, FEMALE_EXTRA["Blood-Drenched Prom Gown"]), "Rotten Ruffle Pierrot Dress": (0, FEMALE_EXTRA["Rotten Ruffle Pierrot Dress"])},
        "Belt": BELT, "Backdrop": {**BACKDROP, **BACKDROP_RARE, **BACKDROP_SCENE, JAIL[0]: (0, JAIL[1]), **{k: (0, v) for k, v in SCENE2.items()}, "Burning Gym": (0, FEMALE_EXTRA["Burning Gym"])}, "Mask": {CLOWN["Mask"][0]: (0, CLOWN["Mask"][1]), **{k: (0, v) for k, v in HOMAGE_MASK.items()}, **MASK_STD, **MASK_RARE, **MASK_NEW, **{v[2]: (0, v[3]) for v in FEMALE.values()}, "Mad Mother's Face": (0, FEMALE_EXTRA["Mad Mother's Face"]), "Psychic Glare": (0, FEMALE_EXTRA["Psychic Glare"]), "Cracked Clown Paint": (0, FEMALE_EXTRA["Cracked Clown Paint"])},
        "Held Weapon": {**HELD_STD, **HELD_RARE, "Telekinesis": (0, "")}, "Back Weapon": {**BACK_STD, **BACK_RARE}}
 
@@ -329,9 +335,9 @@ def prompt(a, legendary_finish=None):
     else:
         hand = f"his right fist grips {phrase('Held Weapon', held)}"
     body = [f"wearing {phrase('Clothing', a['Clothing'])}", phrase("Belt", a["Belt"]), hand, phrase("Back Weapon", a["Back Weapon"])]
-    female = a.get("Character", "Classic") in FEMALE or a.get("Character") in ("The Grieving Mother", "The Prom Queen", "The Ringmistress")
+    female = a.get("Character", "Classic") in FEMALE or a.get("Character") in ("The Grieving Mother", "The Prom Queen", "The Ringmistress", "Woman")
     if female:
-        head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"])]
+        head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"]), phrase("Head Mark", a["Head Mark"]), phrase("Ears", a.get("Ears", "Natural"))]
     parts = [STYLE, FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
              phrase("Backdrop", a["Backdrop"]), FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_PSYCHIC if held == "Telekinesis" else FRAMING]
     text = ". ".join(p[0].upper() + p[1:] for p in parts if p) + "."
@@ -386,6 +392,7 @@ def build():
     scene2_pass(tokens)
     ring_pass(tokens)
     tier_pass(tokens)
+    woman_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -544,6 +551,28 @@ def ring_pass(tokens):
             and a["Character"] == "Classic" and a["Ears"] == "Natural" and a["Mask"] not in MASK_NEW]
     for i in random.Random(7070).sample(pool, N_FEMALE):
         tokens[i - 1][0].update(RINGMISTRESS)
+
+
+def woman_pass(tokens):
+    """Women ~32% (George, 2026-11-14, no redos): every unrendered Standard, 170 unrendered Uncommons and the two unrendered
+    hockey-mask 1/1s become ordinary women: same mask, weapons and outfit, female body, short female hair."""
+    keep = set(json.load(open(os.path.join(ROOT, "generator", "rendered_keep_jail.json"))))
+    late = random.Random(3535)
+    free = lambda i, a: i not in keep and a["Character"] == "Classic"
+    pick_ids = [i for i, (a, f) in enumerate(tokens, 1) if free(i, a) and a["Tier"] in ("Standard", "Legendary 1/1")]
+    unc = [i for i, (a, f) in enumerate(tokens, 1) if free(i, a) and a["Tier"] == "Uncommon"]
+    pick_ids += late.sample(unc, 170)
+    dnas = {tuple(sorted((k, v) for k, v in a.items() if k != "Tier")) for a, _ in tokens}
+    keep_hair = {"Backwards Cap", CLOWN["Hair"][0]}
+    for i in sorted(pick_ids):
+        a = tokens[i - 1][0]
+        old = tuple(sorted((k, v) for k, v in a.items() if k != "Tier"))
+        for _ in range(20):
+            b = dict(a, Character="Woman", Head="Female", Hair=a["Hair"] if a["Hair"] in keep_hair else pick(late, HAIR_WOMAN))
+            dna = tuple(sorted((k, v) for k, v in b.items() if k != "Tier"))
+            if dna not in dnas:
+                dnas.discard(old); dnas.add(dna); a.update(b)
+                break
 
 
 def tier_pass(tokens):

@@ -15,11 +15,11 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Type 1 - Lumpy Dome | 474 | 36.5% |
-| Type 2 - Melted Lopsided | 353 | 27.2% |
-| Type 4 - Split Cranium | 242 | 18.6% |
-| Type 3 - Cone Skull | 173 | 13.3% |
-| Female | 58 | 4.5% |
+| Female | 415 | 31.9% |
+| Type 1 - Lumpy Dome | 329 | 25.3% |
+| Type 2 - Melted Lopsided | 227 | 17.5% |
+| Type 4 - Split Cranium | 177 | 13.6% |
+| Type 3 - Cone Skull | 152 | 11.7% |
 
 ## Mask
 
@@ -196,11 +196,16 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Grey Side Tufts | 511 | 39.3% |
-| Bald | 280 | 21.5% |
-| Greasy Comb-over | 172 | 13.2% |
-| Wild Grey Tufts | 170 | 13.1% |
+| Grey Side Tufts | 348 | 26.8% |
+| Bald | 196 | 15.1% |
+| Greasy Comb-over | 134 | 10.3% |
+| Wild Grey Tufts | 124 | 9.5% |
+| Greasy Bob | 93 | 7.2% |
+| Messy Grey Bun | 89 | 6.8% |
 | Backwards Cap | 84 | 6.5% |
+| Matted Pixie Cut | 66 | 5.1% |
+| Thinning Pin Curls | 55 | 4.2% |
+| Buzzed Scalp | 28 | 2.2% |
 | Battered Top Hat | 25 | 1.9% |
 | Black Veil | 8 | 0.6% |
 | Straw Sun Bonnet | 8 | 0.6% |
@@ -233,7 +238,8 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Classic | 1242 | 95.5% |
+| Classic | 885 | 68.1% |
+| Woman | 357 | 27.5% |
 | Hollow Sister | 8 | 0.6% |
 | Farmhouse Smile | 8 | 0.6% |
 | Glitch Android | 8 | 0.6% |
