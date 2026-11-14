@@ -1,13 +1,13 @@
 # Claysons rarity
 
-1,300 PFPs: 758 Standard, 399 Uncommon, 130 Rare, 13 Legendary 1/1s. Every PFP is unique.
+1,300 PFPs. Every PFP is unique.
 
 ## Tier
 
 | Value | Count | Share |
 |---|---|---|
-| Standard | 758 | 58.3% |
-| Uncommon | 399 | 30.7% |
+| Standard | 694 | 53.4% |
+| Uncommon | 463 | 35.6% |
 | Rare | 130 | 10.0% |
 | Legendary 1/1 | 13 | 1.0% |
 
@@ -25,19 +25,22 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Bare Face | 236 | 18.2% |
-| Hockey Half-Mask | 175 | 13.5% |
-| Burlap Pig Mask | 125 | 9.6% |
-| Burlap Sack Hood | 120 | 9.2% |
-| Patchwork Goggle Mask | 115 | 8.8% |
-| Gas Mask | 99 | 7.6% |
-| Paisley Bandana | 78 | 6.0% |
-| Iron Muzzle | 44 | 3.4% |
+| Bare Face | 212 | 16.3% |
+| Hockey Half-Mask | 162 | 12.5% |
+| Burlap Pig Mask | 117 | 9.0% |
+| Burlap Sack Hood | 111 | 8.5% |
+| Patchwork Goggle Mask | 111 | 8.5% |
+| Gas Mask | 91 | 7.0% |
+| Paisley Bandana | 73 | 5.6% |
+| Iron Muzzle | 40 | 3.1% |
 | Bloody Bandage Wrap | 40 | 3.1% |
 | Rubber Seam Face | 25 | 1.9% |
 | Buckled Harness Hood | 25 | 1.9% |
 | Melted Wax Face | 25 | 1.9% |
 | Flayed Muscle Face | 25 | 1.9% |
+| Stitched Toy Face | 25 | 1.9% |
+| Blank Bone Mask | 25 | 1.9% |
+| Moaning Paper Mask | 25 | 1.9% |
 | Smeared Greasepaint | 25 | 1.9% |
 | Nail-Studded Leather Mask (Rare+) | 12 | 0.9% |
 | Zipper Mouth Leather (Rare+) | 12 | 0.9% |
@@ -113,21 +116,22 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Patched Work Jacket | 192 | 14.8% |
-| Plaid Flannel | 142 | 10.9% |
-| Mechanic Coveralls | 104 | 8.0% |
-| Orange Prison Jumpsuit | 102 | 7.8% |
-| Grimy Hoodie | 99 | 7.6% |
-| Bloody Surgeon Scrubs | 92 | 7.1% |
-| Butcher Apron | 84 | 6.5% |
+| Patched Work Jacket | 187 | 14.4% |
+| Plaid Flannel | 139 | 10.7% |
+| Mechanic Coveralls | 99 | 7.6% |
+| Grimy Hoodie | 98 | 7.5% |
+| Orange Prison Jumpsuit | 97 | 7.5% |
+| Bloody Surgeon Scrubs | 89 | 6.8% |
+| Butcher Apron | 83 | 6.4% |
 | Tattered Shirt | 74 | 5.7% |
 | Denim Jacket | 70 | 5.4% |
-| Torn Undershirt | 63 | 4.8% |
+| Torn Undershirt | 62 | 4.8% |
 | Trench Coat | 39 | 3.0% |
 | Black Jumpsuit | 38 | 2.9% |
-| Grey Jumpsuit | 34 | 2.6% |
 | Tan Blood-Splatter Jumpsuit | 34 | 2.6% |
+| Grey Jumpsuit | 33 | 2.5% |
 | Navy Jumpsuit | 30 | 2.3% |
+| Bloody Chef Smock | 25 | 1.9% |
 | Carnival Barker Vest | 25 | 1.9% |
 | Tattered Undertaker Suit (Rare+) | 12 | 0.9% |
 | Bloody Clown Suit (Rare+) | 8 | 0.6% |

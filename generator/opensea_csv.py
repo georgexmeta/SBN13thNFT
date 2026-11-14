@@ -15,6 +15,10 @@ TRAITS = ["Tier", "1/1 Name", "Character", "Head", "Skin", "Hair", "Head Mark", 
 
 def main():
     rows = json.load(open(os.path.join(ROOT, "output", "ai", "manifest-v2.json")))
+    from collections import Counter
+    n = Counter(r["attributes"]["Tier"] for r in rows)
+    desc = (f"Claysons: 1,300 hand-sculpted-look claymation slashers. {n['Standard']:,} Standard, {n['Uncommon']:,} Uncommon, "
+            f"{n['Rare']:,} Rare and {n['Legendary 1/1']} Legendary 1/1s. Three Legendary 1/1s (#1 to #3) are held by the team.")
     out = os.path.join(ROOT, "output", "opensea"); img = os.path.join(out, "images")
     os.makedirs(img, exist_ok=True)
     # Team stage (George, 2026-11-13): the Team wallet mints first and receives token IDs 1-13. Three flagship Legendaries
@@ -34,7 +38,7 @@ def main():
             a = r["attributes"]
             tid = swap[r["id"]]
             name = re.sub(r"#\d+", f"#{tid}", r["name"].replace("SBN13th", NAME), count=1)
-            w.writerow([tid, name, DESC, f"{tid}.png", ""] + [a.get(t, "") for t in TRAITS])
+            w.writerow([tid, name, desc, f"{tid}.png", ""] + [a.get(t, "") for t in TRAITS])
             src = os.path.join(ROOT, "output", "ai", "images-v2", f"{r['id']}.png")
             if os.path.exists(src):
                 shutil.copyfile(src, os.path.join(img, f"{tid}.png"))

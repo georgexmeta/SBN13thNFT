@@ -108,6 +108,20 @@ CLOWN = {
     "Clothing": ("Carnival Barker Vest", "a filthy mustard-and-maroon striped carnival barker vest over a yellowed collarless shirt, a crooked polka-dot bow tie"),
 }
 N_CLOWN = 25
+# Slasher homage Uncommons (George, 2026-11-14). Original designs that nod to classic slashers without copying them:
+# no film names, no elongated white screaming ghost mask with black drip eyes, no white Shatner-style mask with dark hair,
+# no red-haired doll in overalls. 25 unrendered tokens each, dealt by homage_pass.
+HOMAGE_MASK = {
+    "Moaning Paper Mask": "a cracked grey papier-mache mask with a crooked moaning open mouth and two round hollow eye holes, under a ragged "
+                          "grey burlap hood (not white, not a long drooping face, no black drips)",
+    "Stitched Toy Face": "a cracked hard-plastic toy doll face crudely sewn back together with thick black criss-crossing stitches and scars, "
+                         "painted freckles and one chipped glass eye",
+    "Blank Bone Mask": "a smooth featureless bone-grey rubber mask with narrow dark slit eyes, no nose detail and no expression, faint "
+                       "hairline cracks across it (bald, no hair on the mask)",
+}
+HOMAGE_CLOTH = ("Bloody Chef Smock", "a heavy blood-soaked white double-breasted chef's smock with rolled sleeves and a crumpled "
+                "red neckerchief")
+N_HOMAGE = 25
 # Very exclusive Jail Cell backdrop (George, 2026-11-14): exactly 13 unrendered, non-legendary tokens.
 JAIL = ("Jail Cell", "a grimy jail cell with rusty iron bars, a cracked concrete wall scratched with tally marks, a dented metal "
         "bunk and a single bare hanging bulb, sculpted as a miniature claymation diorama in matte plasticine, softly out of focus behind him, no signs or lettering")
@@ -253,8 +267,8 @@ NEGATIVE = ("text, logo, letters, watermark, brand marks, sports team logo, red 
             "white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, "
             "photo of a real person, cartoon outline, flat 2D, face turned to the left, mirrored pose, long finger blades, clawed glove with four long knives, "
             "red and green striped sweater, brown fedora")
-ALL = {"Head": HEAD, "Skin": SKIN, "Hair": {CLOWN["Hair"][0]: (0, CLOWN["Hair"][1]), **HAIR, **{v[0]: (0, v[1]) for v in FEMALE.values()}, "Grey Curled Perm": (0, FEMALE_EXTRA["Grey Curled Perm"]), "Blood-Matted Curls": (0, FEMALE_EXTRA["Blood-Matted Curls"])}, "Head Mark": HEAD_MARK, "Ears": EARS, "Clothing": {CLOWN["Clothing"][0]: (0, CLOWN["Clothing"][1]), **CLOTH_STD, **CLOTH_NEW, **CLOTH_RARE, **{v[4]: (0, v[5]) for v in FEMALE.values()}, "Mustard Cardigan": (0, FEMALE_EXTRA["Mustard Cardigan"]), "Blood-Drenched Prom Gown": (0, FEMALE_EXTRA["Blood-Drenched Prom Gown"])},
-       "Belt": BELT, "Backdrop": {**BACKDROP, **BACKDROP_RARE, **BACKDROP_SCENE, JAIL[0]: (0, JAIL[1]), "Burning Gym": (0, FEMALE_EXTRA["Burning Gym"])}, "Mask": {CLOWN["Mask"][0]: (0, CLOWN["Mask"][1]), **MASK_STD, **MASK_RARE, **MASK_NEW, **{v[2]: (0, v[3]) for v in FEMALE.values()}, "Mad Mother's Face": (0, FEMALE_EXTRA["Mad Mother's Face"]), "Psychic Glare": (0, FEMALE_EXTRA["Psychic Glare"])},
+ALL = {"Head": HEAD, "Skin": SKIN, "Hair": {CLOWN["Hair"][0]: (0, CLOWN["Hair"][1]), **HAIR, **{v[0]: (0, v[1]) for v in FEMALE.values()}, "Grey Curled Perm": (0, FEMALE_EXTRA["Grey Curled Perm"]), "Blood-Matted Curls": (0, FEMALE_EXTRA["Blood-Matted Curls"])}, "Head Mark": HEAD_MARK, "Ears": EARS, "Clothing": {CLOWN["Clothing"][0]: (0, CLOWN["Clothing"][1]), HOMAGE_CLOTH[0]: (0, HOMAGE_CLOTH[1]), **CLOTH_STD, **CLOTH_NEW, **CLOTH_RARE, **{v[4]: (0, v[5]) for v in FEMALE.values()}, "Mustard Cardigan": (0, FEMALE_EXTRA["Mustard Cardigan"]), "Blood-Drenched Prom Gown": (0, FEMALE_EXTRA["Blood-Drenched Prom Gown"])},
+       "Belt": BELT, "Backdrop": {**BACKDROP, **BACKDROP_RARE, **BACKDROP_SCENE, JAIL[0]: (0, JAIL[1]), "Burning Gym": (0, FEMALE_EXTRA["Burning Gym"])}, "Mask": {CLOWN["Mask"][0]: (0, CLOWN["Mask"][1]), **{k: (0, v) for k, v in HOMAGE_MASK.items()}, **MASK_STD, **MASK_RARE, **MASK_NEW, **{v[2]: (0, v[3]) for v in FEMALE.values()}, "Mad Mother's Face": (0, FEMALE_EXTRA["Mad Mother's Face"]), "Psychic Glare": (0, FEMALE_EXTRA["Psychic Glare"])},
        "Held Weapon": {**HELD_STD, **HELD_RARE, "Telekinesis": (0, "")}, "Back Weapon": {**BACK_STD, **BACK_RARE}}
 
 
@@ -350,6 +364,7 @@ def build():
     jail_pass(tokens)
     prom_pass(tokens)
     head_pass(tokens)
+    homage_pass(tokens)
     tier_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
@@ -480,11 +495,24 @@ def head_pass(tokens):
                 break
 
 
+def homage_pass(tokens):
+    keep = set(json.load(open(os.path.join(ROOT, "generator", "rendered_keep_jail.json"))))
+    late = random.Random(1978)
+    done = set()
+    for trait, vals in [("Mask", list(HOMAGE_MASK)), ("Clothing", [HOMAGE_CLOTH[0]])]:
+        for val in vals:
+            pool = [i for i, (a, finish) in enumerate(tokens, 1) if i not in keep and i not in done and not finish
+                    and a["Character"] == "Classic" and a["Mask"] not in MASK_NEW and a["Mask"] not in MASK_RARE
+                    and a["Mask"] != CLOWN["Mask"][0] and a["Clothing"] not in CLOTH_RARE and a["Clothing"] != CLOWN["Clothing"][0]]
+            for i in late.sample(pool, N_HOMAGE):
+                tokens[i - 1][0][trait] = val; done.add(i)
+
+
 def tier_pass(tokens):
     """Uncommon tier (George, 2026-11-14): a Standard token that carries any Uncommon trait is relabelled Uncommon.
     Metadata only, so finished images don't change."""
-    UNCOMMON = {"Mask": set(MASK_NEW) | {CLOWN["Mask"][0]}, "Backdrop": set(BACKDROP_SCENE),
-                "Hair": {CLOWN["Hair"][0]}, "Clothing": {CLOWN["Clothing"][0]}}
+    UNCOMMON = {"Mask": set(MASK_NEW) | {CLOWN["Mask"][0]} | set(HOMAGE_MASK), "Backdrop": set(BACKDROP_SCENE),
+                "Hair": {CLOWN["Hair"][0]}, "Clothing": {CLOWN["Clothing"][0], HOMAGE_CLOTH[0]}}
     for a, _ in tokens:
         if a["Tier"] == "Standard" and (a["Mask"] in UNCOMMON["Mask"] or a["Backdrop"] in UNCOMMON["Backdrop"]
                                         or a["Ears"] == "Gauged" or a["Hair"] in UNCOMMON["Hair"] or a["Clothing"] in UNCOMMON["Clothing"]):
@@ -492,7 +520,7 @@ def tier_pass(tokens):
 
 
 def report(tokens):
-    lines = ["# Claysons rarity", "", "1,300 PFPs: 758 Standard, 399 Uncommon, 130 Rare, 13 Legendary 1/1s. Every PFP is unique.", ""]
+    lines = ["# Claysons rarity", "", "1,300 PFPs. Every PFP is unique.", ""]
     rare_only = {k: set(t) for k, t in [("Mask", MASK_RARE), ("Held Weapon", HELD_RARE), ("Back Weapon", BACK_RARE),
                                          ("Clothing", CLOTH_RARE), ("Backdrop", BACKDROP_RARE)]}
     for trait in ["Tier", "Head", "Mask", "Held Weapon", "Back Weapon", "Clothing", "Belt", "Backdrop", "Skin", "Hair", "Head Mark", "Ears", "Character"]:
