@@ -153,6 +153,28 @@ MOTHER = ("Silo Sam", {"1/1 Name": "The Grieving Mother", "Character": "The Grie
 PROM = ("Crow Bait", {"1/1 Name": "The Prom Queen", "Character": "The Prom Queen", "Head": "Female",
         "Hair": "Blood-Matted Curls", "Mask": "Psychic Glare", "Clothing": "Blood-Drenched Prom Gown", "Held Weapon": "Telekinesis",
         "Back Weapon": "None", "Belt": "None", "Head Mark": "Clean", "Ears": "Natural", "Backdrop": "Burning Gym"})
+# 1/1 "The Retro Slasher" (George, 2026-11-14): an original take on a retro 8-bit-era slasher toy, inspired by an old
+# video-game figure but not its character: never that name, no chevrons, own mask markings, a half mask only. Replaces
+# the unrendered male 1/1 Lantern Jack, keeping 13 Legendaries. Done in retro_pass, after every other pass, so nothing shifts.
+RETRO = ("Lantern Jack", {"1/1 Name": "The Retro Slasher", "Head": "Type 1 - Lumpy Dome", "Skin": "Icy Retro Blue", "Hair": "Bald",
+         "Head Mark": "Clean", "Ears": "Natural", "Mask": "Retro Blue Half-Mask", "Held Weapon": "Golden Machete",
+         "Back Weapon": "Golden Retro Axe", "Clothing": "Tattered Bone Jumpsuit", "Belt": "Neck Chains", "Backdrop": "Pixel Cabin"})
+RETRO_EXTRA = {
+    "Skin": ("Icy Retro Blue", "pale icy powder-blue clay skin all over, like a faded vintage toy"),
+    "Mask": ("Retro Blue Half-Mask", "a chunky pale powder-blue HALF mask that covers ONLY the lower half of his face, like the bottom half of a "
+             "goalie mask: its top edge runs straight across the bridge of his nose just under his eyes, so both eyes, eyelids, brow and "
+             "the whole forehead and bald dome are bare clay skin; rows of round black breathing holes over the mouth and chin, decorated "
+             "ONLY with a few small round violet dots, no lines, no stripes, no triangles, held by a thin purple strap"),
+    "Clothing": ("Tattered Bone Jumpsuit", "a rotten, torn violet-purple jumpsuit in shreds, with big ragged holes across the chest showing his "
+                 "exposed bony ribcage in pale bone-white clay, and the sleeves torn away so his forearms show bare skeletal arm bones, "
+                 "bits of rotting flesh at the edges"),
+    "Belt": ("Neck Chains", "heavy rusty iron chains looped around his neck and hanging down over his chest"),
+    "Back Weapon": ("Golden Retro Axe", "a gleaming solid gold axe strapped across his back, the gold blade rising above his shoulder"),
+    "Backdrop": ("Pixel Cabin", "the inside of a creepy cabin built like an old 8-bit video game room: chunky stepped pixel-block walls of "
+                 "faded wooden planks, a square window with a blocky pixel moon, a flat dark floor, every edge stair-stepped like big "
+                 "pixels, sculpted as a miniature claymation diorama in matte plasticine, softly out of focus behind him, no signs, "
+                 "lettering, score or game interface"),
+}
 # "The Ringmistress" (George, 2026-11-14): a 7th female exclusive, an original ADULT woman killer clown inspired by a
 # horror clown photo but not its character: no black-and-white split costume, no mini top hat, no black lips.
 # 8 unrendered Rare tokens, dealt by ring_pass after every other pass so earlier picks don't shift.
@@ -294,6 +316,9 @@ NEGATIVE = ("text, logo, letters, watermark, brand marks, sports team logo, red 
 ALL = {"Head": HEAD, "Skin": SKIN, "Hair": {CLOWN["Hair"][0]: (0, CLOWN["Hair"][1]), **HAIR, **HAIR_WOMAN, **{v[0]: (0, v[1]) for v in FEMALE.values()}, "Grey Curled Perm": (0, FEMALE_EXTRA["Grey Curled Perm"]), "Blood-Matted Curls": (0, FEMALE_EXTRA["Blood-Matted Curls"]), "Frizzed Auburn Bunches": (0, FEMALE_EXTRA["Frizzed Auburn Bunches"])}, "Head Mark": HEAD_MARK, "Ears": EARS, "Clothing": {CLOWN["Clothing"][0]: (0, CLOWN["Clothing"][1]), HOMAGE_CLOTH[0]: (0, HOMAGE_CLOTH[1]), **CLOTH_STD, **CLOTH_NEW, **CLOTH_RARE, **{v[4]: (0, v[5]) for v in FEMALE.values()}, "Mustard Cardigan": (0, FEMALE_EXTRA["Mustard Cardigan"]), "Blood-Drenched Prom Gown": (0, FEMALE_EXTRA["Blood-Drenched Prom Gown"]), "Rotten Ruffle Pierrot Dress": (0, FEMALE_EXTRA["Rotten Ruffle Pierrot Dress"])},
        "Belt": BELT, "Backdrop": {**BACKDROP, **BACKDROP_RARE, **BACKDROP_SCENE, JAIL[0]: (0, JAIL[1]), **{k: (0, v) for k, v in SCENE2.items()}, "Burning Gym": (0, FEMALE_EXTRA["Burning Gym"])}, "Mask": {CLOWN["Mask"][0]: (0, CLOWN["Mask"][1]), **{k: (0, v) for k, v in HOMAGE_MASK.items()}, **MASK_STD, **MASK_RARE, **MASK_NEW, **{v[2]: (0, v[3]) for v in FEMALE.values()}, "Mad Mother's Face": (0, FEMALE_EXTRA["Mad Mother's Face"]), "Psychic Glare": (0, FEMALE_EXTRA["Psychic Glare"]), "Cracked Clown Paint": (0, FEMALE_EXTRA["Cracked Clown Paint"])},
        "Held Weapon": {**HELD_STD, **HELD_RARE, "Telekinesis": (0, "")}, "Back Weapon": {**BACK_STD, **BACK_RARE}}
+ALL["Skin"], ALL["Belt"] = dict(ALL["Skin"]), dict(ALL["Belt"])   # copies, so the retro values never touch the SKIN/BELT pick tables
+for _t, (_v, _p) in RETRO_EXTRA.items():
+    ALL[_t][_v] = (0, _p)
 
 
 def pick(rng, table):
@@ -393,6 +418,7 @@ def build():
     ring_pass(tokens)
     tier_pass(tokens)
     woman_pass(tokens)
+    retro_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -504,6 +530,12 @@ def prom_pass(tokens):
         if a.get("1/1 Name") == PROM[0]:
             a.update(PROM[1]); tokens[i] = (a, None)   # no hockey-mask finish: her own face is the look
 
+
+
+def retro_pass(tokens):
+    for i, (a, finish) in enumerate(tokens):
+        if a.get("1/1 Name") == RETRO[0]:
+            a.update(RETRO[1]); tokens[i] = (a, None)   # its own mask phrase, not the generic hockey-mask finish
 
 
 def head_pass(tokens):

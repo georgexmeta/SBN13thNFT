@@ -1,5 +1,5 @@
 {
-  "name": "SBN13th #576 - Lantern Jack",
+  "name": "SBN13th #576 - The Retro Slasher",
   "seed": 1813841608,
   "attributes": [
     {
@@ -8,47 +8,47 @@
     },
     {
       "trait_type": "1/1 Name",
-      "value": "Lantern Jack"
+      "value": "The Retro Slasher"
     },
     {
       "trait_type": "Head",
-      "value": "Type 3 - Cone Skull"
+      "value": "Type 1 - Lumpy Dome"
     },
     {
       "trait_type": "Skin",
-      "value": "Corpse Grey"
+      "value": "Icy Retro Blue"
     },
     {
       "trait_type": "Hair",
-      "value": "Grey Side Tufts"
+      "value": "Bald"
     },
     {
       "trait_type": "Head Mark",
-      "value": "Blue Veins"
+      "value": "Clean"
     },
     {
       "trait_type": "Mask",
-      "value": "Hockey Half-Mask (pumpkin orange)"
+      "value": "Retro Blue Half-Mask"
     },
     {
       "trait_type": "Held Weapon",
-      "value": "Sickle"
+      "value": "Golden Machete"
     },
     {
       "trait_type": "Back Weapon",
-      "value": "Weed Whacker"
+      "value": "Golden Retro Axe"
     },
     {
       "trait_type": "Clothing",
-      "value": "Patched Work Jacket"
+      "value": "Tattered Bone Jumpsuit"
     },
     {
       "trait_type": "Belt",
-      "value": "Tool Belt"
+      "value": "Neck Chains"
     },
     {
       "trait_type": "Backdrop",
-      "value": "Blood Moon"
+      "value": "Pixel Cabin"
     },
     {
       "trait_type": "Ears",

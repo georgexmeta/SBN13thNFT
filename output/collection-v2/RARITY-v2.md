@@ -16,10 +16,10 @@
 | Value | Count | Share |
 |---|---|---|
 | Female | 415 | 31.9% |
-| Type 1 - Lumpy Dome | 329 | 25.3% |
+| Type 1 - Lumpy Dome | 330 | 25.4% |
 | Type 2 - Melted Lopsided | 227 | 17.5% |
 | Type 4 - Split Cranium | 177 | 13.6% |
-| Type 3 - Cone Skull | 152 | 11.7% |
+| Type 3 - Cone Skull | 151 | 11.6% |
 
 ## Mask
 
@@ -66,7 +66,7 @@
 | Psychic Glare | 1 | 0.1% |
 | Hockey Half-Mask (dripping glowing toxic-green slime) | 1 | 0.1% |
 | Mad Mother's Face | 1 | 0.1% |
-| Hockey Half-Mask (pumpkin orange) | 1 | 0.1% |
+| Retro Blue Half-Mask | 1 | 0.1% |
 | Hockey Half-Mask (overgrown) | 1 | 0.1% |
 | Hockey Half-Mask (rust-stained) | 1 | 0.1% |
 | Hockey Half-Mask (yellowed and smeared) | 1 | 0.1% |
@@ -83,14 +83,14 @@
 | Butcher Cleaver | 128 | 9.8% |
 | Meat Hook | 117 | 9.0% |
 | Hatchet | 110 | 8.5% |
-| Sickle | 107 | 8.2% |
+| Sickle | 106 | 8.2% |
 | Nail Bat | 94 | 7.2% |
 | Spear | 89 | 6.8% |
 | Chainsaw | 82 | 6.3% |
 | Fish Hook | 79 | 6.1% |
 | Ice Pick | 57 | 4.4% |
 | Bare Fist | 33 | 2.5% |
-| Golden Machete (Rare+) | 15 | 1.2% |
+| Golden Machete (Rare+) | 16 | 1.2% |
 | Hook Hand (Rare+) | 15 | 1.2% |
 | Flamethrower (Rare+) | 11 | 0.8% |
 | Bone Saw (Rare+) | 9 | 0.7% |
@@ -101,7 +101,7 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Weed Whacker | 287 | 22.1% |
+| Weed Whacker | 286 | 22.0% |
 | Pitchfork | 207 | 15.9% |
 | Sledgehammer | 168 | 12.9% |
 | Chainsaw | 158 | 12.2% |
@@ -112,12 +112,13 @@
 | Scythe (Rare+) | 19 | 1.5% |
 | Harpoon Gun (Rare+) | 14 | 1.1% |
 | Fuel Tanks (Rare+) | 11 | 0.8% |
+| Golden Retro Axe | 1 | 0.1% |
 
 ## Clothing
 
 | Value | Count | Share |
 |---|---|---|
-| Patched Work Jacket | 186 | 14.3% |
+| Patched Work Jacket | 185 | 14.2% |
 | Plaid Flannel | 139 | 10.7% |
 | Mechanic Coveralls | 99 | 7.6% |
 | Grimy Hoodie | 97 | 7.5% |
@@ -146,13 +147,15 @@
 | Fur-Trimmed Cape (Rare+) | 6 | 0.5% |
 | Blood-Drenched Prom Gown | 1 | 0.1% |
 | Mustard Cardigan | 1 | 0.1% |
+| Tattered Bone Jumpsuit | 1 | 0.1% |
 
 ## Belt
 
 | Value | Count | Share |
 |---|---|---|
 | None | 891 | 68.5% |
-| Tool Belt | 409 | 31.5% |
+| Tool Belt | 408 | 31.4% |
+| Neck Chains | 1 | 0.1% |
 
 ## Backdrop
 
@@ -175,29 +178,31 @@
 | Graveyard | 24 | 1.8% |
 | Doctor's Hospital Room | 23 | 1.8% |
 | Nightmare Sequence | 22 | 1.7% |
-| Blood Moon (Rare+) | 15 | 1.2% |
 | Cornfield (Rare+) | 14 | 1.1% |
+| Blood Moon (Rare+) | 14 | 1.1% |
 | Jail Cell | 13 | 1.0% |
 | Burning Gym | 1 | 0.1% |
+| Pixel Cabin | 1 | 0.1% |
 
 ## Skin
 
 | Value | Count | Share |
 |---|---|---|
 | Flesh Pink | 393 | 30.2% |
-| Corpse Grey | 263 | 20.2% |
+| Corpse Grey | 262 | 20.2% |
 | Sallow | 198 | 15.2% |
 | Pale Wax | 167 | 12.8% |
 | Ruddy | 152 | 11.7% |
 | Bloodless Blue | 79 | 6.1% |
 | Toxic Green | 48 | 3.7% |
+| Icy Retro Blue | 1 | 0.1% |
 
 ## Hair
 
 | Value | Count | Share |
 |---|---|---|
-| Grey Side Tufts | 348 | 26.8% |
-| Bald | 196 | 15.1% |
+| Grey Side Tufts | 347 | 26.7% |
+| Bald | 197 | 15.2% |
 | Greasy Comb-over | 134 | 10.3% |
 | Wild Grey Tufts | 124 | 9.5% |
 | Greasy Bob | 93 | 7.2% |
@@ -221,10 +226,10 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Blue Veins | 515 | 39.6% |
+| Blue Veins | 514 | 39.5% |
 | Grey Wrinkles | 286 | 22.0% |
 | Stitched Scar | 192 | 14.8% |
-| Clean | 182 | 14.0% |
+| Clean | 183 | 14.1% |
 | Boils | 125 | 9.6% |
 
 ## Ears
