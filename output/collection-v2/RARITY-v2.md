@@ -15,10 +15,10 @@
 | Value | Count | Share |
 |---|---|---|
 | Type 1 - Lumpy Dome | 447 | 34.4% |
-| Type 2 - Melted Lopsided | 321 | 24.7% |
+| Type 2 - Melted Lopsided | 320 | 24.6% |
 | Type 3 - Cone Skull | 257 | 19.8% |
 | Type 4 - Split Cranium | 226 | 17.4% |
-| Female | 49 | 3.8% |
+| Female | 50 | 3.8% |
 
 ## Mask
 
@@ -58,7 +58,7 @@
 | Hockey Half-Mask (solid polished gold) | 1 | 0.1% |
 | Hockey Half-Mask (polished chrome) | 1 | 0.1% |
 | Hockey Half-Mask (charred black) | 1 | 0.1% |
-| Hockey Half-Mask (cracked) | 1 | 0.1% |
+| Psychic Glare | 1 | 0.1% |
 | Hockey Half-Mask (dripping glowing toxic-green slime) | 1 | 0.1% |
 | Mad Mother's Face | 1 | 0.1% |
 | Hockey Half-Mask (pumpkin orange) | 1 | 0.1% |
@@ -73,7 +73,7 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Machete | 204 | 15.7% |
+| Machete | 203 | 15.6% |
 | Hunting Knife | 141 | 10.8% |
 | Butcher Cleaver | 128 | 9.8% |
 | Meat Hook | 117 | 9.0% |
@@ -90,17 +90,18 @@
 | Flamethrower (Rare+) | 11 | 0.8% |
 | Bone Saw (Rare+) | 9 | 0.7% |
 | Nail-Knife Glove (Rare+) | 9 | 0.7% |
+| Telekinesis | 1 | 0.1% |
 
 ## Back Weapon
 
 | Value | Count | Share |
 |---|---|---|
 | Weed Whacker | 287 | 22.1% |
-| Pitchfork | 208 | 16.0% |
+| Pitchfork | 207 | 15.9% |
 | Sledgehammer | 168 | 12.9% |
 | Chainsaw | 158 | 12.2% |
 | Woodcutter Axe | 154 | 11.8% |
-| None | 143 | 11.0% |
+| None | 144 | 11.1% |
 | Rusty Shovel | 112 | 8.6% |
 | Circus Mallet (Rare+) | 26 | 2.0% |
 | Scythe (Rare+) | 19 | 1.5% |
@@ -111,7 +112,7 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Patched Work Jacket | 193 | 14.8% |
+| Patched Work Jacket | 192 | 14.8% |
 | Plaid Flannel | 142 | 10.9% |
 | Mechanic Coveralls | 104 | 8.0% |
 | Orange Prison Jumpsuit | 102 | 7.8% |
@@ -136,14 +137,15 @@
 | Faded Lace Gown | 8 | 0.6% |
 | Rotting Wedding Gown | 8 | 0.6% |
 | Dripping Nightgown | 8 | 0.6% |
+| Blood-Drenched Prom Gown | 1 | 0.1% |
 | Mustard Cardigan | 1 | 0.1% |
 
 ## Belt
 
 | Value | Count | Share |
 |---|---|---|
-| None | 887 | 68.2% |
-| Tool Belt | 413 | 31.8% |
+| None | 888 | 68.3% |
+| Tool Belt | 412 | 31.7% |
 
 ## Backdrop
 
@@ -164,9 +166,10 @@
 | Graveyard | 24 | 1.8% |
 | Doctor's Hospital Room | 23 | 1.8% |
 | Nightmare Sequence | 22 | 1.7% |
-| Cornfield (Rare+) | 15 | 1.2% |
 | Blood Moon (Rare+) | 15 | 1.2% |
+| Cornfield (Rare+) | 14 | 1.1% |
 | Jail Cell | 13 | 1.0% |
+| Burning Gym | 1 | 0.1% |
 
 ## Skin
 
@@ -185,7 +188,7 @@
 | Value | Count | Share |
 |---|---|---|
 | Grey Side Tufts | 513 | 39.5% |
-| Bald | 283 | 21.8% |
+| Bald | 282 | 21.7% |
 | Greasy Comb-over | 174 | 13.4% |
 | Wild Grey Tufts | 172 | 13.2% |
 | Backwards Cap | 84 | 6.5% |
@@ -196,16 +199,17 @@
 | Lace Bonnet | 8 | 0.6% |
 | Wilted Flower Crown | 8 | 0.6% |
 | Soaked Black Veil Hair | 8 | 0.6% |
+| Blood-Matted Curls | 1 | 0.1% |
 | Grey Curled Perm | 1 | 0.1% |
 
 ## Head Mark
 
 | Value | Count | Share |
 |---|---|---|
-| Blue Veins | 518 | 39.8% |
+| Blue Veins | 517 | 39.8% |
 | Grey Wrinkles | 288 | 22.2% |
 | Stitched Scar | 195 | 15.0% |
-| Clean | 173 | 13.3% |
+| Clean | 174 | 13.4% |
 | Boils | 126 | 9.7% |
 
 ## Ears
@@ -219,11 +223,12 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Classic | 1251 | 96.2% |
+| Classic | 1250 | 96.2% |
 | Hollow Sister | 8 | 0.6% |
 | Farmhouse Smile | 8 | 0.6% |
 | Glitch Android | 8 | 0.6% |
 | Cursed Porcelain Doll | 8 | 0.6% |
 | Rotten Bride | 8 | 0.6% |
 | Drowned Well Girl | 8 | 0.6% |
+| The Prom Queen | 1 | 0.1% |
 | The Grieving Mother | 1 | 0.1% |

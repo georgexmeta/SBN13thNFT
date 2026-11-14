@@ -1,5 +1,5 @@
 {
-  "name": "SBN13th #435 - Crow Bait",
+  "name": "SBN13th #435 - The Prom Queen",
   "seed": 1790312941,
   "attributes": [
     {
@@ -8,11 +8,11 @@
     },
     {
       "trait_type": "1/1 Name",
-      "value": "Crow Bait"
+      "value": "The Prom Queen"
     },
     {
       "trait_type": "Head",
-      "value": "Type 2 - Melted Lopsided"
+      "value": "Female"
     },
     {
       "trait_type": "Skin",
@@ -20,35 +20,35 @@
     },
     {
       "trait_type": "Hair",
-      "value": "Bald"
+      "value": "Blood-Matted Curls"
     },
     {
       "trait_type": "Head Mark",
-      "value": "Blue Veins"
+      "value": "Clean"
     },
     {
       "trait_type": "Mask",
-      "value": "Hockey Half-Mask (cracked)"
+      "value": "Psychic Glare"
     },
     {
       "trait_type": "Held Weapon",
-      "value": "Machete"
+      "value": "Telekinesis"
     },
     {
       "trait_type": "Back Weapon",
-      "value": "Pitchfork"
+      "value": "None"
     },
     {
       "trait_type": "Clothing",
-      "value": "Patched Work Jacket"
+      "value": "Blood-Drenched Prom Gown"
     },
     {
       "trait_type": "Belt",
-      "value": "Tool Belt"
+      "value": "None"
     },
     {
       "trait_type": "Backdrop",
-      "value": "Cornfield"
+      "value": "Burning Gym"
     },
     {
       "trait_type": "Ears",
@@ -56,7 +56,7 @@
     },
     {
       "trait_type": "Character",
-      "value": "Classic"
+      "value": "The Prom Queen"
     }
   ]
 }

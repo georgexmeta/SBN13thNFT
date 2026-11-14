@@ -117,7 +117,17 @@ N_JAIL = 13
 MOTHER = ("Silo Sam", {"1/1 Name": "The Grieving Mother", "Character": "The Grieving Mother", "Head": "Female",
           "Hair": "Grey Curled Perm", "Mask": "Mad Mother's Face", "Clothing": "Mustard Cardigan", "Held Weapon": "Machete",
           "Back Weapon": "None", "Belt": "None", "Head Mark": "Clean", "Ears": "Natural", "Backdrop": "Lakeside Cabin"})
+# 1/1 "The Prom Queen" (George, 2026-11-14): an original bloody-prom telekinetic, focus on psychic power. Replaces the
+# George (final): she replaces the unrendered 1/1 Crow Bait, keeping 13 Legendaries. Done in prom_pass, after every
+# other late pass, so their picks don't shift. Never the film character's name; mint-green gown and dark curls, not her look.
+PROM = ("Crow Bait", {"1/1 Name": "The Prom Queen", "Character": "The Prom Queen", "Head": "Female",
+        "Hair": "Blood-Matted Curls", "Mask": "Psychic Glare", "Clothing": "Blood-Drenched Prom Gown", "Held Weapon": "Telekinesis",
+        "Back Weapon": "None", "Belt": "None", "Head Mark": "Clean", "Ears": "Natural", "Backdrop": "Burning Gym"})
 FEMALE_EXTRA = {"Grey Curled Perm": "short tight greying curled permed hair", "Mad Mother's Face": "no mask: a sweet middle-aged mother's face twisted with grief and rage, wide wet glaring eyes, a trembling forced smile, blood flecked across her cheek",
+                "Blood-Matted Curls": "dark brown curls matted with dripping blood under a crooked rhinestone tiara",
+                "Psychic Glare": "no mask: a teenage girl's face drenched in thick dripping blood, wide unblinking eyes glowing pure white with psychic power, a cold blank stare",
+                "Blood-Drenched Prom Gown": "a ruffled pale mint-green prom gown soaked head to toe in dripping blood, a crushed corsage on her wrist",
+                "Burning Gym": "a burning school gym at night with flames, collapsing streamers and a toppled stage, sculpted as a miniature claymation diorama in matte plasticine, softly out of focus behind her, no signs or lettering",
                 "Mustard Cardigan": "a mustard-yellow hand-knitted cardigan over a ruffled cream blouse, a small gold heart locket on a chain"}
 MASK_STD = {
     "Bare Face": (22, "no mask: his disfigured face is bare, small sunken bloodshot eyes in swollen red lids, a crooked broken nose and rotten yellow teeth"),
@@ -238,13 +248,14 @@ FRAMING = ("FACING: exactly like the first reference photo, his body is in three
            "and out; his other hand hangs open")
 FRAMING_TWO_HANDS = FRAMING.split(" His right hand grips")[0] + (" Both hands hold the chainsaw firmly, one on the rear handle "
                                                               "and one on the front handle; neither hand hangs empty")
+FRAMING_PSYCHIC = FRAMING.split(" His right hand grips")[0] + " Both hands are raised, empty, channelling psychic force; no weapon in her hands."
 NEGATIVE = ("text, logo, letters, watermark, brand marks, sports team logo, red chevrons or triangles on the mask, full-face goalie mask covering the forehead and eyes, "
             "white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, "
             "photo of a real person, cartoon outline, flat 2D, face turned to the left, mirrored pose, long finger blades, clawed glove with four long knives, "
             "red and green striped sweater, brown fedora")
-ALL = {"Head": HEAD, "Skin": SKIN, "Hair": {CLOWN["Hair"][0]: (0, CLOWN["Hair"][1]), **HAIR, **{v[0]: (0, v[1]) for v in FEMALE.values()}, "Grey Curled Perm": (0, FEMALE_EXTRA["Grey Curled Perm"])}, "Head Mark": HEAD_MARK, "Ears": EARS, "Clothing": {CLOWN["Clothing"][0]: (0, CLOWN["Clothing"][1]), **CLOTH_STD, **CLOTH_NEW, **CLOTH_RARE, **{v[4]: (0, v[5]) for v in FEMALE.values()}, "Mustard Cardigan": (0, FEMALE_EXTRA["Mustard Cardigan"])},
-       "Belt": BELT, "Backdrop": {**BACKDROP, **BACKDROP_RARE, **BACKDROP_SCENE, JAIL[0]: (0, JAIL[1])}, "Mask": {CLOWN["Mask"][0]: (0, CLOWN["Mask"][1]), **MASK_STD, **MASK_RARE, **MASK_NEW, **{v[2]: (0, v[3]) for v in FEMALE.values()}, "Mad Mother's Face": (0, FEMALE_EXTRA["Mad Mother's Face"])},
-       "Held Weapon": {**HELD_STD, **HELD_RARE}, "Back Weapon": {**BACK_STD, **BACK_RARE}}
+ALL = {"Head": HEAD, "Skin": SKIN, "Hair": {CLOWN["Hair"][0]: (0, CLOWN["Hair"][1]), **HAIR, **{v[0]: (0, v[1]) for v in FEMALE.values()}, "Grey Curled Perm": (0, FEMALE_EXTRA["Grey Curled Perm"]), "Blood-Matted Curls": (0, FEMALE_EXTRA["Blood-Matted Curls"])}, "Head Mark": HEAD_MARK, "Ears": EARS, "Clothing": {CLOWN["Clothing"][0]: (0, CLOWN["Clothing"][1]), **CLOTH_STD, **CLOTH_NEW, **CLOTH_RARE, **{v[4]: (0, v[5]) for v in FEMALE.values()}, "Mustard Cardigan": (0, FEMALE_EXTRA["Mustard Cardigan"]), "Blood-Drenched Prom Gown": (0, FEMALE_EXTRA["Blood-Drenched Prom Gown"])},
+       "Belt": BELT, "Backdrop": {**BACKDROP, **BACKDROP_RARE, **BACKDROP_SCENE, JAIL[0]: (0, JAIL[1]), "Burning Gym": (0, FEMALE_EXTRA["Burning Gym"])}, "Mask": {CLOWN["Mask"][0]: (0, CLOWN["Mask"][1]), **MASK_STD, **MASK_RARE, **MASK_NEW, **{v[2]: (0, v[3]) for v in FEMALE.values()}, "Mad Mother's Face": (0, FEMALE_EXTRA["Mad Mother's Face"]), "Psychic Glare": (0, FEMALE_EXTRA["Psychic Glare"])},
+       "Held Weapon": {**HELD_STD, **HELD_RARE, "Telekinesis": (0, "")}, "Back Weapon": {**BACK_STD, **BACK_RARE}}
 
 
 def pick(rng, table):
@@ -272,6 +283,9 @@ def prompt(a, legendary_finish=None):
     elif held == "Chainsaw":   # George 2026-11-14: chainsaws are always wielded with both hands
         hand = ("he wields a heavy rusty chainsaw with a bloody chain in BOTH hands: right hand gripping the rear handle, "
                 "left hand gripping the front wrap-around handle, the bar angled up and out across his body")
+    elif held == "Telekinesis":
+        hand = ("she holds no weapon: both bloody hands are raised and spread with clawed fingers, unleashing telekinetic power, "
+                "chairs, glass shards and streamers levitating around her and a rippling shockwave bending the air")
     elif held == "Hook Hand":
         hand = "his right hand has been replaced by a rusty iron hook strapped to his forearm"
     elif held == "Flamethrower":
@@ -283,11 +297,11 @@ def prompt(a, legendary_finish=None):
     else:
         hand = f"his right fist grips {phrase('Held Weapon', held)}"
     body = [f"wearing {phrase('Clothing', a['Clothing'])}", phrase("Belt", a["Belt"]), hand, phrase("Back Weapon", a["Back Weapon"])]
-    female = a.get("Character", "Classic") in FEMALE or a.get("Character") == "The Grieving Mother"
+    female = a.get("Character", "Classic") in FEMALE or a.get("Character") in ("The Grieving Mother", "The Prom Queen")
     if female:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"])]
     parts = [STYLE, FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
-             phrase("Backdrop", a["Backdrop"]), FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING]
+             phrase("Backdrop", a["Backdrop"]), FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_PSYCHIC if held == "Telekinesis" else FRAMING]
     text = ". ".join(p[0].upper() + p[1:] for p in parts if p) + "."
     if female:
         for m, f in [(r"\bhis\b", "her"), (r"\bHis\b", "Her"), (r"\bhim\b", "her"), (r"\bhimself\b", "herself"), (r"\bhe\b", "she"), (r"\bHe\b", "She")]:
@@ -334,6 +348,7 @@ def build():
     female_pass(tokens)
     clown_pass(tokens)
     jail_pass(tokens)
+    prom_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -418,7 +433,8 @@ def female_pass(tokens):
         tokens[i - 1][0].update({"Character": name, "Head": "Female", "Hair": hair, "Mask": mask, "Clothing": cloth, "Head Mark": "Clean", "Belt": "None"})
     for i, (a, finish) in enumerate(tokens):
         if a.get("1/1 Name") == MOTHER[0]:
-            a.update(MOTHER[1]); tokens[i] = (a, None)   # no hockey-mask finish: her own face is the look
+            a.update(MOTHER[1]); tokens[i] = (a, None)
+   # no hockey-mask finish: her own face is the look
 
 
 def clown_pass(tokens):
@@ -437,6 +453,12 @@ def jail_pass(tokens):
     pool = [i for i, (a, finish) in enumerate(tokens, 1) if i not in keep and not finish]
     for i in random.Random(1313131).sample(pool, N_JAIL):
         tokens[i - 1][0]["Backdrop"] = JAIL[0]
+
+
+def prom_pass(tokens):
+    for i, (a, finish) in enumerate(tokens):
+        if a.get("1/1 Name") == PROM[0]:
+            a.update(PROM[1]); tokens[i] = (a, None)   # no hockey-mask finish: her own face is the look
 
 
 def report(tokens):

@@ -9552,25 +9552,25 @@
  },
  {
   "id": 435,
-  "name": "SBN13th #435 - Crow Bait",
+  "name": "SBN13th #435 - The Prom Queen",
   "seed": 1790312941,
-  "prompt": "Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with fingerprints, tool marks and pressed texture, soft studio lighting, highly detailed, in exactly the style of the reference photos. A grotesque disfigured old man with an oversized bobble head, mottled skin with age spots, small sunken bloodshot eyes in swollen red-rimmed lids, a large ear with a fat hanging lobe, thick neck, hunched broad shoulders, head turned three-quarters toward the viewer's right. Head type: a lopsided skull that sags and melts down one side, one cheek drooping lower than the other, sallow yellowish clay skin, completely bald, raised blue clay veins on the forehead. An aged HALF mask, cracked with a chunk broken away, covering ONLY his mouth, chin and nose with his eyes, brow and forehead completely bare, round breathing holes, moulded beak nose, held by rusty leather straps with a riveted plate and a buckle under the ear, eyes visible above it, no chevron markings. Wearing a slate-blue clay work jacket with a brown leather collar, stitched leather patches and a grey knit undershirt, a worn leather tool belt with rusty tools and pouches, his right fist grips a long rusty machete dripping blood, a rusty pitchfork slung on his back, tines rising above his shoulder. A cornfield of dry clay corn stalks at dusk. FACING: exactly like the first reference photo, his body is in three-quarter view and his head and face are turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space above the head, figure centred, square 1:1 composition. His right hand grips the held weapon in a tight clenched fist seen from the back of the hand, knuckles toward the camera, palm hidden, the blade angled up and out; his other hand hangs open.",
+  "prompt": "Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with fingerprints, tool marks and pressed texture, soft studio lighting, highly detailed, in exactly the style of the reference photos. A grotesque disfigured clay WOMAN (female, not the man in the reference: copy only the reference's clay style, pose and framing) with an oversized bobble head, mottled skin, small sunken bloodshot eyes in swollen red-rimmed lids, a thin neck and narrow hunched shoulders, head turned three-quarters toward the viewer's right. Sallow yellowish clay skin, dark brown curls matted with dripping blood under a crooked rhinestone tiara. No mask: a teenage girl's face drenched in thick dripping blood, wide unblinking eyes glowing pure white with psychic power, a cold blank stare. Wearing a ruffled pale mint-green prom gown soaked head to toe in dripping blood, a crushed corsage on her wrist, she holds no weapon: both bloody hands are raised and spread with clawed fingers, unleashing telekinetic power, chairs, glass shards and streamers levitating around her and a rippling shockwave bending the air. A burning school gym at night with flames, collapsing streamers and a toppled stage, sculpted as a miniature claymation diorama in matte plasticine, softly out of focus behind her, no signs or lettering. FACING: exactly like the first reference photo, her body is in three-quarter view and her head and face are turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space above the head, figure centred, square 1:1 composition. Both hands are raised, empty, channelling psychic force; no weapon in her hands..",
   "negative": "text, logo, letters, watermark, brand marks, sports team logo, red chevrons or triangles on the mask, full-face goalie mask covering the forehead and eyes, white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, photo of a real person, cartoon outline, flat 2D, face turned to the left, mirrored pose, long finger blades, clawed glove with four long knives, red and green striped sweater, brown fedora",
   "attributes": {
    "Tier": "Legendary 1/1",
-   "1/1 Name": "Crow Bait",
-   "Head": "Type 2 - Melted Lopsided",
+   "1/1 Name": "The Prom Queen",
+   "Head": "Female",
    "Skin": "Sallow",
-   "Hair": "Bald",
-   "Head Mark": "Blue Veins",
-   "Mask": "Hockey Half-Mask (cracked)",
-   "Held Weapon": "Machete",
-   "Back Weapon": "Pitchfork",
-   "Clothing": "Patched Work Jacket",
-   "Belt": "Tool Belt",
-   "Backdrop": "Cornfield",
+   "Hair": "Blood-Matted Curls",
+   "Head Mark": "Clean",
+   "Mask": "Psychic Glare",
+   "Held Weapon": "Telekinesis",
+   "Back Weapon": "None",
+   "Clothing": "Blood-Drenched Prom Gown",
+   "Belt": "None",
+   "Backdrop": "Burning Gym",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "The Prom Queen"
   }
  },
  {
