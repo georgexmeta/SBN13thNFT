@@ -6,8 +6,8 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Standard | 664 | 51.1% |
-| Uncommon | 493 | 37.9% |
+| Standard | 598 | 46.0% |
+| Uncommon | 559 | 43.0% |
 | Rare | 130 | 10.0% |
 | Legendary 1/1 | 13 | 1.0% |
 
@@ -25,23 +25,26 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Bare Face | 212 | 16.3% |
-| Hockey Half-Mask | 162 | 12.5% |
-| Burlap Pig Mask | 117 | 9.0% |
-| Burlap Sack Hood | 111 | 8.5% |
-| Patchwork Goggle Mask | 111 | 8.5% |
-| Gas Mask | 91 | 7.0% |
-| Paisley Bandana | 73 | 5.6% |
-| Iron Muzzle | 40 | 3.1% |
-| Bloody Bandage Wrap | 40 | 3.1% |
-| Rubber Seam Face | 25 | 1.9% |
-| Buckled Harness Hood | 25 | 1.9% |
-| Melted Wax Face | 25 | 1.9% |
-| Flayed Muscle Face | 25 | 1.9% |
-| Stitched Toy Face | 25 | 1.9% |
-| Blank Bone Mask | 25 | 1.9% |
-| Moaning Paper Mask | 25 | 1.9% |
-| Smeared Greasepaint | 25 | 1.9% |
+| Bare Face | 200 | 15.4% |
+| Hockey Half-Mask | 150 | 11.5% |
+| Burlap Pig Mask | 111 | 8.5% |
+| Patchwork Goggle Mask | 107 | 8.2% |
+| Burlap Sack Hood | 106 | 8.2% |
+| Gas Mask | 88 | 6.8% |
+| Paisley Bandana | 67 | 5.2% |
+| Iron Muzzle | 38 | 2.9% |
+| Bloody Bandage Wrap | 37 | 2.8% |
+| Honeycomb Half-Mask | 25 | 1.9% |
+| Needle-Tooth Snarl | 25 | 1.9% |
+| Cracked Doll Mask | 25 | 1.9% |
+| Melted Wax Face | 24 | 1.8% |
+| Buckled Harness Hood | 23 | 1.8% |
+| Flayed Muscle Face | 23 | 1.8% |
+| Stitched Toy Face | 23 | 1.8% |
+| Rubber Seam Face | 22 | 1.7% |
+| Blank Bone Mask | 22 | 1.7% |
+| Moaning Paper Mask | 21 | 1.6% |
+| Smeared Greasepaint | 20 | 1.5% |
 | Zipper Mouth Leather (Rare+) | 12 | 0.9% |
 | Nail-Studded Leather Mask (Rare+) | 11 | 0.8% |
 | Bone Skull Mask (Rare+) | 8 | 0.6% |
@@ -78,19 +81,20 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Machete | 198 | 15.2% |
-| Hunting Knife | 139 | 10.7% |
-| Butcher Cleaver | 123 | 9.5% |
-| Meat Hook | 116 | 8.9% |
-| Hatchet | 108 | 8.3% |
-| Sickle | 104 | 8.0% |
-| Nail Bat | 91 | 7.0% |
-| Spear | 88 | 6.8% |
+| Machete | 195 | 15.0% |
+| Hunting Knife | 136 | 10.5% |
+| Butcher Cleaver | 118 | 9.1% |
+| Meat Hook | 115 | 8.8% |
+| Hatchet | 107 | 8.2% |
+| Sickle | 101 | 7.8% |
+| Nail Bat | 88 | 6.8% |
+| Spear | 85 | 6.5% |
 | Chainsaw | 82 | 6.3% |
-| Fish Hook | 78 | 6.0% |
-| Ice Pick | 54 | 4.2% |
+| Fish Hook | 76 | 5.8% |
+| Ice Pick | 53 | 4.1% |
 | Bare Fist | 33 | 2.5% |
 | Poison Syringe | 25 | 1.9% |
+| Rusty Shears | 25 | 1.9% |
 | Golden Machete (Rare+) | 16 | 1.2% |
 | Hook Hand (Rare+) | 15 | 1.2% |
 | Flamethrower (Rare+) | 11 | 0.8% |
@@ -102,14 +106,15 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Weed Whacker | 286 | 22.0% |
-| Pitchfork | 207 | 15.9% |
-| Sledgehammer | 168 | 12.9% |
-| Chainsaw | 158 | 12.2% |
-| Woodcutter Axe | 154 | 11.8% |
-| None | 144 | 11.1% |
-| Rusty Shovel | 112 | 8.6% |
+| Weed Whacker | 283 | 21.8% |
+| Pitchfork | 204 | 15.7% |
+| Sledgehammer | 162 | 12.5% |
+| Chainsaw | 155 | 11.9% |
+| Woodcutter Axe | 150 | 11.5% |
+| None | 141 | 10.8% |
+| Rusty Shovel | 109 | 8.4% |
 | Circus Mallet (Rare+) | 26 | 2.0% |
+| Leathery Bat Wings | 25 | 1.9% |
 | Scythe (Rare+) | 19 | 1.5% |
 | Harpoon Gun (Rare+) | 14 | 1.1% |
 | Fuel Tanks (Rare+) | 11 | 0.8% |
@@ -119,21 +124,23 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Patched Work Jacket | 185 | 14.2% |
-| Plaid Flannel | 139 | 10.7% |
-| Mechanic Coveralls | 99 | 7.6% |
-| Grimy Hoodie | 97 | 7.5% |
+| Patched Work Jacket | 173 | 13.3% |
+| Plaid Flannel | 128 | 9.8% |
+| Mechanic Coveralls | 96 | 7.4% |
 | Orange Prison Jumpsuit | 96 | 7.4% |
+| Grimy Hoodie | 92 | 7.1% |
 | Bloody Surgeon Scrubs | 88 | 6.8% |
-| Butcher Apron | 83 | 6.4% |
+| Butcher Apron | 77 | 5.9% |
 | Tattered Shirt | 74 | 5.7% |
-| Denim Jacket | 70 | 5.4% |
-| Torn Undershirt | 62 | 4.8% |
-| Trench Coat | 39 | 3.0% |
+| Denim Jacket | 64 | 4.9% |
+| Torn Undershirt | 56 | 4.3% |
+| Trench Coat | 38 | 2.9% |
 | Black Jumpsuit | 38 | 2.9% |
 | Tan Blood-Splatter Jumpsuit | 34 | 2.6% |
 | Grey Jumpsuit | 33 | 2.5% |
 | Navy Jumpsuit | 30 | 2.3% |
+| Rust-Red Boiler Suit | 25 | 1.9% |
+| Ragged Plum Greatcoat | 25 | 1.9% |
 | Bloody Chef Smock | 25 | 1.9% |
 | Carnival Barker Vest | 25 | 1.9% |
 | Tattered Undertaker Suit (Rare+) | 12 | 0.9% |
@@ -189,13 +196,14 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Flesh Pink | 393 | 30.2% |
-| Corpse Grey | 262 | 20.2% |
-| Sallow | 198 | 15.2% |
-| Pale Wax | 167 | 12.8% |
-| Ruddy | 152 | 11.7% |
-| Bloodless Blue | 79 | 6.1% |
-| Toxic Green | 48 | 3.7% |
+| Flesh Pink | 359 | 27.6% |
+| Corpse Grey | 234 | 18.0% |
+| Sallow | 179 | 13.8% |
+| Pale Wax | 149 | 11.5% |
+| Ruddy | 136 | 10.5% |
+| Deep Brown | 125 | 9.6% |
+| Bloodless Blue | 72 | 5.5% |
+| Toxic Green | 45 | 3.5% |
 | Icy Retro Blue | 1 | 0.1% |
 
 ## Hair

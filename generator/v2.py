@@ -175,6 +175,34 @@ RETRO_EXTRA = {
                  "pixels, sculpted as a miniature claymation diorama in matte plasticine, softly out of focus behind him, no signs, "
                  "lettering, score or game interface"),
 }
+# Horror-icon homage Uncommons (George, 2026-11-14: "make them a part of the uncommon traits & spread them across others"):
+# original takes on a hook-hand bee slasher, doll-masked clone women and a winged cornfield creeper. Never the film names or
+# exact looks. Dealt by icon_pass after every other pass, 25 unrendered tokens each, one new trait per token. The bee-slasher
+# and clone-twin traits come with deep brown skin (George asked for Black slashers).
+ICON_TRAITS = [("Mask", "Honeycomb Half-Mask"), ("Clothing", "Ragged Plum Greatcoat"), ("Mask", "Cracked Doll Mask"),
+               ("Clothing", "Rust-Red Boiler Suit"), ("Held Weapon", "Rusty Shears"), ("Mask", "Needle-Tooth Snarl"),
+               ("Back Weapon", "Leathery Bat Wings")]
+ICON_BROWN = {"Honeycomb Half-Mask", "Ragged Plum Greatcoat", "Cracked Doll Mask", "Rust-Red Boiler Suit", "Rusty Shears"}
+ICON_EXTRA = [
+    ("Skin", "Deep Brown", "deep dark-brown clay skin"),
+    ("Mask", "Honeycomb Half-Mask", "a golden beeswax HALF mask moulded like honeycomb covering ONLY his mouth, chin and nose with his eyes, brow and "
+             "forehead bare, hexagonal comb cells oozing honey, a few small clay bees crawling over the mask and his cheek"),
+    ("Mask", "Cracked Doll Mask", "a cracked white porcelain doll-face mask over his whole face, rosy painted cheeks, tiny painted red lips, "
+             "empty black eye holes, a long hairline crack running across it"),
+    ("Mask", "Needle-Tooth Snarl", "no mask: a gaunt creature face with a huge lipless mouth full of rows of jagged needle teeth, a flat slitted "
+             "nose, small glinting black eyes and wiry tufts of hair"),
+    ("Held Weapon", "Rusty Shears", "a pair of long rusty tailor's shears with the blades open, dripping blood"),
+    ("Held Weapon", "Bone Axe", "a crude hand-made axe with a gnarled bone handle and a jagged rusty blade"),
+    ("Back Weapon", "Leathery Bat Wings", "huge tattered leathery bat-like wings growing from his back, folded up behind his shoulders with "
+                    "clawed tips rising above his head"),
+    ("Clothing", "Ragged Plum Greatcoat", "a long battered dark plum greatcoat with a ragged high collar, honey stains down the front and a "
+                 "few clay bees crawling on the shoulder"),
+    ("Clothing", "Rust-Red Boiler Suit", "a faded rust-red boiler suit, torn at one knee and spattered with blood"),
+    ("Backdrop", "Condemned Tenement", "a dim condemned tenement stairwell with peeling paint, boarded windows and honeycomb dripping in the "
+                 "corners, sculpted as a miniature claymation diorama in matte plasticine, softly out of focus behind him, no graffiti, signs or lettering"),
+    ("Backdrop", "Mirror Maze", "a dim funhouse hall of mirrors reflecting her silhouette into endless copies, sculpted as a miniature "
+                 "claymation diorama in matte plasticine, softly out of focus behind him, no signs or lettering"),
+]
 # "The Ringmistress" (George, 2026-11-14): a 7th female exclusive, an original ADULT woman killer clown inspired by a
 # horror clown photo but not its character: no black-and-white split costume, no mini top hat, no black lips.
 # 8 unrendered Rare tokens, dealt by ring_pass after every other pass so earlier picks don't shift.
@@ -320,6 +348,8 @@ ALL["Held Weapon"]["Poison Syringe"] = (0, "a big old glass syringe filled with 
 ALL["Skin"], ALL["Belt"] = dict(ALL["Skin"]), dict(ALL["Belt"])   # copies, so the retro values never touch the SKIN/BELT pick tables
 for _t, (_v, _p) in RETRO_EXTRA.items():
     ALL[_t][_v] = (0, _p)
+for _t, _v, _p in ICON_EXTRA:
+    ALL[_t][_v] = (0, _p)
 
 
 def pick(rng, table):
@@ -421,6 +451,7 @@ def build():
     woman_pass(tokens)
     syringe_pass(tokens)
     retro_pass(tokens)
+    icon_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -547,6 +578,35 @@ def syringe_pass(tokens):
         a["Held Weapon"], a["Tier"] = "Poison Syringe", "Uncommon"
         dna = tuple(sorted((k, v) for k, v in a.items() if k != "Tier"))
         assert dna not in dnas; dnas.add(dna)
+
+
+def icon_pass(tokens):
+    keep = set(json.load(open(os.path.join(ROOT, "generator", "rendered_keep_syringe.json"))))
+    late = random.Random(6161)
+    pool = [i for i, (a, f) in enumerate(tokens, 1) if i not in keep and not f and a["Tier"] in ("Standard", "Uncommon")
+            and a["Character"] in ("Classic", "Woman") and a["Held Weapon"] != "Poison Syringe"]
+    late.shuffle(pool)
+    dnas = {tuple(sorted((k, v) for k, v in a.items() if k != "Tier")) for a, _ in tokens}
+    used = set()
+    for trait, val in ICON_TRAITS:
+        n = 0
+        for i in pool:
+            a = tokens[i - 1][0]
+            if i in used or (trait == "Held Weapon" and (a["Held Weapon"] not in HELD_STD or a["Held Weapon"] in ("Chainsaw", "Bare Fist"))) \
+                    or (trait == "Back Weapon" and a["Back Weapon"] not in BACK_STD) or (trait == "Clothing" and a["Clothing"] not in CLOTH_STD) \
+                    or (trait == "Mask" and a["Hair"] == "Backwards Cap" and val == "Cracked Doll Mask"):
+                continue
+            old = tuple(sorted((k, v) for k, v in a.items() if k != "Tier"))
+            b = dict(a, **{trait: val}, Tier="Uncommon")
+            if val in ICON_BROWN:
+                b["Skin"] = "Deep Brown"
+            dna = tuple(sorted((k, v) for k, v in b.items() if k != "Tier"))
+            if dna in dnas:
+                continue
+            dnas.discard(old); dnas.add(dna); a.update(b); used.add(i); n += 1
+            if n == 25:
+                break
+        assert n == 25, (val, n)
 
 
 def retro_pass(tokens):
