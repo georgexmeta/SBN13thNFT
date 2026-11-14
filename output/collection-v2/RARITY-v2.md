@@ -155,7 +155,7 @@
 |---|---|---|
 | None | 891 | 68.5% |
 | Tool Belt | 408 | 31.4% |
-| Neck Chains | 1 | 0.1% |
+| Golden Neck Chains | 1 | 0.1% |
 
 ## Backdrop
 

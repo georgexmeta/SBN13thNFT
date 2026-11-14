@@ -158,7 +158,7 @@ PROM = ("Crow Bait", {"1/1 Name": "The Prom Queen", "Character": "The Prom Queen
 # the unrendered male 1/1 Lantern Jack, keeping 13 Legendaries. Done in retro_pass, after every other pass, so nothing shifts.
 RETRO = ("Lantern Jack", {"1/1 Name": "The Retro Slasher", "Head": "Type 1 - Lumpy Dome", "Skin": "Icy Retro Blue", "Hair": "Bald",
          "Head Mark": "Clean", "Ears": "Natural", "Mask": "Retro Blue Half-Mask", "Held Weapon": "Golden Machete",
-         "Back Weapon": "Golden Retro Axe", "Clothing": "Tattered Bone Jumpsuit", "Belt": "Neck Chains", "Backdrop": "Pixel Cabin"})
+         "Back Weapon": "Golden Retro Axe", "Clothing": "Tattered Bone Jumpsuit", "Belt": "Golden Neck Chains", "Backdrop": "Pixel Cabin"})
 RETRO_EXTRA = {
     "Skin": ("Icy Retro Blue", "pale icy powder-blue clay skin all over, like a faded vintage toy"),
     "Mask": ("Retro Blue Half-Mask", "a chunky pale powder-blue HALF mask that covers ONLY the lower half of his face, like the bottom half of a "
@@ -168,7 +168,7 @@ RETRO_EXTRA = {
     "Clothing": ("Tattered Bone Jumpsuit", "a rotten, torn violet-purple jumpsuit in shreds, with big ragged holes across the chest showing his "
                  "exposed bony ribcage in pale bone-white clay, and the sleeves torn away so his forearms show bare skeletal arm bones, "
                  "bits of rotting flesh at the edges"),
-    "Belt": ("Neck Chains", "heavy rusty iron chains looped around his neck and hanging down over his chest"),
+    "Belt": ("Golden Neck Chains", "heavy gleaming solid gold chains looped around his neck and hanging down over his chest"),
     "Back Weapon": ("Golden Retro Axe", "a gleaming solid gold axe strapped across his back, the gold blade rising above his shoulder"),
     "Backdrop": ("Pixel Cabin", "the inside of a creepy cabin built like an old 8-bit video game room: chunky stepped pixel-block walls of "
                  "faded wooden planks, a square window with a blocky pixel moon, a flat dark floor, every edge stair-stepped like big "
