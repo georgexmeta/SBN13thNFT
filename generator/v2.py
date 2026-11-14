@@ -316,6 +316,7 @@ NEGATIVE = ("text, logo, letters, watermark, brand marks, sports team logo, red 
 ALL = {"Head": HEAD, "Skin": SKIN, "Hair": {CLOWN["Hair"][0]: (0, CLOWN["Hair"][1]), **HAIR, **HAIR_WOMAN, **{v[0]: (0, v[1]) for v in FEMALE.values()}, "Grey Curled Perm": (0, FEMALE_EXTRA["Grey Curled Perm"]), "Blood-Matted Curls": (0, FEMALE_EXTRA["Blood-Matted Curls"]), "Frizzed Auburn Bunches": (0, FEMALE_EXTRA["Frizzed Auburn Bunches"])}, "Head Mark": HEAD_MARK, "Ears": EARS, "Clothing": {CLOWN["Clothing"][0]: (0, CLOWN["Clothing"][1]), HOMAGE_CLOTH[0]: (0, HOMAGE_CLOTH[1]), **CLOTH_STD, **CLOTH_NEW, **CLOTH_RARE, **{v[4]: (0, v[5]) for v in FEMALE.values()}, "Mustard Cardigan": (0, FEMALE_EXTRA["Mustard Cardigan"]), "Blood-Drenched Prom Gown": (0, FEMALE_EXTRA["Blood-Drenched Prom Gown"]), "Rotten Ruffle Pierrot Dress": (0, FEMALE_EXTRA["Rotten Ruffle Pierrot Dress"])},
        "Belt": BELT, "Backdrop": {**BACKDROP, **BACKDROP_RARE, **BACKDROP_SCENE, JAIL[0]: (0, JAIL[1]), **{k: (0, v) for k, v in SCENE2.items()}, "Burning Gym": (0, FEMALE_EXTRA["Burning Gym"])}, "Mask": {CLOWN["Mask"][0]: (0, CLOWN["Mask"][1]), **{k: (0, v) for k, v in HOMAGE_MASK.items()}, **MASK_STD, **MASK_RARE, **MASK_NEW, **{v[2]: (0, v[3]) for v in FEMALE.values()}, "Mad Mother's Face": (0, FEMALE_EXTRA["Mad Mother's Face"]), "Psychic Glare": (0, FEMALE_EXTRA["Psychic Glare"]), "Cracked Clown Paint": (0, FEMALE_EXTRA["Cracked Clown Paint"])},
        "Held Weapon": {**HELD_STD, **HELD_RARE, "Telekinesis": (0, "")}, "Back Weapon": {**BACK_STD, **BACK_RARE}}
+ALL["Held Weapon"]["Poison Syringe"] = (0, "a big old glass syringe filled with glowing toxic-green poison, a long dripping needle pointing up and out")
 ALL["Skin"], ALL["Belt"] = dict(ALL["Skin"]), dict(ALL["Belt"])   # copies, so the retro values never touch the SKIN/BELT pick tables
 for _t, (_v, _p) in RETRO_EXTRA.items():
     ALL[_t][_v] = (0, _p)
@@ -418,6 +419,7 @@ def build():
     ring_pass(tokens)
     tier_pass(tokens)
     woman_pass(tokens)
+    syringe_pass(tokens)
     retro_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
@@ -530,6 +532,21 @@ def prom_pass(tokens):
         if a.get("1/1 Name") == PROM[0]:
             a.update(PROM[1]); tokens[i] = (a, None)   # no hockey-mask finish: her own face is the look
 
+
+
+def syringe_pass(tokens):
+    """Poison Syringe held weapon (George, 2026-11-14): Uncommon, 25 unrendered Standard/Uncommon tokens that hold an
+    ordinary one-hand weapon. Runs after woman_pass so no earlier pick shifts; the token becomes Uncommon."""
+    keep = set(json.load(open(os.path.join(ROOT, "generator", "rendered_keep_syringe.json"))))
+    late = random.Random(4040)
+    pool = [i for i, (a, f) in enumerate(tokens, 1) if i not in keep and not f and a["Tier"] in ("Standard", "Uncommon")
+            and a["Held Weapon"] in HELD_STD and a["Held Weapon"] not in ("Chainsaw", "Bare Fist")]
+    dnas = {tuple(sorted((k, v) for k, v in a.items() if k != "Tier")) for a, _ in tokens}
+    for i in late.sample(pool, 25):
+        a = tokens[i - 1][0]
+        a["Held Weapon"], a["Tier"] = "Poison Syringe", "Uncommon"
+        dna = tuple(sorted((k, v) for k, v in a.items() if k != "Tier"))
+        assert dna not in dnas; dnas.add(dna)
 
 
 def retro_pass(tokens):

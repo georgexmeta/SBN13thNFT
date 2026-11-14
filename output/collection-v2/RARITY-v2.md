@@ -6,8 +6,8 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Standard | 671 | 51.6% |
-| Uncommon | 486 | 37.4% |
+| Standard | 664 | 51.1% |
+| Uncommon | 493 | 37.9% |
 | Rare | 130 | 10.0% |
 | Legendary 1/1 | 13 | 1.0% |
 
@@ -78,18 +78,19 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Machete | 203 | 15.6% |
-| Hunting Knife | 141 | 10.8% |
-| Butcher Cleaver | 128 | 9.8% |
-| Meat Hook | 117 | 9.0% |
-| Hatchet | 110 | 8.5% |
-| Sickle | 106 | 8.2% |
-| Nail Bat | 94 | 7.2% |
-| Spear | 89 | 6.8% |
+| Machete | 198 | 15.2% |
+| Hunting Knife | 139 | 10.7% |
+| Butcher Cleaver | 123 | 9.5% |
+| Meat Hook | 116 | 8.9% |
+| Hatchet | 108 | 8.3% |
+| Sickle | 104 | 8.0% |
+| Nail Bat | 91 | 7.0% |
+| Spear | 88 | 6.8% |
 | Chainsaw | 82 | 6.3% |
-| Fish Hook | 79 | 6.1% |
-| Ice Pick | 57 | 4.4% |
+| Fish Hook | 78 | 6.0% |
+| Ice Pick | 54 | 4.2% |
 | Bare Fist | 33 | 2.5% |
+| Poison Syringe | 25 | 1.9% |
 | Golden Machete (Rare+) | 16 | 1.2% |
 | Hook Hand (Rare+) | 15 | 1.2% |
 | Flamethrower (Rare+) | 11 | 0.8% |
