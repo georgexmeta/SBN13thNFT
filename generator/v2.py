@@ -349,6 +349,7 @@ def build():
     clown_pass(tokens)
     jail_pass(tokens)
     prom_pass(tokens)
+    head_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -459,6 +460,23 @@ def prom_pass(tokens):
     for i, (a, finish) in enumerate(tokens):
         if a.get("1/1 Name") == PROM[0]:
             a.update(PROM[1]); tokens[i] = (a, None)   # no hockey-mask finish: her own face is the look
+
+
+def head_pass(tokens):
+    """Fewer cone heads (George, 2026-11-14): 70% of unrendered, non-legendary Cone Skull tokens move to the other head types."""
+    keep = set(json.load(open(os.path.join(ROOT, "generator", "rendered_keep_jail.json"))))
+    late = random.Random(333)
+    others = {k: v for k, v in HEAD.items() if k != "Type 3 - Cone Skull"}
+    dnas = {tuple(sorted((k, v) for k, v in a.items() if k != "Tier")) for a, _ in tokens}
+    for i, (a, finish) in enumerate(tokens, 1):
+        if i in keep or finish or a["Head"] != "Type 3 - Cone Skull" or late.random() >= .7:
+            continue
+        for _ in range(10):
+            b = dict(a, Head=pick(late, others))
+            dna = tuple(sorted((k, v) for k, v in b.items() if k != "Tier"))
+            if dna not in dnas:
+                dnas.discard(tuple(sorted((k, v) for k, v in a.items() if k != "Tier"))); dnas.add(dna); a["Head"] = b["Head"]
+                break
 
 
 def report(tokens):
