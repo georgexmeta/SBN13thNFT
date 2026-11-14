@@ -143,7 +143,7 @@ HELD_STD = {
     "Hunting Knife": (14, "a bloody hunting knife"), "Hatchet": (12, "a rusty hatchet with a chipped blade"),
     "Meat Hook": (10, "a big rusty meat hook"), "Sickle": (10, "a rusty curved sickle"),
     "Nail Bat": (8, "a wooden bat studded with bent rusty nails"), "Ice Pick": (6, "a rusty ice pick"), "Bare Fist": (4, None),
-    "Chainsaw": (8, "a small rusty one-handed chainsaw with a bloody chain, the bar pointing up and out"),
+    "Chainsaw": (8, "a rusty chainsaw with a bloody chain"),
     "Fish Hook": (8, "a huge rusty barbed fish hook on a short wooden handle, fishing line and a bloody bait scrap dangling from it"),
     "Spear": (8, "a crude spear: a long wooden pole with a rusty jagged blade lashed to the top with wire and rag, held upright with the blade above his shoulder"),
 }
@@ -232,6 +232,8 @@ FRAMING = ("FACING: exactly like the first reference photo, his body is in three
            "above the head, figure centred, square 1:1 composition. His right hand grips the held weapon in a tight "
            "clenched fist seen from the back of the hand, knuckles toward the camera, palm hidden, the blade angled up "
            "and out; his other hand hangs open")
+FRAMING_TWO_HANDS = FRAMING.split(" His right hand grips")[0] + (" Both hands hold the chainsaw firmly, one on the rear handle "
+                                                              "and one on the front handle; neither hand hangs empty")
 NEGATIVE = ("text, logo, letters, watermark, brand marks, sports team logo, red chevrons or triangles on the mask, full-face goalie mask covering the forehead and eyes, "
             "white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, "
             "photo of a real person, cartoon outline, flat 2D, face turned to the left, mirrored pose, long finger blades, clawed glove with four long knives, "
@@ -263,6 +265,9 @@ def prompt(a, legendary_finish=None):
     held = a["Held Weapon"]
     if held == "Bare Fist":
         hand = "his right hand is a clenched bare fist, knuckles toward the camera"
+    elif held == "Chainsaw":   # George 2026-11-14: chainsaws are always wielded with both hands
+        hand = ("he wields a heavy rusty chainsaw with a bloody chain in BOTH hands: right hand gripping the rear handle, "
+                "left hand gripping the front wrap-around handle, the bar angled up and out across his body")
     elif held == "Hook Hand":
         hand = "his right hand has been replaced by a rusty iron hook strapped to his forearm"
     elif held == "Flamethrower":
@@ -278,7 +283,7 @@ def prompt(a, legendary_finish=None):
     if female:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"])]
     parts = [STYLE, FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
-             phrase("Backdrop", a["Backdrop"]), FRAMING]
+             phrase("Backdrop", a["Backdrop"]), FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING]
     text = ". ".join(p[0].upper() + p[1:] for p in parts if p) + "."
     if female:
         for m, f in [(r"\bhis\b", "her"), (r"\bHis\b", "Her"), (r"\bhim\b", "her"), (r"\bhimself\b", "herself"), (r"\bhe\b", "she"), (r"\bHe\b", "She")]:
