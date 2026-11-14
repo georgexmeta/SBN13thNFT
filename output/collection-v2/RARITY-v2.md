@@ -1,12 +1,13 @@
-# SBN13th v2 rarity
+# Claysons rarity
 
-1,300 PFPs: 1,157 Standard, 130 Rare, 13 Legendary 1/1s. Every PFP is unique.
+1,300 PFPs: 758 Standard, 399 Uncommon, 130 Rare, 13 Legendary 1/1s. Every PFP is unique.
 
 ## Tier
 
 | Value | Count | Share |
 |---|---|---|
-| Standard | 1157 | 89.0% |
+| Standard | 758 | 58.3% |
+| Uncommon | 399 | 30.7% |
 | Rare | 130 | 10.0% |
 | Legendary 1/1 | 13 | 1.0% |
 

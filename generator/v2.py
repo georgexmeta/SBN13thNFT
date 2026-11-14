@@ -350,6 +350,7 @@ def build():
     jail_pass(tokens)
     prom_pass(tokens)
     head_pass(tokens)
+    tier_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -479,8 +480,19 @@ def head_pass(tokens):
                 break
 
 
+def tier_pass(tokens):
+    """Uncommon tier (George, 2026-11-14): a Standard token that carries any Uncommon trait is relabelled Uncommon.
+    Metadata only, so finished images don't change."""
+    UNCOMMON = {"Mask": set(MASK_NEW) | {CLOWN["Mask"][0]}, "Backdrop": set(BACKDROP_SCENE),
+                "Hair": {CLOWN["Hair"][0]}, "Clothing": {CLOWN["Clothing"][0]}}
+    for a, _ in tokens:
+        if a["Tier"] == "Standard" and (a["Mask"] in UNCOMMON["Mask"] or a["Backdrop"] in UNCOMMON["Backdrop"]
+                                        or a["Ears"] == "Gauged" or a["Hair"] in UNCOMMON["Hair"] or a["Clothing"] in UNCOMMON["Clothing"]):
+            a["Tier"] = "Uncommon"
+
+
 def report(tokens):
-    lines = ["# SBN13th v2 rarity", "", "1,300 PFPs: 1,157 Standard, 130 Rare, 13 Legendary 1/1s. Every PFP is unique.", ""]
+    lines = ["# Claysons rarity", "", "1,300 PFPs: 758 Standard, 399 Uncommon, 130 Rare, 13 Legendary 1/1s. Every PFP is unique.", ""]
     rare_only = {k: set(t) for k, t in [("Mask", MASK_RARE), ("Held Weapon", HELD_RARE), ("Back Weapon", BACK_RARE),
                                          ("Clothing", CLOTH_RARE), ("Backdrop", BACKDROP_RARE)]}
     for trait in ["Tier", "Head", "Mask", "Held Weapon", "Back Weapon", "Clothing", "Belt", "Backdrop", "Skin", "Hair", "Head Mark", "Ears", "Character"]:
