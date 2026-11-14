@@ -98,6 +98,16 @@ FEMALE = {   # name: (Hair value, hair phrase, Mask value, face phrase, Clothing
         "Tattered Nun Habit", "a tattered black habit with a stained white collar and a rusty chain rosary"),
 }
 N_FEMALE = 8
+# Roadside clown touches (George, 2026-11-14): an original grimy roadside killer-clown vibe. Deliberately NOT any film
+# character: no white face with blue eye diamonds, no stars-and-stripes, no top hat with stars, never a character name.
+# 25 unrendered Classic tokens get each piece, dealt independently by clown_pass.
+CLOWN = {
+    "Mask": ("Smeared Greasepaint", "no mask: cheap yellowed greasepaint smeared over his face, sloppy black rings round his eyes, a crooked painted "
+             "grin in chipped green paint over rotten brown teeth, sweat streaks through the paint"),
+    "Hair": ("Battered Top Hat", "a battered dented black top hat with a torn brim and a faded checkered band, tufts of greasy grey hair under it"),
+    "Clothing": ("Carnival Barker Vest", "a filthy mustard-and-maroon striped carnival barker vest over a yellowed collarless shirt, a crooked polka-dot bow tie"),
+}
+N_CLOWN = 25
 # 1/1 "The Grieving Mother" (George, 2026-11-13, loosely inspired by a classic slasher mom). It replaces the unrendered 1/1
 # Silo Sam, so there are still 13 Legendaries. Original look: no blue fisherman sweater, no name or likeness of the film character.
 MOTHER = ("Silo Sam", {"1/1 Name": "The Grieving Mother", "Character": "The Grieving Mother", "Head": "Female",
@@ -226,8 +236,8 @@ NEGATIVE = ("text, logo, letters, watermark, brand marks, sports team logo, red 
             "white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, "
             "photo of a real person, cartoon outline, flat 2D, face turned to the left, mirrored pose, long finger blades, clawed glove with four long knives, "
             "red and green striped sweater, brown fedora")
-ALL = {"Head": HEAD, "Skin": SKIN, "Hair": {**HAIR, **{v[0]: (0, v[1]) for v in FEMALE.values()}, "Grey Curled Perm": (0, FEMALE_EXTRA["Grey Curled Perm"])}, "Head Mark": HEAD_MARK, "Ears": EARS, "Clothing": {**CLOTH_STD, **CLOTH_NEW, **CLOTH_RARE, **{v[4]: (0, v[5]) for v in FEMALE.values()}, "Mustard Cardigan": (0, FEMALE_EXTRA["Mustard Cardigan"])},
-       "Belt": BELT, "Backdrop": {**BACKDROP, **BACKDROP_RARE, **BACKDROP_SCENE}, "Mask": {**MASK_STD, **MASK_RARE, **MASK_NEW, **{v[2]: (0, v[3]) for v in FEMALE.values()}, "Mad Mother's Face": (0, FEMALE_EXTRA["Mad Mother's Face"])},
+ALL = {"Head": HEAD, "Skin": SKIN, "Hair": {CLOWN["Hair"][0]: (0, CLOWN["Hair"][1]), **HAIR, **{v[0]: (0, v[1]) for v in FEMALE.values()}, "Grey Curled Perm": (0, FEMALE_EXTRA["Grey Curled Perm"])}, "Head Mark": HEAD_MARK, "Ears": EARS, "Clothing": {CLOWN["Clothing"][0]: (0, CLOWN["Clothing"][1]), **CLOTH_STD, **CLOTH_NEW, **CLOTH_RARE, **{v[4]: (0, v[5]) for v in FEMALE.values()}, "Mustard Cardigan": (0, FEMALE_EXTRA["Mustard Cardigan"])},
+       "Belt": BELT, "Backdrop": {**BACKDROP, **BACKDROP_RARE, **BACKDROP_SCENE}, "Mask": {CLOWN["Mask"][0]: (0, CLOWN["Mask"][1]), **MASK_STD, **MASK_RARE, **MASK_NEW, **{v[2]: (0, v[3]) for v in FEMALE.values()}, "Mad Mother's Face": (0, FEMALE_EXTRA["Mad Mother's Face"])},
        "Held Weapon": {**HELD_STD, **HELD_RARE}, "Back Weapon": {**BACK_STD, **BACK_RARE}}
 
 
@@ -313,6 +323,7 @@ def build():
     ear_pass(tokens)
     mask_pass(tokens)
     female_pass(tokens)
+    clown_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -398,6 +409,17 @@ def female_pass(tokens):
     for i, (a, finish) in enumerate(tokens):
         if a.get("1/1 Name") == MOTHER[0]:
             a.update(MOTHER[1]); tokens[i] = (a, None)   # no hockey-mask finish: her own face is the look
+
+
+def clown_pass(tokens):
+    keep = set(json.load(open(os.path.join(ROOT, "generator", "rendered_keep_clown.json"))))
+    late = random.Random(4242)
+    for trait, (val, _) in CLOWN.items():
+        pool = [i for i, (a, finish) in enumerate(tokens, 1) if i not in keep and not finish and a["Character"] == "Classic"
+                and a["Mask"] not in MASK_NEW and a["Mask"] not in MASK_RARE and a["Clothing"] not in CLOTH_RARE
+                and not (trait == "Hair" and a["Mask"] in ("Burlap Sack Hood", "Zipper Long Nose"))]
+        for i in late.sample(pool, N_CLOWN):
+            tokens[i - 1][0][trait] = val
 
 
 def report(tokens):

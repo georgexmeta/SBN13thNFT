@@ -24,19 +24,20 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Bare Face | 244 | 18.8% |
-| Hockey Half-Mask | 180 | 13.8% |
-| Burlap Pig Mask | 126 | 9.7% |
-| Burlap Sack Hood | 123 | 9.5% |
-| Patchwork Goggle Mask | 119 | 9.2% |
-| Gas Mask | 100 | 7.7% |
-| Paisley Bandana | 81 | 6.2% |
+| Bare Face | 236 | 18.2% |
+| Hockey Half-Mask | 175 | 13.5% |
+| Burlap Pig Mask | 125 | 9.6% |
+| Burlap Sack Hood | 120 | 9.2% |
+| Patchwork Goggle Mask | 115 | 8.8% |
+| Gas Mask | 99 | 7.6% |
+| Paisley Bandana | 78 | 6.0% |
 | Iron Muzzle | 44 | 3.4% |
 | Bloody Bandage Wrap | 40 | 3.1% |
 | Rubber Seam Face | 25 | 1.9% |
 | Buckled Harness Hood | 25 | 1.9% |
 | Melted Wax Face | 25 | 1.9% |
 | Flayed Muscle Face | 25 | 1.9% |
+| Smeared Greasepaint | 25 | 1.9% |
 | Nail-Studded Leather Mask (Rare+) | 12 | 0.9% |
 | Zipper Mouth Leather (Rare+) | 12 | 0.9% |
 | Stitched Skin Mask (Rare+) | 9 | 0.7% |
@@ -110,21 +111,22 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Patched Work Jacket | 196 | 15.1% |
-| Plaid Flannel | 145 | 11.2% |
-| Mechanic Coveralls | 106 | 8.2% |
-| Orange Prison Jumpsuit | 105 | 8.1% |
-| Grimy Hoodie | 100 | 7.7% |
-| Bloody Surgeon Scrubs | 94 | 7.2% |
+| Patched Work Jacket | 193 | 14.8% |
+| Plaid Flannel | 142 | 10.9% |
+| Mechanic Coveralls | 104 | 8.0% |
+| Orange Prison Jumpsuit | 102 | 7.8% |
+| Grimy Hoodie | 99 | 7.6% |
+| Bloody Surgeon Scrubs | 92 | 7.1% |
 | Butcher Apron | 84 | 6.5% |
-| Tattered Shirt | 77 | 5.9% |
-| Denim Jacket | 72 | 5.5% |
+| Tattered Shirt | 74 | 5.7% |
+| Denim Jacket | 70 | 5.4% |
 | Torn Undershirt | 63 | 4.8% |
-| Trench Coat | 40 | 3.1% |
-| Black Jumpsuit | 40 | 3.1% |
-| Tan Blood-Splatter Jumpsuit | 36 | 2.8% |
-| Grey Jumpsuit | 35 | 2.7% |
+| Trench Coat | 39 | 3.0% |
+| Black Jumpsuit | 38 | 2.9% |
+| Grey Jumpsuit | 34 | 2.6% |
+| Tan Blood-Splatter Jumpsuit | 34 | 2.6% |
 | Navy Jumpsuit | 30 | 2.3% |
+| Carnival Barker Vest | 25 | 1.9% |
 | Tattered Undertaker Suit (Rare+) | 12 | 0.9% |
 | Bloody Clown Suit (Rare+) | 8 | 0.6% |
 | Fur-Trimmed Cape (Rare+) | 8 | 0.6% |
@@ -181,11 +183,12 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Grey Side Tufts | 520 | 40.0% |
-| Bald | 290 | 22.3% |
-| Greasy Comb-over | 180 | 13.8% |
-| Wild Grey Tufts | 175 | 13.5% |
-| Backwards Cap | 86 | 6.6% |
+| Grey Side Tufts | 513 | 39.5% |
+| Bald | 283 | 21.8% |
+| Greasy Comb-over | 174 | 13.4% |
+| Wild Grey Tufts | 172 | 13.2% |
+| Backwards Cap | 84 | 6.5% |
+| Battered Top Hat | 25 | 1.9% |
 | Black Veil | 8 | 0.6% |
 | Straw Sun Bonnet | 8 | 0.6% |
 | Choppy Teal Wig | 8 | 0.6% |
