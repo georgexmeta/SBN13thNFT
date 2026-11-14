@@ -6,8 +6,8 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Standard | 598 | 46.0% |
-| Uncommon | 559 | 43.0% |
+| Standard | 771 | 59.3% |
+| Uncommon | 386 | 29.7% |
 | Rare | 130 | 10.0% |
 | Legendary 1/1 | 13 | 1.0% |
 
@@ -25,27 +25,27 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Bare Face | 200 | 15.4% |
-| Hockey Half-Mask | 150 | 11.5% |
-| Burlap Pig Mask | 111 | 8.5% |
-| Patchwork Goggle Mask | 107 | 8.2% |
-| Burlap Sack Hood | 106 | 8.2% |
-| Gas Mask | 88 | 6.8% |
-| Paisley Bandana | 67 | 5.2% |
-| Iron Muzzle | 38 | 2.9% |
-| Bloody Bandage Wrap | 37 | 2.8% |
+| Bare Face | 208 | 16.0% |
+| Hockey Half-Mask | 161 | 12.4% |
+| Burlap Pig Mask | 122 | 9.4% |
+| Patchwork Goggle Mask | 117 | 9.0% |
+| Burlap Sack Hood | 116 | 8.9% |
+| Gas Mask | 93 | 7.2% |
+| Paisley Bandana | 71 | 5.5% |
+| Iron Muzzle | 41 | 3.2% |
+| Bloody Bandage Wrap | 25 | 1.9% |
+| Cracked Doll Mask | 25 | 1.9% |
 | Honeycomb Half-Mask | 25 | 1.9% |
 | Needle-Tooth Snarl | 25 | 1.9% |
-| Cracked Doll Mask | 25 | 1.9% |
-| Melted Wax Face | 24 | 1.8% |
-| Buckled Harness Hood | 23 | 1.8% |
-| Flayed Muscle Face | 23 | 1.8% |
-| Stitched Toy Face | 23 | 1.8% |
-| Rubber Seam Face | 22 | 1.7% |
-| Blank Bone Mask | 22 | 1.7% |
-| Moaning Paper Mask | 21 | 1.6% |
-| Smeared Greasepaint | 20 | 1.5% |
+| Rubber Seam Face | 20 | 1.5% |
+| Buckled Harness Hood | 20 | 1.5% |
+| Smeared Greasepaint | 18 | 1.4% |
+| Flayed Muscle Face | 16 | 1.2% |
+| Melted Wax Face | 15 | 1.2% |
+| Stitched Toy Face | 14 | 1.1% |
+| Moaning Paper Mask | 13 | 1.0% |
 | Zipper Mouth Leather (Rare+) | 12 | 0.9% |
+| Blank Bone Mask | 12 | 0.9% |
 | Nail-Studded Leather Mask (Rare+) | 11 | 0.8% |
 | Bone Skull Mask (Rare+) | 8 | 0.6% |
 | Stitched Skin Mask (Rare+) | 8 | 0.6% |
@@ -82,19 +82,19 @@
 | Value | Count | Share |
 |---|---|---|
 | Machete | 195 | 15.0% |
-| Hunting Knife | 136 | 10.5% |
-| Butcher Cleaver | 118 | 9.1% |
-| Meat Hook | 115 | 8.8% |
-| Hatchet | 107 | 8.2% |
-| Sickle | 101 | 7.8% |
+| Hunting Knife | 130 | 10.0% |
+| Butcher Cleaver | 123 | 9.5% |
+| Meat Hook | 116 | 8.9% |
+| Hatchet | 106 | 8.2% |
+| Sickle | 105 | 8.1% |
 | Nail Bat | 88 | 6.8% |
 | Spear | 85 | 6.5% |
 | Chainsaw | 82 | 6.3% |
-| Fish Hook | 76 | 5.8% |
-| Ice Pick | 53 | 4.1% |
+| Fish Hook | 71 | 5.5% |
+| Ice Pick | 55 | 4.2% |
 | Bare Fist | 33 | 2.5% |
-| Poison Syringe | 25 | 1.9% |
 | Rusty Shears | 25 | 1.9% |
+| Poison Syringe | 25 | 1.9% |
 | Golden Machete (Rare+) | 16 | 1.2% |
 | Hook Hand (Rare+) | 15 | 1.2% |
 | Flamethrower (Rare+) | 11 | 0.8% |
@@ -106,13 +106,13 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Weed Whacker | 283 | 21.8% |
-| Pitchfork | 204 | 15.7% |
-| Sledgehammer | 162 | 12.5% |
+| Weed Whacker | 282 | 21.7% |
+| Pitchfork | 202 | 15.5% |
+| Sledgehammer | 163 | 12.5% |
 | Chainsaw | 155 | 11.9% |
-| Woodcutter Axe | 150 | 11.5% |
+| Woodcutter Axe | 153 | 11.8% |
 | None | 141 | 10.8% |
-| Rusty Shovel | 109 | 8.4% |
+| Rusty Shovel | 108 | 8.3% |
 | Circus Mallet (Rare+) | 26 | 2.0% |
 | Leathery Bat Wings | 25 | 1.9% |
 | Scythe (Rare+) | 19 | 1.5% |
@@ -124,16 +124,16 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Patched Work Jacket | 173 | 13.3% |
-| Plaid Flannel | 128 | 9.8% |
+| Patched Work Jacket | 181 | 13.9% |
+| Plaid Flannel | 131 | 10.1% |
 | Mechanic Coveralls | 96 | 7.4% |
 | Orange Prison Jumpsuit | 96 | 7.4% |
-| Grimy Hoodie | 92 | 7.1% |
+| Grimy Hoodie | 93 | 7.2% |
 | Bloody Surgeon Scrubs | 88 | 6.8% |
-| Butcher Apron | 77 | 5.9% |
+| Butcher Apron | 74 | 5.7% |
 | Tattered Shirt | 74 | 5.7% |
-| Denim Jacket | 64 | 4.9% |
-| Torn Undershirt | 56 | 4.3% |
+| Denim Jacket | 66 | 5.1% |
+| Torn Undershirt | 60 | 4.6% |
 | Trench Coat | 38 | 2.9% |
 | Black Jumpsuit | 38 | 2.9% |
 | Tan Blood-Splatter Jumpsuit | 34 | 2.6% |
@@ -141,8 +141,8 @@
 | Navy Jumpsuit | 30 | 2.3% |
 | Rust-Red Boiler Suit | 25 | 1.9% |
 | Ragged Plum Greatcoat | 25 | 1.9% |
-| Bloody Chef Smock | 25 | 1.9% |
-| Carnival Barker Vest | 25 | 1.9% |
+| Carnival Barker Vest | 18 | 1.4% |
+| Bloody Chef Smock | 17 | 1.3% |
 | Tattered Undertaker Suit (Rare+) | 12 | 0.9% |
 | Tattered Nun Habit | 8 | 0.6% |
 | Gingham Farm Dress | 8 | 0.6% |
@@ -169,23 +169,23 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Sage Clay | 189 | 14.5% |
-| Swamp Clay | 180 | 13.8% |
-| Slate Clay | 155 | 11.9% |
-| Teal Clay | 131 | 10.1% |
-| Rust Clay | 104 | 8.0% |
-| Bruise Clay | 101 | 7.8% |
-| Blood Splatter | 87 | 6.7% |
-| Bone Clay | 78 | 6.0% |
-| Lakeside Cabin | 31 | 2.4% |
-| Haunted Mansion | 30 | 2.3% |
-| Radioactive Wasteland | 26 | 2.0% |
-| Abandoned Laboratory | 26 | 2.0% |
-| Insane Asylum | 25 | 1.9% |
-| Killer Circus | 25 | 1.9% |
-| Graveyard | 24 | 1.8% |
-| Doctor's Hospital Room | 23 | 1.8% |
-| Nightmare Sequence | 22 | 1.7% |
+| Sage Clay | 195 | 15.0% |
+| Swamp Clay | 183 | 14.1% |
+| Slate Clay | 160 | 12.3% |
+| Teal Clay | 134 | 10.3% |
+| Rust Clay | 111 | 8.5% |
+| Bruise Clay | 102 | 7.8% |
+| Blood Splatter | 91 | 7.0% |
+| Bone Clay | 81 | 6.2% |
+| Lakeside Cabin | 28 | 2.2% |
+| Haunted Mansion | 26 | 2.0% |
+| Radioactive Wasteland | 24 | 1.8% |
+| Graveyard | 22 | 1.7% |
+| Abandoned Laboratory | 21 | 1.6% |
+| Insane Asylum | 21 | 1.6% |
+| Killer Circus | 20 | 1.5% |
+| Nightmare Sequence | 19 | 1.5% |
+| Doctor's Hospital Room | 19 | 1.5% |
 | Cornfield (Rare+) | 14 | 1.1% |
 | Blood Moon (Rare+) | 14 | 1.1% |
 | Jail Cell | 13 | 1.0% |
@@ -196,31 +196,31 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Flesh Pink | 359 | 27.6% |
-| Corpse Grey | 234 | 18.0% |
-| Sallow | 179 | 13.8% |
-| Pale Wax | 149 | 11.5% |
+| Flesh Pink | 365 | 28.1% |
+| Corpse Grey | 239 | 18.4% |
+| Sallow | 178 | 13.7% |
+| Pale Wax | 147 | 11.3% |
 | Ruddy | 136 | 10.5% |
 | Deep Brown | 125 | 9.6% |
-| Bloodless Blue | 72 | 5.5% |
-| Toxic Green | 45 | 3.5% |
+| Bloodless Blue | 70 | 5.4% |
+| Toxic Green | 39 | 3.0% |
 | Icy Retro Blue | 1 | 0.1% |
 
 ## Hair
 
 | Value | Count | Share |
 |---|---|---|
-| Grey Side Tufts | 347 | 26.7% |
-| Bald | 197 | 15.2% |
-| Greasy Comb-over | 134 | 10.3% |
+| Grey Side Tufts | 349 | 26.8% |
+| Bald | 198 | 15.2% |
+| Greasy Comb-over | 135 | 10.4% |
 | Wild Grey Tufts | 124 | 9.5% |
-| Greasy Bob | 93 | 7.2% |
+| Greasy Bob | 94 | 7.2% |
 | Messy Grey Bun | 89 | 6.8% |
 | Backwards Cap | 84 | 6.5% |
 | Matted Pixie Cut | 66 | 5.1% |
 | Thinning Pin Curls | 55 | 4.2% |
 | Buzzed Scalp | 28 | 2.2% |
-| Battered Top Hat | 25 | 1.9% |
+| Battered Top Hat | 20 | 1.5% |
 | Black Veil | 8 | 0.6% |
 | Straw Sun Bonnet | 8 | 0.6% |
 | Choppy Teal Wig | 8 | 0.6% |

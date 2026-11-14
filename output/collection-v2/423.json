@@ -4,7 +4,7 @@
   "attributes": [
     {
       "trait_type": "Tier",
-      "value": "Uncommon"
+      "value": "Standard"
     },
     {
       "trait_type": "Head",
@@ -24,11 +24,11 @@
     },
     {
       "trait_type": "Mask",
-      "value": "Buckled Harness Hood"
+      "value": "Paisley Bandana"
     },
     {
       "trait_type": "Held Weapon",
-      "value": "Poison Syringe"
+      "value": "Butcher Cleaver"
     },
     {
       "trait_type": "Back Weapon",

@@ -4,7 +4,7 @@
   "attributes": [
     {
       "trait_type": "Tier",
-      "value": "Uncommon"
+      "value": "Standard"
     },
     {
       "trait_type": "Head",
@@ -12,7 +12,7 @@
     },
     {
       "trait_type": "Skin",
-      "value": "Deep Brown"
+      "value": "Corpse Grey"
     },
     {
       "trait_type": "Hair",
@@ -36,7 +36,7 @@
     },
     {
       "trait_type": "Clothing",
-      "value": "Ragged Plum Greatcoat"
+      "value": "Torn Undershirt"
     },
     {
       "trait_type": "Belt",

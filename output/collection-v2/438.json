@@ -4,7 +4,7 @@
   "attributes": [
     {
       "trait_type": "Tier",
-      "value": "Uncommon"
+      "value": "Standard"
     },
     {
       "trait_type": "Head",
@@ -44,7 +44,7 @@
     },
     {
       "trait_type": "Backdrop",
-      "value": "Abandoned Laboratory"
+      "value": "Slate Clay"
     },
     {
       "trait_type": "Ears",

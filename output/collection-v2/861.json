@@ -4,7 +4,7 @@
   "attributes": [
     {
       "trait_type": "Tier",
-      "value": "Uncommon"
+      "value": "Standard"
     },
     {
       "trait_type": "Head",
@@ -12,7 +12,7 @@
     },
     {
       "trait_type": "Skin",
-      "value": "Deep Brown"
+      "value": "Sallow"
     },
     {
       "trait_type": "Hair",
@@ -36,7 +36,7 @@
     },
     {
       "trait_type": "Clothing",
-      "value": "Ragged Plum Greatcoat"
+      "value": "Butcher Apron"
     },
     {
       "trait_type": "Belt",
@@ -44,7 +44,7 @@
     },
     {
       "trait_type": "Backdrop",
-      "value": "Lakeside Cabin"
+      "value": "Sage Clay"
     },
     {
       "trait_type": "Ears",

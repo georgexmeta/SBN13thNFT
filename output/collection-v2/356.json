@@ -4,7 +4,7 @@
   "attributes": [
     {
       "trait_type": "Tier",
-      "value": "Uncommon"
+      "value": "Standard"
     },
     {
       "trait_type": "Head",
@@ -12,7 +12,7 @@
     },
     {
       "trait_type": "Skin",
-      "value": "Deep Brown"
+      "value": "Flesh Pink"
     },
     {
       "trait_type": "Hair",
@@ -36,7 +36,7 @@
     },
     {
       "trait_type": "Clothing",
-      "value": "Rust-Red Boiler Suit"
+      "value": "Grimy Hoodie"
     },
     {
       "trait_type": "Belt",

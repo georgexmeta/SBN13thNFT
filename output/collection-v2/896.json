@@ -4,7 +4,7 @@
   "attributes": [
     {
       "trait_type": "Tier",
-      "value": "Uncommon"
+      "value": "Standard"
     },
     {
       "trait_type": "Head",
@@ -12,7 +12,7 @@
     },
     {
       "trait_type": "Skin",
-      "value": "Deep Brown"
+      "value": "Ruddy"
     },
     {
       "trait_type": "Hair",
@@ -24,11 +24,11 @@
     },
     {
       "trait_type": "Mask",
-      "value": "Blank Bone Mask"
+      "value": "Patchwork Goggle Mask"
     },
     {
       "trait_type": "Held Weapon",
-      "value": "Rusty Shears"
+      "value": "Butcher Cleaver"
     },
     {
       "trait_type": "Back Weapon",

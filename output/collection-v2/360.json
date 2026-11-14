@@ -4,7 +4,7 @@
   "attributes": [
     {
       "trait_type": "Tier",
-      "value": "Uncommon"
+      "value": "Standard"
     },
     {
       "trait_type": "Head",
@@ -24,11 +24,11 @@
     },
     {
       "trait_type": "Mask",
-      "value": "Bloody Bandage Wrap"
+      "value": "Burlap Pig Mask"
     },
     {
       "trait_type": "Held Weapon",
-      "value": "Poison Syringe"
+      "value": "Ice Pick"
     },
     {
       "trait_type": "Back Weapon",

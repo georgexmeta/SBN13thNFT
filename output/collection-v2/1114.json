@@ -4,7 +4,7 @@
   "attributes": [
     {
       "trait_type": "Tier",
-      "value": "Uncommon"
+      "value": "Standard"
     },
     {
       "trait_type": "Head",
@@ -28,7 +28,7 @@
     },
     {
       "trait_type": "Held Weapon",
-      "value": "Poison Syringe"
+      "value": "Sickle"
     },
     {
       "trait_type": "Back Weapon",
@@ -44,7 +44,7 @@
     },
     {
       "trait_type": "Backdrop",
-      "value": "Insane Asylum"
+      "value": "Swamp Clay"
     },
     {
       "trait_type": "Ears",

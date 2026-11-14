@@ -4,7 +4,7 @@
   "attributes": [
     {
       "trait_type": "Tier",
-      "value": "Uncommon"
+      "value": "Standard"
     },
     {
       "trait_type": "Head",
@@ -28,7 +28,7 @@
     },
     {
       "trait_type": "Held Weapon",
-      "value": "Poison Syringe"
+      "value": "Hatchet"
     },
     {
       "trait_type": "Back Weapon",

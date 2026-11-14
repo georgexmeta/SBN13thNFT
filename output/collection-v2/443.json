@@ -4,7 +4,7 @@
   "attributes": [
     {
       "trait_type": "Tier",
-      "value": "Uncommon"
+      "value": "Standard"
     },
     {
       "trait_type": "Head",
@@ -24,7 +24,7 @@
     },
     {
       "trait_type": "Mask",
-      "value": "Bloody Bandage Wrap"
+      "value": "Iron Muzzle"
     },
     {
       "trait_type": "Held Weapon",

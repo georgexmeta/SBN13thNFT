@@ -452,6 +452,7 @@ def build():
     syringe_pass(tokens)
     retro_pass(tokens)
     icon_pass(tokens)
+    trim_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -570,7 +571,7 @@ def syringe_pass(tokens):
     ordinary one-hand weapon. Runs after woman_pass so no earlier pick shifts; the token becomes Uncommon."""
     keep = set(json.load(open(os.path.join(ROOT, "generator", "rendered_keep_syringe.json"))))
     late = random.Random(4040)
-    pool = [i for i, (a, f) in enumerate(tokens, 1) if i not in keep and not f and a["Tier"] in ("Standard", "Uncommon")
+    pool = [i for i, (a, f) in enumerate(tokens, 1) if i not in keep and not f and a["Tier"] == "Uncommon"
             and a["Held Weapon"] in HELD_STD and a["Held Weapon"] not in ("Chainsaw", "Bare Fist")]
     dnas = {tuple(sorted((k, v) for k, v in a.items() if k != "Tier")) for a, _ in tokens}
     for i in late.sample(pool, 25):
@@ -583,7 +584,7 @@ def syringe_pass(tokens):
 def icon_pass(tokens):
     keep = set(json.load(open(os.path.join(ROOT, "generator", "rendered_keep_syringe.json"))))
     late = random.Random(6161)
-    pool = [i for i, (a, f) in enumerate(tokens, 1) if i not in keep and not f and a["Tier"] in ("Standard", "Uncommon")
+    pool = [i for i, (a, f) in enumerate(tokens, 1) if i not in keep and not f and a["Tier"] == "Uncommon"
             and a["Character"] in ("Classic", "Woman") and a["Held Weapon"] != "Poison Syringe"]
     late.shuffle(pool)
     dnas = {tuple(sorted((k, v) for k, v in a.items() if k != "Tier")) for a, _ in tokens}
@@ -607,6 +608,37 @@ def icon_pass(tokens):
             if n == 25:
                 break
         assert n == 25, (val, n)
+
+
+def trim_pass(tokens):
+    """Uncommons rarer than Standards (George, 2026-11-14): 100 unrendered Uncommons whose only uncommon trait is a mask,
+    backdrop, hat or outfit go back to an ordinary pick and become Standard. Gauged ears (exactly 130), the syringe and the
+    horror-icon set keep their counts. Runs last, with its own seed, so nothing earlier shifts."""
+    keep = set(json.load(open(os.path.join(ROOT, "generator", "rendered_keep_syringe.json"))))
+    late = random.Random(8080)
+    U = {"Mask": set(MASK_NEW) | {CLOWN["Mask"][0]} | set(HOMAGE_MASK), "Backdrop": set(BACKDROP_SCENE) | set(SCENE2),
+         "Hair": {CLOWN["Hair"][0]}, "Clothing": {CLOWN["Clothing"][0], HOMAGE_CLOTH[0]}}
+    plain = {"Mask": MASK_STD, "Backdrop": BACKDROP, "Clothing": CLOTH_STD}
+    new = {"Poison Syringe"} | {v for _, v in ICON_TRAITS}
+    cands = []
+    for i, (a, f) in enumerate(tokens, 1):
+        hits = [t for t in U if a[t] in U[t]]
+        if (i not in keep and not f and a["Tier"] == "Uncommon" and len(hits) == 1 and a["Ears"] != "Gauged"
+                and not new & set(a.values()) and a["Character"] in ("Classic", "Woman")):
+            cands.append((i, hits[0]))
+    dnas = {tuple(sorted((k, v) for k, v in a.items() if k != "Tier")) for a, _ in tokens}
+    for i, t in late.sample(cands, 100):
+        a = tokens[i - 1][0]
+        old = tuple(sorted((k, v) for k, v in a.items() if k != "Tier"))
+        table = plain.get(t) or (HAIR_WOMAN if a["Character"] == "Woman" else HAIR)
+        for _ in range(30):
+            b = dict(a, **{t: pick(late, table)}, Tier="Standard")
+            dna = tuple(sorted((k, v) for k, v in b.items() if k != "Tier"))
+            if dna not in dnas:
+                dnas.discard(old); dnas.add(dna); a.update(b)
+                break
+        else:
+            raise AssertionError(i)
 
 
 def retro_pass(tokens):
