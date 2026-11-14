@@ -23,6 +23,8 @@ OUTDIR = os.environ.get("OUTDIR", os.path.join(ROOT, "output", "ai", "images"))
 MODEL = os.environ.get("GEMINI_IMAGE_MODEL", "gemini-2.5-flash-image")
 DEFAULT_REFS = [os.path.join(ROOT, "refs", "master-reference.jpg"), os.path.join(ROOT, "refs", "face-reference.png")]
 MASK_REF = os.path.join(ROOT, "refs", "mask-reference.jpg")
+_bump = os.path.join(ROOT, "generator", "seed_bump.json")
+SEED_BUMP = json.load(open(_bump)) if os.path.exists(_bump) else {}
 
 LEAD = ("The first reference photo sets the sculpting style, clay finish, lighting and camera framing. The second "
         "reference photo is the character: keep the exact same face sculpt and head proportions. Change only what this "
@@ -95,6 +97,7 @@ def main():
             continue
         try:
             row = dict(rows[i])
+            row["seed"] += SEED_BUMP.get(str(i), 0)   # manual re-roll for a token whose first render was wrong
             for tries in range(3):   # every token must face ~45 degrees to the viewer's right
                 img = generate(row, refs, key)
                 tmp = out + ".check.png"; open(tmp, "wb").write(img)
