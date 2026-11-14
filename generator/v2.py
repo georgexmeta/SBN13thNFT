@@ -122,6 +122,16 @@ HOMAGE_MASK = {
 HOMAGE_CLOTH = ("Bloody Chef Smock", "a heavy blood-soaked white double-breasted chef's smock with rolled sleeves and a crumpled "
                 "red neckerchief")
 N_HOMAGE = 25
+# Two more Uncommon scene backdrops (George, 2026-11-14), kept separate from BACKDROP_SCENE so earlier picks don't shift.
+SCENE2 = {
+    "Killer Circus": "a rotting abandoned circus big top at night with a torn red-and-yellow striped tent, a broken carousel horse, flickering "
+                     "bulb strings and a blood-smeared ticket booth, sculpted as a miniature claymation diorama in matte plasticine, "
+                     "softly out of focus behind him, no signs or lettering",
+    "Insane Asylum": "a derelict insane asylum corridor with peeling green tiles, a rusty wheelchair, a padded cell door hanging open and "
+                     "flickering fluorescent tubes, sculpted as a miniature claymation diorama in matte plasticine, softly out of focus "
+                     "behind him, no signs or lettering",
+}
+N_SCENE2 = 25
 # Very exclusive Jail Cell backdrop (George, 2026-11-14): exactly 13 unrendered, non-legendary tokens.
 JAIL = ("Jail Cell", "a grimy jail cell with rusty iron bars, a cracked concrete wall scratched with tally marks, a dented metal "
         "bunk and a single bare hanging bulb, sculpted as a miniature claymation diorama in matte plasticine, softly out of focus behind him, no signs or lettering")
@@ -268,7 +278,7 @@ NEGATIVE = ("text, logo, letters, watermark, brand marks, sports team logo, red 
             "photo of a real person, cartoon outline, flat 2D, face turned to the left, mirrored pose, long finger blades, clawed glove with four long knives, "
             "red and green striped sweater, brown fedora")
 ALL = {"Head": HEAD, "Skin": SKIN, "Hair": {CLOWN["Hair"][0]: (0, CLOWN["Hair"][1]), **HAIR, **{v[0]: (0, v[1]) for v in FEMALE.values()}, "Grey Curled Perm": (0, FEMALE_EXTRA["Grey Curled Perm"]), "Blood-Matted Curls": (0, FEMALE_EXTRA["Blood-Matted Curls"])}, "Head Mark": HEAD_MARK, "Ears": EARS, "Clothing": {CLOWN["Clothing"][0]: (0, CLOWN["Clothing"][1]), HOMAGE_CLOTH[0]: (0, HOMAGE_CLOTH[1]), **CLOTH_STD, **CLOTH_NEW, **CLOTH_RARE, **{v[4]: (0, v[5]) for v in FEMALE.values()}, "Mustard Cardigan": (0, FEMALE_EXTRA["Mustard Cardigan"]), "Blood-Drenched Prom Gown": (0, FEMALE_EXTRA["Blood-Drenched Prom Gown"])},
-       "Belt": BELT, "Backdrop": {**BACKDROP, **BACKDROP_RARE, **BACKDROP_SCENE, JAIL[0]: (0, JAIL[1]), "Burning Gym": (0, FEMALE_EXTRA["Burning Gym"])}, "Mask": {CLOWN["Mask"][0]: (0, CLOWN["Mask"][1]), **{k: (0, v) for k, v in HOMAGE_MASK.items()}, **MASK_STD, **MASK_RARE, **MASK_NEW, **{v[2]: (0, v[3]) for v in FEMALE.values()}, "Mad Mother's Face": (0, FEMALE_EXTRA["Mad Mother's Face"]), "Psychic Glare": (0, FEMALE_EXTRA["Psychic Glare"])},
+       "Belt": BELT, "Backdrop": {**BACKDROP, **BACKDROP_RARE, **BACKDROP_SCENE, JAIL[0]: (0, JAIL[1]), **{k: (0, v) for k, v in SCENE2.items()}, "Burning Gym": (0, FEMALE_EXTRA["Burning Gym"])}, "Mask": {CLOWN["Mask"][0]: (0, CLOWN["Mask"][1]), **{k: (0, v) for k, v in HOMAGE_MASK.items()}, **MASK_STD, **MASK_RARE, **MASK_NEW, **{v[2]: (0, v[3]) for v in FEMALE.values()}, "Mad Mother's Face": (0, FEMALE_EXTRA["Mad Mother's Face"]), "Psychic Glare": (0, FEMALE_EXTRA["Psychic Glare"])},
        "Held Weapon": {**HELD_STD, **HELD_RARE, "Telekinesis": (0, "")}, "Back Weapon": {**BACK_STD, **BACK_RARE}}
 
 
@@ -365,6 +375,7 @@ def build():
     prom_pass(tokens)
     head_pass(tokens)
     homage_pass(tokens)
+    scene2_pass(tokens)
     tier_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
@@ -508,10 +519,19 @@ def homage_pass(tokens):
                 tokens[i - 1][0][trait] = val; done.add(i)
 
 
+def scene2_pass(tokens):
+    keep = set(json.load(open(os.path.join(ROOT, "generator", "rendered_keep_jail.json"))))
+    late = random.Random(2525)
+    for val in SCENE2:
+        pool = [i for i, (a, finish) in enumerate(tokens, 1) if i not in keep and not finish and a["Backdrop"] in BACKDROP]
+        for i in late.sample(pool, N_SCENE2):
+            tokens[i - 1][0]["Backdrop"] = val
+
+
 def tier_pass(tokens):
     """Uncommon tier (George, 2026-11-14): a Standard token that carries any Uncommon trait is relabelled Uncommon.
     Metadata only, so finished images don't change."""
-    UNCOMMON = {"Mask": set(MASK_NEW) | {CLOWN["Mask"][0]} | set(HOMAGE_MASK), "Backdrop": set(BACKDROP_SCENE),
+    UNCOMMON = {"Mask": set(MASK_NEW) | {CLOWN["Mask"][0]} | set(HOMAGE_MASK), "Backdrop": set(BACKDROP_SCENE) | set(SCENE2),
                 "Hair": {CLOWN["Hair"][0]}, "Clothing": {CLOWN["Clothing"][0], HOMAGE_CLOTH[0]}}
     for a, _ in tokens:
         if a["Tier"] == "Standard" and (a["Mask"] in UNCOMMON["Mask"] or a["Backdrop"] in UNCOMMON["Backdrop"]

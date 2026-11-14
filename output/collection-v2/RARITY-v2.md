@@ -6,8 +6,8 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Standard | 694 | 53.4% |
-| Uncommon | 463 | 35.6% |
+| Standard | 671 | 51.6% |
+| Uncommon | 486 | 37.4% |
 | Rare | 130 | 10.0% |
 | Legendary 1/1 | 13 | 1.0% |
 
@@ -156,18 +156,20 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Sage Clay | 196 | 15.1% |
-| Swamp Clay | 188 | 14.5% |
-| Slate Clay | 164 | 12.6% |
-| Teal Clay | 135 | 10.4% |
-| Rust Clay | 110 | 8.5% |
-| Bruise Clay | 106 | 8.2% |
-| Blood Splatter | 90 | 6.9% |
-| Bone Clay | 86 | 6.6% |
+| Sage Clay | 189 | 14.5% |
+| Swamp Clay | 180 | 13.8% |
+| Slate Clay | 155 | 11.9% |
+| Teal Clay | 131 | 10.1% |
+| Rust Clay | 104 | 8.0% |
+| Bruise Clay | 101 | 7.8% |
+| Blood Splatter | 87 | 6.7% |
+| Bone Clay | 78 | 6.0% |
 | Lakeside Cabin | 31 | 2.4% |
 | Haunted Mansion | 30 | 2.3% |
 | Radioactive Wasteland | 26 | 2.0% |
 | Abandoned Laboratory | 26 | 2.0% |
+| Insane Asylum | 25 | 1.9% |
+| Killer Circus | 25 | 1.9% |
 | Graveyard | 24 | 1.8% |
 | Doctor's Hospital Room | 23 | 1.8% |
 | Nightmare Sequence | 22 | 1.7% |
