@@ -145,9 +145,10 @@
 
 | Value | Count | Share |
 |---|---|---|
-| None | 891 | 68.5% |
+| None | 821 | 63.2% |
 | Rusted Saw Weed Whacker | 126 | 9.7% |
 | Bloody Saw Weed Whacker | 93 | 7.2% |
+| Oxygen Tank | 70 | 5.4% |
 | Clean Saw Weed Whacker | 47 | 3.6% |
 | Pitchfork | 25 | 1.9% |
 | Leathery Bat Wings | 25 | 1.9% |

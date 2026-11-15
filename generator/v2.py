@@ -669,6 +669,7 @@ def build():
     two_hand_pass(tokens)
     hook_off_pass(tokens)
     wound_pass(tokens)
+    oxygen_pass(tokens)
     for _i in WEEDWACKER:
         tokens[_i - 1][0]["Held Weapon"] = "Golden Saw Weed Whacker"
     os.makedirs(OUT, exist_ok=True)
@@ -933,6 +934,18 @@ WOUND_SHOWS = {"Bare Face", "Hockey Half-Mask", "Gas Mask", "Paisley Bandana", "
                "Smeared Greasepaint", "Needle-Tooth Snarl"}   # masks that leave the forehead bare
 WOUND = ("a deep fresh bloody wound gouged into the clay on the LEFT side of his forehead (left as we look at him), just above the brow: "
          "a ragged open gash with torn raw red edges, glossy dark blood pooled inside and a few thick drips running down past his eye")
+
+
+# George 2026-11-15: a gas-mask wearer with nothing on his back carries an oxygen tank, hosed to the mask (Back Weapon "Oxygen Tank").
+OXYGEN = ("a dented rusty green oxygen tank strapped upright on his back with frayed canvas straps over both shoulders, its brass valve "
+          "poking up behind his shoulder and a ribbed black rubber hose running from the valve over his shoulder into the side of his gas mask")
+ALL["Back Weapon"]["Oxygen Tank"] = (0, OXYGEN)
+
+
+def oxygen_pass(tokens):
+    for a, f in tokens:
+        if a["Tier"] != "Legendary 1/1" and a["Mask"] == "Gas Mask" and a["Back Weapon"] == "None":
+            a["Back Weapon"] = "Oxygen Tank"
 
 
 def wound_pass(tokens):
