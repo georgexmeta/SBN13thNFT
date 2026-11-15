@@ -224,7 +224,7 @@ DUCHESS_EXTRA = [
 # 1/1 "Cinder Doll" (George, 2026-11-15, final 1/1): a burned killer toy doll, inspired by a charred doll figure but
 # not that character: no red hair, no denim overalls, no striped shirt, no toy box or brand. Replaces Cinder (George's
 # pick) in doll_pass, after every other pass. 13 Legendaries.
-DOLL = ("Cinder", {"1/1 Name": "Cinder Doll", "Character": "Cinder Doll", "Head": "Doll", "Skin": "Charred Plastic",
+DOLL = ("Cinder", {"1/1 Name": "Scorched Doll", "Character": "Scorched Doll", "Head": "Doll", "Skin": "Charred Plastic",
         "Hair": "Singed Yarn Tufts", "Head Mark": "Clean", "Ears": "Natural", "Mask": "Melted Doll Face", "Held Weapon": "Bloody Kitchen Knife",
         "Back Weapon": "None", "Clothing": "Scorched Corduroy Dungarees", "Belt": "None", "Backdrop": "Burnt Dollhouse"})
 DOLL_BASE = ("A small evil child's toy doll come to life, a burned killer doll with a big round doll head, short stubby limbs and "
@@ -472,6 +472,10 @@ DUAL_PHRASE.update({   # bladed-glove men (George 2026-11-15) wield their back w
     "Scythe": "a huge rusty scythe by its long wooden snath, held upright beside him with the curved blade arching above his head",
     "Harpoon Gun": "a rusty harpoon gun loaded with a barbed harpoon, aimed out to the side",
     "Double-Barrel Shotgun": "a sawn-off rusty double-barrel shotgun with a cracked wooden stock, held one-handed, barrels pointing up and out"})
+DUAL_PHRASE["Cursed Flesh Tome"] = ("a thick cursed book by its spine, held up to the side: an ancient tome bound in stitched, scarred, leathery "
+                                   "skin with rusty iron corner clasps and a rusty chain, torn yellowed pages poking out, dark stains; "
+                                   "no title, no lettering, no symbols and no face on the cover")
+TOME = ("Scorched Doll", "The Grieving Mother")   # George 2026-11-15: both 1/1s hold the cursed book in the left hand
 GLOVE_FINISH = {177: "Gold", 283: "Gold", 744: "Chrome"}
 PICKAXE = [79, 87, 231, 259, 266, 324, 360, 490, 567, 794, 818, 820]
 # Machete variants (George, 2026-11-15), machete_pass: finished machetes are labelled Rusted (what they show); unrendered ones are
@@ -599,7 +603,7 @@ def prompt(a, legendary_finish=None):
     female = a.get("Character", "Classic") in FEMALE or a.get("Character") in ("The Grieving Mother", "The Prom Queen", "The Ringmistress", "Woman", "Madame Mortis")
     if female:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"]), phrase("Head Mark", a["Head Mark"]), phrase("Ears", a.get("Ears", "Natural"))]
-    doll = a.get("Character") == "Cinder Doll"
+    doll = a.get("Character") == "Scorched Doll"
     if doll:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"])]
     parts = [STYLE, DOLL_BASE if doll else FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
@@ -721,6 +725,9 @@ def build():
     oxygen_pass(tokens)
     neck_pass(tokens)
     dedupe_pass(tokens)
+    for _a, _f in tokens:
+        if _a.get("1/1 Name") in TOME:
+            _a["Off Hand"] = "Cursed Flesh Tome"
     for _i, _g in GLOVE_FINISH.items():   # George 2026-11-15: 2 gold and 1 chrome claw gloves among the 6 gloved men
         assert tokens[_i - 1][0]["Held Weapon"] == "Nail-Knife Glove"
         tokens[_i - 1][0]["Held Weapon"] = f"{_g} Claw Glove"

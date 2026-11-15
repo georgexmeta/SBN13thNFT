@@ -1,5 +1,5 @@
 {
-  "name": "SBN13th #170 - Cinder Doll",
+  "name": "SBN13th #170 - Scorched Doll",
   "seed": 1704771854,
   "attributes": [
     {
@@ -8,7 +8,7 @@
     },
     {
       "trait_type": "1/1 Name",
-      "value": "Cinder Doll"
+      "value": "Scorched Doll"
     },
     {
       "trait_type": "Head",
@@ -56,7 +56,11 @@
     },
     {
       "trait_type": "Character",
-      "value": "Cinder Doll"
+      "value": "Scorched Doll"
+    },
+    {
+      "trait_type": "Off Hand",
+      "value": "Cursed Flesh Tome"
     }
   ]
 }
