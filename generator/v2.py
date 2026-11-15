@@ -386,6 +386,10 @@ ALL["Held Weapon"]["Poison Syringe"] = (0, "a big old glass syringe filled with 
 ALL["Skin"], ALL["Belt"] = dict(ALL["Skin"]), dict(ALL["Belt"])   # copies, so the retro values never touch the SKIN/BELT pick tables
 for _t, (_v, _p) in RETRO_EXTRA.items():
     ALL[_t][_v] = (0, _p)
+# Shrunken Head Bandolier (George, 2026-11-15): a more exclusive trait, worn across the chest with 5 shrunken heads.
+# Belt slot, 13 unrendered Rare tokens (head_strap_pass), so tier counts don't move.
+ALL["Belt"]["Shrunken Head Bandolier"] = (0, "a worn leather bandolier strap slung diagonally across his chest from shoulder to hip with exactly "
+                                          "five small wrinkled shrunken heads hanging from it, their eyes and lips stitched shut, wisps of dark hair")
 for _t, _v, _p in ICON_EXTRA + DUCHESS_EXTRA + DOLL_EXTRA:
     ALL[_t][_v] = (0, _p)
 
@@ -499,6 +503,7 @@ def build():
     trim_pass(tokens)
     duchess_pass(tokens)
     doll_pass(tokens)
+    head_strap_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -697,6 +702,15 @@ def doll_pass(tokens):
     for i, (a, finish) in enumerate(tokens):
         if a.get("1/1 Name") == DOLL[0]:
             a.update(DOLL[1]); tokens[i] = (a, None)
+
+
+def head_strap_pass(tokens):
+    keep = set(json.load(open(os.path.join(ROOT, "generator", "rendered_keep_syringe.json"))))
+    late = random.Random(5555)
+    pool = [i for i, (a, f) in enumerate(tokens, 1) if i not in keep and not f and a["Tier"] == "Rare"
+            and a["Character"] in ("Classic", "Woman")]
+    for i in late.sample(pool, 13):
+        tokens[i - 1][0]["Belt"] = "Shrunken Head Bandolier"   # a new value can't collide with an existing DNA
 
 
 def retro_pass(tokens):
