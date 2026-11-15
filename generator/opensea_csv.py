@@ -10,7 +10,7 @@ import csv, json, os, re, shutil
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 NAME = "Claysons"
 DESC = "Claysons: 1,300 hand-sculpted-look claymation slashers. 758 Standard, 399 Uncommon, 130 Rare and 13 Legendary 1/1s. Three Legendary 1/1s (#1 to #3) are held by the team."
-TRAITS = ["Tier", "1/1 Name", "Character", "Head", "Skin", "Hair", "Head Mark", "Ears", "Mask", "Held Weapon", "Back Weapon", "Clothing", "Belt", "Backdrop"]
+TRAITS = ["Tier", "1/1 Name", "Character", "Head", "Skin", "Hair", "Head Mark", "Ears", "Mask", "Held Weapon", "Back Weapon", "Clothing", "Belt", "Backdrop", "Splatter", "Off Hand"]
 
 
 def main():
