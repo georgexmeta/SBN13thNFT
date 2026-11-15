@@ -880,11 +880,15 @@ def blade_pass(tokens):
             tokens[i - 1][0]["Held Weapon"] = f"{'Rusted' if r < .47 else 'Bloody' if r < .82 else 'Clean'} {w}"
 
 
+# George (2026-11-15): 13 hooded in total, so 9 finished bald hoodie Claysons are redone with the hood up.
+HOOD_REDO = [36, 166, 184, 219, 298, 513, 739, 757, 808]
+
+
 def hood_pass(tokens):
     keep = set(json.load(open(os.path.join(ROOT, "generator", "rendered_keep_syringe.json"))))
     pool = [i for i, (a, f) in enumerate(tokens, 1) if i not in keep and not f and a["Clothing"] == "Grimy Hoodie"
             and a["Hair"] in ("Bald", "Grey Side Tufts", "Buzzed Scalp") and a["Mask"] not in ("Burlap Sack Hood", "Burlap Pig Mask")]
-    for i in random.Random(808).sample(pool, round(len(pool) * .6)):
+    for i in random.Random(808).sample(pool, round(len(pool) * .6)) + HOOD_REDO:
         tokens[i - 1][0]["Hair"] = "Hood Up"   # a new value can't collide with an existing DNA
 
 
