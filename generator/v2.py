@@ -245,15 +245,16 @@ DOLL_EXTRA = [
 # Replaces The Thirteenth (George's pick) in collector_pass, after every other pass. 13 Legendaries.
 COLLECTOR = ("The Thirteenth", {"1/1 Name": "The Collector", "Character": "Classic", "Head": "Type 1 - Lumpy Dome", "Skin": "Flesh Pink",
              "Hair": "Worn Trucker Cap", "Head Mark": "Clean", "Ears": "Natural", "Mask": "Bearded Bulging Stare",
-             "Held Weapon": "Mask Orb and Hatchet", "Back Weapon": "None", "Clothing": "Worn Leather Jacket", "Belt": "None",
+             "Held Weapon": "Mask Orb and Golden Axe", "Back Weapon": "None", "Clothing": "Collector's Pin Vest", "Belt": "None",
              "Backdrop": "Terracotta Clay"})
 COLLECTOR_EXTRA = [
     ("Hair", "Worn Trucker Cap", "a dirty, worn plain beige trucker cap with a mesh back, completely blank with no logo, signatures or writing, "
              "messy grey hair sticking out at the sides"),
     ("Mask", "Bearded Bulging Stare", "no mask: a weathered wrinkled face with huge round bulging staring eyes in baggy lids, a big nose and a "
              "scraggly grey-brown beard and moustache"),
-    ("Clothing", "Worn Leather Jacket", "a battered, scuffed black leather jacket with a zip front, open over a plain faded grey T-shirt with "
-                 "no lettering or print"),
+    ("Clothing", "Collector's Pin Vest", "a dad-style khaki collector's vest with lots of pockets, covered in rows of small round blank enamel "
+                 "pin badges in bright colours (plain dots and stars, no pictures, no lettering), over a plain faded grey T-shirt with no lettering "
+                 "or print; he looks like a man in his mid fifties"),
     ("Backdrop", "Terracotta Clay", "a plain textured terracotta-orange pressed clay backdrop"),
 ]
 # "The Ringmistress" (George, 2026-11-14): a 7th female exclusive, an original ADULT woman killer clown inspired by a
@@ -452,7 +453,7 @@ BLADE_FINISH = {"Rusted": "a rusty {} with a pitted, chipped blade smeared with 
 for _w, (_n, _) in BLADES.items():
     for _f, _t in BLADE_FINISH.items():
         ALL["Held Weapon"][f"{_f} {_w}"] = (0, _t.format(_n))
-ALL["Held Weapon"]["Mask Orb and Hatchet"] = (0, "")
+ALL["Held Weapon"]["Mask Orb and Golden Axe"] = (0, "")
 # Half-Burnt Face (George, 2026-11-15): a Head Mark on exactly 13 unrendered bare-face Uncommon tokens (burnt_face_pass).
 ALL["Head Mark"] = dict(ALL["Head Mark"])
 ALL["Head Mark"]["Half-Burnt Face"] = (0, "one half of his face is horribly burnt: charred, blistered and melted flesh peeling away on that side, "
@@ -510,10 +511,10 @@ def prompt(a, legendary_finish=None):
     elif held == "Double Molotov Cocktails":   # George 2026-11-15: one lit Molotov in each hand, 6 Rare tokens
         hand = ("he holds a lit Molotov cocktail in EACH hand: two old glass bottles of sloshing fuel with burning rag wicks, "
                 "small orange flames licking from both, one raised in each fist")
-    elif held == "Mask Orb and Hatchet":
+    elif held == "Mask Orb and Golden Axe":
         hand = ("in his left hand he holds out a round cracked bone-white clay orb shaped like a goalie mask rolled into a ball, covered in rows "
                 "of small breathing holes with rusty rivets and dried blood; it is all one off-white colour, with no red half, no band and no "
-                "button; his right fist grips a rusty hatchet with a worn wooden handle, held low at his side")
+                "button; his right fist grips a gleaming solid-gold axe with a golden head and a dark wooden handle, held low at his side")
     elif held == "Exercise Band":
         hand = ("she holds a stretchy pink rubber exercise resistance band pulled taut between both fists like a strangling cord, "
                 "knuckles toward the camera, a little blood on the band")
@@ -541,7 +542,7 @@ def prompt(a, legendary_finish=None):
     if doll:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"])]
     parts = [STYLE, DOLL_BASE if doll else FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
-             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Mask Orb and Hatchet" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held in ("Death Nails", "Blade Nails") else FRAMING_DUAL if a.get("Off Hand") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_WHACKER if held == "Golden Saw Weed Whacker" else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
+             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Mask Orb and Golden Axe" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held in ("Death Nails", "Blade Nails") else FRAMING_DUAL if a.get("Off Hand") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_WHACKER if held == "Golden Saw Weed Whacker" else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
     text = ". ".join(p[0].upper() + p[1:] for p in parts if p) + "."
     if "empty black eye sockets" in (mask or ""):   # QA #232: the base "sunken eyes" line added a stray third eye
         text = text.replace("small sunken bloodshot eyes in swollen red-rimmed lids, ", "")
@@ -644,7 +645,7 @@ def build():
         name = f"SBN13th #{i}" + (f" - {a['1/1 Name']}" if "1/1 Name" in a else "")
         meta = {"name": name, "seed": seed, "attributes": [{"trait_type": k, "value": v} for k, v in a.items() if not k.startswith("_")]}
         json.dump(meta, open(os.path.join(OUT, f"{i}.json"), "w"), indent=2)
-        rows.append({"id": i, "name": name, "seed": seed, "prompt": prompt(a, finish), "negative": NEGATIVE.replace("long finger blades, clawed glove with four long knives, ", "") if a["Held Weapon"] in ("Death Nails", "Blade Nails") else NEGATIVE + ", red and white ball, ball with a centre button, writing on clothes, logo on cap" if a["Held Weapon"] == "Mask Orb and Hatchet" else NEGATIVE, "attributes": {k: v for k, v in a.items() if not k.startswith("_")}})
+        rows.append({"id": i, "name": name, "seed": seed, "prompt": prompt(a, finish), "negative": NEGATIVE.replace("long finger blades, clawed glove with four long knives, ", "") if a["Held Weapon"] in ("Death Nails", "Blade Nails") else NEGATIVE + ", red and white ball, ball with a centre button, writing on clothes, logo on cap" if a["Held Weapon"] == "Mask Orb and Golden Axe" else NEGATIVE, "attributes": {k: v for k, v in a.items() if not k.startswith("_")}})
     os.makedirs(os.path.join(ROOT, "output", "ai"), exist_ok=True)
     json.dump(rows, open(os.path.join(ROOT, "output", "ai", "manifest-v2.json"), "w"), indent=1)
     report(tokens)

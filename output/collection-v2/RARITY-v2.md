@@ -123,7 +123,7 @@
 | Chrome Machete | 3 | 0.2% |
 | Blue-Flame Flamethrower | 3 | 0.2% |
 | Gold Hatchet | 2 | 0.2% |
-| Mask Orb and Hatchet | 1 | 0.1% |
+| Mask Orb and Golden Axe | 1 | 0.1% |
 | Bloody Kitchen Knife | 1 | 0.1% |
 | Chrome Hunting Knife | 1 | 0.1% |
 | Telekinesis | 1 | 0.1% |
@@ -186,7 +186,7 @@
 | Dripping Nightgown | 8 | 0.6% |
 | Bloody Clown Suit (Rare+) | 6 | 0.5% |
 | Fur-Trimmed Cape (Rare+) | 6 | 0.5% |
-| Worn Leather Jacket | 1 | 0.1% |
+| Collector's Pin Vest | 1 | 0.1% |
 | Scorched Corduroy Dungarees | 1 | 0.1% |
 | Blood-Drenched Prom Gown | 1 | 0.1% |
 | Mustard Cardigan | 1 | 0.1% |
