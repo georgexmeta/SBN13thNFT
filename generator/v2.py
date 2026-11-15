@@ -384,7 +384,7 @@ CHARACTER = ("A grotesque disfigured old man with an oversized bobble head, mott
 FRAMING = ("FACING: exactly like the first reference photo, his body is in three-quarter view and his head and face are "
            "turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned "
            "to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space "
-           "above the head, figure centred, square 1:1 composition. His right hand grips the held weapon in a tight "
+           "above the head, figure centred, square 1:1 composition. SCALE (the same for every figure in the series): the figure is the same size in the frame as in the first reference photo, the bobble head the same size relative to the body, and weapons true to scale with the hands, never oversized or tiny. His right hand grips the held weapon in a tight "
            "clenched fist seen from the back of the hand, knuckles toward the camera, palm hidden, the blade angled up "
            "and out; his other hand hangs open")
 FRAMING_TWO_HANDS = FRAMING.split(" His right hand grips")[0] + (" Both hands hold the chainsaw firmly, one on the rear handle "
