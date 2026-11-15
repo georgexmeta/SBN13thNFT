@@ -472,7 +472,7 @@ DUAL_PHRASE.update({   # bladed-glove men (George 2026-11-15) wield their back w
     "Scythe": "a huge rusty scythe by its long wooden snath, held upright beside him with the curved blade arching above his head",
     "Harpoon Gun": "a rusty harpoon gun loaded with a barbed harpoon, aimed out to the side",
     "Double-Barrel Shotgun": "a sawn-off rusty double-barrel shotgun with a cracked wooden stock, held one-handed, barrels pointing up and out"})
-DUAL_PHRASE["Cursed Flesh Tome"] = ("a thick cursed book by its spine, held up to the side: an ancient tome bound in stitched, scarred, leathery "
+DUAL_PHRASE["The Book of the Dead"] = ("a thick cursed book by its spine, held up to the side: an ancient tome bound in stitched, scarred, leathery "
                                    "skin with rusty iron corner clasps and a rusty chain, torn yellowed pages poking out, dark stains; "
                                    "no title, no lettering, no symbols and no face on the cover")
 TOME = ("Scorched Doll", "The Grieving Mother")   # George 2026-11-15: both 1/1s hold the cursed book in the left hand
@@ -727,7 +727,7 @@ def build():
     dedupe_pass(tokens)
     for _a, _f in tokens:
         if _a.get("1/1 Name") in TOME:
-            _a["Off Hand"] = "Cursed Flesh Tome"
+            _a["Off Hand"] = "The Book of the Dead"
     for _i, _g in GLOVE_FINISH.items():   # George 2026-11-15: 2 gold and 1 chrome claw gloves among the 6 gloved men
         assert tokens[_i - 1][0]["Held Weapon"] == "Nail-Knife Glove"
         tokens[_i - 1][0]["Held Weapon"] = f"{_g} Claw Glove"
