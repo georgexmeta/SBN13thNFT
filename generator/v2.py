@@ -391,6 +391,9 @@ for _t, (_v, _p) in RETRO_EXTRA.items():
 # Belt slot, 13 unrendered Uncommon tokens (head_strap_pass; George: Uncommon), so tier counts don't move.
 ALL["Held Weapon"]["Double Molotov Cocktails"] = (0, "")
 ALL["Held Weapon"]["Blue-Flame Flamethrower"] = (0, "")
+# Damaged ears (George, 2026-11-15): Mostly Torn and Slightly Ripped, 145 unrendered tokens each with a bare visible ear (torn_ear_pass).
+ALL["Ears"]["Mostly Torn Ear"] = (0, "his visible ear is mostly torn away, only a ragged bloody stump of ear left with jagged torn edges and dried blood")
+ALL["Ears"]["Slightly Ripped Ear"] = (0, "his visible ear has a small ragged rip through the top edge, a notch of missing flesh crusted with dried blood")
 # Gun back weapons (George, 2026-11-15): exactly 7 Double-Barrel Shotguns and 3 Sniper Rifles on unrendered Rare tokens.
 ALL["Back Weapon"]["Double-Barrel Shotgun"] = (0, "a sawn-off rusty double-barrel shotgun with a cracked wooden stock slung on his back, "
                                               "the twin barrels rising above his shoulder")
@@ -519,6 +522,7 @@ def build():
     molotov_pass(tokens)
     blue_flame_pass(tokens)
     gun_pass(tokens)
+    torn_ear_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -756,6 +760,18 @@ def gun_pass(tokens):
     picks = late.sample(pool, 10)
     for n, i in enumerate(picks):
         tokens[i - 1][0]["Back Weapon"] = "Double-Barrel Shotgun" if n < 7 else "Sniper Rifle"
+
+
+def torn_ear_pass(tokens):
+    keep = set(json.load(open(os.path.join(ROOT, "generator", "rendered_keep_syringe.json"))))
+    late = random.Random(4545)
+    covered = {"Burlap Sack Hood", "Zipper Long Nose", "Bloody Bandage Wrap", "Buckled Harness Hood", "Cracked Doll Mask", "Gas Mask",
+               "Burlap Pig Mask", "Nail-Studded Leather Mask", "Zipper Mouth Leather", "Flayed Muscle Face", "Rubber Seam Face"}
+    pool = [i for i, (a, f) in enumerate(tokens, 1) if i not in keep and not f and a["Tier"] != "Legendary 1/1" and a["Ears"] == "Natural"
+            and a["Mask"] not in covered and a["Character"] in ("Classic", "Woman")]
+    picks = late.sample(pool, 290)
+    for n, i in enumerate(picks):
+        tokens[i - 1][0]["Ears"] = "Mostly Torn Ear" if n < 145 else "Slightly Ripped Ear"   # new values: no DNA collision
 
 
 def retro_pass(tokens):

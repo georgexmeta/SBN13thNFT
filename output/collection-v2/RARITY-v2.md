@@ -262,7 +262,9 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Natural | 1170 | 90.0% |
+| Natural | 880 | 67.7% |
+| Mostly Torn Ear | 145 | 11.2% |
+| Slightly Ripped Ear | 145 | 11.2% |
 | Gauged | 130 | 10.0% |
 
 ## Character
