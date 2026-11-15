@@ -104,6 +104,25 @@ def submit(id_list, chunk=200, st=None, force=False):
     return st
 
 
+def edit(id_list, instruction, st=None):
+    """Fix finished images in place: send the image itself with an edit instruction (keeps the art, changes one detail)."""
+    st = st or load()
+    path = os.path.join(g.ROOT, "output", "ai", f"edit-{int(time.time())}.jsonl")
+    with open(path, "w") as f:
+        for i in id_list:
+            img = base64.b64encode(open(os.path.join(g.OUTDIR, f"{i}.png"), "rb").read()).decode()
+            body = {"contents": [{"parts": [{"inline_data": {"mime_type": "image/png", "data": img}}, {"text": instruction}]}],
+                    "generationConfig": {"responseModalities": ["IMAGE"], "imageConfig": {"aspectRatio": "1:1"}}}
+            f.write(json.dumps({"key": str(i), "request": body}) + "\n")
+    up = upload(path, "application/jsonl", os.path.basename(path))
+    op = _req(f"{API}/v1beta/models/{g.MODEL}:batchGenerateContent", headers={"Content-Type": "application/json"},
+              data=json.dumps({"batch": {"display_name": os.path.basename(path), "input_config": {"file_name": up["name"]}}}).encode())
+    st["batches"].append({"name": op["name"], "ids": list(id_list), "state": "running", "submitted": time.time(), "edit": True})
+    save(st)
+    print(f"submitted edit {op['name']} with {len(id_list)} tokens", flush=True)
+    return st
+
+
 def _find(obj, key):
     if isinstance(obj, dict):
         if key in obj:

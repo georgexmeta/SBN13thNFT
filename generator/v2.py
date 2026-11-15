@@ -299,7 +299,7 @@ HELD_STD = {
     "Meat Hook": (10, "a big rusty meat hook"), "Sickle": (10, "a rusty curved sickle"),
     "Nail Bat": (8, "a wooden bat studded with bent rusty nails"), "Ice Pick": (6, "a rusty ice pick: a short round wooden handle with one long thin straight metal spike, not a pickaxe"), "Bare Fist": (4, None),
     "Chainsaw": (8, "a rusty chainsaw with a bloody chain"),
-    "Fish Hook": (8, "a huge rusty barbed fish hook on a short wooden handle, fishing line and a bloody bait scrap dangling from it"),
+    "Fish Hook": (8, "ONE single huge rusty barbed fish hook on a short wooden handle, smeared with blood; only one hook, with no smaller hooks, lures, line or bait hanging from it"),
     "Spear": (8, "a crude spear: a long wooden pole with a rusty jagged blade lashed to the top with wire and rag, held upright with the blade above his shoulder"),
 }
 HELD_RARE = {"Golden Machete": (40, "a gleaming golden machete dripping blood"), "Bone Saw": (30, "a rusty serrated bone saw"),
