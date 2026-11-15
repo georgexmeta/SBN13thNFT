@@ -791,7 +791,8 @@ def jail_pass(tokens):
 # George 2026-11-15: double neck chains like The Retro Slasher's, trait "Neck". Rusted/Silver on Uncommon, Gold/Chrome on Rare only.
 NECK_FINISH = {"Rusted": "rusty pitted iron", "Silver": "polished silver", "Gold": "gleaming solid gold", "Chrome": "mirror-bright chrome"}
 NECK = {f"{f} Double Chains": f"two heavy {d} chains around his neck, one short and one hanging lower over his chest" for f, d in NECK_FINISH.items()}
-NECK_COUNTS = {"Uncommon": [("Rusted", 40), ("Silver", 25)], "Rare": [("Gold", 13), ("Chrome", 7)]}
+NECK["Chrome Double Chains with Skull Pendant"] = NECK["Chrome Double Chains"] + ", a small grinning chrome skull pendant hanging from the lower chain"
+NECK_COUNTS = {"Uncommon": [("Rusted", 40), ("Silver", 25)], "Rare": [("Gold", 13), ("Chrome", 4), ("Chrome Skull", 3)]}
 
 
 def neck_pass(tokens):
@@ -805,7 +806,7 @@ def neck_pass(tokens):
         picks = iter(rng.sample(pool, sum(n for _, n in deal)))
         for fin, n in deal:
             for _ in range(n):
-                tokens[next(picks) - 1][0]["Neck"] = f"{fin} Double Chains"
+                tokens[next(picks) - 1][0]["Neck"] = "Chrome Double Chains with Skull Pendant" if fin == "Chrome Skull" else f"{fin} Double Chains"
 
 
 def jail_tier_fix(tokens):
