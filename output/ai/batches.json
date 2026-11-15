@@ -1096,7 +1096,8 @@
    "submitted": 1794718658.4948978,
    "edit": true,
    "drop": [
-    172
+    172,
+    727
    ]
   },
   {
@@ -1498,7 +1499,9 @@
    "state": "running",
    "submitted": 1794719794.6690311,
    "edit": true,
-   "drop": []
+   "drop": [
+    716
+   ]
   },
   {
    "name": "batches/svm8muwcadud89j3tymeh6cr4lme7rcl3zxe",

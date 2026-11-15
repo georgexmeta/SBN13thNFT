@@ -137,12 +137,12 @@
 
 | Value | Count | Share |
 |---|---|---|
-| None | 298 | 22.9% |
+| None | 299 | 23.0% |
 | Pitchfork | 200 | 15.4% |
 | Sledgehammer | 162 | 12.5% |
 | Woodcutter Axe | 151 | 11.6% |
 | Rusted Saw Weed Whacker | 126 | 9.7% |
-| Rusty Shovel | 105 | 8.1% |
+| Rusty Shovel | 104 | 8.0% |
 | Bloody Saw Weed Whacker | 93 | 7.2% |
 | Clean Saw Weed Whacker | 47 | 3.6% |
 | Circus Mallet (Rare+) | 26 | 2.0% |
