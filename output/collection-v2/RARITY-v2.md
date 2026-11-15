@@ -83,22 +83,22 @@
 | Value | Count | Share |
 |---|---|---|
 | Chainsaw | 209 | 16.1% |
-| Rusted Machete | 126 | 9.7% |
-| Meat Hook | 93 | 7.2% |
-| Nail Bat | 74 | 5.7% |
-| Bloody Hunting Knife | 72 | 5.5% |
-| Spear | 67 | 5.2% |
-| Rusted Hatchet | 65 | 5.0% |
-| Rusted Butcher Cleaver | 64 | 4.9% |
-| Rusted Sickle | 59 | 4.5% |
-| Fish Hook | 57 | 4.4% |
-| Ice Pick | 34 | 2.6% |
-| Bare Fist | 26 | 2.0% |
+| Rusted Machete | 115 | 8.8% |
+| Meat Hook | 92 | 7.1% |
+| Nail Bat | 72 | 5.5% |
+| Bloody Hunting Knife | 69 | 5.3% |
+| Spear | 65 | 5.0% |
+| Rusted Hatchet | 64 | 4.9% |
+| Rusted Butcher Cleaver | 63 | 4.8% |
+| Rusted Sickle | 57 | 4.4% |
+| Fish Hook | 56 | 4.3% |
+| Ice Pick | 33 | 2.5% |
 | Bloody Machete | 25 | 1.9% |
 | Rusty Shears | 25 | 1.9% |
 | Poison Syringe | 25 | 1.9% |
 | Blade Nails | 25 | 1.9% |
 | Switchblade | 25 | 1.9% |
+| Bare Fist | 23 | 1.8% |
 | Rusted Hunting Knife | 19 | 1.5% |
 | Bloody Butcher Cleaver | 17 | 1.3% |
 | Hook Hand (Rare+) | 15 | 1.2% |
@@ -108,24 +108,30 @@
 | Rusty Pickaxe | 12 | 0.9% |
 | Bloody Sickle | 11 | 0.8% |
 | Clean Machete | 11 | 0.8% |
+| Rusty Shovel | 10 | 0.8% |
 | Exercise Band | 10 | 0.8% |
 | Nail-Knife Glove (Rare+) | 9 | 0.7% |
 | Flamethrower (Rare+) | 8 | 0.6% |
 | Bloody Hatchet | 8 | 0.6% |
 | Psychic Force | 8 | 0.6% |
+| Circus Mallet | 7 | 0.5% |
 | Bone Saw (Rare+) | 7 | 0.5% |
 | Clean Butcher Cleaver | 7 | 0.5% |
 | Clean Hatchet | 7 | 0.5% |
 | Clean Sickle | 7 | 0.5% |
+| Harpoon Gun | 6 | 0.5% |
 | Double Molotov Cocktails | 6 | 0.5% |
 | Clean Hunting Knife | 5 | 0.4% |
 | Toy Pop Gun | 5 | 0.4% |
+| Double-Barrel Shotgun | 3 | 0.2% |
 | Chrome Machete | 3 | 0.2% |
 | Blue-Flame Flamethrower | 3 | 0.2% |
 | Gold Hatchet | 2 | 0.2% |
 | Clayson Master Ball and Golden Axe | 1 | 0.1% |
+| Scythe | 1 | 0.1% |
 | Bloody Kitchen Knife | 1 | 0.1% |
 | Chrome Hunting Knife | 1 | 0.1% |
+| Sniper Rifle | 1 | 0.1% |
 | Telekinesis | 1 | 0.1% |
 | Death Nails | 1 | 0.1% |
 | Chrome Butcher Cleaver | 1 | 0.1% |
@@ -137,23 +143,23 @@
 
 | Value | Count | Share |
 |---|---|---|
-| None | 299 | 23.0% |
+| None | 328 | 25.2% |
 | Pitchfork | 200 | 15.4% |
-| Sledgehammer | 162 | 12.5% |
+| Sledgehammer | 161 | 12.4% |
 | Woodcutter Axe | 151 | 11.6% |
 | Rusted Saw Weed Whacker | 126 | 9.7% |
-| Rusty Shovel | 104 | 8.0% |
+| Rusty Shovel | 94 | 7.2% |
 | Bloody Saw Weed Whacker | 93 | 7.2% |
 | Clean Saw Weed Whacker | 47 | 3.6% |
-| Circus Mallet (Rare+) | 26 | 2.0% |
 | Leathery Bat Wings | 25 | 1.9% |
-| Scythe (Rare+) | 15 | 1.2% |
+| Circus Mallet (Rare+) | 19 | 1.5% |
 | Chrome Saw Weed Whacker | 15 | 1.2% |
-| Harpoon Gun (Rare+) | 13 | 1.0% |
+| Scythe (Rare+) | 14 | 1.1% |
 | Fuel Tanks (Rare+) | 11 | 0.8% |
-| Double-Barrel Shotgun | 7 | 0.5% |
-| Sniper Rifle | 3 | 0.2% |
+| Harpoon Gun (Rare+) | 7 | 0.5% |
+| Double-Barrel Shotgun | 4 | 0.3% |
 | Chainsaw | 2 | 0.2% |
+| Sniper Rifle | 2 | 0.2% |
 | Golden Retro Axe | 1 | 0.1% |
 
 ## Clothing

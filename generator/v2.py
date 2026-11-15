@@ -10,6 +10,7 @@ Masks are ORIGINAL designs in the spirit of heavy-metal and slasher horror. They
 film character's or band member's mask (no white screaming hooded mask, no grid of pins on a pale face, no
 red-chevron hockey mask, no copied clown make-up), so the collection stays clear of takedowns.
 """
+import collections
 import json
 import os
 import random
@@ -395,6 +396,8 @@ FRAMING_WHACKER = FRAMING.split(" His right hand grips")[0] + (" Both hands hold
                                                              "beside his head, the whole tool inside the frame; neither hand hangs empty")
 FRAMING_DUAL = FRAMING.split(" His right hand grips")[0] + (" Both hands are full and both are tight clenched fists, knuckles toward the camera: "
                                                           "the right fist grips the held weapon, the left fist grips the second weapon by its handle and rests it on his shoulder")
+FRAMING_BOTH = FRAMING.split(" His right hand grips")[0] + (" Both hands grip the weapon, knuckles toward the camera, the whole weapon inside the frame; "
+                                                          "neither hand hangs empty and nothing is on his back")
 FRAMING_NAILS = FRAMING.split(" His right hand grips")[0] + " Both hands are raised and fully visible inside the frame, all ten blade nails spread; neither hand hangs down or is hidden"
 FRAMING_MOLOTOV = FRAMING.split(" His right hand grips")[0] + " Both fists are raised in front of him, each gripping a lit Molotov cocktail by the neck, knuckles toward the camera; neither hand hangs empty"
 FRAMING_COLLECTOR = FRAMING.split(" His right hand grips")[0] + " Both hands are full: the orb held out in one hand toward the viewer, the hatchet gripped in the other"
@@ -439,7 +442,7 @@ ALL["Held Weapon"]["Rusty Pickaxe"] = (0, "a small rusty pickaxe")
 # George 2026-11-15: 13 Uncommon Claysons wield a weed whacker fitted with a golden saw blade, both hands
 WEEDWACKER = [816, 859, 879, 889, 925, 940, 992, 1085, 1101, 1151, 1166, 1219, 1275]
 # QA (George 2026-11-15): a back weapon that sat wrong moves to the left fist instead, both hands clench a weapon
-DUAL = {799: "Sledgehammer", 32: "Woodcutter Axe", 715: "Rusty Shovel", 727: "Rusty Shovel"}
+DUAL = {799: "Sledgehammer", 32: "Woodcutter Axe", 715: "Rusty Shovel", 727: "Rusty Shovel", 124: "Sledgehammer"}   # 124: art already shows the hammer in hand
 DUAL_PHRASE = {"Rusty Shovel": "a rusty shovel by its long wooden handle, the shovel resting up on his left shoulder with the blade behind his shoulder, carried in his hand, not strapped to his back", "Woodcutter Axe": "a rusty woodcutter axe by its long wooden handle, the axe resting up on his left shoulder with the blade behind his shoulder, carried in his hand, not strapped to his back", "Sledgehammer": "a heavy sledgehammer by its wooden handle, the hammer resting up on his left shoulder with the iron head behind his shoulder, carried in his hand, not strapped to his back"}
 PICKAXE = [79, 87, 231, 259, 266, 324, 360, 490, 567, 794, 818, 820]
 # Machete variants (George, 2026-11-15), machete_pass: finished machetes are labelled Rusted (what they show); unrendered ones are
@@ -510,6 +513,8 @@ def prompt(a, legendary_finish=None):
     elif held in ("Telekinesis", "Psychic Force"):
         hand = ("she holds no weapon: both bloody hands are raised and spread with clawed fingers, unleashing telekinetic power, "
                 "chairs, glass shards and streamers levitating around her and a rippling shockwave bending the air")
+    elif held in TWO_HAND_HELD:   # George 2026-11-15: a back weapon rarer than the held one is wielded in both hands instead
+        hand = f"he wields {TWO_HAND_HELD[held]} firmly in BOTH fists, one hand high and one low on it, held across his body and angled up and out"
     elif held == "Golden Saw Weed Whacker":
         hand = ("he wields a LONG-HANDLED garden string trimmer (weed whacker) in BOTH hands, fitted with a gleaming GOLDEN saw blade "
                 "instead of trimmer line. It is a long thin straight steel pole, longer than his arm: at the near end a yellow-and-black "
@@ -551,7 +556,7 @@ def prompt(a, legendary_finish=None):
     if doll:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"])]
     parts = [STYLE, DOLL_BASE if doll else FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
-             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Clayson Master Ball and Golden Axe" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held in ("Death Nails", "Blade Nails") else FRAMING_DUAL if a.get("Off Hand") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_WHACKER if held == "Golden Saw Weed Whacker" else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
+             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Clayson Master Ball and Golden Axe" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held in ("Death Nails", "Blade Nails") else FRAMING_DUAL if a.get("Off Hand") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_BOTH if held in TWO_HAND_HELD else FRAMING_WHACKER if held == "Golden Saw Weed Whacker" else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
     text = ". ".join(p[0].upper() + p[1:] for p in parts if p) + "."
     if "empty black eye sockets" in (mask or ""):   # QA #232: the base "sunken eyes" line added a stray third eye
         text = text.replace("small sunken bloodshot eyes in swollen red-rimmed lids, ", "")
@@ -648,6 +653,7 @@ def build():
     chainsaw_pass(tokens)
     saw_whacker_pass(tokens)
     splatter_pass(tokens)
+    two_hand_pass(tokens)
     for _i in WEEDWACKER:
         tokens[_i - 1][0]["Held Weapon"] = "Golden Saw Weed Whacker"
     os.makedirs(OUT, exist_ok=True)
@@ -881,6 +887,34 @@ def saw_whacker_pass(tokens):
     for n, i in enumerate(plain):
         r = n / len(plain)
         tokens[i - 1][0]["Back Weapon"] = f"{'Rusted' if r < .47 else 'Bloody' if r < .82 else 'Clean'} Saw Weed Whacker"
+
+
+TWO_HAND_HELD = {
+    "Rusty Shovel": "a rusty shovel with a long wooden handle", "Pitchfork": "a rusty pitchfork with a long wooden handle",
+    "Woodcutter Axe": "a long woodcutter's axe", "Sledgehammer": "a heavy sledgehammer",
+    "Harpoon Gun": "a rusty harpoon gun loaded with a barbed harpoon", "Circus Mallet": "a giant red-and-cream striped circus mallet",
+    "Double-Barrel Shotgun": "a sawn-off rusty double-barrel shotgun with a cracked wooden stock, finger off the trigger",
+    "Sniper Rifle": "a long heavy matte-black sniper rifle with a big scope", "Scythe": "a huge rusty scythe, the curved blade arching above his head",
+}
+
+
+def two_hand_pass(tokens):
+    """George 2026-11-15: if the back weapon is rarer than the single held weapon, the Clayson wields the back weapon in both
+    hands instead (held weapon dropped). Not for chainsaws, hook hands, nail gloves, 1/1s or dual wielders."""
+    held = collections.Counter(a["Held Weapon"] for a, _ in tokens)
+    back = collections.Counter(a["Back Weapon"] for a, _ in tokens)
+    dnas = {tuple(sorted((k, v) for k, v in a.items() if k != "Tier")) for a, _ in tokens}
+    for a, f in tokens:
+        b, h = a["Back Weapon"], a["Held Weapon"]
+        if (b not in TWO_HAND_HELD or a["Tier"] == "Legendary 1/1" or a.get("Off Hand")
+                or h in ("Chainsaw", "Hook Hand", "Nail-Knife Glove") or back[b] >= held[h]):
+            continue
+        old = tuple(sorted((k, v) for k, v in a.items() if k != "Tier"))
+        c = dict(a, **{"Held Weapon": b, "Back Weapon": "None"})
+        new = tuple(sorted((k, v) for k, v in c.items() if k != "Tier"))
+        if new in dnas:
+            continue
+        dnas.discard(old); dnas.add(new); a.update(c)
 
 
 def chainsaw_pass(tokens):
