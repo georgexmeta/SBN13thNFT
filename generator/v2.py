@@ -788,11 +788,14 @@ def jail_pass(tokens):
         tokens[i - 1][0]["Backdrop"] = JAIL[0]
 
 
-# George 2026-11-15: double neck chains like The Retro Slasher's, trait "Neck". Rusted/Silver on Uncommon, Gold/Chrome on Rare only.
+# George 2026-11-15: double neck chains like The Retro Slasher's, trait "Neck".
 NECK_FINISH = {"Rusted": "rusty pitted iron", "Silver": "polished silver", "Gold": "gleaming solid gold", "Chrome": "mirror-bright chrome"}
 NECK = {f"{f} Double Chains": f"two heavy {d} chains around his neck, one short and one hanging lower over his chest" for f, d in NECK_FINISH.items()}
 NECK["Chrome Double Chains with Skull Pendant"] = NECK["Chrome Double Chains"] + ", a small grinning chrome skull pendant hanging from the lower chain"
-NECK_COUNTS = {"Uncommon": [("Rusted", 40), ("Silver", 25)], "Rare": [("Gold", 13), ("Chrome", 4), ("Chrome Skull", 3)]}
+# George 20:08: mostly on Standards and Uncommons to add value there (chains don't change a token's tier).
+NECK_COUNTS = {"Standard": [("Rusted", 30), ("Silver", 15), ("Gold", 5), ("Chrome", 1)],
+               "Uncommon": [("Rusted", 15), ("Silver", 10), ("Gold", 6), ("Chrome", 2), ("Chrome Skull", 2)],
+               "Rare": [("Gold", 2), ("Chrome", 1), ("Chrome Skull", 1)]}
 
 
 def neck_pass(tokens):
