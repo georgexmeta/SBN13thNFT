@@ -709,6 +709,7 @@ def build():
     chainsaw_pass(tokens)
     saw_whacker_pass(tokens)
     jail_tier_fix(tokens)
+    freezer_pass(tokens)
     splatter_pass(tokens)
     two_hand_pass(tokens)
     hook_off_pass(tokens)
@@ -861,6 +862,25 @@ def neck_pass(tokens):
         for fin, n in deal:
             for _ in range(n):
                 tokens[next(picks) - 1][0]["Neck"] = f"{fin.split()[0]} Double Chains with Skull Pendant" if fin.endswith("Skull") else f"{fin} Double Chains"
+
+
+# Meat Freezer scene backdrop (George, 2026-11-15): Uncommon+ like the other scenes, 17 Uncommon + 3 Rare undrawn plain-clay tokens.
+FREEZER = ("Meat Freezer", "the inside of a grimy walk-in meat freezer: frosted steel walls and a frozen floor, rows of big rusty meat hooks "
+           "hanging from an overhead rail, raw bloody animal carcasses and sides of meat hanging from the hooks, icy mist and cold blue light, "
+           "sculpted as a miniature claymation diorama in matte plasticine, softly out of focus behind him, no signs, no lettering")
+ALL["Backdrop"][FREEZER[0]] = (0, FREEZER[1])
+
+
+def freezer_pass(tokens):
+    st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
+    pend = set().union(*[set(b["ids"]) - set(b.get("drop", [])) for b in st["batches"] if b["state"] != "done"])
+    plain = {"Sage Clay", "Swamp Clay", "Slate Clay", "Teal Clay", "Rust Clay", "Bruise Clay", "Bone Clay"}
+    rng = random.Random(2031)
+    for tier, n in (("Uncommon", 17), ("Rare", 3)):
+        pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == tier and a["Backdrop"] in plain and i not in pend
+                and not os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png"))]
+        for i in rng.sample(pool, n):
+            tokens[i - 1][0]["Backdrop"] = FREEZER[0]
 
 
 def jail_tier_fix(tokens):

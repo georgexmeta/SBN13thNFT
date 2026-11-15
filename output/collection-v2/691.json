@@ -44,7 +44,7 @@
     },
     {
       "trait_type": "Backdrop",
-      "value": "Bone Clay"
+      "value": "Meat Freezer"
     },
     {
       "trait_type": "Ears",
@@ -57,10 +57,6 @@
     {
       "trait_type": "Off Hand",
       "value": "Sledgehammer"
-    },
-    {
-      "trait_type": "Splatter",
-      "value": "Light"
     }
   ]
 }

@@ -225,20 +225,21 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Sage Clay | 195 | 15.0% |
-| Swamp Clay | 182 | 14.0% |
-| Slate Clay | 160 | 12.3% |
-| Teal Clay | 134 | 10.3% |
-| Rust Clay | 110 | 8.5% |
-| Bruise Clay | 102 | 7.8% |
+| Sage Clay | 189 | 14.5% |
+| Swamp Clay | 179 | 13.8% |
+| Slate Clay | 155 | 11.9% |
+| Teal Clay | 132 | 10.2% |
+| Rust Clay | 109 | 8.4% |
+| Bruise Clay | 101 | 7.8% |
 | Blood Splatter | 90 | 6.9% |
-| Bone Clay | 81 | 6.2% |
+| Bone Clay | 79 | 6.1% |
 | Lakeside Cabin | 28 | 2.2% |
 | Haunted Mansion | 26 | 2.0% |
 | Radioactive Wasteland | 24 | 1.8% |
 | Graveyard | 22 | 1.7% |
 | Abandoned Laboratory | 21 | 1.6% |
 | Insane Asylum | 21 | 1.6% |
+| Meat Freezer | 20 | 1.5% |
 | Killer Circus | 20 | 1.5% |
 | Nightmare Sequence | 19 | 1.5% |
 | Doctor's Hospital Room | 19 | 1.5% |
