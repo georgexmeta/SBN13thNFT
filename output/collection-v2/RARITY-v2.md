@@ -94,6 +94,7 @@
 | Fish Hook | 53 | 4.1% |
 | Clean Saw Weed Whacker | 33 | 2.5% |
 | Ice Pick | 33 | 2.5% |
+| Blade Nails | 28 | 2.2% |
 | Bloody Machete | 25 | 1.9% |
 | Rusty Shears | 25 | 1.9% |
 | Poison Syringe | 25 | 1.9% |
@@ -101,7 +102,6 @@
 | Bare Fist | 23 | 1.8% |
 | Rusted Hunting Knife | 19 | 1.5% |
 | Bloody Saw Weed Whacker | 17 | 1.3% |
-| Blade Nails | 17 | 1.3% |
 | Bloody Butcher Cleaver | 17 | 1.3% |
 | Hook Hand (Rare+) | 15 | 1.2% |
 | Golden Saw Weed Whacker | 13 | 1.0% |
@@ -111,7 +111,6 @@
 | Bloody Brick | 11 | 0.8% |
 | Bloody Sickle | 11 | 0.8% |
 | Clean Machete | 11 | 0.8% |
-| Nail-Knife Glove (Rare+) | 9 | 0.7% |
 | Exercise Band | 9 | 0.7% |
 | Flamethrower (Rare+) | 8 | 0.6% |
 | Bloody Hatchet | 8 | 0.6% |
@@ -121,17 +120,15 @@
 | Clean Hatchet | 7 | 0.5% |
 | Clean Sickle | 7 | 0.5% |
 | Harpoon Gun | 6 | 0.5% |
+| Nail-Knife Glove (Rare+) | 6 | 0.5% |
 | Clean Hunting Knife | 5 | 0.4% |
 | Toy Pop Gun | 5 | 0.4% |
 | Circus Mallet | 4 | 0.3% |
-| Woodcutter Axe | 3 | 0.2% |
-| Sledgehammer | 3 | 0.2% |
 | Double-Barrel Shotgun | 3 | 0.2% |
 | Double Molotov Cocktails | 3 | 0.2% |
 | Chrome Machete | 3 | 0.2% |
 | Blue-Flame Flamethrower | 3 | 0.2% |
 | Gold Hatchet | 2 | 0.2% |
-| Rusty Shovel | 2 | 0.2% |
 | Clayson Master Ball and Golden Axe | 1 | 0.1% |
 | Scythe | 1 | 0.1% |
 | Bloody Kitchen Knife | 1 | 0.1% |
@@ -148,21 +145,21 @@
 
 | Value | Count | Share |
 |---|---|---|
-| None | 878 | 67.5% |
+| None | 871 | 67.0% |
 | Rusted Saw Weed Whacker | 126 | 9.7% |
 | Bloody Saw Weed Whacker | 76 | 5.8% |
 | Oxygen Tank | 74 | 5.7% |
 | Pitchfork | 25 | 1.9% |
 | Leathery Bat Wings | 25 | 1.9% |
+| Woodcutter Axe | 17 | 1.3% |
+| Sledgehammer | 16 | 1.2% |
 | Clean Saw Weed Whacker | 14 | 1.1% |
-| Scythe (Rare+) | 14 | 1.1% |
-| Woodcutter Axe | 13 | 1.0% |
-| Sledgehammer | 13 | 1.0% |
+| Scythe (Rare+) | 13 | 1.0% |
+| Rusty Shovel | 13 | 1.0% |
 | Fuel Tanks (Rare+) | 11 | 0.8% |
-| Rusty Shovel | 10 | 0.8% |
-| Harpoon Gun (Rare+) | 7 | 0.5% |
-| Double-Barrel Shotgun | 4 | 0.3% |
+| Harpoon Gun (Rare+) | 6 | 0.5% |
 | Chrome Saw Weed Whacker | 4 | 0.3% |
+| Double-Barrel Shotgun | 3 | 0.2% |
 | Chainsaw | 2 | 0.2% |
 | Sniper Rifle | 2 | 0.2% |
 | Circus Mallet (Rare+) | 1 | 0.1% |

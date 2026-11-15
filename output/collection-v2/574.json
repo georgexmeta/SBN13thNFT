@@ -28,11 +28,11 @@
     },
     {
       "trait_type": "Held Weapon",
-      "value": "Nail-Knife Glove"
+      "value": "Blade Nails"
     },
     {
       "trait_type": "Back Weapon",
-      "value": "None"
+      "value": "Woodcutter Axe"
     },
     {
       "trait_type": "Clothing",
@@ -53,10 +53,6 @@
     {
       "trait_type": "Character",
       "value": "Glitch Android"
-    },
-    {
-      "trait_type": "Off Hand",
-      "value": "Woodcutter Axe"
     }
   ]
 }

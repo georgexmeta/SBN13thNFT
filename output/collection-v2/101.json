@@ -32,7 +32,7 @@
     },
     {
       "trait_type": "Back Weapon",
-      "value": "Scythe"
+      "value": "None"
     },
     {
       "trait_type": "Clothing",
@@ -56,7 +56,7 @@
     },
     {
       "trait_type": "Off Hand",
-      "value": "Chrome Hook Hand"
+      "value": "Scythe"
     }
   ]
 }

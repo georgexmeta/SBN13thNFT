@@ -449,6 +449,10 @@ NO_OFF_HAND = {"Chainsaw", "Exercise Band", "Double Molotov Cocktails", "Golden 
                "Blade Nails", "Death Nails", "Flamethrower", "Blue-Flame Flamethrower", "Clayson Master Ball and Golden Axe"}
 DUAL = {799: "Sledgehammer", 32: "Woodcutter Axe", 715: "Rusty Shovel", 727: "Rusty Shovel", 124: "Sledgehammer", 887: "Sledgehammer", 845: "Sledgehammer", 855: "Sledgehammer"}   # 124: art already shows the hammer in hand
 DUAL_PHRASE = {"Circus Mallet": "a giant red-and-cream striped circus mallet by its handle, resting up on his left shoulder, carried in his hand, not strapped to his back", "Pitchfork": "a rusty pitchfork by its long wooden handle, held upright at his side with the rusty tines rising above his shoulder beside his head, carried in his hand, not strapped to his back", "Rusty Shovel": "a rusty shovel by its long wooden handle, the shovel resting up on his left shoulder with the blade behind his shoulder, carried in his hand, not strapped to his back", "Woodcutter Axe": "a rusty woodcutter axe by its long wooden handle, the axe resting up on his left shoulder with the blade behind his shoulder, carried in his hand, not strapped to his back", "Sledgehammer": "a heavy sledgehammer by its wooden handle, the hammer resting up on his left shoulder with the iron head behind his shoulder, carried in his hand, not strapped to his back"}
+DUAL_PHRASE.update({   # bladed-glove men (George 2026-11-15) wield their back weapon one-handed in the left fist
+    "Scythe": "a huge rusty scythe by its long wooden snath, held upright beside him with the curved blade arching above his head",
+    "Harpoon Gun": "a rusty harpoon gun loaded with a barbed harpoon, aimed out to the side",
+    "Double-Barrel Shotgun": "a sawn-off rusty double-barrel shotgun with a cracked wooden stock, held one-handed, barrels pointing up and out"})
 PICKAXE = [79, 87, 231, 259, 266, 324, 360, 490, 567, 794, 818, 820]
 # Machete variants (George, 2026-11-15), machete_pass: finished machetes are labelled Rusted (what they show); unrendered ones are
 # split Rusted / Bloody / Clean, and unrendered Rare machetes go Chrome. Gold stays the existing Golden Machete.
@@ -554,6 +558,10 @@ def prompt(a, legendary_finish=None):
         colour = "roaring blue-and-white gas" if held == "Blue-Flame Flamethrower" else "roaring orange-and-yellow"
         hand = ("his right fist grips a crude homemade rusty flamethrower made of welded pipe, blasting a HUGE billowing jet of "
                 f"{colour} fire out of the nozzle, the long plume of flame filling the upper side of the frame, pointed up and away from him")
+    elif held == "Nail-Knife Glove" and a["Head"] != "Female":   # George 2026-11-15: classic horror one-hand bladed glove, original take
+        hand = ("his right hand wears a single grimy black leather glove with riveted iron plates on each finger, four long thin "
+                "rusty serrated steel blades fixed to the fingertips curving out like claws, a buckled iron wrist cuff, fingers spread "
+                "and raised menacingly toward the camera, blood on the blade tips")
     elif held == "Nail-Knife Glove":
         hand = ("his right hand wears a thick grimy grey welder's gauntlet with bent rusty nails and short broken kitchen-knife "
                 "blades crudely welded and taped onto the knuckles, a clenched spiked fist, knuckles toward the camera")
@@ -663,6 +671,9 @@ def build():
                           "nothing inside; no eyeballs, no pink skin face, no fleshy eyes beside, behind or above the grey face.")
     for _i in PICKAXE:
         tokens[_i - 1][0]["Held Weapon"] = "Rusty Pickaxe"
+    for _a, _f in tokens:   # George 2026-11-15: only women fight with their ten blade nails, only men wear the single bladed glove
+        if _a["Tier"] != "Legendary 1/1" and _a["Held Weapon"] == "Nail-Knife Glove" and _a["Head"] == "Female":
+            _a["Held Weapon"] = "Blade Nails"
     for _a, _f in tokens:   # George 2026-11-15: every back sledgehammer is carried on the shoulder in the off hand instead
         if (_a["Back Weapon"] in ("Sledgehammer", "Pitchfork", "Woodcutter Axe", "Rusty Shovel", "Circus Mallet") and _a["Tier"] != "Legendary 1/1" and _a["Held Weapon"] not in NO_OFF_HAND):
             _a["Back Weapon"], _a["Off Hand"] = "None", _a["Back Weapon"]
@@ -675,6 +686,9 @@ def build():
     splatter_pass(tokens)
     two_hand_pass(tokens)
     hook_off_pass(tokens)
+    for _a, _f in tokens:   # George 2026-11-15: a man with the bladed glove wields his back weapon in the other fist (no hook hand)
+        if _a["Held Weapon"] == "Nail-Knife Glove" and _a["Head"] != "Female" and _a["Back Weapon"] in DUAL_PHRASE:
+            _a["Off Hand"], _a["Back Weapon"] = _a["Back Weapon"], "None"
     whacker_hold_pass(tokens)
     wound_pass(tokens)
     oxygen_pass(tokens)
@@ -1024,7 +1038,7 @@ def whacker_hold_pass(tokens):
     for a, f in tokens:
         b, h, off = a["Back Weapon"], a["Held Weapon"], a.get("Off Hand") or ""
         if (b.endswith("Saw Weed Whacker") and held[h] >= back[b] and a["Tier"] != "Legendary 1/1"
-                and h not in ("Chainsaw", "Hook Hand", "Nail-Knife Glove") and (not off or off.endswith("Hook Hand"))):
+                and h not in ("Chainsaw", "Hook Hand", "Nail-Knife Glove", "Blade Nails", "Death Nails") and (not off or off.endswith("Hook Hand"))):
             a["Held Weapon"], a["Back Weapon"] = b, "None"
             a.pop("Off Hand", None)
 
@@ -1057,7 +1071,7 @@ def two_hand_pass(tokens):
     for a, f in tokens:
         b, h = a["Back Weapon"], a["Held Weapon"]
         if (b not in TWO_HAND_HELD or a["Tier"] == "Legendary 1/1" or a.get("Off Hand")
-                or h in ("Chainsaw", "Hook Hand", "Nail-Knife Glove") or back[b] >= held[h]):
+                or h in ("Chainsaw", "Hook Hand", "Nail-Knife Glove", "Blade Nails", "Death Nails") or back[b] >= held[h]):
             continue
         old = tuple(sorted((k, v) for k, v in a.items() if k != "Tier"))
         c = dict(a, **{"Held Weapon": b, "Back Weapon": "None"})
