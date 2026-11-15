@@ -165,6 +165,8 @@ def poll():
                     d = p.get("inline_data") or p.get("inlineData")
                     if d:
                         img = base64.b64decode(d["data"])
+            if i in b.get("drop", []):   # superseded by a newer request for the same token
+                got.add(i); print(f"#{i} superseded, dropped", flush=True); continue
             if i in st.get("redo", []) and b["submitted"] < st.get("redo_since", 0):   # traits changed after this request was sent: render again with the new prompt
                 st["redo"].remove(i); retry.append(i); print(f"#{i} prompt changed, re-rendering", flush=True); continue
             if img is None:

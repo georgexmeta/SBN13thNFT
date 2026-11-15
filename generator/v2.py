@@ -305,7 +305,7 @@ HELD_STD = {
 HELD_RARE = {"Golden Machete": (40, "a gleaming golden machete dripping blood"), "Bone Saw": (30, "a rusty serrated bone saw"),
              "Hook Hand": (30, None), "Flamethrower": (30, None), "Nail-Knife Glove": (30, None)}
 BACK_STD = {
-    "Weed Whacker": (22, "a rusty backpack weed whacker: engine pack on his back with padded harness straps over the shoulder, the trimmer shaft and head rising above his shoulder, grass clippings on his sleeve"),
+    "Weed Whacker": (22, "a rusty backpack weed whacker: engine pack on his back with padded harness straps over the shoulder, the long trimmer shaft clipped upright to the side of the engine pack BEHIND his shoulder, one connected piece, its cutting head rising above and behind his shoulder; the shaft never crosses in front of his body, arm or face and never floats loose; grass clippings on his sleeve"),
     "Pitchfork": (16, "a rusty pitchfork slung on his back, tines rising above his shoulder"),
     "Chainsaw": (14, "a rusty chainsaw strapped to his back, the bar rising above his shoulder"),
     "Woodcutter Axe": (14, "a long woodcutter's axe slung on his back, head above his shoulder"),
@@ -392,6 +392,8 @@ FRAMING_TWO_HANDS = FRAMING.split(" His right hand grips")[0] + (" Both hands ho
 FRAMING_WHACKER = FRAMING.split(" His right hand grips")[0] + (" Both hands hold the weed whacker, one fist on the rear trigger grip and "
                                                              "the other on the loop handle; the shaft angled up across his body so the golden saw blade is raised "
                                                              "beside his head, the whole tool inside the frame; neither hand hangs empty")
+FRAMING_DUAL = FRAMING.split(" His right hand grips")[0] + (" Both hands are full and both are tight clenched fists, knuckles toward the camera: "
+                                                          "the right fist grips the held weapon, the left fist grips the second weapon by its handle and rests it on his shoulder")
 FRAMING_NAILS = FRAMING.split(" His right hand grips")[0] + " Both hands are raised and fully visible inside the frame, all ten blade nails spread; neither hand hangs down or is hidden"
 FRAMING_MOLOTOV = FRAMING.split(" His right hand grips")[0] + " Both fists are raised in front of him, each gripping a lit Molotov cocktail by the neck, knuckles toward the camera; neither hand hangs empty"
 FRAMING_COLLECTOR = FRAMING.split(" His right hand grips")[0] + " Both hands are full: the orb held out in one hand toward the viewer, the hatchet gripped in the other"
@@ -427,6 +429,9 @@ TOY_GUN = [418, 429, 954, 1164, 1253]
 ALL["Held Weapon"]["Rusty Pickaxe"] = (0, "a small rusty pickaxe")
 # George 2026-11-15: 13 Uncommon Claysons wield a weed whacker fitted with a golden saw blade, both hands
 WEEDWACKER = [816, 859, 879, 889, 925, 940, 992, 1085, 1101, 1151, 1166, 1219, 1275]
+# QA (George 2026-11-15): a back weapon that sat wrong moves to the left fist instead, both hands clench a weapon
+DUAL = {799: "Sledgehammer"}
+DUAL_PHRASE = {"Sledgehammer": "a heavy sledgehammer by its wooden handle, the hammer resting up on his left shoulder with the iron head behind his shoulder, carried in his hand, not strapped to his back"}
 PICKAXE = [79, 87, 231, 259, 266, 324, 360, 490, 567, 794, 818, 820]
 # Machete variants (George, 2026-11-15), machete_pass: finished machetes are labelled Rusted (what they show); unrendered ones are
 # split Rusted / Bloody / Clean, and unrendered Rare machetes go Chrome. Gold stays the existing Golden Machete.
@@ -526,6 +531,8 @@ def prompt(a, legendary_finish=None):
                 "blades crudely welded and taped onto the knuckles, a clenched spiked fist, knuckles toward the camera")
     else:
         hand = f"his right fist grips {phrase('Held Weapon', held)}"
+    if a.get("Off Hand"):   # George 2026-11-15: dual wield, both fists clench a weapon, no back weapon
+        hand += "; his LEFT fist tightly grips " + DUAL_PHRASE[a["Off Hand"]]
     body = [f"wearing {phrase('Clothing', a['Clothing'])}", phrase("Belt", a["Belt"]), hand, phrase("Back Weapon", a["Back Weapon"])]
     female = a.get("Character", "Classic") in FEMALE or a.get("Character") in ("The Grieving Mother", "The Prom Queen", "The Ringmistress", "Woman", "Madame Mortis")
     if female:
@@ -534,7 +541,7 @@ def prompt(a, legendary_finish=None):
     if doll:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"])]
     parts = [STYLE, DOLL_BASE if doll else FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
-             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Mask Orb and Hatchet" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held in ("Death Nails", "Blade Nails") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_WHACKER if held == "Golden Saw Weed Whacker" else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
+             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Mask Orb and Hatchet" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held in ("Death Nails", "Blade Nails") else FRAMING_DUAL if a.get("Off Hand") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_WHACKER if held == "Golden Saw Weed Whacker" else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
     text = ". ".join(p[0].upper() + p[1:] for p in parts if p) + "."
     if "empty black eye sockets" in (mask or ""):   # QA #232: the base "sunken eyes" line added a stray third eye
         text = text.replace("small sunken bloodshot eyes in swollen red-rimmed lids, ", "")
@@ -625,6 +632,9 @@ def build():
                           "nothing inside; no eyeballs, no pink skin face, no fleshy eyes beside, behind or above the grey face.")
     for _i in PICKAXE:
         tokens[_i - 1][0]["Held Weapon"] = "Rusty Pickaxe"
+    for _i, _w in DUAL.items():
+        tokens[_i - 1][0]["Back Weapon"] = "None"
+        tokens[_i - 1][0]["Off Hand"] = _w
     for _i in WEEDWACKER:
         tokens[_i - 1][0]["Held Weapon"] = "Golden Saw Weed Whacker"
     os.makedirs(OUT, exist_ok=True)
