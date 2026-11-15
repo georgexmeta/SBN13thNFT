@@ -416,6 +416,17 @@ MACHETES = {"Rusted Machete": "a long rusty machete dripping blood",
             "Chrome Machete": "a long mirror-polished chrome machete gleaming with bright reflections, a few drops of blood on the edge"}
 for _v, _p in MACHETES.items():
     ALL["Held Weapon"][_v] = (0, _p)
+# Same finishes for the other blades (George, 2026-11-15), blade_pass. Finished ones keep the label of what they show.
+BLADES = {"Butcher Cleaver": ("butcher's cleaver", "Rusted"), "Hunting Knife": ("hunting knife", "Bloody"),
+          "Hatchet": ("hatchet", "Rusted"), "Sickle": ("curved sickle", "Rusted")}
+BLADE_FINISH = {"Rusted": "a rusty {} with a pitted, chipped blade smeared with blood",
+                "Bloody": "a {} completely drenched in thick dripping blood",
+                "Clean": "a clean polished steel {} with a sharp gleaming edge, not a drop of blood on it",
+                "Chrome": "a mirror-polished chrome {} gleaming with bright reflections, a few drops of blood on the edge",
+                "Gold": "a gleaming solid gold {} dripping blood"}
+for _w, (_n, _) in BLADES.items():
+    for _f, _t in BLADE_FINISH.items():
+        ALL["Held Weapon"][f"{_f} {_w}"] = (0, _t.format(_n))
 ALL["Held Weapon"]["Mask Orb and Hatchet"] = (0, "")
 # Half-Burnt Face (George, 2026-11-15): a Head Mark on exactly 13 unrendered bare-face Uncommon tokens (burnt_face_pass).
 ALL["Head Mark"] = dict(ALL["Head Mark"])
@@ -560,6 +571,7 @@ def build():
     burnt_face_pass(tokens)
     collector_pass(tokens)
     machete_pass(tokens)
+    blade_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -841,6 +853,28 @@ def machete_pass(tokens):
     late.shuffle(plain)
     for n, i in enumerate(plain):   # about 47% Rusted, 35% Bloody, 18% Clean
         tokens[i - 1][0]["Held Weapon"] = "Rusted Machete" if n < 40 else "Bloody Machete" if n < 70 else "Clean Machete"
+
+
+def blade_pass(tokens):
+    keep = set(json.load(open(os.path.join(ROOT, "generator", "rendered_keep_syringe.json"))))
+    late = random.Random(2121)
+    for w, (_, shown) in BLADES.items():
+        plain, rare = [], []
+        for i, (a, f) in enumerate(tokens, 1):
+            if a["Held Weapon"] != w:
+                continue
+            if i in keep or f:
+                a["Held Weapon"] = f"{shown} {w}"
+            elif a["Tier"] == "Rare":
+                rare.append(i)
+            else:
+                plain.append(i)
+        for n, i in enumerate(rare):   # Rare blades alternate Chrome and Gold
+            tokens[i - 1][0]["Held Weapon"] = f"{'Chrome' if n % 2 == 0 else 'Gold'} {w}"
+        late.shuffle(plain)
+        for n, i in enumerate(plain):   # about 47% Rusted, 35% Bloody, 18% Clean
+            r = n / len(plain)
+            tokens[i - 1][0]["Held Weapon"] = f"{'Rusted' if r < .47 else 'Bloody' if r < .82 else 'Clean'} {w}"
 
 
 def retro_pass(tokens):

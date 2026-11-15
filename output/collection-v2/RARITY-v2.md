@@ -83,33 +83,49 @@
 | Value | Count | Share |
 |---|---|---|
 | Rusted Machete | 144 | 11.1% |
-| Hunting Knife | 128 | 9.8% |
-| Butcher Cleaver | 120 | 9.2% |
 | Meat Hook | 116 | 8.9% |
-| Hatchet | 106 | 8.2% |
-| Sickle | 105 | 8.1% |
+| Bloody Hunting Knife | 93 | 7.2% |
 | Nail Bat | 88 | 6.8% |
 | Spear | 85 | 6.5% |
+| Rusted Butcher Cleaver | 83 | 6.4% |
 | Chainsaw | 82 | 6.3% |
+| Rusted Sickle | 76 | 5.8% |
+| Rusted Hatchet | 75 | 5.8% |
 | Fish Hook | 71 | 5.5% |
 | Ice Pick | 55 | 4.2% |
 | Bare Fist | 33 | 2.5% |
 | Bloody Machete | 30 | 2.3% |
 | Rusty Shears | 25 | 1.9% |
 | Poison Syringe | 25 | 1.9% |
+| Rusted Hunting Knife | 24 | 1.8% |
+| Bloody Butcher Cleaver | 23 | 1.8% |
+| Bloody Sickle | 18 | 1.4% |
+| Bloody Hatchet | 18 | 1.4% |
 | Golden Machete (Rare+) | 15 | 1.2% |
 | Hook Hand (Rare+) | 15 | 1.2% |
 | Clean Machete | 15 | 1.2% |
+| Clean Butcher Cleaver | 12 | 0.9% |
 | Nail-Knife Glove (Rare+) | 9 | 0.7% |
+| Clean Hatchet | 9 | 0.7% |
+| Clean Hunting Knife | 9 | 0.7% |
+| Clean Sickle | 9 | 0.7% |
 | Bone Saw (Rare+) | 8 | 0.6% |
 | Flamethrower (Rare+) | 8 | 0.6% |
 | Double Molotov Cocktails | 6 | 0.5% |
 | Chrome Machete | 4 | 0.3% |
 | Blue-Flame Flamethrower | 3 | 0.2% |
+| Chrome Hatchet | 2 | 0.2% |
+| Gold Hatchet | 2 | 0.2% |
 | Mask Orb and Hatchet | 1 | 0.1% |
 | Bloody Kitchen Knife | 1 | 0.1% |
+| Chrome Hunting Knife | 1 | 0.1% |
 | Telekinesis | 1 | 0.1% |
+| Chrome Sickle | 1 | 0.1% |
 | Death Nails | 1 | 0.1% |
+| Chrome Butcher Cleaver | 1 | 0.1% |
+| Gold Hunting Knife | 1 | 0.1% |
+| Gold Sickle | 1 | 0.1% |
+| Gold Butcher Cleaver | 1 | 0.1% |
 
 ## Back Weapon
 
