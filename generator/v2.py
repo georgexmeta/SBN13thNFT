@@ -189,7 +189,7 @@ ICON_EXTRA = [
     ("Mask", "Honeycomb Half-Mask", "a golden beeswax HALF mask moulded like honeycomb covering ONLY his mouth, chin and nose with his eyes, brow and "
              "forehead bare, hexagonal comb cells oozing honey, a few small clay bees crawling over the mask and his cheek"),
     ("Mask", "Cracked Doll Mask", "a cracked white porcelain doll-face mask over his whole face, rosy painted cheeks, tiny painted red lips, "
-             "empty black eye holes, a long hairline crack running across it"),
+             "empty black eye holes, a long hairline crack running across it, the mask sits squarely over his whole face from brow to chin with its eye holes exactly over his eyes; none of his real eyes, skin or brow shows above, beside or below the mask"),
     ("Mask", "Needle-Tooth Snarl", "no mask: a gaunt creature face with a huge lipless mouth full of rows of jagged needle teeth, a flat slitted "
              "nose, small glinting black eyes and wiry tufts of hair"),
     ("Held Weapon", "Rusty Shears", "a pair of long rusty tailor's shears with the blades open, dripping blood"),
@@ -286,7 +286,7 @@ MASK_RARE = {   # monster-like; original takes on slasher and metal archetypes
     "Stitched Skin Mask": (16, "a crude mask of mismatched stitched leathery skin patches sewn with thick black thread, uneven eye holes, ragged edges"),
     "Nail-Studded Leather Mask": (14, "a cracked black leather mask with bent rusty nails and screws driven through it at random angles, blood seeping from the holes"),
     "Fanged Killer Clown": (14, "a cracked greasepaint killer clown face with green diamond eye paint, a red bulb nose, a ragged fanged grin dripping blood and wild orange hair puffs"),
-    "Porcelain Doll Face": (12, "a cracked porcelain doll face mask with a chipped cheek, painted rosy cheeks, black empty eyes and a tiny painted mouth"),
+    "Porcelain Doll Face": (12, "a cracked porcelain doll face mask with a chipped cheek, painted rosy cheeks, black empty eyes and a tiny painted mouth, the mask sits squarely over his whole face from brow to chin with its eye holes exactly over his eyes; none of his real eyes, skin or brow shows above, beside or below the mask"),
     "Zipper Mouth Leather": (12, "a stitched black leather full-face mask with laced seams and a metal zipper across the mouth"),
     "Oni Demon Mask": (10, "a red lacquered demon mask with gold horns, a snarling fanged mouth and furrowed brows"),
     "Bone Skull Mask": (10, "a carved bone skull mask with cracked teeth and hollow eye sockets"),
