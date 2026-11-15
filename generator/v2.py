@@ -277,7 +277,7 @@ MASK_STD = {
     "Hockey Half-Mask": (18, "an aged yellowed HALF mask covering ONLY his mouth, chin and the tip of his nose, the top edge sitting just under his eyes, his eyes, brow and forehead completely bare, round breathing holes, random blood splatters (never triangles or stripes), held by rusty leather straps with a riveted plate and a buckle under the ear"),
     "Burlap Pig Mask": (14, "a frayed stitched burlap pig mask with floppy ears, a pink clay snout and a blocky burlap-toothed grin, a rusty leather strap with a buckle over the crown"),
     "Burlap Sack Hood": (12, "his huge oversized bobble head is entirely covered by a filthy lumpy burlap sack pulled all the way down over the whole skull and face, ragged cut eye holes, a cross-stitched mouth, rope tied tight at the neck; no skin or hair visible"),
-    "Patchwork Goggle Mask": (12, "a patchwork mask of stitched burlap and riveted scrap-metal plates, round brass goggle eyes with red lenses, a wire-stitched mouth, a leather strap with a buckle over the crown"),
+    "Patchwork Goggle Mask": (12, "a patchwork mask of stitched burlap and riveted scrap-metal plates, exactly two round brass goggles with red lenses sitting directly over his two eyes (the eyes seen through the lenses, nothing else on the nose or snout), a wire-stitched mouth, a leather strap with a buckle over the crown"),
     "Gas Mask": (10, "a cracked black rubber respirator over his nose and mouth with an olive filter canister and ribbed hose, eyes visible above"),
     "Paisley Bandana": (8, "a navy paisley bandana tied snug over his nose and mouth, point hanging on the chest"),
     "Iron Muzzle": (4, "a crude welded scrap-metal jaw cage made of bent rebar bars and bolts wrapped round his mouth and chin, rusty and bloody, eyes visible above"),
@@ -398,7 +398,9 @@ FRAMING_DUAL = FRAMING.split(" His right hand grips")[0] + (" Both hands are ful
                                                           "the right fist grips the held weapon, the left fist grips the second weapon by its handle as described")
 FRAMING_BOTH = FRAMING.split(" His right hand grips")[0] + (" Both hands grip the weapon, knuckles toward the camera, the whole weapon inside the frame; "
                                                           "neither hand hangs empty and nothing is on his back")
-FRAMING_HOOKOFF = FRAMING.split("; his other hand")[0] + "; his other arm ends in a rusty prosthetic hook, raised, never a limp hand"
+FRAMING_HOOKOFF = FRAMING.split("; his other hand")[0] + "; his other arm ends in a metal prosthetic hook, raised, never a limp hand or a bare stump"
+HOOK_FINISH = {"Rusty": "rusty pitted iron", "Steel": "plain scuffed steel", "Bloody": "blood-drenched dripping steel",
+               "Gold": "gleaming solid-gold", "Chrome": "mirror-polished chrome"}
 FRAMING_NAILS = FRAMING.split(" His right hand grips")[0] + " Both hands are raised and fully visible inside the frame, all ten blade nails spread; neither hand hangs down or is hidden"
 FRAMING_MOLOTOV = FRAMING.split(" His right hand grips")[0] + " Both fists are raised in front of him, each gripping a lit Molotov cocktail by the neck, knuckles toward the camera; neither hand hangs empty"
 FRAMING_COLLECTOR = FRAMING.split(" His right hand grips")[0] + " Both hands are full: the orb held out in one hand toward the viewer, the hatchet gripped in the other"
@@ -549,9 +551,9 @@ def prompt(a, legendary_finish=None):
                 "blades crudely welded and taped onto the knuckles, a clenched spiked fist, knuckles toward the camera")
     else:
         hand = f"his right fist grips {phrase('Held Weapon', held)}"
-    if a.get("Off Hand") == "Rusty Hook Hand":   # George 2026-11-15: a free hand is never limp, it is a prosthetic hook
-        hand += ("; his LEFT hand is gone, replaced by a big curved rusty metal prosthetic hook on a battered leather cuff "
-                 "strapped to his forearm, raised menacingly beside him")
+    if (a.get("Off Hand") or "").endswith("Hook Hand"):   # George 2026-11-15: a free hand is never limp, it is a prosthetic hook
+        hand += (f"; his LEFT hand is gone, replaced by a big curved {HOOK_FINISH[a['Off Hand'].split()[0]]} prosthetic hook on a "
+                 "battered leather cuff strapped to his forearm, raised menacingly beside him")
     elif a.get("Off Hand"):   # George 2026-11-15: dual wield, both fists clench a weapon, no back weapon
         hand += "; his LEFT fist tightly grips " + DUAL_PHRASE[a["Off Hand"]]
     body = [f"wearing {phrase('Clothing', a['Clothing'])}", phrase("Belt", a["Belt"]), hand, phrase("Back Weapon", a["Back Weapon"])]
@@ -562,7 +564,7 @@ def prompt(a, legendary_finish=None):
     if doll:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"])]
     parts = [STYLE, DOLL_BASE if doll else FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
-             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Clayson Master Ball and Golden Axe" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held in ("Death Nails", "Blade Nails") else FRAMING_HOOKOFF if a.get("Off Hand") == "Rusty Hook Hand" else FRAMING_DUAL if a.get("Off Hand") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_BOTH if held in TWO_HAND_HELD else FRAMING_WHACKER if held == "Golden Saw Weed Whacker" else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
+             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Clayson Master Ball and Golden Axe" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held in ("Death Nails", "Blade Nails") else FRAMING_HOOKOFF if (a.get("Off Hand") or "").endswith("Hook Hand") else FRAMING_DUAL if a.get("Off Hand") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_BOTH if held in TWO_HAND_HELD else FRAMING_WHACKER if held == "Golden Saw Weed Whacker" else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
     text = ". ".join(p[0].upper() + p[1:] for p in parts if p) + "."
     if "empty black eye sockets" in (mask or ""):   # QA #232: the base "sunken eyes" line added a stray third eye
         text = text.replace("small sunken bloodshot eyes in swollen red-rimmed lids, ", "")
@@ -911,9 +913,16 @@ TWO_HAND_HELD = {
 def hook_off_pass(tokens):
     """George 2026-11-15: a Clayson holding one weapon in one hand gets a rusty prosthetic hook instead of a limp free hand."""
     busy = NO_OFF_HAND | set(TWO_HAND_HELD) | {"Hook Hand"}
-    for a, f in tokens:
+    plain, rare = [], []
+    for i, (a, f) in enumerate(tokens, 1):
         if a["Tier"] != "Legendary 1/1" and not a.get("Off Hand") and a["Held Weapon"] not in busy:
-            a["Off Hand"] = "Rusty Hook Hand"
+            (rare if a["Tier"] == "Rare" else plain).append(i)
+    for n, i in enumerate(rare):   # Rare: Gold and Chrome (Chrome rarest)
+        tokens[i - 1][0]["Off Hand"] = f"{'Gold' if n % 3 else 'Chrome'} Hook Hand"
+    random.Random(4747).shuffle(plain)
+    for n, i in enumerate(plain):   # rust most common, then steel, then bloody
+        r = n / len(plain)
+        tokens[i - 1][0]["Off Hand"] = f"{'Rusty' if r < .5 else 'Steel' if r < .8 else 'Bloody'} Hook Hand"
 
 
 def two_hand_pass(tokens):
