@@ -905,7 +905,7 @@ def zombie_pass(tokens):
         rng.shuffle(women); rng.shuffle(men)
         for v, n in deal:
             for k in range(n):
-                tokens[(women if k % 2 else men).pop() - 1][0]["Skin"] = v
+                tokens[(women if k % 2 and women else men).pop() - 1][0]["Skin"] = v
 
 
 def jail_tier_fix(tokens):

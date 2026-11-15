@@ -260,11 +260,11 @@
 | Flesh Pink | 348 | 26.8% |
 | Corpse Grey | 234 | 18.0% |
 | Sallow | 170 | 13.1% |
-| Pale Wax | 150 | 11.5% |
-| Ruddy | 133 | 10.2% |
+| Pale Wax | 151 | 11.6% |
+| Ruddy | 134 | 10.3% |
 | Deep Brown | 125 | 9.6% |
-| Bloodless Blue | 72 | 5.5% |
-| Toxic Green | 39 | 3.0% |
+| Bloodless Blue | 69 | 5.3% |
+| Toxic Green | 40 | 3.1% |
 | Zombie Green | 15 | 1.2% |
 | Zombie Blue | 10 | 0.8% |
 | Charred Plastic | 1 | 0.1% |
