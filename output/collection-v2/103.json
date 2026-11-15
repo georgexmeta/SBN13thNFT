@@ -1,5 +1,5 @@
 {
-  "name": "SBN13th #103 - The Thirteenth",
+  "name": "SBN13th #103 - The Collector",
   "seed": 1982239193,
   "attributes": [
     {
@@ -8,7 +8,7 @@
     },
     {
       "trait_type": "1/1 Name",
-      "value": "The Thirteenth"
+      "value": "The Collector"
     },
     {
       "trait_type": "Head",
@@ -16,39 +16,39 @@
     },
     {
       "trait_type": "Skin",
-      "value": "Bloodless Blue"
+      "value": "Flesh Pink"
     },
     {
       "trait_type": "Hair",
-      "value": "Wild Grey Tufts"
+      "value": "Worn Trucker Cap"
     },
     {
       "trait_type": "Head Mark",
-      "value": "Blue Veins"
+      "value": "Clean"
     },
     {
       "trait_type": "Mask",
-      "value": "Hockey Half-Mask (polished chrome)"
+      "value": "Bearded Bulging Stare"
     },
     {
       "trait_type": "Held Weapon",
-      "value": "Golden Machete"
+      "value": "Mask Orb and Hatchet"
     },
     {
       "trait_type": "Back Weapon",
-      "value": "Scythe"
+      "value": "None"
     },
     {
       "trait_type": "Clothing",
-      "value": "Patched Work Jacket"
+      "value": "Worn Leather Jacket"
     },
     {
       "trait_type": "Belt",
-      "value": "Tool Belt"
+      "value": "None"
     },
     {
       "trait_type": "Backdrop",
-      "value": "Blood Moon"
+      "value": "Terracotta Clay"
     },
     {
       "trait_type": "Ears",

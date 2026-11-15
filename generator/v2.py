@@ -240,6 +240,22 @@ DOLL_EXTRA = [
                  "a tiny rocking horse and a broken toy chair, sculpted as a miniature claymation diorama in matte plasticine, softly out of focus "
                  "behind him, no signs or lettering"),
 ]
+# 1/1 "The Collector" (George, 2026-11-15, his own reference figure): bearded trucker-cap man with bulging eyes holding an
+# original goalie-mask orb and a rusty hatchet. No lettering on shirt or cap, no Poke Ball split or button, no chevrons.
+# Replaces The Thirteenth (George's pick) in collector_pass, after every other pass. 13 Legendaries.
+COLLECTOR = ("The Thirteenth", {"1/1 Name": "The Collector", "Character": "Classic", "Head": "Type 1 - Lumpy Dome", "Skin": "Flesh Pink",
+             "Hair": "Worn Trucker Cap", "Head Mark": "Clean", "Ears": "Natural", "Mask": "Bearded Bulging Stare",
+             "Held Weapon": "Mask Orb and Hatchet", "Back Weapon": "None", "Clothing": "Worn Leather Jacket", "Belt": "None",
+             "Backdrop": "Terracotta Clay"})
+COLLECTOR_EXTRA = [
+    ("Hair", "Worn Trucker Cap", "a dirty, worn plain beige trucker cap with a mesh back, completely blank with no logo, signatures or writing, "
+             "messy grey hair sticking out at the sides"),
+    ("Mask", "Bearded Bulging Stare", "no mask: a weathered wrinkled face with huge round bulging staring eyes in baggy lids, a big nose and a "
+             "scraggly grey-brown beard and moustache"),
+    ("Clothing", "Worn Leather Jacket", "a battered, scuffed black leather jacket with a zip front, open over a plain faded grey T-shirt with "
+                 "no lettering or print"),
+    ("Backdrop", "Terracotta Clay", "a plain textured terracotta-orange pressed clay backdrop"),
+]
 # "The Ringmistress" (George, 2026-11-14): a 7th female exclusive, an original ADULT woman killer clown inspired by a
 # horror clown photo but not its character: no black-and-white split costume, no mini top hat, no black lips.
 # 8 unrendered Rare tokens, dealt by ring_pass after every other pass so earlier picks don't shift.
@@ -375,6 +391,7 @@ FRAMING_TWO_HANDS = FRAMING.split(" His right hand grips")[0] + (" Both hands ho
                                                               "and one on the front handle; neither hand hangs empty")
 FRAMING_NAILS = FRAMING.split(" His right hand grips")[0] + " Both hands are raised and fully visible inside the frame, all ten blade nails spread; neither hand hangs down or is hidden"
 FRAMING_MOLOTOV = FRAMING.split(" His right hand grips")[0] + " Both fists are raised in front of him, each gripping a lit Molotov cocktail by the neck, knuckles toward the camera; neither hand hangs empty"
+FRAMING_COLLECTOR = FRAMING.split(" His right hand grips")[0] + " Both hands are full: the orb held out in one hand toward the viewer, the hatchet gripped in the other"
 FRAMING_PSYCHIC = FRAMING.split(" His right hand grips")[0] + " Both hands are raised, empty, channelling psychic force; no weapon in her hands."
 NEGATIVE = ("text, logo, letters, watermark, brand marks, sports team logo, red chevrons or triangles on the mask, full-face goalie mask covering the forehead and eyes, "
             "white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, "
@@ -391,6 +408,7 @@ for _t, (_v, _p) in RETRO_EXTRA.items():
 # Belt slot, 13 unrendered Uncommon tokens (head_strap_pass; George: Uncommon), so tier counts don't move.
 ALL["Held Weapon"]["Double Molotov Cocktails"] = (0, "")
 ALL["Held Weapon"]["Blue-Flame Flamethrower"] = (0, "")
+ALL["Held Weapon"]["Mask Orb and Hatchet"] = (0, "")
 # Half-Burnt Face (George, 2026-11-15): a Head Mark on exactly 13 unrendered bare-face Uncommon tokens (burnt_face_pass).
 ALL["Head Mark"] = dict(ALL["Head Mark"])
 ALL["Head Mark"]["Half-Burnt Face"] = (0, "one half of his face is horribly burnt: charred, blistered and melted flesh peeling away on that side, "
@@ -405,7 +423,7 @@ ALL["Back Weapon"]["Sniper Rifle"] = (0, "a long heavy matte-black sniper rifle 
                                      "rising high above his shoulder")
 ALL["Belt"]["Shrunken Head Bandolier"] = (0, "a worn leather bandolier strap slung diagonally across his chest from shoulder to hip with exactly "
                                           "five small wrinkled shrunken heads hanging from it, their eyes and lips stitched shut, wisps of dark hair")
-for _t, _v, _p in ICON_EXTRA + DUCHESS_EXTRA + DOLL_EXTRA:
+for _t, _v, _p in ICON_EXTRA + DUCHESS_EXTRA + DOLL_EXTRA + COLLECTOR_EXTRA:
     ALL[_t][_v] = (0, _p)
 
 
@@ -440,6 +458,10 @@ def prompt(a, legendary_finish=None):
     elif held == "Double Molotov Cocktails":   # George 2026-11-15: one lit Molotov in each hand, 6 Rare tokens
         hand = ("he holds a lit Molotov cocktail in EACH hand: two old glass bottles of sloshing fuel with burning rag wicks, "
                 "small orange flames licking from both, one raised in each fist")
+    elif held == "Mask Orb and Hatchet":
+        hand = ("in his left hand he holds out a round cracked bone-white clay orb shaped like a goalie mask rolled into a ball, covered in rows "
+                "of small breathing holes with rusty rivets and dried blood; it is all one off-white colour, with no red half, no band and no "
+                "button; his right fist grips a rusty hatchet with a worn wooden handle, held low at his side")
     elif held == "Death Nails":
         hand = ("BOTH of her hands are raised in front of her chest, fingers spread like claws, every fingertip on both hands ending in a "
                 "long curved blackened-steel blade nail as long as a forearm, all ten blade nails fanned out toward the viewer, blood on the tips")
@@ -462,7 +484,7 @@ def prompt(a, legendary_finish=None):
     if doll:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"])]
     parts = [STYLE, DOLL_BASE if doll else FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
-             phrase("Backdrop", a["Backdrop"]), FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_NAILS if held == "Death Nails" else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_PSYCHIC if held == "Telekinesis" else FRAMING]
+             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Mask Orb and Hatchet" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_NAILS if held == "Death Nails" else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_PSYCHIC if held == "Telekinesis" else FRAMING]
     text = ". ".join(p[0].upper() + p[1:] for p in parts if p) + "."
     if female:
         for m, f in [(r"\bhis\b", "her"), (r"\bHis\b", "Her"), (r"\bhim\b", "her"), (r"\bhimself\b", "herself"), (r"\bhe\b", "she"), (r"\bHe\b", "She")]:
@@ -528,6 +550,7 @@ def build():
     gun_pass(tokens)
     torn_ear_pass(tokens)
     burnt_face_pass(tokens)
+    collector_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -535,7 +558,7 @@ def build():
         name = f"SBN13th #{i}" + (f" - {a['1/1 Name']}" if "1/1 Name" in a else "")
         meta = {"name": name, "seed": seed, "attributes": [{"trait_type": k, "value": v} for k, v in a.items()]}
         json.dump(meta, open(os.path.join(OUT, f"{i}.json"), "w"), indent=2)
-        rows.append({"id": i, "name": name, "seed": seed, "prompt": prompt(a, finish), "negative": NEGATIVE.replace("long finger blades, clawed glove with four long knives, ", "") if a["Held Weapon"] == "Death Nails" else NEGATIVE, "attributes": a})
+        rows.append({"id": i, "name": name, "seed": seed, "prompt": prompt(a, finish), "negative": NEGATIVE.replace("long finger blades, clawed glove with four long knives, ", "") if a["Held Weapon"] == "Death Nails" else NEGATIVE + ", red and white ball, ball with a centre button, writing on clothes, logo on cap" if a["Held Weapon"] == "Mask Orb and Hatchet" else NEGATIVE, "attributes": a})
     os.makedirs(os.path.join(ROOT, "output", "ai"), exist_ok=True)
     json.dump(rows, open(os.path.join(ROOT, "output", "ai", "manifest-v2.json"), "w"), indent=1)
     report(tokens)
@@ -785,6 +808,12 @@ def burnt_face_pass(tokens):
             and a["Character"] in ("Classic", "Woman")]
     for i in random.Random(1313).sample(pool, 13):
         tokens[i - 1][0]["Head Mark"] = "Half-Burnt Face"   # a new value can't collide with an existing DNA
+
+
+def collector_pass(tokens):
+    for i, (a, finish) in enumerate(tokens):
+        if a.get("1/1 Name") == COLLECTOR[0]:
+            a.update(COLLECTOR[1]); tokens[i] = (a, None)
 
 
 def retro_pass(tokens):

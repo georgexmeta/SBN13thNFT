@@ -65,7 +65,7 @@
 | Long Nose Latex (Rare+) | 3 | 0.2% |
 | Crown of Nails (Rare+) | 3 | 0.2% |
 | Hockey Half-Mask (solid polished gold) | 1 | 0.1% |
-| Hockey Half-Mask (polished chrome) | 1 | 0.1% |
+| Bearded Bulging Stare | 1 | 0.1% |
 | Melted Doll Face | 1 | 0.1% |
 | Psychic Glare | 1 | 0.1% |
 | Hockey Half-Mask (dripping glowing toxic-green slime) | 1 | 0.1% |
@@ -96,13 +96,14 @@
 | Bare Fist | 33 | 2.5% |
 | Rusty Shears | 25 | 1.9% |
 | Poison Syringe | 25 | 1.9% |
-| Golden Machete (Rare+) | 16 | 1.2% |
+| Golden Machete (Rare+) | 15 | 1.2% |
 | Hook Hand (Rare+) | 15 | 1.2% |
 | Nail-Knife Glove (Rare+) | 9 | 0.7% |
 | Bone Saw (Rare+) | 8 | 0.6% |
 | Flamethrower (Rare+) | 8 | 0.6% |
 | Double Molotov Cocktails | 6 | 0.5% |
 | Blue-Flame Flamethrower | 3 | 0.2% |
+| Mask Orb and Hatchet | 1 | 0.1% |
 | Bloody Kitchen Knife | 1 | 0.1% |
 | Telekinesis | 1 | 0.1% |
 | Death Nails | 1 | 0.1% |
@@ -116,11 +117,11 @@
 | Sledgehammer | 163 | 12.5% |
 | Chainsaw | 154 | 11.8% |
 | Woodcutter Axe | 152 | 11.7% |
-| None | 142 | 10.9% |
+| None | 143 | 11.0% |
 | Rusty Shovel | 106 | 8.2% |
 | Circus Mallet (Rare+) | 26 | 2.0% |
 | Leathery Bat Wings | 25 | 1.9% |
-| Scythe (Rare+) | 16 | 1.2% |
+| Scythe (Rare+) | 15 | 1.2% |
 | Harpoon Gun (Rare+) | 13 | 1.0% |
 | Fuel Tanks (Rare+) | 11 | 0.8% |
 | Double-Barrel Shotgun | 7 | 0.5% |
@@ -131,7 +132,7 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Patched Work Jacket | 179 | 13.8% |
+| Patched Work Jacket | 178 | 13.7% |
 | Plaid Flannel | 131 | 10.1% |
 | Mechanic Coveralls | 96 | 7.4% |
 | Orange Prison Jumpsuit | 96 | 7.4% |
@@ -160,6 +161,7 @@
 | Dripping Nightgown | 8 | 0.6% |
 | Bloody Clown Suit (Rare+) | 6 | 0.5% |
 | Fur-Trimmed Cape (Rare+) | 6 | 0.5% |
+| Worn Leather Jacket | 1 | 0.1% |
 | Scorched Corduroy Dungarees | 1 | 0.1% |
 | Blood-Drenched Prom Gown | 1 | 0.1% |
 | Mustard Cardigan | 1 | 0.1% |
@@ -170,8 +172,8 @@
 
 | Value | Count | Share |
 |---|---|---|
-| None | 885 | 68.1% |
-| Tool Belt | 400 | 30.8% |
+| None | 886 | 68.2% |
+| Tool Belt | 399 | 30.7% |
 | Shrunken Head Bandolier | 13 | 1.0% |
 | Golden Neck Chains | 1 | 0.1% |
 | Garnet Choker | 1 | 0.1% |
@@ -198,8 +200,9 @@
 | Nightmare Sequence | 19 | 1.5% |
 | Doctor's Hospital Room | 19 | 1.5% |
 | Cornfield (Rare+) | 14 | 1.1% |
-| Blood Moon (Rare+) | 14 | 1.1% |
+| Blood Moon (Rare+) | 13 | 1.0% |
 | Jail Cell | 13 | 1.0% |
+| Terracotta Clay | 1 | 0.1% |
 | Burnt Dollhouse | 1 | 0.1% |
 | Burning Gym | 1 | 0.1% |
 | Pixel Cabin | 1 | 0.1% |
@@ -209,13 +212,13 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Flesh Pink | 364 | 28.0% |
+| Flesh Pink | 365 | 28.1% |
 | Corpse Grey | 239 | 18.4% |
 | Sallow | 178 | 13.7% |
 | Pale Wax | 146 | 11.2% |
 | Ruddy | 136 | 10.5% |
 | Deep Brown | 125 | 9.6% |
-| Bloodless Blue | 70 | 5.4% |
+| Bloodless Blue | 69 | 5.3% |
 | Toxic Green | 39 | 3.0% |
 | Charred Plastic | 1 | 0.1% |
 | Icy Retro Blue | 1 | 0.1% |
@@ -228,7 +231,7 @@
 | Grey Side Tufts | 349 | 26.8% |
 | Bald | 197 | 15.2% |
 | Greasy Comb-over | 135 | 10.4% |
-| Wild Grey Tufts | 123 | 9.5% |
+| Wild Grey Tufts | 122 | 9.4% |
 | Greasy Bob | 94 | 7.2% |
 | Messy Grey Bun | 89 | 6.8% |
 | Backwards Cap | 84 | 6.5% |
@@ -243,6 +246,7 @@
 | Frizzed Auburn Bunches | 8 | 0.6% |
 | Wilted Flower Crown | 8 | 0.6% |
 | Soaked Black Veil Hair | 8 | 0.6% |
+| Worn Trucker Cap | 1 | 0.1% |
 | Singed Yarn Tufts | 1 | 0.1% |
 | Blood-Matted Curls | 1 | 0.1% |
 | Grey Curled Perm | 1 | 0.1% |
@@ -252,10 +256,10 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Blue Veins | 508 | 39.1% |
+| Blue Veins | 507 | 39.0% |
 | Grey Wrinkles | 282 | 21.7% |
 | Stitched Scar | 191 | 14.7% |
-| Clean | 183 | 14.1% |
+| Clean | 184 | 14.2% |
 | Boils | 123 | 9.5% |
 | Half-Burnt Face | 13 | 1.0% |
 
