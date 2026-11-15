@@ -96,9 +96,9 @@
 | Bloody Machete | 25 | 1.9% |
 | Rusty Shears | 25 | 1.9% |
 | Poison Syringe | 25 | 1.9% |
-| Blade Nails | 25 | 1.9% |
 | Switchblade | 25 | 1.9% |
 | Bare Fist | 23 | 1.8% |
+| Blade Nails | 22 | 1.7% |
 | Rusted Hunting Knife | 19 | 1.5% |
 | Bloody Butcher Cleaver | 17 | 1.3% |
 | Hook Hand (Rare+) | 15 | 1.2% |
@@ -123,6 +123,7 @@
 | Double Molotov Cocktails | 6 | 0.5% |
 | Clean Hunting Knife | 5 | 0.4% |
 | Toy Pop Gun | 5 | 0.4% |
+| Sledgehammer | 3 | 0.2% |
 | Double-Barrel Shotgun | 3 | 0.2% |
 | Chrome Machete | 3 | 0.2% |
 | Blue-Flame Flamethrower | 3 | 0.2% |
@@ -143,9 +144,8 @@
 
 | Value | Count | Share |
 |---|---|---|
-| None | 331 | 25.5% |
+| None | 476 | 36.6% |
 | Pitchfork | 200 | 15.4% |
-| Sledgehammer | 158 | 12.2% |
 | Woodcutter Axe | 151 | 11.6% |
 | Rusted Saw Weed Whacker | 126 | 9.7% |
 | Rusty Shovel | 94 | 7.2% |
@@ -155,6 +155,7 @@
 | Circus Mallet (Rare+) | 19 | 1.5% |
 | Chrome Saw Weed Whacker | 15 | 1.2% |
 | Scythe (Rare+) | 14 | 1.1% |
+| Sledgehammer | 13 | 1.0% |
 | Fuel Tanks (Rare+) | 11 | 0.8% |
 | Harpoon Gun (Rare+) | 7 | 0.5% |
 | Double-Barrel Shotgun | 4 | 0.3% |

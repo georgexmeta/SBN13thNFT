@@ -442,6 +442,8 @@ ALL["Held Weapon"]["Rusty Pickaxe"] = (0, "a small rusty pickaxe")
 # George 2026-11-15: 13 Uncommon Claysons wield a weed whacker fitted with a golden saw blade, both hands
 WEEDWACKER = [816, 859, 879, 889, 925, 940, 992, 1085, 1101, 1151, 1166, 1219, 1275]
 # QA (George 2026-11-15): a back weapon that sat wrong moves to the left fist instead, both hands clench a weapon
+NO_OFF_HAND = {"Chainsaw", "Exercise Band", "Double Molotov Cocktails", "Golden Saw Weed Whacker", "Telekinesis", "Psychic Force",
+               "Blade Nails", "Death Nails", "Flamethrower", "Blue-Flame Flamethrower", "Clayson Master Ball and Golden Axe"}
 DUAL = {799: "Sledgehammer", 32: "Woodcutter Axe", 715: "Rusty Shovel", 727: "Rusty Shovel", 124: "Sledgehammer", 887: "Sledgehammer", 845: "Sledgehammer", 855: "Sledgehammer"}   # 124: art already shows the hammer in hand
 DUAL_PHRASE = {"Rusty Shovel": "a rusty shovel by its long wooden handle, the shovel resting up on his left shoulder with the blade behind his shoulder, carried in his hand, not strapped to his back", "Woodcutter Axe": "a rusty woodcutter axe by its long wooden handle, the axe resting up on his left shoulder with the blade behind his shoulder, carried in his hand, not strapped to his back", "Sledgehammer": "a heavy sledgehammer by its wooden handle, the hammer resting up on his left shoulder with the iron head behind his shoulder, carried in his hand, not strapped to his back"}
 PICKAXE = [79, 87, 231, 259, 266, 324, 360, 490, 567, 794, 818, 820]
@@ -647,6 +649,9 @@ def build():
                           "nothing inside; no eyeballs, no pink skin face, no fleshy eyes beside, behind or above the grey face.")
     for _i in PICKAXE:
         tokens[_i - 1][0]["Held Weapon"] = "Rusty Pickaxe"
+    for _a, _f in tokens:   # George 2026-11-15: every back sledgehammer is carried on the shoulder in the off hand instead
+        if (_a["Back Weapon"] == "Sledgehammer" and _a["Tier"] != "Legendary 1/1" and _a["Held Weapon"] not in NO_OFF_HAND):
+            _a["Back Weapon"], _a["Off Hand"] = "None", "Sledgehammer"
     for _i, _w in DUAL.items():
         tokens[_i - 1][0]["Back Weapon"] = "None"
         tokens[_i - 1][0]["Off Hand"] = _w

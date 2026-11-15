@@ -32,7 +32,7 @@
     },
     {
       "trait_type": "Back Weapon",
-      "value": "Sledgehammer"
+      "value": "None"
     },
     {
       "trait_type": "Clothing",
@@ -53,6 +53,10 @@
     {
       "trait_type": "Character",
       "value": "Farmhouse Smile"
+    },
+    {
+      "trait_type": "Off Hand",
+      "value": "Sledgehammer"
     },
     {
       "trait_type": "Splatter",
