@@ -6,8 +6,9 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Standard | 771 | 59.3% |
-| Uncommon | 386 | 29.7% |
+| Standard | 464 | 35.7% |
+| Common | 400 | 30.8% |
+| Uncommon | 293 | 22.5% |
 | Rare | 130 | 10.0% |
 | Legendary 1/1 | 13 | 1.0% |
 

@@ -743,6 +743,7 @@ def build():
         a["Held Weapon"] = "Chrome Blade Nails" if a["Tier"] == "Rare" else "Gold Blade Nails" if i in _gold else "Bloody Blade Nails"
     for _i in WEEDWACKER:
         tokens[_i - 1][0]["Held Weapon"] = "Golden Saw Weed Whacker"
+    common_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -915,6 +916,24 @@ def zombie_pass(tokens):
         for v, n in deal:
             for k in range(n):
                 tokens[(women if k % 2 and women else men).pop() - 1][0]["Skin"] = v
+
+
+N_COMMON = 400
+
+
+def common_pass(tokens):
+    """Common tier (George, 2026-11-15, chose the pyramid): between Standard and Uncommon. Metadata only, runs last.
+    Uncommons carrying only ONE trait that no Standard has drop to Common; the rest of the 400 are the Standards with the
+    rarest trait mix (sum of 1/count over their traits). Team mints #4-#13 are scored like any other token."""
+    skip = {"Tier", "1/1 Name", "Splatter", "Character"}
+    cnt = Counter((k, v) for a, _ in tokens for k, v in a.items() if k not in skip)
+    std_vals = {(k, v) for a, _ in tokens if a["Tier"] == "Standard" for k, v in a.items()}
+    single = [a for a, _ in tokens if a["Tier"] == "Uncommon"
+              and sum((k, v) not in std_vals for k, v in a.items() if k not in skip) == 1]
+    score = lambda a: sum(1 / cnt[(k, v)] for k, v in a.items() if k not in skip)
+    std = sorted((a for a, _ in tokens if a["Tier"] == "Standard"), key=score, reverse=True)
+    for a in single + std[:N_COMMON - len(single)]:
+        a["Tier"] = "Common"
 
 
 def jail_tier_fix(tokens):
