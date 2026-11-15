@@ -62,7 +62,23 @@ def load():
 
 
 def save(st):
-    json.dump(st, open(STATE, "w"), indent=1)
+    """Merge with what is on disk first, so a long poll never wipes batches or drops added meanwhile by another process."""
+    if os.path.exists(STATE):
+        disk = json.load(open(STATE))
+        mine = {b["name"]: b for b in st["batches"]}
+        for b in disk["batches"]:
+            if b["name"] not in mine:
+                st["batches"].append(b)
+            else:
+                m = mine[b["name"]]
+                m["drop"] = sorted(set(m.get("drop", [])) | set(b.get("drop", [])))
+                if b["state"] != "running":
+                    m["state"] = b["state"]
+        for k, v in disk.get("refs", {}).items():
+            st["refs"].setdefault(k, v)
+    tmp = STATE + ".tmp"
+    json.dump(st, open(tmp, "w"), indent=1)
+    os.replace(tmp, STATE)
 
 
 def ref_parts(st, row):

@@ -425,6 +425,14 @@ ALL["Held Weapon"]["Bloody Brick"] = (0, "a chipped red house brick smeared and 
 ALL["Held Weapon"]["Exercise Band"] = (0, "")
 # Toy Pop Gun (George, 2026-11-15): Claysons that read mostly as clowns (2+ clown pieces) and hold an ordinary weapon.
 ALL["Held Weapon"]["Toy Pop Gun"] = (0, "a small bright red-and-yellow toy pistol with a blank white cloth flag popped out of the barrel on a spring, no lettering")
+
+# George 2026-11-15: backpack weed whackers get a round saw blade with the same finish tiers as blade weapons (Chrome on Rare)
+SAW_FINISH = {"Rusted": "a rusty pitted", "Bloody": "a blood-smeared", "Clean": "a clean shiny steel", "Chrome": "a gleaming mirror-chrome"}
+ALL["Back Weapon"] = dict(ALL["Back Weapon"])
+for _fin, _desc in SAW_FINISH.items():
+    ALL["Back Weapon"][f"{_fin} Saw Weed Whacker"] = (0, ALL["Back Weapon"]["Weed Whacker"][1].replace(
+        "its cutting head rising above and behind his shoulder", f"its cutting head, {_desc} round toothed circular saw blade "
+        "under a small guard instead of trimmer line, rising above and behind his shoulder"))
 TOY_GUN = [418, 429, 954, 1164, 1253]
 # QA 2026-11-15: these finished "Ice Pick" renders show a pickaxe, so the metadata says what the image shows.
 ALL["Held Weapon"]["Rusty Pickaxe"] = (0, "a small rusty pickaxe")
@@ -638,6 +646,7 @@ def build():
         tokens[_i - 1][0]["Back Weapon"] = "None"
         tokens[_i - 1][0]["Off Hand"] = _w
     chainsaw_pass(tokens)
+    saw_whacker_pass(tokens)
     for _i in WEEDWACKER:
         tokens[_i - 1][0]["Held Weapon"] = "Golden Saw Weed Whacker"
     os.makedirs(OUT, exist_ok=True)
@@ -847,6 +856,19 @@ def head_strap_pass(tokens):
             and a["Character"] in ("Classic", "Woman")]
     for i in late.sample(pool, 13):
         tokens[i - 1][0]["Belt"] = "Shrunken Head Bandolier"   # a new value can't collide with an existing DNA
+
+
+def saw_whacker_pass(tokens):
+    """Every non-1/1 backpack weed whacker gets a round saw blade: Chrome on Rare, else ~47% Rusted, 35% Bloody, 18% Clean."""
+    late = random.Random(2222)
+    plain = [i for i, (a, f) in enumerate(tokens, 1) if a["Back Weapon"] == "Weed Whacker" and a["Tier"] not in ("Rare", "Legendary 1/1")]
+    for i, (a, f) in enumerate(tokens, 1):
+        if a["Back Weapon"] == "Weed Whacker" and a["Tier"] == "Rare":
+            a["Back Weapon"] = "Chrome Saw Weed Whacker"
+    late.shuffle(plain)
+    for n, i in enumerate(plain):
+        r = n / len(plain)
+        tokens[i - 1][0]["Back Weapon"] = f"{'Rusted' if r < .47 else 'Bloody' if r < .82 else 'Clean'} Saw Weed Whacker"
 
 
 def chainsaw_pass(tokens):
