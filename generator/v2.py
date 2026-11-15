@@ -724,6 +724,7 @@ def build():
     for _i, _g in GLOVE_FINISH.items():   # George 2026-11-15: 2 gold and 1 chrome claw gloves among the 6 gloved men
         assert tokens[_i - 1][0]["Held Weapon"] == "Nail-Knife Glove"
         tokens[_i - 1][0]["Held Weapon"] = f"{_g} Claw Glove"
+    zombie_pass(tokens)
     # George 2026-11-15: women's blade nails get a finish scale. Chrome on the 3 Rare women, Gold on 6 undrawn, Bloody on the rest.
     _nails = [i for i, (a, f) in enumerate(tokens, 1) if a["Held Weapon"] == "Blade Nails"]
     _gold = set(random.Random(1818).sample([i for i in _nails if tokens[i - 1][0]["Tier"] == "Uncommon"
@@ -881,6 +882,28 @@ def freezer_pass(tokens):
                 and not os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png"))]
         for i in rng.sample(pool, n):
             tokens[i - 1][0]["Backdrop"] = FREEZER[0]
+
+
+# Zombie skins (George, 2026-11-15): an exclusive undead skin with exposed arm and rib bones, green or blue tones. Uncommon/Rare,
+# undrawn tokens only (not in a pending batch), never 1/1s, exclusive characters or Deep Brown icon tokens.
+ZOMBIE = {"Zombie Green": "rotting mossy-green undead",  "Zombie Blue": "rotting cold bruise-blue undead"}
+for _v, _t in ZOMBIE.items():
+    ALL["Skin"][_v] = (0, f"{_t} clay skin, mottled and peeling, with the flesh rotted away on both forearms showing bare bone-white "
+                          "arm bones, and a torn-open hole in his chest (through a rip in his clothes) showing pale exposed ribs")
+ZOMBIE_COUNTS = {"Uncommon": [("Zombie Green", 10), ("Zombie Blue", 7)], "Rare": [("Zombie Green", 5), ("Zombie Blue", 3)]}
+
+
+def zombie_pass(tokens):
+    st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
+    pend = set().union(*[set(b["ids"]) - set(b.get("drop", [])) for b in st["batches"] if b["state"] != "done"])
+    rng = random.Random(2253)
+    for tier, deal in ZOMBIE_COUNTS.items():
+        pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == tier and a["Character"] in ("Classic", "Woman") and i not in pend
+                and a["Skin"] != "Deep Brown" and not os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png"))]
+        picks = iter(rng.sample(pool, sum(n for _, n in deal)))
+        for v, n in deal:
+            for _ in range(n):
+                tokens[next(picks) - 1][0]["Skin"] = v
 
 
 def jail_tier_fix(tokens):
