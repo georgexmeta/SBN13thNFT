@@ -417,6 +417,9 @@ ALL["Held Weapon"]["Psychic Force"] = (0, "")
 ALL["Held Weapon"]["Switchblade"] = (0, "a flicked-open switchblade knife with a pearl handle and a bloody tip")
 ALL["Held Weapon"]["Bloody Brick"] = (0, "a chipped red house brick smeared and dripping with blood")
 ALL["Held Weapon"]["Exercise Band"] = (0, "")
+# Toy Pop Gun (George, 2026-11-15): Claysons that read mostly as clowns (2+ clown pieces) and hold an ordinary weapon.
+ALL["Held Weapon"]["Toy Pop Gun"] = (0, "a small bright red-and-yellow toy pistol with a blank white cloth flag popped out of the barrel on a spring, no lettering")
+TOY_GUN = [418, 429, 954, 1164, 1253]
 # Machete variants (George, 2026-11-15), machete_pass: finished machetes are labelled Rusted (what they show); unrendered ones are
 # split Rusted / Bloody / Clean, and unrendered Rare machetes go Chrome. Gold stays the existing Golden Machete.
 MACHETES = {"Rusted Machete": "a long rusty machete dripping blood",
@@ -589,6 +592,8 @@ def build():
     hood_pass(tokens)
     cap_cone_pass(tokens)
     women_weapon_pass(tokens)
+    for _i in TOY_GUN:
+        tokens[_i - 1][0]["Held Weapon"] = "Toy Pop Gun"
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
