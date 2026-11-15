@@ -1,5 +1,5 @@
 {
-  "name": "SBN13th #721 - Hookjaw",
+  "name": "SBN13th #721 - The Night Broker",
   "seed": 43264424,
   "attributes": [
     {
@@ -8,7 +8,7 @@
     },
     {
       "trait_type": "1/1 Name",
-      "value": "Hookjaw"
+      "value": "The Night Broker"
     },
     {
       "trait_type": "Head",
@@ -16,39 +16,39 @@
     },
     {
       "trait_type": "Skin",
-      "value": "Sallow"
+      "value": "Tanning-Bed Bronze"
     },
     {
       "trait_type": "Hair",
-      "value": "Grey Side Tufts"
+      "value": "Slicked-Back Hair"
     },
     {
       "trait_type": "Head Mark",
-      "value": "Blue Veins"
+      "value": "Clean"
     },
     {
       "trait_type": "Mask",
-      "value": "Hockey Half-Mask (yellowed and smeared)"
+      "value": "Psycho Yuppie Grin"
     },
     {
       "trait_type": "Held Weapon",
-      "value": "Meat Hook"
+      "value": "Chrome Sledge-Axe"
     },
     {
       "trait_type": "Back Weapon",
-      "value": "Harpoon Gun"
+      "value": "None"
     },
     {
       "trait_type": "Clothing",
-      "value": "Patched Work Jacket"
+      "value": "Bloody Raincoat Over Pinstripe Suit"
     },
     {
       "trait_type": "Belt",
-      "value": "Tool Belt"
+      "value": "None"
     },
     {
       "trait_type": "Backdrop",
-      "value": "Blood Splatter"
+      "value": "Penthouse Skyline"
     },
     {
       "trait_type": "Ears",

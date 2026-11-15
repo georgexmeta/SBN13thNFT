@@ -73,7 +73,7 @@
 | Retro Blue Half-Mask | 1 | 0.1% |
 | Blood-Red Smile | 1 | 0.1% |
 | Hockey Half-Mask (rust-stained) | 1 | 0.1% |
-| Hockey Half-Mask (yellowed and smeared) | 1 | 0.1% |
+| Psycho Yuppie Grin | 1 | 0.1% |
 | Diamond Wraith Mask | 1 | 0.1% |
 | Frontman Mask | 1 | 0.1% |
 | Hockey Half-Mask (stitched together) | 1 | 0.1% |
@@ -84,7 +84,7 @@
 |---|---|---|
 | Chainsaw | 209 | 16.1% |
 | Rusted Machete | 110 | 8.5% |
-| Meat Hook | 76 | 5.8% |
+| Meat Hook | 75 | 5.8% |
 | Nail Bat | 70 | 5.4% |
 | Spear | 64 | 4.9% |
 | Rusted Butcher Cleaver | 62 | 4.8% |
@@ -139,6 +139,7 @@
 | Sniper Rifle | 1 | 0.1% |
 | Telekinesis | 1 | 0.1% |
 | Death Nails | 1 | 0.1% |
+| Chrome Sledge-Axe | 1 | 0.1% |
 | Chrome Claw Glove | 1 | 0.1% |
 | Chrome Butcher Cleaver | 1 | 0.1% |
 | Chrome Hatchet | 1 | 0.1% |
@@ -149,7 +150,7 @@
 
 | Value | Count | Share |
 |---|---|---|
-| None | 871 | 67.0% |
+| None | 872 | 67.1% |
 | Rusted Saw Weed Whacker | 126 | 9.7% |
 | Bloody Saw Weed Whacker | 76 | 5.8% |
 | Oxygen Tank | 74 | 5.7% |
@@ -161,7 +162,7 @@
 | Scythe (Rare+) | 13 | 1.0% |
 | Rusty Shovel | 13 | 1.0% |
 | Fuel Tanks (Rare+) | 11 | 0.8% |
-| Harpoon Gun (Rare+) | 6 | 0.5% |
+| Harpoon Gun (Rare+) | 5 | 0.4% |
 | Chrome Saw Weed Whacker | 4 | 0.3% |
 | Double-Barrel Shotgun | 3 | 0.2% |
 | Chainsaw | 2 | 0.2% |
@@ -173,7 +174,7 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Patched Work Jacket | 178 | 13.7% |
+| Patched Work Jacket | 177 | 13.6% |
 | Plaid Flannel | 131 | 10.1% |
 | Mechanic Coveralls | 96 | 7.4% |
 | Orange Prison Jumpsuit | 96 | 7.4% |
@@ -208,13 +209,14 @@
 | Mustard Cardigan | 1 | 0.1% |
 | Tattered Bone Jumpsuit | 1 | 0.1% |
 | White Lace Gown | 1 | 0.1% |
+| Bloody Raincoat Over Pinstripe Suit | 1 | 0.1% |
 
 ## Belt
 
 | Value | Count | Share |
 |---|---|---|
-| None | 886 | 68.2% |
-| Tool Belt | 399 | 30.7% |
+| None | 887 | 68.2% |
+| Tool Belt | 398 | 30.6% |
 | Shrunken Head Bandolier | 13 | 1.0% |
 | Golden Neck Chains | 1 | 0.1% |
 | Garnet Choker | 1 | 0.1% |
@@ -229,7 +231,7 @@
 | Teal Clay | 134 | 10.3% |
 | Rust Clay | 110 | 8.5% |
 | Bruise Clay | 102 | 7.8% |
-| Blood Splatter | 91 | 7.0% |
+| Blood Splatter | 90 | 6.9% |
 | Bone Clay | 81 | 6.2% |
 | Lakeside Cabin | 28 | 2.2% |
 | Haunted Mansion | 26 | 2.0% |
@@ -248,6 +250,7 @@
 | Burning Gym | 1 | 0.1% |
 | Pixel Cabin | 1 | 0.1% |
 | Candlelit Castle Hall | 1 | 0.1% |
+| Penthouse Skyline | 1 | 0.1% |
 
 ## Skin
 
@@ -255,7 +258,7 @@
 |---|---|---|
 | Flesh Pink | 359 | 27.6% |
 | Corpse Grey | 239 | 18.4% |
-| Sallow | 175 | 13.5% |
+| Sallow | 174 | 13.4% |
 | Pale Wax | 151 | 11.6% |
 | Ruddy | 135 | 10.4% |
 | Deep Brown | 125 | 9.6% |
@@ -264,12 +267,13 @@
 | Charred Plastic | 1 | 0.1% |
 | Icy Retro Blue | 1 | 0.1% |
 | Ashen Grey | 1 | 0.1% |
+| Tanning-Bed Bronze | 1 | 0.1% |
 
 ## Hair
 
 | Value | Count | Share |
 |---|---|---|
-| Grey Side Tufts | 338 | 26.0% |
+| Grey Side Tufts | 337 | 25.9% |
 | Bald | 195 | 15.0% |
 | Greasy Comb-over | 135 | 10.4% |
 | Wild Grey Tufts | 122 | 9.4% |
@@ -293,15 +297,16 @@
 | Blood-Matted Curls | 1 | 0.1% |
 | Grey Curled Perm | 1 | 0.1% |
 | Veiled Mourning Hat | 1 | 0.1% |
+| Slicked-Back Hair | 1 | 0.1% |
 
 ## Head Mark
 
 | Value | Count | Share |
 |---|---|---|
-| Blue Veins | 506 | 38.9% |
+| Blue Veins | 505 | 38.8% |
 | Grey Wrinkles | 284 | 21.8% |
 | Stitched Scar | 195 | 15.0% |
-| Clean | 177 | 13.6% |
+| Clean | 178 | 13.7% |
 | Boils | 125 | 9.6% |
 | Half-Burnt Face | 13 | 1.0% |
 

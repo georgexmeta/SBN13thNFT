@@ -417,6 +417,25 @@ ALL["Held Weapon"]["Poison Syringe"] = (0, "a big old glass syringe filled with 
 ALL["Skin"], ALL["Belt"] = dict(ALL["Skin"]), dict(ALL["Belt"])   # copies, so the retro values never touch the SKIN/BELT pick tables
 for _t, (_v, _p) in RETRO_EXTRA.items():
     ALL[_t][_v] = (0, _p)
+# The Night Broker (George, 2026-11-15): an original 80s Wall Street yuppie killer, inspired by the genre, never the film or character
+# names, no actor likeness, no business cards. Replaces the 1/1 Hookjaw (#721; George chose), keeping 13 Legendaries. broker_pass.
+BROKER = ("Hookjaw", {"1/1 Name": "The Night Broker", "Head": "Type 1 - Lumpy Dome", "Skin": "Tanning-Bed Bronze", "Hair": "Slicked-Back Hair",
+          "Head Mark": "Clean", "Ears": "Natural", "Mask": "Psycho Yuppie Grin", "Held Weapon": "Chrome Sledge-Axe", "Back Weapon": "None",
+          "Clothing": "Bloody Raincoat Over Pinstripe Suit", "Belt": "None", "Backdrop": "Penthouse Skyline", "Character": "Classic"})
+BROKER_EXTRA = {
+    "Skin": ("Tanning-Bed Bronze", "smooth glossy over-tanned bronze clay skin"),
+    "Hair": ("Slicked-Back Hair", "thick jet-black hair slicked straight back with shiny gel, every strand sculpted neatly in place"),
+    "Mask": ("Psycho Yuppie Grin", "no mask: his disfigured face is bare and freshly groomed, a wide too-perfect grin of gleaming bleached-white "
+             "teeth, cold dead staring eyes with tiny pupils, a few fine specks of blood across his cheek and brow"),
+    "Clothing": ("Bloody Raincoat Over Pinstripe Suit", "a sharp tailored charcoal pinstripe business suit with a crisp white shirt and a red "
+                 "silk power tie, under a long CLEAR see-through plastic raincoat smeared and splattered with fresh blood, the suit clearly "
+                 "visible through the transparent plastic"),
+    "Backdrop": ("Penthouse Skyline", "the inside of a sleek 1980s penthouse apartment at night: huge floor-to-ceiling windows behind him "
+                 "looking out over a glittering city skyline of lit skyscrapers, a glossy black lacquer side table and white leather "
+                 "furniture, sculpted as a miniature claymation diorama in matte plasticine, softly out of focus behind him, no signs, no lettering"),
+}
+for _t, (_v, _p) in BROKER_EXTRA.items():
+    ALL[_t][_v] = (0, _p)
 # Shrunken Head Bandolier (George, 2026-11-15): a more exclusive trait, worn across the chest with 5 shrunken heads.
 # Belt slot, 13 unrendered Uncommon tokens (head_strap_pass; George: Uncommon), so tier counts don't move.
 ALL["Held Weapon"]["Double Molotov Cocktails"] = (0, "")
@@ -644,6 +663,9 @@ def build():
     woman_pass(tokens)
     syringe_pass(tokens)
     retro_pass(tokens)
+    for _n, (_a, _f) in enumerate(tokens):   # The Night Broker replaces Hookjaw (#721)
+        if _a.get("1/1 Name") == BROKER[0]:
+            _a.update(BROKER[1]); _a.pop("Off Hand", None); tokens[_n] = (_a, None)
     icon_pass(tokens)
     trim_pass(tokens)
     duchess_pass(tokens)
@@ -986,6 +1008,7 @@ TWO_HAND_HELD = {
     "Woodcutter Axe": "a long woodcutter's axe", "Sledgehammer": "a heavy sledgehammer",
     "Harpoon Gun": "a rusty harpoon gun loaded with a barbed harpoon", "Circus Mallet": "a giant red-and-cream striped circus mallet",
     "Double-Barrel Shotgun": "a sawn-off rusty double-barrel shotgun with a cracked wooden stock, finger off the trigger",
+    "Chrome Sledge-Axe": "a heavy blood-dripping sledge-axe with a mirror-chrome head and a long polished wooden handle",
     "Sniper Rifle": "a long heavy matte-black sniper rifle with a big scope", "Scythe": "a huge rusty scythe, the curved blade arching above his head",
 }
 
