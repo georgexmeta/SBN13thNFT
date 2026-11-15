@@ -16,10 +16,10 @@
 | Value | Count | Share |
 |---|---|---|
 | Female | 416 | 32.0% |
-| Type 1 - Lumpy Dome | 332 | 25.5% |
+| Type 1 - Lumpy Dome | 335 | 25.8% |
 | Type 2 - Melted Lopsided | 228 | 17.5% |
-| Type 4 - Split Cranium | 177 | 13.6% |
-| Type 3 - Cone Skull | 146 | 11.2% |
+| Type 4 - Split Cranium | 178 | 13.7% |
+| Type 3 - Cone Skull | 142 | 10.9% |
 | Doll | 1 | 0.1% |
 
 ## Mask

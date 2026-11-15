@@ -893,14 +893,17 @@ def hood_pass(tokens):
         tokens[i - 1][0]["Hair"] = "Hood Up"   # a new value can't collide with an existing DNA
 
 
+HEADWEAR = {"Backwards Cap", "Battered Top Hat", "Hood Up", "Worn Trucker Cap", "Veiled Mourning Hat"}
+
+
 def cap_cone_pass(tokens):
-    """A backwards cap can't sit on a cone skull (George, 2026-11-15): those tokens get another head type. The finished
+    """No cap, hat or hood on a cone skull (George, 2026-11-15): those tokens get another head type. The finished
     ones (#9, 571, 587, 746) are re-rendered."""
     late = random.Random(909)
     others = [h for h in HEAD if h != "Type 3 - Cone Skull"]
     dnas = {tuple(sorted((k, v) for k, v in a.items() if k != "Tier")) for a, _ in tokens}
     for a, _ in tokens:
-        if a["Hair"] == "Backwards Cap" and a["Head"] == "Type 3 - Cone Skull":
+        if a["Hair"] in HEADWEAR and a["Head"] == "Type 3 - Cone Skull":
             old = tuple(sorted((k, v) for k, v in a.items() if k != "Tier"))
             for h in late.sample(others, len(others)):
                 dna = tuple(sorted((k, v) for k, v in dict(a, Head=h).items() if k != "Tier"))
