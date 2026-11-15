@@ -501,6 +501,8 @@ def phrase(trait, value):
 
 def prompt(a, legendary_finish=None):
     head = [phrase("Head", a["Head"]), phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"]), phrase("Head Mark", a["Head Mark"]), phrase("Ears", a.get("Ears", "Natural"))]
+    if a.get("Head Wound"):
+        head.append(WOUND)
     if legendary_finish and legendary_finish.startswith("MASK:"):
         mask = legendary_finish.split("|", 1)[1]
     elif legendary_finish:
@@ -666,6 +668,7 @@ def build():
     splatter_pass(tokens)
     two_hand_pass(tokens)
     hook_off_pass(tokens)
+    wound_pass(tokens)
     for _i in WEEDWACKER:
         tokens[_i - 1][0]["Held Weapon"] = "Golden Saw Weed Whacker"
     os.makedirs(OUT, exist_ok=True)
@@ -923,6 +926,20 @@ def hook_off_pass(tokens):
     for n, i in enumerate(plain):   # rust most common, then steel, then bloody
         r = n / len(plain)
         tokens[i - 1][0]["Off Hand"] = f"{'Rusty' if r < .5 else 'Steel' if r < .8 else 'Bloody'} Hook Hand"
+
+
+# George 2026-11-15: every exposed bald or Cone Skull head gets a deep bloody wound slightly left of the forehead (trait "Head Wound").
+WOUND_SHOWS = {"Bare Face", "Hockey Half-Mask", "Gas Mask", "Paisley Bandana", "Iron Muzzle", "Honeycomb Half-Mask", "Stitched Skin Face",
+               "Smeared Greasepaint", "Needle-Tooth Snarl"}   # masks that leave the forehead bare
+WOUND = ("a deep fresh bloody wound gouged into the clay on the LEFT side of his forehead (left as we look at him), just above the brow: "
+         "a ragged open gash with torn raw red edges, glossy dark blood pooled inside and a few thick drips running down past his eye")
+
+
+def wound_pass(tokens):
+    for a, f in tokens:
+        if (a["Tier"] != "Legendary 1/1" and a["Mask"] in WOUND_SHOWS and a["Hair"] not in HEADWEAR
+                and (a["Hair"] == "Bald" or a["Head"] == "Type 3 - Cone Skull")):
+            a["Head Wound"] = "Deep Forehead Gash"
 
 
 def two_hand_pass(tokens):
