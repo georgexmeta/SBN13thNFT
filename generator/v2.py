@@ -564,7 +564,7 @@ def prompt(a, legendary_finish=None):
                  "battered leather cuff strapped to his forearm, raised menacingly beside him")
     elif a.get("Off Hand"):   # George 2026-11-15: dual wield, both fists clench a weapon, no back weapon
         hand += "; his LEFT fist tightly grips " + DUAL_PHRASE[a["Off Hand"]]
-    body = [f"wearing {phrase('Clothing', a['Clothing'])}", phrase("Belt", a["Belt"]), hand, phrase("Back Weapon", a["Back Weapon"])]
+    body = [f"wearing {phrase('Clothing', a['Clothing'])}", phrase("Belt", a["Belt"]), NECK.get(a.get("Neck")), hand, phrase("Back Weapon", a["Back Weapon"])]
     female = a.get("Character", "Classic") in FEMALE or a.get("Character") in ("The Grieving Mother", "The Prom Queen", "The Ringmistress", "Woman", "Madame Mortis")
     if female:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"]), phrase("Head Mark", a["Head Mark"]), phrase("Ears", a.get("Ears", "Natural"))]
@@ -678,6 +678,7 @@ def build():
     whacker_hold_pass(tokens)
     wound_pass(tokens)
     oxygen_pass(tokens)
+    neck_pass(tokens)
     dedupe_pass(tokens)
     for _i in WEEDWACKER:
         tokens[_i - 1][0]["Held Weapon"] = "Golden Saw Weed Whacker"
@@ -785,6 +786,26 @@ def jail_pass(tokens):
     pool = [i for i, (a, finish) in enumerate(tokens, 1) if i not in keep and not finish]
     for i in random.Random(1313131).sample(pool, N_JAIL):
         tokens[i - 1][0]["Backdrop"] = JAIL[0]
+
+
+# George 2026-11-15: double neck chains like The Retro Slasher's, trait "Neck". Rusted/Silver on Uncommon, Gold/Chrome on Rare only.
+NECK_FINISH = {"Rusted": "rusty pitted iron", "Silver": "polished silver", "Gold": "gleaming solid gold", "Chrome": "mirror-bright chrome"}
+NECK = {f"{f} Double Chains": f"two heavy {d} chains around his neck, one short and one hanging lower over his chest" for f, d in NECK_FINISH.items()}
+NECK_COUNTS = {"Uncommon": [("Rusted", 40), ("Silver", 25)], "Rare": [("Gold", 13), ("Chrome", 7)]}
+
+
+def neck_pass(tokens):
+    """Only tokens that are unrendered and not waiting in a batch (no redo cost); never 1/1s, exclusive characters or bandoliers."""
+    st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
+    pend = set().union(*[set(b["ids"]) - set(b.get("drop", [])) for b in st["batches"] if b["state"] != "done"])
+    rng = random.Random(2020)
+    for tier, deal in NECK_COUNTS.items():
+        pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == tier and a["Character"] in ("Classic", "Woman") and i not in pend
+                and a["Belt"] != "Shrunken Head Bandolier" and not os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png"))]
+        picks = iter(rng.sample(pool, sum(n for _, n in deal)))
+        for fin, n in deal:
+            for _ in range(n):
+                tokens[next(picks) - 1][0]["Neck"] = f"{fin} Double Chains"
 
 
 def jail_tier_fix(tokens):

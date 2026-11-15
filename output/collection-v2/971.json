@@ -57,6 +57,10 @@
     {
       "trait_type": "Off Hand",
       "value": "Rusty Hook Hand"
+    },
+    {
+      "trait_type": "Neck",
+      "value": "Rusted Double Chains"
     }
   ]
 }
