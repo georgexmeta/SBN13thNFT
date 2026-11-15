@@ -32,7 +32,7 @@
     },
     {
       "trait_type": "Back Weapon",
-      "value": "Circus Mallet"
+      "value": "None"
     },
     {
       "trait_type": "Clothing",
@@ -53,6 +53,10 @@
     {
       "trait_type": "Character",
       "value": "Classic"
+    },
+    {
+      "trait_type": "Off Hand",
+      "value": "Circus Mallet"
     },
     {
       "trait_type": "Splatter",

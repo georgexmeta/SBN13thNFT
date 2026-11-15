@@ -28,7 +28,7 @@
     },
     {
       "trait_type": "Held Weapon",
-      "value": "Circus Mallet"
+      "value": "Spear"
     },
     {
       "trait_type": "Back Weapon",
@@ -53,6 +53,10 @@
     {
       "trait_type": "Character",
       "value": "Rotten Bride"
+    },
+    {
+      "trait_type": "Off Hand",
+      "value": "Circus Mallet"
     }
   ]
 }

@@ -445,7 +445,7 @@ WEEDWACKER = [816, 859, 879, 889, 925, 940, 992, 1085, 1101, 1151, 1166, 1219, 1
 NO_OFF_HAND = {"Chainsaw", "Exercise Band", "Double Molotov Cocktails", "Golden Saw Weed Whacker", "Telekinesis", "Psychic Force",
                "Blade Nails", "Death Nails", "Flamethrower", "Blue-Flame Flamethrower", "Clayson Master Ball and Golden Axe"}
 DUAL = {799: "Sledgehammer", 32: "Woodcutter Axe", 715: "Rusty Shovel", 727: "Rusty Shovel", 124: "Sledgehammer", 887: "Sledgehammer", 845: "Sledgehammer", 855: "Sledgehammer"}   # 124: art already shows the hammer in hand
-DUAL_PHRASE = {"Pitchfork": "a rusty pitchfork by its long wooden handle, held upright at his side with the rusty tines rising above his shoulder beside his head, carried in his hand, not strapped to his back", "Rusty Shovel": "a rusty shovel by its long wooden handle, the shovel resting up on his left shoulder with the blade behind his shoulder, carried in his hand, not strapped to his back", "Woodcutter Axe": "a rusty woodcutter axe by its long wooden handle, the axe resting up on his left shoulder with the blade behind his shoulder, carried in his hand, not strapped to his back", "Sledgehammer": "a heavy sledgehammer by its wooden handle, the hammer resting up on his left shoulder with the iron head behind his shoulder, carried in his hand, not strapped to his back"}
+DUAL_PHRASE = {"Circus Mallet": "a giant red-and-cream striped circus mallet by its handle, resting up on his left shoulder, carried in his hand, not strapped to his back", "Pitchfork": "a rusty pitchfork by its long wooden handle, held upright at his side with the rusty tines rising above his shoulder beside his head, carried in his hand, not strapped to his back", "Rusty Shovel": "a rusty shovel by its long wooden handle, the shovel resting up on his left shoulder with the blade behind his shoulder, carried in his hand, not strapped to his back", "Woodcutter Axe": "a rusty woodcutter axe by its long wooden handle, the axe resting up on his left shoulder with the blade behind his shoulder, carried in his hand, not strapped to his back", "Sledgehammer": "a heavy sledgehammer by its wooden handle, the hammer resting up on his left shoulder with the iron head behind his shoulder, carried in his hand, not strapped to his back"}
 PICKAXE = [79, 87, 231, 259, 266, 324, 360, 490, 567, 794, 818, 820]
 # Machete variants (George, 2026-11-15), machete_pass: finished machetes are labelled Rusted (what they show); unrendered ones are
 # split Rusted / Bloody / Clean, and unrendered Rare machetes go Chrome. Gold stays the existing Golden Machete.
@@ -650,7 +650,7 @@ def build():
     for _i in PICKAXE:
         tokens[_i - 1][0]["Held Weapon"] = "Rusty Pickaxe"
     for _a, _f in tokens:   # George 2026-11-15: every back sledgehammer is carried on the shoulder in the off hand instead
-        if (_a["Back Weapon"] in ("Sledgehammer", "Pitchfork", "Woodcutter Axe", "Rusty Shovel") and _a["Tier"] != "Legendary 1/1" and _a["Held Weapon"] not in NO_OFF_HAND):
+        if (_a["Back Weapon"] in ("Sledgehammer", "Pitchfork", "Woodcutter Axe", "Rusty Shovel", "Circus Mallet") and _a["Tier"] != "Legendary 1/1" and _a["Held Weapon"] not in NO_OFF_HAND):
             _a["Back Weapon"], _a["Off Hand"] = "None", _a["Back Weapon"]
     for _i, _w in DUAL.items():
         tokens[_i - 1][0]["Back Weapon"] = "None"
