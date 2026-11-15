@@ -53,6 +53,10 @@
     {
       "trait_type": "Character",
       "value": "Rotten Bride"
+    },
+    {
+      "trait_type": "Off Hand",
+      "value": "Rusty Hook Hand"
     }
   ]
 }

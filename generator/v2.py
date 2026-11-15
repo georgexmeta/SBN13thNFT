@@ -398,6 +398,7 @@ FRAMING_DUAL = FRAMING.split(" His right hand grips")[0] + (" Both hands are ful
                                                           "the right fist grips the held weapon, the left fist grips the second weapon by its handle as described")
 FRAMING_BOTH = FRAMING.split(" His right hand grips")[0] + (" Both hands grip the weapon, knuckles toward the camera, the whole weapon inside the frame; "
                                                           "neither hand hangs empty and nothing is on his back")
+FRAMING_HOOKOFF = FRAMING.split("; his other hand")[0] + "; his other arm ends in a rusty prosthetic hook, raised, never a limp hand"
 FRAMING_NAILS = FRAMING.split(" His right hand grips")[0] + " Both hands are raised and fully visible inside the frame, all ten blade nails spread; neither hand hangs down or is hidden"
 FRAMING_MOLOTOV = FRAMING.split(" His right hand grips")[0] + " Both fists are raised in front of him, each gripping a lit Molotov cocktail by the neck, knuckles toward the camera; neither hand hangs empty"
 FRAMING_COLLECTOR = FRAMING.split(" His right hand grips")[0] + " Both hands are full: the orb held out in one hand toward the viewer, the hatchet gripped in the other"
@@ -548,7 +549,10 @@ def prompt(a, legendary_finish=None):
                 "blades crudely welded and taped onto the knuckles, a clenched spiked fist, knuckles toward the camera")
     else:
         hand = f"his right fist grips {phrase('Held Weapon', held)}"
-    if a.get("Off Hand"):   # George 2026-11-15: dual wield, both fists clench a weapon, no back weapon
+    if a.get("Off Hand") == "Rusty Hook Hand":   # George 2026-11-15: a free hand is never limp, it is a prosthetic hook
+        hand += ("; his LEFT hand is gone, replaced by a big curved rusty metal prosthetic hook on a battered leather cuff "
+                 "strapped to his forearm, raised menacingly beside him")
+    elif a.get("Off Hand"):   # George 2026-11-15: dual wield, both fists clench a weapon, no back weapon
         hand += "; his LEFT fist tightly grips " + DUAL_PHRASE[a["Off Hand"]]
     body = [f"wearing {phrase('Clothing', a['Clothing'])}", phrase("Belt", a["Belt"]), hand, phrase("Back Weapon", a["Back Weapon"])]
     female = a.get("Character", "Classic") in FEMALE or a.get("Character") in ("The Grieving Mother", "The Prom Queen", "The Ringmistress", "Woman", "Madame Mortis")
@@ -558,7 +562,7 @@ def prompt(a, legendary_finish=None):
     if doll:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"])]
     parts = [STYLE, DOLL_BASE if doll else FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
-             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Clayson Master Ball and Golden Axe" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held in ("Death Nails", "Blade Nails") else FRAMING_DUAL if a.get("Off Hand") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_BOTH if held in TWO_HAND_HELD else FRAMING_WHACKER if held == "Golden Saw Weed Whacker" else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
+             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Clayson Master Ball and Golden Axe" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held in ("Death Nails", "Blade Nails") else FRAMING_HOOKOFF if a.get("Off Hand") == "Rusty Hook Hand" else FRAMING_DUAL if a.get("Off Hand") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_BOTH if held in TWO_HAND_HELD else FRAMING_WHACKER if held == "Golden Saw Weed Whacker" else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
     text = ". ".join(p[0].upper() + p[1:] for p in parts if p) + "."
     if "empty black eye sockets" in (mask or ""):   # QA #232: the base "sunken eyes" line added a stray third eye
         text = text.replace("small sunken bloodshot eyes in swollen red-rimmed lids, ", "")
@@ -659,6 +663,7 @@ def build():
     saw_whacker_pass(tokens)
     splatter_pass(tokens)
     two_hand_pass(tokens)
+    hook_off_pass(tokens)
     for _i in WEEDWACKER:
         tokens[_i - 1][0]["Held Weapon"] = "Golden Saw Weed Whacker"
     os.makedirs(OUT, exist_ok=True)
@@ -901,6 +906,14 @@ TWO_HAND_HELD = {
     "Double-Barrel Shotgun": "a sawn-off rusty double-barrel shotgun with a cracked wooden stock, finger off the trigger",
     "Sniper Rifle": "a long heavy matte-black sniper rifle with a big scope", "Scythe": "a huge rusty scythe, the curved blade arching above his head",
 }
+
+
+def hook_off_pass(tokens):
+    """George 2026-11-15: a Clayson holding one weapon in one hand gets a rusty prosthetic hook instead of a limp free hand."""
+    busy = NO_OFF_HAND | set(TWO_HAND_HELD) | {"Hook Hand"}
+    for a, f in tokens:
+        if a["Tier"] != "Legendary 1/1" and not a.get("Off Hand") and a["Held Weapon"] not in busy:
+            a["Off Hand"] = "Rusty Hook Hand"
 
 
 def two_hand_pass(tokens):
