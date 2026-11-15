@@ -389,6 +389,9 @@ FRAMING = ("FACING: exactly like the first reference photo, his body is in three
            "and out; his other hand hangs open")
 FRAMING_TWO_HANDS = FRAMING.split(" His right hand grips")[0] + (" Both hands hold the chainsaw firmly, one on the rear handle "
                                                               "and one on the front handle; neither hand hangs empty")
+FRAMING_WHACKER = FRAMING.split(" His right hand grips")[0] + (" Both hands hold the weed whacker, one fist on the rear trigger grip and "
+                                                             "the other on the loop handle; the shaft angled up across his body so the golden saw blade is raised "
+                                                             "beside his head, the whole tool inside the frame; neither hand hangs empty")
 FRAMING_NAILS = FRAMING.split(" His right hand grips")[0] + " Both hands are raised and fully visible inside the frame, all ten blade nails spread; neither hand hangs down or is hidden"
 FRAMING_MOLOTOV = FRAMING.split(" His right hand grips")[0] + " Both fists are raised in front of him, each gripping a lit Molotov cocktail by the neck, knuckles toward the camera; neither hand hangs empty"
 FRAMING_COLLECTOR = FRAMING.split(" His right hand grips")[0] + " Both hands are full: the orb held out in one hand toward the viewer, the hatchet gripped in the other"
@@ -422,6 +425,8 @@ ALL["Held Weapon"]["Toy Pop Gun"] = (0, "a small bright red-and-yellow toy pisto
 TOY_GUN = [418, 429, 954, 1164, 1253]
 # QA 2026-11-15: these finished "Ice Pick" renders show a pickaxe, so the metadata says what the image shows.
 ALL["Held Weapon"]["Rusty Pickaxe"] = (0, "a small rusty pickaxe")
+# George 2026-11-15: 13 Uncommon Claysons wield a weed whacker fitted with a golden saw blade, both hands
+WEEDWACKER = [816, 859, 879, 889, 925, 940, 992, 1085, 1101, 1151, 1166, 1219, 1275]
 PICKAXE = [79, 87, 231, 259, 266, 324, 360, 490, 567, 794, 818, 820]
 # Machete variants (George, 2026-11-15), machete_pass: finished machetes are labelled Rusted (what they show); unrendered ones are
 # split Rusted / Bloody / Clean, and unrendered Rare machetes go Chrome. Gold stays the existing Golden Machete.
@@ -491,6 +496,12 @@ def prompt(a, legendary_finish=None):
     elif held in ("Telekinesis", "Psychic Force"):
         hand = ("she holds no weapon: both bloody hands are raised and spread with clawed fingers, unleashing telekinetic power, "
                 "chairs, glass shards and streamers levitating around her and a rippling shockwave bending the air")
+    elif held == "Golden Saw Weed Whacker":
+        hand = ("he wields a LONG-HANDLED garden string trimmer (weed whacker) in BOTH hands, fitted with a gleaming GOLDEN saw blade "
+                "instead of trimmer line. It is a long thin straight steel pole, longer than his arm: at the near end a yellow-and-black "
+                "motor housing with a pistol trigger grip held in his right fist, a black D-shaped loop handle clamped halfway along the "
+                "pole held in his left fist, and at the far end of the pole a small scuffed yellow guard over a toothed solid-gold saw disc "
+                "flecked with blood. It is NOT a hand-held circular saw or angle grinder; no brand name, no lettering")
     elif held == "Double Molotov Cocktails":   # George 2026-11-15: one lit Molotov in each hand, 6 Rare tokens
         hand = ("he holds a lit Molotov cocktail in EACH hand: two old glass bottles of sloshing fuel with burning rag wicks, "
                 "small orange flames licking from both, one raised in each fist")
@@ -523,7 +534,7 @@ def prompt(a, legendary_finish=None):
     if doll:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"])]
     parts = [STYLE, DOLL_BASE if doll else FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
-             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Mask Orb and Hatchet" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held in ("Death Nails", "Blade Nails") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
+             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Mask Orb and Hatchet" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held in ("Death Nails", "Blade Nails") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_WHACKER if held == "Golden Saw Weed Whacker" else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
     text = ". ".join(p[0].upper() + p[1:] for p in parts if p) + "."
     if "empty black eye sockets" in (mask or ""):   # QA #232: the base "sunken eyes" line added a stray third eye
         text = text.replace("small sunken bloodshot eyes in swollen red-rimmed lids, ", "")
@@ -604,12 +615,18 @@ def build():
     # QA fixes for single tokens (George, 2026-11-15), appended to the prompt only
     tokens[232 - 1][0]["_fix"] = ("EYES: exactly two eye positions and no others: one is an empty black skull eye socket in the cracked "
                                   "grey face, the other a single bloodshot eye; no eye on the forehead or anywhere else.")
+    tokens[177 - 1][0]["_fix"] = ("POSE: his head and body are clearly turned 45 degrees to the viewer's right in three-quarter view, NOT facing the camera. "
+                                  "The nail-knife glove is the hero of the image: a big chunky rusty work glove on his right hand, raised in front of his "
+                                  "chest close to the camera, large and in sharp focus, its long rusty nails and knife blades jutting out over the knuckles. "
+                                  "Keep the cracked bone skull mask with red-rimmed eyes showing through the sockets.")
     for _i, (_a, _f) in enumerate(tokens, 1):   # QA #286: Hollow Grey Face grew a fleshy face and eyes beside the mask
         if _a.get("Mask") == "Hollow Grey Face" and _i != 232:
             _a["_fix"] = ("EYES: the cracked grey face covers the whole face; both eyes are deep empty black hollow sockets with "
                           "nothing inside; no eyeballs, no pink skin face, no fleshy eyes beside, behind or above the grey face.")
     for _i in PICKAXE:
         tokens[_i - 1][0]["Held Weapon"] = "Rusty Pickaxe"
+    for _i in WEEDWACKER:
+        tokens[_i - 1][0]["Held Weapon"] = "Golden Saw Weed Whacker"
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):

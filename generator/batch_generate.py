@@ -80,11 +80,11 @@ def ref_parts(st, row):
     return parts
 
 
-def submit(id_list, chunk=200, st=None):
+def submit(id_list, chunk=200, st=None, force=False):
     st = st or load()
     rows = {r["id"]: r for r in json.load(open(g.MANIFEST))}
     pending = {i for b in st["batches"] if b["state"] == "running" for i in b["ids"]}
-    todo = [i for i in id_list if not os.path.exists(os.path.join(g.OUTDIR, f"{i}.png")) and i not in pending]
+    todo = [i for i in id_list if not os.path.exists(os.path.join(g.OUTDIR, f"{i}.png")) and (force or i not in pending)]
     for n in range(0, len(todo), chunk):
         part = todo[n:n + chunk]
         path = os.path.join(g.ROOT, "output", "ai", f"batch-{int(time.time())}-{n}.jsonl")
@@ -146,6 +146,8 @@ def poll():
                     d = p.get("inline_data") or p.get("inlineData")
                     if d:
                         img = base64.b64decode(d["data"])
+            if i in st.get("redo", []) and b["submitted"] < st.get("redo_since", 0):   # traits changed after this request was sent: render again with the new prompt
+                st["redo"].remove(i); retry.append(i); print(f"#{i} prompt changed, re-rendering", flush=True); continue
             if img is None:
                 print(f"#{i} no image: {json.dumps(item)[:200]}", flush=True); retry.append(i); continue
             got.add(i)
@@ -162,6 +164,8 @@ def poll():
                 st["tries"][str(i)] = tries + 1; os.remove(tmp); retry.append(i)
                 print(f"  #{i} faces {way}, re-rolling", flush=True)
         retry += [i for i in b["ids"] if i not in got and i not in retry]
+        if b["submitted"] < st.get("redo_since", 0):
+            st["redo"] = [i for i in st.get("redo", []) if i not in b["ids"]]
         b["state"] = "done"; save(st)
     if retry:
         submit(sorted(set(retry)), st=st)

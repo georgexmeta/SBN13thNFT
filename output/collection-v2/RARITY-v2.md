@@ -83,34 +83,35 @@
 | Value | Count | Share |
 |---|---|---|
 | Rusted Machete | 139 | 10.7% |
-| Meat Hook | 104 | 8.0% |
-| Bloody Hunting Knife | 90 | 6.9% |
+| Meat Hook | 102 | 7.8% |
+| Bloody Hunting Knife | 89 | 6.8% |
 | Nail Bat | 83 | 6.4% |
 | Chainsaw | 82 | 6.3% |
-| Spear | 79 | 6.1% |
-| Rusted Butcher Cleaver | 78 | 6.0% |
-| Rusted Hatchet | 74 | 5.7% |
-| Rusted Sickle | 71 | 5.5% |
+| Spear | 78 | 6.0% |
+| Rusted Butcher Cleaver | 77 | 5.9% |
+| Rusted Hatchet | 73 | 5.6% |
+| Rusted Sickle | 70 | 5.4% |
 | Fish Hook | 65 | 5.0% |
-| Ice Pick | 39 | 3.0% |
+| Ice Pick | 38 | 2.9% |
 | Bare Fist | 31 | 2.4% |
 | Bloody Machete | 27 | 2.1% |
 | Rusty Shears | 25 | 1.9% |
 | Poison Syringe | 25 | 1.9% |
 | Blade Nails | 25 | 1.9% |
 | Switchblade | 25 | 1.9% |
-| Bloody Butcher Cleaver | 21 | 1.6% |
 | Rusted Hunting Knife | 20 | 1.5% |
+| Bloody Butcher Cleaver | 19 | 1.5% |
 | Hook Hand (Rare+) | 15 | 1.2% |
 | Bloody Brick | 15 | 1.2% |
 | Bloody Sickle | 14 | 1.1% |
+| Golden Saw Weed Whacker | 13 | 1.0% |
 | Golden Machete (Rare+) | 12 | 0.9% |
 | Rusty Pickaxe | 12 | 0.9% |
-| Bloody Hatchet | 12 | 0.9% |
-| Clean Butcher Cleaver | 11 | 0.8% |
 | Clean Machete | 11 | 0.8% |
+| Bloody Hatchet | 11 | 0.8% |
 | Exercise Band | 10 | 0.8% |
 | Nail-Knife Glove (Rare+) | 9 | 0.7% |
+| Clean Butcher Cleaver | 9 | 0.7% |
 | Clean Hatchet | 9 | 0.7% |
 | Clean Sickle | 9 | 0.7% |
 | Flamethrower (Rare+) | 8 | 0.6% |
