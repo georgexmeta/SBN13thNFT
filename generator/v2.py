@@ -374,6 +374,7 @@ FRAMING = ("FACING: exactly like the first reference photo, his body is in three
 FRAMING_TWO_HANDS = FRAMING.split(" His right hand grips")[0] + (" Both hands hold the chainsaw firmly, one on the rear handle "
                                                               "and one on the front handle; neither hand hangs empty")
 FRAMING_NAILS = FRAMING.split(" His right hand grips")[0] + " Both hands are raised and fully visible inside the frame, all ten blade nails spread; neither hand hangs down or is hidden"
+FRAMING_MOLOTOV = FRAMING.split(" His right hand grips")[0] + " Both fists are raised in front of him, each gripping a lit Molotov cocktail by the neck, knuckles toward the camera; neither hand hangs empty"
 FRAMING_PSYCHIC = FRAMING.split(" His right hand grips")[0] + " Both hands are raised, empty, channelling psychic force; no weapon in her hands."
 NEGATIVE = ("text, logo, letters, watermark, brand marks, sports team logo, red chevrons or triangles on the mask, full-face goalie mask covering the forehead and eyes, "
             "white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, "
@@ -388,6 +389,7 @@ for _t, (_v, _p) in RETRO_EXTRA.items():
     ALL[_t][_v] = (0, _p)
 # Shrunken Head Bandolier (George, 2026-11-15): a more exclusive trait, worn across the chest with 5 shrunken heads.
 # Belt slot, 13 unrendered Uncommon tokens (head_strap_pass; George: Uncommon), so tier counts don't move.
+ALL["Held Weapon"]["Double Molotov Cocktails"] = (0, "")
 ALL["Belt"]["Shrunken Head Bandolier"] = (0, "a worn leather bandolier strap slung diagonally across his chest from shoulder to hip with exactly "
                                           "five small wrinkled shrunken heads hanging from it, their eyes and lips stitched shut, wisps of dark hair")
 for _t, _v, _p in ICON_EXTRA + DUCHESS_EXTRA + DOLL_EXTRA:
@@ -422,6 +424,9 @@ def prompt(a, legendary_finish=None):
     elif held == "Telekinesis":
         hand = ("she holds no weapon: both bloody hands are raised and spread with clawed fingers, unleashing telekinetic power, "
                 "chairs, glass shards and streamers levitating around her and a rippling shockwave bending the air")
+    elif held == "Double Molotov Cocktails":   # George 2026-11-15: one lit Molotov in each hand, 6 Rare tokens
+        hand = ("he holds a lit Molotov cocktail in EACH hand: two old glass bottles of sloshing fuel with burning rag wicks, "
+                "small orange flames licking from both, one raised in each fist")
     elif held == "Death Nails":
         hand = ("BOTH of her hands are raised in front of her chest, fingers spread like claws, every fingertip on both hands ending in a "
                 "long curved blackened-steel blade nail as long as a forearm, all ten blade nails fanned out toward the viewer, blood on the tips")
@@ -443,7 +448,7 @@ def prompt(a, legendary_finish=None):
     if doll:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"])]
     parts = [STYLE, DOLL_BASE if doll else FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
-             phrase("Backdrop", a["Backdrop"]), FRAMING_NAILS if held == "Death Nails" else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_PSYCHIC if held == "Telekinesis" else FRAMING]
+             phrase("Backdrop", a["Backdrop"]), FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_NAILS if held == "Death Nails" else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_PSYCHIC if held == "Telekinesis" else FRAMING]
     text = ". ".join(p[0].upper() + p[1:] for p in parts if p) + "."
     if female:
         for m, f in [(r"\bhis\b", "her"), (r"\bHis\b", "Her"), (r"\bhim\b", "her"), (r"\bhimself\b", "herself"), (r"\bhe\b", "she"), (r"\bHe\b", "She")]:
@@ -504,6 +509,7 @@ def build():
     duchess_pass(tokens)
     doll_pass(tokens)
     head_strap_pass(tokens)
+    molotov_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -711,6 +717,16 @@ def head_strap_pass(tokens):
             and a["Character"] in ("Classic", "Woman")]
     for i in late.sample(pool, 13):
         tokens[i - 1][0]["Belt"] = "Shrunken Head Bandolier"   # a new value can't collide with an existing DNA
+
+
+def molotov_pass(tokens):
+    """Double Molotov Cocktails (George, 2026-11-15): exactly 6 unrendered Rare tokens holding an ordinary one-hand weapon."""
+    keep = set(json.load(open(os.path.join(ROOT, "generator", "rendered_keep_syringe.json"))))
+    late = random.Random(6606)
+    pool = [i for i, (a, f) in enumerate(tokens, 1) if i not in keep and not f and a["Tier"] == "Rare"
+            and a["Character"] in ("Classic", "Woman") and a["Held Weapon"] in HELD_STD and a["Held Weapon"] not in ("Chainsaw", "Bare Fist")]
+    for i in late.sample(pool, 6):
+        tokens[i - 1][0]["Held Weapon"] = "Double Molotov Cocktails"   # a new value can't collide with an existing DNA
 
 
 def retro_pass(tokens):

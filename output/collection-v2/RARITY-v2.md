@@ -82,9 +82,9 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Machete | 194 | 14.9% |
-| Hunting Knife | 130 | 10.0% |
-| Butcher Cleaver | 123 | 9.5% |
+| Machete | 193 | 14.8% |
+| Hunting Knife | 128 | 9.8% |
+| Butcher Cleaver | 120 | 9.2% |
 | Meat Hook | 116 | 8.9% |
 | Hatchet | 106 | 8.2% |
 | Sickle | 105 | 8.1% |
@@ -101,6 +101,7 @@
 | Flamethrower (Rare+) | 11 | 0.8% |
 | Nail-Knife Glove (Rare+) | 9 | 0.7% |
 | Bone Saw (Rare+) | 8 | 0.6% |
+| Double Molotov Cocktails | 6 | 0.5% |
 | Bloody Kitchen Knife | 1 | 0.1% |
 | Telekinesis | 1 | 0.1% |
 | Death Nails | 1 | 0.1% |
