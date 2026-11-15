@@ -392,6 +392,7 @@ FRAMING_TWO_HANDS = FRAMING.split(" His right hand grips")[0] + (" Both hands ho
 FRAMING_NAILS = FRAMING.split(" His right hand grips")[0] + " Both hands are raised and fully visible inside the frame, all ten blade nails spread; neither hand hangs down or is hidden"
 FRAMING_MOLOTOV = FRAMING.split(" His right hand grips")[0] + " Both fists are raised in front of him, each gripping a lit Molotov cocktail by the neck, knuckles toward the camera; neither hand hangs empty"
 FRAMING_COLLECTOR = FRAMING.split(" His right hand grips")[0] + " Both hands are full: the orb held out in one hand toward the viewer, the hatchet gripped in the other"
+FRAMING_BAND = FRAMING.split(" His right hand grips")[0] + " Both fists hold the exercise band stretched tight between them in front of her chest, knuckles toward the camera"
 FRAMING_PSYCHIC = FRAMING.split(" His right hand grips")[0] + " Both hands are raised, empty, channelling psychic force; no weapon in her hands"
 NEGATIVE = ("text, logo, letters, watermark, brand marks, sports team logo, red chevrons or triangles on the mask, full-face goalie mask covering the forehead and eyes, "
             "white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, "
@@ -412,6 +413,10 @@ ALL["Held Weapon"]["Blue-Flame Flamethrower"] = (0, "")
 # (women_weapon_pass): Blade Nails on 25, Psychic Force on 8. The 1/1s keep their own names (Death Nails, Telekinesis).
 ALL["Held Weapon"]["Blade Nails"] = (0, "")
 ALL["Held Weapon"]["Psychic Force"] = (0, "")
+# More women-only weapons (George, 2026-11-15): Switchblade 25, Bloody Brick 15, Exercise Band 10 (women_weapon_pass).
+ALL["Held Weapon"]["Switchblade"] = (0, "a flicked-open switchblade knife with a pearl handle and a bloody tip")
+ALL["Held Weapon"]["Bloody Brick"] = (0, "a chipped red house brick smeared and dripping with blood")
+ALL["Held Weapon"]["Exercise Band"] = (0, "")
 # Machete variants (George, 2026-11-15), machete_pass: finished machetes are labelled Rusted (what they show); unrendered ones are
 # split Rusted / Bloody / Clean, and unrendered Rare machetes go Chrome. Gold stays the existing Golden Machete.
 MACHETES = {"Rusted Machete": "a long rusty machete dripping blood",
@@ -487,6 +492,9 @@ def prompt(a, legendary_finish=None):
         hand = ("in his left hand he holds out a round cracked bone-white clay orb shaped like a goalie mask rolled into a ball, covered in rows "
                 "of small breathing holes with rusty rivets and dried blood; it is all one off-white colour, with no red half, no band and no "
                 "button; his right fist grips a rusty hatchet with a worn wooden handle, held low at his side")
+    elif held == "Exercise Band":
+        hand = ("she holds a stretchy pink rubber exercise resistance band pulled taut between both fists like a strangling cord, "
+                "knuckles toward the camera, a little blood on the band")
     elif held in ("Death Nails", "Blade Nails"):
         hand = ("BOTH of her hands are raised in front of her chest, fingers spread like claws, every fingertip on both hands ending in a "
                 "long curved blackened-steel blade nail as long as a forearm, all ten blade nails fanned out toward the viewer, blood on the tips")
@@ -509,7 +517,7 @@ def prompt(a, legendary_finish=None):
     if doll:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"])]
     parts = [STYLE, DOLL_BASE if doll else FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
-             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Mask Orb and Hatchet" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_NAILS if held in ("Death Nails", "Blade Nails") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
+             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Mask Orb and Hatchet" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held in ("Death Nails", "Blade Nails") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
     text = ". ".join(p[0].upper() + p[1:] for p in parts if p) + "."
     if female:
         for m, f in [(r"\bhis\b", "her"), (r"\bHis\b", "Her"), (r"\bhim\b", "her"), (r"\bhimself\b", "herself"), (r"\bhe\b", "she"), (r"\bHe\b", "She")]:
@@ -925,6 +933,13 @@ def women_weapon_pass(tokens):
     picks = random.Random(4141).sample(pool, 33)
     for n, i in enumerate(picks):
         tokens[i - 1][0]["Held Weapon"] = "Blade Nails" if n < 25 else "Psychic Force"   # new values: no DNA collision
+    female = set(FEMALE) | {"The Ringmistress", "Woman"}
+    used = set(picks)
+    pool2 = [i for i, (a, f) in enumerate(tokens, 1) if i not in keep and i not in used and not f and a["Character"] in female
+             and a["Tier"] in ("Uncommon", "Rare") and a["Held Weapon"] not in ("Poison Syringe", "Rusty Shears", "Double Molotov Cocktails", "Chainsaw", "Hook Hand")
+             and "Flamethrower" not in a["Held Weapon"] and a["Back Weapon"] != "Fuel Tanks"]
+    for n, i in enumerate(random.Random(4242).sample(pool2, 50)):
+        tokens[i - 1][0]["Held Weapon"] = "Switchblade" if n < 25 else "Bloody Brick" if n < 40 else "Exercise Band"
 
 
 def retro_pass(tokens):

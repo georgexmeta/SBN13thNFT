@@ -82,39 +82,42 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Rusted Machete | 143 | 11.0% |
-| Meat Hook | 112 | 8.6% |
-| Bloody Hunting Knife | 92 | 7.1% |
-| Nail Bat | 87 | 6.7% |
+| Rusted Machete | 140 | 10.8% |
+| Meat Hook | 105 | 8.1% |
+| Bloody Hunting Knife | 90 | 6.9% |
+| Nail Bat | 84 | 6.5% |
 | Chainsaw | 82 | 6.3% |
-| Spear | 81 | 6.2% |
-| Rusted Butcher Cleaver | 80 | 6.2% |
+| Spear | 79 | 6.1% |
+| Rusted Butcher Cleaver | 78 | 6.0% |
 | Rusted Hatchet | 74 | 5.7% |
-| Rusted Sickle | 74 | 5.7% |
-| Fish Hook | 69 | 5.3% |
-| Ice Pick | 53 | 4.1% |
-| Bare Fist | 33 | 2.5% |
-| Bloody Machete | 28 | 2.2% |
+| Rusted Sickle | 72 | 5.5% |
+| Fish Hook | 65 | 5.0% |
+| Ice Pick | 51 | 3.9% |
+| Bare Fist | 31 | 2.4% |
+| Bloody Machete | 27 | 2.1% |
 | Rusty Shears | 25 | 1.9% |
 | Poison Syringe | 25 | 1.9% |
 | Blade Nails | 25 | 1.9% |
-| Bloody Butcher Cleaver | 23 | 1.8% |
-| Rusted Hunting Knife | 23 | 1.8% |
-| Bloody Sickle | 17 | 1.3% |
-| Golden Machete (Rare+) | 15 | 1.2% |
+| Switchblade | 25 | 1.9% |
+| Bloody Butcher Cleaver | 21 | 1.6% |
+| Rusted Hunting Knife | 20 | 1.5% |
 | Hook Hand (Rare+) | 15 | 1.2% |
-| Bloody Hatchet | 14 | 1.1% |
-| Clean Machete | 12 | 0.9% |
+| Bloody Brick | 15 | 1.2% |
+| Bloody Sickle | 14 | 1.1% |
+| Golden Machete (Rare+) | 12 | 0.9% |
+| Bloody Hatchet | 12 | 0.9% |
 | Clean Butcher Cleaver | 11 | 0.8% |
+| Clean Machete | 11 | 0.8% |
+| Exercise Band | 10 | 0.8% |
 | Nail-Knife Glove (Rare+) | 9 | 0.7% |
 | Clean Hatchet | 9 | 0.7% |
-| Clean Hunting Knife | 9 | 0.7% |
 | Clean Sickle | 9 | 0.7% |
-| Bone Saw (Rare+) | 8 | 0.6% |
 | Flamethrower (Rare+) | 8 | 0.6% |
 | Psychic Force | 8 | 0.6% |
+| Bone Saw (Rare+) | 7 | 0.5% |
+| Clean Hunting Knife | 7 | 0.5% |
 | Double Molotov Cocktails | 6 | 0.5% |
-| Chrome Machete | 4 | 0.3% |
+| Chrome Machete | 3 | 0.2% |
 | Blue-Flame Flamethrower | 3 | 0.2% |
 | Chrome Hatchet | 2 | 0.2% |
 | Gold Hatchet | 2 | 0.2% |
@@ -122,10 +125,8 @@
 | Bloody Kitchen Knife | 1 | 0.1% |
 | Chrome Hunting Knife | 1 | 0.1% |
 | Telekinesis | 1 | 0.1% |
-| Chrome Sickle | 1 | 0.1% |
 | Death Nails | 1 | 0.1% |
 | Chrome Butcher Cleaver | 1 | 0.1% |
-| Gold Hunting Knife | 1 | 0.1% |
 | Gold Sickle | 1 | 0.1% |
 | Gold Butcher Cleaver | 1 | 0.1% |
 
