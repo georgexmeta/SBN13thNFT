@@ -550,9 +550,11 @@ def prompt(a, legendary_finish=None):
     elif held == "Exercise Band":
         hand = ("she holds a stretchy pink rubber exercise resistance band pulled taut between both fists like a strangling cord, "
                 "knuckles toward the camera, a little blood on the band")
-    elif held in ("Death Nails", "Blade Nails"):
+    elif held == "Death Nails" or held.endswith("Blade Nails"):
+        metal = {"Gold Blade Nails": "gleaming solid-gold", "Chrome Blade Nails": "mirror-bright chrome"}.get(held, "blackened-steel")
+        gore = "dripping with thick fresh blood" if held == "Bloody Blade Nails" else "blood on the tips"
         hand = ("BOTH of her hands are raised in front of her chest, fingers spread like claws, every fingertip on both hands ending in a "
-                "long curved blackened-steel blade nail as long as a forearm, all ten blade nails fanned out toward the viewer, blood on the tips")
+                f"long curved {metal} blade nail as long as a forearm, all ten blade nails fanned out toward the viewer, {gore}")
     elif held == "Hook Hand":
         hand = "his right hand has been replaced by a rusty iron hook strapped to his forearm"
     elif held in ("Flamethrower", "Blue-Flame Flamethrower"):   # George 2026-11-15: a much bigger flame; 3 get blue flames
@@ -582,7 +584,7 @@ def prompt(a, legendary_finish=None):
     if doll:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"])]
     parts = [STYLE, DOLL_BASE if doll else FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
-             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Clayson Master Ball and Golden Axe" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held in ("Death Nails", "Blade Nails") else FRAMING_HOOKOFF if (a.get("Off Hand") or "").endswith("Hook Hand") else FRAMING_DUAL if a.get("Off Hand") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_BOTH if held in TWO_HAND_HELD else FRAMING_WHACKER if held.endswith("Saw Weed Whacker") else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
+             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Clayson Master Ball and Golden Axe" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held == "Death Nails" or held.endswith("Blade Nails") else FRAMING_HOOKOFF if (a.get("Off Hand") or "").endswith("Hook Hand") else FRAMING_DUAL if a.get("Off Hand") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_BOTH if held in TWO_HAND_HELD else FRAMING_WHACKER if held.endswith("Saw Weed Whacker") else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
     text = ". ".join(p[0].upper() + p[1:] for p in parts if p) + "."
     if "empty black eye sockets" in (mask or ""):   # QA #232: the base "sunken eyes" line added a stray third eye
         text = text.replace("small sunken bloodshot eyes in swollen red-rimmed lids, ", "")
@@ -699,6 +701,13 @@ def build():
     for _i, _g in GLOVE_FINISH.items():   # George 2026-11-15: 2 gold and 1 chrome claw gloves among the 6 gloved men
         assert tokens[_i - 1][0]["Held Weapon"] == "Nail-Knife Glove"
         tokens[_i - 1][0]["Held Weapon"] = f"{_g} Claw Glove"
+    # George 2026-11-15: women's blade nails get a finish scale. Chrome on the 3 Rare women, Gold on 6 undrawn, Bloody on the rest.
+    _nails = [i for i, (a, f) in enumerate(tokens, 1) if a["Held Weapon"] == "Blade Nails"]
+    _gold = set(random.Random(1818).sample([i for i in _nails if tokens[i - 1][0]["Tier"] == "Uncommon"
+                                            and not os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png"))], 6))
+    for i in _nails:
+        a = tokens[i - 1][0]
+        a["Held Weapon"] = "Chrome Blade Nails" if a["Tier"] == "Rare" else "Gold Blade Nails" if i in _gold else "Bloody Blade Nails"
     for _i in WEEDWACKER:
         tokens[_i - 1][0]["Held Weapon"] = "Golden Saw Weed Whacker"
     os.makedirs(OUT, exist_ok=True)
@@ -708,7 +717,7 @@ def build():
         name = f"SBN13th #{i}" + (f" - {a['1/1 Name']}" if "1/1 Name" in a else "")
         meta = {"name": name, "seed": seed, "attributes": [{"trait_type": k, "value": v} for k, v in a.items() if not k.startswith("_")]}
         json.dump(meta, open(os.path.join(OUT, f"{i}.json"), "w"), indent=2)
-        rows.append({"id": i, "name": name, "seed": seed, "prompt": prompt(a, finish), "negative": NEGATIVE.replace("long finger blades, clawed glove with four long knives, ", "") if a["Held Weapon"] in ("Death Nails", "Blade Nails") else NEGATIVE + ", ball split by a straight black band, round centre button, writing on clothes, logo on cap" if a["Held Weapon"] == "Clayson Master Ball and Golden Axe" else NEGATIVE, "attributes": {k: v for k, v in a.items() if not k.startswith("_")}})
+        rows.append({"id": i, "name": name, "seed": seed, "prompt": prompt(a, finish), "negative": NEGATIVE.replace("long finger blades, clawed glove with four long knives, ", "") if a["Held Weapon"] == "Death Nails" or a["Held Weapon"].endswith(("Blade Nails", "Claw Glove")) or (a["Held Weapon"] == "Nail-Knife Glove" and a["Head"] != "Female") else NEGATIVE + ", ball split by a straight black band, round centre button, writing on clothes, logo on cap" if a["Held Weapon"] == "Clayson Master Ball and Golden Axe" else NEGATIVE, "attributes": {k: v for k, v in a.items() if not k.startswith("_")}})
     os.makedirs(os.path.join(ROOT, "output", "ai"), exist_ok=True)
     json.dump(rows, open(os.path.join(ROOT, "output", "ai", "manifest-v2.json"), "w"), indent=1)
     report(tokens)

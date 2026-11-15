@@ -94,12 +94,12 @@
 | Fish Hook | 53 | 4.1% |
 | Clean Saw Weed Whacker | 33 | 2.5% |
 | Ice Pick | 33 | 2.5% |
-| Blade Nails | 28 | 2.2% |
 | Bloody Machete | 25 | 1.9% |
 | Rusty Shears | 25 | 1.9% |
 | Poison Syringe | 25 | 1.9% |
 | Switchblade | 25 | 1.9% |
 | Bare Fist | 23 | 1.8% |
+| Bloody Blade Nails | 19 | 1.5% |
 | Rusted Hunting Knife | 19 | 1.5% |
 | Bloody Saw Weed Whacker | 17 | 1.3% |
 | Bloody Butcher Cleaver | 17 | 1.3% |
@@ -120,12 +120,14 @@
 | Clean Hatchet | 7 | 0.5% |
 | Clean Sickle | 7 | 0.5% |
 | Harpoon Gun | 6 | 0.5% |
+| Gold Blade Nails | 6 | 0.5% |
 | Clean Hunting Knife | 5 | 0.4% |
 | Toy Pop Gun | 5 | 0.4% |
 | Circus Mallet | 4 | 0.3% |
 | Nail-Knife Glove (Rare+) | 3 | 0.2% |
 | Double-Barrel Shotgun | 3 | 0.2% |
 | Double Molotov Cocktails | 3 | 0.2% |
+| Chrome Blade Nails | 3 | 0.2% |
 | Chrome Machete | 3 | 0.2% |
 | Blue-Flame Flamethrower | 3 | 0.2% |
 | Gold Claw Glove | 2 | 0.2% |
