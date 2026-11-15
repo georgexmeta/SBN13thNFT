@@ -141,8 +141,8 @@
 | Pitchfork | 200 | 15.4% |
 | Sledgehammer | 162 | 12.5% |
 | Chainsaw | 154 | 11.8% |
-| Woodcutter Axe | 152 | 11.7% |
-| None | 144 | 11.1% |
+| Woodcutter Axe | 151 | 11.6% |
+| None | 145 | 11.2% |
 | Rusty Shovel | 106 | 8.2% |
 | Circus Mallet (Rare+) | 26 | 2.0% |
 | Leathery Bat Wings | 25 | 1.9% |
