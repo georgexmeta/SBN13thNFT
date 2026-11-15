@@ -277,7 +277,12 @@
    ],
    "state": "done",
    "submitted": 1794715890.6910427,
-   "drop": []
+   "drop": [
+    114,
+    126,
+    151,
+    284
+   ]
   },
   {
    "name": "batches/kncnu8vbws2l0ha4xwq8s17yn6cpwltz0vl9",
@@ -1356,6 +1361,8 @@
     441,
     508,
     541,
+    544,
+    600,
     609,
     652,
     711,
@@ -1644,8 +1651,29 @@
    "submitted": 1794719781.496054,
    "edit": true,
    "drop": [
+    3,
+    15,
+    18,
+    31,
+    46,
+    69,
+    114,
+    136,
+    151,
+    160,
+    257,
+    284,
+    285,
+    305,
     387,
-    502
+    502,
+    525,
+    653,
+    658,
+    692,
+    779,
+    789,
+    1142
    ]
   },
   {
@@ -1779,10 +1807,19 @@
    "submitted": 1794719794.6690311,
    "edit": true,
    "drop": [
-    716,
-    383,
+    42,
+    106,
+    126,
+    195,
+    233,
     256,
-    572
+    383,
+    572,
+    603,
+    672,
+    707,
+    716,
+    758
    ]
   },
   {
@@ -1798,7 +1835,14 @@
    "state": "running",
    "submitted": 1794719798.6434736,
    "edit": true,
-   "drop": []
+   "drop": [
+    200,
+    258,
+    334,
+    531,
+    539,
+    804
+   ]
   },
   {
    "name": "batches/2uuyi04wdxgio3vpjdk2i50x0s96enjp48zn",
@@ -1951,7 +1995,11 @@
    "state": "running",
    "submitted": 1794719860.780426,
    "edit": true,
-   "drop": []
+   "drop": [
+    571,
+    874,
+    877
+   ]
   },
   {
    "name": "batches/5bq5450mjpy7p9lc3am103s3ncqrjllkvdms",
@@ -1972,7 +2020,9 @@
    "state": "running",
    "submitted": 1794719865.1554446,
    "edit": true,
-   "drop": []
+   "drop": [
+    631
+   ]
   },
   {
    "name": "batches/56wm73xp4doezjuw0brkz0oqsebtz44m1bo3",
@@ -1982,7 +2032,9 @@
    "state": "running",
    "submitted": 1794719869.1440654,
    "edit": true,
-   "drop": []
+   "drop": [
+    838
+   ]
   },
   {
    "name": "batches/y1etaq0tust3c782om3rs6bx0s3skfj01msv",

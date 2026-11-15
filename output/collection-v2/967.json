@@ -28,11 +28,11 @@
     },
     {
       "trait_type": "Held Weapon",
-      "value": "Meat Hook"
+      "value": "Bloody Saw Weed Whacker"
     },
     {
       "trait_type": "Back Weapon",
-      "value": "Bloody Saw Weed Whacker"
+      "value": "None"
     },
     {
       "trait_type": "Clothing",
@@ -53,10 +53,6 @@
     {
       "trait_type": "Character",
       "value": "Classic"
-    },
-    {
-      "trait_type": "Off Hand",
-      "value": "Bloody Hook Hand"
     }
   ]
 }

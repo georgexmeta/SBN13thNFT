@@ -28,11 +28,11 @@
     },
     {
       "trait_type": "Held Weapon",
-      "value": "Meat Hook"
+      "value": "Clean Saw Weed Whacker"
     },
     {
       "trait_type": "Back Weapon",
-      "value": "Clean Saw Weed Whacker"
+      "value": "Oxygen Tank"
     },
     {
       "trait_type": "Clothing",
@@ -53,10 +53,6 @@
     {
       "trait_type": "Character",
       "value": "Classic"
-    },
-    {
-      "trait_type": "Off Hand",
-      "value": "Steel Hook Hand"
     },
     {
       "trait_type": "Head Wound",

@@ -83,15 +83,16 @@
 | Value | Count | Share |
 |---|---|---|
 | Chainsaw | 209 | 16.1% |
-| Rusted Machete | 125 | 9.6% |
-| Meat Hook | 92 | 7.1% |
-| Nail Bat | 73 | 5.6% |
-| Bloody Hunting Knife | 69 | 5.3% |
-| Spear | 67 | 5.2% |
-| Rusted Hatchet | 65 | 5.0% |
-| Rusted Butcher Cleaver | 64 | 4.9% |
-| Rusted Sickle | 58 | 4.5% |
-| Fish Hook | 57 | 4.4% |
+| Rusted Machete | 110 | 8.5% |
+| Meat Hook | 76 | 5.8% |
+| Nail Bat | 70 | 5.4% |
+| Spear | 64 | 4.9% |
+| Rusted Butcher Cleaver | 62 | 4.8% |
+| Rusted Hatchet | 62 | 4.8% |
+| Bloody Hunting Knife | 61 | 4.7% |
+| Rusted Sickle | 55 | 4.2% |
+| Fish Hook | 53 | 4.1% |
+| Clean Saw Weed Whacker | 33 | 2.5% |
 | Ice Pick | 33 | 2.5% |
 | Bloody Machete | 25 | 1.9% |
 | Rusty Shears | 25 | 1.9% |
@@ -99,13 +100,15 @@
 | Switchblade | 25 | 1.9% |
 | Bare Fist | 23 | 1.8% |
 | Rusted Hunting Knife | 19 | 1.5% |
+| Bloody Saw Weed Whacker | 17 | 1.3% |
 | Blade Nails | 17 | 1.3% |
 | Bloody Butcher Cleaver | 17 | 1.3% |
 | Hook Hand (Rare+) | 15 | 1.2% |
-| Bloody Brick | 15 | 1.2% |
 | Golden Saw Weed Whacker | 13 | 1.0% |
 | Golden Machete (Rare+) | 12 | 0.9% |
 | Rusty Pickaxe | 12 | 0.9% |
+| Chrome Saw Weed Whacker | 11 | 0.8% |
+| Bloody Brick | 11 | 0.8% |
 | Bloody Sickle | 11 | 0.8% |
 | Clean Machete | 11 | 0.8% |
 | Nail-Knife Glove (Rare+) | 9 | 0.7% |
@@ -145,14 +148,13 @@
 
 | Value | Count | Share |
 |---|---|---|
-| None | 821 | 63.2% |
+| None | 878 | 67.5% |
 | Rusted Saw Weed Whacker | 126 | 9.7% |
-| Bloody Saw Weed Whacker | 93 | 7.2% |
-| Oxygen Tank | 70 | 5.4% |
-| Clean Saw Weed Whacker | 47 | 3.6% |
+| Bloody Saw Weed Whacker | 76 | 5.8% |
+| Oxygen Tank | 74 | 5.7% |
 | Pitchfork | 25 | 1.9% |
 | Leathery Bat Wings | 25 | 1.9% |
-| Chrome Saw Weed Whacker | 15 | 1.2% |
+| Clean Saw Weed Whacker | 14 | 1.1% |
 | Scythe (Rare+) | 14 | 1.1% |
 | Woodcutter Axe | 13 | 1.0% |
 | Sledgehammer | 13 | 1.0% |
@@ -160,6 +162,7 @@
 | Rusty Shovel | 10 | 0.8% |
 | Harpoon Gun (Rare+) | 7 | 0.5% |
 | Double-Barrel Shotgun | 4 | 0.3% |
+| Chrome Saw Weed Whacker | 4 | 0.3% |
 | Chainsaw | 2 | 0.2% |
 | Sniper Rifle | 2 | 0.2% |
 | Circus Mallet (Rare+) | 1 | 0.1% |

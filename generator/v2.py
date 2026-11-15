@@ -392,7 +392,7 @@ FRAMING = ("FACING: exactly like the first reference photo, his body is in three
 FRAMING_TWO_HANDS = FRAMING.split(" His right hand grips")[0] + (" Both hands hold the chainsaw firmly, one on the rear handle "
                                                               "and one on the front handle; neither hand hangs empty")
 FRAMING_WHACKER = FRAMING.split(" His right hand grips")[0] + (" Both hands hold the weed whacker, one fist on the rear trigger grip and "
-                                                             "the other on the loop handle; the shaft angled up across his body so the golden saw blade is raised "
+                                                             "the other on the loop handle; the shaft angled up across his body so the saw blade is raised "
                                                              "beside his head, the whole tool inside the frame; neither hand hangs empty")
 FRAMING_DUAL = FRAMING.split(" His right hand grips")[0] + (" Both hands are full and both are tight clenched fists, knuckles toward the camera: "
                                                           "the right fist grips the held weapon, the left fist grips the second weapon by its handle as described")
@@ -522,6 +522,12 @@ def prompt(a, legendary_finish=None):
                 "chairs, glass shards and streamers levitating around her and a rippling shockwave bending the air")
     elif held in TWO_HAND_HELD:   # George 2026-11-15: a back weapon rarer than the held one is wielded in both hands instead
         hand = f"he wields {TWO_HAND_HELD[held]} firmly in BOTH fists, one hand high and one low on it, held across his body and angled up and out"
+    elif held.endswith(" Saw Weed Whacker") and held != "Golden Saw Weed Whacker":   # whacker rarer than the held weapon: both hands
+        hand = ("he wields a LONG-HANDLED garden string trimmer (weed whacker) in BOTH hands, fitted with "
+                f"{SAW_FINISH[held.split()[0]]} round toothed circular saw blade instead of trimmer line. It is a long thin straight rusty "
+                "steel pole, longer than his arm: at the near end a grimy motor housing with a pistol trigger grip held in his right fist, "
+                "a black D-shaped loop handle clamped halfway along the pole held in his left fist, and at the far end of the pole a small "
+                "scuffed guard over the saw disc. It is NOT a hand-held circular saw or angle grinder; no backpack, no brand name, no lettering")
     elif held == "Golden Saw Weed Whacker":
         hand = ("he wields a LONG-HANDLED garden string trimmer (weed whacker) in BOTH hands, fitted with a gleaming GOLDEN saw blade "
                 "instead of trimmer line. It is a long thin straight steel pole, longer than his arm: at the near end a yellow-and-black "
@@ -566,7 +572,7 @@ def prompt(a, legendary_finish=None):
     if doll:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"])]
     parts = [STYLE, DOLL_BASE if doll else FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
-             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Clayson Master Ball and Golden Axe" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held in ("Death Nails", "Blade Nails") else FRAMING_HOOKOFF if (a.get("Off Hand") or "").endswith("Hook Hand") else FRAMING_DUAL if a.get("Off Hand") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_BOTH if held in TWO_HAND_HELD else FRAMING_WHACKER if held == "Golden Saw Weed Whacker" else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
+             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Clayson Master Ball and Golden Axe" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held in ("Death Nails", "Blade Nails") else FRAMING_HOOKOFF if (a.get("Off Hand") or "").endswith("Hook Hand") else FRAMING_DUAL if a.get("Off Hand") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_BOTH if held in TWO_HAND_HELD else FRAMING_WHACKER if held.endswith("Saw Weed Whacker") else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
     text = ". ".join(p[0].upper() + p[1:] for p in parts if p) + "."
     if "empty black eye sockets" in (mask or ""):   # QA #232: the base "sunken eyes" line added a stray third eye
         text = text.replace("small sunken bloodshot eyes in swollen red-rimmed lids, ", "")
@@ -668,6 +674,7 @@ def build():
     splatter_pass(tokens)
     two_hand_pass(tokens)
     hook_off_pass(tokens)
+    whacker_hold_pass(tokens)
     wound_pass(tokens)
     oxygen_pass(tokens)
     for _i in WEEDWACKER:
@@ -934,6 +941,19 @@ WOUND_SHOWS = {"Bare Face", "Hockey Half-Mask", "Gas Mask", "Paisley Bandana", "
                "Smeared Greasepaint", "Needle-Tooth Snarl"}   # masks that leave the forehead bare
 WOUND = ("a deep fresh bloody wound gouged into the clay on the LEFT side of his forehead (left as we look at him), just above the brow: "
          "a ragged open gash with torn raw red edges, glossy dark blood pooled inside and a few thick drips running down past his eye")
+
+
+def whacker_hold_pass(tokens):
+    """George 2026-11-15 (#582 is the back look): a back saw weed whacker stays on the back when the held weapon is rarer; when the
+    whacker is the rarer one he wields it in both hands instead (held weapon and hook hand dropped). Not chainsaws, nail gloves, 1/1s, dual."""
+    held = collections.Counter(a["Held Weapon"] for a, _ in tokens)
+    back = collections.Counter(a["Back Weapon"] for a, _ in tokens)
+    for a, f in tokens:
+        b, h, off = a["Back Weapon"], a["Held Weapon"], a.get("Off Hand") or ""
+        if (b.endswith("Saw Weed Whacker") and held[h] >= back[b] and a["Tier"] != "Legendary 1/1"
+                and h not in ("Chainsaw", "Hook Hand", "Nail-Knife Glove") and (not off or off.endswith("Hook Hand"))):
+            a["Held Weapon"], a["Back Weapon"] = b, "None"
+            a.pop("Off Hand", None)
 
 
 # George 2026-11-15: a gas-mask wearer with nothing on his back carries an oxygen tank, hosed to the mask (Back Weapon "Oxygen Tank").
