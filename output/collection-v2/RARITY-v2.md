@@ -42,7 +42,7 @@
 | Buckled Harness Hood | 20 | 1.5% |
 | Smeared Greasepaint | 18 | 1.4% |
 | Flayed Muscle Face | 16 | 1.2% |
-| Melted Wax Face | 15 | 1.2% |
+| Stitched Skin Face | 15 | 1.2% |
 | Stitched Toy Face | 14 | 1.1% |
 | Moaning Paper Mask | 13 | 1.0% |
 | Zipper Mouth Leather (Rare+) | 12 | 0.9% |

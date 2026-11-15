@@ -63,8 +63,8 @@ N_BANDAGE = 40
 MASK_NEW2 = {
     "Rubber Seam Face": (0, "a pale grey-green cracked rubber full-face mask with one crude surgical seam of thick black stitches running from the "
                             "scalp down across one cheek, two mismatched ragged eye holes of different sizes and a slack open mouth hole"),
-    "Melted Wax Face": (0, "a dirty ivory candle-wax mask that has partly melted, drooping and dripping off one side of his face in thick waxy runs, "
-                           "one eye hole stretched long by the melt, his bloodshot eyes peering out"),
+    "Stitched Skin Face": (0, "no mask: his own face torn and crudely stitched back together, thick black surgical stitches and puckered red "
+                              "scars criss-crossing his cheeks, brow and lips, a few mismatched patches of his own skin sewn back on, both bloodshot eyes clear"),
 }
 MASK_NEW.update(MASK_NEW2)
 N_NEW2 = 25
