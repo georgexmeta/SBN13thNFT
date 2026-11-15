@@ -166,8 +166,8 @@
 
 | Value | Count | Share |
 |---|---|---|
-| None | 882 | 67.8% |
-| Tool Belt | 403 | 31.0% |
+| None | 885 | 68.1% |
+| Tool Belt | 400 | 30.8% |
 | Shrunken Head Bandolier | 13 | 1.0% |
 | Golden Neck Chains | 1 | 0.1% |
 | Garnet Choker | 1 | 0.1% |
