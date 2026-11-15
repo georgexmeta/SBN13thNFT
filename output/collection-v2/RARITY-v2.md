@@ -157,7 +157,7 @@
 | Blood-Drenched Prom Gown | 1 | 0.1% |
 | Mustard Cardigan | 1 | 0.1% |
 | Tattered Bone Jumpsuit | 1 | 0.1% |
-| Black Velvet Mourning Gown | 1 | 0.1% |
+| White Lace Gown | 1 | 0.1% |
 
 ## Belt
 

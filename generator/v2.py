@@ -208,14 +208,14 @@ ICON_EXTRA = [
 # (George's pick) in duchess_pass, after every other pass, so nothing else shifts. 13 Legendaries.
 DUCHESS = ("Swamp Saint", {"1/1 Name": "Madame Mortis", "Character": "Madame Mortis", "Head": "Female", "Skin": "Ashen Grey",
            "Hair": "Veiled Mourning Hat", "Head Mark": "Clean", "Ears": "Natural", "Mask": "Blood-Red Smile",
-           "Held Weapon": "Death Nails", "Back Weapon": "None", "Clothing": "Black Velvet Mourning Gown", "Belt": "Garnet Choker",
+           "Held Weapon": "Death Nails", "Back Weapon": "None", "Clothing": "White Lace Gown", "Belt": "Garnet Choker",
            "Backdrop": "Candlelit Castle Hall"})
 DUCHESS_EXTRA = [
     ("Skin", "Ashen Grey", "ashen grey-white clay skin"),
     ("Hair", "Veiled Mourning Hat", "short glossy black finger-waved curls under an enormous wide-brimmed black mourning hat with a torn black lace veil"),
     ("Mask", "Blood-Red Smile", "no mask: a towering elegant woman's face with high sharp cheekbones, heavy dark eye makeup, cruel narrowed eyes "
              "and a wide wicked smile of glossy blood-red lips"),
-    ("Clothing", "Black Velvet Mourning Gown", "a tall-collared black-and-wine velvet mourning gown with puffed shoulders and a black silk rose at the throat"),
+    ("Clothing", "White Lace Gown", "an elegant fitted white gown with a low sweetheart neckline showing some cleavage, puffed shoulders, black lace trim and a black silk rose at the waist, a few spatters of blood"),
     ("Belt", "Garnet Choker", "a tight choker of dark blood-red garnets"),
     ("Backdrop", "Candlelit Castle Hall", "a dark carved-wood gothic castle hall lit by tall dripping candles in iron sconces, sculpted as a miniature "
                  "claymation diorama in matte plasticine, softly out of focus behind her, no signs or lettering"),
