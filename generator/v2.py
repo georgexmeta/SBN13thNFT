@@ -439,8 +439,8 @@ ALL["Held Weapon"]["Rusty Pickaxe"] = (0, "a small rusty pickaxe")
 # George 2026-11-15: 13 Uncommon Claysons wield a weed whacker fitted with a golden saw blade, both hands
 WEEDWACKER = [816, 859, 879, 889, 925, 940, 992, 1085, 1101, 1151, 1166, 1219, 1275]
 # QA (George 2026-11-15): a back weapon that sat wrong moves to the left fist instead, both hands clench a weapon
-DUAL = {799: "Sledgehammer", 32: "Woodcutter Axe"}
-DUAL_PHRASE = {"Woodcutter Axe": "a rusty woodcutter axe by its long wooden handle, the axe resting up on his left shoulder with the blade behind his shoulder, carried in his hand, not strapped to his back", "Sledgehammer": "a heavy sledgehammer by its wooden handle, the hammer resting up on his left shoulder with the iron head behind his shoulder, carried in his hand, not strapped to his back"}
+DUAL = {799: "Sledgehammer", 32: "Woodcutter Axe", 715: "Rusty Shovel"}
+DUAL_PHRASE = {"Rusty Shovel": "a rusty shovel by its long wooden handle, the shovel resting up on his left shoulder with the blade behind his shoulder, carried in his hand, not strapped to his back", "Woodcutter Axe": "a rusty woodcutter axe by its long wooden handle, the axe resting up on his left shoulder with the blade behind his shoulder, carried in his hand, not strapped to his back", "Sledgehammer": "a heavy sledgehammer by its wooden handle, the hammer resting up on his left shoulder with the iron head behind his shoulder, carried in his hand, not strapped to his back"}
 PICKAXE = [79, 87, 231, 259, 266, 324, 360, 490, 567, 794, 818, 820]
 # Machete variants (George, 2026-11-15), machete_pass: finished machetes are labelled Rusted (what they show); unrendered ones are
 # split Rusted / Bloody / Clean, and unrendered Rare machetes go Chrome. Gold stays the existing Golden Machete.
