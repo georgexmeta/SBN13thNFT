@@ -252,14 +252,14 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Flesh Pink | 365 | 28.1% |
+| Flesh Pink | 359 | 27.6% |
 | Corpse Grey | 239 | 18.4% |
-| Sallow | 178 | 13.7% |
-| Pale Wax | 146 | 11.2% |
-| Ruddy | 136 | 10.5% |
+| Sallow | 175 | 13.5% |
+| Pale Wax | 151 | 11.6% |
+| Ruddy | 135 | 10.4% |
 | Deep Brown | 125 | 9.6% |
-| Bloodless Blue | 69 | 5.3% |
-| Toxic Green | 39 | 3.0% |
+| Bloodless Blue | 73 | 5.6% |
+| Toxic Green | 40 | 3.1% |
 | Charred Plastic | 1 | 0.1% |
 | Icy Retro Blue | 1 | 0.1% |
 | Ashen Grey | 1 | 0.1% |
@@ -298,10 +298,10 @@
 | Value | Count | Share |
 |---|---|---|
 | Blue Veins | 507 | 39.0% |
-| Grey Wrinkles | 282 | 21.7% |
-| Stitched Scar | 191 | 14.7% |
-| Clean | 184 | 14.2% |
-| Boils | 123 | 9.5% |
+| Grey Wrinkles | 284 | 21.8% |
+| Stitched Scar | 195 | 15.0% |
+| Clean | 176 | 13.5% |
+| Boils | 125 | 9.6% |
 | Half-Burnt Face | 13 | 1.0% |
 
 ## Ears

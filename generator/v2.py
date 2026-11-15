@@ -677,6 +677,7 @@ def build():
     whacker_hold_pass(tokens)
     wound_pass(tokens)
     oxygen_pass(tokens)
+    dedupe_pass(tokens)
     for _i in WEEDWACKER:
         tokens[_i - 1][0]["Held Weapon"] = "Golden Saw Weed Whacker"
     os.makedirs(OUT, exist_ok=True)
@@ -941,6 +942,38 @@ WOUND_SHOWS = {"Bare Face", "Hockey Half-Mask", "Gas Mask", "Paisley Bandana", "
                "Smeared Greasepaint", "Needle-Tooth Snarl"}   # masks that leave the forehead bare
 WOUND = ("a deep fresh bloody wound gouged into the clay on the LEFT side of his forehead (left as we look at him), just above the brow: "
          "a ragged open gash with torn raw red edges, glossy dark blood pooled inside and a few thick drips running down past his eye")
+
+
+DEDUPE_KEYS = ["Head", "Skin", "Hair", "Head Mark", "Mask", "Held Weapon", "Back Weapon", "Clothing", "Belt", "Backdrop", "Off Hand"]
+
+
+def dedupe_pass(tokens):
+    """George 2026-11-15 "No duplicates": every pair of Claysons must differ in at least 3 visible traits. For a pair that doesn't,
+    the unrendered one (else the later one) gets a new skin and head mark. Never 1/1s or Half-Burnt faces; Deep Brown icon tokens keep their skin."""
+    done = {i for i in range(1, len(tokens) + 1) if os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png"))}
+    vec = lambda a: tuple(a.get(k, "") for k in DEDUPE_KEYS)
+    near = lambda u, v: sum(x != y for x, y in zip(u, v)) < 3
+    rng = random.Random(1300)
+    changed = []
+    for i in range(len(tokens)):
+        for j in range(i + 1, len(tokens)):
+            if not near(vec(tokens[i][0]), vec(tokens[j][0])):
+                continue
+            k = i if (i + 1) not in done and (j + 1) in done else j
+            a = tokens[k][0]
+            if a["Tier"] == "Legendary 1/1" or a["Head Mark"] == "Half-Burnt Face":
+                k = i + j - k; a = tokens[k][0]
+                if a["Tier"] == "Legendary 1/1" or a["Head Mark"] == "Half-Burnt Face":
+                    continue
+            others = [vec(t[0]) for n, t in enumerate(tokens) if n != k]
+            for _ in range(200):
+                if a["Skin"] != "Deep Brown":   # icon tokens keep their Deep Brown skin
+                    a["Skin"] = pick(rng, SKIN)
+                a["Head Mark"] = pick(rng, HEAD_MARK)
+                if not any(near(vec(a), o) for o in others):
+                    break
+            changed.append(k + 1)
+    dedupe_pass.changed = changed
 
 
 def whacker_hold_pass(tokens):
