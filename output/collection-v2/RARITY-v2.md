@@ -18,8 +18,9 @@
 | Female | 416 | 32.0% |
 | Type 1 - Lumpy Dome | 329 | 25.3% |
 | Type 2 - Melted Lopsided | 227 | 17.5% |
-| Type 4 - Split Cranium | 177 | 13.6% |
+| Type 4 - Split Cranium | 176 | 13.5% |
 | Type 3 - Cone Skull | 151 | 11.6% |
+| Doll | 1 | 0.1% |
 
 ## Mask
 
@@ -65,7 +66,7 @@
 | Crown of Nails (Rare+) | 3 | 0.2% |
 | Hockey Half-Mask (solid polished gold) | 1 | 0.1% |
 | Hockey Half-Mask (polished chrome) | 1 | 0.1% |
-| Hockey Half-Mask (charred black) | 1 | 0.1% |
+| Melted Doll Face | 1 | 0.1% |
 | Psychic Glare | 1 | 0.1% |
 | Hockey Half-Mask (dripping glowing toxic-green slime) | 1 | 0.1% |
 | Mad Mother's Face | 1 | 0.1% |
@@ -81,7 +82,7 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Machete | 195 | 15.0% |
+| Machete | 194 | 14.9% |
 | Hunting Knife | 130 | 10.0% |
 | Butcher Cleaver | 123 | 9.5% |
 | Meat Hook | 116 | 8.9% |
@@ -100,6 +101,7 @@
 | Flamethrower (Rare+) | 11 | 0.8% |
 | Nail-Knife Glove (Rare+) | 9 | 0.7% |
 | Bone Saw (Rare+) | 8 | 0.6% |
+| Bloody Kitchen Knife | 1 | 0.1% |
 | Telekinesis | 1 | 0.1% |
 | Death Nails | 1 | 0.1% |
 
@@ -110,9 +112,9 @@
 | Weed Whacker | 282 | 21.7% |
 | Pitchfork | 201 | 15.5% |
 | Sledgehammer | 163 | 12.5% |
-| Chainsaw | 155 | 11.9% |
+| Chainsaw | 154 | 11.8% |
 | Woodcutter Axe | 153 | 11.8% |
-| None | 142 | 10.9% |
+| None | 143 | 11.0% |
 | Rusty Shovel | 108 | 8.3% |
 | Circus Mallet (Rare+) | 26 | 2.0% |
 | Leathery Bat Wings | 25 | 1.9% |
@@ -125,7 +127,7 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Patched Work Jacket | 180 | 13.8% |
+| Patched Work Jacket | 179 | 13.8% |
 | Plaid Flannel | 131 | 10.1% |
 | Mechanic Coveralls | 96 | 7.4% |
 | Orange Prison Jumpsuit | 96 | 7.4% |
@@ -154,6 +156,7 @@
 | Dripping Nightgown | 8 | 0.6% |
 | Bloody Clown Suit (Rare+) | 6 | 0.5% |
 | Fur-Trimmed Cape (Rare+) | 6 | 0.5% |
+| Scorched Corduroy Dungarees | 1 | 0.1% |
 | Blood-Drenched Prom Gown | 1 | 0.1% |
 | Mustard Cardigan | 1 | 0.1% |
 | Tattered Bone Jumpsuit | 1 | 0.1% |
@@ -163,8 +166,8 @@
 
 | Value | Count | Share |
 |---|---|---|
-| None | 891 | 68.5% |
-| Tool Belt | 407 | 31.3% |
+| None | 892 | 68.6% |
+| Tool Belt | 406 | 31.2% |
 | Golden Neck Chains | 1 | 0.1% |
 | Garnet Choker | 1 | 0.1% |
 
@@ -176,7 +179,7 @@
 | Swamp Clay | 182 | 14.0% |
 | Slate Clay | 160 | 12.3% |
 | Teal Clay | 134 | 10.3% |
-| Rust Clay | 111 | 8.5% |
+| Rust Clay | 110 | 8.5% |
 | Bruise Clay | 102 | 7.8% |
 | Blood Splatter | 91 | 7.0% |
 | Bone Clay | 81 | 6.2% |
@@ -192,6 +195,7 @@
 | Cornfield (Rare+) | 14 | 1.1% |
 | Blood Moon (Rare+) | 14 | 1.1% |
 | Jail Cell | 13 | 1.0% |
+| Burnt Dollhouse | 1 | 0.1% |
 | Burning Gym | 1 | 0.1% |
 | Pixel Cabin | 1 | 0.1% |
 | Candlelit Castle Hall | 1 | 0.1% |
@@ -200,7 +204,7 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Flesh Pink | 365 | 28.1% |
+| Flesh Pink | 364 | 28.0% |
 | Corpse Grey | 239 | 18.4% |
 | Sallow | 178 | 13.7% |
 | Pale Wax | 146 | 11.2% |
@@ -208,6 +212,7 @@
 | Deep Brown | 125 | 9.6% |
 | Bloodless Blue | 70 | 5.4% |
 | Toxic Green | 39 | 3.0% |
+| Charred Plastic | 1 | 0.1% |
 | Icy Retro Blue | 1 | 0.1% |
 | Ashen Grey | 1 | 0.1% |
 
@@ -216,7 +221,7 @@
 | Value | Count | Share |
 |---|---|---|
 | Grey Side Tufts | 349 | 26.8% |
-| Bald | 198 | 15.2% |
+| Bald | 197 | 15.2% |
 | Greasy Comb-over | 135 | 10.4% |
 | Wild Grey Tufts | 123 | 9.5% |
 | Greasy Bob | 94 | 7.2% |
@@ -233,6 +238,7 @@
 | Frizzed Auburn Bunches | 8 | 0.6% |
 | Wilted Flower Crown | 8 | 0.6% |
 | Soaked Black Veil Hair | 8 | 0.6% |
+| Singed Yarn Tufts | 1 | 0.1% |
 | Blood-Matted Curls | 1 | 0.1% |
 | Grey Curled Perm | 1 | 0.1% |
 | Veiled Mourning Hat | 1 | 0.1% |
@@ -241,10 +247,10 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Blue Veins | 514 | 39.5% |
+| Blue Veins | 513 | 39.5% |
 | Grey Wrinkles | 286 | 22.0% |
 | Stitched Scar | 192 | 14.8% |
-| Clean | 183 | 14.1% |
+| Clean | 184 | 14.2% |
 | Boils | 125 | 9.6% |
 
 ## Ears
@@ -258,7 +264,7 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Classic | 884 | 68.0% |
+| Classic | 883 | 67.9% |
 | Woman | 357 | 27.5% |
 | Hollow Sister | 8 | 0.6% |
 | Farmhouse Smile | 8 | 0.6% |
@@ -267,6 +273,7 @@
 | The Ringmistress | 8 | 0.6% |
 | Rotten Bride | 8 | 0.6% |
 | Drowned Well Girl | 8 | 0.6% |
+| The Scorch Doll | 1 | 0.1% |
 | The Prom Queen | 1 | 0.1% |
 | The Grieving Mother | 1 | 0.1% |
 | Madame Mortis | 1 | 0.1% |

@@ -220,6 +220,26 @@ DUCHESS_EXTRA = [
     ("Backdrop", "Candlelit Castle Hall", "a dark carved-wood gothic castle hall lit by tall dripping candles in iron sconces, sculpted as a miniature "
                  "claymation diorama in matte plasticine, softly out of focus behind her, no signs or lettering"),
 ]
+# 1/1 "The Scorch Doll" (George, 2026-11-15, final 1/1): a burned killer toy doll, inspired by a charred doll figure but
+# not that character: no red hair, no denim overalls, no striped shirt, no toy box or brand. Replaces Cinder (George's
+# pick) in doll_pass, after every other pass. 13 Legendaries.
+DOLL = ("Cinder", {"1/1 Name": "The Scorch Doll", "Character": "The Scorch Doll", "Head": "Doll", "Skin": "Charred Plastic",
+        "Hair": "Singed Yarn Tufts", "Head Mark": "Clean", "Ears": "Natural", "Mask": "Melted Doll Face", "Held Weapon": "Bloody Kitchen Knife",
+        "Back Weapon": "None", "Clothing": "Scorched Corduroy Dungarees", "Belt": "None", "Backdrop": "Burnt Dollhouse"})
+DOLL_BASE = ("A small evil child's toy doll come to life, a burned killer doll with a big round doll head, short stubby limbs and "
+             "plastic doll hands, head turned three-quarters toward the viewer's right")
+DOLL_EXTRA = [
+    ("Skin", "Charred Plastic", "blistered charred black plastic skin, crusted and cracked by fire, with glimpses of pale melted vinyl underneath"),
+    ("Hair", "Singed Yarn Tufts", "a few singed sooty black yarn hair tufts stuck to the scalp"),
+    ("Mask", "Melted Doll Face", "no mask: a melted burned doll face, one huge bulging cracked glass doll eye staring out, the other eye socket "
+             "a burnt hollow, a lipless stitched grin of tiny white doll teeth"),
+    ("Held Weapon", "Bloody Kitchen Knife", "a big bloody kitchen knife"),
+    ("Clothing", "Scorched Corduroy Dungarees", "tiny tattered mustard-brown corduroy dungarees with a bib pocket and frayed patches, scorched black "
+                 "at the edges, over a sooty little turtleneck"),
+    ("Backdrop", "Burnt Dollhouse", "the inside of a giant child's dollhouse: pastel flowered wallpaper streaked with soot and scorch marks, toy blocks, "
+                 "a tiny rocking horse and a broken toy chair, sculpted as a miniature claymation diorama in matte plasticine, softly out of focus "
+                 "behind him, no signs or lettering"),
+]
 # "The Ringmistress" (George, 2026-11-14): a 7th female exclusive, an original ADULT woman killer clown inspired by a
 # horror clown photo but not its character: no black-and-white split costume, no mini top hat, no black lips.
 # 8 unrendered Rare tokens, dealt by ring_pass after every other pass so earlier picks don't shift.
@@ -366,7 +386,7 @@ ALL["Held Weapon"]["Poison Syringe"] = (0, "a big old glass syringe filled with 
 ALL["Skin"], ALL["Belt"] = dict(ALL["Skin"]), dict(ALL["Belt"])   # copies, so the retro values never touch the SKIN/BELT pick tables
 for _t, (_v, _p) in RETRO_EXTRA.items():
     ALL[_t][_v] = (0, _p)
-for _t, _v, _p in ICON_EXTRA + DUCHESS_EXTRA:
+for _t, _v, _p in ICON_EXTRA + DUCHESS_EXTRA + DOLL_EXTRA:
     ALL[_t][_v] = (0, _p)
 
 
@@ -415,7 +435,10 @@ def prompt(a, legendary_finish=None):
     female = a.get("Character", "Classic") in FEMALE or a.get("Character") in ("The Grieving Mother", "The Prom Queen", "The Ringmistress", "Woman", "Madame Mortis")
     if female:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"]), phrase("Head Mark", a["Head Mark"]), phrase("Ears", a.get("Ears", "Natural"))]
-    parts = [STYLE, FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
+    doll = a.get("Character") == "The Scorch Doll"
+    if doll:
+        head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"])]
+    parts = [STYLE, DOLL_BASE if doll else FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
              phrase("Backdrop", a["Backdrop"]), FRAMING_NAILS if held == "Death Nails" else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_PSYCHIC if held == "Telekinesis" else FRAMING]
     text = ". ".join(p[0].upper() + p[1:] for p in parts if p) + "."
     if female:
@@ -475,6 +498,7 @@ def build():
     icon_pass(tokens)
     trim_pass(tokens)
     duchess_pass(tokens)
+    doll_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -667,6 +691,12 @@ def duchess_pass(tokens):
     for i, (a, finish) in enumerate(tokens):
         if a.get("1/1 Name") == DUCHESS[0]:
             a.update(DUCHESS[1]); tokens[i] = (a, None)
+
+
+def doll_pass(tokens):
+    for i, (a, finish) in enumerate(tokens):
+        if a.get("1/1 Name") == DOLL[0]:
+            a.update(DOLL[1]); tokens[i] = (a, None)
 
 
 def retro_pass(tokens):
