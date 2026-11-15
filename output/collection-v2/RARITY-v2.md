@@ -82,7 +82,7 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Machete | 193 | 14.8% |
+| Rusted Machete | 144 | 11.1% |
 | Hunting Knife | 128 | 9.8% |
 | Butcher Cleaver | 120 | 9.2% |
 | Meat Hook | 116 | 8.9% |
@@ -94,14 +94,17 @@
 | Fish Hook | 71 | 5.5% |
 | Ice Pick | 55 | 4.2% |
 | Bare Fist | 33 | 2.5% |
+| Bloody Machete | 30 | 2.3% |
 | Rusty Shears | 25 | 1.9% |
 | Poison Syringe | 25 | 1.9% |
 | Golden Machete (Rare+) | 15 | 1.2% |
 | Hook Hand (Rare+) | 15 | 1.2% |
+| Clean Machete | 15 | 1.2% |
 | Nail-Knife Glove (Rare+) | 9 | 0.7% |
 | Bone Saw (Rare+) | 8 | 0.6% |
 | Flamethrower (Rare+) | 8 | 0.6% |
 | Double Molotov Cocktails | 6 | 0.5% |
+| Chrome Machete | 4 | 0.3% |
 | Blue-Flame Flamethrower | 3 | 0.2% |
 | Mask Orb and Hatchet | 1 | 0.1% |
 | Bloody Kitchen Knife | 1 | 0.1% |

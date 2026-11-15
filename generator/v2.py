@@ -408,6 +408,14 @@ for _t, (_v, _p) in RETRO_EXTRA.items():
 # Belt slot, 13 unrendered Uncommon tokens (head_strap_pass; George: Uncommon), so tier counts don't move.
 ALL["Held Weapon"]["Double Molotov Cocktails"] = (0, "")
 ALL["Held Weapon"]["Blue-Flame Flamethrower"] = (0, "")
+# Machete variants (George, 2026-11-15), machete_pass: finished machetes are labelled Rusted (what they show); unrendered ones are
+# split Rusted / Bloody / Clean, and unrendered Rare machetes go Chrome. Gold stays the existing Golden Machete.
+MACHETES = {"Rusted Machete": "a long rusty machete dripping blood",
+            "Bloody Machete": "a long machete completely drenched in thick dripping blood, the blade barely visible under the gore",
+            "Clean Machete": "a long clean polished steel machete with a sharp gleaming edge and a black grip, not a drop of blood on it",
+            "Chrome Machete": "a long mirror-polished chrome machete gleaming with bright reflections, a few drops of blood on the edge"}
+for _v, _p in MACHETES.items():
+    ALL["Held Weapon"][_v] = (0, _p)
 ALL["Held Weapon"]["Mask Orb and Hatchet"] = (0, "")
 # Half-Burnt Face (George, 2026-11-15): a Head Mark on exactly 13 unrendered bare-face Uncommon tokens (burnt_face_pass).
 ALL["Head Mark"] = dict(ALL["Head Mark"])
@@ -551,6 +559,7 @@ def build():
     torn_ear_pass(tokens)
     burnt_face_pass(tokens)
     collector_pass(tokens)
+    machete_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -814,6 +823,24 @@ def collector_pass(tokens):
     for i, (a, finish) in enumerate(tokens):
         if a.get("1/1 Name") == COLLECTOR[0]:
             a.update(COLLECTOR[1]); tokens[i] = (a, None)
+
+
+def machete_pass(tokens):
+    keep = set(json.load(open(os.path.join(ROOT, "generator", "rendered_keep_syringe.json"))))
+    late = random.Random(2020)
+    plain = []
+    for i, (a, f) in enumerate(tokens, 1):
+        if a["Held Weapon"] != "Machete":
+            continue
+        if i in keep or f:
+            a["Held Weapon"] = "Rusted Machete"
+        elif a["Tier"] == "Rare":
+            a["Held Weapon"] = "Chrome Machete"
+        else:
+            plain.append(i)
+    late.shuffle(plain)
+    for n, i in enumerate(plain):   # about 47% Rusted, 35% Bloody, 18% Clean
+        tokens[i - 1][0]["Held Weapon"] = "Rusted Machete" if n < 40 else "Bloody Machete" if n < 70 else "Clean Machete"
 
 
 def retro_pass(tokens):
