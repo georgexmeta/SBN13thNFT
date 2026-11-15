@@ -353,7 +353,7 @@ FRAMING = ("FACING: exactly like the first reference photo, his body is in three
            "and out; his other hand hangs open")
 FRAMING_TWO_HANDS = FRAMING.split(" His right hand grips")[0] + (" Both hands hold the chainsaw firmly, one on the rear handle "
                                                               "and one on the front handle; neither hand hangs empty")
-FRAMING_NAILS = FRAMING.split(" His right hand grips")[0] + " Her right hand is raised with the blade nails spread; her other hand rests at her side"
+FRAMING_NAILS = FRAMING.split(" His right hand grips")[0] + " Both hands are raised and fully visible inside the frame, all ten blade nails spread; neither hand hangs down or is hidden"
 FRAMING_PSYCHIC = FRAMING.split(" His right hand grips")[0] + " Both hands are raised, empty, channelling psychic force; no weapon in her hands."
 NEGATIVE = ("text, logo, letters, watermark, brand marks, sports team logo, red chevrons or triangles on the mask, full-face goalie mask covering the forehead and eyes, "
             "white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, "
@@ -399,8 +399,8 @@ def prompt(a, legendary_finish=None):
         hand = ("she holds no weapon: both bloody hands are raised and spread with clawed fingers, unleashing telekinetic power, "
                 "chairs, glass shards and streamers levitating around her and a rippling shockwave bending the air")
     elif held == "Death Nails":
-        hand = ("her right hand is raised beside her face, fingers spread, each fingertip ending in a long curved blackened-steel blade "
-                "nail as long as a forearm, the five blade nails fanned out toward the viewer, a drop of blood on the tips")
+        hand = ("BOTH of her hands are raised in front of her chest, fingers spread like claws, every fingertip on both hands ending in a "
+                "long curved blackened-steel blade nail as long as a forearm, all ten blade nails fanned out toward the viewer, blood on the tips")
     elif held == "Hook Hand":
         hand = "his right hand has been replaced by a rusty iron hook strapped to his forearm"
     elif held == "Flamethrower":
