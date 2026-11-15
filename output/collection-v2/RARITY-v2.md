@@ -247,7 +247,7 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Grey Side Tufts | 349 | 26.8% |
+| Grey Side Tufts | 345 | 26.5% |
 | Bald | 197 | 15.2% |
 | Greasy Comb-over | 135 | 10.4% |
 | Wild Grey Tufts | 122 | 9.4% |
@@ -265,6 +265,7 @@
 | Frizzed Auburn Bunches | 8 | 0.6% |
 | Wilted Flower Crown | 8 | 0.6% |
 | Soaked Black Veil Hair | 8 | 0.6% |
+| Hood Up | 4 | 0.3% |
 | Worn Trucker Cap | 1 | 0.1% |
 | Singed Yarn Tufts | 1 | 0.1% |
 | Blood-Matted Curls | 1 | 0.1% |

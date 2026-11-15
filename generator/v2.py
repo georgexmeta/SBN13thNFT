@@ -432,6 +432,8 @@ ALL["Held Weapon"]["Mask Orb and Hatchet"] = (0, "")
 ALL["Head Mark"] = dict(ALL["Head Mark"])
 ALL["Head Mark"]["Half-Burnt Face"] = (0, "one half of his face is horribly burnt: charred, blistered and melted flesh peeling away on that side, "
                                           "the cheek burnt through so the bare white jaw bone and teeth are exposed")
+# Hood Up (George, 2026-11-15): a portion of the bald, unrendered hoodie wearers pull the hood over their head (hood_pass).
+ALL["Hair"]["Hood Up"] = (0, "the hood of his grimy hoodie pulled up over his bald head, framing his face and shadowing his brow")
 # Damaged ears (George, 2026-11-15): Mostly Torn and Slightly Ripped, 145 unrendered tokens each with a bare visible ear (torn_ear_pass).
 ALL["Ears"]["Mostly Torn Ear"] = (0, "his visible ear is mostly torn away, only a ragged bloody stump of ear left with jagged torn edges and dried blood")
 ALL["Ears"]["Slightly Ripped Ear"] = (0, "his visible ear has a small ragged rip through the top edge, a notch of missing flesh crusted with dried blood")
@@ -572,6 +574,7 @@ def build():
     collector_pass(tokens)
     machete_pass(tokens)
     blade_pass(tokens)
+    hood_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -875,6 +878,14 @@ def blade_pass(tokens):
         for n, i in enumerate(plain):   # about 47% Rusted, 35% Bloody, 18% Clean
             r = n / len(plain)
             tokens[i - 1][0]["Held Weapon"] = f"{'Rusted' if r < .47 else 'Bloody' if r < .82 else 'Clean'} {w}"
+
+
+def hood_pass(tokens):
+    keep = set(json.load(open(os.path.join(ROOT, "generator", "rendered_keep_syringe.json"))))
+    pool = [i for i, (a, f) in enumerate(tokens, 1) if i not in keep and not f and a["Clothing"] == "Grimy Hoodie"
+            and a["Hair"] in ("Bald", "Grey Side Tufts", "Buzzed Scalp") and a["Mask"] not in ("Burlap Sack Hood", "Burlap Pig Mask")]
+    for i in random.Random(808).sample(pool, round(len(pool) * .6)):
+        tokens[i - 1][0]["Hair"] = "Hood Up"   # a new value can't collide with an existing DNA
 
 
 def retro_pass(tokens):
