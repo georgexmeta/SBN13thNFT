@@ -637,6 +637,7 @@ def build():
     for _i, _w in DUAL.items():
         tokens[_i - 1][0]["Back Weapon"] = "None"
         tokens[_i - 1][0]["Off Hand"] = _w
+    chainsaw_pass(tokens)
     for _i in WEEDWACKER:
         tokens[_i - 1][0]["Held Weapon"] = "Golden Saw Weed Whacker"
     os.makedirs(OUT, exist_ok=True)
@@ -846,6 +847,27 @@ def head_strap_pass(tokens):
             and a["Character"] in ("Classic", "Woman")]
     for i in late.sample(pool, 13):
         tokens[i - 1][0]["Belt"] = "Shrunken Head Bandolier"   # a new value can't collide with an existing DNA
+
+
+def chainsaw_pass(tokens):
+    """George 2026-11-15: no chainsaws on backs. A chainsaw takes both hands, so a back chainsaw becomes the held weapon when the
+    held weapon is a plain one; otherwise (special/counted held weapons, or already a held chainsaw) the back chainsaw is removed.
+    1/1s keep theirs."""
+    plain = {k for k in HELD_STD if k != "Chainsaw"} | {f"{f} {w}" for f in ("Rusted", "Bloody", "Clean")
+                                                         for w in ("Machete", "Butcher Cleaver", "Hunting Knife", "Hatchet", "Sickle")}
+    dnas = {tuple(sorted((k, v) for k, v in a.items() if k != "Tier")) for a, _ in tokens}
+    for a, f in tokens:
+        if a["Back Weapon"] != "Chainsaw" or a["Tier"] == "Legendary 1/1":
+            continue
+        old = tuple(sorted((k, v) for k, v in a.items() if k != "Tier"))
+        b = dict(a, **{"Back Weapon": "None"})
+        if a["Held Weapon"] in plain:
+            c = dict(b, **{"Held Weapon": "Chainsaw"})
+            if tuple(sorted((k, v) for k, v in c.items() if k != "Tier")) not in dnas:
+                b = c
+        new = tuple(sorted((k, v) for k, v in b.items() if k != "Tier"))
+        assert new not in dnas or new == old
+        dnas.discard(old); dnas.add(new); a.update(b)
 
 
 def molotov_pass(tokens):
