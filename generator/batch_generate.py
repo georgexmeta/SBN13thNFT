@@ -99,7 +99,7 @@ def ref_parts(st, row):
 def submit(id_list, chunk=200, st=None, force=False):
     st = st or load()
     rows = {r["id"]: r for r in json.load(open(g.MANIFEST))}
-    pending = {i for b in st["batches"] if b["state"] == "running" for i in b["ids"]}
+    pending = {i for b in st["batches"] if b["state"] == "running" and not b.get("edit") for i in b["ids"] if i not in b.get("drop", [])}
     todo = [i for i in id_list if not os.path.exists(os.path.join(g.OUTDIR, f"{i}.png")) and (force or i not in pending)]
     for n in range(0, len(todo), chunk):
         part = todo[n:n + chunk]
