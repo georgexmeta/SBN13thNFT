@@ -120,14 +120,15 @@
 | Clean Hatchet | 7 | 0.5% |
 | Clean Sickle | 7 | 0.5% |
 | Harpoon Gun | 6 | 0.5% |
-| Nail-Knife Glove (Rare+) | 6 | 0.5% |
 | Clean Hunting Knife | 5 | 0.4% |
 | Toy Pop Gun | 5 | 0.4% |
 | Circus Mallet | 4 | 0.3% |
+| Nail-Knife Glove (Rare+) | 3 | 0.2% |
 | Double-Barrel Shotgun | 3 | 0.2% |
 | Double Molotov Cocktails | 3 | 0.2% |
 | Chrome Machete | 3 | 0.2% |
 | Blue-Flame Flamethrower | 3 | 0.2% |
+| Gold Claw Glove | 2 | 0.2% |
 | Gold Hatchet | 2 | 0.2% |
 | Clayson Master Ball and Golden Axe | 1 | 0.1% |
 | Scythe | 1 | 0.1% |
@@ -136,6 +137,7 @@
 | Sniper Rifle | 1 | 0.1% |
 | Telekinesis | 1 | 0.1% |
 | Death Nails | 1 | 0.1% |
+| Chrome Claw Glove | 1 | 0.1% |
 | Chrome Butcher Cleaver | 1 | 0.1% |
 | Chrome Hatchet | 1 | 0.1% |
 | Gold Sickle | 1 | 0.1% |

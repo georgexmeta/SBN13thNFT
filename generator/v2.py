@@ -453,6 +453,7 @@ DUAL_PHRASE.update({   # bladed-glove men (George 2026-11-15) wield their back w
     "Scythe": "a huge rusty scythe by its long wooden snath, held upright beside him with the curved blade arching above his head",
     "Harpoon Gun": "a rusty harpoon gun loaded with a barbed harpoon, aimed out to the side",
     "Double-Barrel Shotgun": "a sawn-off rusty double-barrel shotgun with a cracked wooden stock, held one-handed, barrels pointing up and out"})
+GLOVE_FINISH = {177: "Gold", 283: "Gold", 744: "Chrome"}
 PICKAXE = [79, 87, 231, 259, 266, 324, 360, 490, 567, 794, 818, 820]
 # Machete variants (George, 2026-11-15), machete_pass: finished machetes are labelled Rusted (what they show); unrendered ones are
 # split Rusted / Bloody / Clean, and unrendered Rare machetes go Chrome. Gold stays the existing Golden Machete.
@@ -558,9 +559,10 @@ def prompt(a, legendary_finish=None):
         colour = "roaring blue-and-white gas" if held == "Blue-Flame Flamethrower" else "roaring orange-and-yellow"
         hand = ("his right fist grips a crude homemade rusty flamethrower made of welded pipe, blasting a HUGE billowing jet of "
                 f"{colour} fire out of the nozzle, the long plume of flame filling the upper side of the frame, pointed up and away from him")
-    elif held == "Nail-Knife Glove" and a["Head"] != "Female":   # George 2026-11-15: classic horror one-hand bladed glove, original take
+    elif (held == "Nail-Knife Glove" and a["Head"] != "Female") or held.endswith(" Claw Glove"):   # George 2026-11-15: classic horror one-hand bladed glove, original take
+        blades = {"Gold Claw Glove": "gleaming solid gold", "Chrome Claw Glove": "mirror-bright chrome"}.get(held, "rusty")
         hand = ("his right hand wears a single grimy black leather glove with riveted iron plates on each finger, four long thin "
-                "rusty serrated steel blades fixed to the fingertips curving out like claws, a buckled iron wrist cuff, fingers spread "
+                f"{blades} serrated steel blades fixed to the fingertips curving out like claws, a buckled iron wrist cuff, fingers spread "
                 "and raised menacingly toward the camera, blood on the blade tips")
     elif held == "Nail-Knife Glove":
         hand = ("his right hand wears a thick grimy grey welder's gauntlet with bent rusty nails and short broken kitchen-knife "
@@ -694,6 +696,9 @@ def build():
     oxygen_pass(tokens)
     neck_pass(tokens)
     dedupe_pass(tokens)
+    for _i, _g in GLOVE_FINISH.items():   # George 2026-11-15: 2 gold and 1 chrome claw gloves among the 6 gloved men
+        assert tokens[_i - 1][0]["Held Weapon"] == "Nail-Knife Glove"
+        tokens[_i - 1][0]["Held Weapon"] = f"{_g} Claw Glove"
     for _i in WEEDWACKER:
         tokens[_i - 1][0]["Held Weapon"] = "Golden Saw Weed Whacker"
     os.makedirs(OUT, exist_ok=True)
