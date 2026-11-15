@@ -297,7 +297,7 @@ HELD_STD = {
     "Machete": (20, "a long rusty machete dripping blood"), "Butcher Cleaver": (16, "a bloody rusty butcher's cleaver"),
     "Hunting Knife": (14, "a bloody hunting knife"), "Hatchet": (12, "a rusty hatchet with a chipped blade"),
     "Meat Hook": (10, "a big rusty meat hook"), "Sickle": (10, "a rusty curved sickle"),
-    "Nail Bat": (8, "a wooden bat studded with bent rusty nails"), "Ice Pick": (6, "a rusty ice pick"), "Bare Fist": (4, None),
+    "Nail Bat": (8, "a wooden bat studded with bent rusty nails"), "Ice Pick": (6, "a rusty ice pick: a short round wooden handle with one long thin straight metal spike, not a pickaxe"), "Bare Fist": (4, None),
     "Chainsaw": (8, "a rusty chainsaw with a bloody chain"),
     "Fish Hook": (8, "a huge rusty barbed fish hook on a short wooden handle, fishing line and a bloody bait scrap dangling from it"),
     "Spear": (8, "a crude spear: a long wooden pole with a rusty jagged blade lashed to the top with wire and rag, held upright with the blade above his shoulder"),
@@ -420,6 +420,9 @@ ALL["Held Weapon"]["Exercise Band"] = (0, "")
 # Toy Pop Gun (George, 2026-11-15): Claysons that read mostly as clowns (2+ clown pieces) and hold an ordinary weapon.
 ALL["Held Weapon"]["Toy Pop Gun"] = (0, "a small bright red-and-yellow toy pistol with a blank white cloth flag popped out of the barrel on a spring, no lettering")
 TOY_GUN = [418, 429, 954, 1164, 1253]
+# QA 2026-11-15: these finished "Ice Pick" renders show a pickaxe, so the metadata says what the image shows.
+ALL["Held Weapon"]["Rusty Pickaxe"] = (0, "a small rusty pickaxe")
+PICKAXE = [79, 87, 231, 259, 266, 324, 360, 490, 567, 794, 818, 820]
 # Machete variants (George, 2026-11-15), machete_pass: finished machetes are labelled Rusted (what they show); unrendered ones are
 # split Rusted / Bloody / Clean, and unrendered Rare machetes go Chrome. Gold stays the existing Golden Machete.
 MACHETES = {"Rusted Machete": "a long rusty machete dripping blood",
@@ -594,6 +597,8 @@ def build():
     women_weapon_pass(tokens)
     for _i in TOY_GUN:
         tokens[_i - 1][0]["Held Weapon"] = "Toy Pop Gun"
+    for _i in PICKAXE:
+        tokens[_i - 1][0]["Held Weapon"] = "Rusty Pickaxe"
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):

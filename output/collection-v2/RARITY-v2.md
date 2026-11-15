@@ -92,7 +92,7 @@
 | Rusted Hatchet | 74 | 5.7% |
 | Rusted Sickle | 71 | 5.5% |
 | Fish Hook | 65 | 5.0% |
-| Ice Pick | 51 | 3.9% |
+| Ice Pick | 39 | 3.0% |
 | Bare Fist | 31 | 2.4% |
 | Bloody Machete | 27 | 2.1% |
 | Rusty Shears | 25 | 1.9% |
@@ -105,6 +105,7 @@
 | Bloody Brick | 15 | 1.2% |
 | Bloody Sickle | 14 | 1.1% |
 | Golden Machete (Rare+) | 12 | 0.9% |
+| Rusty Pickaxe | 12 | 0.9% |
 | Bloody Hatchet | 12 | 0.9% |
 | Clean Butcher Cleaver | 11 | 0.8% |
 | Clean Machete | 11 | 0.8% |
