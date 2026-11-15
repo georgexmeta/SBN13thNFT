@@ -525,6 +525,10 @@ def prompt(a, legendary_finish=None):
     parts = [STYLE, DOLL_BASE if doll else FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
              phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Mask Orb and Hatchet" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held in ("Death Nails", "Blade Nails") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
     text = ". ".join(p[0].upper() + p[1:] for p in parts if p) + "."
+    if "empty black eye sockets" in (mask or ""):   # QA #232: the base "sunken eyes" line added a stray third eye
+        text = text.replace("small sunken bloodshot eyes in swollen red-rimmed lids, ", "")
+    if a.get("_fix"):
+        text += " " + a["_fix"]
     if female:
         for m, f in [(r"\bhis\b", "her"), (r"\bHis\b", "Her"), (r"\bhim\b", "her"), (r"\bhimself\b", "herself"), (r"\bhe\b", "she"), (r"\bHe\b", "She")]:
             text = re.sub(m, f, text)
@@ -597,6 +601,13 @@ def build():
     women_weapon_pass(tokens)
     for _i in TOY_GUN:
         tokens[_i - 1][0]["Held Weapon"] = "Toy Pop Gun"
+    # QA fixes for single tokens (George, 2026-11-15), appended to the prompt only
+    tokens[232 - 1][0]["_fix"] = ("EYES: exactly two eye positions and no others: one is an empty black skull eye socket in the cracked "
+                                  "grey face, the other a single bloodshot eye; no eye on the forehead or anywhere else.")
+    for _i, (_a, _f) in enumerate(tokens, 1):   # QA #286: Hollow Grey Face grew a fleshy face and eyes beside the mask
+        if _a.get("Mask") == "Hollow Grey Face" and _i != 232:
+            _a["_fix"] = ("EYES: the cracked grey face covers the whole face; both eyes are deep empty black hollow sockets with "
+                          "nothing inside; no eyeballs, no pink skin face, no fleshy eyes beside, behind or above the grey face.")
     for _i in PICKAXE:
         tokens[_i - 1][0]["Held Weapon"] = "Rusty Pickaxe"
     os.makedirs(OUT, exist_ok=True)
@@ -604,9 +615,9 @@ def build():
     for i, (a, finish) in enumerate(tokens, 1):
         seed = rng.randrange(1 << 31)
         name = f"SBN13th #{i}" + (f" - {a['1/1 Name']}" if "1/1 Name" in a else "")
-        meta = {"name": name, "seed": seed, "attributes": [{"trait_type": k, "value": v} for k, v in a.items()]}
+        meta = {"name": name, "seed": seed, "attributes": [{"trait_type": k, "value": v} for k, v in a.items() if not k.startswith("_")]}
         json.dump(meta, open(os.path.join(OUT, f"{i}.json"), "w"), indent=2)
-        rows.append({"id": i, "name": name, "seed": seed, "prompt": prompt(a, finish), "negative": NEGATIVE.replace("long finger blades, clawed glove with four long knives, ", "") if a["Held Weapon"] in ("Death Nails", "Blade Nails") else NEGATIVE + ", red and white ball, ball with a centre button, writing on clothes, logo on cap" if a["Held Weapon"] == "Mask Orb and Hatchet" else NEGATIVE, "attributes": a})
+        rows.append({"id": i, "name": name, "seed": seed, "prompt": prompt(a, finish), "negative": NEGATIVE.replace("long finger blades, clawed glove with four long knives, ", "") if a["Held Weapon"] in ("Death Nails", "Blade Nails") else NEGATIVE + ", red and white ball, ball with a centre button, writing on clothes, logo on cap" if a["Held Weapon"] == "Mask Orb and Hatchet" else NEGATIVE, "attributes": {k: v for k, v in a.items() if not k.startswith("_")}})
     os.makedirs(os.path.join(ROOT, "output", "ai"), exist_ok=True)
     json.dump(rows, open(os.path.join(ROOT, "output", "ai", "manifest-v2.json"), "w"), indent=1)
     report(tokens)
