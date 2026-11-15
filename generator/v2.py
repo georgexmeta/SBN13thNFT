@@ -203,6 +203,23 @@ ICON_EXTRA = [
     ("Backdrop", "Mirror Maze", "a dim funhouse hall of mirrors reflecting her silhouette into endless copies, sculpted as a miniature "
                  "claymation diorama in matte plasticine, softly out of focus behind him, no signs or lettering"),
 ]
+# 1/1 "Madame Mortis" (George, 2026-11-15): a towering goth femme-fatale slasher with death nails, inspired by a video-game
+# villain but not her: no character name, no cream gown, no pearl choker, black veiled hat instead. Replaces a male 1/1
+# (George's pick) in duchess_pass, after every other pass, so nothing else shifts. 13 Legendaries.
+DUCHESS = ("Swamp Saint", {"1/1 Name": "Madame Mortis", "Character": "Madame Mortis", "Head": "Female", "Skin": "Ashen Grey",
+           "Hair": "Veiled Mourning Hat", "Head Mark": "Clean", "Ears": "Natural", "Mask": "Blood-Red Smile",
+           "Held Weapon": "Death Nails", "Back Weapon": "None", "Clothing": "Black Velvet Mourning Gown", "Belt": "Garnet Choker",
+           "Backdrop": "Candlelit Castle Hall"})
+DUCHESS_EXTRA = [
+    ("Skin", "Ashen Grey", "ashen grey-white clay skin"),
+    ("Hair", "Veiled Mourning Hat", "short glossy black finger-waved curls under an enormous wide-brimmed black mourning hat with a torn black lace veil"),
+    ("Mask", "Blood-Red Smile", "no mask: a towering elegant woman's face with high sharp cheekbones, heavy dark eye makeup, cruel narrowed eyes "
+             "and a wide wicked smile of glossy blood-red lips"),
+    ("Clothing", "Black Velvet Mourning Gown", "a tall-collared black-and-wine velvet mourning gown with puffed shoulders and a black silk rose at the throat"),
+    ("Belt", "Garnet Choker", "a tight choker of dark blood-red garnets"),
+    ("Backdrop", "Candlelit Castle Hall", "a dark carved-wood gothic castle hall lit by tall dripping candles in iron sconces, sculpted as a miniature "
+                 "claymation diorama in matte plasticine, softly out of focus behind her, no signs or lettering"),
+]
 # "The Ringmistress" (George, 2026-11-14): a 7th female exclusive, an original ADULT woman killer clown inspired by a
 # horror clown photo but not its character: no black-and-white split costume, no mini top hat, no black lips.
 # 8 unrendered Rare tokens, dealt by ring_pass after every other pass so earlier picks don't shift.
@@ -336,6 +353,7 @@ FRAMING = ("FACING: exactly like the first reference photo, his body is in three
            "and out; his other hand hangs open")
 FRAMING_TWO_HANDS = FRAMING.split(" His right hand grips")[0] + (" Both hands hold the chainsaw firmly, one on the rear handle "
                                                               "and one on the front handle; neither hand hangs empty")
+FRAMING_NAILS = FRAMING.split(" His right hand grips")[0] + " Her right hand is raised with the blade nails spread; her other hand rests at her side"
 FRAMING_PSYCHIC = FRAMING.split(" His right hand grips")[0] + " Both hands are raised, empty, channelling psychic force; no weapon in her hands."
 NEGATIVE = ("text, logo, letters, watermark, brand marks, sports team logo, red chevrons or triangles on the mask, full-face goalie mask covering the forehead and eyes, "
             "white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, "
@@ -348,7 +366,7 @@ ALL["Held Weapon"]["Poison Syringe"] = (0, "a big old glass syringe filled with 
 ALL["Skin"], ALL["Belt"] = dict(ALL["Skin"]), dict(ALL["Belt"])   # copies, so the retro values never touch the SKIN/BELT pick tables
 for _t, (_v, _p) in RETRO_EXTRA.items():
     ALL[_t][_v] = (0, _p)
-for _t, _v, _p in ICON_EXTRA:
+for _t, _v, _p in ICON_EXTRA + DUCHESS_EXTRA:
     ALL[_t][_v] = (0, _p)
 
 
@@ -380,6 +398,9 @@ def prompt(a, legendary_finish=None):
     elif held == "Telekinesis":
         hand = ("she holds no weapon: both bloody hands are raised and spread with clawed fingers, unleashing telekinetic power, "
                 "chairs, glass shards and streamers levitating around her and a rippling shockwave bending the air")
+    elif held == "Death Nails":
+        hand = ("her right hand is raised beside her face, fingers spread, each fingertip ending in a long curved blackened-steel blade "
+                "nail as long as a forearm, the five blade nails fanned out toward the viewer, a drop of blood on the tips")
     elif held == "Hook Hand":
         hand = "his right hand has been replaced by a rusty iron hook strapped to his forearm"
     elif held == "Flamethrower":
@@ -391,11 +412,11 @@ def prompt(a, legendary_finish=None):
     else:
         hand = f"his right fist grips {phrase('Held Weapon', held)}"
     body = [f"wearing {phrase('Clothing', a['Clothing'])}", phrase("Belt", a["Belt"]), hand, phrase("Back Weapon", a["Back Weapon"])]
-    female = a.get("Character", "Classic") in FEMALE or a.get("Character") in ("The Grieving Mother", "The Prom Queen", "The Ringmistress", "Woman")
+    female = a.get("Character", "Classic") in FEMALE or a.get("Character") in ("The Grieving Mother", "The Prom Queen", "The Ringmistress", "Woman", "Madame Mortis")
     if female:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"]), phrase("Head Mark", a["Head Mark"]), phrase("Ears", a.get("Ears", "Natural"))]
     parts = [STYLE, FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
-             phrase("Backdrop", a["Backdrop"]), FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_PSYCHIC if held == "Telekinesis" else FRAMING]
+             phrase("Backdrop", a["Backdrop"]), FRAMING_NAILS if held == "Death Nails" else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_PSYCHIC if held == "Telekinesis" else FRAMING]
     text = ". ".join(p[0].upper() + p[1:] for p in parts if p) + "."
     if female:
         for m, f in [(r"\bhis\b", "her"), (r"\bHis\b", "Her"), (r"\bhim\b", "her"), (r"\bhimself\b", "herself"), (r"\bhe\b", "she"), (r"\bHe\b", "She")]:
@@ -453,6 +474,7 @@ def build():
     retro_pass(tokens)
     icon_pass(tokens)
     trim_pass(tokens)
+    duchess_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -460,7 +482,7 @@ def build():
         name = f"SBN13th #{i}" + (f" - {a['1/1 Name']}" if "1/1 Name" in a else "")
         meta = {"name": name, "seed": seed, "attributes": [{"trait_type": k, "value": v} for k, v in a.items()]}
         json.dump(meta, open(os.path.join(OUT, f"{i}.json"), "w"), indent=2)
-        rows.append({"id": i, "name": name, "seed": seed, "prompt": prompt(a, finish), "negative": NEGATIVE, "attributes": a})
+        rows.append({"id": i, "name": name, "seed": seed, "prompt": prompt(a, finish), "negative": NEGATIVE.replace("long finger blades, clawed glove with four long knives, ", "") if a["Held Weapon"] == "Death Nails" else NEGATIVE, "attributes": a})
     os.makedirs(os.path.join(ROOT, "output", "ai"), exist_ok=True)
     json.dump(rows, open(os.path.join(ROOT, "output", "ai", "manifest-v2.json"), "w"), indent=1)
     report(tokens)
@@ -639,6 +661,12 @@ def trim_pass(tokens):
                 break
         else:
             raise AssertionError(i)
+
+
+def duchess_pass(tokens):
+    for i, (a, finish) in enumerate(tokens):
+        if a.get("1/1 Name") == DUCHESS[0]:
+            a.update(DUCHESS[1]); tokens[i] = (a, None)
 
 
 def retro_pass(tokens):

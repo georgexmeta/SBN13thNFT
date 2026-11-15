@@ -1,5 +1,5 @@
 {
-  "name": "SBN13th #656 - Swamp Saint",
+  "name": "SBN13th #656 - Madame Mortis",
   "seed": 493878146,
   "attributes": [
     {
@@ -8,19 +8,19 @@
     },
     {
       "trait_type": "1/1 Name",
-      "value": "Swamp Saint"
+      "value": "Madame Mortis"
     },
     {
       "trait_type": "Head",
-      "value": "Type 1 - Lumpy Dome"
+      "value": "Female"
     },
     {
       "trait_type": "Skin",
-      "value": "Pale Wax"
+      "value": "Ashen Grey"
     },
     {
       "trait_type": "Hair",
-      "value": "Wild Grey Tufts"
+      "value": "Veiled Mourning Hat"
     },
     {
       "trait_type": "Head Mark",
@@ -28,27 +28,27 @@
     },
     {
       "trait_type": "Mask",
-      "value": "Hockey Half-Mask (overgrown)"
+      "value": "Blood-Red Smile"
     },
     {
       "trait_type": "Held Weapon",
-      "value": "Bone Saw"
+      "value": "Death Nails"
     },
     {
       "trait_type": "Back Weapon",
-      "value": "Pitchfork"
+      "value": "None"
     },
     {
       "trait_type": "Clothing",
-      "value": "Patched Work Jacket"
+      "value": "Black Velvet Mourning Gown"
     },
     {
       "trait_type": "Belt",
-      "value": "Tool Belt"
+      "value": "Garnet Choker"
     },
     {
       "trait_type": "Backdrop",
-      "value": "Swamp Clay"
+      "value": "Candlelit Castle Hall"
     },
     {
       "trait_type": "Ears",
@@ -56,7 +56,7 @@
     },
     {
       "trait_type": "Character",
-      "value": "Classic"
+      "value": "Madame Mortis"
     }
   ]
 }
