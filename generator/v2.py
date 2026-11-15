@@ -390,6 +390,7 @@ for _t, (_v, _p) in RETRO_EXTRA.items():
 # Shrunken Head Bandolier (George, 2026-11-15): a more exclusive trait, worn across the chest with 5 shrunken heads.
 # Belt slot, 13 unrendered Uncommon tokens (head_strap_pass; George: Uncommon), so tier counts don't move.
 ALL["Held Weapon"]["Double Molotov Cocktails"] = (0, "")
+ALL["Held Weapon"]["Blue-Flame Flamethrower"] = (0, "")
 ALL["Belt"]["Shrunken Head Bandolier"] = (0, "a worn leather bandolier strap slung diagonally across his chest from shoulder to hip with exactly "
                                           "five small wrinkled shrunken heads hanging from it, their eyes and lips stitched shut, wisps of dark hair")
 for _t, _v, _p in ICON_EXTRA + DUCHESS_EXTRA + DOLL_EXTRA:
@@ -432,9 +433,10 @@ def prompt(a, legendary_finish=None):
                 "long curved blackened-steel blade nail as long as a forearm, all ten blade nails fanned out toward the viewer, blood on the tips")
     elif held == "Hook Hand":
         hand = "his right hand has been replaced by a rusty iron hook strapped to his forearm"
-    elif held == "Flamethrower":
-        hand = ("his right fist grips a crude homemade rusty flamethrower made of welded pipe, a small orange flame "
-                "licking from the nozzle, pointed up and away from him")
+    elif held in ("Flamethrower", "Blue-Flame Flamethrower"):   # George 2026-11-15: a much bigger flame; 3 get blue flames
+        colour = "roaring blue-and-white gas" if held == "Blue-Flame Flamethrower" else "roaring orange-and-yellow"
+        hand = ("his right fist grips a crude homemade rusty flamethrower made of welded pipe, blasting a HUGE billowing jet of "
+                f"{colour} fire out of the nozzle, the long plume of flame filling the upper side of the frame, pointed up and away from him")
     elif held == "Nail-Knife Glove":
         hand = ("his right hand wears a thick grimy grey welder's gauntlet with bent rusty nails and short broken kitchen-knife "
                 "blades crudely welded and taped onto the knuckles, a clenched spiked fist, knuckles toward the camera")
@@ -510,6 +512,7 @@ def build():
     doll_pass(tokens)
     head_strap_pass(tokens)
     molotov_pass(tokens)
+    blue_flame_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -727,6 +730,15 @@ def molotov_pass(tokens):
             and a["Character"] in ("Classic", "Woman") and a["Held Weapon"] in HELD_STD and a["Held Weapon"] not in ("Chainsaw", "Bare Fist")]
     for i in late.sample(pool, 6):
         tokens[i - 1][0]["Held Weapon"] = "Double Molotov Cocktails"   # a new value can't collide with an existing DNA
+
+
+def blue_flame_pass(tokens):
+    """Blue flames (George, 2026-11-15): 3 unrendered Flamethrower tokens get a blue flame."""
+    keep = set(json.load(open(os.path.join(ROOT, "generator", "rendered_keep_syringe.json"))))
+    late = random.Random(3333)
+    pool = [i for i, (a, f) in enumerate(tokens, 1) if i not in keep and a["Held Weapon"] == "Flamethrower"]
+    for i in late.sample(pool, 3):
+        tokens[i - 1][0]["Held Weapon"] = "Blue-Flame Flamethrower"
 
 
 def retro_pass(tokens):

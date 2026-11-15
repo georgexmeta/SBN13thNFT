@@ -98,10 +98,11 @@
 | Poison Syringe | 25 | 1.9% |
 | Golden Machete (Rare+) | 16 | 1.2% |
 | Hook Hand (Rare+) | 15 | 1.2% |
-| Flamethrower (Rare+) | 11 | 0.8% |
 | Nail-Knife Glove (Rare+) | 9 | 0.7% |
 | Bone Saw (Rare+) | 8 | 0.6% |
+| Flamethrower (Rare+) | 8 | 0.6% |
 | Double Molotov Cocktails | 6 | 0.5% |
+| Blue-Flame Flamethrower | 3 | 0.2% |
 | Bloody Kitchen Knife | 1 | 0.1% |
 | Telekinesis | 1 | 0.1% |
 | Death Nails | 1 | 0.1% |
