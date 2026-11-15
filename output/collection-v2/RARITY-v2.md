@@ -111,18 +111,20 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Weed Whacker | 282 | 21.7% |
-| Pitchfork | 201 | 15.5% |
+| Weed Whacker | 281 | 21.6% |
+| Pitchfork | 200 | 15.4% |
 | Sledgehammer | 163 | 12.5% |
 | Chainsaw | 154 | 11.8% |
-| Woodcutter Axe | 153 | 11.8% |
-| None | 143 | 11.0% |
-| Rusty Shovel | 108 | 8.3% |
+| Woodcutter Axe | 152 | 11.7% |
+| None | 142 | 10.9% |
+| Rusty Shovel | 106 | 8.2% |
 | Circus Mallet (Rare+) | 26 | 2.0% |
 | Leathery Bat Wings | 25 | 1.9% |
-| Scythe (Rare+) | 19 | 1.5% |
-| Harpoon Gun (Rare+) | 14 | 1.1% |
+| Scythe (Rare+) | 16 | 1.2% |
+| Harpoon Gun (Rare+) | 13 | 1.0% |
 | Fuel Tanks (Rare+) | 11 | 0.8% |
+| Double-Barrel Shotgun | 7 | 0.5% |
+| Sniper Rifle | 3 | 0.2% |
 | Golden Retro Axe | 1 | 0.1% |
 
 ## Clothing

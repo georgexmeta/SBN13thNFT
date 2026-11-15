@@ -391,6 +391,11 @@ for _t, (_v, _p) in RETRO_EXTRA.items():
 # Belt slot, 13 unrendered Uncommon tokens (head_strap_pass; George: Uncommon), so tier counts don't move.
 ALL["Held Weapon"]["Double Molotov Cocktails"] = (0, "")
 ALL["Held Weapon"]["Blue-Flame Flamethrower"] = (0, "")
+# Gun back weapons (George, 2026-11-15): exactly 7 Double-Barrel Shotguns and 3 Sniper Rifles on unrendered Rare tokens.
+ALL["Back Weapon"]["Double-Barrel Shotgun"] = (0, "a sawn-off rusty double-barrel shotgun with a cracked wooden stock slung on his back, "
+                                              "the twin barrels rising above his shoulder")
+ALL["Back Weapon"]["Sniper Rifle"] = (0, "a long heavy matte-black sniper rifle with a big scope and a bipod slung on his back, the long barrel "
+                                     "rising high above his shoulder")
 ALL["Belt"]["Shrunken Head Bandolier"] = (0, "a worn leather bandolier strap slung diagonally across his chest from shoulder to hip with exactly "
                                           "five small wrinkled shrunken heads hanging from it, their eyes and lips stitched shut, wisps of dark hair")
 for _t, _v, _p in ICON_EXTRA + DUCHESS_EXTRA + DOLL_EXTRA:
@@ -513,6 +518,7 @@ def build():
     head_strap_pass(tokens)
     molotov_pass(tokens)
     blue_flame_pass(tokens)
+    gun_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -739,6 +745,17 @@ def blue_flame_pass(tokens):
     pool = [i for i, (a, f) in enumerate(tokens, 1) if i not in keep and a["Held Weapon"] == "Flamethrower"]
     for i in late.sample(pool, 3):
         tokens[i - 1][0]["Held Weapon"] = "Blue-Flame Flamethrower"
+
+
+def gun_pass(tokens):
+    keep = set(json.load(open(os.path.join(ROOT, "generator", "rendered_keep_syringe.json"))))
+    late = random.Random(7373)
+    pool = [i for i, (a, f) in enumerate(tokens, 1) if i not in keep and not f and a["Tier"] == "Rare"
+            and a["Character"] in ("Classic", "Woman") and (a["Back Weapon"] in BACK_STD or a["Back Weapon"] in BACK_RARE) and a["Back Weapon"] not in ("Chainsaw", "Fuel Tanks", "Circus Mallet")
+            and a["Held Weapon"] != "Chainsaw"]
+    picks = late.sample(pool, 10)
+    for n, i in enumerate(picks):
+        tokens[i - 1][0]["Back Weapon"] = "Double-Barrel Shotgun" if n < 7 else "Sniper Rifle"
 
 
 def retro_pass(tokens):
