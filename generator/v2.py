@@ -671,6 +671,7 @@ def build():
         tokens[_i - 1][0]["Off Hand"] = _w
     chainsaw_pass(tokens)
     saw_whacker_pass(tokens)
+    jail_tier_fix(tokens)
     splatter_pass(tokens)
     two_hand_pass(tokens)
     hook_off_pass(tokens)
@@ -784,6 +785,19 @@ def jail_pass(tokens):
     pool = [i for i, (a, finish) in enumerate(tokens, 1) if i not in keep and not finish]
     for i in random.Random(1313131).sample(pool, N_JAIL):
         tokens[i - 1][0]["Backdrop"] = JAIL[0]
+
+
+def jail_tier_fix(tokens):
+    """Rarity audit 2026-11-15: Jail Cell (13) is a scene backdrop, and scene backdrops are Uncommon+, so a Standard token never gets it.
+    Each unrendered Standard Jail Cell swaps backdrops with an unrendered Uncommon plain-clay token (tier counts unchanged)."""
+    done = lambda i: os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png"))
+    plain = {"Sage Clay", "Swamp Clay", "Slate Clay", "Teal Clay", "Rust Clay", "Bruise Clay", "Bone Clay"}
+    pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == "Uncommon" and a["Backdrop"] in plain and not done(i)]
+    random.Random(1717).shuffle(pool)
+    for i, (a, f) in enumerate(tokens, 1):
+        if a["Backdrop"] == JAIL[0] and a["Tier"] == "Standard" and not done(i):
+            u = tokens[pool.pop() - 1][0]
+            a["Backdrop"], u["Backdrop"] = u["Backdrop"], a["Backdrop"]
 
 
 def prom_pass(tokens):

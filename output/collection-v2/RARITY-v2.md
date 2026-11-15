@@ -297,10 +297,10 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Blue Veins | 507 | 39.0% |
+| Blue Veins | 506 | 38.9% |
 | Grey Wrinkles | 284 | 21.8% |
 | Stitched Scar | 195 | 15.0% |
-| Clean | 176 | 13.5% |
+| Clean | 177 | 13.6% |
 | Boils | 125 | 9.6% |
 | Half-Burnt Face | 13 | 1.0% |
 

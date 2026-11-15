@@ -6832,7 +6832,7 @@
   "id": 288,
   "name": "SBN13th #288",
   "seed": 366945984,
-  "prompt": "Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with fingerprints, tool marks and pressed texture, soft studio lighting, highly detailed, in exactly the style of the reference photos. A grotesque disfigured old man with an oversized bobble head, mottled skin with age spots, small sunken bloodshot eyes in swollen red-rimmed lids, a large ear with a fat hanging lobe, thick neck, hunched broad shoulders, head turned three-quarters toward the viewer's right. Head type: a cranium split by a deep stitched crease down the middle, swollen lobes either side, bloodless pale blue clay skin, completely bald. A mask sculpted like a skinned face of raw red muscle fibres and pale sinew strands, bone-white cheekbones poking through, a lipless grin of crooked yellow teeth, one bloodshot eye glaring through a torn hole. Wearing a shredded, ripped and tattered button-up shirt hanging in rags, his right fist grips ONE single huge rusty barbed fish hook on a short wooden handle, smeared with blood; only one hook, with no smaller hooks, lures, line or bait hanging from it; his LEFT fist tightly grips a heavy sledgehammer by its wooden handle, the hammer resting up on his left shoulder with the iron head behind his shoulder, carried in his hand, not strapped to his back. A dusty teal pressed-clay backdrop. FACING: exactly like the first reference photo, his body is in three-quarter view and his head and face are turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space above the head, figure centred, square 1:1 composition. SCALE (the same for every figure in the series): the figure is the same size in the frame as in the first reference photo, the bobble head the same size relative to the body, and weapons true to scale with the hands, never oversized or tiny. Both hands are full and both are tight clenched fists, knuckles toward the camera: the right fist grips the held weapon, the left fist grips the second weapon by its handle as described.",
+  "prompt": "Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with fingerprints, tool marks and pressed texture, soft studio lighting, highly detailed, in exactly the style of the reference photos. A grotesque disfigured old man with an oversized bobble head, mottled skin with age spots, small sunken bloodshot eyes in swollen red-rimmed lids, a large ear with a fat hanging lobe, thick neck, hunched broad shoulders, head turned three-quarters toward the viewer's right. Head type: a cranium split by a deep stitched crease down the middle, swollen lobes either side, bloodless pale blue clay skin, completely bald. A mask sculpted like a skinned face of raw red muscle fibres and pale sinew strands, bone-white cheekbones poking through, a lipless grin of crooked yellow teeth, one bloodshot eye glaring through a torn hole. Wearing a shredded, ripped and tattered button-up shirt hanging in rags, his right fist grips ONE single huge rusty barbed fish hook on a short wooden handle, smeared with blood; only one hook, with no smaller hooks, lures, line or bait hanging from it; his LEFT fist tightly grips a heavy sledgehammer by its wooden handle, the hammer resting up on his left shoulder with the iron head behind his shoulder, carried in his hand, not strapped to his back. A grimy jail cell with rusty iron bars, a cracked concrete wall scratched with tally marks, a dented metal bunk and a single bare hanging bulb, sculpted as a miniature claymation diorama in matte plasticine, softly out of focus behind him, no signs or lettering. FACING: exactly like the first reference photo, his body is in three-quarter view and his head and face are turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space above the head, figure centred, square 1:1 composition. SCALE (the same for every figure in the series): the figure is the same size in the frame as in the first reference photo, the bobble head the same size relative to the body, and weapons true to scale with the hands, never oversized or tiny. Both hands are full and both are tight clenched fists, knuckles toward the camera: the right fist grips the held weapon, the left fist grips the second weapon by its handle as described.",
   "negative": "text, logo, letters, watermark, brand marks, sports team logo, red chevrons or triangles on the mask, full-face goalie mask covering the forehead and eyes, white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, photo of a real person, cartoon outline, flat 2D, face turned to the left, mirrored pose, long finger blades, clawed glove with four long knives, red and green striped sweater, brown fedora",
   "attributes": {
    "Tier": "Uncommon",
@@ -6845,11 +6845,10 @@
    "Back Weapon": "None",
    "Clothing": "Tattered Shirt",
    "Belt": "None",
-   "Backdrop": "Teal Clay",
+   "Backdrop": "Jail Cell",
    "Ears": "Natural",
    "Character": "Classic",
-   "Off Hand": "Sledgehammer",
-   "Splatter": "Light"
+   "Off Hand": "Sledgehammer"
   }
  },
  {
@@ -6873,7 +6872,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -6921,7 +6920,7 @@
    "Ears": "Gauged",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Crazy",
+   "Splatter": "Mild",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -6945,7 +6944,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light",
+   "Splatter": "Crazy",
    "Off Hand": "Steel Hook Hand"
   }
  },
@@ -7040,7 +7039,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -7064,7 +7063,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Light",
+   "Splatter": "Mild",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -7089,7 +7088,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Crazy"
+   "Splatter": "Light"
   }
  },
  {
@@ -7112,7 +7111,7 @@
    "Backdrop": "Teal Clay",
    "Ears": "Gauged",
    "Character": "Classic",
-   "Splatter": "Light"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -7159,7 +7158,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Crazy"
+   "Splatter": "Light"
   }
  },
  {
@@ -7183,7 +7182,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Light"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -7253,7 +7252,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Crazy"
+   "Splatter": "Light"
   }
  },
  {
@@ -7277,7 +7276,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Light"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -7348,7 +7347,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Crazy",
+   "Splatter": "Light",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -7373,7 +7372,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Mild"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -7420,7 +7419,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -7443,7 +7442,7 @@
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Wild",
+   "Splatter": "Light",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -7539,7 +7538,7 @@
    "Ears": "Gauged",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Light"
+   "Splatter": "Wild"
   }
  },
  {
@@ -7587,7 +7586,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -7611,7 +7610,7 @@
    "Ears": "Gauged",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Slaughter"
+   "Splatter": "Mild"
   }
  },
  {
@@ -7635,7 +7634,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Light"
+   "Splatter": "Slaughter"
   }
  },
  {
@@ -7705,7 +7704,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Mild",
+   "Splatter": "Light",
    "Off Hand": "Bloody Hook Hand"
   }
  },
@@ -7730,7 +7729,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Crazy"
+   "Splatter": "Mild"
   }
  },
  {
@@ -7754,7 +7753,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Light"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -7778,7 +7777,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -7826,7 +7825,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Crazy",
+   "Splatter": "Mild",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -7850,7 +7849,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Mild",
+   "Splatter": "Crazy",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -7874,7 +7873,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light",
+   "Splatter": "Mild",
    "Off Hand": "Bloody Hook Hand",
    "Head Wound": "Deep Forehead Gash"
   }
@@ -7899,7 +7898,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -8016,7 +8015,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light",
+   "Splatter": "Mild",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -8159,7 +8158,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -8206,7 +8205,7 @@
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Crazy",
+   "Splatter": "Mild",
    "Off Hand": "Steel Hook Hand",
    "Head Wound": "Deep Forehead Gash"
   }
@@ -8231,7 +8230,7 @@
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Wild"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -8279,7 +8278,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Mild"
+   "Splatter": "Wild"
   }
  },
  {
@@ -8302,7 +8301,7 @@
    "Backdrop": "Rust Clay",
    "Ears": "Gauged",
    "Character": "Woman",
-   "Splatter": "Light",
+   "Splatter": "Mild",
    "Off Hand": "Steel Hook Hand"
   }
  },
@@ -8327,7 +8326,7 @@
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Wild"
+   "Splatter": "Light"
   }
  },
  {
@@ -8421,7 +8420,7 @@
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
    "Off Hand": "Pitchfork",
-   "Splatter": "Mild"
+   "Splatter": "Wild"
   }
  },
  {
@@ -8445,14 +8444,14 @@
    "Ears": "Gauged",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
   "id": 356,
   "name": "SBN13th #356",
   "seed": 1296522977,
-  "prompt": "Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with fingerprints, tool marks and pressed texture, soft studio lighting, highly detailed, in exactly the style of the reference photos. A grotesque disfigured clay WOMAN (female, not the man in the reference: copy only the reference's clay style, pose and framing) with an oversized bobble head, mottled skin, small sunken bloodshot eyes in swollen red-rimmed lids, a thin neck and narrow hunched shoulders, head turned three-quarters toward the viewer's right. Pink flesh-toned clay skin, thinning grey pin curls showing scalp, raised grey clay wrinkle ridges on the forehead, her visible ear is mostly torn away, only a ragged bloody stump of ear left with jagged torn edges and dried blood. No mask: her disfigured face is bare, small sunken bloodshot eyes in swollen red lids, a crooked broken nose and rotten yellow teeth. Wearing a grimy torn hoodie, a worn leather tool belt with rusty tools and pouches, her right fist grips a big rusty meat hook; her LEFT fist tightly grips a rusty woodcutter axe by its long wooden handle, the axe resting up on her left shoulder with the blade behind her shoulder, carried in her hand, not strapped to her back. A grimy jail cell with rusty iron bars, a cracked concrete wall scratched with tally marks, a dented metal bunk and a single bare hanging bulb, sculpted as a miniature claymation diorama in matte plasticine, softly out of focus behind her, no signs or lettering. FACING: exactly like the first reference photo, her body is in three-quarter view and her head and face are turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space above the head, figure centred, square 1:1 composition. SCALE (the same for every figure in the series): the figure is the same size in the frame as in the first reference photo, the bobble head the same size relative to the body, and weapons true to scale with the hands, never oversized or tiny. Both hands are full and both are tight clenched fists, knuckles toward the camera: the right fist grips the held weapon, the left fist grips the second weapon by its handle as described.",
+  "prompt": "Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with fingerprints, tool marks and pressed texture, soft studio lighting, highly detailed, in exactly the style of the reference photos. A grotesque disfigured clay WOMAN (female, not the man in the reference: copy only the reference's clay style, pose and framing) with an oversized bobble head, mottled skin, small sunken bloodshot eyes in swollen red-rimmed lids, a thin neck and narrow hunched shoulders, head turned three-quarters toward the viewer's right. Pink flesh-toned clay skin, thinning grey pin curls showing scalp, raised grey clay wrinkle ridges on the forehead, her visible ear is mostly torn away, only a ragged bloody stump of ear left with jagged torn edges and dried blood. No mask: her disfigured face is bare, small sunken bloodshot eyes in swollen red lids, a crooked broken nose and rotten yellow teeth. Wearing a grimy torn hoodie, a worn leather tool belt with rusty tools and pouches, her right fist grips a big rusty meat hook; her LEFT fist tightly grips a rusty woodcutter axe by its long wooden handle, the axe resting up on her left shoulder with the blade behind her shoulder, carried in her hand, not strapped to her back. A bruise-purple pressed-clay backdrop. FACING: exactly like the first reference photo, her body is in three-quarter view and her head and face are turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space above the head, figure centred, square 1:1 composition. SCALE (the same for every figure in the series): the figure is the same size in the frame as in the first reference photo, the bobble head the same size relative to the body, and weapons true to scale with the hands, never oversized or tiny. Both hands are full and both are tight clenched fists, knuckles toward the camera: the right fist grips the held weapon, the left fist grips the second weapon by its handle as described.",
   "negative": "text, logo, letters, watermark, brand marks, sports team logo, red chevrons or triangles on the mask, full-face goalie mask covering the forehead and eyes, white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, photo of a real person, cartoon outline, flat 2D, face turned to the left, mirrored pose, long finger blades, clawed glove with four long knives, red and green striped sweater, brown fedora",
   "attributes": {
    "Tier": "Standard",
@@ -8465,10 +8464,11 @@
    "Back Weapon": "None",
    "Clothing": "Grimy Hoodie",
    "Belt": "Tool Belt",
-   "Backdrop": "Jail Cell",
+   "Backdrop": "Bruise Clay",
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
-   "Off Hand": "Woodcutter Axe"
+   "Off Hand": "Woodcutter Axe",
+   "Splatter": "Light"
   }
  },
  {
@@ -9009,7 +9009,7 @@
   "id": 380,
   "name": "SBN13th #380",
   "seed": 1582950406,
-  "prompt": "Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with fingerprints, tool marks and pressed texture, soft studio lighting, highly detailed, in exactly the style of the reference photos. A grotesque disfigured clay WOMAN (female, not the man in the reference: copy only the reference's clay style, pose and framing) with an oversized bobble head, mottled skin, small sunken bloodshot eyes in swollen red-rimmed lids, a thin neck and narrow hunched shoulders, head turned three-quarters toward the viewer's right. Deep dark-brown clay skin, a matted short auburn pixie cut, a stitched scar across the scalp. A cracked white porcelain doll-face mask over her whole face, rosy painted cheeks, tiny painted red lips, empty black eye holes, a long hairline crack running across it, the mask sits squarely over her whole face from brow to chin with its eye holes exactly over her eyes; none of her real eyes, skin or brow shows above, beside or below the mask. Wearing a grimy one-piece black work jumpsuit with a small blank torn cloth chest patch (no lettering on it), a worn leather tool belt with rusty tools and pouches, BOTH of her hands are raised in front of her chest, fingers spread like claws, every fingertip on both hands ending in a long curved blackened-steel blade nail as long as a forearm, all ten blade nails fanned out toward the viewer, blood on the tips. A swamp-green pressed-clay backdrop. FACING: exactly like the first reference photo, her body is in three-quarter view and her head and face are turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space above the head, figure centred, square 1:1 composition. SCALE (the same for every figure in the series): the figure is the same size in the frame as in the first reference photo, the bobble head the same size relative to the body, and weapons true to scale with the hands, never oversized or tiny. Both hands are raised and fully visible inside the frame, all ten blade nails spread; neither hand hangs down or is hidden.",
+  "prompt": "Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with fingerprints, tool marks and pressed texture, soft studio lighting, highly detailed, in exactly the style of the reference photos. A grotesque disfigured clay WOMAN (female, not the man in the reference: copy only the reference's clay style, pose and framing) with an oversized bobble head, mottled skin, small sunken bloodshot eyes in swollen red-rimmed lids, a thin neck and narrow hunched shoulders, head turned three-quarters toward the viewer's right. Deep dark-brown clay skin, a matted short auburn pixie cut, a stitched scar across the scalp. A cracked white porcelain doll-face mask over her whole face, rosy painted cheeks, tiny painted red lips, empty black eye holes, a long hairline crack running across it, the mask sits squarely over her whole face from brow to chin with its eye holes exactly over her eyes; none of her real eyes, skin or brow shows above, beside or below the mask. Wearing a grimy one-piece black work jumpsuit with a small blank torn cloth chest patch (no lettering on it), a worn leather tool belt with rusty tools and pouches, BOTH of her hands are raised in front of her chest, fingers spread like claws, every fingertip on both hands ending in a long curved blackened-steel blade nail as long as a forearm, all ten blade nails fanned out toward the viewer, blood on the tips. A grimy jail cell with rusty iron bars, a cracked concrete wall scratched with tally marks, a dented metal bunk and a single bare hanging bulb, sculpted as a miniature claymation diorama in matte plasticine, softly out of focus behind her, no signs or lettering. FACING: exactly like the first reference photo, her body is in three-quarter view and her head and face are turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space above the head, figure centred, square 1:1 composition. SCALE (the same for every figure in the series): the figure is the same size in the frame as in the first reference photo, the bobble head the same size relative to the body, and weapons true to scale with the hands, never oversized or tiny. Both hands are raised and fully visible inside the frame, all ten blade nails spread; neither hand hangs down or is hidden.",
   "negative": "text, logo, letters, watermark, brand marks, sports team logo, red chevrons or triangles on the mask, full-face goalie mask covering the forehead and eyes, white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, photo of a real person, cartoon outline, flat 2D, face turned to the left, mirrored pose, red and green striped sweater, brown fedora",
   "attributes": {
    "Tier": "Uncommon",
@@ -9022,10 +9022,9 @@
    "Back Weapon": "None",
    "Clothing": "Black Jumpsuit",
    "Belt": "Tool Belt",
-   "Backdrop": "Swamp Clay",
+   "Backdrop": "Jail Cell",
    "Ears": "Natural",
-   "Character": "Woman",
-   "Splatter": "Mild"
+   "Character": "Woman"
   }
  },
  {
@@ -9119,7 +9118,7 @@
    "Ears": "Gauged",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Crazy"
+   "Splatter": "Mild"
   }
  },
  {
@@ -9142,7 +9141,7 @@
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
    "Character": "The Ringmistress",
-   "Splatter": "Mild"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -9189,7 +9188,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
    "Character": "Woman",
-   "Splatter": "Light",
+   "Splatter": "Mild",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -9214,7 +9213,7 @@
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
    "Off Hand": "Pitchfork",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -9306,7 +9305,7 @@
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
    "Off Hand": "Pitchfork",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -9330,7 +9329,7 @@
    "Ears": "Natural",
    "Character": "Woman",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -9376,7 +9375,7 @@
    "Ears": "Slightly Ripped Ear",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -9423,7 +9422,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Woman",
-   "Splatter": "Mild",
+   "Splatter": "Light",
    "Off Hand": "Bloody Hook Hand"
   }
  },
@@ -9448,7 +9447,7 @@
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -9472,7 +9471,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -9564,7 +9563,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
-   "Splatter": "Light",
+   "Splatter": "Mild",
    "Off Hand": "Bloody Hook Hand"
   }
  },
@@ -9657,7 +9656,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -9703,7 +9702,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
    "Character": "Woman",
-   "Splatter": "Wild",
+   "Splatter": "Mild",
    "Off Hand": "Bloody Hook Hand"
   }
  },
@@ -9728,7 +9727,7 @@
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Light"
+   "Splatter": "Wild"
   }
  },
  {
@@ -9775,7 +9774,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Slightly Ripped Ear",
    "Character": "Classic",
-   "Splatter": "Wild",
+   "Splatter": "Light",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -9844,7 +9843,7 @@
    "Backdrop": "Teal Clay",
    "Ears": "Gauged",
    "Character": "Woman",
-   "Splatter": "Light"
+   "Splatter": "Wild"
   }
  },
  {
@@ -9915,7 +9914,7 @@
    "Ears": "Natural",
    "Character": "Cursed Porcelain Doll",
    "Off Hand": "Circus Mallet",
-   "Splatter": "Crazy"
+   "Splatter": "Light"
   }
  },
  {
@@ -9938,7 +9937,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
    "Character": "Woman",
-   "Splatter": "Slaughter",
+   "Splatter": "Crazy",
    "Off Hand": "Bloody Hook Hand"
   }
  },
@@ -9962,7 +9961,7 @@
    "Backdrop": "Rust Clay",
    "Ears": "Gauged",
    "Character": "Classic",
-   "Splatter": "Mild",
+   "Splatter": "Slaughter",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -10032,7 +10031,7 @@
    "Ears": "Mostly Torn Ear",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Wild"
+   "Splatter": "Mild"
   }
  },
  {
@@ -10055,7 +10054,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
-   "Splatter": "Light"
+   "Splatter": "Wild"
   }
  },
  {
@@ -10148,7 +10147,7 @@
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
    "Character": "Woman",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -10195,7 +10194,7 @@
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
    "Off Hand": "Pitchfork",
-   "Splatter": "Crazy"
+   "Splatter": "Mild"
   }
  },
  {
@@ -10219,7 +10218,7 @@
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
    "Off Hand": "Pitchfork",
-   "Splatter": "Wild"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -10289,7 +10288,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
    "Character": "Woman",
-   "Splatter": "Light",
+   "Splatter": "Wild",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -10360,7 +10359,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Slightly Ripped Ear",
    "Character": "Classic",
-   "Splatter": "Mild",
+   "Splatter": "Light",
    "Off Hand": "Rusty Hook Hand",
    "Head Wound": "Deep Forehead Gash"
   }
@@ -10385,7 +10384,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
-   "Splatter": "Crazy",
+   "Splatter": "Mild",
    "Off Hand": "Steel Hook Hand"
   }
  },
@@ -10410,7 +10409,7 @@
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Light"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -10457,7 +10456,7 @@
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
    "Off Hand": "Pitchfork",
-   "Splatter": "Wild"
+   "Splatter": "Light"
   }
  },
  {
@@ -10481,7 +10480,7 @@
    "Ears": "Natural",
    "Character": "Woman",
    "Off Hand": "Pitchfork",
-   "Splatter": "Light"
+   "Splatter": "Wild"
   }
  },
  {
@@ -10549,7 +10548,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
-   "Splatter": "Mild",
+   "Splatter": "Light",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -10574,7 +10573,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Wild",
+   "Splatter": "Mild",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -10598,7 +10597,7 @@
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
    "Character": "Woman",
-   "Splatter": "Light"
+   "Splatter": "Wild"
   }
  },
  {
@@ -10714,7 +10713,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
    "Character": "Woman",
-   "Splatter": "Wild"
+   "Splatter": "Light"
   }
  },
  {
@@ -10737,7 +10736,7 @@
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
    "Character": "Woman",
-   "Splatter": "Light"
+   "Splatter": "Wild"
   }
  },
  {
@@ -10760,7 +10759,7 @@
    "Backdrop": "Rust Clay",
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
-   "Splatter": "Wild",
+   "Splatter": "Light",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -10784,7 +10783,7 @@
    "Backdrop": "Bone Clay",
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
-   "Splatter": "Light",
+   "Splatter": "Wild",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -10809,7 +10808,7 @@
    "Ears": "Natural",
    "Character": "Woman",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -10833,7 +10832,7 @@
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -10993,7 +10992,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Wild",
+   "Splatter": "Light",
    "Off Hand": "Steel Hook Hand"
   }
  },
@@ -11039,7 +11038,7 @@
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Mild",
+   "Splatter": "Wild",
    "Off Hand": "Steel Hook Hand"
   }
  },
@@ -11063,7 +11062,7 @@
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
    "Character": "Woman",
-   "Splatter": "Light",
+   "Splatter": "Mild",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -11088,7 +11087,7 @@
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Wild"
+   "Splatter": "Light"
   }
  },
  {
@@ -11135,7 +11134,7 @@
    "Ears": "Gauged",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Mild"
+   "Splatter": "Wild"
   }
  },
  {
@@ -11159,7 +11158,7 @@
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Crazy"
+   "Splatter": "Mild"
   }
  },
  {
@@ -11183,7 +11182,7 @@
    "Ears": "Natural",
    "Character": "Woman",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Mild"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -11230,7 +11229,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
-   "Splatter": "Light",
+   "Splatter": "Mild",
    "Off Hand": "Steel Hook Hand"
   }
  },
@@ -11377,7 +11376,7 @@
   "id": 481,
   "name": "SBN13th #481",
   "seed": 1927991783,
-  "prompt": "Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with fingerprints, tool marks and pressed texture, soft studio lighting, highly detailed, in exactly the style of the reference photos. A grotesque disfigured clay WOMAN (female, not the man in the reference: copy only the reference's clay style, pose and framing) with an oversized bobble head, mottled skin, small sunken bloodshot eyes in swollen red-rimmed lids, a thin neck and narrow hunched shoulders, head turned three-quarters toward the viewer's right. Bloodless pale blue clay skin, thin grey hair scraped into a messy bun. Her huge oversized bobble head is entirely covered by a filthy lumpy burlap sack pulled all the way down over the whole skull and face, ragged cut eye holes, a cross-stitched mouth, rope tied tight at the neck; no skin or hair visible. Wearing a stained bright orange prison convict jumpsuit with the inmate number 666 stencilled in black on a white chest patch (the only lettering in the image), she wields a heavy rusty chainsaw with a bloody chain in BOTH hands: right hand gripping the rear handle, left hand gripping the front wrap-around handle, the bar angled up and out across her body. A grimy jail cell with rusty iron bars, a cracked concrete wall scratched with tally marks, a dented metal bunk and a single bare hanging bulb, sculpted as a miniature claymation diorama in matte plasticine, softly out of focus behind her, no signs or lettering. FACING: exactly like the first reference photo, her body is in three-quarter view and her head and face are turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space above the head, figure centred, square 1:1 composition. SCALE (the same for every figure in the series): the figure is the same size in the frame as in the first reference photo, the bobble head the same size relative to the body, and weapons true to scale with the hands, never oversized or tiny. Both hands hold the chainsaw firmly, one on the rear handle and one on the front handle; neither hand hangs empty.",
+  "prompt": "Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with fingerprints, tool marks and pressed texture, soft studio lighting, highly detailed, in exactly the style of the reference photos. A grotesque disfigured clay WOMAN (female, not the man in the reference: copy only the reference's clay style, pose and framing) with an oversized bobble head, mottled skin, small sunken bloodshot eyes in swollen red-rimmed lids, a thin neck and narrow hunched shoulders, head turned three-quarters toward the viewer's right. Bloodless pale blue clay skin, thin grey hair scraped into a messy bun. Her huge oversized bobble head is entirely covered by a filthy lumpy burlap sack pulled all the way down over the whole skull and face, ragged cut eye holes, a cross-stitched mouth, rope tied tight at the neck; no skin or hair visible. Wearing a stained bright orange prison convict jumpsuit with the inmate number 666 stencilled in black on a white chest patch (the only lettering in the image), she wields a heavy rusty chainsaw with a bloody chain in BOTH hands: right hand gripping the rear handle, left hand gripping the front wrap-around handle, the bar angled up and out across her body. A sage-green pressed-clay backdrop. FACING: exactly like the first reference photo, her body is in three-quarter view and her head and face are turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space above the head, figure centred, square 1:1 composition. SCALE (the same for every figure in the series): the figure is the same size in the frame as in the first reference photo, the bobble head the same size relative to the body, and weapons true to scale with the hands, never oversized or tiny. Both hands hold the chainsaw firmly, one on the rear handle and one on the front handle; neither hand hangs empty.",
   "negative": "text, logo, letters, watermark, brand marks, sports team logo, red chevrons or triangles on the mask, full-face goalie mask covering the forehead and eyes, white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, photo of a real person, cartoon outline, flat 2D, face turned to the left, mirrored pose, long finger blades, clawed glove with four long knives, red and green striped sweater, brown fedora",
   "attributes": {
    "Tier": "Standard",
@@ -11390,9 +11389,10 @@
    "Back Weapon": "None",
    "Clothing": "Orange Prison Jumpsuit",
    "Belt": "None",
-   "Backdrop": "Jail Cell",
+   "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -12433,7 +12433,7 @@
   "id": 526,
   "name": "SBN13th #526",
   "seed": 263423672,
-  "prompt": "Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with fingerprints, tool marks and pressed texture, soft studio lighting, highly detailed, in exactly the style of the reference photos. A grotesque disfigured old man with an oversized bobble head, mottled skin with age spots, small sunken bloodshot eyes in swollen red-rimmed lids, a large ear with a fat hanging lobe, thick neck, hunched broad shoulders, head turned three-quarters toward the viewer's right. Head type: a huge tall lumpy dome skull with dents and bumps, like the master reference, sallow yellowish clay skin, a greasy black comb-over, raised blue clay veins on the forehead. No mask: his own face torn and crudely stitched back together, thick black surgical stitches and puckered red scars criss-crossing his cheeks, brow and lips, a few mismatched patches of his own skin sewn back on, both bloodshot eyes clear. Wearing a stained bright orange prison convict jumpsuit with the inmate number 666 stencilled in black on a white chest patch (the only lettering in the image), his right fist grips a wooden bat studded with bent rusty nails; his LEFT fist tightly grips a rusty pitchfork by its long wooden handle, held upright at his side with the rusty tines rising above his shoulder beside his head, carried in his hand, not strapped to his back. A bruise-purple pressed-clay backdrop. FACING: exactly like the first reference photo, his body is in three-quarter view and his head and face are turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space above the head, figure centred, square 1:1 composition. SCALE (the same for every figure in the series): the figure is the same size in the frame as in the first reference photo, the bobble head the same size relative to the body, and weapons true to scale with the hands, never oversized or tiny. Both hands are full and both are tight clenched fists, knuckles toward the camera: the right fist grips the held weapon, the left fist grips the second weapon by its handle as described.",
+  "prompt": "Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with fingerprints, tool marks and pressed texture, soft studio lighting, highly detailed, in exactly the style of the reference photos. A grotesque disfigured old man with an oversized bobble head, mottled skin with age spots, small sunken bloodshot eyes in swollen red-rimmed lids, a large ear with a fat hanging lobe, thick neck, hunched broad shoulders, head turned three-quarters toward the viewer's right. Head type: a huge tall lumpy dome skull with dents and bumps, like the master reference, sallow yellowish clay skin, a greasy black comb-over, raised blue clay veins on the forehead. No mask: his own face torn and crudely stitched back together, thick black surgical stitches and puckered red scars criss-crossing his cheeks, brow and lips, a few mismatched patches of his own skin sewn back on, both bloodshot eyes clear. Wearing a stained bright orange prison convict jumpsuit with the inmate number 666 stencilled in black on a white chest patch (the only lettering in the image), his right fist grips a wooden bat studded with bent rusty nails; his LEFT fist tightly grips a rusty pitchfork by its long wooden handle, held upright at his side with the rusty tines rising above his shoulder beside his head, carried in his hand, not strapped to his back. A grimy jail cell with rusty iron bars, a cracked concrete wall scratched with tally marks, a dented metal bunk and a single bare hanging bulb, sculpted as a miniature claymation diorama in matte plasticine, softly out of focus behind him, no signs or lettering. FACING: exactly like the first reference photo, his body is in three-quarter view and his head and face are turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space above the head, figure centred, square 1:1 composition. SCALE (the same for every figure in the series): the figure is the same size in the frame as in the first reference photo, the bobble head the same size relative to the body, and weapons true to scale with the hands, never oversized or tiny. Both hands are full and both are tight clenched fists, knuckles toward the camera: the right fist grips the held weapon, the left fist grips the second weapon by its handle as described.",
   "negative": "text, logo, letters, watermark, brand marks, sports team logo, red chevrons or triangles on the mask, full-face goalie mask covering the forehead and eyes, white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, photo of a real person, cartoon outline, flat 2D, face turned to the left, mirrored pose, long finger blades, clawed glove with four long knives, red and green striped sweater, brown fedora",
   "attributes": {
    "Tier": "Uncommon",
@@ -12446,11 +12446,10 @@
    "Back Weapon": "None",
    "Clothing": "Orange Prison Jumpsuit",
    "Belt": "None",
-   "Backdrop": "Bruise Clay",
+   "Backdrop": "Jail Cell",
    "Ears": "Natural",
    "Character": "Classic",
-   "Off Hand": "Pitchfork",
-   "Splatter": "Wild"
+   "Off Hand": "Pitchfork"
   }
  },
  {
@@ -12474,7 +12473,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Mild"
+   "Splatter": "Wild"
   }
  },
  {
@@ -12612,7 +12611,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light",
+   "Splatter": "Mild",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -12683,7 +12682,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -12751,7 +12750,7 @@
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
    "Character": "Farmhouse Smile",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -12775,7 +12774,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Crazy"
+   "Splatter": "Light"
   }
  },
  {
@@ -12799,7 +12798,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Light"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -12823,7 +12822,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Wild"
+   "Splatter": "Light"
   }
  },
  {
@@ -12846,7 +12845,7 @@
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Crazy"
+   "Splatter": "Wild"
   }
  },
  {
@@ -12892,7 +12891,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Mild"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -12916,7 +12915,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Wild"
+   "Splatter": "Mild"
   }
  },
  {
@@ -12988,7 +12987,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Crazy"
+   "Splatter": "Wild"
   }
  },
  {
@@ -13056,7 +13055,7 @@
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -13080,7 +13079,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -13104,7 +13103,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Crazy"
+   "Splatter": "Mild"
   }
  },
  {
@@ -13150,7 +13149,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light",
+   "Splatter": "Crazy",
    "Off Hand": "Bloody Hook Hand"
   }
  },
@@ -13196,7 +13195,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Wild",
+   "Splatter": "Light",
    "Off Hand": "Steel Hook Hand"
   }
  },
@@ -13221,7 +13220,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Mild"
+   "Splatter": "Wild"
   }
  },
  {
@@ -13315,7 +13314,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light",
+   "Splatter": "Mild",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -13340,7 +13339,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Wild"
+   "Splatter": "Light"
   }
  },
  {
@@ -13364,7 +13363,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Crazy"
+   "Splatter": "Wild"
   }
  },
  {
@@ -13387,7 +13386,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Gauged",
    "Character": "Classic",
-   "Splatter": "Light",
+   "Splatter": "Crazy",
    "Off Hand": "Bloody Hook Hand"
   }
  },
@@ -13460,7 +13459,7 @@
    "Ears": "Natural",
    "Character": "Farmhouse Smile",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Wild"
+   "Splatter": "Light"
   }
  },
  {
@@ -13528,7 +13527,7 @@
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Mild",
+   "Splatter": "Wild",
    "Off Hand": "Steel Hook Hand"
   }
  },
@@ -13552,7 +13551,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light",
+   "Splatter": "Mild",
    "Off Hand": "Steel Hook Hand"
   }
  },
@@ -13600,7 +13599,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Wild",
+   "Splatter": "Light",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -13670,7 +13669,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Crazy"
+   "Splatter": "Wild"
   }
  },
  {
@@ -13716,7 +13715,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Light"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -13739,7 +13738,7 @@
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Mild",
+   "Splatter": "Light",
    "Off Hand": "Steel Hook Hand"
   }
  },
@@ -13930,7 +13929,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Crazy"
+   "Splatter": "Mild"
   }
  },
  {
@@ -13954,7 +13953,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Light"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -13978,7 +13977,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Crazy",
+   "Splatter": "Light",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -14002,7 +14001,7 @@
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light",
+   "Splatter": "Crazy",
    "Off Hand": "Steel Hook Hand"
   }
  },
@@ -14027,7 +14026,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Crazy"
+   "Splatter": "Light"
   }
  },
  {
@@ -14074,7 +14073,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Light"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -14097,7 +14096,7 @@
    "Backdrop": "Bone Clay",
    "Ears": "Gauged",
    "Character": "Classic",
-   "Splatter": "Mild",
+   "Splatter": "Light",
    "Off Hand": "Steel Hook Hand"
   }
  },
@@ -14122,7 +14121,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -14167,7 +14166,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Mild",
+   "Splatter": "Light",
    "Off Hand": "Steel Hook Hand"
   }
  },
@@ -14215,7 +14214,7 @@
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Wild"
+   "Splatter": "Mild"
   }
  },
  {
@@ -14239,7 +14238,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Mild"
+   "Splatter": "Wild"
   }
  },
  {
@@ -14262,7 +14261,7 @@
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -14285,7 +14284,7 @@
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Wild",
+   "Splatter": "Light",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -14359,7 +14358,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Light",
+   "Splatter": "Wild",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -14384,7 +14383,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -14431,7 +14430,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Crazy"
+   "Splatter": "Mild"
   }
  },
  {
@@ -14478,7 +14477,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
    "Character": "Cursed Porcelain Doll",
-   "Splatter": "Light",
+   "Splatter": "Crazy",
    "Off Hand": "Gold Hook Hand"
   }
  },
@@ -14526,7 +14525,7 @@
    "Ears": "Gauged",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -14571,7 +14570,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Gauged",
    "Character": "Classic",
-   "Splatter": "Crazy",
+   "Splatter": "Mild",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -14579,7 +14578,7 @@
   "id": 617,
   "name": "SBN13th #617",
   "seed": 1189698066,
-  "prompt": "Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with fingerprints, tool marks and pressed texture, soft studio lighting, highly detailed, in exactly the style of the reference photos. A grotesque disfigured old man with an oversized bobble head, mottled skin with age spots, small sunken bloodshot eyes in swollen red-rimmed lids, a large ear with a fat hanging lobe, thick neck, hunched broad shoulders, head turned three-quarters toward the viewer's right. Head type: a huge tall lumpy dome skull with dents and bumps, like the master reference, corpse-grey clay skin, completely bald, a stitched scar across the scalp, a heavily stretched earlobe on his visible ear holding a large shiny polished silver steel tunnel gauge, a hollow metal ring about an inch wide with flared rims that you can see straight through, hanging just below the ear, a deep fresh bloody wound gouged into the clay on the LEFT side of his forehead (left as we look at him), just above the brow: a ragged open gash with torn raw red edges, glossy dark blood pooled inside and a few thick drips running down past his eye. An aged yellowed HALF mask covering ONLY his mouth, chin and the tip of his nose, the top edge sitting just under his eyes, his eyes, brow and forehead completely bare, round breathing holes, random blood splatters (never triangles or stripes), held by rusty leather straps with a riveted plate and a buckle under the ear. Wearing a grimy one-piece black work jumpsuit with a small blank torn cloth chest patch (no lettering on it), his right fist grips a long rusty machete dripping blood; his LEFT fist tightly grips a heavy sledgehammer by its wooden handle, the hammer resting up on his left shoulder with the iron head behind his shoulder, carried in his hand, not strapped to his back. A swamp-green pressed-clay backdrop. FACING: exactly like the first reference photo, his body is in three-quarter view and his head and face are turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space above the head, figure centred, square 1:1 composition. SCALE (the same for every figure in the series): the figure is the same size in the frame as in the first reference photo, the bobble head the same size relative to the body, and weapons true to scale with the hands, never oversized or tiny. Both hands are full and both are tight clenched fists, knuckles toward the camera: the right fist grips the held weapon, the left fist grips the second weapon by its handle as described.",
+  "prompt": "Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with fingerprints, tool marks and pressed texture, soft studio lighting, highly detailed, in exactly the style of the reference photos. A grotesque disfigured old man with an oversized bobble head, mottled skin with age spots, small sunken bloodshot eyes in swollen red-rimmed lids, a large ear with a fat hanging lobe, thick neck, hunched broad shoulders, head turned three-quarters toward the viewer's right. Head type: a huge tall lumpy dome skull with dents and bumps, like the master reference, corpse-grey clay skin, completely bald, a stitched scar across the scalp, a heavily stretched earlobe on his visible ear holding a large shiny polished silver steel tunnel gauge, a hollow metal ring about an inch wide with flared rims that you can see straight through, hanging just below the ear, a deep fresh bloody wound gouged into the clay on the LEFT side of his forehead (left as we look at him), just above the brow: a ragged open gash with torn raw red edges, glossy dark blood pooled inside and a few thick drips running down past his eye. An aged yellowed HALF mask covering ONLY his mouth, chin and the tip of his nose, the top edge sitting just under his eyes, his eyes, brow and forehead completely bare, round breathing holes, random blood splatters (never triangles or stripes), held by rusty leather straps with a riveted plate and a buckle under the ear. Wearing a grimy one-piece black work jumpsuit with a small blank torn cloth chest patch (no lettering on it), his right fist grips a long rusty machete dripping blood; his LEFT fist tightly grips a heavy sledgehammer by its wooden handle, the hammer resting up on his left shoulder with the iron head behind his shoulder, carried in his hand, not strapped to his back. A grimy jail cell with rusty iron bars, a cracked concrete wall scratched with tally marks, a dented metal bunk and a single bare hanging bulb, sculpted as a miniature claymation diorama in matte plasticine, softly out of focus behind him, no signs or lettering. FACING: exactly like the first reference photo, his body is in three-quarter view and his head and face are turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space above the head, figure centred, square 1:1 composition. SCALE (the same for every figure in the series): the figure is the same size in the frame as in the first reference photo, the bobble head the same size relative to the body, and weapons true to scale with the hands, never oversized or tiny. Both hands are full and both are tight clenched fists, knuckles toward the camera: the right fist grips the held weapon, the left fist grips the second weapon by its handle as described.",
   "negative": "text, logo, letters, watermark, brand marks, sports team logo, red chevrons or triangles on the mask, full-face goalie mask covering the forehead and eyes, white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, photo of a real person, cartoon outline, flat 2D, face turned to the left, mirrored pose, long finger blades, clawed glove with four long knives, red and green striped sweater, brown fedora",
   "attributes": {
    "Tier": "Uncommon",
@@ -14592,11 +14591,10 @@
    "Back Weapon": "None",
    "Clothing": "Black Jumpsuit",
    "Belt": "None",
-   "Backdrop": "Swamp Clay",
+   "Backdrop": "Jail Cell",
    "Ears": "Gauged",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Light",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -14643,7 +14641,7 @@
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Wild"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -14667,7 +14665,7 @@
    "Ears": "Gauged",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Wild"
+   "Splatter": "Light"
   }
  },
  {
@@ -14735,7 +14733,7 @@
    "Ears": "Natural",
    "Character": "Farmhouse Smile",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Mild"
+   "Splatter": "Wild"
   }
  },
  {
@@ -14804,7 +14802,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Crazy",
+   "Splatter": "Wild",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -14852,7 +14850,7 @@
    "Backdrop": "Teal Clay",
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
-   "Splatter": "Mild"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -14899,7 +14897,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
-   "Splatter": "Wild",
+   "Splatter": "Mild",
    "Off Hand": "Steel Hook Hand"
   }
  },
@@ -14923,7 +14921,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Mostly Torn Ear",
    "Character": "Classic",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -14992,7 +14990,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
    "Character": "Woman",
-   "Splatter": "Light"
+   "Splatter": "Wild"
   }
  },
  {
@@ -15093,7 +15091,7 @@
   "id": 639,
   "name": "SBN13th #639",
   "seed": 1924549782,
-  "prompt": "Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with fingerprints, tool marks and pressed texture, soft studio lighting, highly detailed, in exactly the style of the reference photos. A grotesque disfigured clay WOMAN (female, not the man in the reference: copy only the reference's clay style, pose and framing) with an oversized bobble head, mottled skin, small sunken bloodshot eyes in swollen red-rimmed lids, a thin neck and narrow hunched shoulders, head turned three-quarters toward the viewer's right. Ruddy red-pink clay skin, a matted short auburn pixie cut, a stitched scar across the scalp, a heavily stretched earlobe on her visible ear holding a large shiny polished silver steel tunnel gauge, a hollow metal ring about an inch wide with flared rims that you can see straight through, hanging just below the ear. An aged yellowed HALF mask covering ONLY her mouth, chin and the tip of her nose, the top edge sitting just under her eyes, her eyes, brow and forehead completely bare, round breathing holes, random blood splatters (never triangles or stripes), held by rusty leather straps with a riveted plate and a buckle under the ear. Wearing a blood-stained butcher's apron over a work shirt, a worn leather tool belt with rusty tools and pouches, her right fist grips a wooden bat studded with bent rusty nails; her LEFT fist tightly grips a rusty pitchfork by its long wooden handle, held upright at her side with the rusty tines rising above her shoulder beside her head, carried in her hand, not strapped to her back. A sage-green pressed-clay backdrop. FACING: exactly like the first reference photo, her body is in three-quarter view and her head and face are turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space above the head, figure centred, square 1:1 composition. SCALE (the same for every figure in the series): the figure is the same size in the frame as in the first reference photo, the bobble head the same size relative to the body, and weapons true to scale with the hands, never oversized or tiny. Both hands are full and both are tight clenched fists, knuckles toward the camera: the right fist grips the held weapon, the left fist grips the second weapon by its handle as described.",
+  "prompt": "Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with fingerprints, tool marks and pressed texture, soft studio lighting, highly detailed, in exactly the style of the reference photos. A grotesque disfigured clay WOMAN (female, not the man in the reference: copy only the reference's clay style, pose and framing) with an oversized bobble head, mottled skin, small sunken bloodshot eyes in swollen red-rimmed lids, a thin neck and narrow hunched shoulders, head turned three-quarters toward the viewer's right. Ruddy red-pink clay skin, a matted short auburn pixie cut, a stitched scar across the scalp, a heavily stretched earlobe on her visible ear holding a large shiny polished silver steel tunnel gauge, a hollow metal ring about an inch wide with flared rims that you can see straight through, hanging just below the ear. An aged yellowed HALF mask covering ONLY her mouth, chin and the tip of her nose, the top edge sitting just under her eyes, her eyes, brow and forehead completely bare, round breathing holes, random blood splatters (never triangles or stripes), held by rusty leather straps with a riveted plate and a buckle under the ear. Wearing a blood-stained butcher's apron over a work shirt, a worn leather tool belt with rusty tools and pouches, her right fist grips a wooden bat studded with bent rusty nails; her LEFT fist tightly grips a rusty pitchfork by its long wooden handle, held upright at her side with the rusty tines rising above her shoulder beside her head, carried in her hand, not strapped to her back. A grimy jail cell with rusty iron bars, a cracked concrete wall scratched with tally marks, a dented metal bunk and a single bare hanging bulb, sculpted as a miniature claymation diorama in matte plasticine, softly out of focus behind her, no signs or lettering. FACING: exactly like the first reference photo, her body is in three-quarter view and her head and face are turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space above the head, figure centred, square 1:1 composition. SCALE (the same for every figure in the series): the figure is the same size in the frame as in the first reference photo, the bobble head the same size relative to the body, and weapons true to scale with the hands, never oversized or tiny. Both hands are full and both are tight clenched fists, knuckles toward the camera: the right fist grips the held weapon, the left fist grips the second weapon by its handle as described.",
   "negative": "text, logo, letters, watermark, brand marks, sports team logo, red chevrons or triangles on the mask, full-face goalie mask covering the forehead and eyes, white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, photo of a real person, cartoon outline, flat 2D, face turned to the left, mirrored pose, long finger blades, clawed glove with four long knives, red and green striped sweater, brown fedora",
   "attributes": {
    "Tier": "Uncommon",
@@ -15106,11 +15104,10 @@
    "Back Weapon": "None",
    "Clothing": "Butcher Apron",
    "Belt": "Tool Belt",
-   "Backdrop": "Sage Clay",
+   "Backdrop": "Jail Cell",
    "Ears": "Gauged",
    "Character": "Woman",
-   "Off Hand": "Pitchfork",
-   "Splatter": "Wild"
+   "Off Hand": "Pitchfork"
   }
  },
  {
@@ -15181,7 +15178,7 @@
    "Ears": "Natural",
    "Character": "Woman",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -15204,7 +15201,7 @@
    "Backdrop": "Teal Clay",
    "Ears": "Gauged",
    "Character": "Classic",
-   "Splatter": "Light",
+   "Splatter": "Wild",
    "Off Hand": "Steel Hook Hand"
   }
  },
@@ -15274,7 +15271,7 @@
    "Ears": "Gauged",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -15297,7 +15294,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
-   "Splatter": "Crazy"
+   "Splatter": "Light"
   }
  },
  {
@@ -15368,7 +15365,7 @@
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -15391,7 +15388,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Wild"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -15415,7 +15412,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Mild",
+   "Splatter": "Light",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -15439,7 +15436,7 @@
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light",
+   "Splatter": "Mild",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -15463,7 +15460,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Mild"
+   "Splatter": "Wild"
   }
  },
  {
@@ -15486,7 +15483,7 @@
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Wild",
+   "Splatter": "Mild",
    "Off Hand": "Steel Hook Hand"
   }
  },
@@ -15533,7 +15530,7 @@
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Wild",
+   "Splatter": "Light",
    "Off Hand": "Bloody Hook Hand"
   }
  },
@@ -15557,7 +15554,7 @@
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Wild"
+   "Splatter": "Mild"
   }
  },
  {
@@ -15603,7 +15600,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light"
+   "Splatter": "Wild"
   }
  },
  {
@@ -15627,7 +15624,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Crazy"
+   "Splatter": "Wild"
   }
  },
  {
@@ -15651,7 +15648,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Light"
+   "Splatter": "Wild"
   }
  },
  {
@@ -15675,7 +15672,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -15721,7 +15718,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Light"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -15744,7 +15741,7 @@
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Mild",
+   "Splatter": "Light",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -15769,7 +15766,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Light",
+   "Splatter": "Mild",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -15889,7 +15886,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Wild"
+   "Splatter": "Mild"
   }
  },
  {
@@ -15912,7 +15909,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -15959,7 +15956,7 @@
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Mild",
+   "Splatter": "Wild",
    "Off Hand": "Rusty Hook Hand",
    "Head Wound": "Deep Forehead Gash"
   }
@@ -15984,21 +15981,21 @@
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Wild"
+   "Splatter": "Mild"
   }
  },
  {
   "id": 677,
   "name": "SBN13th #677",
   "seed": 1686255211,
-  "prompt": "Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with fingerprints, tool marks and pressed texture, soft studio lighting, highly detailed, in exactly the style of the reference photos. A grotesque disfigured old man with an oversized bobble head, mottled skin with age spots, small sunken bloodshot eyes in swollen red-rimmed lids, a large ear with a fat hanging lobe, thick neck, hunched broad shoulders, head turned three-quarters toward the viewer's right. Head type: a huge tall lumpy dome skull with dents and bumps, like the master reference, corpse-grey clay skin, completely bald, raised blue clay veins on the forehead, a deep fresh bloody wound gouged into the clay on the LEFT side of his forehead (left as we look at him), just above the brow: a ragged open gash with torn raw red edges, glossy dark blood pooled inside and a few thick drips running down past his eye. No mask: his disfigured face is bare, small sunken bloodshot eyes in swollen red lids, a crooked broken nose and rotten yellow teeth. Wearing a slate-blue clay work jacket with a brown leather collar, stitched leather patches and a grey knit undershirt, a worn leather tool belt with rusty tools and pouches, his right fist grips a crude spear: a long wooden pole with a rusty jagged blade lashed to the top with wire and rag, held upright with the blade above his shoulder; his LEFT fist tightly grips a rusty shovel by its long wooden handle, the shovel resting up on his left shoulder with the blade behind his shoulder, carried in his hand, not strapped to his back. A swamp-green pressed-clay backdrop. FACING: exactly like the first reference photo, his body is in three-quarter view and his head and face are turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space above the head, figure centred, square 1:1 composition. SCALE (the same for every figure in the series): the figure is the same size in the frame as in the first reference photo, the bobble head the same size relative to the body, and weapons true to scale with the hands, never oversized or tiny. Both hands are full and both are tight clenched fists, knuckles toward the camera: the right fist grips the held weapon, the left fist grips the second weapon by its handle as described.",
+  "prompt": "Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with fingerprints, tool marks and pressed texture, soft studio lighting, highly detailed, in exactly the style of the reference photos. A grotesque disfigured old man with an oversized bobble head, mottled skin with age spots, small sunken bloodshot eyes in swollen red-rimmed lids, a large ear with a fat hanging lobe, thick neck, hunched broad shoulders, head turned three-quarters toward the viewer's right. Head type: a huge tall lumpy dome skull with dents and bumps, like the master reference, corpse-grey clay skin, completely bald, a deep fresh bloody wound gouged into the clay on the LEFT side of his forehead (left as we look at him), just above the brow: a ragged open gash with torn raw red edges, glossy dark blood pooled inside and a few thick drips running down past his eye. No mask: his disfigured face is bare, small sunken bloodshot eyes in swollen red lids, a crooked broken nose and rotten yellow teeth. Wearing a slate-blue clay work jacket with a brown leather collar, stitched leather patches and a grey knit undershirt, a worn leather tool belt with rusty tools and pouches, his right fist grips a crude spear: a long wooden pole with a rusty jagged blade lashed to the top with wire and rag, held upright with the blade above his shoulder; his LEFT fist tightly grips a rusty shovel by its long wooden handle, the shovel resting up on his left shoulder with the blade behind his shoulder, carried in his hand, not strapped to his back. A swamp-green pressed-clay backdrop. FACING: exactly like the first reference photo, his body is in three-quarter view and his head and face are turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space above the head, figure centred, square 1:1 composition. SCALE (the same for every figure in the series): the figure is the same size in the frame as in the first reference photo, the bobble head the same size relative to the body, and weapons true to scale with the hands, never oversized or tiny. Both hands are full and both are tight clenched fists, knuckles toward the camera: the right fist grips the held weapon, the left fist grips the second weapon by its handle as described.",
   "negative": "text, logo, letters, watermark, brand marks, sports team logo, red chevrons or triangles on the mask, full-face goalie mask covering the forehead and eyes, white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, photo of a real person, cartoon outline, flat 2D, face turned to the left, mirrored pose, long finger blades, clawed glove with four long knives, red and green striped sweater, brown fedora",
   "attributes": {
    "Tier": "Standard",
    "Head": "Type 1 - Lumpy Dome",
    "Skin": "Corpse Grey",
    "Hair": "Bald",
-   "Head Mark": "Blue Veins",
+   "Head Mark": "Clean",
    "Mask": "Bare Face",
    "Held Weapon": "Spear",
    "Back Weapon": "None",
@@ -16033,7 +16030,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -16056,7 +16053,7 @@
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Mild"
+   "Splatter": "Wild"
   }
  },
  {
@@ -16104,7 +16101,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -16128,7 +16125,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -16152,7 +16149,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Mild",
+   "Splatter": "Light",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -16176,7 +16173,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -16295,7 +16292,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Mild",
+   "Splatter": "Light",
    "Off Hand": "Bloody Hook Hand"
   }
  },
@@ -16320,7 +16317,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Slaughter",
+   "Splatter": "Mild",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -16345,7 +16342,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -16368,7 +16365,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -16391,7 +16388,7 @@
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Mild",
+   "Splatter": "Slaughter",
    "Off Hand": "Bloody Hook Hand",
    "Head Wound": "Deep Forehead Gash"
   }
@@ -16416,7 +16413,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Wild"
+   "Splatter": "Mild"
   }
  },
  {
@@ -16439,7 +16436,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Wild",
+   "Splatter": "Light",
    "Off Hand": "Steel Hook Hand"
   }
  },
@@ -16463,7 +16460,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Wild",
+   "Splatter": "Mild",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -16487,7 +16484,7 @@
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Crazy",
+   "Splatter": "Wild",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -16559,7 +16556,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Mild",
+   "Splatter": "Wild",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -16583,7 +16580,7 @@
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light",
+   "Splatter": "Crazy",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -16608,7 +16605,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Mild"
+   "Splatter": "Wild"
   }
  },
  {
@@ -16655,7 +16652,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -16678,7 +16675,7 @@
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -16724,7 +16721,7 @@
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Slaughter"
+   "Splatter": "Mild"
   }
  },
  {
@@ -16747,7 +16744,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Wild"
+   "Splatter": "Light"
   }
  },
  {
@@ -16770,7 +16767,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Wild",
+   "Splatter": "Mild",
    "Off Hand": "Bloody Hook Hand"
   }
  },
@@ -16795,7 +16792,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Light",
+   "Splatter": "Slaughter",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -16820,7 +16817,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Crazy"
+   "Splatter": "Wild"
   }
  },
  {
@@ -16844,7 +16841,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Light"
+   "Splatter": "Wild"
   }
  },
  {
@@ -16867,7 +16864,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -16891,7 +16888,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Mild",
+   "Splatter": "Crazy",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -16939,7 +16936,7 @@
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light",
+   "Splatter": "Mild",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -16964,7 +16961,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Crazy",
+   "Splatter": "Mild",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -17036,7 +17033,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Mild",
+   "Splatter": "Crazy",
    "Off Hand": "Rusty Hook Hand",
    "Head Wound": "Deep Forehead Gash"
   }
@@ -17085,7 +17082,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -17109,7 +17106,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Wild"
+   "Splatter": "Light"
   }
  },
  {
@@ -17178,7 +17175,7 @@
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Wild"
+   "Splatter": "Mild"
   }
  },
  {
@@ -17202,7 +17199,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Crazy"
+   "Splatter": "Wild"
   }
  },
  {
@@ -17225,7 +17222,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Slaughter"
+   "Splatter": "Mild"
   }
  },
  {
@@ -17248,7 +17245,7 @@
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Crazy"
+   "Splatter": "Wild"
   }
  },
  {
@@ -17295,7 +17292,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light"
+   "Splatter": "Slaughter"
   }
  },
  {
@@ -17319,7 +17316,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Light"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -17343,7 +17340,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Light"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -17366,7 +17363,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Wild",
+   "Splatter": "Light",
    "Off Hand": "Rusty Hook Hand",
    "Head Wound": "Deep Forehead Gash"
   }
@@ -17416,7 +17413,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -17440,7 +17437,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -17464,7 +17461,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Crazy"
+   "Splatter": "Wild"
   }
  },
  {
@@ -17512,7 +17509,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Light",
+   "Splatter": "Mild",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -17559,7 +17556,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Wild"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -17583,7 +17580,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Crazy"
+   "Splatter": "Mild"
   }
  },
  {
@@ -17653,7 +17650,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -17699,7 +17696,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Crazy"
+   "Splatter": "Wild"
   }
  },
  {
@@ -17723,7 +17720,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Light"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -17746,7 +17743,7 @@
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light",
+   "Splatter": "Mild",
    "Off Hand": "Bloody Hook Hand"
   }
  },
@@ -17796,7 +17793,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Crazy"
+   "Splatter": "Light"
   }
  },
  {
@@ -17820,7 +17817,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Wild"
+   "Splatter": "Light"
   }
  },
  {
@@ -17844,7 +17841,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Mild",
+   "Splatter": "Crazy",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -17869,7 +17866,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Light"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -17918,7 +17915,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Crazy"
+   "Splatter": "Mild"
   }
  },
  {
@@ -17941,7 +17938,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Crazy"
+   "Splatter": "Light"
   }
  },
  {
@@ -17964,7 +17961,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Mild"
+   "Splatter": "Wild"
   }
  },
  {
@@ -17988,7 +17985,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Mild"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -18012,7 +18009,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Light"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -18035,7 +18032,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Crazy"
+   "Splatter": "Mild"
   }
  },
  {
@@ -18059,7 +18056,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Wild"
+   "Splatter": "Mild"
   }
  },
  {
@@ -18082,7 +18079,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Wild"
+   "Splatter": "Light"
   }
  },
  {
@@ -18153,7 +18150,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Mild"
+   "Splatter": "Wild"
   }
  },
  {
@@ -18176,7 +18173,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light",
+   "Splatter": "Crazy",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -18200,7 +18197,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light"
+   "Splatter": "Wild"
   }
  },
  {
@@ -18224,7 +18221,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -18271,7 +18268,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -18295,7 +18292,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Wild"
+   "Splatter": "Light"
   }
  },
  {
@@ -18319,7 +18316,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -18342,7 +18339,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Wild"
+   "Splatter": "Mild"
   }
  },
  {
@@ -18366,7 +18363,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Light"
+   "Splatter": "Wild"
   }
  },
  {
@@ -18389,7 +18386,7 @@
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light",
+   "Splatter": "Mild",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -18414,7 +18411,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Mild"
+   "Splatter": "Wild"
   }
  },
  {
@@ -18510,7 +18507,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Wild"
+   "Splatter": "Light"
   }
  },
  {
@@ -18533,7 +18530,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -18580,7 +18577,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Crazy",
+   "Splatter": "Wild",
    "Off Hand": "Steel Hook Hand"
   }
  },
@@ -18605,7 +18602,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -18628,7 +18625,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Crazy",
+   "Splatter": "Mild",
    "Off Hand": "Gold Hook Hand"
   }
  },
@@ -18652,7 +18649,7 @@
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Mild",
+   "Splatter": "Crazy",
    "Off Hand": "Bloody Hook Hand"
   }
  },
@@ -18676,7 +18673,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -18699,7 +18696,7 @@
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -18722,7 +18719,7 @@
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Wild"
+   "Splatter": "Mild"
   }
  },
  {
@@ -18817,7 +18814,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Light"
+   "Splatter": "Wild"
   }
  },
  {
@@ -18913,7 +18910,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Mild",
+   "Splatter": "Light",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -19006,7 +19003,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Crazy"
+   "Splatter": "Light"
   }
  },
  {
@@ -19029,7 +19026,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -19053,7 +19050,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Wild"
+   "Splatter": "Mild"
   }
  },
  {
@@ -19077,7 +19074,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Light"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -19124,7 +19121,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Crazy"
+   "Splatter": "Wild"
   }
  },
  {
@@ -19171,7 +19168,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Mild",
+   "Splatter": "Light",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -19196,7 +19193,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Mild"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -19244,7 +19241,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Wild"
+   "Splatter": "Mild"
   }
  },
  {
@@ -19314,7 +19311,7 @@
    "Ears": "Gauged",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -19362,7 +19359,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Circus Mallet",
-   "Splatter": "Light"
+   "Splatter": "Wild"
   }
  },
  {
@@ -19409,7 +19406,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Wild"
+   "Splatter": "Light"
   }
  },
  {
@@ -19455,7 +19452,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Wild"
+   "Splatter": "Light"
   }
  },
  {
@@ -19478,7 +19475,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Wild"
+   "Splatter": "Light"
   }
  },
  {
@@ -19502,7 +19499,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Light"
+   "Splatter": "Wild"
   }
  },
  {
@@ -19571,7 +19568,7 @@
    "Backdrop": "Teal Clay",
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
-   "Splatter": "Light"
+   "Splatter": "Wild"
   }
  },
  {
@@ -19642,7 +19639,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Mild"
+   "Splatter": "Wild"
   }
  },
  {
@@ -19711,7 +19708,7 @@
    "Backdrop": "Bruise Clay",
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
-   "Splatter": "Mild",
+   "Splatter": "Light",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -19736,7 +19733,7 @@
    "Ears": "Natural",
    "Character": "Rotten Bride",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -19760,7 +19757,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -19783,7 +19780,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -19807,7 +19804,7 @@
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Wild"
+   "Splatter": "Light"
   }
  },
  {
@@ -19830,7 +19827,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
    "Character": "Drowned Well Girl",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -19876,7 +19873,7 @@
    "Backdrop": "Bruise Clay",
    "Ears": "Gauged",
    "Character": "Classic",
-   "Splatter": "Mild",
+   "Splatter": "Light",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -19900,7 +19897,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Slightly Ripped Ear",
    "Character": "Classic",
-   "Splatter": "Light",
+   "Splatter": "Wild",
    "Off Hand": "Steel Hook Hand"
   }
  },
@@ -19925,7 +19922,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Wild"
+   "Splatter": "Light"
   }
  },
  {
@@ -19994,7 +19991,7 @@
    "Ears": "Mostly Torn Ear",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -20017,7 +20014,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
-   "Splatter": "Wild",
+   "Splatter": "Light",
    "Off Hand": "Bloody Hook Hand"
   }
  },
@@ -20042,7 +20039,7 @@
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
    "Off Hand": "Pitchfork",
-   "Splatter": "Mild"
+   "Splatter": "Wild"
   }
  },
  {
@@ -20065,7 +20062,7 @@
    "Backdrop": "Teal Clay",
    "Ears": "Gauged",
    "Character": "Woman",
-   "Splatter": "Wild"
+   "Splatter": "Light"
   }
  },
  {
@@ -20088,7 +20085,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Mild",
+   "Splatter": "Wild",
    "Off Hand": "Bloody Hook Hand"
   }
  },
@@ -20113,7 +20110,7 @@
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
    "Off Hand": "Pitchfork",
-   "Splatter": "Crazy"
+   "Splatter": "Mild"
   }
  },
  {
@@ -20208,7 +20205,7 @@
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Wild"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -20277,7 +20274,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
-   "Splatter": "Light"
+   "Splatter": "Wild"
   }
  },
  {
@@ -20347,7 +20344,7 @@
    "Ears": "Natural",
    "Character": "Drowned Well Girl",
    "Off Hand": "Circus Mallet",
-   "Splatter": "Mild"
+   "Splatter": "Wild"
   }
  },
  {
@@ -20461,7 +20458,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Woman",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -20485,7 +20482,7 @@
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
    "Off Hand": "Pitchfork",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -20598,7 +20595,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
    "Character": "Woman",
-   "Splatter": "Wild",
+   "Splatter": "Light",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -20645,7 +20642,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Mostly Torn Ear",
    "Character": "Classic",
-   "Splatter": "Mild",
+   "Splatter": "Light",
    "Off Hand": "Bloody Hook Hand"
   }
  },
@@ -20669,7 +20666,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -20716,7 +20713,7 @@
    "Ears": "Gauged",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Mild"
+   "Splatter": "Wild"
   }
  },
  {
@@ -20762,7 +20759,7 @@
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
    "Off Hand": "Pitchfork",
-   "Splatter": "Crazy"
+   "Splatter": "Mild"
   }
  },
  {
@@ -20786,7 +20783,7 @@
    "Ears": "Gauged",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Light",
+   "Splatter": "Mild",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -20857,7 +20854,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Mild",
+   "Splatter": "Crazy",
    "Off Hand": "Bloody Hook Hand"
   }
  },
@@ -20928,7 +20925,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -20951,7 +20948,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
-   "Splatter": "Wild"
+   "Splatter": "Mild"
   }
  },
  {
@@ -20975,7 +20972,7 @@
    "Ears": "Slightly Ripped Ear",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Mild",
+   "Splatter": "Light",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -20999,7 +20996,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
-   "Splatter": "Crazy",
+   "Splatter": "Light",
    "Off Hand": "Bloody Hook Hand"
   }
  },
@@ -21046,7 +21043,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
    "Character": "Woman",
-   "Splatter": "Mild"
+   "Splatter": "Wild"
   }
  },
  {
@@ -21070,7 +21067,7 @@
    "Ears": "Natural",
    "Character": "Woman",
    "Off Hand": "Pitchfork",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -21093,7 +21090,7 @@
    "Backdrop": "Rust Clay",
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
-   "Splatter": "Wild",
+   "Splatter": "Crazy",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -21118,7 +21115,7 @@
    "Ears": "Gauged",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -21142,7 +21139,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -21235,7 +21232,7 @@
    "Ears": "Natural",
    "Character": "Woman",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -21327,7 +21324,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light",
+   "Splatter": "Wild",
    "Off Hand": "Steel Hook Hand"
   }
  },
@@ -21421,7 +21418,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Woman",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -21444,7 +21441,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -21558,7 +21555,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Gauged",
    "Character": "Woman",
-   "Splatter": "Crazy"
+   "Splatter": "Light"
   }
  },
  {
@@ -21582,7 +21579,7 @@
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
    "Off Hand": "Pitchfork",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -21628,7 +21625,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Mostly Torn Ear",
    "Character": "Classic",
-   "Splatter": "Light",
+   "Splatter": "Mild",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -21698,7 +21695,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Gauged",
    "Character": "Woman",
-   "Splatter": "Light",
+   "Splatter": "Crazy",
    "Off Hand": "Steel Hook Hand"
   }
  },
@@ -21722,7 +21719,7 @@
    "Backdrop": "Bone Clay",
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
-   "Splatter": "Wild"
+   "Splatter": "Light"
   }
  },
  {
@@ -21792,7 +21789,7 @@
    "Ears": "Gauged",
    "Character": "Woman",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Wild"
+   "Splatter": "Light"
   }
  },
  {
@@ -21908,7 +21905,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Crazy",
+   "Splatter": "Wild",
    "Off Hand": "Bloody Hook Hand"
   }
  },
@@ -21955,7 +21952,7 @@
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Crazy"
+   "Splatter": "Wild"
   }
  },
  {
@@ -22048,7 +22045,7 @@
    "Backdrop": "Rust Clay",
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
-   "Splatter": "Light"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -22072,7 +22069,7 @@
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Mild"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -22141,7 +22138,7 @@
    "Ears": "Slightly Ripped Ear",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Crazy"
+   "Splatter": "Light"
   }
  },
  {
@@ -22188,7 +22185,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Slightly Ripped Ear",
    "Character": "Classic",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -22234,7 +22231,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Wild",
+   "Splatter": "Crazy",
    "Off Hand": "Gold Hook Hand"
   }
  },
@@ -22258,7 +22255,7 @@
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
    "Character": "Woman",
-   "Splatter": "Wild"
+   "Splatter": "Mild"
   }
  },
  {
@@ -22396,7 +22393,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light",
+   "Splatter": "Wild",
    "Off Hand": "Bloody Hook Hand"
   }
  },
@@ -22442,7 +22439,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -22489,7 +22486,7 @@
    "Ears": "Natural",
    "Character": "Woman",
    "Off Hand": "Pitchfork",
-   "Splatter": "Crazy"
+   "Splatter": "Wild"
   }
  },
  {
@@ -22606,7 +22603,7 @@
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
    "Character": "Woman",
-   "Splatter": "Wild",
+   "Splatter": "Crazy",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -22630,7 +22627,7 @@
    "Backdrop": "Bruise Clay",
    "Ears": "Slightly Ripped Ear",
    "Character": "Classic",
-   "Splatter": "Mild",
+   "Splatter": "Light",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -22793,7 +22790,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
-   "Splatter": "Crazy"
+   "Splatter": "Mild"
   }
  },
  {
@@ -22817,7 +22814,7 @@
    "Ears": "Natural",
    "Character": "Woman",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -22908,7 +22905,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
-   "Splatter": "Mild",
+   "Splatter": "Wild",
    "Off Hand": "Steel Hook Hand"
   }
  },
@@ -22955,7 +22952,7 @@
    "Backdrop": "Teal Clay",
    "Ears": "Slightly Ripped Ear",
    "Character": "Classic",
-   "Splatter": "Slaughter"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -23095,7 +23092,7 @@
    "Ears": "Gauged",
    "Character": "Woman",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -23142,7 +23139,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Mild"
+   "Splatter": "Slaughter"
   }
  },
  {
@@ -23166,7 +23163,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -23190,7 +23187,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Wild"
+   "Splatter": "Mild"
   }
  },
  {
@@ -23282,7 +23279,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Slaughter",
+   "Splatter": "Mild",
    "Off Hand": "Rusty Hook Hand",
    "Head Wound": "Deep Forehead Gash"
   }
@@ -23307,7 +23304,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Mild"
+   "Splatter": "Wild"
   }
  },
  {
@@ -23331,7 +23328,7 @@
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Crazy"
+   "Splatter": "Mild"
   }
  },
  {
@@ -23354,7 +23351,7 @@
    "Backdrop": "Teal Clay",
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
-   "Splatter": "Light"
+   "Splatter": "Slaughter"
   }
  },
  {
@@ -23378,7 +23375,7 @@
    "Ears": "Slightly Ripped Ear",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -23401,7 +23398,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light",
+   "Splatter": "Crazy",
    "Off Hand": "Rusty Hook Hand",
    "Head Wound": "Deep Forehead Gash"
   }
@@ -23478,7 +23475,7 @@
   "id": 995,
   "name": "SBN13th #995",
   "seed": 1367578803,
-  "prompt": "Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with fingerprints, tool marks and pressed texture, soft studio lighting, highly detailed, in exactly the style of the reference photos. A grotesque disfigured old man with an oversized bobble head, mottled skin with age spots, small sunken bloodshot eyes in swollen red-rimmed lids, a large ear with a fat hanging lobe, thick neck, hunched broad shoulders, head turned three-quarters toward the viewer's right. Head type: a huge tall lumpy dome skull with dents and bumps, like the master reference, corpse-grey clay skin, completely bald, raised blue clay veins on the forehead, his visible ear has a small ragged rip through the top edge, a notch of missing flesh crusted with dried blood. A patchwork mask of stitched burlap and riveted scrap-metal plates, exactly two round brass goggles with red lenses sitting directly over his two eyes (the eyes seen through the lenses, nothing else on the nose or snout), a wire-stitched mouth, a leather strap with a buckle over the crown. Wearing a shredded, ripped and tattered button-up shirt hanging in rags, a worn leather tool belt with rusty tools and pouches, his right fist grips a crude spear: a long wooden pole with a rusty jagged blade lashed to the top with wire and rag, held upright with the blade above his shoulder; his LEFT fist tightly grips a rusty shovel by its long wooden handle, the shovel resting up on his left shoulder with the blade behind his shoulder, carried in his hand, not strapped to his back. A grimy jail cell with rusty iron bars, a cracked concrete wall scratched with tally marks, a dented metal bunk and a single bare hanging bulb, sculpted as a miniature claymation diorama in matte plasticine, softly out of focus behind him, no signs or lettering. FACING: exactly like the first reference photo, his body is in three-quarter view and his head and face are turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space above the head, figure centred, square 1:1 composition. SCALE (the same for every figure in the series): the figure is the same size in the frame as in the first reference photo, the bobble head the same size relative to the body, and weapons true to scale with the hands, never oversized or tiny. Both hands are full and both are tight clenched fists, knuckles toward the camera: the right fist grips the held weapon, the left fist grips the second weapon by its handle as described.",
+  "prompt": "Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with fingerprints, tool marks and pressed texture, soft studio lighting, highly detailed, in exactly the style of the reference photos. A grotesque disfigured old man with an oversized bobble head, mottled skin with age spots, small sunken bloodshot eyes in swollen red-rimmed lids, a large ear with a fat hanging lobe, thick neck, hunched broad shoulders, head turned three-quarters toward the viewer's right. Head type: a huge tall lumpy dome skull with dents and bumps, like the master reference, corpse-grey clay skin, completely bald, raised blue clay veins on the forehead, his visible ear has a small ragged rip through the top edge, a notch of missing flesh crusted with dried blood. A patchwork mask of stitched burlap and riveted scrap-metal plates, exactly two round brass goggles with red lenses sitting directly over his two eyes (the eyes seen through the lenses, nothing else on the nose or snout), a wire-stitched mouth, a leather strap with a buckle over the crown. Wearing a shredded, ripped and tattered button-up shirt hanging in rags, a worn leather tool belt with rusty tools and pouches, his right fist grips a crude spear: a long wooden pole with a rusty jagged blade lashed to the top with wire and rag, held upright with the blade above his shoulder; his LEFT fist tightly grips a rusty shovel by its long wooden handle, the shovel resting up on his left shoulder with the blade behind his shoulder, carried in his hand, not strapped to his back. A swamp-green pressed-clay backdrop. FACING: exactly like the first reference photo, his body is in three-quarter view and his head and face are turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space above the head, figure centred, square 1:1 composition. SCALE (the same for every figure in the series): the figure is the same size in the frame as in the first reference photo, the bobble head the same size relative to the body, and weapons true to scale with the hands, never oversized or tiny. Both hands are full and both are tight clenched fists, knuckles toward the camera: the right fist grips the held weapon, the left fist grips the second weapon by its handle as described.",
   "negative": "text, logo, letters, watermark, brand marks, sports team logo, red chevrons or triangles on the mask, full-face goalie mask covering the forehead and eyes, white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, photo of a real person, cartoon outline, flat 2D, face turned to the left, mirrored pose, long finger blades, clawed glove with four long knives, red and green striped sweater, brown fedora",
   "attributes": {
    "Tier": "Standard",
@@ -23491,10 +23488,11 @@
    "Back Weapon": "None",
    "Clothing": "Tattered Shirt",
    "Belt": "Tool Belt",
-   "Backdrop": "Jail Cell",
+   "Backdrop": "Swamp Clay",
    "Ears": "Slightly Ripped Ear",
    "Character": "Classic",
-   "Off Hand": "Rusty Shovel"
+   "Off Hand": "Rusty Shovel",
+   "Splatter": "Light"
   }
  },
  {
@@ -23517,7 +23515,7 @@
    "Backdrop": "Bruise Clay",
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -23563,7 +23561,7 @@
    "Backdrop": "Rust Clay",
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
-   "Splatter": "Mild",
+   "Splatter": "Light",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -23587,7 +23585,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
-   "Splatter": "Wild"
+   "Splatter": "Mild"
   }
  },
  {
@@ -23611,7 +23609,7 @@
    "Ears": "Natural",
    "Character": "Woman",
    "Off Hand": "Pitchfork",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -23635,7 +23633,7 @@
    "Ears": "Mostly Torn Ear",
    "Character": "Classic",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Light"
+   "Splatter": "Wild"
   }
  },
  {
@@ -23729,7 +23727,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Mostly Torn Ear",
    "Character": "Classic",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -23753,7 +23751,7 @@
    "Ears": "Natural",
    "Character": "The Ringmistress",
    "Off Hand": "Circus Mallet",
-   "Splatter": "Wild"
+   "Splatter": "Light"
   }
  },
  {
@@ -23777,7 +23775,7 @@
    "Ears": "Mostly Torn Ear",
    "Character": "Classic",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Slaughter",
+   "Splatter": "Mild",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -23801,7 +23799,7 @@
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
    "Character": "Woman",
-   "Splatter": "Light",
+   "Splatter": "Wild",
    "Off Hand": "Steel Hook Hand"
   }
  },
@@ -23825,7 +23823,7 @@
    "Backdrop": "Bruise Clay",
    "Ears": "Gauged",
    "Character": "Classic",
-   "Splatter": "Mild"
+   "Splatter": "Slaughter"
   }
  },
  {
@@ -23872,7 +23870,7 @@
    "Backdrop": "Bone Clay",
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
-   "Splatter": "Light",
+   "Splatter": "Mild",
    "Off Hand": "Steel Hook Hand"
   }
  },
@@ -23945,7 +23943,7 @@
    "Ears": "Gauged",
    "Character": "Classic",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Crazy"
+   "Splatter": "Light"
   }
  },
  {
@@ -23993,7 +23991,7 @@
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Light"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -24016,7 +24014,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
-   "Splatter": "Crazy",
+   "Splatter": "Light",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -24040,7 +24038,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
-   "Splatter": "Wild"
+   "Splatter": "Light"
   }
  },
  {
@@ -24064,7 +24062,7 @@
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Light"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -24111,7 +24109,7 @@
    "Ears": "Mostly Torn Ear",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -24135,7 +24133,7 @@
    "Ears": "Mostly Torn Ear",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Mild"
+   "Splatter": "Wild"
   }
  },
  {
@@ -24182,7 +24180,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
    "Character": "Woman",
-   "Splatter": "Wild"
+   "Splatter": "Mild"
   }
  },
  {
@@ -24251,7 +24249,7 @@
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Crazy"
+   "Splatter": "Mild"
   }
  },
  {
@@ -24344,7 +24342,7 @@
    "Ears": "Slightly Ripped Ear",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Mild"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -24367,7 +24365,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Gauged",
    "Character": "Woman",
-   "Splatter": "Light"
+   "Splatter": "Wild"
   }
  },
  {
@@ -24413,7 +24411,7 @@
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -24437,7 +24435,7 @@
    "Ears": "Natural",
    "Character": "Woman",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -24461,7 +24459,7 @@
    "Ears": "Mostly Torn Ear",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Crazy"
+   "Splatter": "Light"
   }
  },
  {
@@ -24531,7 +24529,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
-   "Splatter": "Light",
+   "Splatter": "Crazy",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -24556,7 +24554,7 @@
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
    "Off Hand": "Pitchfork",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -24742,7 +24740,7 @@
    "Ears": "Natural",
    "Character": "Woman",
    "Off Hand": "Pitchfork",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -24790,7 +24788,7 @@
    "Ears": "Natural",
    "Character": "Woman",
    "Off Hand": "Pitchfork",
-   "Splatter": "Crazy"
+   "Splatter": "Mild"
   }
  },
  {
@@ -24813,7 +24811,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -24906,7 +24904,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Woman",
-   "Splatter": "Wild",
+   "Splatter": "Crazy",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -24931,7 +24929,7 @@
    "Ears": "Gauged",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -24955,7 +24953,7 @@
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Light"
+   "Splatter": "Wild"
   }
  },
  {
@@ -24979,7 +24977,7 @@
    "Ears": "Gauged",
    "Character": "Woman",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Wild"
+   "Splatter": "Light"
   }
  },
  {
@@ -25026,7 +25024,7 @@
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
    "Character": "Woman",
-   "Splatter": "Mild"
+   "Splatter": "Wild"
   }
  },
  {
@@ -25120,7 +25118,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -25167,7 +25165,7 @@
    "Backdrop": "Teal Clay",
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
-   "Splatter": "Mild",
+   "Splatter": "Light",
    "Off Hand": "Steel Hook Hand"
   }
  },
@@ -25308,7 +25306,7 @@
    "Ears": "Natural",
    "Character": "Farmhouse Smile",
    "Off Hand": "Circus Mallet",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -25403,7 +25401,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Crazy",
+   "Splatter": "Mild",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -25473,7 +25471,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light",
+   "Splatter": "Mild",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -25497,7 +25495,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Mild"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -25520,7 +25518,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Mild",
+   "Splatter": "Light",
    "Off Hand": "Rusty Hook Hand",
    "Head Wound": "Deep Forehead Gash"
   }
@@ -25545,7 +25543,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Woman",
-   "Splatter": "Crazy",
+   "Splatter": "Mild",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -25617,7 +25615,7 @@
    "Ears": "Gauged",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Light",
+   "Splatter": "Crazy",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -25664,7 +25662,7 @@
    "Backdrop": "Rust Clay",
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
-   "Splatter": "Crazy"
+   "Splatter": "Mild"
   }
  },
  {
@@ -25711,7 +25709,7 @@
    "Ears": "Natural",
    "Character": "Woman",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -25734,7 +25732,7 @@
    "Backdrop": "Rust Clay",
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
-   "Splatter": "Mild"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -25757,7 +25755,7 @@
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
    "Character": "Woman",
-   "Splatter": "Wild"
+   "Splatter": "Mild"
   }
  },
  {
@@ -25780,7 +25778,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Mostly Torn Ear",
    "Character": "Classic",
-   "Splatter": "Light",
+   "Splatter": "Mild",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -25873,7 +25871,7 @@
    "Backdrop": "Rust Clay",
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
-   "Splatter": "Light"
+   "Splatter": "Wild"
   }
  },
  {
@@ -25896,7 +25894,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
-   "Splatter": "Crazy",
+   "Splatter": "Light",
    "Off Hand": "Bloody Hook Hand"
   }
  },
@@ -25920,7 +25918,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Wild"
+   "Splatter": "Light"
   }
  },
  {
@@ -25944,7 +25942,7 @@
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Light"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -25967,7 +25965,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Slightly Ripped Ear",
    "Character": "Classic",
-   "Splatter": "Light",
+   "Splatter": "Wild",
    "Off Hand": "Steel Hook Hand"
   }
  },
@@ -26061,7 +26059,7 @@
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Crazy",
+   "Splatter": "Light",
    "Off Hand": "Steel Hook Hand"
   }
  },
@@ -26132,7 +26130,7 @@
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -26179,7 +26177,7 @@
    "Ears": "Natural",
    "Character": "Woman",
    "Off Hand": "Sledgehammer",
-   "Splatter": "Light"
+   "Splatter": "Crazy"
   }
  },
  {
@@ -26296,7 +26294,7 @@
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -26342,7 +26340,7 @@
    "Ears": "Natural",
    "Character": "Woman",
    "Off Hand": "Pitchfork",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -26413,7 +26411,7 @@
    "Ears": "Natural",
    "Character": "Woman",
    "Off Hand": "Pitchfork",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -26481,7 +26479,7 @@
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Wild",
+   "Splatter": "Light",
    "Off Hand": "Bloody Hook Hand"
   }
  },
@@ -26529,7 +26527,7 @@
    "Backdrop": "Bruise Clay",
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
-   "Splatter": "Light",
+   "Splatter": "Wild",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -26553,7 +26551,7 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
-   "Splatter": "Mild",
+   "Splatter": "Light",
    "Off Hand": "Steel Hook Hand"
   }
  },
@@ -26601,7 +26599,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Woman",
-   "Splatter": "Wild"
+   "Splatter": "Mild"
   }
  },
  {
@@ -26649,7 +26647,7 @@
    "Ears": "Gauged",
    "Character": "Woman",
    "Off Hand": "Rusty Shovel",
-   "Splatter": "Mild"
+   "Splatter": "Wild"
   }
  },
  {
@@ -26695,7 +26693,7 @@
    "Backdrop": "Rust Clay",
    "Ears": "Mostly Torn Ear",
    "Character": "Classic",
-   "Splatter": "Mild",
+   "Splatter": "Light",
    "Head Wound": "Deep Forehead Gash"
   }
  },
@@ -26766,7 +26764,7 @@
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -26790,7 +26788,7 @@
    "Ears": "Gauged",
    "Character": "Classic",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Wild"
+   "Splatter": "Mild"
   }
  },
  {
@@ -26860,7 +26858,7 @@
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
    "Character": "Woman",
-   "Splatter": "Mild",
+   "Splatter": "Wild",
    "Off Hand": "Bloody Hook Hand"
   }
  },
@@ -26892,7 +26890,7 @@
   "id": 1140,
   "name": "SBN13th #1140",
   "seed": 1334384082,
-  "prompt": "Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with fingerprints, tool marks and pressed texture, soft studio lighting, highly detailed, in exactly the style of the reference photos. A grotesque disfigured clay WOMAN (female, not the man in the reference: copy only the reference's clay style, pose and framing) with an oversized bobble head, mottled skin, small sunken bloodshot eyes in swollen red-rimmed lids, a thin neck and narrow hunched shoulders, head turned three-quarters toward the viewer's right. Pink flesh-toned clay skin, a matted short auburn pixie cut, a stitched scar across the scalp. Her huge oversized bobble head is entirely covered by a filthy lumpy burlap sack pulled all the way down over the whole skull and face, ragged cut eye holes, a cross-stitched mouth, rope tied tight at the neck; no skin or hair visible. Wearing a grimy one-piece black work jumpsuit with a small blank torn cloth chest patch (no lettering on it), her right fist grips a long machete completely drenched in thick dripping blood, the blade barely visible under the gore; her LEFT fist tightly grips a rusty woodcutter axe by its long wooden handle, the axe resting up on her left shoulder with the blade behind her shoulder, carried in her hand, not strapped to her back. A grimy jail cell with rusty iron bars, a cracked concrete wall scratched with tally marks, a dented metal bunk and a single bare hanging bulb, sculpted as a miniature claymation diorama in matte plasticine, softly out of focus behind her, no signs or lettering. FACING: exactly like the first reference photo, her body is in three-quarter view and her head and face are turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space above the head, figure centred, square 1:1 composition. SCALE (the same for every figure in the series): the figure is the same size in the frame as in the first reference photo, the bobble head the same size relative to the body, and weapons true to scale with the hands, never oversized or tiny. Both hands are full and both are tight clenched fists, knuckles toward the camera: the right fist grips the held weapon, the left fist grips the second weapon by its handle as described.",
+  "prompt": "Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with fingerprints, tool marks and pressed texture, soft studio lighting, highly detailed, in exactly the style of the reference photos. A grotesque disfigured clay WOMAN (female, not the man in the reference: copy only the reference's clay style, pose and framing) with an oversized bobble head, mottled skin, small sunken bloodshot eyes in swollen red-rimmed lids, a thin neck and narrow hunched shoulders, head turned three-quarters toward the viewer's right. Pink flesh-toned clay skin, a matted short auburn pixie cut, a stitched scar across the scalp. Her huge oversized bobble head is entirely covered by a filthy lumpy burlap sack pulled all the way down over the whole skull and face, ragged cut eye holes, a cross-stitched mouth, rope tied tight at the neck; no skin or hair visible. Wearing a grimy one-piece black work jumpsuit with a small blank torn cloth chest patch (no lettering on it), her right fist grips a long machete completely drenched in thick dripping blood, the blade barely visible under the gore; her LEFT fist tightly grips a rusty woodcutter axe by its long wooden handle, the axe resting up on her left shoulder with the blade behind her shoulder, carried in her hand, not strapped to her back. A swamp-green pressed-clay backdrop. FACING: exactly like the first reference photo, her body is in three-quarter view and her head and face are turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space above the head, figure centred, square 1:1 composition. SCALE (the same for every figure in the series): the figure is the same size in the frame as in the first reference photo, the bobble head the same size relative to the body, and weapons true to scale with the hands, never oversized or tiny. Both hands are full and both are tight clenched fists, knuckles toward the camera: the right fist grips the held weapon, the left fist grips the second weapon by its handle as described.",
   "negative": "text, logo, letters, watermark, brand marks, sports team logo, red chevrons or triangles on the mask, full-face goalie mask covering the forehead and eyes, white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, photo of a real person, cartoon outline, flat 2D, face turned to the left, mirrored pose, long finger blades, clawed glove with four long knives, red and green striped sweater, brown fedora",
   "attributes": {
    "Tier": "Standard",
@@ -26905,10 +26903,11 @@
    "Back Weapon": "None",
    "Clothing": "Black Jumpsuit",
    "Belt": "None",
-   "Backdrop": "Jail Cell",
+   "Backdrop": "Swamp Clay",
    "Ears": "Natural",
    "Character": "Woman",
-   "Off Hand": "Woodcutter Axe"
+   "Off Hand": "Woodcutter Axe",
+   "Splatter": "Mild"
   }
  },
  {
@@ -26932,7 +26931,7 @@
    "Ears": "Natural",
    "Character": "Woman",
    "Off Hand": "Woodcutter Axe",
-   "Splatter": "Mild"
+   "Splatter": "Light"
   }
  },
  {
@@ -26955,7 +26954,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -27026,7 +27025,7 @@
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Mild",
+   "Splatter": "Light",
    "Off Hand": "Steel Hook Hand",
    "Head Wound": "Deep Forehead Gash"
   }
@@ -27074,7 +27073,7 @@
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Wild"
+   "Splatter": "Mild"
   }
  },
  {
@@ -27097,7 +27096,7 @@
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Light",
+   "Splatter": "Wild",
    "Off Hand": "Steel Hook Hand"
   }
  },
@@ -27121,7 +27120,7 @@
    "Backdrop": "Slate Clay",
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
-   "Splatter": "Mild",
+   "Splatter": "Light",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -27145,7 +27144,7 @@
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Splatter": "Wild",
+   "Splatter": "Mild",
    "Off Hand": "Rusty Hook Hand"
   }
  },
@@ -27245,7 +27244,7 @@
   "id": 1155,
   "name": "SBN13th #1155",
   "seed": 828642558,
-  "prompt": "Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with fingerprints, tool marks and pressed texture, soft studio lighting, highly detailed, in exactly the style of the reference photos. A grotesque disfigured clay WOMAN (female, not the man in the reference: copy only the reference's clay style, pose and framing) with an oversized bobble head, mottled skin, small sunken bloodshot eyes in swollen red-rimmed lids, a thin neck and narrow hunched shoulders, head turned three-quarters toward the viewer's right. Sallow yellowish clay skin, a greasy chin-length black bob, a few angry boils on the scalp. Her huge oversized bobble head is entirely covered by a filthy lumpy burlap sack pulled all the way down over the whole skull and face, ragged cut eye holes, a cross-stitched mouth, rope tied tight at the neck; no skin or hair visible. Wearing a slate-blue clay work jacket with a brown leather collar, stitched leather patches and a grey knit undershirt, a worn leather tool belt with rusty tools and pouches, her right fist grips a curved sickle completely drenched in thick dripping blood; her LEFT fist tightly grips a heavy sledgehammer by its wooden handle, the hammer resting up on her left shoulder with the iron head behind her shoulder, carried in her hand, not strapped to her back. A grimy jail cell with rusty iron bars, a cracked concrete wall scratched with tally marks, a dented metal bunk and a single bare hanging bulb, sculpted as a miniature claymation diorama in matte plasticine, softly out of focus behind her, no signs or lettering. FACING: exactly like the first reference photo, her body is in three-quarter view and her head and face are turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space above the head, figure centred, square 1:1 composition. SCALE (the same for every figure in the series): the figure is the same size in the frame as in the first reference photo, the bobble head the same size relative to the body, and weapons true to scale with the hands, never oversized or tiny. Both hands are full and both are tight clenched fists, knuckles toward the camera: the right fist grips the held weapon, the left fist grips the second weapon by its handle as described.",
+  "prompt": "Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with fingerprints, tool marks and pressed texture, soft studio lighting, highly detailed, in exactly the style of the reference photos. A grotesque disfigured clay WOMAN (female, not the man in the reference: copy only the reference's clay style, pose and framing) with an oversized bobble head, mottled skin, small sunken bloodshot eyes in swollen red-rimmed lids, a thin neck and narrow hunched shoulders, head turned three-quarters toward the viewer's right. Sallow yellowish clay skin, a greasy chin-length black bob, a few angry boils on the scalp. Her huge oversized bobble head is entirely covered by a filthy lumpy burlap sack pulled all the way down over the whole skull and face, ragged cut eye holes, a cross-stitched mouth, rope tied tight at the neck; no skin or hair visible. Wearing a slate-blue clay work jacket with a brown leather collar, stitched leather patches and a grey knit undershirt, a worn leather tool belt with rusty tools and pouches, her right fist grips a curved sickle completely drenched in thick dripping blood; her LEFT fist tightly grips a heavy sledgehammer by its wooden handle, the hammer resting up on her left shoulder with the iron head behind her shoulder, carried in her hand, not strapped to her back. A dusty teal pressed-clay backdrop. FACING: exactly like the first reference photo, her body is in three-quarter view and her head and face are turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space above the head, figure centred, square 1:1 composition. SCALE (the same for every figure in the series): the figure is the same size in the frame as in the first reference photo, the bobble head the same size relative to the body, and weapons true to scale with the hands, never oversized or tiny. Both hands are full and both are tight clenched fists, knuckles toward the camera: the right fist grips the held weapon, the left fist grips the second weapon by its handle as described.",
   "negative": "text, logo, letters, watermark, brand marks, sports team logo, red chevrons or triangles on the mask, full-face goalie mask covering the forehead and eyes, white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, photo of a real person, cartoon outline, flat 2D, face turned to the left, mirrored pose, long finger blades, clawed glove with four long knives, red and green striped sweater, brown fedora",
   "attributes": {
    "Tier": "Standard",
@@ -27258,10 +27257,11 @@
    "Back Weapon": "None",
    "Clothing": "Patched Work Jacket",
    "Belt": "Tool Belt",
-   "Backdrop": "Jail Cell",
+   "Backdrop": "Teal Clay",
    "Ears": "Natural",
    "Character": "Woman",
-   "Off Hand": "Sledgehammer"
+   "Off Hand": "Sledgehammer",
+   "Splatter": "Wild"
   }
  },
  {
@@ -28557,7 +28557,7 @@
   "id": 1211,
   "name": "SBN13th #1211",
   "seed": 1375739511,
-  "prompt": "Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with fingerprints, tool marks and pressed texture, soft studio lighting, highly detailed, in exactly the style of the reference photos. A grotesque disfigured old man with an oversized bobble head, mottled skin with age spots, small sunken bloodshot eyes in swollen red-rimmed lids, a large ear with a fat hanging lobe, thick neck, hunched broad shoulders, head turned three-quarters toward the viewer's right. Head type: a huge tall lumpy dome skull with dents and bumps, like the master reference, sallow yellowish clay skin, wild spiky grey hair tufts, one half of his face is horribly burnt: charred, blistered and melted flesh peeling away on that side, the cheek burnt through so the bare white jaw bone and teeth are exposed, a heavily stretched earlobe on his visible ear holding a large shiny polished silver steel tunnel gauge, a hollow metal ring about an inch wide with flared rims that you can see straight through, hanging just below the ear. No mask: his disfigured face is bare, small sunken bloodshot eyes in swollen red lids, a crooked broken nose and rotten yellow teeth. Wearing blood-soaked green surgeon's scrubs with a surgical cap and a stained surgical mask hanging round his neck, a worn leather tool belt with rusty tools and pouches, his right hand is a clenched bare fist, knuckles toward the camera; his LEFT fist tightly grips a rusty pitchfork by its long wooden handle, held upright at his side with the rusty tines rising above his shoulder beside his head, carried in his hand, not strapped to his back. A bruise-purple pressed-clay backdrop. FACING: exactly like the first reference photo, his body is in three-quarter view and his head and face are turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space above the head, figure centred, square 1:1 composition. SCALE (the same for every figure in the series): the figure is the same size in the frame as in the first reference photo, the bobble head the same size relative to the body, and weapons true to scale with the hands, never oversized or tiny. Both hands are full and both are tight clenched fists, knuckles toward the camera: the right fist grips the held weapon, the left fist grips the second weapon by its handle as described.",
+  "prompt": "Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with fingerprints, tool marks and pressed texture, soft studio lighting, highly detailed, in exactly the style of the reference photos. A grotesque disfigured old man with an oversized bobble head, mottled skin with age spots, small sunken bloodshot eyes in swollen red-rimmed lids, a large ear with a fat hanging lobe, thick neck, hunched broad shoulders, head turned three-quarters toward the viewer's right. Head type: a huge tall lumpy dome skull with dents and bumps, like the master reference, sallow yellowish clay skin, wild spiky grey hair tufts, one half of his face is horribly burnt: charred, blistered and melted flesh peeling away on that side, the cheek burnt through so the bare white jaw bone and teeth are exposed, a heavily stretched earlobe on his visible ear holding a large shiny polished silver steel tunnel gauge, a hollow metal ring about an inch wide with flared rims that you can see straight through, hanging just below the ear. No mask: his disfigured face is bare, small sunken bloodshot eyes in swollen red lids, a crooked broken nose and rotten yellow teeth. Wearing blood-soaked green surgeon's scrubs with a surgical cap and a stained surgical mask hanging round his neck, a worn leather tool belt with rusty tools and pouches, his right hand is a clenched bare fist, knuckles toward the camera; his LEFT fist tightly grips a rusty pitchfork by its long wooden handle, held upright at his side with the rusty tines rising above his shoulder beside his head, carried in his hand, not strapped to his back. A grimy jail cell with rusty iron bars, a cracked concrete wall scratched with tally marks, a dented metal bunk and a single bare hanging bulb, sculpted as a miniature claymation diorama in matte plasticine, softly out of focus behind him, no signs or lettering. FACING: exactly like the first reference photo, his body is in three-quarter view and his head and face are turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space above the head, figure centred, square 1:1 composition. SCALE (the same for every figure in the series): the figure is the same size in the frame as in the first reference photo, the bobble head the same size relative to the body, and weapons true to scale with the hands, never oversized or tiny. Both hands are full and both are tight clenched fists, knuckles toward the camera: the right fist grips the held weapon, the left fist grips the second weapon by its handle as described.",
   "negative": "text, logo, letters, watermark, brand marks, sports team logo, red chevrons or triangles on the mask, full-face goalie mask covering the forehead and eyes, white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, photo of a real person, cartoon outline, flat 2D, face turned to the left, mirrored pose, long finger blades, clawed glove with four long knives, red and green striped sweater, brown fedora",
   "attributes": {
    "Tier": "Uncommon",
@@ -28570,11 +28570,10 @@
    "Back Weapon": "None",
    "Clothing": "Bloody Surgeon Scrubs",
    "Belt": "Tool Belt",
-   "Backdrop": "Bruise Clay",
+   "Backdrop": "Jail Cell",
    "Ears": "Gauged",
    "Character": "Classic",
-   "Off Hand": "Pitchfork",
-   "Splatter": "Mild"
+   "Off Hand": "Pitchfork"
   }
  },
  {
@@ -28621,7 +28620,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Light"
+   "Splatter": "Mild"
   }
  },
  {
@@ -28761,7 +28760,7 @@
    "Ears": "Natural",
    "Character": "Classic",
    "Off Hand": "Pitchfork",
-   "Splatter": "Wild"
+   "Splatter": "Light"
   }
  },
  {
@@ -28784,7 +28783,7 @@
    "Backdrop": "Teal Clay",
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
-   "Splatter": "Light"
+   "Splatter": "Wild"
   }
  },
  {
@@ -28807,14 +28806,14 @@
    "Backdrop": "Bone Clay",
    "Ears": "Mostly Torn Ear",
    "Character": "Woman",
-   "Splatter": "Wild"
+   "Splatter": "Light"
   }
  },
  {
   "id": 1222,
   "name": "SBN13th #1222",
   "seed": 811611085,
-  "prompt": "Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with fingerprints, tool marks and pressed texture, soft studio lighting, highly detailed, in exactly the style of the reference photos. A grotesque disfigured clay WOMAN (female, not the man in the reference: copy only the reference's clay style, pose and framing) with an oversized bobble head, mottled skin, small sunken bloodshot eyes in swollen red-rimmed lids, a thin neck and narrow hunched shoulders, head turned three-quarters toward the viewer's right. Ruddy red-pink clay skin, a greasy chin-length black bob, raised grey clay wrinkle ridges on the forehead, her visible ear has a small ragged rip through the top edge, a notch of missing flesh crusted with dried blood. A crude welded scrap-metal jaw cage made of bent rebar bars and bolts wrapped round her mouth and chin, rusty and bloody, eyes visible above. Wearing a grimy plaid flannel shirt, her right fist grips a clean polished steel hatchet with a sharp gleaming edge, not a drop of blood on it; her LEFT fist tightly grips a heavy sledgehammer by its wooden handle, the hammer resting up on her left shoulder with the iron head behind her shoulder, carried in her hand, not strapped to her back. A grimy jail cell with rusty iron bars, a cracked concrete wall scratched with tally marks, a dented metal bunk and a single bare hanging bulb, sculpted as a miniature claymation diorama in matte plasticine, softly out of focus behind her, no signs or lettering. FACING: exactly like the first reference photo, her body is in three-quarter view and her head and face are turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space above the head, figure centred, square 1:1 composition. SCALE (the same for every figure in the series): the figure is the same size in the frame as in the first reference photo, the bobble head the same size relative to the body, and weapons true to scale with the hands, never oversized or tiny. Both hands are full and both are tight clenched fists, knuckles toward the camera: the right fist grips the held weapon, the left fist grips the second weapon by its handle as described.",
+  "prompt": "Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with fingerprints, tool marks and pressed texture, soft studio lighting, highly detailed, in exactly the style of the reference photos. A grotesque disfigured clay WOMAN (female, not the man in the reference: copy only the reference's clay style, pose and framing) with an oversized bobble head, mottled skin, small sunken bloodshot eyes in swollen red-rimmed lids, a thin neck and narrow hunched shoulders, head turned three-quarters toward the viewer's right. Ruddy red-pink clay skin, a greasy chin-length black bob, raised grey clay wrinkle ridges on the forehead, her visible ear has a small ragged rip through the top edge, a notch of missing flesh crusted with dried blood. A crude welded scrap-metal jaw cage made of bent rebar bars and bolts wrapped round her mouth and chin, rusty and bloody, eyes visible above. Wearing a grimy plaid flannel shirt, her right fist grips a clean polished steel hatchet with a sharp gleaming edge, not a drop of blood on it; her LEFT fist tightly grips a heavy sledgehammer by its wooden handle, the hammer resting up on her left shoulder with the iron head behind her shoulder, carried in her hand, not strapped to her back. A bruise-purple pressed-clay backdrop. FACING: exactly like the first reference photo, her body is in three-quarter view and her head and face are turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space above the head, figure centred, square 1:1 composition. SCALE (the same for every figure in the series): the figure is the same size in the frame as in the first reference photo, the bobble head the same size relative to the body, and weapons true to scale with the hands, never oversized or tiny. Both hands are full and both are tight clenched fists, knuckles toward the camera: the right fist grips the held weapon, the left fist grips the second weapon by its handle as described.",
   "negative": "text, logo, letters, watermark, brand marks, sports team logo, red chevrons or triangles on the mask, full-face goalie mask covering the forehead and eyes, white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, photo of a real person, cartoon outline, flat 2D, face turned to the left, mirrored pose, long finger blades, clawed glove with four long knives, red and green striped sweater, brown fedora",
   "attributes": {
    "Tier": "Standard",
@@ -28827,10 +28826,11 @@
    "Back Weapon": "None",
    "Clothing": "Plaid Flannel",
    "Belt": "None",
-   "Backdrop": "Jail Cell",
+   "Backdrop": "Bruise Clay",
    "Ears": "Slightly Ripped Ear",
    "Character": "Woman",
-   "Off Hand": "Sledgehammer"
+   "Off Hand": "Sledgehammer",
+   "Splatter": "Wild"
   }
  },
  {
