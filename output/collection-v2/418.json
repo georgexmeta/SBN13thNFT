@@ -53,6 +53,10 @@
     {
       "trait_type": "Character",
       "value": "Cursed Porcelain Doll"
+    },
+    {
+      "trait_type": "Splatter",
+      "value": "Crazy"
     }
   ]
 }

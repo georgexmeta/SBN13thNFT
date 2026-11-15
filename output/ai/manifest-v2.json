@@ -18,7 +18,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -40,7 +41,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -62,7 +64,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -84,7 +87,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -106,7 +110,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -128,7 +133,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -172,7 +178,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -194,7 +201,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -216,7 +224,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -238,7 +247,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -260,7 +270,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -304,7 +315,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -326,7 +338,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -348,7 +361,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -370,7 +384,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -392,7 +407,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -414,7 +430,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -436,7 +453,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -458,7 +476,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -480,7 +499,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -502,7 +522,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -524,7 +545,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -546,7 +568,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -568,7 +591,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -613,7 +637,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -657,7 +682,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -679,7 +705,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -702,7 +729,8 @@
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Off Hand": "Woodcutter Axe"
+   "Off Hand": "Woodcutter Axe",
+   "Splatter": "Wild"
   }
  },
  {
@@ -724,7 +752,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -746,7 +775,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -768,7 +798,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -812,7 +843,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -834,7 +866,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -856,7 +889,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Slaughter"
   }
  },
  {
@@ -878,7 +912,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -900,7 +935,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -922,7 +958,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -944,7 +981,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -966,7 +1004,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -988,7 +1027,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -1010,7 +1050,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -1032,7 +1073,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -1054,7 +1096,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -1076,7 +1119,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -1098,7 +1142,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -1120,7 +1165,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -1142,7 +1188,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -1164,7 +1211,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -1186,7 +1234,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -1208,7 +1257,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -1230,7 +1280,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -1252,7 +1303,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -1274,7 +1326,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -1296,7 +1349,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -1318,7 +1372,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -1340,7 +1395,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -1362,7 +1418,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -1384,7 +1441,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -1406,7 +1464,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -1428,7 +1487,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -1450,7 +1510,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -1472,7 +1533,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -1494,7 +1556,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -1538,7 +1601,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Slaughter"
   }
  },
  {
@@ -1560,7 +1624,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -1604,7 +1669,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -1626,7 +1692,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -1648,7 +1715,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -1670,7 +1738,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -1692,7 +1761,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -1714,7 +1784,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -1736,7 +1807,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -1758,7 +1830,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -1780,7 +1853,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -1802,7 +1876,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -1824,7 +1899,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -1846,7 +1922,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -1868,7 +1945,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -1890,7 +1968,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -1912,7 +1991,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -1934,7 +2014,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -1956,7 +2037,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -1978,7 +2060,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Slaughter"
   }
  },
  {
@@ -2000,7 +2083,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -2022,7 +2106,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -2066,7 +2151,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -2088,7 +2174,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -2110,7 +2197,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -2132,7 +2220,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -2154,7 +2243,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -2176,7 +2266,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -2198,7 +2289,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -2242,7 +2334,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -2287,7 +2380,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -2309,7 +2403,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -2331,7 +2426,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -2353,7 +2449,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -2375,7 +2472,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -2397,7 +2495,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -2419,7 +2518,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -2441,7 +2541,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -2463,7 +2564,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -2485,7 +2587,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -2507,7 +2610,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -2551,7 +2655,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -2617,7 +2722,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -2639,7 +2745,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -2661,7 +2768,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -2683,7 +2791,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -2705,7 +2814,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -2727,7 +2837,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -2749,7 +2860,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -2771,7 +2883,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -2793,7 +2906,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -2815,7 +2929,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -2837,7 +2952,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -2859,7 +2975,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -2881,7 +2998,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -2903,7 +3021,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -2925,7 +3044,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -2947,7 +3067,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -2969,7 +3090,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -2991,7 +3113,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -3013,7 +3136,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -3035,7 +3159,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -3057,7 +3182,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -3079,7 +3205,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -3101,7 +3228,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -3123,7 +3251,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -3145,7 +3274,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -3167,7 +3297,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -3189,7 +3320,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -3211,7 +3343,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -3255,7 +3388,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -3277,7 +3411,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -3321,7 +3456,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -3343,7 +3479,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -3365,7 +3502,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -3387,7 +3525,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -3409,7 +3548,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -3431,7 +3571,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -3453,7 +3594,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -3475,7 +3617,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -3497,7 +3640,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -3519,7 +3663,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -3541,7 +3686,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -3563,7 +3709,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -3585,7 +3732,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -3629,7 +3777,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -3651,7 +3800,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -3673,7 +3823,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -3695,7 +3846,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -3717,7 +3869,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -3762,7 +3915,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -3784,7 +3938,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -3806,7 +3961,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -3850,7 +4006,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -3872,7 +4029,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -3916,7 +4074,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -3938,7 +4097,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -3960,7 +4120,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -3982,7 +4143,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -4004,7 +4166,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -4026,7 +4189,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -4048,7 +4212,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -4070,7 +4235,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -4092,7 +4258,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -4114,7 +4281,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -4158,7 +4326,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -4180,7 +4349,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -4202,7 +4372,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -4224,7 +4395,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -4268,7 +4440,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -4290,7 +4463,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -4312,7 +4486,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -4356,7 +4531,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -4378,7 +4554,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -4422,7 +4599,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -4444,7 +4622,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -4466,7 +4645,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -4488,7 +4668,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -4510,7 +4691,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -4554,7 +4736,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -4598,7 +4781,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -4664,7 +4848,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -4686,7 +4871,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -4708,7 +4894,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -4730,7 +4917,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -4752,7 +4940,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -4774,7 +4963,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -4796,7 +4986,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -4818,7 +5009,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -4840,7 +5032,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -4884,7 +5077,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -4906,7 +5100,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -4928,7 +5123,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -4972,7 +5168,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -5016,7 +5213,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -5038,7 +5236,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -5060,7 +5259,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -5082,7 +5282,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bruise Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -5104,7 +5305,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Hollow Sister"
+   "Character": "Hollow Sister",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -5126,7 +5328,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -5148,7 +5351,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -5170,7 +5374,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -5192,7 +5397,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -5214,7 +5420,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -5236,7 +5443,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -5258,7 +5466,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -5302,7 +5511,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -5324,7 +5534,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -5346,7 +5557,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -5368,7 +5580,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -5390,7 +5603,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -5434,7 +5648,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -5478,7 +5693,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -5566,7 +5782,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -5588,7 +5805,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -5610,7 +5828,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -5632,7 +5851,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -5676,7 +5896,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Glitch Android"
+   "Character": "Glitch Android",
+   "Splatter": "Light"
   }
  },
  {
@@ -5698,7 +5919,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bruise Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -5720,7 +5942,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -5742,7 +5965,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -5764,7 +5988,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -5786,7 +6011,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -5808,7 +6034,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -5830,7 +6057,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -5852,7 +6080,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -5874,7 +6103,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Farmhouse Smile"
+   "Character": "Farmhouse Smile",
+   "Splatter": "Wild"
   }
  },
  {
@@ -5896,7 +6126,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -5918,7 +6149,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -5940,7 +6172,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -5962,7 +6195,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -5984,7 +6218,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -6072,7 +6307,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -6094,7 +6330,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -6116,7 +6353,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -6138,7 +6376,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -6182,7 +6421,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -6204,7 +6444,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -6226,7 +6467,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -6248,7 +6490,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -6270,7 +6513,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -6292,7 +6536,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Hollow Sister"
+   "Character": "Hollow Sister",
+   "Splatter": "Wild"
   }
  },
  {
@@ -6336,7 +6581,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -6358,7 +6604,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -6380,7 +6627,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -6402,7 +6650,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -6424,7 +6673,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -6468,7 +6718,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -6490,7 +6741,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -6512,7 +6764,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -6534,7 +6787,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -6556,7 +6810,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -6578,7 +6833,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -6622,7 +6878,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -6644,7 +6901,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -6688,7 +6946,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -6710,7 +6969,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -6732,7 +6992,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -6754,7 +7015,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -6798,7 +7060,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -6820,7 +7083,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -6864,7 +7128,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -6886,7 +7151,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -6930,7 +7196,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -6974,7 +7241,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -7018,7 +7286,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -7040,7 +7309,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Slaughter"
   }
  },
  {
@@ -7062,7 +7332,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -7084,7 +7355,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -7106,7 +7378,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -7128,7 +7401,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -7150,7 +7424,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -7172,7 +7447,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -7194,7 +7470,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -7216,7 +7493,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -7238,7 +7516,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -7260,7 +7539,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -7282,7 +7562,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -7304,7 +7585,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -7326,7 +7608,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -7370,7 +7653,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -7392,7 +7676,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -7414,7 +7699,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -7436,7 +7722,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -7480,7 +7767,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -7502,7 +7790,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -7546,7 +7835,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -7568,7 +7858,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Farmhouse Smile"
+   "Character": "Farmhouse Smile",
+   "Splatter": "Mild"
   }
  },
  {
@@ -7590,7 +7881,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -7612,7 +7904,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -7634,7 +7927,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -7656,7 +7950,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -7678,7 +7973,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Gauged",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -7700,7 +7996,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -7766,7 +8063,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -7788,7 +8086,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -7810,7 +8109,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -7854,7 +8154,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -7898,7 +8199,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -7920,7 +8222,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -7964,7 +8267,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -8074,7 +8378,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -8096,7 +8401,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -8118,7 +8424,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -8162,7 +8469,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -8272,7 +8580,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -8294,7 +8603,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Gauged",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -8338,7 +8648,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -8360,7 +8671,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -8404,7 +8716,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -8448,7 +8761,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -8470,7 +8784,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "The Ringmistress"
+   "Character": "The Ringmistress",
+   "Splatter": "Mild"
   }
  },
  {
@@ -8492,7 +8807,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -8514,7 +8830,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -8536,7 +8853,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -8624,7 +8942,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -8646,7 +8965,8 @@
    "Belt": "Shrunken Head Bandolier",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -8690,7 +9010,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -8712,7 +9033,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Cursed Porcelain Doll"
+   "Character": "Cursed Porcelain Doll",
+   "Splatter": "Light"
   }
  },
  {
@@ -8734,7 +9056,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -8756,7 +9079,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -8778,7 +9102,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -8822,7 +9147,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -8866,7 +9192,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -8888,7 +9215,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -8954,7 +9282,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -8998,7 +9327,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -9020,7 +9350,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -9042,7 +9373,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -9064,7 +9396,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -9130,7 +9463,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Gauged",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -9174,7 +9508,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -9196,7 +9531,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Cursed Porcelain Doll"
+   "Character": "Cursed Porcelain Doll",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -9218,7 +9554,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Slaughter"
   }
  },
  {
@@ -9240,7 +9577,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -9306,7 +9644,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -9328,7 +9667,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -9372,7 +9712,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -9416,7 +9757,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -9460,7 +9802,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -9482,7 +9825,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -9504,7 +9848,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -9548,7 +9893,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -9593,7 +9939,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -9615,7 +9962,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -9637,7 +9985,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -9659,7 +10008,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -9703,7 +10053,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -9725,7 +10076,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -9747,7 +10099,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -9791,7 +10144,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -9813,7 +10167,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -9835,7 +10190,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -9946,7 +10302,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -9968,7 +10325,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -9990,7 +10348,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -10012,7 +10371,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bone Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -10034,7 +10394,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -10056,7 +10417,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -10078,7 +10440,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bruise Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -10100,7 +10463,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Drowned Well Girl"
+   "Character": "Drowned Well Girl",
+   "Splatter": "Light"
   }
  },
  {
@@ -10210,7 +10574,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -10254,7 +10619,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -10276,7 +10642,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -10298,7 +10665,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -10342,7 +10710,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -10364,7 +10733,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -10386,7 +10756,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -10408,7 +10779,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -10430,7 +10802,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -10540,7 +10913,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -10562,7 +10936,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -10782,7 +11157,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -10804,7 +11180,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -10826,7 +11203,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -10848,7 +11226,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -10870,7 +11249,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -10892,7 +11272,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -10914,7 +11295,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -10936,7 +11318,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -10958,7 +11341,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -10980,7 +11364,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -11002,7 +11387,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -11090,7 +11476,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -11134,7 +11521,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -11178,7 +11566,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -11200,7 +11589,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -11222,7 +11612,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -11244,7 +11635,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -11266,7 +11658,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -11288,7 +11681,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -11310,7 +11704,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -11354,7 +11749,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -11398,7 +11794,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -11464,7 +11861,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -11486,7 +11884,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -11530,7 +11929,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -11552,7 +11952,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -11574,7 +11975,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -11596,7 +11998,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -11662,7 +12065,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -11706,7 +12110,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -11728,7 +12133,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -11795,7 +12201,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -11861,7 +12268,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Farmhouse Smile"
+   "Character": "Farmhouse Smile",
+   "Splatter": "Light"
   }
  },
  {
@@ -11883,7 +12291,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -11905,7 +12314,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -11927,7 +12337,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -11949,7 +12360,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -11993,7 +12405,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -12015,7 +12428,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -12059,7 +12473,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -12081,7 +12496,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -12147,7 +12563,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -12169,7 +12586,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -12191,7 +12609,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -12235,7 +12654,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -12279,7 +12699,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -12301,7 +12722,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -12345,7 +12767,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -12367,7 +12790,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -12389,7 +12813,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -12411,7 +12836,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -12433,7 +12859,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -12455,7 +12882,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -12477,7 +12905,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -12521,7 +12950,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Farmhouse Smile"
+   "Character": "Farmhouse Smile",
+   "Splatter": "Wild"
   }
  },
  {
@@ -12587,7 +13017,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -12609,7 +13040,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -12653,7 +13085,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -12720,7 +13153,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -12764,7 +13198,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -12786,7 +13221,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -12808,7 +13244,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -12852,7 +13289,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -12896,7 +13334,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -12918,7 +13357,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -12962,7 +13402,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -12984,7 +13425,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -13006,7 +13448,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -13028,7 +13471,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -13050,7 +13494,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -13094,7 +13539,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -13116,7 +13562,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -13138,7 +13585,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -13182,7 +13630,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -13204,7 +13653,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -13226,7 +13676,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -13248,7 +13699,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -13270,7 +13722,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -13292,7 +13745,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -13314,7 +13768,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -13336,7 +13791,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -13358,7 +13814,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -13380,7 +13837,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -13424,7 +13882,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -13446,7 +13905,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -13468,7 +13928,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Cursed Porcelain Doll"
+   "Character": "Cursed Porcelain Doll",
+   "Splatter": "Light"
   }
  },
  {
@@ -13512,7 +13973,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -13556,7 +14018,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -13578,7 +14041,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -13622,7 +14086,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -13644,7 +14109,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -13710,7 +14176,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Farmhouse Smile"
+   "Character": "Farmhouse Smile",
+   "Splatter": "Mild"
   }
  },
  {
@@ -13776,7 +14243,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -13798,7 +14266,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -13820,7 +14289,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -13842,7 +14312,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -13864,7 +14335,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -13886,7 +14358,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -13952,7 +14425,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -13974,7 +14448,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -13996,7 +14471,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bone Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -14062,7 +14538,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Gauged",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -14106,7 +14583,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -14128,7 +14606,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -14150,7 +14629,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -14194,7 +14674,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "The Ringmistress"
+   "Character": "The Ringmistress",
+   "Splatter": "Light"
   }
  },
  {
@@ -14216,7 +14697,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -14238,7 +14720,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -14260,7 +14743,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -14304,7 +14788,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -14326,7 +14811,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -14348,7 +14834,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -14370,7 +14857,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -14392,7 +14880,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -14414,7 +14903,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -14459,7 +14949,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -14481,7 +14972,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -14525,7 +15017,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -14547,7 +15040,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -14569,7 +15063,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -14591,7 +15086,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -14635,7 +15131,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -14657,7 +15154,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -14679,7 +15177,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -14701,7 +15200,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -14723,7 +15223,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -14745,7 +15246,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -14767,7 +15269,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -14789,7 +15292,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -14811,7 +15315,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -14833,7 +15338,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -14855,7 +15361,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -14877,7 +15384,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -14899,7 +15407,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -14921,7 +15430,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -14943,7 +15453,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -14965,7 +15476,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -14987,7 +15499,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -15009,7 +15522,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -15031,7 +15545,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -15053,7 +15568,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -15075,7 +15591,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -15097,7 +15614,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -15141,7 +15659,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -15163,7 +15682,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -15185,7 +15705,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Slaughter"
   }
  },
  {
@@ -15207,7 +15728,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -15229,7 +15751,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -15251,7 +15774,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -15273,7 +15797,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -15295,7 +15820,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -15317,7 +15843,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -15339,7 +15866,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -15383,7 +15911,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -15405,7 +15934,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -15427,7 +15957,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -15449,7 +15980,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -15493,7 +16025,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -15515,7 +16048,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -15560,7 +16094,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Slaughter"
   }
  },
  {
@@ -15582,7 +16117,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -15604,7 +16140,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -15626,7 +16163,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -15648,7 +16186,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -15670,7 +16209,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -15692,7 +16232,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -15714,7 +16255,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -15736,7 +16278,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -15758,7 +16301,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -15780,7 +16324,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -15802,7 +16347,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -15824,7 +16370,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -15846,7 +16393,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -15891,7 +16439,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -15913,7 +16462,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -15935,7 +16485,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -15979,7 +16530,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -16001,7 +16553,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -16023,7 +16576,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Slaughter"
   }
  },
  {
@@ -16045,7 +16599,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -16067,7 +16622,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -16089,7 +16645,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -16111,7 +16668,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -16133,7 +16691,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -16155,7 +16714,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -16199,7 +16759,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -16221,7 +16782,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -16243,7 +16805,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -16265,7 +16828,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -16287,7 +16851,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -16331,7 +16896,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -16353,7 +16919,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -16419,7 +16986,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -16463,7 +17031,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -16485,7 +17054,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -16507,7 +17077,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -16529,7 +17100,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -16551,7 +17123,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -16573,7 +17146,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -16595,7 +17169,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -16617,7 +17192,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -16639,7 +17215,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -16661,7 +17238,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -16683,7 +17261,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -16705,7 +17284,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -16727,7 +17307,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -16749,7 +17330,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -16771,7 +17353,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -16793,7 +17376,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -16815,7 +17399,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -16837,7 +17422,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -16859,7 +17445,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -16881,7 +17468,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -16903,7 +17491,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -16925,7 +17514,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -16947,7 +17537,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -16991,7 +17582,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -17013,7 +17605,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -17035,7 +17628,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -17057,7 +17651,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -17079,7 +17674,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -17101,7 +17697,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -17123,7 +17720,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -17145,7 +17743,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -17167,7 +17766,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -17189,7 +17789,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -17211,7 +17812,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -17233,7 +17835,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -17255,7 +17858,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -17277,7 +17881,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -17299,7 +17904,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -17321,7 +17927,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -17343,7 +17950,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -17365,7 +17973,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -17387,7 +17996,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -17409,7 +18019,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -17453,7 +18064,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -17475,7 +18087,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -17497,7 +18110,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -17519,7 +18133,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -17541,7 +18156,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -17586,7 +18202,8 @@
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
    "Character": "Classic",
-   "Off Hand": "Sledgehammer"
+   "Off Hand": "Sledgehammer",
+   "Splatter": "Mild"
   }
  },
  {
@@ -17630,7 +18247,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -17674,7 +18292,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -17696,7 +18315,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -17718,7 +18338,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -17740,7 +18361,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -17762,7 +18384,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -17784,7 +18407,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -17806,7 +18430,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -17828,7 +18453,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -17850,7 +18476,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -17872,7 +18499,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -17894,7 +18522,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -17960,7 +18589,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -17982,7 +18612,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -18004,7 +18635,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -18048,7 +18680,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -18092,7 +18725,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -18114,7 +18748,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -18136,7 +18771,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -18158,7 +18794,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -18202,7 +18839,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -18246,7 +18884,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -18268,7 +18907,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -18290,7 +18930,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -18334,7 +18975,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -18356,7 +18998,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Rotten Bride"
+   "Character": "Rotten Bride",
+   "Splatter": "Light"
   }
  },
  {
@@ -18378,7 +19021,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -18400,7 +19044,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -18422,7 +19067,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -18444,7 +19090,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Drowned Well Girl"
+   "Character": "Drowned Well Girl",
+   "Splatter": "Light"
   }
  },
  {
@@ -18488,7 +19135,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -18510,7 +19158,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -18532,7 +19181,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -18598,7 +19248,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -18620,7 +19271,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -18642,7 +19294,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -18664,7 +19317,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Gauged",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -18686,7 +19340,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -18708,7 +19363,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -18730,7 +19386,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -18752,7 +19409,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -18796,7 +19454,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -18862,7 +19521,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -18906,7 +19566,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -18928,7 +19589,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Drowned Well Girl"
+   "Character": "Drowned Well Girl",
+   "Splatter": "Mild"
   }
  },
  {
@@ -18950,7 +19612,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -19038,7 +19701,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -19060,7 +19724,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -19082,7 +19747,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -19170,7 +19836,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -19214,7 +19881,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -19236,7 +19904,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -19280,7 +19949,8 @@
    "Belt": "Shrunken Head Bandolier",
    "Backdrop": "Slate Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -19324,7 +19994,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -19346,7 +20017,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -19368,7 +20040,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -19412,7 +20085,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -19456,7 +20130,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -19478,7 +20153,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -19500,7 +20176,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -19522,7 +20199,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -19544,7 +20222,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -19588,7 +20267,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -19610,7 +20290,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -19632,7 +20313,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -19654,7 +20336,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -19676,7 +20359,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -19720,7 +20404,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -19764,7 +20449,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -19786,7 +20472,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -19852,7 +20539,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -19896,7 +20584,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -19918,7 +20607,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -19940,7 +20630,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -19962,7 +20653,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -20006,7 +20698,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -20028,7 +20721,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -20072,7 +20766,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Gauged",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -20094,7 +20789,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -20139,7 +20835,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -20205,7 +20902,8 @@
    "Belt": "Shrunken Head Bandolier",
    "Backdrop": "Swamp Clay",
    "Ears": "Gauged",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -20227,7 +20925,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -20271,7 +20970,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -20293,7 +20993,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Gauged",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -20315,7 +21016,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -20381,7 +21083,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -20403,7 +21106,8 @@
    "Belt": "Shrunken Head Bandolier",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -20447,7 +21151,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -20513,7 +21218,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -20535,7 +21241,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -20557,7 +21264,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -20601,7 +21309,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -20623,7 +21332,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -20645,7 +21355,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -20667,7 +21378,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -20711,7 +21423,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -20733,7 +21446,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -20799,7 +21513,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -20843,7 +21558,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -20865,7 +21581,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -20909,7 +21626,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -20953,7 +21671,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -20997,7 +21716,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -21019,7 +21739,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -21063,7 +21784,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -21085,7 +21807,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -21195,7 +21918,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bruise Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -21217,7 +21941,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -21239,7 +21964,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -21261,7 +21987,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -21349,7 +22076,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -21393,7 +22121,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Slaughter"
   }
  },
  {
@@ -21526,7 +22255,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Gauged",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -21548,7 +22278,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -21570,7 +22301,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -21592,7 +22324,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -21614,7 +22347,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -21658,7 +22392,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -21702,7 +22437,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Slaughter"
   }
  },
  {
@@ -21724,7 +22460,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -21746,7 +22483,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -21768,7 +22506,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -21790,7 +22529,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -21812,7 +22552,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -21878,7 +22619,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -21922,7 +22664,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -21966,7 +22709,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -21988,7 +22732,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -22010,7 +22755,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -22032,7 +22778,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -22076,7 +22823,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -22098,7 +22846,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -22120,7 +22869,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -22142,7 +22892,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "The Ringmistress"
+   "Character": "The Ringmistress",
+   "Splatter": "Wild"
   }
  },
  {
@@ -22164,7 +22915,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Slaughter"
   }
  },
  {
@@ -22186,7 +22938,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -22208,7 +22961,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bruise Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -22230,7 +22984,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -22252,7 +23007,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -22274,7 +23030,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -22296,7 +23053,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Gauged",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -22318,7 +23076,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -22340,7 +23099,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -22362,7 +23122,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bone Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -22384,7 +23145,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -22406,7 +23168,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -22428,7 +23191,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -22450,7 +23214,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -22472,7 +23237,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -22494,7 +23260,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -22516,7 +23283,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -22538,7 +23306,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -22604,7 +23373,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -22648,7 +23418,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -22692,7 +23463,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -22714,7 +23486,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Gauged",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -22758,7 +23531,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -22780,7 +23554,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -22802,7 +23577,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -22846,7 +23622,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -22868,7 +23645,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -22890,7 +23668,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -22912,7 +23691,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Gauged",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -22934,7 +23714,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -22978,7 +23759,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Gauged",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -23022,7 +23804,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -23066,7 +23849,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -23088,7 +23872,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -23110,7 +23895,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -23132,7 +23918,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -23221,7 +24008,8 @@
    "Belt": "Shrunken Head Bandolier",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -23243,7 +24031,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -23265,7 +24054,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -23287,7 +24077,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Gauged",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -23309,7 +24100,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -23331,7 +24123,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -23353,7 +24146,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Hollow Sister"
+   "Character": "Hollow Sister",
+   "Splatter": "Light"
   }
  },
  {
@@ -23419,7 +24213,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -23441,7 +24236,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -23463,7 +24259,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -23507,7 +24304,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -23573,7 +24371,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -23595,7 +24394,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Farmhouse Smile"
+   "Character": "Farmhouse Smile",
+   "Splatter": "Mild"
   }
  },
  {
@@ -23639,7 +24439,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -23661,7 +24462,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Gauged",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -23683,7 +24485,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -23749,7 +24552,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -23771,7 +24575,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -23793,7 +24598,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -23815,7 +24621,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -23859,7 +24666,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -23881,7 +24689,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -23925,7 +24734,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -23969,7 +24779,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -23991,7 +24802,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -24013,7 +24825,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -24035,7 +24848,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -24079,7 +24893,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -24101,7 +24916,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -24123,7 +24939,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -24145,7 +24962,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -24167,7 +24985,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -24189,7 +25008,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -24211,7 +25031,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -24255,7 +25076,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -24299,7 +25121,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -24365,7 +25188,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -24409,7 +25233,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -24431,7 +25256,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -24453,7 +25279,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -24519,7 +25346,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -24563,7 +25391,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -24607,7 +25436,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -24629,7 +25459,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -24695,7 +25526,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -24717,7 +25549,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bone Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -24739,7 +25572,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -24761,7 +25595,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -24783,7 +25618,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -24805,7 +25641,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -24827,7 +25664,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bone Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -24849,7 +25687,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Gauged",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -24893,7 +25732,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -24915,7 +25755,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -24937,7 +25778,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -24959,7 +25801,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -24981,7 +25824,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -25025,7 +25869,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -25047,7 +25892,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -25069,7 +25915,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -25113,7 +25960,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -25135,7 +25983,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -25157,7 +26006,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -25179,7 +26029,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -25201,7 +26052,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -25223,7 +26075,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -25245,7 +26098,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -25267,7 +26121,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -25289,7 +26144,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -25311,7 +26167,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -25355,7 +26212,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -25443,7 +26301,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Slaughter"
   }
  },
  {
@@ -25465,7 +26324,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -25487,7 +26347,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Gauged",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -25509,7 +26370,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -25531,7 +26393,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bone Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -25553,7 +26416,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -25575,7 +26439,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Rotten Bride"
+   "Character": "Rotten Bride",
+   "Splatter": "Mild"
   }
  },
  {
@@ -25597,7 +26462,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -25641,7 +26507,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -25685,7 +26552,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -25729,7 +26597,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -25773,7 +26642,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -25795,7 +26665,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -25817,7 +26688,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -25839,7 +26711,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -25861,7 +26734,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -25905,7 +26779,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -25949,7 +26824,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -25971,7 +26847,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -26015,7 +26892,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -26081,7 +26959,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -26125,7 +27004,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -26191,7 +27071,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -26213,7 +27094,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -26235,7 +27117,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -26257,7 +27140,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Farmhouse Smile"
+   "Character": "Farmhouse Smile",
+   "Splatter": "Light"
   }
  },
  {
@@ -26279,7 +27163,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Rotten Bride"
+   "Character": "Rotten Bride",
+   "Splatter": "Wild"
   }
  },
  {
@@ -26301,7 +27186,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -26433,7 +27319,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -26455,7 +27342,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -26477,7 +27365,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -26499,7 +27388,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Glitch Android"
+   "Character": "Glitch Android",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -26521,7 +27411,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -26543,7 +27434,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -26587,7 +27479,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -26631,7 +27524,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -26653,7 +27547,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bruise Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -26675,7 +27570,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -26697,7 +27593,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -26719,7 +27616,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -26741,7 +27639,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -26763,7 +27662,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -26785,7 +27685,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -26829,7 +27730,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -26851,7 +27753,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -26873,7 +27776,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -26939,7 +27843,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -26961,7 +27866,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -27005,7 +27911,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -27027,7 +27934,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -27093,7 +28001,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -27159,7 +28068,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -27203,7 +28113,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -27225,7 +28136,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -27269,7 +28181,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -27291,7 +28204,8 @@
    "Belt": "None",
    "Backdrop": "Rust Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -27335,7 +28249,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -27379,7 +28294,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -27401,7 +28317,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bone Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -27423,7 +28340,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -27445,7 +28363,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -27467,7 +28386,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -27489,7 +28409,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -27511,7 +28432,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Teal Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -27533,7 +28455,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Slaughter"
   }
  },
  {
@@ -27555,7 +28478,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -27599,7 +28523,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -27621,7 +28546,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -27643,7 +28569,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -27687,7 +28614,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -27709,7 +28637,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -27731,7 +28660,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -27775,7 +28705,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -27797,7 +28728,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -27819,7 +28751,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -27841,7 +28774,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -27907,7 +28841,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -27929,7 +28864,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -27951,7 +28887,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -27973,7 +28910,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -27995,7 +28933,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Bone Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -28017,7 +28956,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -28039,7 +28979,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -28061,7 +29002,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -28083,7 +29025,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Natural",
-   "Character": "Glitch Android"
+   "Character": "Glitch Android",
+   "Splatter": "Light"
   }
  },
  {
@@ -28105,7 +29048,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -28127,7 +29071,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Rust Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Mild"
   }
  },
  {
@@ -28149,7 +29094,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -28171,7 +29117,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -28193,7 +29140,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Sage Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -28215,7 +29163,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -28259,7 +29208,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Crazy"
   }
  },
  {
@@ -28303,7 +29253,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Swamp Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -28325,7 +29276,8 @@
    "Belt": "None",
    "Backdrop": "Sage Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -28347,7 +29299,8 @@
    "Belt": "None",
    "Backdrop": "Swamp Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -28369,7 +29322,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -28435,7 +29389,8 @@
    "Belt": "Tool Belt",
    "Backdrop": "Slate Clay",
    "Ears": "Slightly Ripped Ear",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  },
  {
@@ -28457,7 +29412,8 @@
    "Belt": "None",
    "Backdrop": "Slate Clay",
    "Ears": "Gauged",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Light"
   }
  },
  {
@@ -28479,7 +29435,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Wild"
   }
  },
  {
@@ -28501,7 +29458,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Mild"
   }
  },
  {
@@ -28567,7 +29525,8 @@
    "Belt": "None",
    "Backdrop": "Bruise Clay",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -28589,7 +29548,8 @@
    "Belt": "None",
    "Backdrop": "Bone Clay",
    "Ears": "Mostly Torn Ear",
-   "Character": "Woman"
+   "Character": "Woman",
+   "Splatter": "Light"
   }
  },
  {
@@ -28611,7 +29571,8 @@
    "Belt": "None",
    "Backdrop": "Teal Clay",
    "Ears": "Natural",
-   "Character": "Classic"
+   "Character": "Classic",
+   "Splatter": "Wild"
   }
  }
 ]

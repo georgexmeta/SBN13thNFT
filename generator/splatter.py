@@ -16,7 +16,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, "output", "ai", "images-v2")
 
 
-def backdrop_mask(img):
+def backdrop_mask(img, margin=31):
     lab = cv2.cvtColor(img, cv2.COLOR_BGR2LAB).astype(np.float32)
     h, w = lab.shape[:2]
     border = np.concatenate([lab[:8].reshape(-1, 3), lab[:, :8].reshape(-1, 3), lab[:, -8:].reshape(-1, 3)])
@@ -27,19 +27,29 @@ def backdrop_mask(img):
     edge = set(np.unique(np.concatenate([lbl[0], lbl[:, 0], lbl[:, -1]]))) - {0}
     m = np.isin(lbl, list(edge)).astype(np.uint8)
     m = cv2.morphologyEx(m, cv2.MORPH_OPEN, np.ones((9, 9), np.uint8))
-    return cv2.erode(m, np.ones((31, 31), np.uint8))   # stay well clear of the figure's outline
+    return cv2.erode(m, np.ones((margin, margin), np.uint8))   # stay well clear of the figure's outline
 
 
-def splats(h, w, mask, rng):
+LEVELS = {   # splats, radius range, room needed, drips, extra fine spray, top-edge drips
+    "Light": (2, (30, 55), 80, (2, 4), 0, 0),
+    "Mild": (3, (35, 65), 70, (2, 5), 0, 0),
+    "Wild": (5, (40, 80), 55, (3, 6), 120, 0),
+    "Crazy": (8, (45, 95), 45, (3, 7), 300, 4),
+    "Slaughter": (13, (55, 120), 35, (4, 8), 700, 10),
+}
+
+
+def splats(h, w, mask, rng, level="Light"):
+    count, rad, need, drips, fine, top = LEVELS[level]
     a = np.zeros((h, w), np.float32)
     room = cv2.distanceTransform(mask, cv2.DIST_L2, 5)   # only start a splat with open backdrop around it
     room[int(h * .7):] = 0
-    ys, xs = np.nonzero(room > 80)
+    ys, xs = np.nonzero(room > need)
     if len(xs) < 500:
         return a
-    for _ in range(rng.integers(1, 3)):
+    for _ in range(count):
         k = rng.integers(len(xs)); cx, cy = int(xs[k]), int(ys[k])
-        r = rng.uniform(28, 60)
+        r = rng.uniform(*rad)
         # irregular main blob: a wobbly polygon
         t = np.linspace(0, 2 * np.pi, 90, endpoint=False)
         wob = 1 + sum(rng.uniform(-.18, .18) * np.sin(f * t + rng.uniform(0, 6)) for f in (2, 3, 5, 7, 11))
@@ -55,19 +65,26 @@ def splats(h, w, mask, rng):
             ang = spray + rng.normal(0, .8); d = r * rng.uniform(1.4, 4.5)
             rr = max(1.5, r * rng.uniform(.04, .18) / (d / r) ** .6)
             cv2.ellipse(a, (int(cx + np.cos(ang) * d), int(cy + np.sin(ang) * d)), (int(rr * 1.8), int(rr)), np.degrees(ang), 0, 360, 1, -1, cv2.LINE_AA)
-        for _ in range(rng.integers(2, 5)):   # drips running down from the bottom of the blob
+        for _ in range(rng.integers(*drips)):   # drips running down from the bottom of the blob
             x0 = int(cx + rng.uniform(-.8, .8) * r); y0 = int(cy + r * .5); ln = int(r * rng.uniform(1, 3.5)); wd = max(3, int(r * rng.uniform(.1, .2)))
             cv2.line(a, (x0, y0), (x0, y0 + ln), 1, wd, cv2.LINE_AA)
             cv2.circle(a, (x0, y0 + ln), int(wd * .8), 1, -1, cv2.LINE_AA)
+    for _ in range(fine):   # fine mist of flecks over the whole backdrop
+        cv2.circle(a, (int(rng.integers(w)), int(rng.integers(int(h * .85)))), int(rng.integers(1, 5)), 1, -1, cv2.LINE_AA)
+    for _ in range(top):   # blood running down from the top edge
+        x0 = int(rng.integers(w)); ln = int(rng.uniform(.08, .4) * h); wd = int(rng.integers(5, 16))
+        cv2.rectangle(a, (x0 - wd, 0), (x0 + wd, int(wd * 1.5)), 1, -1)
+        cv2.line(a, (x0, 0), (x0, ln), 1, max(3, wd // 2), cv2.LINE_AA)
+        cv2.circle(a, (x0, ln), max(3, int(wd * .45)), 1, -1, cv2.LINE_AA)
     return cv2.GaussianBlur(a, (0, 0), 1.0)
 
 
-def apply(path, out, seed):
+def apply(path, out, seed, level="Light"):
     img = cv2.imread(path)
     h, w = img.shape[:2]
-    mask = backdrop_mask(img)
+    mask = backdrop_mask(img, {"Light": 31, "Mild": 27, "Wild": 19, "Crazy": 13, "Slaughter": 9}[level])
     rng = np.random.default_rng(seed)
-    a = splats(h, w, mask, rng) * cv2.GaussianBlur(mask.astype(np.float32), (0, 0), 4)
+    a = splats(h, w, mask, rng, level) * cv2.GaussianBlur(mask.astype(np.float32), (0, 0), 1.2)
     if a.max() == 0:
         cv2.imwrite(out, img); return False
     # light emboss so the splat reads as glossy raised clay, lit from the upper left like the figures
@@ -85,6 +102,12 @@ def apply(path, out, seed):
 
 
 if __name__ == "__main__":
+    import json
     out_dir = sys.argv[1]; os.makedirs(out_dir, exist_ok=True)
-    for i in sys.argv[2:]:
-        print(i, apply(os.path.join(SRC, f"{i}.png"), os.path.join(out_dir, f"{i}.png"), int(i)))
+    rows = {r["id"]: r for r in json.load(open(os.path.join(ROOT, "output", "ai", "manifest-v2.json")))}
+    for a in sys.argv[2:]:
+        i, _, lv = a.partition(":")
+        lv = lv or rows[int(i)]["attributes"].get("Splatter", "None")
+        if lv == "None":
+            continue
+        print(i, lv, apply(os.path.join(SRC, f"{i}.png"), os.path.join(out_dir, f"{i}.png"), int(i), lv))

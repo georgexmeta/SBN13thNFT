@@ -53,6 +53,10 @@
     {
       "trait_type": "Character",
       "value": "Drowned Well Girl"
+    },
+    {
+      "trait_type": "Splatter",
+      "value": "Light"
     }
   ]
 }

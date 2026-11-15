@@ -53,6 +53,10 @@
     {
       "trait_type": "Character",
       "value": "Woman"
+    },
+    {
+      "trait_type": "Splatter",
+      "value": "Light"
     }
   ]
 }

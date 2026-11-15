@@ -647,6 +647,7 @@ def build():
         tokens[_i - 1][0]["Off Hand"] = _w
     chainsaw_pass(tokens)
     saw_whacker_pass(tokens)
+    splatter_pass(tokens)
     for _i in WEEDWACKER:
         tokens[_i - 1][0]["Held Weapon"] = "Golden Saw Weed Whacker"
     os.makedirs(OUT, exist_ok=True)
@@ -856,6 +857,17 @@ def head_strap_pass(tokens):
             and a["Character"] in ("Classic", "Woman")]
     for i in late.sample(pool, 13):
         tokens[i - 1][0]["Belt"] = "Shrunken Head Bandolier"   # a new value can't collide with an existing DNA
+
+
+def splatter_pass(tokens):
+    """George 2026-11-15: blood splatter on the plain clay backdrops, five levels, applied after rendering by splatter.py.
+    Slaughter exactly 13; the rest about 42% Light, 29% Mild, 18% Wild, 11% Crazy."""
+    plain = {"Sage Clay", "Swamp Clay", "Slate Clay", "Teal Clay", "Rust Clay", "Bruise Clay", "Bone Clay"}
+    pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Backdrop"] in plain and a["Tier"] != "Legendary 1/1"]
+    random.Random(1666).shuffle(pool)
+    for n, i in enumerate(pool):
+        r = (n - 13) / (len(pool) - 13)
+        tokens[i - 1][0]["Splatter"] = "Slaughter" if n < 13 else "Light" if r < .42 else "Mild" if r < .71 else "Wild" if r < .89 else "Crazy"
 
 
 def saw_whacker_pass(tokens):
