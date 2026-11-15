@@ -900,10 +900,12 @@ def zombie_pass(tokens):
     for tier, deal in ZOMBIE_COUNTS.items():
         pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == tier and a["Character"] in ("Classic", "Woman") and i not in pend
                 and a["Skin"] != "Deep Brown" and not os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png"))]
-        picks = iter(rng.sample(pool, sum(n for _, n in deal)))
+        women = [i for i in pool if tokens[i - 1][0]["Head"] == "Female"]   # George: zombie women and men alike
+        men = [i for i in pool if tokens[i - 1][0]["Head"] != "Female"]
+        rng.shuffle(women); rng.shuffle(men)
         for v, n in deal:
-            for _ in range(n):
-                tokens[next(picks) - 1][0]["Skin"] = v
+            for k in range(n):
+                tokens[(women if k % 2 else men).pop() - 1][0]["Skin"] = v
 
 
 def jail_tier_fix(tokens):
