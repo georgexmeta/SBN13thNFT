@@ -191,6 +191,10 @@ def poll():
             out = os.path.join(g.OUTDIR, f"{i}.png"); tmp = out + ".check.png"
             open(tmp, "wb").write(img)
             way = g.facing(tmp)
+            if way == "UNKNOWN":   # the check itself failed (quota/network): ask again, then keep rather than pay for a re-roll
+                time.sleep(5); way = g.facing(tmp)
+                if way == "UNKNOWN":
+                    way = "RIGHT"; print(f"  #{i} facing check unavailable, kept", flush=True)
             if way == "RIGHT":
                 bd = g._check(tmp).get("body", "RIGHT")
                 way = "RIGHT" if bd == "RIGHT" else f"body {bd}"
