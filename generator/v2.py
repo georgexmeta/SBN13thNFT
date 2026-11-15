@@ -220,10 +220,10 @@ DUCHESS_EXTRA = [
     ("Backdrop", "Candlelit Castle Hall", "a dark carved-wood gothic castle hall lit by tall dripping candles in iron sconces, sculpted as a miniature "
                  "claymation diorama in matte plasticine, softly out of focus behind her, no signs or lettering"),
 ]
-# 1/1 "The Scorch Doll" (George, 2026-11-15, final 1/1): a burned killer toy doll, inspired by a charred doll figure but
+# 1/1 "Cinder Doll" (George, 2026-11-15, final 1/1): a burned killer toy doll, inspired by a charred doll figure but
 # not that character: no red hair, no denim overalls, no striped shirt, no toy box or brand. Replaces Cinder (George's
 # pick) in doll_pass, after every other pass. 13 Legendaries.
-DOLL = ("Cinder", {"1/1 Name": "The Scorch Doll", "Character": "The Scorch Doll", "Head": "Doll", "Skin": "Charred Plastic",
+DOLL = ("Cinder", {"1/1 Name": "Cinder Doll", "Character": "Cinder Doll", "Head": "Doll", "Skin": "Charred Plastic",
         "Hair": "Singed Yarn Tufts", "Head Mark": "Clean", "Ears": "Natural", "Mask": "Melted Doll Face", "Held Weapon": "Bloody Kitchen Knife",
         "Back Weapon": "None", "Clothing": "Scorched Corduroy Dungarees", "Belt": "None", "Backdrop": "Burnt Dollhouse"})
 DOLL_BASE = ("A small evil child's toy doll come to life, a burned killer doll with a big round doll head, short stubby limbs and "
@@ -435,7 +435,7 @@ def prompt(a, legendary_finish=None):
     female = a.get("Character", "Classic") in FEMALE or a.get("Character") in ("The Grieving Mother", "The Prom Queen", "The Ringmistress", "Woman", "Madame Mortis")
     if female:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"]), phrase("Head Mark", a["Head Mark"]), phrase("Ears", a.get("Ears", "Natural"))]
-    doll = a.get("Character") == "The Scorch Doll"
+    doll = a.get("Character") == "Cinder Doll"
     if doll:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"])]
     parts = [STYLE, DOLL_BASE if doll else FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),

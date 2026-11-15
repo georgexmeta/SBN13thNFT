@@ -1,5 +1,5 @@
 {
-  "name": "SBN13th #170 - The Scorch Doll",
+  "name": "SBN13th #170 - Cinder Doll",
   "seed": 1704771854,
   "attributes": [
     {
@@ -8,7 +8,7 @@
     },
     {
       "trait_type": "1/1 Name",
-      "value": "The Scorch Doll"
+      "value": "Cinder Doll"
     },
     {
       "trait_type": "Head",
@@ -56,7 +56,7 @@
     },
     {
       "trait_type": "Character",
-      "value": "The Scorch Doll"
+      "value": "Cinder Doll"
     }
   ]
 }

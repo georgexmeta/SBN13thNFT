@@ -273,7 +273,7 @@
 | The Ringmistress | 8 | 0.6% |
 | Rotten Bride | 8 | 0.6% |
 | Drowned Well Girl | 8 | 0.6% |
-| The Scorch Doll | 1 | 0.1% |
+| Cinder Doll | 1 | 0.1% |
 | The Prom Queen | 1 | 0.1% |
 | The Grieving Mother | 1 | 0.1% |
 | Madame Mortis | 1 | 0.1% |
