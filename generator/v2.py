@@ -650,7 +650,7 @@ def build():
     for _i in PICKAXE:
         tokens[_i - 1][0]["Held Weapon"] = "Rusty Pickaxe"
     for _a, _f in tokens:   # George 2026-11-15: every back sledgehammer is carried on the shoulder in the off hand instead
-        if (_a["Back Weapon"] in ("Sledgehammer", "Pitchfork", "Woodcutter Axe") and _a["Tier"] != "Legendary 1/1" and _a["Held Weapon"] not in NO_OFF_HAND):
+        if (_a["Back Weapon"] in ("Sledgehammer", "Pitchfork", "Woodcutter Axe", "Rusty Shovel") and _a["Tier"] != "Legendary 1/1" and _a["Held Weapon"] not in NO_OFF_HAND):
             _a["Back Weapon"], _a["Off Hand"] = "None", _a["Back Weapon"]
     for _i, _w in DUAL.items():
         tokens[_i - 1][0]["Back Weapon"] = "None"

@@ -83,7 +83,7 @@
 | Value | Count | Share |
 |---|---|---|
 | Chainsaw | 209 | 16.1% |
-| Rusted Machete | 115 | 8.8% |
+| Rusted Machete | 125 | 9.6% |
 | Meat Hook | 92 | 7.1% |
 | Nail Bat | 72 | 5.5% |
 | Bloody Hunting Knife | 69 | 5.3% |
@@ -98,8 +98,8 @@
 | Poison Syringe | 25 | 1.9% |
 | Switchblade | 25 | 1.9% |
 | Bare Fist | 23 | 1.8% |
-| Blade Nails | 19 | 1.5% |
 | Rusted Hunting Knife | 19 | 1.5% |
+| Blade Nails | 17 | 1.3% |
 | Bloody Butcher Cleaver | 17 | 1.3% |
 | Hook Hand (Rare+) | 15 | 1.2% |
 | Bloody Brick | 15 | 1.2% |
@@ -108,7 +108,6 @@
 | Rusty Pickaxe | 12 | 0.9% |
 | Bloody Sickle | 11 | 0.8% |
 | Clean Machete | 11 | 0.8% |
-| Rusty Shovel | 10 | 0.8% |
 | Exercise Band | 10 | 0.8% |
 | Nail-Knife Glove (Rare+) | 9 | 0.7% |
 | Flamethrower (Rare+) | 8 | 0.6% |
@@ -129,6 +128,7 @@
 | Chrome Machete | 3 | 0.2% |
 | Blue-Flame Flamethrower | 3 | 0.2% |
 | Gold Hatchet | 2 | 0.2% |
+| Rusty Shovel | 2 | 0.2% |
 | Clayson Master Ball and Golden Axe | 1 | 0.1% |
 | Scythe | 1 | 0.1% |
 | Bloody Kitchen Knife | 1 | 0.1% |
@@ -145,9 +145,8 @@
 
 | Value | Count | Share |
 |---|---|---|
-| None | 789 | 60.7% |
+| None | 873 | 67.2% |
 | Rusted Saw Weed Whacker | 126 | 9.7% |
-| Rusty Shovel | 94 | 7.2% |
 | Bloody Saw Weed Whacker | 93 | 7.2% |
 | Clean Saw Weed Whacker | 47 | 3.6% |
 | Pitchfork | 25 | 1.9% |
@@ -158,6 +157,7 @@
 | Woodcutter Axe | 13 | 1.0% |
 | Sledgehammer | 13 | 1.0% |
 | Fuel Tanks (Rare+) | 11 | 0.8% |
+| Rusty Shovel | 10 | 0.8% |
 | Harpoon Gun (Rare+) | 7 | 0.5% |
 | Double-Barrel Shotgun | 4 | 0.3% |
 | Chainsaw | 2 | 0.2% |
