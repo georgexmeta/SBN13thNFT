@@ -472,9 +472,11 @@ DUAL_PHRASE.update({   # bladed-glove men (George 2026-11-15) wield their back w
     "Scythe": "a huge rusty scythe by its long wooden snath, held upright beside him with the curved blade arching above his head",
     "Harpoon Gun": "a rusty harpoon gun loaded with a barbed harpoon, aimed out to the side",
     "Double-Barrel Shotgun": "a sawn-off rusty double-barrel shotgun with a cracked wooden stock, held one-handed, barrels pointing up and out"})
-DUAL_PHRASE["The Book of the Dead"] = ("a thick cursed book by its spine, held up to the side: an ancient tome bound in stitched, scarred, leathery "
-                                   "skin with rusty iron corner clasps and a rusty chain, torn yellowed pages poking out, dark stains; "
-                                   "no title, no lettering, no symbols and no face on the cover")
+DUAL_PHRASE["The Book of the Dead"] = ("a grotesque ancient artifact of a book by its spine, held up to the side: a thick centuries-old tome bound "
+                                     "in cracked, rotting, patchwork human-like skin with frayed black stitching and peeling scabbed edges, "
+                                     "studded with little yellowed bone knobs and teeth, corroded green-crusted iron corner clasps and a rusty "
+                                     "chain, dark blood and mould stains, crumbling brittle yellowed page edges; no title, no lettering, "
+                                     "no symbols and no face on the cover")
 TOME = ("Scorched Doll", "The Grieving Mother")   # George 2026-11-15: both 1/1s hold the cursed book in the left hand
 GLOVE_FINISH = {177: "Gold", 283: "Gold", 744: "Chrome"}
 PICKAXE = [79, 87, 231, 259, 266, 324, 360, 490, 567, 794, 818, 820]
