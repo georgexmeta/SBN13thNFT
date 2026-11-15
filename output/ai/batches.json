@@ -969,7 +969,18 @@
     103
    ],
    "state": "running",
-   "submitted": 1794719285.9286876
+   "submitted": 1794719285.9286876,
+   "drop": [
+    103
+   ]
+  },
+  {
+   "name": "batches/wfev2vqor4llo244lbsobmywsoc7vbr1oo6h",
+   "ids": [
+    103
+   ],
+   "state": "running",
+   "submitted": 1794719351.210469
   }
  ],
  "tries": {

@@ -123,7 +123,7 @@
 | Chrome Machete | 3 | 0.2% |
 | Blue-Flame Flamethrower | 3 | 0.2% |
 | Gold Hatchet | 2 | 0.2% |
-| Mask Orb and Golden Axe | 1 | 0.1% |
+| Clayson Master Ball and Golden Axe | 1 | 0.1% |
 | Bloody Kitchen Knife | 1 | 0.1% |
 | Chrome Hunting Knife | 1 | 0.1% |
 | Telekinesis | 1 | 0.1% |
