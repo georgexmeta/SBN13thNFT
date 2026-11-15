@@ -392,7 +392,7 @@ FRAMING_TWO_HANDS = FRAMING.split(" His right hand grips")[0] + (" Both hands ho
 FRAMING_NAILS = FRAMING.split(" His right hand grips")[0] + " Both hands are raised and fully visible inside the frame, all ten blade nails spread; neither hand hangs down or is hidden"
 FRAMING_MOLOTOV = FRAMING.split(" His right hand grips")[0] + " Both fists are raised in front of him, each gripping a lit Molotov cocktail by the neck, knuckles toward the camera; neither hand hangs empty"
 FRAMING_COLLECTOR = FRAMING.split(" His right hand grips")[0] + " Both hands are full: the orb held out in one hand toward the viewer, the hatchet gripped in the other"
-FRAMING_PSYCHIC = FRAMING.split(" His right hand grips")[0] + " Both hands are raised, empty, channelling psychic force; no weapon in her hands."
+FRAMING_PSYCHIC = FRAMING.split(" His right hand grips")[0] + " Both hands are raised, empty, channelling psychic force; no weapon in her hands"
 NEGATIVE = ("text, logo, letters, watermark, brand marks, sports team logo, red chevrons or triangles on the mask, full-face goalie mask covering the forehead and eyes, "
             "white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, "
             "photo of a real person, cartoon outline, flat 2D, face turned to the left, mirrored pose, long finger blades, clawed glove with four long knives, "
@@ -408,6 +408,10 @@ for _t, (_v, _p) in RETRO_EXTRA.items():
 # Belt slot, 13 unrendered Uncommon tokens (head_strap_pass; George: Uncommon), so tier counts don't move.
 ALL["Held Weapon"]["Double Molotov Cocktails"] = (0, "")
 ALL["Held Weapon"]["Blue-Flame Flamethrower"] = (0, "")
+# Women-only weapon scale (George, 2026-11-15): the women 1/1s' signature powers spread to ordinary unrendered women
+# (women_weapon_pass): Blade Nails on 25, Psychic Force on 8. The 1/1s keep their own names (Death Nails, Telekinesis).
+ALL["Held Weapon"]["Blade Nails"] = (0, "")
+ALL["Held Weapon"]["Psychic Force"] = (0, "")
 # Machete variants (George, 2026-11-15), machete_pass: finished machetes are labelled Rusted (what they show); unrendered ones are
 # split Rusted / Bloody / Clean, and unrendered Rare machetes go Chrome. Gold stays the existing Golden Machete.
 MACHETES = {"Rusted Machete": "a long rusty machete dripping blood",
@@ -473,7 +477,7 @@ def prompt(a, legendary_finish=None):
     elif held == "Chainsaw":   # George 2026-11-14: chainsaws are always wielded with both hands
         hand = ("he wields a heavy rusty chainsaw with a bloody chain in BOTH hands: right hand gripping the rear handle, "
                 "left hand gripping the front wrap-around handle, the bar angled up and out across his body")
-    elif held == "Telekinesis":
+    elif held in ("Telekinesis", "Psychic Force"):
         hand = ("she holds no weapon: both bloody hands are raised and spread with clawed fingers, unleashing telekinetic power, "
                 "chairs, glass shards and streamers levitating around her and a rippling shockwave bending the air")
     elif held == "Double Molotov Cocktails":   # George 2026-11-15: one lit Molotov in each hand, 6 Rare tokens
@@ -483,7 +487,7 @@ def prompt(a, legendary_finish=None):
         hand = ("in his left hand he holds out a round cracked bone-white clay orb shaped like a goalie mask rolled into a ball, covered in rows "
                 "of small breathing holes with rusty rivets and dried blood; it is all one off-white colour, with no red half, no band and no "
                 "button; his right fist grips a rusty hatchet with a worn wooden handle, held low at his side")
-    elif held == "Death Nails":
+    elif held in ("Death Nails", "Blade Nails"):
         hand = ("BOTH of her hands are raised in front of her chest, fingers spread like claws, every fingertip on both hands ending in a "
                 "long curved blackened-steel blade nail as long as a forearm, all ten blade nails fanned out toward the viewer, blood on the tips")
     elif held == "Hook Hand":
@@ -505,7 +509,7 @@ def prompt(a, legendary_finish=None):
     if doll:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"])]
     parts = [STYLE, DOLL_BASE if doll else FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
-             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Mask Orb and Hatchet" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_NAILS if held == "Death Nails" else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_PSYCHIC if held == "Telekinesis" else FRAMING]
+             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Mask Orb and Hatchet" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_NAILS if held in ("Death Nails", "Blade Nails") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
     text = ". ".join(p[0].upper() + p[1:] for p in parts if p) + "."
     if female:
         for m, f in [(r"\bhis\b", "her"), (r"\bHis\b", "Her"), (r"\bhim\b", "her"), (r"\bhimself\b", "herself"), (r"\bhe\b", "she"), (r"\bHe\b", "She")]:
@@ -576,6 +580,7 @@ def build():
     blade_pass(tokens)
     hood_pass(tokens)
     cap_cone_pass(tokens)
+    women_weapon_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -583,7 +588,7 @@ def build():
         name = f"SBN13th #{i}" + (f" - {a['1/1 Name']}" if "1/1 Name" in a else "")
         meta = {"name": name, "seed": seed, "attributes": [{"trait_type": k, "value": v} for k, v in a.items()]}
         json.dump(meta, open(os.path.join(OUT, f"{i}.json"), "w"), indent=2)
-        rows.append({"id": i, "name": name, "seed": seed, "prompt": prompt(a, finish), "negative": NEGATIVE.replace("long finger blades, clawed glove with four long knives, ", "") if a["Held Weapon"] == "Death Nails" else NEGATIVE + ", red and white ball, ball with a centre button, writing on clothes, logo on cap" if a["Held Weapon"] == "Mask Orb and Hatchet" else NEGATIVE, "attributes": a})
+        rows.append({"id": i, "name": name, "seed": seed, "prompt": prompt(a, finish), "negative": NEGATIVE.replace("long finger blades, clawed glove with four long knives, ", "") if a["Held Weapon"] in ("Death Nails", "Blade Nails") else NEGATIVE + ", red and white ball, ball with a centre button, writing on clothes, logo on cap" if a["Held Weapon"] == "Mask Orb and Hatchet" else NEGATIVE, "attributes": a})
     os.makedirs(os.path.join(ROOT, "output", "ai"), exist_ok=True)
     json.dump(rows, open(os.path.join(ROOT, "output", "ai", "manifest-v2.json"), "w"), indent=1)
     report(tokens)
@@ -910,6 +915,16 @@ def cap_cone_pass(tokens):
                 if dna not in dnas:
                     dnas.discard(old); dnas.add(dna); a["Head"] = h
                     break
+
+
+def women_weapon_pass(tokens):
+    keep = set(json.load(open(os.path.join(ROOT, "generator", "rendered_keep_syringe.json"))))
+    pool = [i for i, (a, f) in enumerate(tokens, 1) if i not in keep and not f and a["Character"] == "Woman" and a["Tier"] == "Uncommon"
+            and a["Back Weapon"] not in ("Fuel Tanks",) and a["Held Weapon"] not in ("Poison Syringe", "Rusty Shears", "Double Molotov Cocktails")
+            and "Flamethrower" not in a["Held Weapon"] and a["Held Weapon"] != "Chainsaw"]
+    picks = random.Random(4141).sample(pool, 33)
+    for n, i in enumerate(picks):
+        tokens[i - 1][0]["Held Weapon"] = "Blade Nails" if n < 25 else "Psychic Force"   # new values: no DNA collision
 
 
 def retro_pass(tokens):
