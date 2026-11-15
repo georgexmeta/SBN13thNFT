@@ -144,13 +144,13 @@
 
 | Value | Count | Share |
 |---|---|---|
-| None | 476 | 36.6% |
-| Pitchfork | 200 | 15.4% |
+| None | 651 | 50.1% |
 | Woodcutter Axe | 151 | 11.6% |
 | Rusted Saw Weed Whacker | 126 | 9.7% |
 | Rusty Shovel | 94 | 7.2% |
 | Bloody Saw Weed Whacker | 93 | 7.2% |
 | Clean Saw Weed Whacker | 47 | 3.6% |
+| Pitchfork | 25 | 1.9% |
 | Leathery Bat Wings | 25 | 1.9% |
 | Circus Mallet (Rare+) | 19 | 1.5% |
 | Chrome Saw Weed Whacker | 15 | 1.2% |
