@@ -252,11 +252,12 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Blue Veins | 513 | 39.5% |
-| Grey Wrinkles | 286 | 22.0% |
-| Stitched Scar | 192 | 14.8% |
-| Clean | 184 | 14.2% |
-| Boils | 125 | 9.6% |
+| Blue Veins | 508 | 39.1% |
+| Grey Wrinkles | 282 | 21.7% |
+| Stitched Scar | 191 | 14.7% |
+| Clean | 183 | 14.1% |
+| Boils | 123 | 9.5% |
+| Half-Burnt Face | 13 | 1.0% |
 
 ## Ears
 

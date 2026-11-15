@@ -391,6 +391,10 @@ for _t, (_v, _p) in RETRO_EXTRA.items():
 # Belt slot, 13 unrendered Uncommon tokens (head_strap_pass; George: Uncommon), so tier counts don't move.
 ALL["Held Weapon"]["Double Molotov Cocktails"] = (0, "")
 ALL["Held Weapon"]["Blue-Flame Flamethrower"] = (0, "")
+# Half-Burnt Face (George, 2026-11-15): a Head Mark on exactly 13 unrendered bare-face Uncommon tokens (burnt_face_pass).
+ALL["Head Mark"] = dict(ALL["Head Mark"])
+ALL["Head Mark"]["Half-Burnt Face"] = (0, "one half of his face is horribly burnt: charred, blistered and melted flesh peeling away on that side, "
+                                          "the cheek burnt through so the bare white jaw bone and teeth are exposed")
 # Damaged ears (George, 2026-11-15): Mostly Torn and Slightly Ripped, 145 unrendered tokens each with a bare visible ear (torn_ear_pass).
 ALL["Ears"]["Mostly Torn Ear"] = (0, "his visible ear is mostly torn away, only a ragged bloody stump of ear left with jagged torn edges and dried blood")
 ALL["Ears"]["Slightly Ripped Ear"] = (0, "his visible ear has a small ragged rip through the top edge, a notch of missing flesh crusted with dried blood")
@@ -523,6 +527,7 @@ def build():
     blue_flame_pass(tokens)
     gun_pass(tokens)
     torn_ear_pass(tokens)
+    burnt_face_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -772,6 +777,14 @@ def torn_ear_pass(tokens):
     picks = late.sample(pool, 290)
     for n, i in enumerate(picks):
         tokens[i - 1][0]["Ears"] = "Mostly Torn Ear" if n < 145 else "Slightly Ripped Ear"   # new values: no DNA collision
+
+
+def burnt_face_pass(tokens):
+    keep = set(json.load(open(os.path.join(ROOT, "generator", "rendered_keep_syringe.json"))))
+    pool = [i for i, (a, f) in enumerate(tokens, 1) if i not in keep and not f and a["Tier"] == "Uncommon" and a["Mask"] == "Bare Face"
+            and a["Character"] in ("Classic", "Woman")]
+    for i in random.Random(1313).sample(pool, 13):
+        tokens[i - 1][0]["Head Mark"] = "Half-Burnt Face"   # a new value can't collide with an existing DNA
 
 
 def retro_pass(tokens):
