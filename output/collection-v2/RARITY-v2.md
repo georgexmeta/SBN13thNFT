@@ -143,9 +143,9 @@
 
 | Value | Count | Share |
 |---|---|---|
-| None | 329 | 25.3% |
+| None | 330 | 25.4% |
 | Pitchfork | 200 | 15.4% |
-| Sledgehammer | 160 | 12.3% |
+| Sledgehammer | 159 | 12.2% |
 | Woodcutter Axe | 151 | 11.6% |
 | Rusted Saw Weed Whacker | 126 | 9.7% |
 | Rusty Shovel | 94 | 7.2% |
