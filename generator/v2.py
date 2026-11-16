@@ -759,6 +759,7 @@ def build():
     grin_pass(tokens)
     eyes_pass(tokens)
     bone_crown_pass(tokens)
+    weeping_mask_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -999,6 +1000,35 @@ ALL["Mask"]["Black-Lipped Bloody Grin"] = (0, "no mask: her bare disfigured face
                                               "her mouth cut and stretched into a wide ragged bloody grin, dried blood dripping down her chin")
 BONE_CROWN = ("a crude crown of jagged yellowed bone shards and splintered wooden stakes standing up around his head, bound tightly to his "
               "skull with thick coils of frayed rope")
+
+
+ALL["Mask"]["Weeping Four-Eye Mask"] = (0, "a cracked bone-white porcelain HALF mask covering his forehead, eyes, cheeks and nose but leaving "
+                                           "his mouth and jaw bare, with FOUR almond-shaped eye holes, two stacked one above the other on each "
+                                           "side, each filled with a rusty iron mesh grille, thick black tar-like tears running down from the eye "
+                                           "holes over the white cheeks, a few hairline cracks")
+
+
+def weeping_mask_pass(tokens):
+    """George 2026-11-16 reference (our own take): 20 undrawn tokens get the Weeping Four-Eye Mask: every undrawn bare-faced Uncommon
+    that is free (plain bloodshot eyes, no special mask), the rest on Rares that keep another Rare-only trait besides the mask."""
+    st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
+    pend = set().union(*[set(b["ids"]) - set(b.get("drop", [])) for b in st["batches"] if b["state"] != "done"])
+    undrawn = lambda i: i not in pend and not os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png"))
+    unc = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == "Uncommon" and a["Character"] in ("Classic", "Woman")
+           and a["Mask"] in EYES_SHOW and a["Mask"] not in ("Black-Lipped Bloody Grin", "Gas Mask", "Smeared Greasepaint", *ICON_BROWN)
+           and a.get("Eyes") == "Bloodshot Eyes" and not a.get("Headpiece") and undrawn(i)]
+    low = {(k, v) for a, _ in tokens if a["Tier"] not in ("Rare", "Legendary 1/1") for k, v in a.items()}
+    special = {"Rusted Nail-Studded Mask", "Golden Nail-Studded Mask", "Chrome Nail-Studded Mask"}
+    rare = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == "Rare" and a["Character"] == "Classic" and a["Mask"] not in special
+            and a["Held Weapon"] != "Gilded Puzzle Box" and not a.get("Headpiece") and undrawn(i)
+            and any((k, v) not in low for k, v in a.items() if k not in ("Mask", "Tier", "Splatter"))]
+    rng = random.Random(4040)
+    picks = rng.sample(unc, min(len(unc), 20))
+    picks += rng.sample(rare, 20 - len(picks))
+    for i in picks:
+        tokens[i - 1][0]["Mask"] = "Weeping Four-Eye Mask"
+        tokens[i - 1][0].pop("Head Wound", None)   # the mask covers the forehead and eyes
+        tokens[i - 1][0].pop("Eyes", None)
 
 
 def grin_pass(tokens):
