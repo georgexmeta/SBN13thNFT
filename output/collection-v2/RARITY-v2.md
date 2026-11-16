@@ -59,10 +59,10 @@
 | Split Faceplate | 8 | 0.6% |
 | Cracked Porcelain Face | 8 | 0.6% |
 | Cracked Clown Paint | 8 | 0.6% |
-| Stitched Bride Face | 8 | 0.6% |
 | Waterlogged Face | 8 | 0.6% |
 | Stitched Skin Mask (Rare+) | 7 | 0.5% |
 | Gold Hockey Half-Mask | 7 | 0.5% |
+| Stitched Bride Face | 7 | 0.5% |
 | Porcelain Doll Face (Rare+) | 4 | 0.3% |
 | Oni Demon Mask (Rare+) | 4 | 0.3% |
 | Zipper Long Nose (Rare+) | 3 | 0.2% |
@@ -78,6 +78,7 @@
 | Bearded Bulging Stare | 1 | 0.1% |
 | Melted Doll Face | 1 | 0.1% |
 | Chrome Nail-Studded Mask | 1 | 0.1% |
+| Veiled Stitched Face | 1 | 0.1% |
 | Psychic Glare | 1 | 0.1% |
 | Cold Digital Stare | 1 | 0.1% |
 | Mad Mother's Face | 1 | 0.1% |
