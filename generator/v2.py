@@ -469,7 +469,7 @@ OVERSEER_EXTRA = {
 for _t, (_v, _p) in OVERSEER_EXTRA.items():
     ALL[_t][_v] = (0, _p)
 ALL["Held Weapon"]["Laser Lattice"] = (0, "")
-ALL["Held Weapon"]["Diamond Blade Nails"] = (0, "")   # 3 only (#425, #834, #569), the top nail finish
+ALL["Held Weapon"]["Diamond Blade Nails"] = (0, "")   # 3 only (#425, #396, #569), the top nail finish
 CHAPEL = ("Chapel Altar", "the altar of a decaying candlelit chapel at night: a cracked stone altar draped with a stained lace cloth, dozens "
           "of dripping black and red candles, wilted funeral lilies, dusty pews and a tall gothic arched window of dark broken stained glass "
           "(abstract shapes only), cobwebs and drips of blood down the altar steps, sculpted as a miniature claymation diorama in matte "
@@ -853,7 +853,7 @@ def build():
     tokens[413 - 1][0]["Off Hand"] = "Circus Mallet"
     _a = tokens[425 - 1][0]   # George 2026-11-16: #425 Rotten Bride drops the mallet and spear for diamond blade nails, chapel altar
     _a.update({"Held Weapon": "Diamond Blade Nails", "Backdrop": CHAPEL[0], "Mask": "Veiled Stitched Face"}); _a.pop("Off Hand", None); _a.pop("Splatter", None)
-    for _i in (834, 569):   # George 2026-11-16 06:27: Diamond Blade Nails on 3 in all (#425 + 2 undrawn Rare women), top of the nail ladder
+    for _i in (396, 569):   # George 2026-11-16 06:27: Diamond Blade Nails on 3 in all (#425 + 2 undrawn Rare women), top of the nail ladder
         tokens[_i - 1][0]["Held Weapon"] = "Diamond Blade Nails"
         tokens[_i - 1][0].pop("Off Hand", None)   # George 2026-11-16: #413 drops the shovel for a circus mallet in her left fist
     os.makedirs(OUT, exist_ok=True)

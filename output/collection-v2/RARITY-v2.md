@@ -97,7 +97,7 @@
 | Chainsaw | 209 | 16.1% |
 | Rusted Machete | 110 | 8.5% |
 | Meat Hook | 72 | 5.5% |
-| Nail Bat | 69 | 5.3% |
+| Nail Bat | 68 | 5.2% |
 | Spear | 63 | 4.8% |
 | Rusted Butcher Cleaver | 60 | 4.6% |
 | Bloody Hunting Knife | 60 | 4.6% |
@@ -164,6 +164,7 @@
 | Chrome Sledge-Axe | 1 | 0.1% |
 | Green Spore Canister | 1 | 0.1% |
 | Chrome Claw Glove | 1 | 0.1% |
+| Chrome Butcher Cleaver | 1 | 0.1% |
 | Chrome Hatchet | 1 | 0.1% |
 | Gold Sickle | 1 | 0.1% |
 | Gold Cylinder Puzzle Box | 1 | 0.1% |
