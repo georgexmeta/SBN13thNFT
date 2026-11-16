@@ -1224,7 +1224,7 @@ MUTATION = {
     "Mutated Claw Arm": "his left arm is a huge swollen mutated limb, far too big for his body, bulging with purple veins and raw "
                         "exposed red sinew where the skin has split, ending in three long hooked bone claws, raised and flexed",
     "Tumor Eye": "a HUGE bulging extra eyeball, nearly as big as his fist, growing out of a swollen fleshy tumour on his left shoulder, wet, veiny and bloodshot, staring at the viewer",
-    "Parasite Tendrils": "a big writhing mass of thick slick pale-pink and purple parasite tendrils, some as thick as fingers with tiny hooked tips, bursting out of torn bloody wounds in his neck and shoulder and coiling up into the air around his head, clearly visible and eye-catching",
+    "Parasite Tendrils": "a big writhing mass of thick slick pale-pink and purple parasite tendrils, some as thick as fingers with tiny hooked tips, bursting out of torn bloody wounds in his neck and shoulder and writhing outward beside him, clearly visible and eye-catching, never wrapped around his head",
     "Glowing Pustules": "clusters of swollen pustules glowing toxic green on his neck and forearms, some burst and oozing",
 }
 EXPERIMENT = {
