@@ -232,7 +232,7 @@
 | Dripping Nightgown | 8 | 0.6% |
 | Bloody Clown Suit (Rare+) | 6 | 0.5% |
 | Fur-Trimmed Cape (Rare+) | 5 | 0.4% |
-| Collector's Pin Vest | 1 | 0.1% |
+| Trainer Jacket | 1 | 0.1% |
 | Scorched Corduroy Dungarees | 1 | 0.1% |
 | Blood-Drenched Prom Gown | 1 | 0.1% |
 | Hologram Shift Dress | 1 | 0.1% |
@@ -333,7 +333,7 @@
 | Frizzed Auburn Bunches | 8 | 0.6% |
 | Wilted Flower Crown | 8 | 0.6% |
 | Soaked Black Veil Hair | 8 | 0.6% |
-| Worn Trucker Cap | 1 | 0.1% |
+| Trainer Cap | 1 | 0.1% |
 | Singed Yarn Tufts | 1 | 0.1% |
 | Blood-Matted Curls | 1 | 0.1% |
 | Hologram Bob | 1 | 0.1% |

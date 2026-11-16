@@ -507,7 +507,11 @@ SLEEPER_EXTRA = {
 }
 for _t, (_v, _p) in SLEEPER_EXTRA.items():
     ALL[_t][_v] = (0, _p)
-ALL["Held Weapon"]["Squid Tentacle Arms"] = (0, "")   # 3 only (#425, #396, #569), the top nail finish
+ALL["Held Weapon"]["Squid Tentacle Arms"] = (0, "")
+# #103 The Collector (George 2026-11-16 21:24): a creature-trainer outfit as an homage, same cut but our own colours, no logos.
+ALL["Hair"]["Trainer Cap"] = (0, "a rust-red baseball cap worn forwards with a plain cream front panel, completely blank with no logo, symbol or writing, messy grey hair sticking out at the sides")
+ALL["Clothing"]["Trainer Jacket"] = (0, "a short-sleeved open olive-green zip-up jacket with cream sleeves and a cream collar, over a plain black T-shirt, "
+    "faded blue jeans, and black fingerless gloves with olive cuffs on both hands; no logos, no patches, no lettering; he looks like a man in his mid fifties")   # 3 only (#425, #396, #569), the top nail finish
 CHAPEL = ("Chapel Altar", "the altar of a decaying candlelit chapel at night: a cracked stone altar draped with a stained lace cloth, dozens "
           "of dripping black and red candles, wilted funeral lilies, dusty pews and a tall gothic arched window of dark broken stained glass "
           "(abstract shapes only), cobwebs and drips of blood down the altar steps, sculpted as a miniature claymation diorama in matte "
@@ -575,6 +579,9 @@ def post_lock(tokens):
     _d = tokens[170 - 1][0]   # George 2026-11-16 21:18: the Scorched Doll stalks a closed toy store
     assert _d.get("1/1 Name") == "Scorched Doll"
     _d["Backdrop"] = "Toy Store After Hours"
+    _c = tokens[103 - 1][0]   # George 2026-11-16 21:24: creature-trainer homage outfit, own colours
+    assert _c.get("1/1 Name") == "The Collector"
+    _c["Hair"] = "Trainer Cap"; _c["Clothing"] = "Trainer Jacket"
     _s = tokens[SLEEPER_ID - 1][0]   # George 2026-11-16 21:19: The Sleeper Below replaces The Frontman (squid tentacle arms 21:20)
     assert _s.get("1/1 Name") == "The Frontman", _s.get("1/1 Name")
     _s.clear(); _s.update(SLEEPER)
