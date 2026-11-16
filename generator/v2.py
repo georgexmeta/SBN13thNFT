@@ -1045,10 +1045,11 @@ def lab_pass(tokens):
     LAB_GROUPS_DONE["Toxic Green skin"] = (LAB_GROUPS_DONE["Toxic Green skin"][0] + 3, 20)
 
 
-CANISTER = ("Symbiote Containment Canister", "a heavy bio-lab containment canister held by its steel carry handle: a thick glass cylinder "
-            "between riveted steel end caps with yellow-and-black hazard rings and glowing green seams, a writhing mass of glossy black "
-            "tendrils inside pressing against the cracked glass as if ready to burst out, a small black biohazard warning symbol (the three-crescent trefoil) on a yellow band "
-            "around the glass, symbol only, no words, no logos, no lettering")
+CANISTER = ("Symbiote Containment Canister", "a heavy bio-lab containment canister held by its steel carry handle: a tall cylinder of "
+            "perfectly CLEAR, clean, see-through glass (not cracked, not frosted, not tinted) between riveted steel end caps with glowing green "
+            "seams, so the writhing mass of glossy black tendrils inside is plainly visible pressing against the glass as if ready to burst out; "
+            "one THIN yellow hazard band near the top cap with a small black biohazard warning symbol (the three-crescent trefoil), "
+            "symbol only, the band never hiding the organism, no words, no logos, no lettering")
 ALL["Held Weapon"][CANISTER[0]] = (0, CANISTER[1])
 LAB_GROUPS_DONE = {}
 
