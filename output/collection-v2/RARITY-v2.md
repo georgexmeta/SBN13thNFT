@@ -32,9 +32,10 @@
 | Burlap Pig Mask | 122 | 9.4% |
 | Patchwork Goggle Mask | 117 | 9.0% |
 | Burlap Sack Hood | 116 | 8.9% |
-| Gas Mask | 93 | 7.2% |
 | Paisley Bandana | 71 | 5.5% |
+| Riveted Respirator | 60 | 4.6% |
 | Iron Muzzle | 41 | 3.2% |
+| Crude Leather Gas Mask | 33 | 2.5% |
 | Needle-Tooth Snarl | 25 | 1.9% |
 | Cracked Doll Mask | 24 | 1.8% |
 | Honeycomb Half-Mask | 24 | 1.8% |
@@ -50,8 +51,8 @@
 | Moaning Paper Mask | 13 | 1.0% |
 | Blank Bone Mask | 12 | 0.9% |
 | Nail-Studded Leather Mask (Rare+) | 11 | 0.8% |
-| Zipper Mouth Leather (Rare+) | 9 | 0.7% |
-| Stitched Skin Mask (Rare+) | 8 | 0.6% |
+| Bloody Chrome Gas Mask | 8 | 0.6% |
+| Zipper Mouth Leather (Rare+) | 8 | 0.6% |
 | Hollow Grey Face | 8 | 0.6% |
 | Manic Grin | 8 | 0.6% |
 | Split Faceplate | 8 | 0.6% |
@@ -59,13 +60,14 @@
 | Cracked Clown Paint | 8 | 0.6% |
 | Stitched Bride Face | 8 | 0.6% |
 | Waterlogged Face | 8 | 0.6% |
-| Sewn-On Pig Face (Rare+) | 5 | 0.4% |
-| Oni Demon Mask (Rare+) | 5 | 0.4% |
-| Zipper Long Nose (Rare+) | 4 | 0.3% |
-| Bone Skull Mask (Rare+) | 4 | 0.3% |
+| Stitched Skin Mask (Rare+) | 7 | 0.5% |
 | Porcelain Doll Face (Rare+) | 4 | 0.3% |
+| Oni Demon Mask (Rare+) | 4 | 0.3% |
+| Zipper Long Nose (Rare+) | 3 | 0.2% |
+| Sewn-On Pig Face (Rare+) | 3 | 0.2% |
 | Crown of Nails (Rare+) | 3 | 0.2% |
 | Fanged Killer Clown (Rare+) | 3 | 0.2% |
+| Bone Skull Mask (Rare+) | 2 | 0.2% |
 | Rusted Nail-Studded Mask | 2 | 0.2% |
 | Long Nose Latex (Rare+) | 2 | 0.2% |
 | Golden Nail-Studded Mask | 2 | 0.2% |
@@ -157,10 +159,10 @@
 
 | Value | Count | Share |
 |---|---|---|
-| None | 872 | 67.1% |
+| None | 864 | 66.5% |
 | Rusted Saw Weed Whacker | 126 | 9.7% |
+| Oxygen Tank | 82 | 6.3% |
 | Bloody Saw Weed Whacker | 76 | 5.8% |
-| Oxygen Tank | 74 | 5.7% |
 | Pitchfork | 25 | 1.9% |
 | Leathery Bat Wings | 25 | 1.9% |
 | Woodcutter Axe | 17 | 1.3% |

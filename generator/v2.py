@@ -760,6 +760,7 @@ def build():
     eyes_pass(tokens)
     bone_crown_pass(tokens)
     weeping_mask_pass(tokens)
+    gas_style_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -1029,6 +1030,37 @@ def weeping_mask_pass(tokens):
         tokens[i - 1][0]["Mask"] = "Weeping Four-Eye Mask"
         tokens[i - 1][0].pop("Head Wound", None)   # the mask covers the forehead and eyes
         tokens[i - 1][0].pop("Eyes", None)
+
+
+# Three gas-mask styles (George, 2026-11-16): Standard -> crude leather, Common/Uncommon -> riveted respirator, Rare -> bloody chrome.
+GAS = {"Crude Leather Gas Mask": "a crude, poorly made homemade gas mask of patched and badly stitched brown leather over his nose and mouth, "
+                                 "crooked mismatched buckled straps, a dented tin can stuffed with rags as a makeshift filter, eyes visible above",
+       "Riveted Respirator": "a well-built riveted rusty-steel HALF-face respirator clamped over his nose and mouth, a single round olive "
+                             "filter canister with a dull yellow face on one side, ribbed black rubber hoses looping from the mask down across "
+                             "his chest, eyes visible above",
+       "Bloody Chrome Gas Mask": "a gleaming mirror-chrome gas mask over his nose and mouth with twin chrome filter canisters and a ribbed chrome "
+                                 "hose, splattered with fresh dripping blood, eyes visible above"}
+for _v, _p in GAS.items():
+    ALL["Mask"][_v] = (0, _p)
+
+
+def gas_style_pass(tokens):
+    st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
+    pend = set().union(*[set(b["ids"]) - set(b.get("drop", [])) for b in st["batches"] if b["state"] != "done"])
+    for a, f in tokens:
+        if a["Mask"] == "Gas Mask":
+            a["Mask"] = "Crude Leather Gas Mask" if a["Tier"] == "Standard" else "Riveted Respirator"
+    low = {(k, v) for a, _ in tokens if a["Tier"] not in ("Rare", "Legendary 1/1") for k, v in a.items()}
+    keep = {"Rusted Nail-Studded Mask", "Golden Nail-Studded Mask", "Chrome Nail-Studded Mask", "Weeping Four-Eye Mask", "Nail-Studded Leather Mask"}
+    rare = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == "Rare" and a["Character"] == "Classic" and a["Mask"] not in keep
+            and a["Held Weapon"] != "Gilded Puzzle Box" and not a.get("Headpiece") and i not in pend
+            and not os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png"))
+            and any((k, v) not in low for k, v in a.items() if k not in ("Mask", "Tier", "Splatter"))]
+    for i in random.Random(6060).sample(rare, 8):
+        a = tokens[i - 1][0]
+        a["Mask"] = "Bloody Chrome Gas Mask"
+        if a["Back Weapon"] == "None":
+            a["Back Weapon"] = "Oxygen Tank"
 
 
 def grin_pass(tokens):
