@@ -1033,8 +1033,8 @@ def lab_pass(tokens):
     toxic = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == "Standard" and a["Skin"] == "Toxic Green" and i not in pend
              and a.get("Character") in ("Classic", "Woman") and not os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png"))]
     assert len(toxic) == 3, toxic
-    for i in toxic:
-        tokens[i - 1][0].update({"Held Weapon": CANISTER[0], "Tier": "Common"})
+    for i, v in zip(sorted(toxic), CANISTERS):
+        tokens[i - 1][0].update({"Held Weapon": v, "Tier": "Common"})
     skip = {"Tier", "1/1 Name", "Splatter", "Character"}
     cnt = Counter((k, v) for a, _ in tokens for k, v in a.items() if k not in skip)
     std_vals = {(k, v) for a, _ in tokens if a["Tier"] == "Standard" for k, v in a.items()}
@@ -1045,12 +1045,18 @@ def lab_pass(tokens):
     LAB_GROUPS_DONE["Toxic Green skin"] = (LAB_GROUPS_DONE["Toxic Green skin"][0] + 3, 20)
 
 
-CANISTER = ("Symbiote Containment Canister", "a heavy bio-lab containment canister held by its steel carry handle: a tall cylinder of "
-            "perfectly CLEAR, clean, see-through glass (not cracked, not frosted, not tinted) between riveted steel end caps with glowing green "
-            "seams, so the writhing mass of glossy black tendrils inside is plainly visible pressing against the glass as if ready to burst out; "
-            "one THIN yellow hazard band near the top cap with a small black biohazard warning symbol (the three-crescent trefoil), "
-            "symbol only, the band never hiding the organism, no words, no logos, no lettering")
-ALL["Held Weapon"][CANISTER[0]] = (0, CANISTER[1])
+# George 2026-11-16: each of the 3 canisters holds a different-looking organism
+CANISTER_BASE = ("a heavy bio-lab containment canister held by its steel carry handle: a tall cylinder of perfectly CLEAR, clean, see-through "
+                 "glass (not cracked, not frosted, not tinted) between riveted steel end caps with glowing green seams, so the creature inside "
+                 "is plainly visible: {}; one THIN yellow hazard band near the top cap with a small black biohazard warning symbol "
+                 "(the three-crescent trefoil), symbol only, the band never hiding the organism, no words, no logos, no lettering")
+CANISTERS = {
+    "Black Tendril Symbiote Canister": "a writhing mass of glossy jet-black tendrils pressing against the glass as if ready to burst out",
+    "Red Veined Eye Blob Canister": "a pulsing blood-red fleshy blob webbed with dark veins, several small bloodshot eyes open across it, squashed against the glass",
+    "Green Worm Swarm Canister": "a tangled cluster of glowing toxic-green parasitic worms coiling and squirming over each other in murky fluid",
+}
+for _v, _d in CANISTERS.items():
+    ALL["Held Weapon"][_v] = (0, CANISTER_BASE.format(_d))
 LAB_GROUPS_DONE = {}
 
 def robinhood_pass(tokens):
