@@ -59,12 +59,12 @@
       "value": "Mild"
     },
     {
-      "trait_type": "Off Hand",
-      "value": "Rusty Hook Hand"
-    },
-    {
       "trait_type": "Eyes",
       "value": "Yellow Sickly Eyes"
+    },
+    {
+      "trait_type": "Mutation",
+      "value": "Mutated Claw Arm"
     }
   ]
 }

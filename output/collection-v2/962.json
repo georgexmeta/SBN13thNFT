@@ -55,12 +55,12 @@
       "value": "Woman"
     },
     {
-      "trait_type": "Off Hand",
-      "value": "Bloody Hook Hand"
-    },
-    {
       "trait_type": "Eyes",
       "value": "Red Eyes, Green Pupils"
+    },
+    {
+      "trait_type": "Mutation",
+      "value": "Mutated Claw Arm"
     }
   ]
 }

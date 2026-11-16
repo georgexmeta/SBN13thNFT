@@ -65,6 +65,10 @@
     {
       "trait_type": "Eyes",
       "value": "Yellow Eyes, Green Pupils"
+    },
+    {
+      "trait_type": "Mutation",
+      "value": "Parasite Tendrils"
     }
   ]
 }

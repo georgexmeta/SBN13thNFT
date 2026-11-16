@@ -55,16 +55,16 @@
       "value": "Woman"
     },
     {
-      "trait_type": "Off Hand",
-      "value": "Rusty Hook Hand"
-    },
-    {
       "trait_type": "Neck",
       "value": "Rusted Double Chains"
     },
     {
       "trait_type": "Eyes",
       "value": "Pupil-less White Eyes"
+    },
+    {
+      "trait_type": "Mutation",
+      "value": "Mutated Claw Arm"
     }
   ]
 }

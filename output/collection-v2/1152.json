@@ -44,7 +44,7 @@
     },
     {
       "trait_type": "Backdrop",
-      "value": "Swamp Clay"
+      "value": "Specimen Tank Lab"
     },
     {
       "trait_type": "Ears",
@@ -53,10 +53,6 @@
     {
       "trait_type": "Character",
       "value": "Classic"
-    },
-    {
-      "trait_type": "Splatter",
-      "value": "Wild"
     },
     {
       "trait_type": "Off Hand",

@@ -626,7 +626,7 @@ def prompt(a, legendary_finish=None):
                  "battered leather cuff strapped to his forearm, raised menacingly beside him")
     elif a.get("Off Hand"):   # George 2026-11-15: dual wield, both fists clench a weapon, no back weapon
         hand += "; his LEFT fist tightly grips " + DUAL_PHRASE[a["Off Hand"]]
-    body = [f"wearing {phrase('Clothing', a['Clothing'])}", FLESH.get(a.get("Flesh")), phrase("Belt", a["Belt"]), NECK.get(a.get("Neck")), hand, phrase("Back Weapon", a["Back Weapon"])]
+    body = [f"wearing {phrase('Clothing', a['Clothing'])}", FLESH.get(a.get("Flesh")), phrase("Belt", a["Belt"]), NECK.get(a.get("Neck")), MUTATION.get(a.get("Mutation")), EXPERIMENT.get(a.get("Experiment")), hand, phrase("Back Weapon", a["Back Weapon"])]
     female = a.get("Character", "Classic") in FEMALE or a.get("Character") in ("The Grieving Mother", "The Prom Queen", "The Ringmistress", "Woman", "Madame Mortis")
     if female:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"]), phrase("Head Mark", a["Head Mark"]), phrase("Ears", a.get("Ears", "Natural"))]
@@ -634,7 +634,7 @@ def prompt(a, legendary_finish=None):
     if doll:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"])]
     parts = [STYLE, DOLL_BASE if doll else FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
-             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Clayson Master Ball and Golden Axe" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_PISTOLS if held in PISTOL else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held == "Death Nails" or held.endswith("Blade Nails") else FRAMING_HOOKOFF if (a.get("Off Hand") or "").endswith("Hook Hand") else FRAMING_DUAL if a.get("Off Hand") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_BOX if held == "Gilded Puzzle Box" else FRAMING_BOTH if held in TWO_HAND_HELD else FRAMING_WHACKER if held.endswith("Saw Weed Whacker") else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
+             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Clayson Master Ball and Golden Axe" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_PISTOLS if held in PISTOL else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held == "Death Nails" or held.endswith("Blade Nails") else FRAMING_MUTARM if a.get("Mutation") == "Mutated Claw Arm" else FRAMING_HOOKOFF if (a.get("Off Hand") or "").endswith("Hook Hand") else FRAMING_DUAL if a.get("Off Hand") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_BOX if held == "Gilded Puzzle Box" else FRAMING_BOTH if held in TWO_HAND_HELD else FRAMING_WHACKER if held.endswith("Saw Weed Whacker") else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
     text = ". ".join(p[0].upper() + p[1:] for p in parts if p) + "."
     if "empty black eye sockets" in (mask or ""):   # QA #232: the base "sunken eyes" line added a stray third eye
         text = text.replace("small sunken bloodshot eyes in swollen red-rimmed lids, ", "")
@@ -783,6 +783,7 @@ def build():
         assert _a["Tier"] in ("Uncommon", "Rare") and "1/1 Name" not in _a
         _a["Held Weapon"] = _v
         _a.pop("Off Hand", None)
+    lab_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -961,6 +962,59 @@ def zombie_pass(tokens):
 # 110 undrawn tokens (not in a pending batch) taken evenly from the plain clay backdrops, any non-1/1 tier.
 ROBINHOOD = ("Robinhood Green Clay", "a bright neon chartreuse-green (hex #CCFF00) pressed-clay backdrop")
 ALL["Backdrop"][ROBINHOOD[0]] = (0, ROBINHOOD[1])
+
+
+# Failed lab experiments (George 2026-11-16): original bio-lab body horror, inspired by survival-horror bio-weapons but never
+# their company, virus or creature names, logos or designs. Undrawn, not pending, ordinary Claysons only, one new trait each,
+# and only on Claysons that already show body horror: Boils, Toxic Green or Zombie skin, Flayed Muscle Face, Flayed Open Chest.
+MUTATION = {
+    "Mutated Claw Arm": "his left arm is a huge swollen mutated limb, far too big for his body, bulging with purple veins and raw "
+                        "exposed red sinew where the skin has split, ending in three long hooked bone claws, raised and flexed",
+    "Tumor Eye": "a giant bulging extra eyeball growing out of a fleshy tumour on his left shoulder, wet, veiny and bloodshot, staring at the viewer",
+    "Parasite Tendrils": "slick pale-pink parasite tendrils bursting out of torn wounds in the side of his neck, writhing in the air",
+    "Glowing Pustules": "clusters of swollen pustules glowing toxic green on his neck and forearms, some burst and oozing",
+}
+EXPERIMENT = {
+    "Surgical Staple Seam": "a long crude surgical seam closed with rusty steel staples running up his chest, showing through a rip in his clothes",
+    "IV Drip Line": "an IV drip needle taped into his forearm, its clear tube running to a small bag of glowing green fluid clipped to his shoulder",
+    "Blank Specimen Tag": "a blank yellowed paper specimen tag tied to his wrist with wire, no writing on it",
+}
+LAB = ("Specimen Tank Lab", "a ruined underground experiment lab: cracked glass specimen tanks of glowing green fluid with dark shapes "
+       "floating inside, broken pipes and dangling cables, flickering green light, sculpted as a miniature claymation diorama in matte "
+       "plasticine, softly out of focus behind him, no signs, no logos, no lettering")
+ALL["Backdrop"][LAB[0]] = (0, LAB[1])
+LAB_COUNTS = [("Backdrop", LAB[0], {"Uncommon": 8, "Rare": 4}), ("Mutation", "Mutated Claw Arm", {"Uncommon": 5}),
+              ("Mutation", "Tumor Eye", {"Uncommon": 6, "Rare": 4}), ("Mutation", "Parasite Tendrils", {"Uncommon": 6, "Rare": 4}),
+              ("Mutation", "Glowing Pustules", {"Common": 8, "Uncommon": 5}), ("Experiment", "Surgical Staple Seam", {"Common": 8, "Uncommon": 3}),
+              ("Experiment", "IV Drip Line", {"Uncommon": 3, "Rare": 3}), ("Experiment", "Blank Specimen Tag", {"Common": 6})]
+FRAMING_MUTARM = FRAMING.split("; his other hand")[0] + "; his other arm is the huge mutated clawed limb, raised, never a limp hand"
+
+
+def lab_pass(tokens):
+    st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
+    pend = set().union(*[set(b["ids"]) - (set(b.get("drop", [])) - LATE_DROP) for b in st["batches"] if b["state"] != "done"])
+    plain = {"Sage Clay", "Swamp Clay", "Slate Clay", "Teal Clay", "Rust Clay", "Bruise Clay", "Bone Clay", ROBINHOOD[0]}
+    used = set(CLOWN_PISTOLS) | {1136}
+    rng = random.Random(6669)
+    for trait, value, counts in LAB_COUNTS:
+        for tier, n in counts.items():
+            pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == tier and a.get("Character") in ("Classic", "Woman")
+                    and i not in pend and i not in used
+                    and (a.get("Head Mark") == "Boils" or a.get("Flesh") or a["Skin"] in ("Toxic Green", "Zombie Green", "Zombie Blue")
+                         or a.get("Mask") == "Flayed Muscle Face")
+                    and not os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png"))
+                    and (value != "Mutated Claw Arm" or (a.get("Off Hand") or "").endswith("Hook Hand"))
+                    and (trait != "Backdrop" or a["Backdrop"] in plain)]
+            for i in rng.sample(pool, n):
+                a = tokens[i - 1][0]
+                used.add(i)
+                if trait == "Backdrop":
+                    a["Backdrop"] = value
+                    a.pop("Splatter", None)
+                else:
+                    a[trait] = value
+                if value == "Mutated Claw Arm":
+                    a.pop("Off Hand", None)
 
 
 def robinhood_pass(tokens):

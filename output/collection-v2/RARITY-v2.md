@@ -238,11 +238,11 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Sage Clay | 166 | 12.8% |
-| Swamp Clay | 154 | 11.8% |
-| Slate Clay | 140 | 10.8% |
-| Teal Clay | 118 | 9.1% |
-| Robinhood Green Clay | 110 | 8.5% |
+| Sage Clay | 164 | 12.6% |
+| Swamp Clay | 151 | 11.6% |
+| Slate Clay | 139 | 10.7% |
+| Teal Clay | 114 | 8.8% |
+| Robinhood Green Clay | 108 | 8.3% |
 | Rust Clay | 98 | 7.5% |
 | Blood Splatter | 90 | 6.9% |
 | Bruise Clay | 88 | 6.8% |
@@ -260,6 +260,7 @@
 | Cornfield (Rare+) | 14 | 1.1% |
 | Blood Moon (Rare+) | 13 | 1.0% |
 | Jail Cell | 13 | 1.0% |
+| Specimen Tank Lab | 12 | 0.9% |
 | Terracotta Clay | 1 | 0.1% |
 | Burnt Dollhouse | 1 | 0.1% |
 | Burning Gym | 1 | 0.1% |

@@ -44,7 +44,7 @@
     },
     {
       "trait_type": "Backdrop",
-      "value": "Teal Clay"
+      "value": "Specimen Tank Lab"
     },
     {
       "trait_type": "Ears",
@@ -53,10 +53,6 @@
     {
       "trait_type": "Character",
       "value": "Classic"
-    },
-    {
-      "trait_type": "Splatter",
-      "value": "Mild"
     }
   ]
 }

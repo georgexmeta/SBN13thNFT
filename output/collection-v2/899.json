@@ -44,7 +44,7 @@
     },
     {
       "trait_type": "Backdrop",
-      "value": "Swamp Clay"
+      "value": "Specimen Tank Lab"
     },
     {
       "trait_type": "Ears",
@@ -57,10 +57,6 @@
     {
       "trait_type": "Off Hand",
       "value": "Woodcutter Axe"
-    },
-    {
-      "trait_type": "Splatter",
-      "value": "Mild"
     }
   ]
 }

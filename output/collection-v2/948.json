@@ -59,16 +59,16 @@
       "value": "Mild"
     },
     {
-      "trait_type": "Off Hand",
-      "value": "Bloody Hook Hand"
-    },
-    {
       "trait_type": "Neck",
       "value": "Rusted Double Chains"
     },
     {
       "trait_type": "Headpiece",
       "value": "Crown of Bones"
+    },
+    {
+      "trait_type": "Mutation",
+      "value": "Mutated Claw Arm"
     }
   ]
 }
