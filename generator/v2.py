@@ -469,6 +469,12 @@ OVERSEER_EXTRA = {
 for _t, (_v, _p) in OVERSEER_EXTRA.items():
     ALL[_t][_v] = (0, _p)
 ALL["Held Weapon"]["Laser Lattice"] = (0, "")
+ALL["Held Weapon"]["Diamond Blade Nails"] = (0, "")   # one only: #425, the top nail finish
+CHAPEL = ("Chapel Altar", "the altar of a decaying candlelit chapel at night: a cracked stone altar draped with a stained lace cloth, dozens "
+          "of dripping black and red candles, wilted funeral lilies, dusty pews and a tall gothic arched window of dark broken stained glass "
+          "(abstract shapes only), cobwebs and drips of blood down the altar steps, sculpted as a miniature claymation diorama in matte "
+          "plasticine, softly out of focus behind her, no crosses, no religious symbols, no lettering")
+ALL["Backdrop"][CHAPEL[0]] = (0, CHAPEL[1])
 # Shrunken Head Bandolier (George, 2026-11-15): a more exclusive trait, worn across the chest with 5 shrunken heads.
 # Belt slot, 13 unrendered Uncommon tokens (head_strap_pass; George: Uncommon), so tier counts don't move.
 ALL["Held Weapon"]["Double Molotov Cocktails"] = (0, "")
@@ -649,7 +655,8 @@ def prompt(a, legendary_finish=None):
         hand = ("she holds a stretchy pink rubber exercise resistance band pulled taut between both fists like a strangling cord, "
                 "knuckles toward the camera, a little blood on the band")
     elif held == "Death Nails" or held.endswith("Blade Nails"):
-        metal = {"Gold Blade Nails": "gleaming solid-gold", "Chrome Blade Nails": "mirror-bright chrome"}.get(held, "blackened-steel")
+        metal = {"Gold Blade Nails": "gleaming solid-gold", "Chrome Blade Nails": "mirror-bright chrome",
+                 "Diamond Blade Nails": "elegant femme-fatale, glittering diamond-encrusted"}.get(held, "blackened-steel")
         gore = "dripping with thick fresh blood" if held == "Bloody Blade Nails" else "blood on the tips"
         hand = ("BOTH of her hands are raised in front of her chest, fingers spread like claws, every fingertip on both hands ending in a "
                 f"long curved {metal} blade nail as long as a forearm, all ten blade nails fanned out toward the viewer, {gore}")
@@ -838,7 +845,9 @@ def build():
     assert _a.get("1/1 Name") == "Gristle", _a.get("1/1 Name")
     _a.clear(); _a.update(OVERSEER)
     tokens[OVERSEER_ID - 1] = (_a, None)
-    tokens[413 - 1][0]["Off Hand"] = "Circus Mallet"   # George 2026-11-16: #413 drops the shovel for a circus mallet in her left fist
+    tokens[413 - 1][0]["Off Hand"] = "Circus Mallet"
+    _a = tokens[425 - 1][0]   # George 2026-11-16: #425 Rotten Bride drops the mallet and spear for diamond blade nails, chapel altar
+    _a.update({"Held Weapon": "Diamond Blade Nails", "Backdrop": CHAPEL[0]}); _a.pop("Off Hand", None); _a.pop("Splatter", None)   # George 2026-11-16: #413 drops the shovel for a circus mallet in her left fist
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):

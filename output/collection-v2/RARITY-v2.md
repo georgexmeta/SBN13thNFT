@@ -97,7 +97,7 @@
 | Rusted Machete | 110 | 8.5% |
 | Meat Hook | 72 | 5.5% |
 | Nail Bat | 70 | 5.4% |
-| Spear | 64 | 4.9% |
+| Spear | 63 | 4.8% |
 | Rusted Butcher Cleaver | 60 | 4.6% |
 | Bloody Hunting Knife | 60 | 4.6% |
 | Rusted Hatchet | 60 | 4.6% |
@@ -152,6 +152,7 @@
 | Chrome Hunting Knife | 1 | 0.1% |
 | Sniper Rifle | 1 | 0.1% |
 | Toy Pop Gun | 1 | 0.1% |
+| Diamond Blade Nails | 1 | 0.1% |
 | Twin Chrome Pistols | 1 | 0.1% |
 | Telekinesis | 1 | 0.1% |
 | Laser Lattice | 1 | 0.1% |
@@ -262,7 +263,7 @@
 | Bone Clay | 70 | 5.4% |
 | Lakeside Cabin | 28 | 2.2% |
 | Haunted Mansion | 26 | 2.0% |
-| Radioactive Wasteland | 24 | 1.8% |
+| Radioactive Wasteland | 23 | 1.8% |
 | Graveyard | 22 | 1.7% |
 | Abandoned Laboratory | 21 | 1.6% |
 | Insane Asylum | 21 | 1.6% |
@@ -276,6 +277,7 @@
 | Specimen Tank Lab | 6 | 0.5% |
 | Terracotta Clay | 1 | 0.1% |
 | Burnt Dollhouse | 1 | 0.1% |
+| Chapel Altar | 1 | 0.1% |
 | Burning Gym | 1 | 0.1% |
 | Digital Soul Prison | 1 | 0.1% |
 | Pixel Cabin | 1 | 0.1% |

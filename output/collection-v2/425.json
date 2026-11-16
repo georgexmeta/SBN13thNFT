@@ -28,7 +28,7 @@
     },
     {
       "trait_type": "Held Weapon",
-      "value": "Spear"
+      "value": "Diamond Blade Nails"
     },
     {
       "trait_type": "Back Weapon",
@@ -44,7 +44,7 @@
     },
     {
       "trait_type": "Backdrop",
-      "value": "Radioactive Wasteland"
+      "value": "Chapel Altar"
     },
     {
       "trait_type": "Ears",
@@ -53,10 +53,6 @@
     {
       "trait_type": "Character",
       "value": "Rotten Bride"
-    },
-    {
-      "trait_type": "Off Hand",
-      "value": "Circus Mallet"
     }
   ]
 }
