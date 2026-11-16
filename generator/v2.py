@@ -1489,7 +1489,7 @@ def two_hand_pass(tokens):
     for a, f in tokens:
         b, h = a["Back Weapon"], a["Held Weapon"]
         if (b not in TWO_HAND_HELD or a["Tier"] == "Legendary 1/1" or a.get("Off Hand")
-                or h in ("Chainsaw", "Hook Hand", "Nail-Knife Glove", "Blade Nails", "Death Nails") or back[b] >= held[h]):
+                or h in ("Chainsaw", "Hook Hand", "Nail-Knife Glove", "Blade Nails", "Death Nails", "Double Molotov Cocktails") or back[b] >= held[h]):
             continue
         old = tuple(sorted((k, v) for k, v in a.items() if k != "Tier"))
         c = dict(a, **{"Held Weapon": b, "Back Weapon": "None"})

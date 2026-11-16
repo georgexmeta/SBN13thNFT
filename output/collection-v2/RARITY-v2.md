@@ -129,11 +129,10 @@
 | Clean Sickle | 7 | 0.5% |
 | Harpoon Gun | 6 | 0.5% |
 | Gold Blade Nails | 6 | 0.5% |
+| Double Molotov Cocktails | 6 | 0.5% |
 | Clean Hunting Knife | 5 | 0.4% |
-| Circus Mallet | 4 | 0.3% |
 | Nail-Knife Glove (Rare+) | 3 | 0.2% |
 | Double-Barrel Shotgun | 3 | 0.2% |
-| Double Molotov Cocktails | 3 | 0.2% |
 | Chrome Blade Nails | 3 | 0.2% |
 | Chrome Machete | 3 | 0.2% |
 | Blue-Flame Flamethrower | 3 | 0.2% |
@@ -150,6 +149,7 @@
 | Toy Pop Gun | 1 | 0.1% |
 | Twin Chrome Pistols | 1 | 0.1% |
 | Telekinesis | 1 | 0.1% |
+| Circus Mallet | 1 | 0.1% |
 | Death Nails | 1 | 0.1% |
 | Red Parasite Species Canister | 1 | 0.1% |
 | Chrome Sledge-Axe | 1 | 0.1% |
@@ -165,9 +165,9 @@
 
 | Value | Count | Share |
 |---|---|---|
-| None | 864 | 66.5% |
+| None | 862 | 66.3% |
 | Rusted Saw Weed Whacker | 126 | 9.7% |
-| Oxygen Tank | 82 | 6.3% |
+| Oxygen Tank | 81 | 6.2% |
 | Bloody Saw Weed Whacker | 76 | 5.8% |
 | Pitchfork | 25 | 1.9% |
 | Leathery Bat Wings | 25 | 1.9% |
@@ -178,11 +178,11 @@
 | Rusty Shovel | 13 | 1.0% |
 | Fuel Tanks (Rare+) | 11 | 0.8% |
 | Harpoon Gun (Rare+) | 5 | 0.4% |
+| Circus Mallet (Rare+) | 4 | 0.3% |
 | Chrome Saw Weed Whacker | 4 | 0.3% |
 | Double-Barrel Shotgun | 3 | 0.2% |
 | Chainsaw | 2 | 0.2% |
 | Sniper Rifle | 2 | 0.2% |
-| Circus Mallet (Rare+) | 1 | 0.1% |
 | Golden Retro Axe | 1 | 0.1% |
 
 ## Clothing
