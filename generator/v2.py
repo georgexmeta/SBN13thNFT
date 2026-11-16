@@ -453,13 +453,13 @@ OVERSEER_BASE = ("A clay WOMAN (an adult woman, not the man in the reference: co
                  "with an oversized bobble head, a thin neck and narrow straight shoulders, head turned three-quarters toward the viewer's right")
 FRAMING_LASER = FRAMING.split(" His right hand grips")[0] + " Both hands are raised and fully visible, fingers spread, projecting the red laser grid; nothing held in her hands"
 OVERSEER_EXTRA = {
-    "Skin": ("Red Hologram", "her whole figure is a translucent glowing RED hologram sculpted from see-through red resin-like clay, lit from "
+    "Skin": ("Red Hologram", "her whole fully clothed figure glows a deep red like a hologram projection, sculpted from glossy red clay lit from "
              "within, thin horizontal scan lines across her and small glitching pixel offsets at her edges as if the projection flickers"),
     "Hair": ("Hologram Bob", "a sharp short chin-length bob of glowing red light, perfectly straight, edges breaking into tiny pixels"),
     "Head Mark": ("Pixel Tears", "square pixel-block tears of red light running down her cheeks like corrupted data"),
     "Mask": ("Cold Digital Stare", "no mask: the face of a grown woman in her thirties, calm, expressionless and cold, with glowing "
              "white eyes with no pupils, a faint thin smile, perfectly smooth hologram skin"),
-    "Clothing": ("Hologram Shift Dress", "a simple sleek high-collared shift dress made of red light, flickering with scan lines"),
+    "Clothing": ("Hologram Shift Dress", "a modest long-sleeved, high-collared, knee-length shift dress made of red light, flickering with scan lines"),
     "Backdrop": ("Digital Soul Prison", "a vast dark digital data centre that is also a prison of trapped souls: endless aisles of tall black "
                  "server racks blinking with red lights and glowing red circuit grids running along the floor and walls, pale ghostly souls "
                  "trapped inside glowing red wireframe data cages and pressed against the glass of the server screens, "
