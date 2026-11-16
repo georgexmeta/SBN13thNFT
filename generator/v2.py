@@ -1223,13 +1223,13 @@ ALL["Backdrop"][ROBINHOOD[0]] = (0, ROBINHOOD[1])
 MUTATION = {
     "Mutated Claw Arm": "his left arm is a huge swollen mutated limb, far too big for his body, bulging with purple veins and raw "
                         "exposed red sinew where the skin has split, ending in three long hooked bone claws, raised and flexed",
-    "Tumor Eye": "a giant bulging extra eyeball growing out of a fleshy tumour on his left shoulder, wet, veiny and bloodshot, staring at the viewer",
-    "Parasite Tendrils": "slick pale-pink parasite tendrils bursting out of torn wounds in the side of his neck, writhing in the air",
+    "Tumor Eye": "a HUGE bulging extra eyeball, nearly as big as his fist, growing out of a swollen fleshy tumour on his left shoulder, wet, veiny and bloodshot, staring at the viewer",
+    "Parasite Tendrils": "a big writhing mass of thick slick pale-pink and purple parasite tendrils, some as thick as fingers with tiny hooked tips, bursting out of torn bloody wounds in his neck and shoulder and coiling up into the air around his head, clearly visible and eye-catching",
     "Glowing Pustules": "clusters of swollen pustules glowing toxic green on his neck and forearms, some burst and oozing",
 }
 EXPERIMENT = {
     "Surgical Staple Seam": "a long crude surgical seam closed with rusty steel staples running up his chest, showing through a rip in his clothes",
-    "IV Drip Line": "an IV drip needle taped into his forearm, its clear tube running to a small bag of glowing green fluid clipped to his shoulder",
+    "IV Drip Line": "a small bag of glowing green fluid clipped to the front of his RIGHT shoulder, its clear tube running down to an IV drip needle taped into his right forearm",
     "Blank Specimen Tag": "a blank yellowed paper specimen tag tied to his wrist with wire, no writing on it",
 }
 LAB = ("Specimen Tank Lab", "a ruined underground experiment lab: cracked glass specimen tanks of glowing green fluid with dark shapes "
