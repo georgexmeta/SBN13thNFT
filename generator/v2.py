@@ -689,7 +689,7 @@ DUAL_PHRASE.update({   # bladed-glove men (George 2026-11-15) wield their back w
     "Double-Barrel Shotgun": "a sawn-off rusty double-barrel shotgun with a cracked wooden stock, held one-handed, barrels pointing up and out"})
 DUAL_PHRASE["Chrome Scythe"] = ("a huge scythe by its long dark wooden snath, held upright beside him with a gleaming mirror-bright CHROME "
                                 "curved blade arching above his head, a little blood on its edge")   # George 2026-11-16: #101, the only chrome scythe
-DUAL_PHRASE["Bloody Scythe"] = ("a huge scythe by the lower end of its long dark wooden snath, the snath slanting up diagonally behind her shoulder and "
+DUAL_PHRASE["Bloody Scythe"] = ("a huge scythe by its long dark wooden snath, the snath RESTING UP ON TOP OF her left shoulder (never tucked under her armpit) and "
                                 "the long curved blade arching high above her head, the whole blade soaked dark blood-red with fresh blood dripping "
                                 "from its edge, carried in her hand, not strapped to her back")   # George 2026-11-16 22:02: women hold their scythes like #853
 ALL["Back Weapon"]["Bloody Scythe"] = (0, "a huge scythe slung on her back, its long curved blade soaked dark blood-red and dripping, arching above her head")
