@@ -461,6 +461,20 @@ for _fin, _desc in SAW_FINISH.items():
         "its cutting head rising above and behind his shoulder", f"its cutting head, {_desc} round toothed circular saw blade "
         "under a small guard instead of trimmer line, rising above and behind his shoulder"))
 TOY_GUN = [418, 429, 954, 1164, 1253]
+# Ids dropped from pending batches after their traits were final (re-queued redos). The trait passes still treat them as pending,
+# so a later drop never reshuffles which undrawn Claysons the earlier passes picked. Add every new drop here.
+LATE_DROP = set(json.load(open(os.path.join(ROOT, "generator", "late_drop.json"))))
+# Clown pistols (George 2026-11-16): the pop-gun clowns dual wield real pistols instead, one in each fist, with a rarity scale.
+# 418 (porcelain doll, not a clown) keeps the lone toy pop gun; 1014 and 1088 (Smeared Greasepaint) join so there are 6 pistol clowns.
+CLOWN_PISTOLS = {1164: "Twin Six-Shooter Revolvers", 1014: "Twin Six-Shooter Revolvers", 1088: "Twin Six-Shooter Revolvers",
+                 954: "Twin Gold Pistols", 1253: "Twin Gold Pistols", 429: "Twin Chrome Pistols"}
+PISTOL = {"Twin Six-Shooter Revolvers": "an old blued-steel six-shooter revolver with a wooden grip, its six-chambered cylinder clearly visible",
+          "Twin Gold Pistols": "a gleaming solid-gold semi-automatic pistol with blood flecks on the slide",
+          "Twin Chrome Pistols": "a mirror-polished chrome semi-automatic pistol with blood flecks on the slide"}
+for _v in PISTOL:
+    ALL["Held Weapon"][_v] = (0, "")
+FRAMING_PISTOLS = FRAMING.split(" His right hand grips")[0] + (" Both fists are raised in front of the chest, each gripping one pistol, "
+                                                              "barrels pointing up and out to either side, knuckles toward the camera; neither hand hangs empty")
 # QA 2026-11-15: these finished "Ice Pick" renders show a pickaxe, so the metadata says what the image shows.
 ALL["Held Weapon"]["Rusty Pickaxe"] = (0, "a small rusty pickaxe")
 # George 2026-11-15: 13 Uncommon Claysons wield a weed whacker fitted with a golden saw blade, both hands
@@ -572,6 +586,9 @@ def prompt(a, legendary_finish=None):
                 "motor housing with a pistol trigger grip held in his right fist, a black D-shaped loop handle clamped halfway along the "
                 "pole held in his left fist, and at the far end of the pole a small scuffed yellow guard over a toothed solid-gold saw disc "
                 "flecked with blood. It is NOT a hand-held circular saw or angle grinder; no brand name, no lettering")
+    elif held in PISTOL:   # George 2026-11-16: pistol clowns dual wield a matching pair
+        hand = (f"he is dual wielding a matching PAIR of pistols, one in EACH fist, two identical guns: each is {PISTOL[held]}; "
+                "no toy gun, no flag, no lettering or engraving")
     elif held == "Double Molotov Cocktails":   # George 2026-11-15: one lit Molotov in each hand, 6 Rare tokens
         hand = ("he holds a lit Molotov cocktail in EACH hand: two old glass bottles of sloshing fuel with burning rag wicks, "
                 "small orange flames licking from both, one raised in each fist")
@@ -617,7 +634,7 @@ def prompt(a, legendary_finish=None):
     if doll:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"])]
     parts = [STYLE, DOLL_BASE if doll else FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
-             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Clayson Master Ball and Golden Axe" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held == "Death Nails" or held.endswith("Blade Nails") else FRAMING_HOOKOFF if (a.get("Off Hand") or "").endswith("Hook Hand") else FRAMING_DUAL if a.get("Off Hand") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_BOX if held == "Gilded Puzzle Box" else FRAMING_BOTH if held in TWO_HAND_HELD else FRAMING_WHACKER if held.endswith("Saw Weed Whacker") else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
+             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Clayson Master Ball and Golden Axe" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_PISTOLS if held in PISTOL else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held == "Death Nails" or held.endswith("Blade Nails") else FRAMING_HOOKOFF if (a.get("Off Hand") or "").endswith("Hook Hand") else FRAMING_DUAL if a.get("Off Hand") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_BOX if held == "Gilded Puzzle Box" else FRAMING_BOTH if held in TWO_HAND_HELD else FRAMING_WHACKER if held.endswith("Saw Weed Whacker") else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
     text = ". ".join(p[0].upper() + p[1:] for p in parts if p) + "."
     if "empty black eye sockets" in (mask or ""):   # QA #232: the base "sunken eyes" line added a stray third eye
         text = text.replace("small sunken bloodshot eyes in swollen red-rimmed lids, ", "")
@@ -761,6 +778,11 @@ def build():
     bone_crown_pass(tokens)
     weeping_mask_pass(tokens)
     gas_style_pass(tokens)
+    for _i, _v in CLOWN_PISTOLS.items():   # last, so no later pass gives them a hook hand or off-hand weapon
+        _a = tokens[_i - 1][0]
+        assert _a["Tier"] in ("Uncommon", "Rare") and "1/1 Name" not in _a
+        _a["Held Weapon"] = _v
+        _a.pop("Off Hand", None)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -881,7 +903,7 @@ NECK_COUNTS = {"Standard": [("Rusted", 30), ("Silver", 15), ("Gold", 5), ("Chrom
 def neck_pass(tokens):
     """Only tokens that are unrendered and not waiting in a batch (no redo cost); never 1/1s, exclusive characters or bandoliers."""
     st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
-    pend = set().union(*[set(b["ids"]) - set(b.get("drop", [])) for b in st["batches"] if b["state"] != "done"])
+    pend = set().union(*[set(b["ids"]) - (set(b.get("drop", [])) - LATE_DROP) for b in st["batches"] if b["state"] != "done"])
     rng = random.Random(2020)
     for tier, deal in NECK_COUNTS.items():
         pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == tier and a["Character"] in ("Classic", "Woman") and i not in pend
@@ -901,7 +923,7 @@ ALL["Backdrop"][FREEZER[0]] = (0, FREEZER[1])
 
 def freezer_pass(tokens):
     st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
-    pend = set().union(*[set(b["ids"]) - set(b.get("drop", [])) for b in st["batches"] if b["state"] != "done"])
+    pend = set().union(*[set(b["ids"]) - (set(b.get("drop", [])) - LATE_DROP) for b in st["batches"] if b["state"] != "done"])
     plain = {"Sage Clay", "Swamp Clay", "Slate Clay", "Teal Clay", "Rust Clay", "Bruise Clay", "Bone Clay"}
     rng = random.Random(2031)
     for tier, n in (("Uncommon", 17), ("Rare", 3)):
@@ -922,7 +944,7 @@ ZOMBIE_COUNTS = {"Uncommon": [("Zombie Green", 10), ("Zombie Blue", 7)], "Rare":
 
 def zombie_pass(tokens):
     st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
-    pend = set().union(*[set(b["ids"]) - set(b.get("drop", [])) for b in st["batches"] if b["state"] != "done"])
+    pend = set().union(*[set(b["ids"]) - (set(b.get("drop", [])) - LATE_DROP) for b in st["batches"] if b["state"] != "done"])
     rng = random.Random(2253)
     for tier, deal in ZOMBIE_COUNTS.items():
         pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == tier and a["Character"] in ("Classic", "Woman") and i not in pend
@@ -943,7 +965,7 @@ ALL["Backdrop"][ROBINHOOD[0]] = (0, ROBINHOOD[1])
 
 def robinhood_pass(tokens):
     st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
-    pend = set().union(*[set(b["ids"]) - set(b.get("drop", [])) for b in st["batches"] if b["state"] != "done"])
+    pend = set().union(*[set(b["ids"]) - (set(b.get("drop", [])) - LATE_DROP) for b in st["batches"] if b["state"] != "done"])
     plain = {"Sage Clay", "Swamp Clay", "Slate Clay", "Teal Clay", "Rust Clay", "Bruise Clay", "Bone Clay"}
     pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Backdrop"] in plain and a["Tier"] != "Legendary 1/1" and i not in pend
             and not os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png"))]
@@ -967,7 +989,7 @@ for _f, _d in (("Rusted", "bent rusty iron"), ("Golden", "gleaming solid-gold"),
 def order_pass(tokens):
     """Runs after common_pass (George: spread over Uncommons and Rares), so the tier labels are final and stay unchanged."""
     st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
-    pend = set().union(*[set(b["ids"]) - set(b.get("drop", [])) for b in st["batches"] if b["state"] != "done"])
+    pend = set().union(*[set(b["ids"]) - (set(b.get("drop", [])) - LATE_DROP) for b in st["batches"] if b["state"] != "done"])
     BOX = 1136
     deal = {"Common": [("Clothing", "Ritual Leather Robe", 3), ("Mask", "Rusted Nail-Studded Mask", 2), ("Flesh", "Flayed Open Chest", 3)],
             "Uncommon": [("Clothing", "Ritual Leather Robe", 3), ("Mask", "Golden Nail-Studded Mask", 2), ("Flesh", "Flayed Open Chest", 3)],
@@ -1013,7 +1035,7 @@ def weeping_mask_pass(tokens):
     """George 2026-11-16 reference (our own take): 20 undrawn tokens get the Weeping Four-Eye Mask: every undrawn bare-faced Uncommon
     that is free (plain bloodshot eyes, no special mask), the rest on Rares that keep another Rare-only trait besides the mask."""
     st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
-    pend = set().union(*[set(b["ids"]) - set(b.get("drop", [])) for b in st["batches"] if b["state"] != "done"])
+    pend = set().union(*[set(b["ids"]) - (set(b.get("drop", [])) - LATE_DROP) for b in st["batches"] if b["state"] != "done"])
     undrawn = lambda i: i not in pend and not os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png"))
     unc = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == "Uncommon" and a["Character"] in ("Classic", "Woman")
            and a["Mask"] in EYES_SHOW and a["Mask"] not in ("Black-Lipped Bloody Grin", "Gas Mask", "Smeared Greasepaint", *ICON_BROWN)
@@ -1046,7 +1068,7 @@ for _v, _p in GAS.items():
 
 def gas_style_pass(tokens):
     st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
-    pend = set().union(*[set(b["ids"]) - set(b.get("drop", [])) for b in st["batches"] if b["state"] != "done"])
+    pend = set().union(*[set(b["ids"]) - (set(b.get("drop", [])) - LATE_DROP) for b in st["batches"] if b["state"] != "done"])
     for a, f in tokens:
         if a["Mask"] == "Gas Mask":
             a["Mask"] = "Crude Leather Gas Mask" if a["Tier"] == "Standard" else "Riveted Respirator"
@@ -1066,7 +1088,7 @@ def gas_style_pass(tokens):
 def grin_pass(tokens):
     """Women only: 20 undrawn bare-faced women get the black-lipped bloody grin (Common 10, Uncommon 4, Standard 6)."""
     st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
-    pend = set().union(*[set(b["ids"]) - set(b.get("drop", [])) for b in st["batches"] if b["state"] != "done"])
+    pend = set().union(*[set(b["ids"]) - (set(b.get("drop", [])) - LATE_DROP) for b in st["batches"] if b["state"] != "done"])
     rng = random.Random(4949)
     for tier, n in (("Common", 10), ("Uncommon", 4), ("Standard", 6)):
         pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == tier and a["Character"] == "Woman" and a["Mask"] == "Bare Face"
@@ -1078,7 +1100,7 @@ def grin_pass(tokens):
 def bone_crown_pass(tokens):
     """Trait "Headpiece": Crown of Bones on 12 Uncommon + 8 Rare undrawn tokens; never Cone Skulls, hats, hoods or head-covering masks."""
     st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
-    pend = set().union(*[set(b["ids"]) - set(b.get("drop", [])) for b in st["batches"] if b["state"] != "done"])
+    pend = set().union(*[set(b["ids"]) - (set(b.get("drop", [])) - LATE_DROP) for b in st["batches"] if b["state"] != "done"])
     covered = {"Burlap Sack Hood", "Burlap Pig Mask", "Buckled Harness Hood", "Bloody Bandage Wrap", "Moaning Paper Mask", "Zipper Long Nose",
                "Crown of Nails"}
     rng = random.Random(1313)
@@ -1092,7 +1114,7 @@ def bone_crown_pass(tokens):
 
 def eyes_pass(tokens):
     st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
-    pend = set().union(*[set(b["ids"]) - set(b.get("drop", [])) for b in st["batches"] if b["state"] != "done"])
+    pend = set().union(*[set(b["ids"]) - (set(b.get("drop", [])) - LATE_DROP) for b in st["batches"] if b["state"] != "done"])
     show = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] != "Legendary 1/1" and a["Mask"] in EYES_SHOW
             and a["Character"] in ("Classic", "Woman")]
     fresh = [i for i in show if i not in pend and not os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png"))]

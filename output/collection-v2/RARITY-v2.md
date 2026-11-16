@@ -92,13 +92,13 @@
 |---|---|---|
 | Chainsaw | 209 | 16.1% |
 | Rusted Machete | 110 | 8.5% |
-| Meat Hook | 75 | 5.8% |
+| Meat Hook | 74 | 5.7% |
 | Nail Bat | 70 | 5.4% |
 | Spear | 64 | 4.9% |
 | Rusted Butcher Cleaver | 62 | 4.8% |
 | Rusted Hatchet | 62 | 4.8% |
 | Bloody Hunting Knife | 61 | 4.7% |
-| Rusted Sickle | 55 | 4.2% |
+| Rusted Sickle | 54 | 4.2% |
 | Fish Hook | 53 | 4.1% |
 | Clean Saw Weed Whacker | 33 | 2.5% |
 | Ice Pick | 33 | 2.5% |
@@ -130,7 +130,6 @@
 | Harpoon Gun | 6 | 0.5% |
 | Gold Blade Nails | 6 | 0.5% |
 | Clean Hunting Knife | 5 | 0.4% |
-| Toy Pop Gun | 5 | 0.4% |
 | Circus Mallet | 4 | 0.3% |
 | Nail-Knife Glove (Rare+) | 3 | 0.2% |
 | Double-Barrel Shotgun | 3 | 0.2% |
@@ -138,13 +137,17 @@
 | Chrome Blade Nails | 3 | 0.2% |
 | Chrome Machete | 3 | 0.2% |
 | Blue-Flame Flamethrower | 3 | 0.2% |
+| Twin Six-Shooter Revolvers | 3 | 0.2% |
 | Gold Claw Glove | 2 | 0.2% |
 | Gold Hatchet | 2 | 0.2% |
+| Twin Gold Pistols | 2 | 0.2% |
 | Clayson Master Ball and Golden Axe | 1 | 0.1% |
 | Scythe | 1 | 0.1% |
 | Bloody Kitchen Knife | 1 | 0.1% |
 | Chrome Hunting Knife | 1 | 0.1% |
 | Sniper Rifle | 1 | 0.1% |
+| Toy Pop Gun | 1 | 0.1% |
+| Twin Chrome Pistols | 1 | 0.1% |
 | Telekinesis | 1 | 0.1% |
 | Death Nails | 1 | 0.1% |
 | Chrome Sledge-Axe | 1 | 0.1% |

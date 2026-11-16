@@ -28,7 +28,7 @@
     },
     {
       "trait_type": "Held Weapon",
-      "value": "Toy Pop Gun"
+      "value": "Twin Gold Pistols"
     },
     {
       "trait_type": "Back Weapon",
@@ -53,10 +53,6 @@
     {
       "trait_type": "Character",
       "value": "Classic"
-    },
-    {
-      "trait_type": "Off Hand",
-      "value": "Sledgehammer"
     }
   ]
 }
