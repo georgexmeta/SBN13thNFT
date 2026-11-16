@@ -1371,8 +1371,9 @@ def robinhood_pass(tokens):
 # Masks 5, Flayed Open Chest 8 (trait "Flesh"), and the ONE Gilded Puzzle Box in the collection, held in both hands.
 ALL["Clothing"]["Ritual Leather Robe"] = (0, "a long tight black leather ritual robe with a high collar, buckled straps, laced seams and small "
                                           "steel hooks hanging from chains at the waist")
-FLESH = {"Flayed Open Chest": "the skin of his chest ripped open down the middle and pulled wide apart by small steel hooks on thin chains, "
-                              "showing raw glossy red exposed muscle fibres and sinew underneath, the torn clothes peeled back around it"}
+FLESH = {"Flayed Open Chest": "his jacket or shirt hangs wide open with NO undershirt or sweater, baring his whole chest: the skin of his chest is "
+                              "ripped open down the middle from collarbone to belly and pulled wide apart by small steel hooks on thin chains, a big "
+                              "clearly visible wound showing raw glossy red exposed muscle fibres, sinew and a glimpse of white ribs, the focal point of the figure"}
 ALL["Held Weapon"]["Gilded Puzzle Box"] = (0, "")
 for _f, _d in (("Rusted", "bent rusty iron"), ("Golden", "gleaming solid-gold"), ("Chrome", "mirror-bright chrome")):   # George 2026-11-16
     ALL["Mask"][f"{_f} Nail-Studded Mask"] = (0, f"a cracked black leather mask with {_d} nails and screws driven through it at random "
