@@ -750,8 +750,8 @@ def build():
         a["Held Weapon"] = "Chrome Blade Nails" if a["Tier"] == "Rare" else "Gold Blade Nails" if i in _gold else "Bloody Blade Nails"
     for _i in WEEDWACKER:
         tokens[_i - 1][0]["Held Weapon"] = "Golden Saw Weed Whacker"
-    order_pass(tokens)
     common_pass(tokens)
+    order_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -943,7 +943,7 @@ def robinhood_pass(tokens):
 
 
 # Ritual order traits (George, 2026-11-16): Rare, inspired by the classic leather-clad occult horror order, all original, never the
-# film, box or character names. Spread over different undrawn Rare Claysons: Ritual Leather Robe 8, extra Nail-Studded Leather
+# film, box or character names. Spread over different undrawn Uncommon and Rare Claysons: Ritual Leather Robe 8, extra Nail-Studded Leather
 # Masks 5, Flayed Open Chest 8 (trait "Flesh"), and the ONE Gilded Puzzle Box in the collection, held in both hands.
 ALL["Clothing"]["Ritual Leather Robe"] = (0, "a long tight black leather ritual robe with a high collar, buckled straps, laced seams and small "
                                           "steel hooks hanging from chains at the waist")
@@ -953,18 +953,23 @@ ALL["Held Weapon"]["Gilded Puzzle Box"] = (0, "")
 
 
 def order_pass(tokens):
+    """Runs after common_pass (George: spread over Uncommons and Rares), so the tier labels are final and stay unchanged."""
     st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
     pend = set().union(*[set(b["ids"]) - set(b.get("drop", [])) for b in st["batches"] if b["state"] != "done"])
-    pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == "Rare" and a["Character"] == "Classic" and i not in pend
-            and not a["Skin"].startswith("Zombie") and not os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png"))]
-    picks = iter(random.Random(1987).sample(pool, 22))
-    for _ in range(8):
-        tokens[next(picks) - 1][0]["Clothing"] = "Ritual Leather Robe"
-    for _ in range(5):
-        tokens[next(picks) - 1][0]["Mask"] = "Nail-Studded Leather Mask"
-    for _ in range(8):
-        tokens[next(picks) - 1][0]["Flesh"] = "Flayed Open Chest"
-    box = tokens[next(picks) - 1][0]
+    BOX = 1136
+    deal = {"Uncommon": [("Clothing", "Ritual Leather Robe", 4), ("Mask", "Nail-Studded Leather Mask", 3), ("Flesh", "Flayed Open Chest", 4)],
+            "Rare": [("Clothing", "Ritual Leather Robe", 4), ("Mask", "Nail-Studded Leather Mask", 2), ("Flesh", "Flayed Open Chest", 4)]}
+    rng = random.Random(1987)
+    for tier, items in deal.items():
+        pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == tier and a["Character"] in ("Classic", "Woman") and i not in pend
+                and i != BOX and not a["Skin"].startswith("Zombie") and a["Held Weapon"] != "Poison Syringe"
+                and not os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png"))]
+        picks = iter(rng.sample(pool, sum(n for *_, n in items)))
+        for trait, val, n in items:
+            for _ in range(n):
+                tokens[next(picks) - 1][0][trait] = val
+    box = tokens[BOX - 1][0]
+    assert box["Tier"] == "Rare"
     box.update({"Held Weapon": "Gilded Puzzle Box", "Back Weapon": "None"}); box.pop("Off Hand", None)
 
 

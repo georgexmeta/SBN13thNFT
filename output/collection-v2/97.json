@@ -36,7 +36,7 @@
     },
     {
       "trait_type": "Clothing",
-      "value": "Fur-Trimmed Cape"
+      "value": "Ritual Leather Robe"
     },
     {
       "trait_type": "Belt",
@@ -65,10 +65,6 @@
     {
       "trait_type": "Neck",
       "value": "Gold Double Chains with Skull Pendant"
-    },
-    {
-      "trait_type": "Flesh",
-      "value": "Flayed Open Chest"
     }
   ]
 }
