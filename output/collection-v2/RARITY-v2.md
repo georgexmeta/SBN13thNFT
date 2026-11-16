@@ -43,14 +43,12 @@
 | Buckled Harness Hood | 20 | 1.5% |
 | Smeared Greasepaint | 18 | 1.4% |
 | Flayed Muscle Face | 16 | 1.2% |
+| Nail-Studded Leather Mask (Rare+) | 15 | 1.2% |
 | Stitched Skin Face | 15 | 1.2% |
 | Stitched Toy Face | 14 | 1.1% |
 | Moaning Paper Mask | 13 | 1.0% |
 | Zipper Mouth Leather (Rare+) | 12 | 0.9% |
 | Blank Bone Mask | 12 | 0.9% |
-| Nail-Studded Leather Mask (Rare+) | 11 | 0.8% |
-| Bone Skull Mask (Rare+) | 8 | 0.6% |
-| Stitched Skin Mask (Rare+) | 8 | 0.6% |
 | Hollow Grey Face | 8 | 0.6% |
 | Manic Grin | 8 | 0.6% |
 | Split Faceplate | 8 | 0.6% |
@@ -58,11 +56,13 @@
 | Cracked Clown Paint | 8 | 0.6% |
 | Stitched Bride Face | 8 | 0.6% |
 | Waterlogged Face | 8 | 0.6% |
-| Zipper Long Nose (Rare+) | 6 | 0.5% |
-| Sewn-On Pig Face (Rare+) | 6 | 0.5% |
+| Bone Skull Mask (Rare+) | 7 | 0.5% |
+| Stitched Skin Mask (Rare+) | 7 | 0.5% |
 | Porcelain Doll Face (Rare+) | 6 | 0.5% |
 | Oni Demon Mask (Rare+) | 6 | 0.5% |
 | Fanged Killer Clown (Rare+) | 5 | 0.4% |
+| Zipper Long Nose (Rare+) | 5 | 0.4% |
+| Sewn-On Pig Face (Rare+) | 5 | 0.4% |
 | Long Nose Latex (Rare+) | 3 | 0.2% |
 | Crown of Nails (Rare+) | 3 | 0.2% |
 | Hockey Half-Mask (solid polished gold) | 1 | 0.1% |
@@ -106,8 +106,8 @@
 | Bloody Butcher Cleaver | 17 | 1.3% |
 | Hook Hand (Rare+) | 15 | 1.2% |
 | Golden Saw Weed Whacker | 13 | 1.0% |
-| Golden Machete (Rare+) | 12 | 0.9% |
 | Rusty Pickaxe | 12 | 0.9% |
+| Golden Machete (Rare+) | 11 | 0.8% |
 | Chrome Saw Weed Whacker | 11 | 0.8% |
 | Bloody Brick | 11 | 0.8% |
 | Bloody Sickle | 11 | 0.8% |
@@ -146,6 +146,7 @@
 | Chrome Hatchet | 1 | 0.1% |
 | Gold Sickle | 1 | 0.1% |
 | Gold Butcher Cleaver | 1 | 0.1% |
+| Gilded Puzzle Box | 1 | 0.1% |
 
 ## Back Weapon
 
@@ -175,7 +176,7 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Patched Work Jacket | 177 | 13.6% |
+| Patched Work Jacket | 176 | 13.5% |
 | Plaid Flannel | 131 | 10.1% |
 | Mechanic Coveralls | 96 | 7.4% |
 | Orange Prison Jumpsuit | 96 | 7.4% |
@@ -188,13 +189,14 @@
 | Trench Coat | 38 | 2.9% |
 | Black Jumpsuit | 38 | 2.9% |
 | Tan Blood-Splatter Jumpsuit | 34 | 2.6% |
-| Grey Jumpsuit | 33 | 2.5% |
+| Grey Jumpsuit | 32 | 2.5% |
 | Navy Jumpsuit | 30 | 2.3% |
 | Rust-Red Boiler Suit | 25 | 1.9% |
 | Ragged Plum Greatcoat | 25 | 1.9% |
 | Carnival Barker Vest | 18 | 1.4% |
 | Bloody Chef Smock | 17 | 1.3% |
-| Tattered Undertaker Suit (Rare+) | 12 | 0.9% |
+| Ritual Leather Robe | 8 | 0.6% |
+| Tattered Undertaker Suit (Rare+) | 8 | 0.6% |
 | Tattered Nun Habit | 8 | 0.6% |
 | Gingham Farm Dress | 8 | 0.6% |
 | Pastel Tracksuit | 8 | 0.6% |
@@ -202,8 +204,8 @@
 | Rotten Ruffle Pierrot Dress | 8 | 0.6% |
 | Rotting Wedding Gown | 8 | 0.6% |
 | Dripping Nightgown | 8 | 0.6% |
-| Bloody Clown Suit (Rare+) | 6 | 0.5% |
-| Fur-Trimmed Cape (Rare+) | 6 | 0.5% |
+| Bloody Clown Suit (Rare+) | 5 | 0.4% |
+| Fur-Trimmed Cape (Rare+) | 5 | 0.4% |
 | Collector's Pin Vest | 1 | 0.1% |
 | Scorched Corduroy Dungarees | 1 | 0.1% |
 | Blood-Drenched Prom Gown | 1 | 0.1% |

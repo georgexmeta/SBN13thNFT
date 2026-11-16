@@ -394,6 +394,8 @@ FRAMING_TWO_HANDS = FRAMING.split(" His right hand grips")[0] + (" Both hands ho
 FRAMING_WHACKER = FRAMING.split(" His right hand grips")[0] + (" Both hands hold the weed whacker, one fist on the rear trigger grip and "
                                                              "the other on the loop handle; the shaft angled up across his body so the saw blade is raised "
                                                              "beside his head, the whole tool inside the frame; neither hand hangs empty")
+FRAMING_BOX = FRAMING.split(" His right hand grips")[0] + (" Both hands hold the small puzzle box in front of his chest, fingers on its "
+                                                         "faces, the whole box clearly visible and sharp; nothing else in his hands and nothing on his back")
 FRAMING_DUAL = FRAMING.split(" His right hand grips")[0] + (" Both hands are full and both are tight clenched fists, knuckles toward the camera: "
                                                           "the right fist grips the held weapon, the left fist grips the second weapon by its handle as described")
 FRAMING_BOTH = FRAMING.split(" His right hand grips")[0] + (" Both hands grip the weapon, knuckles toward the camera, the whole weapon inside the frame; "
@@ -550,6 +552,10 @@ def prompt(a, legendary_finish=None):
     elif held in ("Telekinesis", "Psychic Force"):
         hand = ("she holds no weapon: both bloody hands are raised and spread with clawed fingers, unleashing telekinetic power, "
                 "chairs, glass shards and streamers levitating around her and a rippling shockwave bending the air")
+    elif held == "Gilded Puzzle Box":   # George 2026-11-16: the only one in the collection, an original occult puzzle-box homage
+        hand = ("he holds a small ornate occult puzzle box up in front of his chest in BOTH hands, cradled reverently: a perfect cube of "
+                "glossy black lacquer inlaid with intricate polished-gold filigree of our own design (thorny vines, interlocking rings "
+                "and tiny skull knots), one face slightly twisted open along a seam leaking a thin cold blue glow; no letters or symbols")
     elif held in TWO_HAND_HELD:   # George 2026-11-15: a back weapon rarer than the held one is wielded in both hands instead
         hand = f"he wields {TWO_HAND_HELD[held]} firmly in BOTH fists, one hand high and one low on it, held across his body and angled up and out"
     elif held.endswith(" Saw Weed Whacker") and held != "Golden Saw Weed Whacker":   # whacker rarer than the held weapon: both hands
@@ -601,7 +607,7 @@ def prompt(a, legendary_finish=None):
                  "battered leather cuff strapped to his forearm, raised menacingly beside him")
     elif a.get("Off Hand"):   # George 2026-11-15: dual wield, both fists clench a weapon, no back weapon
         hand += "; his LEFT fist tightly grips " + DUAL_PHRASE[a["Off Hand"]]
-    body = [f"wearing {phrase('Clothing', a['Clothing'])}", phrase("Belt", a["Belt"]), NECK.get(a.get("Neck")), hand, phrase("Back Weapon", a["Back Weapon"])]
+    body = [f"wearing {phrase('Clothing', a['Clothing'])}", FLESH.get(a.get("Flesh")), phrase("Belt", a["Belt"]), NECK.get(a.get("Neck")), hand, phrase("Back Weapon", a["Back Weapon"])]
     female = a.get("Character", "Classic") in FEMALE or a.get("Character") in ("The Grieving Mother", "The Prom Queen", "The Ringmistress", "Woman", "Madame Mortis")
     if female:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"]), phrase("Head Mark", a["Head Mark"]), phrase("Ears", a.get("Ears", "Natural"))]
@@ -609,7 +615,7 @@ def prompt(a, legendary_finish=None):
     if doll:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"])]
     parts = [STYLE, DOLL_BASE if doll else FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
-             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Clayson Master Ball and Golden Axe" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held == "Death Nails" or held.endswith("Blade Nails") else FRAMING_HOOKOFF if (a.get("Off Hand") or "").endswith("Hook Hand") else FRAMING_DUAL if a.get("Off Hand") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_BOTH if held in TWO_HAND_HELD else FRAMING_WHACKER if held.endswith("Saw Weed Whacker") else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
+             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Clayson Master Ball and Golden Axe" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held == "Death Nails" or held.endswith("Blade Nails") else FRAMING_HOOKOFF if (a.get("Off Hand") or "").endswith("Hook Hand") else FRAMING_DUAL if a.get("Off Hand") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_BOX if held == "Gilded Puzzle Box" else FRAMING_BOTH if held in TWO_HAND_HELD else FRAMING_WHACKER if held.endswith("Saw Weed Whacker") else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
     text = ". ".join(p[0].upper() + p[1:] for p in parts if p) + "."
     if "empty black eye sockets" in (mask or ""):   # QA #232: the base "sunken eyes" line added a stray third eye
         text = text.replace("small sunken bloodshot eyes in swollen red-rimmed lids, ", "")
@@ -744,6 +750,7 @@ def build():
         a["Held Weapon"] = "Chrome Blade Nails" if a["Tier"] == "Rare" else "Gold Blade Nails" if i in _gold else "Bloody Blade Nails"
     for _i in WEEDWACKER:
         tokens[_i - 1][0]["Held Weapon"] = "Golden Saw Weed Whacker"
+    order_pass(tokens)
     common_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
@@ -933,6 +940,32 @@ def robinhood_pass(tokens):
             and not os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png"))]
     for i in random.Random(16).sample(pool, 110):
         tokens[i - 1][0]["Backdrop"] = ROBINHOOD[0]
+
+
+# Ritual order traits (George, 2026-11-16): Rare, inspired by the classic leather-clad occult horror order, all original, never the
+# film, box or character names. Spread over different undrawn Rare Claysons: Ritual Leather Robe 8, extra Nail-Studded Leather
+# Masks 5, Flayed Open Chest 8 (trait "Flesh"), and the ONE Gilded Puzzle Box in the collection, held in both hands.
+ALL["Clothing"]["Ritual Leather Robe"] = (0, "a long tight black leather ritual robe with a high collar, buckled straps, laced seams and small "
+                                          "steel hooks hanging from chains at the waist")
+FLESH = {"Flayed Open Chest": "the skin of his chest ripped open down the middle and pulled wide apart by small steel hooks on thin chains, "
+                              "showing raw glossy red exposed muscle fibres and sinew underneath, the torn clothes peeled back around it"}
+ALL["Held Weapon"]["Gilded Puzzle Box"] = (0, "")
+
+
+def order_pass(tokens):
+    st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
+    pend = set().union(*[set(b["ids"]) - set(b.get("drop", [])) for b in st["batches"] if b["state"] != "done"])
+    pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == "Rare" and a["Character"] == "Classic" and i not in pend
+            and not a["Skin"].startswith("Zombie") and not os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png"))]
+    picks = iter(random.Random(1987).sample(pool, 22))
+    for _ in range(8):
+        tokens[next(picks) - 1][0]["Clothing"] = "Ritual Leather Robe"
+    for _ in range(5):
+        tokens[next(picks) - 1][0]["Mask"] = "Nail-Studded Leather Mask"
+    for _ in range(8):
+        tokens[next(picks) - 1][0]["Flesh"] = "Flayed Open Chest"
+    box = tokens[next(picks) - 1][0]
+    box.update({"Held Weapon": "Gilded Puzzle Box", "Back Weapon": "None"}); box.pop("Off Hand", None)
 
 
 N_COMMON = 400
