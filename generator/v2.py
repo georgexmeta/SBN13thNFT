@@ -345,7 +345,9 @@ BACKDROP = {
     "Rust Clay": (12, "a rusty orange pressed-clay backdrop"), "Bruise Clay": (10, "a bruise-purple pressed-clay backdrop"),
     "Bone Clay": (8, "a bone-white pressed-clay backdrop"), "Blood Splatter": (8, "a cream pressed-clay backdrop with blood-red dripping splatter"),
 }
-BACKDROP_RARE = {"Blood Moon": (50, "a dark night backdrop with a huge cratered blood-red clay moon"),
+BACKDROP_RARE = {"Blood Moon": (50, "a haunted night woods: twisted bare black trees with gnarled clawing branches, low drifting fog between the trunks "
+                                 "and dead leaves on the ground, and a huge cratered blood-red clay moon hanging low in the distance between the trees, "
+                                 "casting a dim red glow through the mist, sculpted as a miniature claymation diorama, softly out of focus behind him"),
                  "Cornfield": (50, "a cornfield of dry clay corn stalks at dusk")}
 # Exclusive scene backdrops George added on 2026-11-13. Dealt by backdrop_pass (separate RNG) only to tokens not
 # yet rendered (generator/rendered_keep_bg.json): 30% of Rare and 20% of Standard tokens get one,
