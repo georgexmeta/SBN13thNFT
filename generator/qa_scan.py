@@ -13,25 +13,31 @@ MODEL = sys.argv[sys.argv.index("--model") + 1] if "--model" in sys.argv else "g
 man = {r["id"]: r["attributes"] for r in json.load(open(os.path.join(ROOT, "output", "ai", "manifest-v2.json")))}
 KEYS = ("Held Weapon", "Back Weapon", "Off Hand", "Mask", "Headpiece", "Neck", "Mutation")
 
-Q = """You are QA-checking one picture from a claymation NFT collection. The house standard: ONE clay figure, body and head turned about
+Q = """You are QA-checking a picture from a claymation NFT collection. IMAGE 1 is the house-standard reference; IMAGE 2 is the token to check. Compare IMAGE 2 against IMAGE 1: body angle, head angle, how big the figure is in the frame. The house standard: ONE clay figure, body and head turned about
 45 degrees toward the viewer's right (three-quarter view), framed from the waist up with backdrop visible above the head and on both sides,
 holding the listed weapons. Exactly two arms and two hands (or a hook prosthetic in place of one hand when listed), every hand attached to
 an arm. A held weapon must be gripped in a fist, not floating or standing loose. No text or lettering anywhere except a '666' jumpsuit patch.
 Listed traits: %s
+Answer for IMAGE 2. "facing" is right45 only if BOTH the torso/shoulders and the head turn toward the viewer's right like IMAGE 1; a chest squarely facing the camera is "front". "framing" is too_close if the head/figure is noticeably bigger in the frame than in IMAGE 1 or the head nearly touches the top edge. "clipping" = any weapon/tool passing through the body, face or mask, or growing out of the body instead of being held.
 Reply JSON: {"facing": "right45"|"front"|"left"|"profile", "framing": "ok"|"too_close"|"too_far"|"cropped",
 "extra_or_floating_limbs": bool, "loose_weapon": bool, "missing_listed_item": [names], "unlisted_extra_weapon": bool,
 "text_or_logo": bool, "clipping": bool, "notes": "short, only real problems"}"""
+
+
+_r = Image.open(os.path.join(ROOT, "refs", "master-reference.jpg")).convert("RGB").resize((640, 640)); _b = io.BytesIO(); _r.save(_b, "JPEG", quality=88)
+REF = {"inline_data": {"mime_type": "image/jpeg", "data": base64.b64encode(_b.getvalue()).decode()}}
 
 
 def check(i):
     im = Image.open(os.path.join(IMG, f"{i}.png")).convert("RGB").resize((640, 640))
     b = io.BytesIO(); im.save(b, "JPEG", quality=88)
     traits = {k: man[i][k] for k in KEYS if man[i].get(k) not in (None, "None")}
-    body = {"contents": [{"parts": [{"inline_data": {"mime_type": "image/jpeg", "data": base64.b64encode(b.getvalue()).decode()}},
+    body = {"contents": [{"parts": [REF, {"inline_data": {"mime_type": "image/jpeg", "data": base64.b64encode(b.getvalue()).decode()}},
                                     {"text": Q % json.dumps(traits)}]}],
             "generationConfig": {"responseMimeType": "application/json"}}
     r = bg._req(bg.API + f"/v1beta/models/{MODEL}:generateContent", data=json.dumps(body).encode(), headers={"Content-Type": "application/json"})
-    return json.loads(r["candidates"][0]["content"]["parts"][0]["text"])
+    res = json.loads(r["candidates"][0]["content"]["parts"][-1]["text"])
+    return res[-1] if isinstance(res, list) else res
 
 
 def ids_arg(s):
