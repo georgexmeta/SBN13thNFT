@@ -957,8 +957,9 @@ def order_pass(tokens):
     st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
     pend = set().union(*[set(b["ids"]) - set(b.get("drop", [])) for b in st["batches"] if b["state"] != "done"])
     BOX = 1136
-    deal = {"Uncommon": [("Clothing", "Ritual Leather Robe", 4), ("Mask", "Nail-Studded Leather Mask", 3), ("Flesh", "Flayed Open Chest", 4)],
-            "Rare": [("Clothing", "Ritual Leather Robe", 4), ("Mask", "Nail-Studded Leather Mask", 2), ("Flesh", "Flayed Open Chest", 4)]}
+    deal = {"Common": [("Clothing", "Ritual Leather Robe", 3), ("Mask", "Nail-Studded Leather Mask", 2), ("Flesh", "Flayed Open Chest", 3)],
+            "Uncommon": [("Clothing", "Ritual Leather Robe", 3), ("Mask", "Nail-Studded Leather Mask", 2), ("Flesh", "Flayed Open Chest", 3)],
+            "Rare": [("Clothing", "Ritual Leather Robe", 3), ("Mask", "Nail-Studded Leather Mask", 1), ("Flesh", "Flayed Open Chest", 3)]}
     rng = random.Random(1987)
     for tier, items in deal.items():
         pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == tier and a["Character"] in ("Classic", "Woman") and i not in pend

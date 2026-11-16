@@ -27,28 +27,29 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Bare Face | 208 | 16.0% |
+| Bare Face | 206 | 15.8% |
 | Hockey Half-Mask | 161 | 12.4% |
 | Burlap Pig Mask | 122 | 9.4% |
+| Patchwork Goggle Mask | 117 | 9.0% |
 | Burlap Sack Hood | 116 | 8.9% |
-| Patchwork Goggle Mask | 116 | 8.9% |
 | Gas Mask | 93 | 7.2% |
 | Paisley Bandana | 71 | 5.5% |
 | Iron Muzzle | 41 | 3.2% |
 | Bloody Bandage Wrap | 25 | 1.9% |
-| Cracked Doll Mask | 25 | 1.9% |
-| Honeycomb Half-Mask | 25 | 1.9% |
 | Needle-Tooth Snarl | 25 | 1.9% |
+| Cracked Doll Mask | 24 | 1.8% |
+| Honeycomb Half-Mask | 24 | 1.8% |
 | Rubber Seam Face | 20 | 1.5% |
 | Buckled Harness Hood | 20 | 1.5% |
 | Smeared Greasepaint | 18 | 1.4% |
 | Nail-Studded Leather Mask (Rare+) | 16 | 1.2% |
 | Flayed Muscle Face | 16 | 1.2% |
 | Stitched Skin Face | 15 | 1.2% |
-| Stitched Toy Face | 13 | 1.0% |
+| Stitched Toy Face | 14 | 1.1% |
 | Moaning Paper Mask | 13 | 1.0% |
 | Zipper Mouth Leather (Rare+) | 12 | 0.9% |
-| Blank Bone Mask | 11 | 0.8% |
+| Blank Bone Mask | 12 | 0.9% |
+| Bone Skull Mask (Rare+) | 8 | 0.6% |
 | Stitched Skin Mask (Rare+) | 8 | 0.6% |
 | Hollow Grey Face | 8 | 0.6% |
 | Manic Grin | 8 | 0.6% |
@@ -57,14 +58,13 @@
 | Cracked Clown Paint | 8 | 0.6% |
 | Stitched Bride Face | 8 | 0.6% |
 | Waterlogged Face | 8 | 0.6% |
-| Bone Skull Mask (Rare+) | 7 | 0.5% |
+| Zipper Long Nose (Rare+) | 6 | 0.5% |
 | Sewn-On Pig Face (Rare+) | 6 | 0.5% |
 | Porcelain Doll Face (Rare+) | 6 | 0.5% |
 | Oni Demon Mask (Rare+) | 6 | 0.5% |
 | Fanged Killer Clown (Rare+) | 5 | 0.4% |
-| Zipper Long Nose (Rare+) | 5 | 0.4% |
-| Long Nose Latex (Rare+) | 3 | 0.2% |
 | Crown of Nails (Rare+) | 3 | 0.2% |
+| Long Nose Latex (Rare+) | 2 | 0.2% |
 | Hockey Half-Mask (solid polished gold) | 1 | 0.1% |
 | Bearded Bulging Stare | 1 | 0.1% |
 | Melted Doll Face | 1 | 0.1% |
@@ -177,26 +177,26 @@
 | Value | Count | Share |
 |---|---|---|
 | Patched Work Jacket | 177 | 13.6% |
-| Plaid Flannel | 130 | 10.0% |
+| Plaid Flannel | 129 | 9.9% |
 | Mechanic Coveralls | 96 | 7.4% |
 | Orange Prison Jumpsuit | 96 | 7.4% |
-| Grimy Hoodie | 93 | 7.2% |
-| Bloody Surgeon Scrubs | 88 | 6.8% |
-| Tattered Shirt | 74 | 5.7% |
-| Butcher Apron | 73 | 5.6% |
+| Grimy Hoodie | 92 | 7.1% |
+| Bloody Surgeon Scrubs | 87 | 6.7% |
+| Butcher Apron | 74 | 5.7% |
+| Tattered Shirt | 73 | 5.6% |
 | Denim Jacket | 66 | 5.1% |
-| Torn Undershirt | 60 | 4.6% |
+| Torn Undershirt | 59 | 4.5% |
 | Trench Coat | 38 | 2.9% |
-| Black Jumpsuit | 37 | 2.8% |
+| Black Jumpsuit | 38 | 2.9% |
 | Tan Blood-Splatter Jumpsuit | 34 | 2.6% |
-| Grey Jumpsuit | 33 | 2.5% |
-| Navy Jumpsuit | 29 | 2.2% |
+| Grey Jumpsuit | 32 | 2.5% |
+| Navy Jumpsuit | 30 | 2.3% |
+| Rust-Red Boiler Suit | 25 | 1.9% |
 | Ragged Plum Greatcoat | 25 | 1.9% |
-| Rust-Red Boiler Suit | 24 | 1.8% |
 | Carnival Barker Vest | 18 | 1.4% |
-| Bloody Chef Smock | 17 | 1.3% |
-| Tattered Undertaker Suit (Rare+) | 11 | 0.8% |
-| Ritual Leather Robe | 8 | 0.6% |
+| Bloody Chef Smock | 16 | 1.2% |
+| Tattered Undertaker Suit (Rare+) | 12 | 0.9% |
+| Ritual Leather Robe | 9 | 0.7% |
 | Tattered Nun Habit | 8 | 0.6% |
 | Gingham Farm Dress | 8 | 0.6% |
 | Pastel Tracksuit | 8 | 0.6% |
@@ -204,7 +204,7 @@
 | Rotten Ruffle Pierrot Dress | 8 | 0.6% |
 | Rotting Wedding Gown | 8 | 0.6% |
 | Dripping Nightgown | 8 | 0.6% |
-| Bloody Clown Suit (Rare+) | 5 | 0.4% |
+| Bloody Clown Suit (Rare+) | 6 | 0.5% |
 | Fur-Trimmed Cape (Rare+) | 5 | 0.4% |
 | Collector's Pin Vest | 1 | 0.1% |
 | Scorched Corduroy Dungarees | 1 | 0.1% |
