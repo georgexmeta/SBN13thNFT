@@ -97,7 +97,7 @@
 | Chainsaw | 209 | 16.1% |
 | Rusted Machete | 110 | 8.5% |
 | Meat Hook | 72 | 5.5% |
-| Nail Bat | 70 | 5.4% |
+| Nail Bat | 69 | 5.3% |
 | Spear | 63 | 4.8% |
 | Rusted Butcher Cleaver | 60 | 4.6% |
 | Bloody Hunting Knife | 60 | 4.6% |
@@ -137,6 +137,7 @@
 | Clean Hunting Knife | 5 | 0.4% |
 | Nail-Knife Glove (Rare+) | 3 | 0.2% |
 | Double-Barrel Shotgun | 3 | 0.2% |
+| Diamond Blade Nails | 3 | 0.2% |
 | Chrome Blade Nails | 3 | 0.2% |
 | Chrome Machete | 3 | 0.2% |
 | Blue-Flame Flamethrower | 3 | 0.2% |
@@ -153,7 +154,6 @@
 | Chrome Hunting Knife | 1 | 0.1% |
 | Sniper Rifle | 1 | 0.1% |
 | Toy Pop Gun | 1 | 0.1% |
-| Diamond Blade Nails | 1 | 0.1% |
 | Twin Chrome Pistols | 1 | 0.1% |
 | Telekinesis | 1 | 0.1% |
 | Laser Lattice | 1 | 0.1% |
@@ -164,7 +164,6 @@
 | Chrome Sledge-Axe | 1 | 0.1% |
 | Green Spore Canister | 1 | 0.1% |
 | Chrome Claw Glove | 1 | 0.1% |
-| Chrome Butcher Cleaver | 1 | 0.1% |
 | Chrome Hatchet | 1 | 0.1% |
 | Gold Sickle | 1 | 0.1% |
 | Gold Cylinder Puzzle Box | 1 | 0.1% |
