@@ -149,7 +149,7 @@
 | Twin Gold Pistols | 2 | 0.2% |
 | Black Alien Sludge Canister | 1 | 0.1% |
 | Clayson Master Ball and Golden Axe | 1 | 0.1% |
-| Scythe | 1 | 0.1% |
+| Gold Scythe | 1 | 0.1% |
 | Bloody Kitchen Knife | 1 | 0.1% |
 | Gold Dodecahedron Puzzle Box | 1 | 0.1% |
 | Gold Sphere Puzzle Box | 1 | 0.1% |

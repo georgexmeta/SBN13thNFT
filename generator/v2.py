@@ -631,6 +631,9 @@ def post_lock(tokens):
     _h.update({"Hair": "Matted Brown Mop", "Head Mark": "Clean", "Mask": "Patchwork Hide Mask", "Held Weapon": "Chainsaw", "Back Weapon": "None",
                "Clothing": "Heavy Leather Butcher Apron", "Belt": "None", "Backdrop": "Bone Farmhouse Parlor"})
     tokens[706 - 1] = (_h, None)
+    assert tokens[157 - 1][0]["Held Weapon"] == "Scythe" and tokens[101 - 1][0]["Off Hand"] == "Scythe"
+    tokens[157 - 1][0]["Held Weapon"] = "Gold Scythe"   # George 2026-11-16 21:59: held scythes go precious, back scythes stay rusty
+    tokens[101 - 1][0]["Off Hand"] = "Chrome Scythe"
     _s = tokens[SLEEPER_ID - 1][0]   # George 2026-11-16 21:19: The Sleeper Below replaces The Frontman (squid tentacle arms 21:20)
     assert _s.get("1/1 Name") == "The Frontman", _s.get("1/1 Name")
     _s.clear(); _s.update(SLEEPER)
@@ -676,6 +679,8 @@ DUAL_PHRASE.update({   # bladed-glove men (George 2026-11-15) wield their back w
     "Scythe": "a huge rusty scythe by its long wooden snath, held upright beside him with the curved blade arching above his head",
     "Harpoon Gun": "a rusty harpoon gun loaded with a barbed harpoon, aimed out to the side",
     "Double-Barrel Shotgun": "a sawn-off rusty double-barrel shotgun with a cracked wooden stock, held one-handed, barrels pointing up and out"})
+DUAL_PHRASE["Chrome Scythe"] = ("a huge scythe by its long dark wooden snath, held upright beside him with a gleaming mirror-bright CHROME "
+                                "curved blade arching above his head, a little blood on its edge")   # George 2026-11-16: #101, the only chrome scythe
 DUAL_PHRASE["The Book of the Dead"] = ("a grotesque ancient artifact of a book by its spine, held up to the side: a thick centuries-old tome bound "
                                      "in cracked, rotting, patchwork human-like skin with frayed black stitching and peeling scabbed edges, "
                                      "studded with little yellowed bone knobs and teeth, corroded green-crusted iron corner clasps and a rusty "
@@ -1669,6 +1674,8 @@ TWO_HAND_HELD = {
     "Chrome Sledge-Axe": "a heavy blood-dripping sledge-axe with a mirror-chrome head and a long polished wooden handle",
     "Sniper Rifle": "a long heavy matte-black sniper rifle with a big scope", "Scythe": "a huge rusty scythe, the curved blade arching above his head",
 }
+TWO_HAND_HELD["Gold Scythe"] = "a huge scythe with a gleaming solid-GOLD curved blade on a long dark wooden snath, the golden blade arching above his head, a little blood on its edge"   # George 2026-11-16: #157
+ALL["Held Weapon"]["Gold Scythe"] = (0, "")
 
 
 def hook_off_pass(tokens):
