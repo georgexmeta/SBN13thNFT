@@ -139,6 +139,25 @@ def edit(id_list, instruction, st=None):
     return st
 
 
+def edit_multi(instructions, st=None, label="edit"):
+    """Like edit(), but each token gets its own instruction: {id: instruction}."""
+    st = st or load()
+    path = os.path.join(g.ROOT, "output", "ai", f"{label}-{int(time.time())}.jsonl")
+    with open(path, "w") as f:
+        for i, text in instructions.items():
+            img = base64.b64encode(open(os.path.join(g.OUTDIR, f"{i}.png"), "rb").read()).decode()
+            body = {"contents": [{"parts": [{"inline_data": {"mime_type": "image/png", "data": img}}, {"text": text}]}],
+                    "generationConfig": {"responseModalities": ["IMAGE"], "imageConfig": {"aspectRatio": "1:1"}}}
+            f.write(json.dumps({"key": str(i), "request": body}) + "\n")
+    up = upload(path, "application/jsonl", os.path.basename(path))
+    op = _req(f"{API}/v1beta/models/{g.MODEL}:batchGenerateContent", headers={"Content-Type": "application/json"},
+              data=json.dumps({"batch": {"display_name": os.path.basename(path), "input_config": {"file_name": up["name"]}}}).encode())
+    st["batches"].append({"name": op["name"], "ids": [int(i) for i in instructions], "state": "running", "submitted": time.time(), "edit": True})
+    save(st)
+    print(f"submitted {label} {op['name']} with {len(instructions)} tokens", flush=True)
+    return st
+
+
 def _find(obj, key):
     if isinstance(obj, dict):
         if key in obj:
