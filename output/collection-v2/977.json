@@ -1,5 +1,5 @@
 {
-  "name": "SBN13th #977 - The Frontman",
+  "name": "SBN13th #977 - The Sleeper Below",
   "seed": 1778096426,
   "attributes": [
     {
@@ -8,55 +8,55 @@
     },
     {
       "trait_type": "1/1 Name",
-      "value": "The Frontman"
-    },
-    {
-      "trait_type": "Head",
-      "value": "Type 2 - Melted Lopsided"
-    },
-    {
-      "trait_type": "Skin",
-      "value": "Pale Wax"
-    },
-    {
-      "trait_type": "Hair",
-      "value": "Wild Grey Tufts"
-    },
-    {
-      "trait_type": "Head Mark",
-      "value": "Stitched Scar"
-    },
-    {
-      "trait_type": "Mask",
-      "value": "Frontman Mask"
-    },
-    {
-      "trait_type": "Held Weapon",
-      "value": "Nail Bat"
-    },
-    {
-      "trait_type": "Back Weapon",
-      "value": "Chainsaw"
-    },
-    {
-      "trait_type": "Clothing",
-      "value": "Patched Work Jacket"
-    },
-    {
-      "trait_type": "Belt",
-      "value": "Tool Belt"
-    },
-    {
-      "trait_type": "Backdrop",
-      "value": "Blood Splatter"
-    },
-    {
-      "trait_type": "Ears",
-      "value": "Natural"
+      "value": "The Sleeper Below"
     },
     {
       "trait_type": "Character",
-      "value": "Classic"
+      "value": "The Sleeper Below"
+    },
+    {
+      "trait_type": "Head",
+      "value": "Elder Octopoid Dome"
+    },
+    {
+      "trait_type": "Skin",
+      "value": "Abyssal Green-Black Scales"
+    },
+    {
+      "trait_type": "Hair",
+      "value": "None"
+    },
+    {
+      "trait_type": "Head Mark",
+      "value": "Glowing Gill Slits"
+    },
+    {
+      "trait_type": "Ears",
+      "value": "Webbed Fin Ears"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Writhing Face Tentacles"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Squid Tentacle Arms"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Leathery Elder Wings"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Rotted Kelp Shroud"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "None"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Cult Summoning Circle"
     }
   ]
 }

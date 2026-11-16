@@ -18,10 +18,11 @@
 |---|---|---|
 | Female | 416 | 32.0% |
 | Type 1 - Lumpy Dome | 335 | 25.8% |
-| Type 2 - Melted Lopsided | 228 | 17.5% |
+| Type 2 - Melted Lopsided | 227 | 17.5% |
 | Type 4 - Split Cranium | 178 | 13.7% |
 | Type 3 - Cone Skull | 142 | 10.9% |
 | Doll | 1 | 0.1% |
+| Elder Octopoid Dome | 1 | 0.1% |
 
 ## Mask
 
@@ -87,7 +88,7 @@
 | Hockey Half-Mask (rust-stained) | 1 | 0.1% |
 | Psycho Yuppie Grin | 1 | 0.1% |
 | Diamond Wraith Mask | 1 | 0.1% |
-| Frontman Mask | 1 | 0.1% |
+| Writhing Face Tentacles | 1 | 0.1% |
 | Hockey Half-Mask (stitched together) | 1 | 0.1% |
 
 ## Held Weapon
@@ -97,7 +98,7 @@
 | Chainsaw | 209 | 16.1% |
 | Rusted Machete | 110 | 8.5% |
 | Meat Hook | 72 | 5.5% |
-| Nail Bat | 68 | 5.2% |
+| Nail Bat | 67 | 5.2% |
 | Spear | 63 | 4.8% |
 | Rusted Butcher Cleaver | 60 | 4.6% |
 | Bloody Hunting Knife | 60 | 4.6% |
@@ -167,6 +168,7 @@
 | Chrome Butcher Cleaver | 1 | 0.1% |
 | Chrome Hatchet | 1 | 0.1% |
 | Gold Sickle | 1 | 0.1% |
+| Squid Tentacle Arms | 1 | 0.1% |
 | Gold Cylinder Puzzle Box | 1 | 0.1% |
 | Gold Pyramid Puzzle Box | 1 | 0.1% |
 | Gold Butcher Cleaver | 1 | 0.1% |
@@ -194,13 +196,13 @@
 | Double-Barrel Shotgun | 3 | 0.2% |
 | Sniper Rifle | 2 | 0.2% |
 | Golden Retro Axe | 1 | 0.1% |
-| Chainsaw | 1 | 0.1% |
+| Leathery Elder Wings | 1 | 0.1% |
 
 ## Clothing
 
 | Value | Count | Share |
 |---|---|---|
-| Patched Work Jacket | 176 | 13.5% |
+| Patched Work Jacket | 175 | 13.5% |
 | Plaid Flannel | 129 | 9.9% |
 | Mechanic Coveralls | 96 | 7.4% |
 | Orange Prison Jumpsuit | 96 | 7.4% |
@@ -238,13 +240,14 @@
 | Tattered Bone Jumpsuit | 1 | 0.1% |
 | White Lace Gown | 1 | 0.1% |
 | Bloody Raincoat Over Pinstripe Suit | 1 | 0.1% |
+| Rotted Kelp Shroud | 1 | 0.1% |
 
 ## Belt
 
 | Value | Count | Share |
 |---|---|---|
-| None | 888 | 68.3% |
-| Tool Belt | 397 | 30.5% |
+| None | 889 | 68.4% |
+| Tool Belt | 396 | 30.5% |
 | Shrunken Head Bandolier | 13 | 1.0% |
 | Golden Neck Chains | 1 | 0.1% |
 | Garnet Choker | 1 | 0.1% |
@@ -259,7 +262,7 @@
 | Teal Clay | 117 | 9.0% |
 | Robinhood Green Clay | 109 | 8.4% |
 | Rust Clay | 98 | 7.5% |
-| Blood Splatter | 90 | 6.9% |
+| Blood Splatter | 89 | 6.8% |
 | Bruise Clay | 88 | 6.8% |
 | Bone Clay | 70 | 5.4% |
 | Lakeside Cabin | 28 | 2.2% |
@@ -284,6 +287,7 @@
 | Pixel Cabin | 1 | 0.1% |
 | Candlelit Castle Hall | 1 | 0.1% |
 | Penthouse Skyline | 1 | 0.1% |
+| Cult Summoning Circle | 1 | 0.1% |
 
 ## Skin
 
@@ -292,7 +296,7 @@
 | Flesh Pink | 349 | 26.8% |
 | Corpse Grey | 234 | 18.0% |
 | Sallow | 168 | 12.9% |
-| Pale Wax | 149 | 11.5% |
+| Pale Wax | 148 | 11.4% |
 | Ruddy | 137 | 10.5% |
 | Deep Brown | 125 | 9.6% |
 | Bloodless Blue | 68 | 5.2% |
@@ -304,6 +308,7 @@
 | Icy Retro Blue | 1 | 0.1% |
 | Ashen Grey | 1 | 0.1% |
 | Tanning-Bed Bronze | 1 | 0.1% |
+| Abyssal Green-Black Scales | 1 | 0.1% |
 
 ## Hair
 
@@ -312,7 +317,7 @@
 | Grey Side Tufts | 337 | 25.9% |
 | Bald | 194 | 14.9% |
 | Greasy Comb-over | 135 | 10.4% |
-| Wild Grey Tufts | 122 | 9.4% |
+| Wild Grey Tufts | 121 | 9.3% |
 | Greasy Bob | 93 | 7.2% |
 | Messy Grey Bun | 89 | 6.8% |
 | Backwards Cap | 84 | 6.5% |
@@ -336,6 +341,7 @@
 | Retro Purple Beanie | 1 | 0.1% |
 | Veiled Mourning Hat | 1 | 0.1% |
 | Slicked-Back Hair | 1 | 0.1% |
+| None | 1 | 0.1% |
 
 ## Head Mark
 
@@ -343,27 +349,29 @@
 |---|---|---|
 | Blue Veins | 506 | 38.9% |
 | Grey Wrinkles | 286 | 22.0% |
-| Stitched Scar | 191 | 14.7% |
+| Stitched Scar | 190 | 14.6% |
 | Clean | 179 | 13.8% |
 | Boils | 124 | 9.5% |
 | Half-Burnt Face | 13 | 1.0% |
 | Pixel Tears | 1 | 0.1% |
+| Glowing Gill Slits | 1 | 0.1% |
 
 ## Ears
 
 | Value | Count | Share |
 |---|---|---|
-| Natural | 880 | 67.7% |
+| Natural | 879 | 67.6% |
 | Mostly Torn Ear | 145 | 11.2% |
 | Slightly Ripped Ear | 145 | 11.2% |
 | Gauged | 105 | 8.1% |
 | Empty Stretched Lobe | 25 | 1.9% |
+| Webbed Fin Ears | 1 | 0.1% |
 
 ## Character
 
 | Value | Count | Share |
 |---|---|---|
-| Classic | 883 | 67.9% |
+| Classic | 882 | 67.8% |
 | Woman | 356 | 27.4% |
 | Hollow Sister | 8 | 0.6% |
 | Farmhouse Smile | 8 | 0.6% |
@@ -377,3 +385,4 @@
 | The Overseer | 1 | 0.1% |
 | The Grieving Mother | 1 | 0.1% |
 | Madame Mortis | 1 | 0.1% |
+| The Sleeper Below | 1 | 0.1% |
