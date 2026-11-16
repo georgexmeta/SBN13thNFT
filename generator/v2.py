@@ -376,7 +376,7 @@ LEGENDARY = [
     ("Silo Sam", "caked in mud", "Type 4 - Split Cranium", "Hatchet", "Weed Whacker", "Cornfield"),
     ("The Frontman", "MASK:Frontman Mask|a battered black leather full-face mask with a round rusty microphone grille riveted over the mouth, snapped guitar strings laced across the cheeks like stitches, a dented steel tag stamped 13 on the forehead, small red-rimmed eye holes", "Type 2 - Melted Lopsided", "Nail Bat", "Chainsaw", "Blood Splatter"),
     ("The Thirteenth", "polished chrome", "Type 1 - Lumpy Dome", "Golden Machete", "Scythe", "Blood Moon"),
-    ("Gristle", "dripping glowing toxic-green slime", "Type 4 - Split Cranium", "Hunting Knife", "Chainsaw", "Swamp Clay"),
+    ("Gristle", "patched together from raw gristle and pink sinew, bound with rusty wire", "Type 4 - Split Cranium", "Hunting Knife", "Chainsaw", "Swamp Clay"),
     ("Crow Bait", "cracked with a chunk broken away", "Type 2 - Melted Lopsided", "Machete", "Pitchfork", "Cornfield"),
     ("Lantern Jack", "pumpkin orange with a carved glowing grin", "Type 3 - Cone Skull", "Sickle", "Weed Whacker", "Blood Moon"),
     ("Swamp Saint", "overgrown with green moss", "Type 1 - Lumpy Dome", "Bone Saw", "Pitchfork", "Swamp Clay"),

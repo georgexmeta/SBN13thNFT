@@ -76,7 +76,7 @@
 | Melted Doll Face | 1 | 0.1% |
 | Chrome Nail-Studded Mask | 1 | 0.1% |
 | Psychic Glare | 1 | 0.1% |
-| Hockey Half-Mask (dripping glowing toxic-green slime) | 1 | 0.1% |
+| Hockey Half-Mask (patched together from raw gristle and pink sinew) | 1 | 0.1% |
 | Mad Mother's Face | 1 | 0.1% |
 | Retro Blue Half-Mask | 1 | 0.1% |
 | Blood-Red Smile | 1 | 0.1% |
