@@ -26,7 +26,7 @@ TOTAL, N_RARE = 1300, 130
 HEAD = {   # the four disfigured head types
     "Type 1 - Lumpy Dome": (34, "head type: a huge tall lumpy dome skull with dents and bumps, like the master reference"),
     "Type 2 - Melted Lopsided": (26, "head type: a lopsided skull that sags and melts down one side, one cheek drooping lower than the other"),
-    "Type 3 - Cone Skull": (22, "head type: a tall cone-shaped pointed skull with ridged wrinkles running up to the point"),
+    "Type 3 - Cone Skull": (22, "head type: a SUBTLY cone-shaped skull, only slightly elongated, the crown rising gently to a soft rounded top, never a sharp point or a tall exaggerated cone, with faint ridged wrinkles running up the back"),
     "Type 4 - Split Cranium": (18, "head type: a cranium split by a deep stitched crease down the middle, swollen lobes either side"),
 }
 SKIN = {
