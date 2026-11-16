@@ -528,6 +528,7 @@ def post_lock(tokens):
     for i in EMPTY_LOBE:   # George 2026-11-16 17:21: 25 Gauged wearers get the empty floppy stretched lobe instead (ref #327)
         assert tokens[i - 1][0]["Ears"] == "Gauged"
         tokens[i - 1][0]["Ears"] = "Empty Stretched Lobe"
+    tokens[1085 - 1][0].pop("Off Hand", None)   # George 2026-11-16 18:37: #1085 keeps only the rarer Golden Saw Weed Whacker (pitchfork dropped)
 # Puzzle boxes (George 2026-11-16 04:48): #1136's cube turns chrome; 5 Uncommons get differently shaped gold-filigree boxes.
 _GOLD_FILIGREE = "inlaid with intricate polished-gold filigree of our own design (thorny vines, interlocking rings and tiny skull knots)"
 PUZZLE_BOXES = {
