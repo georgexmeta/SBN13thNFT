@@ -65,6 +65,10 @@
     {
       "trait_type": "Head Wound",
       "value": "Deep Forehead Gash"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "Yellow Sickly Eyes"
     }
   ]
 }

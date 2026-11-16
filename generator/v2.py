@@ -619,6 +619,8 @@ def prompt(a, legendary_finish=None):
     text = ". ".join(p[0].upper() + p[1:] for p in parts if p) + "."
     if "empty black eye sockets" in (mask or ""):   # QA #232: the base "sunken eyes" line added a stray third eye
         text = text.replace("small sunken bloodshot eyes in swollen red-rimmed lids, ", "")
+    if a.get("Eyes") in EYES:   # George 2026-11-16: eye colour trait replaces the default bloodshot eyes
+        text = re.sub(r"(small sunken |both |his |one |single )?bloodshot eyes?", EYES[a["Eyes"]], text)
     if a.get("_fix"):
         text += " " + a["_fix"]
     if female:
@@ -752,6 +754,7 @@ def build():
         tokens[_i - 1][0]["Held Weapon"] = "Golden Saw Weed Whacker"
     common_pass(tokens)
     order_pass(tokens)
+    eyes_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -975,6 +978,27 @@ def order_pass(tokens):
     box = tokens[BOX - 1][0]
     assert box["Tier"] == "Rare"
     box.update({"Held Weapon": "Gilded Puzzle Box", "Back Weapon": "None"}); box.pop("Off Hand", None)
+
+
+# Eyes trait (George, 2026-11-16). Only where the eyes show. Finished tokens already show the default bloodshot eyes, so they are
+# labelled Bloodshot Eyes; undrawn ones get Yellow Sickly 110 and Pupil-less White 45 (any tier but 1/1s), the rest Bloodshot.
+EYES = {"Yellow Sickly Eyes": "small sunken sickly jaundiced yellow eyes with dull yellow whites and tiny dark pupils",
+        "Pupil-less White Eyes": "small sunken blank pupil-less milky-white eyes with no iris and no pupil, dead and staring"}
+EYES_SHOW = {"Bare Face", "Hockey Half-Mask", "Gas Mask", "Paisley Bandana", "Iron Muzzle", "Honeycomb Half-Mask", "Stitched Skin Face",
+             "Smeared Greasepaint", "Bloody Bandage Wrap", "Buckled Harness Hood", "Rubber Seam Face"}
+
+
+def eyes_pass(tokens):
+    st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
+    pend = set().union(*[set(b["ids"]) - set(b.get("drop", [])) for b in st["batches"] if b["state"] != "done"])
+    show = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] != "Legendary 1/1" and a["Mask"] in EYES_SHOW
+            and a["Character"] in ("Classic", "Woman")]
+    fresh = [i for i in show if i not in pend and not os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png"))]
+    for i in show:
+        tokens[i - 1][0]["Eyes"] = "Bloodshot Eyes"
+    picks = random.Random(4444).sample(fresh, 155)
+    for n, i in enumerate(picks):
+        tokens[i - 1][0]["Eyes"] = "Yellow Sickly Eyes" if n < 110 else "Pupil-less White Eyes"
 
 
 N_COMMON = 400
