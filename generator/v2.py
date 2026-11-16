@@ -162,6 +162,8 @@ RETRO = ("Lantern Jack", {"1/1 Name": "The Retro Slasher", "Head": "Type 1 - Lum
          "Head Mark": "Clean", "Ears": "Natural", "Mask": "Retro Blue Half-Mask", "Held Weapon": "Golden Machete",
          "Back Weapon": "Golden Retro Axe", "Clothing": "Tattered Bone Jumpsuit", "Belt": "Golden Neck Chains", "Backdrop": "Pixel Cabin"})
 RETRO_EXTRA = {
+    "Hair": ("Retro Purple Beanie", "a snug, tattered violet-purple knit beanie that matches his jumpsuit exactly, worn pulled down over a normal-sized "
+             "rounded skull to just above his eyebrows, frayed holes and a few loose threads, no logo, nothing bulging out of it"),
     "Skin": ("Icy Retro Blue", "pale icy powder-blue clay skin all over, like a faded vintage toy"),
     "Mask": ("Retro Blue Half-Mask", "a chunky pale powder-blue HALF mask that covers ONLY the lower half of his face, like the bottom half of a "
              "goalie mask: its top edge runs straight across the bridge of his nose just under his eyes, so both eyes, eyelids, brow and "
@@ -424,6 +426,10 @@ ALL["Held Weapon"]["Poison Syringe"] = (0, "a big old glass syringe filled with 
 ALL["Skin"], ALL["Belt"] = dict(ALL["Skin"]), dict(ALL["Belt"])   # copies, so the retro values never touch the SKIN/BELT pick tables
 for _t, (_v, _p) in RETRO_EXTRA.items():
     ALL[_t][_v] = (0, _p)
+ALL["Mask"]["Retro Purple Half-Mask"] = (0, "a chunky violet-purple HALF mask that matches his jumpsuit exactly and covers ONLY the lower half of his face, "
+             "like the bottom half of a goalie mask: its top edge runs straight across the bridge of his nose just under his eyes, so both eyes, "
+             "eyelids and brow are bare clay skin; rows of round black breathing holes over the mouth and chin, decorated ONLY with a few small "
+             "round pale powder-blue dots, no lines, no stripes, no triangles, held by a thin purple strap")
 # The Night Broker (George, 2026-11-15): an original 80s Wall Street yuppie killer, inspired by the genre, never the film or character
 # names, no actor likeness, no business cards. Replaces the 1/1 Hookjaw (#721; George chose), keeping 13 Legendaries. broker_pass.
 BROKER = ("Hookjaw", {"1/1 Name": "The Night Broker", "Head": "Type 1 - Lumpy Dome", "Skin": "Tanning-Bed Bronze", "Hair": "Slicked-Back Hair",
@@ -528,7 +534,10 @@ def post_lock(tokens):
     for i in EMPTY_LOBE:   # George 2026-11-16 17:21: 25 Gauged wearers get the empty floppy stretched lobe instead (ref #327)
         assert tokens[i - 1][0]["Ears"] == "Gauged"
         tokens[i - 1][0]["Ears"] = "Empty Stretched Lobe"
-    tokens[1085 - 1][0].pop("Off Hand", None)   # George 2026-11-16 18:37: #1085 keeps only the rarer Golden Saw Weed Whacker (pitchfork dropped)
+    tokens[1085 - 1][0].pop("Off Hand", None)
+    _r = tokens[576 - 1][0]   # George 2026-11-16 19:46: The Retro Slasher gets a beanie matching the jumpsuit and a matching purple mask
+    assert _r.get("1/1 Name") == "The Retro Slasher"
+    _r["Hair"] = "Retro Purple Beanie"; _r["Mask"] = "Retro Purple Half-Mask"   # George 2026-11-16 18:37: #1085 keeps only the rarer Golden Saw Weed Whacker (pitchfork dropped)
 # Puzzle boxes (George 2026-11-16 04:48): #1136's cube turns chrome; 5 Uncommons get differently shaped gold-filigree boxes.
 _GOLD_FILIGREE = "inlaid with intricate polished-gold filigree of our own design (thorny vines, interlocking rings and tiny skull knots)"
 PUZZLE_BOXES = {

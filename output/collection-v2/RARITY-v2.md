@@ -82,7 +82,7 @@
 | Psychic Glare | 1 | 0.1% |
 | Cold Digital Stare | 1 | 0.1% |
 | Mad Mother's Face | 1 | 0.1% |
-| Retro Blue Half-Mask | 1 | 0.1% |
+| Retro Purple Half-Mask | 1 | 0.1% |
 | Blood-Red Smile | 1 | 0.1% |
 | Hockey Half-Mask (rust-stained) | 1 | 0.1% |
 | Psycho Yuppie Grin | 1 | 0.1% |
@@ -310,7 +310,7 @@
 | Value | Count | Share |
 |---|---|---|
 | Grey Side Tufts | 337 | 25.9% |
-| Bald | 195 | 15.0% |
+| Bald | 194 | 14.9% |
 | Greasy Comb-over | 135 | 10.4% |
 | Wild Grey Tufts | 122 | 9.4% |
 | Greasy Bob | 93 | 7.2% |
@@ -333,6 +333,7 @@
 | Blood-Matted Curls | 1 | 0.1% |
 | Hologram Bob | 1 | 0.1% |
 | Grey Curled Perm | 1 | 0.1% |
+| Retro Purple Beanie | 1 | 0.1% |
 | Veiled Mourning Hat | 1 | 0.1% |
 | Slicked-Back Hair | 1 | 0.1% |
 
