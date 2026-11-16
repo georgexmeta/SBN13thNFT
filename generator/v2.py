@@ -110,10 +110,10 @@ N_FEMALE = 8
 # character: no white face with blue eye diamonds, no stars-and-stripes, no top hat with stars, never a character name.
 # 25 unrendered Classic tokens get each piece, dealt independently by clown_pass.
 CLOWN = {
-    "Mask": ("Smeared Greasepaint", "no mask: full killer-clown face paint (George 2026-11-16): a cracked chalk-white clown base over his whole face, round "
-             "bright red rouged cheeks, a big round shiny red clown nose, heavy smudged black paint pooled in sunken bags under and around his eyes, "
-             "a wide sinister red painted grin stretched over crooked rotten teeth, a few cracks and blood smears in the paint; "
-             "no red lines through the eyes, no green hair, no carved scars"),
+    "Mask": ("Smeared Greasepaint", "no mask: a man's face in cracked chalk-white clown greasepaint like the series' clown women (George 2026-11-16): "
+             "arched painted black eyebrows, smeared mauve diamonds over the eyes with heavy smudged black bags pooled underneath, "
+             "round bright red rouged cheeks, a big round shiny red clown nose, and a huge manic painted grin of rotten jagged brown teeth "
+             "smeared with blood; no red lines through the eyes, no green hair, no carved scars"),
     "Hair": ("Battered Top Hat", "a battered dented black top hat with a torn brim and a faded checkered band, tufts of greasy grey hair under it, the hat sitting snugly on a normal-sized skull with no cranium bulging out of it"),
     "Clothing": ("Carnival Barker Vest", "a filthy mustard-and-maroon striped carnival barker vest over a yellowed collarless shirt, a crooked polka-dot bow tie"),
 }
