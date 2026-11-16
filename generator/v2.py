@@ -838,6 +838,7 @@ def build():
     assert _a.get("1/1 Name") == "Gristle", _a.get("1/1 Name")
     _a.clear(); _a.update(OVERSEER)
     tokens[OVERSEER_ID - 1] = (_a, None)
+    tokens[413 - 1][0]["Off Hand"] = "Circus Mallet"   # George 2026-11-16: #413 drops the shovel for a circus mallet in her left fist
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
