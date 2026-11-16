@@ -16,12 +16,13 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Female | 416 | 32.0% |
+| Female | 415 | 31.9% |
 | Type 1 - Lumpy Dome | 335 | 25.8% |
 | Type 2 - Melted Lopsided | 227 | 17.5% |
 | Type 4 - Split Cranium | 178 | 13.7% |
 | Type 3 - Cone Skull | 142 | 10.9% |
 | Doll | 1 | 0.1% |
+| Elder Octopoid Dome | 1 | 0.1% |
 | Puppet Head | 1 | 0.1% |
 
 ## Mask
@@ -88,8 +89,8 @@
 | Patchwork Hide Mask | 1 | 0.1% |
 | Psycho Yuppie Grin | 1 | 0.1% |
 | Diamond Wraith Mask | 1 | 0.1% |
+| Writhing Face Tentacles | 1 | 0.1% |
 | Hinged Puppet Jaw | 1 | 0.1% |
-| Hockey Half-Mask (stitched together) | 1 | 0.1% |
 
 ## Held Weapon
 
@@ -100,9 +101,9 @@
 | Meat Hook | 72 | 5.5% |
 | Nail Bat | 67 | 5.2% |
 | Spear | 63 | 4.8% |
-| Rusted Butcher Cleaver | 60 | 4.6% |
 | Bloody Hunting Knife | 60 | 4.6% |
 | Rusted Hatchet | 60 | 4.6% |
+| Rusted Butcher Cleaver | 59 | 4.5% |
 | Fish Hook | 53 | 4.1% |
 | Rusted Sickle | 53 | 4.1% |
 | Clean Saw Weed Whacker | 33 | 2.5% |
@@ -168,9 +169,10 @@
 | Chrome Butcher Cleaver | 1 | 0.1% |
 | Chrome Hatchet | 1 | 0.1% |
 | Gold Sickle | 1 | 0.1% |
-| Red Tricycle | 1 | 0.1% |
+| Squid Tentacle Arms | 1 | 0.1% |
 | Gold Cylinder Puzzle Box | 1 | 0.1% |
 | Gold Pyramid Puzzle Box | 1 | 0.1% |
+| Red Tricycle | 1 | 0.1% |
 | Gold Butcher Cleaver | 1 | 0.1% |
 | Chrome Puzzle Box | 1 | 0.1% |
 
@@ -187,8 +189,8 @@
 | Woodcutter Axe | 17 | 1.3% |
 | Sledgehammer | 16 | 1.2% |
 | Clean Saw Weed Whacker | 14 | 1.1% |
-| Rusty Shovel | 13 | 1.0% |
 | Scythe (Rare+) | 12 | 0.9% |
+| Rusty Shovel | 12 | 0.9% |
 | Fuel Tanks (Rare+) | 11 | 0.8% |
 | Harpoon Gun (Rare+) | 5 | 0.4% |
 | Circus Mallet (Rare+) | 4 | 0.3% |
@@ -196,12 +198,13 @@
 | Double-Barrel Shotgun | 3 | 0.2% |
 | Sniper Rifle | 2 | 0.2% |
 | Golden Retro Axe | 1 | 0.1% |
+| Leathery Elder Wings | 1 | 0.1% |
 
 ## Clothing
 
 | Value | Count | Share |
 |---|---|---|
-| Patched Work Jacket | 174 | 13.4% |
+| Patched Work Jacket | 173 | 13.3% |
 | Plaid Flannel | 129 | 9.9% |
 | Mechanic Coveralls | 96 | 7.4% |
 | Orange Prison Jumpsuit | 96 | 7.4% |
@@ -240,14 +243,15 @@
 | White Lace Gown | 1 | 0.1% |
 | Heavy Leather Butcher Apron | 1 | 0.1% |
 | Bloody Raincoat Over Pinstripe Suit | 1 | 0.1% |
+| Rotted Kelp Shroud | 1 | 0.1% |
 | Moth-Eaten Puppet Suit | 1 | 0.1% |
 
 ## Belt
 
 | Value | Count | Share |
 |---|---|---|
-| None | 890 | 68.5% |
-| Tool Belt | 395 | 30.4% |
+| None | 891 | 68.5% |
+| Tool Belt | 394 | 30.3% |
 | Shrunken Head Bandolier | 13 | 1.0% |
 | Golden Neck Chains | 1 | 0.1% |
 | Garnet Choker | 1 | 0.1% |
@@ -264,7 +268,7 @@
 | Rust Clay | 98 | 7.5% |
 | Blood Splatter | 89 | 6.8% |
 | Bruise Clay | 88 | 6.8% |
-| Bone Clay | 70 | 5.4% |
+| Bone Clay | 69 | 5.3% |
 | Lakeside Cabin | 28 | 2.2% |
 | Haunted Mansion | 26 | 2.0% |
 | Radioactive Wasteland | 23 | 1.8% |
@@ -288,13 +292,14 @@
 | Candlelit Castle Hall | 1 | 0.1% |
 | Bone Farmhouse Parlor | 1 | 0.1% |
 | Penthouse Skyline | 1 | 0.1% |
+| Cult Summoning Circle | 1 | 0.1% |
 | Static Tape | 1 | 0.1% |
 
 ## Skin
 
 | Value | Count | Share |
 |---|---|---|
-| Flesh Pink | 349 | 26.8% |
+| Flesh Pink | 348 | 26.8% |
 | Corpse Grey | 234 | 18.0% |
 | Sallow | 168 | 12.9% |
 | Pale Wax | 148 | 11.4% |
@@ -309,6 +314,7 @@
 | Icy Retro Blue | 1 | 0.1% |
 | Ashen Grey | 1 | 0.1% |
 | Tanning-Bed Bronze | 1 | 0.1% |
+| Abyssal Green-Black Scales | 1 | 0.1% |
 | Chalk-White Puppet | 1 | 0.1% |
 
 ## Hair
@@ -319,7 +325,7 @@
 | Bald | 194 | 14.9% |
 | Greasy Comb-over | 134 | 10.3% |
 | Wild Grey Tufts | 121 | 9.3% |
-| Greasy Bob | 93 | 7.2% |
+| Greasy Bob | 92 | 7.1% |
 | Messy Grey Bun | 89 | 6.8% |
 | Backwards Cap | 84 | 6.5% |
 | Matted Pixie Cut | 66 | 5.1% |
@@ -343,6 +349,7 @@
 | Veiled Mourning Hat | 1 | 0.1% |
 | Matted Brown Mop | 1 | 0.1% |
 | Slicked-Back Hair | 1 | 0.1% |
+| None | 1 | 0.1% |
 | Sparse Black Tufts | 1 | 0.1% |
 
 ## Head Mark
@@ -353,27 +360,29 @@
 | Grey Wrinkles | 286 | 22.0% |
 | Stitched Scar | 189 | 14.5% |
 | Clean | 180 | 13.8% |
-| Boils | 124 | 9.5% |
+| Boils | 123 | 9.5% |
 | Half-Burnt Face | 13 | 1.0% |
 | Pixel Tears | 1 | 0.1% |
+| Glowing Gill Slits | 1 | 0.1% |
 | Red Spiral Cheeks | 1 | 0.1% |
 
 ## Ears
 
 | Value | Count | Share |
 |---|---|---|
-| Natural | 880 | 67.7% |
+| Natural | 879 | 67.6% |
 | Mostly Torn Ear | 145 | 11.2% |
 | Slightly Ripped Ear | 145 | 11.2% |
 | Gauged | 105 | 8.1% |
 | Empty Stretched Lobe | 25 | 1.9% |
+| Webbed Fin Ears | 1 | 0.1% |
 
 ## Character
 
 | Value | Count | Share |
 |---|---|---|
 | Classic | 882 | 67.8% |
-| Woman | 356 | 27.4% |
+| Woman | 355 | 27.3% |
 | Hollow Sister | 8 | 0.6% |
 | Farmhouse Smile | 8 | 0.6% |
 | Glitch Android | 8 | 0.6% |
@@ -386,4 +395,5 @@
 | The Overseer | 1 | 0.1% |
 | The Grieving Mother | 1 | 0.1% |
 | Madame Mortis | 1 | 0.1% |
+| The Sleeper Below | 1 | 0.1% |
 | The Trial Puppet | 1 | 0.1% |

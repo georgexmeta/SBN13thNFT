@@ -1,5 +1,5 @@
 {
-  "name": "SBN13th #977 - The Trial Puppet",
+  "name": "SBN13th #977 - The Sleeper Below",
   "seed": 1778096426,
   "attributes": [
     {
@@ -8,47 +8,47 @@
     },
     {
       "trait_type": "1/1 Name",
-      "value": "The Trial Puppet"
+      "value": "The Sleeper Below"
     },
     {
       "trait_type": "Character",
-      "value": "The Trial Puppet"
+      "value": "The Sleeper Below"
     },
     {
       "trait_type": "Head",
-      "value": "Puppet Head"
+      "value": "Elder Octopoid Dome"
     },
     {
       "trait_type": "Skin",
-      "value": "Chalk-White Puppet"
+      "value": "Abyssal Green-Black Scales"
     },
     {
       "trait_type": "Hair",
-      "value": "Sparse Black Tufts"
-    },
-    {
-      "trait_type": "Head Mark",
-      "value": "Red Spiral Cheeks"
-    },
-    {
-      "trait_type": "Ears",
-      "value": "Natural"
-    },
-    {
-      "trait_type": "Mask",
-      "value": "Hinged Puppet Jaw"
-    },
-    {
-      "trait_type": "Held Weapon",
-      "value": "Red Tricycle"
-    },
-    {
-      "trait_type": "Back Weapon",
       "value": "None"
     },
     {
+      "trait_type": "Head Mark",
+      "value": "Glowing Gill Slits"
+    },
+    {
+      "trait_type": "Ears",
+      "value": "Webbed Fin Ears"
+    },
+    {
+      "trait_type": "Mask",
+      "value": "Writhing Face Tentacles"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Squid Tentacle Arms"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "Leathery Elder Wings"
+    },
+    {
       "trait_type": "Clothing",
-      "value": "Moth-Eaten Puppet Suit"
+      "value": "Rotted Kelp Shroud"
     },
     {
       "trait_type": "Belt",
@@ -56,7 +56,7 @@
     },
     {
       "trait_type": "Backdrop",
-      "value": "Static Tape"
+      "value": "Cult Summoning Circle"
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "name": "SBN13th #1054 - The Pale Deacon",
+  "name": "SBN13th #1054 - The Trial Puppet",
   "seed": 762170318,
   "attributes": [
     {
@@ -8,55 +8,55 @@
     },
     {
       "trait_type": "1/1 Name",
-      "value": "The Pale Deacon"
+      "value": "The Trial Puppet"
+    },
+    {
+      "trait_type": "Character",
+      "value": "The Trial Puppet"
     },
     {
       "trait_type": "Head",
-      "value": "Female"
+      "value": "Puppet Head"
     },
     {
       "trait_type": "Skin",
-      "value": "Flesh Pink"
+      "value": "Chalk-White Puppet"
     },
     {
       "trait_type": "Hair",
-      "value": "Greasy Bob"
+      "value": "Sparse Black Tufts"
     },
     {
       "trait_type": "Head Mark",
-      "value": "Boils"
-    },
-    {
-      "trait_type": "Mask",
-      "value": "Hockey Half-Mask (stitched together)"
-    },
-    {
-      "trait_type": "Held Weapon",
-      "value": "Rusted Butcher Cleaver"
-    },
-    {
-      "trait_type": "Back Weapon",
-      "value": "Rusty Shovel"
-    },
-    {
-      "trait_type": "Clothing",
-      "value": "Patched Work Jacket"
-    },
-    {
-      "trait_type": "Belt",
-      "value": "Tool Belt"
-    },
-    {
-      "trait_type": "Backdrop",
-      "value": "Bone Clay"
+      "value": "Red Spiral Cheeks"
     },
     {
       "trait_type": "Ears",
       "value": "Natural"
     },
     {
-      "trait_type": "Character",
-      "value": "Woman"
+      "trait_type": "Mask",
+      "value": "Hinged Puppet Jaw"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Red Tricycle"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "None"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Moth-Eaten Puppet Suit"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "None"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Static Tape"
     }
   ]
 }
