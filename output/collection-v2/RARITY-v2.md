@@ -42,13 +42,13 @@
 | Rubber Seam Face | 20 | 1.5% |
 | Buckled Harness Hood | 20 | 1.5% |
 | Smeared Greasepaint | 18 | 1.4% |
-| Nail-Studded Leather Mask (Rare+) | 16 | 1.2% |
 | Flayed Muscle Face | 16 | 1.2% |
 | Stitched Skin Face | 15 | 1.2% |
 | Stitched Toy Face | 14 | 1.1% |
 | Moaning Paper Mask | 13 | 1.0% |
 | Zipper Mouth Leather (Rare+) | 12 | 0.9% |
 | Blank Bone Mask | 12 | 0.9% |
+| Nail-Studded Leather Mask (Rare+) | 11 | 0.8% |
 | Bone Skull Mask (Rare+) | 8 | 0.6% |
 | Stitched Skin Mask (Rare+) | 8 | 0.6% |
 | Hollow Grey Face | 8 | 0.6% |
@@ -64,10 +64,13 @@
 | Oni Demon Mask (Rare+) | 6 | 0.5% |
 | Fanged Killer Clown (Rare+) | 5 | 0.4% |
 | Crown of Nails (Rare+) | 3 | 0.2% |
+| Rusted Nail-Studded Mask | 2 | 0.2% |
 | Long Nose Latex (Rare+) | 2 | 0.2% |
+| Golden Nail-Studded Mask | 2 | 0.2% |
 | Hockey Half-Mask (solid polished gold) | 1 | 0.1% |
 | Bearded Bulging Stare | 1 | 0.1% |
 | Melted Doll Face | 1 | 0.1% |
+| Chrome Nail-Studded Mask | 1 | 0.1% |
 | Psychic Glare | 1 | 0.1% |
 | Hockey Half-Mask (dripping glowing toxic-green slime) | 1 | 0.1% |
 | Mad Mother's Face | 1 | 0.1% |

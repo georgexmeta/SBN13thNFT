@@ -950,6 +950,9 @@ ALL["Clothing"]["Ritual Leather Robe"] = (0, "a long tight black leather ritual 
 FLESH = {"Flayed Open Chest": "the skin of his chest ripped open down the middle and pulled wide apart by small steel hooks on thin chains, "
                               "showing raw glossy red exposed muscle fibres and sinew underneath, the torn clothes peeled back around it"}
 ALL["Held Weapon"]["Gilded Puzzle Box"] = (0, "")
+for _f, _d in (("Rusted", "bent rusty iron"), ("Golden", "gleaming solid-gold"), ("Chrome", "mirror-bright chrome")):   # George 2026-11-16
+    ALL["Mask"][f"{_f} Nail-Studded Mask"] = (0, f"a cracked black leather mask with {_d} nails and screws driven through it at random "
+                                                 "angles, blood seeping from the holes")
 
 
 def order_pass(tokens):
@@ -957,9 +960,9 @@ def order_pass(tokens):
     st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
     pend = set().union(*[set(b["ids"]) - set(b.get("drop", [])) for b in st["batches"] if b["state"] != "done"])
     BOX = 1136
-    deal = {"Common": [("Clothing", "Ritual Leather Robe", 3), ("Mask", "Nail-Studded Leather Mask", 2), ("Flesh", "Flayed Open Chest", 3)],
-            "Uncommon": [("Clothing", "Ritual Leather Robe", 3), ("Mask", "Nail-Studded Leather Mask", 2), ("Flesh", "Flayed Open Chest", 3)],
-            "Rare": [("Clothing", "Ritual Leather Robe", 3), ("Mask", "Nail-Studded Leather Mask", 1), ("Flesh", "Flayed Open Chest", 3)]}
+    deal = {"Common": [("Clothing", "Ritual Leather Robe", 3), ("Mask", "Rusted Nail-Studded Mask", 2), ("Flesh", "Flayed Open Chest", 3)],
+            "Uncommon": [("Clothing", "Ritual Leather Robe", 3), ("Mask", "Golden Nail-Studded Mask", 2), ("Flesh", "Flayed Open Chest", 3)],
+            "Rare": [("Clothing", "Ritual Leather Robe", 3), ("Mask", "Chrome Nail-Studded Mask", 1), ("Flesh", "Flayed Open Chest", 3)]}
     rng = random.Random(1987)
     for tier, items in deal.items():
         pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == tier and a["Character"] in ("Classic", "Woman") and i not in pend
