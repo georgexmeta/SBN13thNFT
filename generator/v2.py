@@ -240,8 +240,8 @@ DOLL_EXTRA = [
     ("Mask", "Melted Doll Face", "no mask: a melted burned doll face, one huge bulging cracked glass doll eye staring out, the other eye socket "
              "a burnt hollow, a lipless stitched grin of tiny white doll teeth"),
     ("Held Weapon", "Bloody Kitchen Knife", "a big bloody kitchen knife"),
-    ("Clothing", "Scorched Corduroy Dungarees", "tiny tattered mustard-brown corduroy dungarees with a bib pocket and frayed patches, scorched black "
-                 "at the edges, over a sooty little turtleneck"),
+    ("Clothing", "Scorched Corduroy Dungarees", "tiny toddler-style rust-brown corduroy dungarees with a bib pocket, two shoulder straps with round buttons and frayed patches, "
+                 "scorched black at the edges, over a plain cream long-sleeved turtleneck, little sneakers; no denim, no stripes, no logo"),
     ("Backdrop", "Burnt Dollhouse", "the inside of a giant child's dollhouse: pastel flowered wallpaper streaked with soot and scorch marks, toy blocks, "
                  "a tiny rocking horse and a broken toy chair, sculpted as a miniature claymation diorama in matte plasticine, softly out of focus "
                  "behind him, no signs or lettering"),
