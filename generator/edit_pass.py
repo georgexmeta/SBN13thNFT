@@ -54,7 +54,8 @@ for i in (141, 178, 212, 618):
 out = {i: he(man[i], "Edit this claymation image. Keep everything else exactly the same (pose, face, clay style, framing, colours, lighting, "
                  "every other detail). Changes: " + "; ".join(t) + ". No text, no logos.") for i, t in sorted(fix.items())}
 json.dump(out, open(os.path.join(ROOT, "output", "ai", "edit-pass.json"), "w"), indent=1)
-print(len(out), "tokens to edit")
-if "--submit" in sys.argv:
+if __name__ == "__main__":
+    print(len(out), "tokens to edit")
+if __name__ == "__main__" and "--submit" in sys.argv:
     import batch_generate as bg
     bg.edit_multi(out, label="editpass")

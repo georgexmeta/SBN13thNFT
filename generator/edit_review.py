@@ -19,6 +19,12 @@ out = {i: he(man[i], "Edit this claymation image. Keep everything else exactly t
                      "every other detail). Changes: " + "; ".join(t) + ". No text, no logos.") for i, t in sorted(fix.items())}
 json.dump(out, open(os.path.join(ROOT, "output", "ai", "edit-review.json"), "w"), indent=1)
 print(len(out), "tokens to edit")
-if "--submit" in sys.argv:
+SENT = os.path.join(ROOT, "generator", "review_sent.json")   # {id: instruction already submitted}
+sent = json.load(open(SENT)) if os.path.exists(SENT) else {}
+new = {i: t for i, t in out.items() if sent.get(str(i)) != t}
+print(len(new), "new or changed since the last submit")
+if "--submit" in sys.argv and new:
     import batch_generate as bg
-    bg.edit_multi(out, label="review")
+    bg.edit_multi(new, label="review")
+    sent.update({str(i): t for i, t in new.items()})
+    json.dump(sent, open(SENT, "w"), indent=1)
