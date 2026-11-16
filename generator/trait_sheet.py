@@ -14,7 +14,7 @@ wb = Workbook()
 hdr = Font(bold=True, color="FFFFFF"); fill = PatternFill("solid", fgColor="3A2A2A")
 
 ws = wb.active; ws.title = "Trait Summary"
-ws.append(["Trait", "Value", "Count", "Share"] + TIERS)
+ws.append(["Trait", "Value", "Count", "Share", "Rarity Tier"] + TIERS)
 summary = []
 for t in traits:
     c = Counter(); tc = defaultdict(Counter)
@@ -22,13 +22,24 @@ for t in traits:
         v = r[f"attributes[{t}]"] or "None"
         c[v] += 1; tc[v][r["attributes[Tier]"]] += 1
     for v, n in sorted(c.items(), key=lambda x: (x[1], x[0])):
-        ws.append([t, v, n, n / len(rows)] + [tc[v][x] or None for x in TIERS])
+        low = next((x for x in TIERS if tc[v][x]), "")   # the most common tier this value appears in = its rarity floor
+        ws.append([t, v, n, n / len(rows), "1/1 only" if low == "Legendary 1/1" else (low + (" and up" if low != "Legendary 1/1" and sum(1 for x in TIERS if tc[v][x]) > 1 else " only"))] + [tc[v][x] or None for x in TIERS])
         if v != "None": summary.append((n, t, v))
 for c in ws[1]: c.font, c.fill = hdr, fill
 for r in ws.iter_rows(min_row=2, min_col=4, max_col=4):
     r[0].number_format = "0.0%"
-for i, w in enumerate([14, 40, 8, 8, 10, 10, 10, 8, 13], 1): ws.column_dimensions[get_column_letter(i)].width = w
+for i, w in enumerate([14, 40, 8, 8, 18, 10, 10, 10, 8, 13], 1): ws.column_dimensions[get_column_letter(i)].width = w
 ws.freeze_panes = "C2"; ws.auto_filter.ref = ws.dimensions
+
+ws0 = wb.create_sheet("Overview", 0)
+ws0.append(["Trait", "Distinct values", "Tokens with it (not None)"])
+for t in traits:
+    vals = Counter(r[f"attributes[{t}]"] or "None" for r in rows)
+    ws0.append([t, sum(1 for v in vals if v != "None"), sum(n for v, n in vals.items() if v != "None")])
+ws0.append([]); ws0.append(["Tier", "Tokens"])
+for x in TIERS: ws0.append([x, sum(1 for r in rows if r["attributes[Tier]"] == x)])
+for c in ws0[1]: c.font, c.fill = hdr, fill
+for i, w in enumerate([18, 16, 24], 1): ws0.column_dimensions[get_column_letter(i)].width = w
 
 ws2 = wb.create_sheet("Tokens")
 ws2.append(["Token", "Name"] + traits)
