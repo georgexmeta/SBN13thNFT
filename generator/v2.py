@@ -689,7 +689,8 @@ def prompt(a, legendary_finish=None):
         hand = "his right hand has been replaced by a rusty iron hook strapped to his forearm"
     elif held in ("Flamethrower", "Blue-Flame Flamethrower"):   # George 2026-11-15: a much bigger flame; 3 get blue flames
         colour = "roaring blue-and-white gas" if held == "Blue-Flame Flamethrower" else "roaring orange-and-yellow"
-        hand = ("his right fist grips a crude homemade rusty flamethrower made of welded pipe, blasting a HUGE billowing jet of "
+        hand = ("both hands hold a crude homemade rusty flamethrower made of welded pipe like a rifle (George's #1033 look): right fist on the rear "
+                "grip at his hip, left fist on the front handle under the barrel, the barrel angled up and out to the right, blasting a HUGE billowing jet of "
                 f"{colour} fire out of the nozzle, the long plume of flame filling the upper side of the frame, pointed up and away from him")
     elif (held == "Nail-Knife Glove" and a["Head"] != "Female") or held.endswith(" Claw Glove"):   # George 2026-11-15: classic horror one-hand bladed glove, original take
         blades = {"Gold Claw Glove": "gleaming solid gold", "Chrome Claw Glove": "mirror-bright chrome"}.get(held, "rusty")
