@@ -14,7 +14,7 @@ for i in map(int, sys.argv[1:]):
     if held and held not in ("Bare Fist",):
         t += f"; {his} right fist holds the {held.lower()} in front of {his} chest"
     if off:
-        t += f"; {his} left hand keeps the {off.lower()}"
+        t += f"; {his} left " + ("arm keeps the " if off.endswith("Hook Hand") else "hand keeps the ") + off.lower()
     if back and back != "None":
         t += f"; the {back.lower()} stays on {his} back"
     d[str(i)] = [x for x in d.get(str(i), []) if not x.startswith("zoom out to the standard framing")] + [t]
