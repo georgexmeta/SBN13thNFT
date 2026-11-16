@@ -141,7 +141,7 @@
 | Gold Claw Glove | 2 | 0.2% |
 | Gold Hatchet | 2 | 0.2% |
 | Twin Gold Pistols | 2 | 0.2% |
-| Black Tendril Symbiote Canister | 1 | 0.1% |
+| Black Alien Sludge Canister | 1 | 0.1% |
 | Clayson Master Ball and Golden Axe | 1 | 0.1% |
 | Scythe | 1 | 0.1% |
 | Bloody Kitchen Knife | 1 | 0.1% |
@@ -151,9 +151,9 @@
 | Twin Chrome Pistols | 1 | 0.1% |
 | Telekinesis | 1 | 0.1% |
 | Death Nails | 1 | 0.1% |
-| Red Veined Eye Blob Canister | 1 | 0.1% |
+| Red Parasite Species Canister | 1 | 0.1% |
 | Chrome Sledge-Axe | 1 | 0.1% |
-| Green Worm Swarm Canister | 1 | 0.1% |
+| Green Spore Canister | 1 | 0.1% |
 | Chrome Claw Glove | 1 | 0.1% |
 | Chrome Butcher Cleaver | 1 | 0.1% |
 | Chrome Hatchet | 1 | 0.1% |

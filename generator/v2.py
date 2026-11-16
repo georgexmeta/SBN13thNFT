@@ -1045,15 +1045,16 @@ def lab_pass(tokens):
     LAB_GROUPS_DONE["Toxic Green skin"] = (LAB_GROUPS_DONE["Toxic Green skin"][0] + 3, 20)
 
 
-# George 2026-11-16: each of the 3 canisters holds a different-looking organism
+# George 2026-11-16: each of the 3 canisters holds a different-looking virus organism
 CANISTER_BASE = ("a heavy bio-lab containment canister held by its steel carry handle: a tall cylinder of perfectly CLEAR, clean, see-through "
                  "glass (not cracked, not frosted, not tinted) between riveted steel end caps with glowing green seams, so the creature inside "
                  "is plainly visible: {}; one THIN yellow hazard band near the top cap with a small black biohazard warning symbol "
                  "(the three-crescent trefoil), symbol only, the band never hiding the organism, no words, no logos, no lettering")
-CANISTERS = {
-    "Black Tendril Symbiote Canister": "a writhing mass of glossy jet-black tendrils pressing against the glass as if ready to burst out",
-    "Red Veined Eye Blob Canister": "a pulsing blood-red fleshy blob webbed with dark veins, several small bloodshot eyes open across it, squashed against the glass",
-    "Green Worm Swarm Canister": "a tangled cluster of glowing toxic-green parasitic worms coiling and squirming over each other in murky fluid",
+CANISTERS = {   # George 2026-11-16 01:41: black alien sludge, red parasite species, green spores (in token order 29, 683, 733)
+    "Black Alien Sludge Canister": "a glossy jet-black tar-like alien ooze that bulges and reaches out in slow sticky pseudopods, smearing up the inside of the glass",
+    "Red Parasite Species Canister": "a single segmented blood-red parasite creature, like a fat armoured larva with many small hooked legs and a round "
+                                     "toothed sucker mouth, clinging to the inside of the glass",
+    "Green Spore Canister": "puffy glowing toxic-green spore pods growing in clusters, with tiny glowing spores drifting in the misty air inside",
 }
 for _v, _d in CANISTERS.items():
     ALL["Held Weapon"][_v] = (0, CANISTER_BASE.format(_d))
