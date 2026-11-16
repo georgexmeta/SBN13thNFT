@@ -442,6 +442,33 @@ BROKER_EXTRA = {
 }
 for _t, (_v, _p) in BROKER_EXTRA.items():
     ALL[_t][_v] = (0, _p)
+# The Overseer (George, 2026-11-16 06:10, replaces Gristle #451, George chose): an original AI hologram villainess who runs a
+# digital prison for her victims. A nod to survival-horror AI villains and the mad supercomputer of a classic horror story, never
+# their names (no Red Queen, Umbrella or AM), logos or exact looks, and always an adult woman. overseer_pass runs last.
+OVERSEER_ID = 451
+OVERSEER = {"Tier": "Legendary 1/1", "1/1 Name": "The Overseer", "Character": "The Overseer", "Head": "Female", "Skin": "Red Hologram",
+            "Hair": "Hologram Bob", "Head Mark": "Pixel Tears", "Ears": "Natural", "Mask": "Cold Digital Stare", "Held Weapon": "Laser Lattice",
+            "Back Weapon": "None", "Clothing": "Hologram Shift Dress", "Belt": "None", "Backdrop": "Digital Soul Prison"}
+OVERSEER_BASE = ("A clay WOMAN (an adult woman, not the man in the reference: copy only the reference's clay style, pose and framing) "
+                 "with an oversized bobble head, a thin neck and narrow straight shoulders, head turned three-quarters toward the viewer's right")
+FRAMING_LASER = FRAMING.split(" His right hand grips")[0] + " Both hands are raised and fully visible, fingers spread, projecting the red laser grid; nothing held in her hands"
+OVERSEER_EXTRA = {
+    "Skin": ("Red Hologram", "her whole figure is a translucent glowing RED hologram sculpted from see-through red resin-like clay, lit from "
+             "within, thin horizontal scan lines across her and small glitching pixel offsets at her edges as if the projection flickers"),
+    "Hair": ("Hologram Bob", "a sharp short chin-length bob of glowing red light, perfectly straight, edges breaking into tiny pixels"),
+    "Head Mark": ("Pixel Tears", "square pixel-block tears of red light running down her cheeks like corrupted data"),
+    "Mask": ("Cold Digital Stare", "no mask: the face of a grown woman in her thirties, calm, expressionless and cruel, with glowing "
+             "white eyes with no pupils, a faint thin smile, perfectly smooth hologram skin"),
+    "Clothing": ("Hologram Shift Dress", "a simple sleek high-collared shift dress made of red light, flickering with scan lines"),
+    "Backdrop": ("Digital Soul Prison", "a vast dark digital data centre that is also a prison of trapped souls: endless aisles of tall black "
+                 "server racks blinking with red lights and glowing red circuit grids running along the floor and walls, pale ghostly souls "
+                 "of her victims trapped inside glowing red wireframe data cages and pressed against the glass of the server screens, "
+                 "faces and hands straining to get out, thin streams of red light (no readable characters), sculpted as a miniature "
+                 "claymation diorama, softly out of focus behind her, no logos, no lettering"),
+}
+for _t, (_v, _p) in OVERSEER_EXTRA.items():
+    ALL[_t][_v] = (0, _p)
+ALL["Held Weapon"]["Laser Lattice"] = (0, "")
 # Shrunken Head Bandolier (George, 2026-11-15): a more exclusive trait, worn across the chest with 5 shrunken heads.
 # Belt slot, 13 unrendered Uncommon tokens (head_strap_pass; George: Uncommon), so tier counts don't move.
 ALL["Held Weapon"]["Double Molotov Cocktails"] = (0, "")
@@ -584,6 +611,9 @@ def prompt(a, legendary_finish=None):
     elif held == "Chainsaw":   # George 2026-11-14: chainsaws are always wielded with both hands
         hand = ("he wields a heavy rusty chainsaw with a bloody chain in BOTH hands: right hand gripping the rear handle, "
                 "left hand gripping the front wrap-around handle, the bar angled up and out across his body")
+    elif held == "Laser Lattice":   # The Overseer: her weapon is a slicing grid of red lasers projected from her raised hands
+        hand = ("she holds no weapon: both hologram hands are raised with fingers spread, projecting a deadly lattice of thin bright red "
+                "laser beams that criss-cross the air in front of her in a slicing grid")
     elif held in ("Telekinesis", "Psychic Force"):
         hand = ("she holds no weapon: both bloody hands are raised and spread with clawed fingers, unleashing telekinetic power, "
                 "chairs, glass shards and streamers levitating around her and a rippling shockwave bending the air")
@@ -645,14 +675,14 @@ def prompt(a, legendary_finish=None):
     elif a.get("Off Hand"):   # George 2026-11-15: dual wield, both fists clench a weapon, no back weapon
         hand += "; his LEFT fist tightly grips " + DUAL_PHRASE[a["Off Hand"]]
     body = [f"wearing {phrase('Clothing', a['Clothing'])}", FLESH.get(a.get("Flesh")), phrase("Belt", a["Belt"]), NECK.get(a.get("Neck")), MUTATION.get(a.get("Mutation")), EXPERIMENT.get(a.get("Experiment")), hand, phrase("Back Weapon", a["Back Weapon"])]
-    female = a.get("Character", "Classic") in FEMALE or a.get("Character") in ("The Grieving Mother", "The Prom Queen", "The Ringmistress", "Woman", "Madame Mortis")
+    female = a.get("Character", "Classic") in FEMALE or a.get("Character") in ("The Grieving Mother", "The Prom Queen", "The Ringmistress", "Woman", "Madame Mortis", "The Overseer")
     if female:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"]), phrase("Head Mark", a["Head Mark"]), phrase("Ears", a.get("Ears", "Natural"))]
     doll = a.get("Character") == "Scorched Doll"
     if doll:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"])]
-    parts = [STYLE, DOLL_BASE if doll else FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
-             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Clayson Master Ball and Golden Axe" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_PISTOLS if held in PISTOL else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held == "Death Nails" or held.endswith("Blade Nails") else FRAMING_MUTARM if a.get("Mutation") == "Mutated Claw Arm" else FRAMING_HOOKOFF if (a.get("Off Hand") or "").endswith("Hook Hand") else FRAMING_DUAL if a.get("Off Hand") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_BOX if held in PUZZLE_BOXES else FRAMING_BOTH if held in TWO_HAND_HELD else FRAMING_WHACKER if held.endswith("Saw Weed Whacker") else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
+    parts = [STYLE, OVERSEER_BASE if a.get("Character") == "The Overseer" else DOLL_BASE if doll else FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
+             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Clayson Master Ball and Golden Axe" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_PISTOLS if held in PISTOL else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held == "Death Nails" or held.endswith("Blade Nails") else FRAMING_MUTARM if a.get("Mutation") == "Mutated Claw Arm" else FRAMING_HOOKOFF if (a.get("Off Hand") or "").endswith("Hook Hand") else FRAMING_DUAL if a.get("Off Hand") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_BOX if held in PUZZLE_BOXES else FRAMING_BOTH if held in TWO_HAND_HELD else FRAMING_WHACKER if held.endswith("Saw Weed Whacker") else FRAMING_LASER if held == "Laser Lattice" else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
     text = ". ".join(p[0].upper() + p[1:] for p in parts if p) + "."
     if "empty black eye sockets" in (mask or ""):   # QA #232: the base "sunken eyes" line added a stray third eye
         text = text.replace("small sunken bloodshot eyes in swollen red-rimmed lids, ", "")
@@ -804,6 +834,10 @@ def build():
     lab_pass(tokens)
     box_pass(tokens)
     hockey_pass(tokens)
+    _a = tokens[OVERSEER_ID - 1][0]   # The Overseer replaces Gristle (George chose 2026-11-16)
+    assert _a.get("1/1 Name") == "Gristle", _a.get("1/1 Name")
+    _a.clear(); _a.update(OVERSEER)
+    tokens[OVERSEER_ID - 1] = (_a, None)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):

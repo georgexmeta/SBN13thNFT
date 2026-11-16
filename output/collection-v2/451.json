@@ -1,5 +1,5 @@
 {
-  "name": "SBN13th #451 - Gristle",
+  "name": "SBN13th #451 - The Overseer",
   "seed": 2095478732,
   "attributes": [
     {
@@ -8,7 +8,11 @@
     },
     {
       "trait_type": "1/1 Name",
-      "value": "Gristle"
+      "value": "The Overseer"
+    },
+    {
+      "trait_type": "Character",
+      "value": "The Overseer"
     },
     {
       "trait_type": "Head",
@@ -16,47 +20,43 @@
     },
     {
       "trait_type": "Skin",
-      "value": "Pale Wax"
+      "value": "Red Hologram"
     },
     {
       "trait_type": "Hair",
-      "value": "Greasy Bob"
+      "value": "Hologram Bob"
     },
     {
       "trait_type": "Head Mark",
-      "value": "Stitched Scar"
-    },
-    {
-      "trait_type": "Mask",
-      "value": "Hockey Half-Mask (patched together from raw gristle and pink sinew)"
-    },
-    {
-      "trait_type": "Held Weapon",
-      "value": "Bloody Hunting Knife"
-    },
-    {
-      "trait_type": "Back Weapon",
-      "value": "Chainsaw"
-    },
-    {
-      "trait_type": "Clothing",
-      "value": "Patched Work Jacket"
-    },
-    {
-      "trait_type": "Belt",
-      "value": "Tool Belt"
-    },
-    {
-      "trait_type": "Backdrop",
-      "value": "Swamp Clay"
+      "value": "Pixel Tears"
     },
     {
       "trait_type": "Ears",
       "value": "Natural"
     },
     {
-      "trait_type": "Character",
-      "value": "Woman"
+      "trait_type": "Mask",
+      "value": "Cold Digital Stare"
+    },
+    {
+      "trait_type": "Held Weapon",
+      "value": "Laser Lattice"
+    },
+    {
+      "trait_type": "Back Weapon",
+      "value": "None"
+    },
+    {
+      "trait_type": "Clothing",
+      "value": "Hologram Shift Dress"
+    },
+    {
+      "trait_type": "Belt",
+      "value": "None"
+    },
+    {
+      "trait_type": "Backdrop",
+      "value": "Digital Soul Prison"
     }
   ]
 }

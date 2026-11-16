@@ -10978,25 +10978,25 @@
  },
  {
   "id": 451,
-  "name": "SBN13th #451 - Gristle",
+  "name": "SBN13th #451 - The Overseer",
   "seed": 2095478732,
-  "prompt": "Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with fingerprints, tool marks and pressed texture, soft studio lighting, highly detailed, in exactly the style of the reference photos. A grotesque disfigured clay WOMAN (female, not the man in the reference: copy only the reference's clay style, pose and framing) with an oversized bobble head, mottled skin, small sunken bloodshot eyes in swollen red-rimmed lids, a thin neck and narrow hunched shoulders, head turned three-quarters toward the viewer's right. Pale waxy clay skin, a greasy chin-length black bob, a stitched scar across the scalp. An aged HALF mask, patched together from raw gristle and pink sinew, bound with rusty wire, covering ONLY her mouth, chin and nose with her eyes, brow and forehead completely bare, round breathing holes, moulded beak nose, held by rusty leather straps with a riveted plate and a buckle under the ear, eyes visible above it, no chevron markings. Wearing a slate-blue clay work jacket with a brown leather collar, stitched leather patches and a grey knit undershirt, a worn leather tool belt with rusty tools and pouches, her right fist grips a hunting knife completely drenched in thick dripping blood, a rusty chainsaw strapped to her back, the bar rising above her shoulder. A swamp-green pressed-clay backdrop. FACING: exactly like the first reference photo, her body is in three-quarter view and her head and face are turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space above the head, figure centred, square 1:1 composition. SCALE (the same for every figure in the series): the figure is the same size in the frame as in the first reference photo, the bobble head the same size relative to the body, and weapons true to scale with the hands, never oversized or tiny. Her right hand grips the held weapon in a tight clenched fist seen from the back of the hand, knuckles toward the camera, palm hidden, the blade angled up and out; her other hand is raised beside her as a menacing curled claw, gnarled fingers bent like hooks, never hanging limp.",
+  "prompt": "Photograph of a hand-sculpted stop-motion claymation figure, matte plasticine with fingerprints, tool marks and pressed texture, soft studio lighting, highly detailed, in exactly the style of the reference photos. A clay WOMAN (an adult woman, not the man in the reference: copy only the reference's clay style, pose and framing) with an oversized bobble head, a thin neck and narrow straight shoulders, head turned three-quarters toward the viewer's right. Her whole figure is a translucent glowing RED hologram sculpted from see-through red resin-like clay, lit from within, thin horizontal scan lines across her and small glitching pixel offsets at her edges as if the projection flickers, a sharp short chin-length bob of glowing red light, perfectly straight, edges breaking into tiny pixels, square pixel-block tears of red light running down her cheeks like corrupted data. No mask: the face of a grown woman in her thirties, calm, expressionless and cruel, with glowing white eyes with no pupils, a faint thin smile, perfectly smooth hologram skin. Wearing a simple sleek high-collared shift dress made of red light, flickering with scan lines, she holds no weapon: both hologram hands are raised with fingers spread, projecting a deadly lattice of thin bright red laser beams that criss-cross the air in front of her in a slicing grid. A vast dark digital data centre that is also a prison of trapped souls: endless aisles of tall black server racks blinking with red lights and glowing red circuit grids running along the floor and walls, pale ghostly souls of her victims trapped inside glowing red wireframe data cages and pressed against the glass of the server screens, faces and hands straining to get out, thin streams of red light (no readable characters), sculpted as a miniature claymation diorama, softly out of focus behind her, no logos, no lettering. FACING: exactly like the first reference photo, her body is in three-quarter view and her head and face are turned about 45 degrees toward the RIGHT side of the image (the viewer's right), nose pointing right; never turned to the left side and never straight on. Three-quarter view from the hips up, whole head, mask and weapons inside the frame with a little space above the head, figure centred, square 1:1 composition. SCALE (the same for every figure in the series): the figure is the same size in the frame as in the first reference photo, the bobble head the same size relative to the body, and weapons true to scale with the hands, never oversized or tiny. Both hands are raised and fully visible, fingers spread, projecting the red laser grid; nothing held in her hands.",
   "negative": "text, logo, letters, watermark, brand marks, sports team logo, red chevrons or triangles on the mask, full-face goalie mask covering the forehead and eyes, white screaming ghost mask, black hooded robe, pins in a grid, extra fingers, deformed hands, cropped head, photo of a real person, cartoon outline, flat 2D, face turned to the left, mirrored pose, long finger blades, clawed glove with four long knives, red and green striped sweater, brown fedora",
   "attributes": {
    "Tier": "Legendary 1/1",
-   "1/1 Name": "Gristle",
+   "1/1 Name": "The Overseer",
+   "Character": "The Overseer",
    "Head": "Female",
-   "Skin": "Pale Wax",
-   "Hair": "Greasy Bob",
-   "Head Mark": "Stitched Scar",
-   "Mask": "Hockey Half-Mask (patched together from raw gristle and pink sinew)",
-   "Held Weapon": "Bloody Hunting Knife",
-   "Back Weapon": "Chainsaw",
-   "Clothing": "Patched Work Jacket",
-   "Belt": "Tool Belt",
-   "Backdrop": "Swamp Clay",
+   "Skin": "Red Hologram",
+   "Hair": "Hologram Bob",
+   "Head Mark": "Pixel Tears",
    "Ears": "Natural",
-   "Character": "Woman"
+   "Mask": "Cold Digital Stare",
+   "Held Weapon": "Laser Lattice",
+   "Back Weapon": "None",
+   "Clothing": "Hologram Shift Dress",
+   "Belt": "None",
+   "Backdrop": "Digital Soul Prison"
   }
  },
  {

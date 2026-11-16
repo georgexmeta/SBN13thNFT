@@ -79,7 +79,7 @@
 | Melted Doll Face | 1 | 0.1% |
 | Chrome Nail-Studded Mask | 1 | 0.1% |
 | Psychic Glare | 1 | 0.1% |
-| Hockey Half-Mask (patched together from raw gristle and pink sinew) | 1 | 0.1% |
+| Cold Digital Stare | 1 | 0.1% |
 | Mad Mother's Face | 1 | 0.1% |
 | Retro Blue Half-Mask | 1 | 0.1% |
 | Blood-Red Smile | 1 | 0.1% |
@@ -98,8 +98,8 @@
 | Meat Hook | 72 | 5.5% |
 | Nail Bat | 70 | 5.4% |
 | Spear | 64 | 4.9% |
-| Bloody Hunting Knife | 61 | 4.7% |
 | Rusted Butcher Cleaver | 60 | 4.6% |
+| Bloody Hunting Knife | 60 | 4.6% |
 | Rusted Hatchet | 60 | 4.6% |
 | Rusted Sickle | 54 | 4.2% |
 | Fish Hook | 53 | 4.1% |
@@ -154,6 +154,7 @@
 | Toy Pop Gun | 1 | 0.1% |
 | Twin Chrome Pistols | 1 | 0.1% |
 | Telekinesis | 1 | 0.1% |
+| Laser Lattice | 1 | 0.1% |
 | Gold Octahedron Puzzle Box | 1 | 0.1% |
 | Circus Mallet | 1 | 0.1% |
 | Death Nails | 1 | 0.1% |
@@ -173,7 +174,7 @@
 
 | Value | Count | Share |
 |---|---|---|
-| None | 862 | 66.3% |
+| None | 863 | 66.4% |
 | Rusted Saw Weed Whacker | 126 | 9.7% |
 | Oxygen Tank | 81 | 6.2% |
 | Bloody Saw Weed Whacker | 76 | 5.8% |
@@ -189,15 +190,15 @@
 | Circus Mallet (Rare+) | 4 | 0.3% |
 | Chrome Saw Weed Whacker | 4 | 0.3% |
 | Double-Barrel Shotgun | 3 | 0.2% |
-| Chainsaw | 2 | 0.2% |
 | Sniper Rifle | 2 | 0.2% |
 | Golden Retro Axe | 1 | 0.1% |
+| Chainsaw | 1 | 0.1% |
 
 ## Clothing
 
 | Value | Count | Share |
 |---|---|---|
-| Patched Work Jacket | 177 | 13.6% |
+| Patched Work Jacket | 176 | 13.5% |
 | Plaid Flannel | 129 | 9.9% |
 | Mechanic Coveralls | 96 | 7.4% |
 | Orange Prison Jumpsuit | 96 | 7.4% |
@@ -230,6 +231,7 @@
 | Collector's Pin Vest | 1 | 0.1% |
 | Scorched Corduroy Dungarees | 1 | 0.1% |
 | Blood-Drenched Prom Gown | 1 | 0.1% |
+| Hologram Shift Dress | 1 | 0.1% |
 | Mustard Cardigan | 1 | 0.1% |
 | Tattered Bone Jumpsuit | 1 | 0.1% |
 | White Lace Gown | 1 | 0.1% |
@@ -239,8 +241,8 @@
 
 | Value | Count | Share |
 |---|---|---|
-| None | 887 | 68.2% |
-| Tool Belt | 398 | 30.6% |
+| None | 888 | 68.3% |
+| Tool Belt | 397 | 30.5% |
 | Shrunken Head Bandolier | 13 | 1.0% |
 | Golden Neck Chains | 1 | 0.1% |
 | Garnet Choker | 1 | 0.1% |
@@ -250,7 +252,7 @@
 | Value | Count | Share |
 |---|---|---|
 | Sage Clay | 165 | 12.7% |
-| Swamp Clay | 153 | 11.8% |
+| Swamp Clay | 152 | 11.7% |
 | Slate Clay | 138 | 10.6% |
 | Teal Clay | 117 | 9.0% |
 | Robinhood Green Clay | 109 | 8.4% |
@@ -275,6 +277,7 @@
 | Terracotta Clay | 1 | 0.1% |
 | Burnt Dollhouse | 1 | 0.1% |
 | Burning Gym | 1 | 0.1% |
+| Digital Soul Prison | 1 | 0.1% |
 | Pixel Cabin | 1 | 0.1% |
 | Candlelit Castle Hall | 1 | 0.1% |
 | Penthouse Skyline | 1 | 0.1% |
@@ -286,7 +289,7 @@
 | Flesh Pink | 349 | 26.8% |
 | Corpse Grey | 234 | 18.0% |
 | Sallow | 168 | 12.9% |
-| Pale Wax | 150 | 11.5% |
+| Pale Wax | 149 | 11.5% |
 | Ruddy | 137 | 10.5% |
 | Deep Brown | 125 | 9.6% |
 | Bloodless Blue | 68 | 5.2% |
@@ -294,6 +297,7 @@
 | Zombie Green | 15 | 1.2% |
 | Zombie Blue | 10 | 0.8% |
 | Charred Plastic | 1 | 0.1% |
+| Red Hologram | 1 | 0.1% |
 | Icy Retro Blue | 1 | 0.1% |
 | Ashen Grey | 1 | 0.1% |
 | Tanning-Bed Bronze | 1 | 0.1% |
@@ -306,7 +310,7 @@
 | Bald | 195 | 15.0% |
 | Greasy Comb-over | 135 | 10.4% |
 | Wild Grey Tufts | 122 | 9.4% |
-| Greasy Bob | 94 | 7.2% |
+| Greasy Bob | 93 | 7.2% |
 | Messy Grey Bun | 89 | 6.8% |
 | Backwards Cap | 84 | 6.5% |
 | Matted Pixie Cut | 66 | 5.1% |
@@ -324,6 +328,7 @@
 | Worn Trucker Cap | 1 | 0.1% |
 | Singed Yarn Tufts | 1 | 0.1% |
 | Blood-Matted Curls | 1 | 0.1% |
+| Hologram Bob | 1 | 0.1% |
 | Grey Curled Perm | 1 | 0.1% |
 | Veiled Mourning Hat | 1 | 0.1% |
 | Slicked-Back Hair | 1 | 0.1% |
@@ -334,10 +339,11 @@
 |---|---|---|
 | Blue Veins | 506 | 38.9% |
 | Grey Wrinkles | 286 | 22.0% |
-| Stitched Scar | 192 | 14.8% |
+| Stitched Scar | 191 | 14.7% |
 | Clean | 179 | 13.8% |
 | Boils | 124 | 9.5% |
 | Half-Burnt Face | 13 | 1.0% |
+| Pixel Tears | 1 | 0.1% |
 
 ## Ears
 
@@ -353,7 +359,7 @@
 | Value | Count | Share |
 |---|---|---|
 | Classic | 883 | 67.9% |
-| Woman | 357 | 27.5% |
+| Woman | 356 | 27.4% |
 | Hollow Sister | 8 | 0.6% |
 | Farmhouse Smile | 8 | 0.6% |
 | Glitch Android | 8 | 0.6% |
@@ -363,5 +369,6 @@
 | Drowned Well Girl | 8 | 0.6% |
 | Scorched Doll | 1 | 0.1% |
 | The Prom Queen | 1 | 0.1% |
+| The Overseer | 1 | 0.1% |
 | The Grieving Mother | 1 | 0.1% |
 | Madame Mortis | 1 | 0.1% |
