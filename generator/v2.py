@@ -291,7 +291,7 @@ MASK_STD = {
 }
 MASK_RARE = {   # monster-like; original takes on slasher and metal archetypes
     "Stitched Skin Mask": (16, "a crude mask of mismatched stitched leathery skin patches sewn with thick black thread, uneven eye holes, ragged edges"),
-    "Nail-Studded Leather Mask": (14, "a cracked black leather mask with bent rusty nails and screws driven through it at random angles, blood seeping from the holes"),
+    "Nail-Studded Leather Mask": (14, "a cracked black leather mask with long bent rusty nails pushed through it from the inside so their sharp POINTS stick OUTWARD from the mask like spikes at random angles, nail heads hidden, blood seeping around them"),
     "Fanged Killer Clown": (14, "a cracked greasepaint killer clown face with green diamond eye paint, a red bulb nose, a ragged fanged grin dripping blood and wild orange hair puffs"),
     "Porcelain Doll Face": (12, "a cracked porcelain doll face mask with a chipped cheek, painted rosy cheeks, black empty eyes and a tiny painted mouth, the mask sits squarely over his whole face from brow to chin with its eye holes exactly over his eyes; none of his real eyes, skin or brow shows above, beside or below the mask"),
     "Zipper Mouth Leather": (12, "a stitched black leather full-face mask with laced seams and a metal zipper across the mouth"),
@@ -1376,8 +1376,8 @@ FLESH = {"Flayed Open Chest": "his jacket or shirt hangs wide open with NO under
                               "clearly visible wound showing raw glossy red exposed muscle fibres, sinew and a glimpse of white ribs, the focal point of the figure"}
 ALL["Held Weapon"]["Gilded Puzzle Box"] = (0, "")
 for _f, _d in (("Rusted", "bent rusty iron"), ("Golden", "gleaming solid-gold"), ("Chrome", "mirror-bright chrome")):   # George 2026-11-16
-    ALL["Mask"][f"{_f} Nail-Studded Mask"] = (0, f"a cracked black leather mask with {_d} nails and screws driven through it at random "
-                                                 "angles, blood seeping from the holes")
+    ALL["Mask"][f"{_f} Nail-Studded Mask"] = (0, f"a cracked black leather mask with long {_d} nails pushed through it from the inside so "
+                                                 "their sharp POINTS stick OUTWARD from the mask like spikes at random angles, nail heads hidden, blood seeping around them")
 
 
 def order_pass(tokens):
