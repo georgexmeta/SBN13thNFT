@@ -12,3 +12,4 @@ output/opensea/images/
 output/wl/
 output/ai/edit-*.jsonl
 output/ai/editpass-*.jsonl
+output/ai/qa-scan.json
