@@ -516,37 +516,8 @@ _LOCK_PATH = os.path.join(ROOT, "generator", "locked_attrs.json")
 LOCK = json.load(open(_LOCK_PATH)) if os.path.exists(_LOCK_PATH) else None
 
 
-NEW_PLAIN = {   # George 2026-11-16 15:48: every plain clay backdrop moves to one of six bright pressed-clay colours
-    "Robinhood Green Clay": "#CCFF00", "Marigold Clay": "#FFCC00", "Electric Cyan Clay": "#00CCFF",
-    "Aqua Mint Clay": "#00FFCC", "Hot Magenta Clay": "#FF00CC", "Ultra Violet Clay": "#CC00FF"}
-_NAMES = {"Marigold Clay": "warm marigold-yellow", "Electric Cyan Clay": "electric cyan-blue", "Aqua Mint Clay": "bright aqua-mint",
-          "Hot Magenta Clay": "hot magenta-pink", "Ultra Violet Clay": "vivid ultra-violet purple"}
-for _v, _h in NEW_PLAIN.items():
-    if _v in _NAMES:
-        ALL["Backdrop"][_v] = (0, f"a {_NAMES[_v]} (hex {_h}) pressed-clay backdrop")
-OLD_PLAIN = {"Sage Clay", "Swamp Clay", "Slate Clay", "Teal Clay", "Rust Clay", "Bruise Clay", "Bone Clay"}
-
-
 def post_lock(tokens):
-    """Trait changes made after the lock.
-    George 2026-11-16 15:48: the 7 old plain colours are spread over the 5 new colours plus Robinhood Green (which keeps its 109)
-    so all six end up about even. Splatter levels stay as they are."""
-    old = [i for i, (a, f) in enumerate(tokens, 1) if a["Backdrop"] in OLD_PLAIN]
-    random.Random(1548).shuffle(old)
-    total = len(old) + sum(a["Backdrop"] == "Robinhood Green Clay" for a, f in tokens)
-    want = {v: total // 6 + (k < total % 6) for k, v in enumerate(NEW_PLAIN)}
-    want["Robinhood Green Clay"] -= sum(a["Backdrop"] == "Robinhood Green Clay" for a, f in tokens)
-    keys = [k for k in DEDUPE_KEYS if k != "Backdrop"]
-    vec = lambda a: [a.get(k) for k in keys]
-    placed = [(vec(a), a["Backdrop"]) for a, f in tokens if a["Backdrop"] not in OLD_PLAIN]
-    for i in old:   # greedy: the colour with most room left that keeps every pair >= 3 visible traits apart
-        a = tokens[i - 1][0]; va = vec(a)
-        close = {b for vb, b in placed if sum(x != y for x, y in zip(va, vb)) < 3}
-        near = {b for vb, b in placed if sum(x != y for x, y in zip(va, vb)) < 2}
-        opts = sorted((v for v in want if want[v] > 0), key=lambda v: (v in close, -want[v]))
-        assert opts and not near, i
-        a["Backdrop"] = opts[0]; want[opts[0]] -= 1
-        placed.append((va, opts[0]))
+    """Trait changes made after the lock (none yet)."""
 # Puzzle boxes (George 2026-11-16 04:48): #1136's cube turns chrome; 5 Uncommons get differently shaped gold-filigree boxes.
 _GOLD_FILIGREE = "inlaid with intricate polished-gold filigree of our own design (thorny vines, interlocking rings and tiny skull knots)"
 PUZZLE_BOXES = {

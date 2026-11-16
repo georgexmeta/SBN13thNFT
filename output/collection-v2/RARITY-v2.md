@@ -253,13 +253,15 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Robinhood Green Clay | 157 | 12.1% |
-| Aqua Mint Clay | 156 | 12.0% |
-| Marigold Clay | 156 | 12.0% |
-| Ultra Violet Clay | 156 | 12.0% |
-| Electric Cyan Clay | 156 | 12.0% |
-| Hot Magenta Clay | 156 | 12.0% |
+| Sage Clay | 165 | 12.7% |
+| Swamp Clay | 152 | 11.7% |
+| Slate Clay | 138 | 10.6% |
+| Teal Clay | 117 | 9.0% |
+| Robinhood Green Clay | 109 | 8.4% |
+| Rust Clay | 98 | 7.5% |
 | Blood Splatter | 90 | 6.9% |
+| Bruise Clay | 88 | 6.8% |
+| Bone Clay | 70 | 5.4% |
 | Lakeside Cabin | 28 | 2.2% |
 | Haunted Mansion | 26 | 2.0% |
 | Radioactive Wasteland | 23 | 1.8% |
