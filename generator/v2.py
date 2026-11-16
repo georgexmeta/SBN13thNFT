@@ -52,7 +52,8 @@ HEAD_MARK = {
     "Clean": (10, ""),
 }
 # Ears (George, 2026-11-13): exactly 130 tokens get stretched gauged earlobes, dealt by ear_pass to tokens not yet rendered.
-EARS = {"Natural": (0, ""), "Gauged": (0, "a heavily stretched earlobe on his visible ear holding a large shiny polished silver steel tunnel gauge, a hollow metal ring about an inch wide with flared rims that you can see straight through, hanging just below the ear")}
+EARS = {"Natural": (0, ""), "Gauged": (0, "a heavily stretched earlobe on his visible ear holding a large shiny polished silver steel tunnel gauge, a hollow metal ring about an inch wide with flared rims that you can see straight through, hanging just below the ear"),
+        "Empty Stretched Lobe": (0, "a long floppy stretched earlobe on his visible ear with a large EMPTY round hole where a gauge used to be, no plug or ring in it, the loose lobe drooping down below the ear")}
 N_GAUGED = 130
 # Bloody bandage head wrap (George, 2026-11-13): an uncommon mask on 40 unrendered tokens, dealt by mask_pass.
 MASK_NEW = {"Bloody Bandage Wrap": (0, "his whole head and face wrapped in filthy blood-soaked medical gauze bandages, loosely wound with frayed "
@@ -516,11 +517,17 @@ _LOCK_PATH = os.path.join(ROOT, "generator", "locked_attrs.json")
 LOCK = json.load(open(_LOCK_PATH)) if os.path.exists(_LOCK_PATH) else None
 
 
+EMPTY_LOBE = [224, 252, 369, 377, 406, 416, 537, 620, 644, 646, 868, 893, 897, 922, 973, 975, 1013, 1014, 1032, 1056, 1075, 1088, 1135, 1158, 1266]
+
+
 def post_lock(tokens):
     """Trait changes made after the lock."""
     for a, _f in tokens:   # George 2026-11-16 17:19: no price-tag style specimen tags anywhere
         if a.get("Experiment") == "Blank Specimen Tag":
             del a["Experiment"]
+    for i in EMPTY_LOBE:   # George 2026-11-16 17:21: 25 Gauged wearers get the empty floppy stretched lobe instead (ref #327)
+        assert tokens[i - 1][0]["Ears"] == "Gauged"
+        tokens[i - 1][0]["Ears"] = "Empty Stretched Lobe"
 # Puzzle boxes (George 2026-11-16 04:48): #1136's cube turns chrome; 5 Uncommons get differently shaped gold-filigree boxes.
 _GOLD_FILIGREE = "inlaid with intricate polished-gold filigree of our own design (thorny vines, interlocking rings and tiny skull knots)"
 PUZZLE_BOXES = {

@@ -355,7 +355,8 @@
 | Natural | 880 | 67.7% |
 | Mostly Torn Ear | 145 | 11.2% |
 | Slightly Ripped Ear | 145 | 11.2% |
-| Gauged | 130 | 10.0% |
+| Gauged | 105 | 8.1% |
+| Empty Stretched Lobe | 25 | 1.9% |
 
 ## Character
 
