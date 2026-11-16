@@ -38,7 +38,7 @@ SKIN = {
 HAIR = {
     "Grey Side Tufts": (40, "bald crown with stringy grey clay hair tufts above the ears"),
     "Bald": (22, "completely bald"), "Greasy Comb-over": (16, "a greasy black comb-over"),
-    "Wild Grey Tufts": (14, "wild spiky grey hair tufts"), "Backwards Cap": (8, "a filthy plain backwards baseball cap with no logo"),
+    "Wild Grey Tufts": (14, "wild spiky grey hair tufts"), "Backwards Cap": (8, "a filthy plain backwards baseball cap with no logo, pulled snugly down over a normal-sized rounded skull; nothing bulges up out of or above the cap"),
 }
 # Hair for ordinary women (woman_pass). Short or tied back, to fit the no-long-hair look.
 HAIR_WOMAN = {
@@ -111,7 +111,7 @@ N_FEMALE = 8
 CLOWN = {
     "Mask": ("Smeared Greasepaint", "no mask: cheap yellowed greasepaint smeared over his face, sloppy black rings round his eyes, a crooked painted "
              "grin in chipped green paint over rotten brown teeth, sweat streaks through the paint"),
-    "Hair": ("Battered Top Hat", "a battered dented black top hat with a torn brim and a faded checkered band, tufts of greasy grey hair under it"),
+    "Hair": ("Battered Top Hat", "a battered dented black top hat with a torn brim and a faded checkered band, tufts of greasy grey hair under it, the hat sitting snugly on a normal-sized skull with no cranium bulging out of it"),
     "Clothing": ("Carnival Barker Vest", "a filthy mustard-and-maroon striped carnival barker vest over a yellowed collarless shirt, a crooked polka-dot bow tie"),
 }
 N_CLOWN = 25
