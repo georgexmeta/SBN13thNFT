@@ -457,13 +457,13 @@ OVERSEER_EXTRA = {
              "within, thin horizontal scan lines across her and small glitching pixel offsets at her edges as if the projection flickers"),
     "Hair": ("Hologram Bob", "a sharp short chin-length bob of glowing red light, perfectly straight, edges breaking into tiny pixels"),
     "Head Mark": ("Pixel Tears", "square pixel-block tears of red light running down her cheeks like corrupted data"),
-    "Mask": ("Cold Digital Stare", "no mask: the face of a grown woman in her thirties, calm, expressionless and cruel, with glowing "
+    "Mask": ("Cold Digital Stare", "no mask: the face of a grown woman in her thirties, calm, expressionless and cold, with glowing "
              "white eyes with no pupils, a faint thin smile, perfectly smooth hologram skin"),
     "Clothing": ("Hologram Shift Dress", "a simple sleek high-collared shift dress made of red light, flickering with scan lines"),
     "Backdrop": ("Digital Soul Prison", "a vast dark digital data centre that is also a prison of trapped souls: endless aisles of tall black "
                  "server racks blinking with red lights and glowing red circuit grids running along the floor and walls, pale ghostly souls "
-                 "of her victims trapped inside glowing red wireframe data cages and pressed against the glass of the server screens, "
-                 "faces and hands straining to get out, thin streams of red light (no readable characters), sculpted as a miniature "
+                 "trapped inside glowing red wireframe data cages and pressed against the glass of the server screens, "
+                 "faint ghostly faces and hands pressed to the glass, thin streams of red light (no readable characters), sculpted as a miniature "
                  "claymation diorama, softly out of focus behind her, no logos, no lettering"),
 }
 for _t, (_v, _p) in OVERSEER_EXTRA.items():
@@ -506,6 +506,18 @@ TOY_GUN = [418, 429, 954, 1164, 1253]
 LATE_DROP = set(json.load(open(os.path.join(ROOT, "generator", "late_drop.json"))))
 # Finished Claysons pulled for a redo after their traits were final: the trait passes still count them as drawn.
 LATE_REDRAW = set(json.load(open(os.path.join(ROOT, "generator", "late_redraw.json"))))
+# Trait picks are frozen to the render state of 2026-11-16 06:50 UTC (just before the big render run): which Claysons were
+# drawn and which batches were pending then. Without this every new image would reshuffle the undrawn trait pools.
+FROZEN_DRAWN = set(json.load(open(os.path.join(ROOT, "generator", "frozen_drawn.json"))))
+# LOCK (2026-11-16 11:10 UTC, rendering under way): the traits as published at commit 48c1275 are final. The passes below still run,
+# but at the end every token takes its locked traits, so new images can never reshuffle the collection. Any later trait change
+# goes in post_lock() after the lock, or regenerate locked_attrs.json from a reviewed manifest.
+_LOCK_PATH = os.path.join(ROOT, "generator", "locked_attrs.json")
+LOCK = json.load(open(_LOCK_PATH)) if os.path.exists(_LOCK_PATH) else None
+
+
+def post_lock(tokens):
+    """Trait changes made after the lock (none yet)."""
 # Puzzle boxes (George 2026-11-16 04:48): #1136's cube turns chrome; 5 Uncommons get differently shaped gold-filigree boxes.
 _GOLD_FILIGREE = "inlaid with intricate polished-gold filigree of our own design (thorny vines, interlocking rings and tiny skull knots)"
 PUZZLE_BOXES = {
@@ -621,8 +633,8 @@ def prompt(a, legendary_finish=None):
         hand = ("he wields a heavy rusty chainsaw with a bloody chain in BOTH hands: right hand gripping the rear handle, "
                 "left hand gripping the front wrap-around handle, the bar angled up and out across his body")
     elif held == "Laser Lattice":   # The Overseer: her weapon is a slicing grid of red lasers projected from her raised hands
-        hand = ("she holds no weapon: both hologram hands are raised with fingers spread, projecting a deadly lattice of thin bright red "
-                "laser beams that criss-cross the air in front of her in a slicing grid")
+        hand = ("she holds no weapon: both hologram hands are raised with fingers spread, projecting a glowing lattice of thin bright red "
+                "laser beams that criss-cross the air in front of her in a neat grid")
     elif held in ("Telekinesis", "Psychic Force"):
         hand = ("she holds no weapon: both bloody hands are raised and spread with clawed fingers, unleashing telekinetic power, "
                 "chairs, glass shards and streamers levitating around her and a rippling shockwave bending the air")
@@ -825,7 +837,7 @@ def build():
     # George 2026-11-15: women's blade nails get a finish scale. Chrome on the 3 Rare women, Gold on 6 undrawn, Bloody on the rest.
     _nails = [i for i, (a, f) in enumerate(tokens, 1) if a["Held Weapon"] == "Blade Nails"]
     _gold = set(random.Random(1818).sample([i for i in _nails if tokens[i - 1][0]["Tier"] == "Uncommon"
-                                            and not (os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png")) or i in LATE_REDRAW)], 6))
+                                            and not (i in FROZEN_DRAWN or i in LATE_REDRAW)], 6))
     for i in _nails:
         a = tokens[i - 1][0]
         a["Held Weapon"] = "Chrome Blade Nails" if a["Tier"] == "Rare" else "Gold Blade Nails" if i in _gold else "Bloody Blade Nails"
@@ -856,6 +868,11 @@ def build():
     for _i in (396, 569):   # George 2026-11-16 06:27: Diamond Blade Nails on 3 in all (#425 + 2 undrawn Rare women), top of the nail ladder
         tokens[_i - 1][0]["Held Weapon"] = "Diamond Blade Nails"
         tokens[_i - 1][0].pop("Off Hand", None)   # George 2026-11-16: #413 drops the shovel for a circus mallet in her left fist
+    if LOCK:
+        for _n, (_a, _f) in enumerate(tokens):
+            _new = dict(LOCK[_n]); _new.update({k: v for k, v in _a.items() if k.startswith("_")})
+            _a.clear(); _a.update(_new)
+        post_lock(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -975,12 +992,12 @@ NECK_COUNTS = {"Standard": [("Rusted", 30), ("Silver", 15), ("Gold", 5), ("Chrom
 
 def neck_pass(tokens):
     """Only tokens that are unrendered and not waiting in a batch (no redo cost); never 1/1s, exclusive characters or bandoliers."""
-    st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
+    st = json.load(open(os.path.join(ROOT, "generator", "frozen_batches.json")))
     pend = set().union(*[set(b["ids"]) - (set(b.get("drop", [])) - LATE_DROP) for b in st["batches"] if b["state"] != "done"])
     rng = random.Random(2020)
     for tier, deal in NECK_COUNTS.items():
         pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == tier and a["Character"] in ("Classic", "Woman") and i not in pend
-                and a["Belt"] != "Shrunken Head Bandolier" and not (os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png")) or i in LATE_REDRAW)]
+                and a["Belt"] != "Shrunken Head Bandolier" and not (i in FROZEN_DRAWN or i in LATE_REDRAW)]
         picks = iter(rng.sample(pool, sum(n for _, n in deal)))
         for fin, n in deal:
             for _ in range(n):
@@ -995,13 +1012,13 @@ ALL["Backdrop"][FREEZER[0]] = (0, FREEZER[1])
 
 
 def freezer_pass(tokens):
-    st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
+    st = json.load(open(os.path.join(ROOT, "generator", "frozen_batches.json")))
     pend = set().union(*[set(b["ids"]) - (set(b.get("drop", [])) - LATE_DROP) for b in st["batches"] if b["state"] != "done"])
     plain = {"Sage Clay", "Swamp Clay", "Slate Clay", "Teal Clay", "Rust Clay", "Bruise Clay", "Bone Clay"}
     rng = random.Random(2031)
     for tier, n in (("Uncommon", 17), ("Rare", 3)):
         pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == tier and a["Backdrop"] in plain and i not in pend
-                and not (os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png")) or i in LATE_REDRAW)]
+                and not (i in FROZEN_DRAWN or i in LATE_REDRAW)]
         for i in rng.sample(pool, n):
             tokens[i - 1][0]["Backdrop"] = FREEZER[0]
 
@@ -1016,12 +1033,12 @@ ZOMBIE_COUNTS = {"Uncommon": [("Zombie Green", 10), ("Zombie Blue", 7)], "Rare":
 
 
 def zombie_pass(tokens):
-    st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
+    st = json.load(open(os.path.join(ROOT, "generator", "frozen_batches.json")))
     pend = set().union(*[set(b["ids"]) - (set(b.get("drop", [])) - LATE_DROP) for b in st["batches"] if b["state"] != "done"])
     rng = random.Random(2253)
     for tier, deal in ZOMBIE_COUNTS.items():
         pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == tier and a["Character"] in ("Classic", "Woman") and i not in pend
-                and a["Skin"] != "Deep Brown" and not (os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png")) or i in LATE_REDRAW)]
+                and a["Skin"] != "Deep Brown" and not (i in FROZEN_DRAWN or i in LATE_REDRAW)]
         women = [i for i in pool if tokens[i - 1][0]["Head"] == "Female"]   # George: zombie women and men alike
         men = [i for i in pool if tokens[i - 1][0]["Head"] != "Female"]
         rng.shuffle(women); rng.shuffle(men)
@@ -1068,7 +1085,7 @@ FRAMING_MUTARM = FRAMING.split("; his other hand")[0] + "; his other arm is the 
 
 
 def lab_pass(tokens):
-    st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
+    st = json.load(open(os.path.join(ROOT, "generator", "frozen_batches.json")))
     pend = set().union(*[set(b["ids"]) - (set(b.get("drop", [])) - LATE_DROP) for b in st["batches"] if b["state"] != "done"])
     plain = {"Sage Clay", "Swamp Clay", "Slate Clay", "Teal Clay", "Rust Clay", "Bruise Clay", "Bone Clay", ROBINHOOD[0]}
     used = set(CLOWN_PISTOLS) | {1136}
@@ -1078,7 +1095,7 @@ def lab_pass(tokens):
     for name, test, n in LAB_GROUPS:   # rarest group first; Standards keep Standard traits only, so they are left out
         pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] in LAB_BY_TIER and a.get("Character") in ("Classic", "Woman")
                 and test(a) and i not in pend and i not in used
-                and not (os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png")) or i in LATE_REDRAW)]
+                and not (i in FROZEN_DRAWN or i in LATE_REDRAW)]
         got = rng.sample(pool, min(n, len(pool)))
         used.update(got)
         picks += got
@@ -1103,8 +1120,8 @@ def lab_pass(tokens):
     # a bio-lab canister holding a living symbiote, and move up to Common. The 3 lowest-scoring plain Commons drop to Standard
     # so the pyramid stays 464/400/293/130/13.
     toxic = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == "Standard" and a["Skin"] == "Toxic Green" and i not in pend
-             and a.get("Character") in ("Classic", "Woman") and not (os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png")) or i in LATE_REDRAW)]
-    assert len(toxic) == 3, toxic
+             and a.get("Character") in ("Classic", "Woman") and not (i in FROZEN_DRAWN or i in LATE_REDRAW)]
+    assert len(toxic) == 3 or LOCK, toxic
     for i, v in zip(sorted(toxic), CANISTERS):
         tokens[i - 1][0].update({"Held Weapon": v, "Tier": "Common"})
     skip = {"Tier", "1/1 Name", "Splatter", "Character"}
@@ -1138,12 +1155,12 @@ def box_pass(tokens):
     for a, f in tokens:
         if a["Held Weapon"] == "Gilded Puzzle Box":
             a["Held Weapon"] = "Chrome Puzzle Box"
-    st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
+    st = json.load(open(os.path.join(ROOT, "generator", "frozen_batches.json")))
     pend = set().union(*[set(b["ids"]) - (set(b.get("drop", [])) - LATE_DROP) for b in st["batches"] if b["state"] != "done"])
     pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == "Uncommon" and a["Back Weapon"] == "None"
             and a["Held Weapon"] in ("Chainsaw", "Nail Bat", "Meat Hook", "Rusted Hunting Knife", "Rusted Butcher Cleaver", "Rusted Sickle")
             and a.get("Off Hand") in (None, "Sledgehammer", "Pitchfork") and not a.get("Mutation") and not a.get("Experiment") and a.get("Character") in ("Classic", "Woman")
-            and i not in pend and not (os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png")) or i in LATE_REDRAW)]
+            and i not in pend and not (i in FROZEN_DRAWN or i in LATE_REDRAW)]
     gold = [v for v in PUZZLE_BOXES if v.startswith("Gold")]
     for i, v in zip(random.Random(1987).sample(pool, len(gold)), gold):
         tokens[i - 1][0]["Held Weapon"] = v
@@ -1160,14 +1177,14 @@ for _v, (_t, _n, _d) in HOCKEY_FINISH.items():
 def hockey_pass(tokens):
     """George 2026-11-16 06:02: metal finishes on the plain Hockey Half-Mask, undrawn wearers only (no Rare wears one undrawn,
     so Gold and Chrome go to Uncommons): Rusted 13 on Commons, Gold 7 and Chrome 3 on Uncommons."""
-    st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
+    st = json.load(open(os.path.join(ROOT, "generator", "frozen_batches.json")))
     pend = set().union(*[set(b["ids"]) - (set(b.get("drop", [])) - LATE_DROP) for b in st["batches"] if b["state"] != "done"])
     rng = random.Random(1313)
     used = set()
     for v, (tier, n, _) in HOCKEY_FINISH.items():
         pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == tier and a["Mask"] == "Hockey Half-Mask" and i not in used
                 and a.get("Character") in ("Classic", "Woman") and i not in pend
-                and not (os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png")) or i in LATE_REDRAW)]
+                and not (i in FROZEN_DRAWN or i in LATE_REDRAW)]
         for i in rng.sample(pool, n):
             tokens[i - 1][0]["Mask"] = v
             used.add(i)
@@ -1176,11 +1193,11 @@ def hockey_pass(tokens):
 
 
 def robinhood_pass(tokens):
-    st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
+    st = json.load(open(os.path.join(ROOT, "generator", "frozen_batches.json")))
     pend = set().union(*[set(b["ids"]) - (set(b.get("drop", [])) - LATE_DROP) for b in st["batches"] if b["state"] != "done"])
     plain = {"Sage Clay", "Swamp Clay", "Slate Clay", "Teal Clay", "Rust Clay", "Bruise Clay", "Bone Clay"}
     pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Backdrop"] in plain and a["Tier"] != "Legendary 1/1" and i not in pend
-            and not (os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png")) or i in LATE_REDRAW)]
+            and not (i in FROZEN_DRAWN or i in LATE_REDRAW)]
     for i in random.Random(16).sample(pool, 110):
         tokens[i - 1][0]["Backdrop"] = ROBINHOOD[0]
 
@@ -1200,7 +1217,7 @@ for _f, _d in (("Rusted", "bent rusty iron"), ("Golden", "gleaming solid-gold"),
 
 def order_pass(tokens):
     """Runs after common_pass (George: spread over Uncommons and Rares), so the tier labels are final and stay unchanged."""
-    st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
+    st = json.load(open(os.path.join(ROOT, "generator", "frozen_batches.json")))
     pend = set().union(*[set(b["ids"]) - (set(b.get("drop", [])) - LATE_DROP) for b in st["batches"] if b["state"] != "done"])
     BOX = 1136
     deal = {"Common": [("Clothing", "Ritual Leather Robe", 3), ("Mask", "Rusted Nail-Studded Mask", 2), ("Flesh", "Flayed Open Chest", 3)],
@@ -1210,7 +1227,7 @@ def order_pass(tokens):
     for tier, items in deal.items():
         pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == tier and a["Character"] in ("Classic", "Woman") and i not in pend
                 and i != BOX and not a["Skin"].startswith("Zombie") and a["Held Weapon"] != "Poison Syringe"
-                and not (os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png")) or i in LATE_REDRAW)]
+                and not (i in FROZEN_DRAWN or i in LATE_REDRAW)]
         picks = iter(rng.sample(pool, sum(n for *_, n in items)))
         for trait, val, n in items:
             for _ in range(n):
@@ -1246,9 +1263,9 @@ ALL["Mask"]["Weeping Four-Eye Mask"] = (0, "a cracked bone-white porcelain HALF 
 def weeping_mask_pass(tokens):
     """George 2026-11-16 reference (our own take): 20 undrawn tokens get the Weeping Four-Eye Mask: every undrawn bare-faced Uncommon
     that is free (plain bloodshot eyes, no special mask), the rest on Rares that keep another Rare-only trait besides the mask."""
-    st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
+    st = json.load(open(os.path.join(ROOT, "generator", "frozen_batches.json")))
     pend = set().union(*[set(b["ids"]) - (set(b.get("drop", [])) - LATE_DROP) for b in st["batches"] if b["state"] != "done"])
-    undrawn = lambda i: i not in pend and not (os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png")) or i in LATE_REDRAW)
+    undrawn = lambda i: i not in pend and not (i in FROZEN_DRAWN or i in LATE_REDRAW)
     unc = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == "Uncommon" and a["Character"] in ("Classic", "Woman")
            and a["Mask"] in EYES_SHOW and a["Mask"] not in ("Black-Lipped Bloody Grin", "Gas Mask", "Smeared Greasepaint", *ICON_BROWN)
            and a.get("Eyes") == "Bloodshot Eyes" and not a.get("Headpiece") and undrawn(i)]
@@ -1279,7 +1296,7 @@ for _v, _p in GAS.items():
 
 
 def gas_style_pass(tokens):
-    st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
+    st = json.load(open(os.path.join(ROOT, "generator", "frozen_batches.json")))
     pend = set().union(*[set(b["ids"]) - (set(b.get("drop", [])) - LATE_DROP) for b in st["batches"] if b["state"] != "done"])
     for a, f in tokens:
         if a["Mask"] == "Gas Mask":
@@ -1288,7 +1305,7 @@ def gas_style_pass(tokens):
     keep = {"Rusted Nail-Studded Mask", "Golden Nail-Studded Mask", "Chrome Nail-Studded Mask", "Weeping Four-Eye Mask", "Nail-Studded Leather Mask"}
     rare = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == "Rare" and a["Character"] == "Classic" and a["Mask"] not in keep
             and a["Held Weapon"] != "Gilded Puzzle Box" and not a.get("Headpiece") and i not in pend
-            and not (os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png")) or i in LATE_REDRAW)
+            and not (i in FROZEN_DRAWN or i in LATE_REDRAW)
             and any((k, v) not in low for k, v in a.items() if k not in ("Mask", "Tier", "Splatter"))]
     for i in random.Random(6060).sample(rare, 8):
         a = tokens[i - 1][0]
@@ -1299,19 +1316,19 @@ def gas_style_pass(tokens):
 
 def grin_pass(tokens):
     """Women only: 20 undrawn bare-faced women get the black-lipped bloody grin (Common 10, Uncommon 4, Standard 6)."""
-    st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
+    st = json.load(open(os.path.join(ROOT, "generator", "frozen_batches.json")))
     pend = set().union(*[set(b["ids"]) - (set(b.get("drop", [])) - LATE_DROP) for b in st["batches"] if b["state"] != "done"])
     rng = random.Random(4949)
     for tier, n in (("Common", 10), ("Uncommon", 4), ("Standard", 6)):
         pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == tier and a["Character"] == "Woman" and a["Mask"] == "Bare Face"
-                and i not in pend and not (os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png")) or i in LATE_REDRAW)]
+                and i not in pend and not (i in FROZEN_DRAWN or i in LATE_REDRAW)]
         for i in rng.sample(pool, min(n, len(pool))):
             tokens[i - 1][0]["Mask"] = "Black-Lipped Bloody Grin"
 
 
 def bone_crown_pass(tokens):
     """Trait "Headpiece": Crown of Bones on 12 Uncommon + 8 Rare undrawn tokens; never Cone Skulls, hats, hoods or head-covering masks."""
-    st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
+    st = json.load(open(os.path.join(ROOT, "generator", "frozen_batches.json")))
     pend = set().union(*[set(b["ids"]) - (set(b.get("drop", [])) - LATE_DROP) for b in st["batches"] if b["state"] != "done"])
     covered = {"Burlap Sack Hood", "Burlap Pig Mask", "Buckled Harness Hood", "Bloody Bandage Wrap", "Moaning Paper Mask", "Zipper Long Nose",
                "Crown of Nails"}
@@ -1319,17 +1336,17 @@ def bone_crown_pass(tokens):
     for tier, n in (("Uncommon", 12), ("Rare", 8)):
         pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == tier and a["Head"] != "Type 3 - Cone Skull" and a["Hair"] not in HEADWEAR
                 and a["Mask"] not in covered and a["Character"] in ("Classic", "Woman") and i not in pend
-                and not (os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png")) or i in LATE_REDRAW)]
+                and not (i in FROZEN_DRAWN or i in LATE_REDRAW)]
         for i in rng.sample(pool, n):
             tokens[i - 1][0]["Headpiece"] = "Crown of Bones"
 
 
 def eyes_pass(tokens):
-    st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
+    st = json.load(open(os.path.join(ROOT, "generator", "frozen_batches.json")))
     pend = set().union(*[set(b["ids"]) - (set(b.get("drop", [])) - LATE_DROP) for b in st["batches"] if b["state"] != "done"])
     show = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] != "Legendary 1/1" and a["Mask"] in EYES_SHOW
             and a["Character"] in ("Classic", "Woman")]
-    fresh = [i for i in show if i not in pend and not (os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png")) or i in LATE_REDRAW)]
+    fresh = [i for i in show if i not in pend and not (i in FROZEN_DRAWN or i in LATE_REDRAW)]
     for i in show:
         tokens[i - 1][0]["Eyes"] = "Bloodshot Eyes"
     fresh = [i for i in fresh if tokens[i - 1][0]["Tier"] in ("Uncommon", "Rare")]   # George: Uncommon and above only
@@ -1362,7 +1379,7 @@ def common_pass(tokens):
 def jail_tier_fix(tokens):
     """Rarity audit 2026-11-15: Jail Cell (13) is a scene backdrop, and scene backdrops are Uncommon+, so a Standard token never gets it.
     Each unrendered Standard Jail Cell swaps backdrops with an unrendered Uncommon plain-clay token (tier counts unchanged)."""
-    done = lambda i: (os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png")) or i in LATE_REDRAW)
+    done = lambda i: (i in FROZEN_DRAWN or i in LATE_REDRAW)
     plain = {"Sage Clay", "Swamp Clay", "Slate Clay", "Teal Clay", "Rust Clay", "Bruise Clay", "Bone Clay"}
     pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == "Uncommon" and a["Backdrop"] in plain and not done(i)]
     random.Random(1717).shuffle(pool)
@@ -1537,7 +1554,7 @@ DEDUPE_KEYS = ["Head", "Skin", "Hair", "Head Mark", "Mask", "Held Weapon", "Back
 def dedupe_pass(tokens):
     """George 2026-11-15 "No duplicates": every pair of Claysons must differ in at least 3 visible traits. For a pair that doesn't,
     the unrendered one (else the later one) gets a new skin and head mark. Never 1/1s or Half-Burnt faces; Deep Brown icon tokens keep their skin."""
-    done = {i for i in range(1, len(tokens) + 1) if (os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png")) or i in LATE_REDRAW)}
+    done = {i for i in range(1, len(tokens) + 1) if (i in FROZEN_DRAWN or i in LATE_REDRAW)}
     vec = lambda a: tuple(a.get(k, "") for k in DEDUPE_KEYS)
     near = lambda u, v: sum(x != y for x, y in zip(u, v)) < 3
     rng = random.Random(1300)
