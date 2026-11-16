@@ -32,7 +32,7 @@
     },
     {
       "trait_type": "Back Weapon",
-      "value": "Scythe"
+      "value": "None"
     },
     {
       "trait_type": "Clothing",
@@ -60,7 +60,7 @@
     },
     {
       "trait_type": "Off Hand",
-      "value": "Gold Hook Hand"
+      "value": "Bloody Scythe"
     }
   ]
 }

@@ -180,7 +180,7 @@
 
 | Value | Count | Share |
 |---|---|---|
-| None | 865 | 66.5% |
+| None | 870 | 66.9% |
 | Rusted Saw Weed Whacker | 126 | 9.7% |
 | Oxygen Tank | 81 | 6.2% |
 | Bloody Saw Weed Whacker | 76 | 5.8% |
@@ -189,13 +189,14 @@
 | Woodcutter Axe | 17 | 1.3% |
 | Sledgehammer | 16 | 1.2% |
 | Clean Saw Weed Whacker | 14 | 1.1% |
-| Scythe (Rare+) | 12 | 0.9% |
 | Rusty Shovel | 12 | 0.9% |
 | Fuel Tanks (Rare+) | 11 | 0.8% |
+| Scythe (Rare+) | 5 | 0.4% |
 | Harpoon Gun (Rare+) | 5 | 0.4% |
 | Circus Mallet (Rare+) | 4 | 0.3% |
 | Chrome Saw Weed Whacker | 4 | 0.3% |
 | Double-Barrel Shotgun | 3 | 0.2% |
+| Bloody Scythe | 2 | 0.2% |
 | Sniper Rifle | 2 | 0.2% |
 | Golden Retro Axe | 1 | 0.1% |
 | Leathery Elder Wings | 1 | 0.1% |

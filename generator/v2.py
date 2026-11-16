@@ -605,6 +605,9 @@ LOCK = json.load(open(_LOCK_PATH)) if os.path.exists(_LOCK_PATH) else None
 EMPTY_LOBE = [224, 252, 369, 377, 406, 416, 537, 620, 644, 646, 868, 893, 897, 922, 973, 975, 1013, 1014, 1032, 1056, 1075, 1088, 1135, 1158, 1266]
 
 
+WOMEN_SCYTHE_HELD = (227, 612, 839, 853, 1168)
+
+
 def post_lock(tokens):
     """Trait changes made after the lock."""
     for a, _f in tokens:   # George 2026-11-16 17:19: no price-tag style specimen tags anywhere
@@ -634,6 +637,11 @@ def post_lock(tokens):
     assert tokens[157 - 1][0]["Held Weapon"] == "Scythe" and tokens[101 - 1][0]["Off Hand"] == "Scythe"
     tokens[157 - 1][0]["Held Weapon"] = "Gold Scythe"   # George 2026-11-16 21:59: held scythes go precious, back scythes stay rusty
     tokens[101 - 1][0]["Off Hand"] = "Chrome Scythe"
+    for _i in WOMEN_SCYTHE_HELD:   # George 2026-11-16 22:02: women hold their scythe in the left fist like #853, blade bloody red; men keep theirs on the back
+        _w = tokens[_i - 1][0]; assert _w["Back Weapon"] == "Scythe" and _w["Head"] == "Female", _i
+        _w["Back Weapon"] = "None"; _w["Off Hand"] = "Bloody Scythe"
+    for _i in (459, 1078):   # both hands busy (chainsaw / blade nails): the bloody scythe stays on her back
+        assert tokens[_i - 1][0]["Back Weapon"] == "Scythe"; tokens[_i - 1][0]["Back Weapon"] = "Bloody Scythe"
     _s = tokens[SLEEPER_ID - 1][0]   # George 2026-11-16 21:19: The Sleeper Below replaces The Frontman (squid tentacle arms 21:20)
     assert _s.get("1/1 Name") == "The Frontman", _s.get("1/1 Name")
     _s.clear(); _s.update(SLEEPER)
@@ -681,6 +689,10 @@ DUAL_PHRASE.update({   # bladed-glove men (George 2026-11-15) wield their back w
     "Double-Barrel Shotgun": "a sawn-off rusty double-barrel shotgun with a cracked wooden stock, held one-handed, barrels pointing up and out"})
 DUAL_PHRASE["Chrome Scythe"] = ("a huge scythe by its long dark wooden snath, held upright beside him with a gleaming mirror-bright CHROME "
                                 "curved blade arching above his head, a little blood on its edge")   # George 2026-11-16: #101, the only chrome scythe
+DUAL_PHRASE["Bloody Scythe"] = ("a huge scythe by the lower end of its long dark wooden snath, the snath slanting up diagonally behind her shoulder and "
+                                "the long curved blade arching high above her head, the whole blade soaked dark blood-red with fresh blood dripping "
+                                "from its edge, carried in her hand, not strapped to her back")   # George 2026-11-16 22:02: women hold their scythes like #853
+ALL["Back Weapon"]["Bloody Scythe"] = (0, "a huge scythe slung on her back, its long curved blade soaked dark blood-red and dripping, arching above her head")
 DUAL_PHRASE["The Book of the Dead"] = ("a grotesque ancient artifact of a book by its spine, held up to the side: a thick centuries-old tome bound "
                                      "in cracked, rotting, patchwork human-like skin with frayed black stitching and peeling scabbed edges, "
                                      "studded with little yellowed bone knobs and teeth, corroded green-crusted iron corner clasps and a rusty "
