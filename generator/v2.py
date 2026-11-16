@@ -733,6 +733,11 @@ def phrase(trait, value):
     return ALL[trait][value][1] if value in ALL[trait] else None
 
 
+SKIN_MATCH = {"Deep Brown": "deep dark-brown", "Tanning-Bed Bronze": "bronze", "Flesh Pink": "pink flesh-toned", "Corpse Grey": "corpse-grey",
+              "Sallow": "sallow yellowish", "Pale Wax": "pale waxy", "Ruddy": "ruddy red-pink", "Bloodless Blue": "bloodless pale blue",
+              "Toxic Green": "sickly toxic-green", "Zombie Green": "rotting mossy-green", "Zombie Blue": "rotting bruise-blue", "Ashen Grey": "ashen grey-white"}
+
+
 def prompt(a, legendary_finish=None):
     head = [phrase("Head", a["Head"]), phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"]), phrase("Head Mark", a["Head Mark"]), phrase("Ears", a.get("Ears", "Natural"))]
     if a.get("Head Wound"):
@@ -826,6 +831,8 @@ def prompt(a, legendary_finish=None):
                  "battered leather cuff strapped to his forearm, raised menacingly beside him")
     elif a.get("Off Hand"):   # George 2026-11-15: dual wield, both fists clench a weapon, no back weapon
         hand += "; his LEFT fist tightly grips " + DUAL_PHRASE[a["Off Hand"]]
+    if a["Skin"] in SKIN_MATCH:   # George 2026-11-16 21:56: hands always match the face's skin tone (esp. dark skin)
+        hand += f"; the hands, fingers and wrists are exactly the same {SKIN_MATCH[a['Skin']]} skin colour as the face, never lighter or pinker"
     body = [f"wearing {phrase('Clothing', a['Clothing'])}", FLESH.get(a.get("Flesh")), phrase("Belt", a["Belt"]), NECK.get(a.get("Neck")), MUTATION.get(a.get("Mutation")), EXPERIMENT.get(a.get("Experiment")), hand, phrase("Back Weapon", a["Back Weapon"])]
     female = a.get("Character", "Classic") in FEMALE or a.get("Character") in ("The Grieving Mother", "The Prom Queen", "The Ringmistress", "Woman", "Madame Mortis", "The Overseer")
     if female:
