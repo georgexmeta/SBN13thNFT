@@ -727,9 +727,10 @@ def prompt(a, legendary_finish=None):
         hand = ("he holds a lit Molotov cocktail in EACH hand: two old glass bottles of sloshing fuel with burning rag wicks, "
                 "small orange flames licking from both, one raised in each fist")
     elif held == "Clayson Master Ball and Golden Axe":
-        hand = ("in his left hand he holds out his prized catch-ball: a round cracked clay ball shaped like a goalie mask rolled into a ball, "
-                "its top cap glossy blood-red and its lower part bone-white, covered in rows of small breathing holes with rusty rivets and "
-                "drips of dried blood where the red runs down; the red and white meet in a wavy dripping edge, with no black band and no centre "
+        hand = ("in his left hand he holds out his prized catch-ball (George 2026-11-16): a round two-tone ball the size of a softball. "
+                "Its TOP half is an aged ivory-white hockey goalie mask curved over the ball: two dark eye holes, a moulded brow ridge and "
+                "beak nose, rows of small round breathing holes, a few rusty rivets and smears of dried blood, no chevrons, no red markings. "
+                "Its BOTTOM half is plain smooth clean white clay. The two halves meet at a thin plain seam, with no black band and no centre "
                 "button; his right fist grips a gleaming solid-gold axe with a golden head and a dark wooden handle, held low at his side")
     elif held == "Exercise Band":
         hand = ("she holds a stretchy pink rubber exercise resistance band pulled taut between both fists like a strangling cord, "
