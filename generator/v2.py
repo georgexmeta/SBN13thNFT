@@ -470,6 +470,19 @@ TOY_GUN = [418, 429, 954, 1164, 1253]
 LATE_DROP = set(json.load(open(os.path.join(ROOT, "generator", "late_drop.json"))))
 # Finished Claysons pulled for a redo after their traits were final: the trait passes still count them as drawn.
 LATE_REDRAW = set(json.load(open(os.path.join(ROOT, "generator", "late_redraw.json"))))
+# Puzzle boxes (George 2026-11-16 04:48): #1136's cube turns chrome; 5 Uncommons get differently shaped gold-filigree boxes.
+_GOLD_FILIGREE = "inlaid with intricate polished-gold filigree of our own design (thorny vines, interlocking rings and tiny skull knots)"
+PUZZLE_BOXES = {
+    "Chrome Puzzle Box": "a perfect cube of glossy black lacquer inlaid with intricate mirror-polished CHROME filigree of our own design "
+                         "(thorny vines, interlocking rings and tiny skull knots)",
+    "Gold Pyramid Puzzle Box": "a small four-sided pyramid of glossy black lacquer " + _GOLD_FILIGREE,
+    "Gold Sphere Puzzle Box": "a small sphere of glossy black lacquer made of interlocking curved segments " + _GOLD_FILIGREE,
+    "Gold Octahedron Puzzle Box": "a small eight-faced diamond-shaped octahedron of glossy black lacquer " + _GOLD_FILIGREE,
+    "Gold Cylinder Puzzle Box": "a small squat cylinder of glossy black lacquer made of stacked rotating rings " + _GOLD_FILIGREE,
+    "Gold Dodecahedron Puzzle Box": "a small twelve-faced dodecahedron of glossy black lacquer with pentagon faces " + _GOLD_FILIGREE,
+}
+for _v in PUZZLE_BOXES:
+    ALL["Held Weapon"][_v] = (0, "")
 # Clown pistols (George 2026-11-16): the pop-gun clowns dual wield real pistols instead, one in each fist, with a rarity scale.
 # 418 (porcelain doll, not a clown) keeps the lone toy pop gun; 1014 and 1088 (Smeared Greasepaint) join so there are 6 pistol clowns.
 CLOWN_PISTOLS = {1164: "Twin Six-Shooter Revolvers", 1014: "Twin Six-Shooter Revolvers", 1088: "Twin Six-Shooter Revolvers",
@@ -574,10 +587,9 @@ def prompt(a, legendary_finish=None):
     elif held in ("Telekinesis", "Psychic Force"):
         hand = ("she holds no weapon: both bloody hands are raised and spread with clawed fingers, unleashing telekinetic power, "
                 "chairs, glass shards and streamers levitating around her and a rippling shockwave bending the air")
-    elif held == "Gilded Puzzle Box":   # George 2026-11-16: the only one in the collection, an original occult puzzle-box homage
-        hand = ("he holds a small ornate occult puzzle box up in front of his chest in BOTH hands, cradled reverently: a perfect cube of "
-                "glossy black lacquer inlaid with intricate polished-gold filigree of our own design (thorny vines, interlocking rings "
-                "and tiny skull knots), one face slightly twisted open along a seam leaking a thin cold blue glow; no letters or symbols")
+    elif held in PUZZLE_BOXES:   # George 2026-11-16: original occult puzzle-box homage, the chrome cube is the only one of its kind
+        hand = ("he holds a small ornate occult puzzle box up in front of his chest in BOTH hands, cradled reverently: " + PUZZLE_BOXES[held] +
+                ", one section slightly twisted open along a seam leaking a thin cold blue glow; no letters or symbols")
     elif held in TWO_HAND_HELD:   # George 2026-11-15: a back weapon rarer than the held one is wielded in both hands instead
         hand = f"he wields {TWO_HAND_HELD[held]} firmly in BOTH fists, one hand high and one low on it, held across his body and angled up and out"
     elif held.endswith(" Saw Weed Whacker") and held != "Golden Saw Weed Whacker":   # whacker rarer than the held weapon: both hands
@@ -640,7 +652,7 @@ def prompt(a, legendary_finish=None):
     if doll:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"])]
     parts = [STYLE, DOLL_BASE if doll else FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
-             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Clayson Master Ball and Golden Axe" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_PISTOLS if held in PISTOL else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held == "Death Nails" or held.endswith("Blade Nails") else FRAMING_MUTARM if a.get("Mutation") == "Mutated Claw Arm" else FRAMING_HOOKOFF if (a.get("Off Hand") or "").endswith("Hook Hand") else FRAMING_DUAL if a.get("Off Hand") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_BOX if held == "Gilded Puzzle Box" else FRAMING_BOTH if held in TWO_HAND_HELD else FRAMING_WHACKER if held.endswith("Saw Weed Whacker") else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
+             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Clayson Master Ball and Golden Axe" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_PISTOLS if held in PISTOL else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held == "Death Nails" or held.endswith("Blade Nails") else FRAMING_MUTARM if a.get("Mutation") == "Mutated Claw Arm" else FRAMING_HOOKOFF if (a.get("Off Hand") or "").endswith("Hook Hand") else FRAMING_DUAL if a.get("Off Hand") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_BOX if held in PUZZLE_BOXES else FRAMING_BOTH if held in TWO_HAND_HELD else FRAMING_WHACKER if held.endswith("Saw Weed Whacker") else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
     text = ". ".join(p[0].upper() + p[1:] for p in parts if p) + "."
     if "empty black eye sockets" in (mask or ""):   # QA #232: the base "sunken eyes" line added a stray third eye
         text = text.replace("small sunken bloodshot eyes in swollen red-rimmed lids, ", "")
@@ -790,6 +802,7 @@ def build():
         _a["Held Weapon"] = _v
         _a.pop("Off Hand", None)
     lab_pass(tokens)
+    box_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -1065,6 +1078,24 @@ CANISTERS = {   # George 2026-11-16 01:41: black alien sludge, red parasite spec
 for _v, _d in CANISTERS.items():
     ALL["Held Weapon"][_v] = (0, CANISTER_BASE.format(_d))
 LAB_GROUPS_DONE = {}
+
+def box_pass(tokens):
+    """George 2026-11-16: the one Gilded Puzzle Box (#1136) becomes the Chrome Puzzle Box; 5 undrawn Uncommons with an ordinary
+    weapon and nothing on the back trade it (and any off-hand hammer or pitchfork) for a differently shaped gold puzzle box, both hands."""
+    for a, f in tokens:
+        if a["Held Weapon"] == "Gilded Puzzle Box":
+            a["Held Weapon"] = "Chrome Puzzle Box"
+    st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
+    pend = set().union(*[set(b["ids"]) - (set(b.get("drop", [])) - LATE_DROP) for b in st["batches"] if b["state"] != "done"])
+    pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == "Uncommon" and a["Back Weapon"] == "None"
+            and a["Held Weapon"] in ("Chainsaw", "Nail Bat", "Meat Hook", "Rusted Hunting Knife", "Rusted Butcher Cleaver", "Rusted Sickle")
+            and a.get("Off Hand") in (None, "Sledgehammer", "Pitchfork") and not a.get("Mutation") and not a.get("Experiment") and a.get("Character") in ("Classic", "Woman")
+            and i not in pend and not (os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png")) or i in LATE_REDRAW)]
+    gold = [v for v in PUZZLE_BOXES if v.startswith("Gold")]
+    for i, v in zip(random.Random(1987).sample(pool, len(gold)), gold):
+        tokens[i - 1][0]["Held Weapon"] = v
+        tokens[i - 1][0].pop("Off Hand", None)
+
 
 def robinhood_pass(tokens):
     st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))

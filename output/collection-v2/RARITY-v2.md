@@ -92,11 +92,11 @@
 |---|---|---|
 | Chainsaw | 209 | 16.1% |
 | Rusted Machete | 110 | 8.5% |
-| Meat Hook | 73 | 5.6% |
+| Meat Hook | 72 | 5.5% |
 | Nail Bat | 70 | 5.4% |
 | Spear | 64 | 4.9% |
-| Rusted Butcher Cleaver | 62 | 4.8% |
 | Bloody Hunting Knife | 61 | 4.7% |
+| Rusted Butcher Cleaver | 60 | 4.6% |
 | Rusted Hatchet | 60 | 4.6% |
 | Rusted Sickle | 54 | 4.2% |
 | Fish Hook | 53 | 4.1% |
@@ -108,9 +108,9 @@
 | Switchblade | 25 | 1.9% |
 | Bare Fist | 23 | 1.8% |
 | Bloody Blade Nails | 19 | 1.5% |
-| Rusted Hunting Knife | 19 | 1.5% |
 | Bloody Saw Weed Whacker | 17 | 1.3% |
 | Bloody Butcher Cleaver | 17 | 1.3% |
+| Rusted Hunting Knife | 17 | 1.3% |
 | Hook Hand (Rare+) | 15 | 1.2% |
 | Golden Saw Weed Whacker | 13 | 1.0% |
 | Rusty Pickaxe | 12 | 0.9% |
@@ -144,11 +144,14 @@
 | Clayson Master Ball and Golden Axe | 1 | 0.1% |
 | Scythe | 1 | 0.1% |
 | Bloody Kitchen Knife | 1 | 0.1% |
+| Gold Dodecahedron Puzzle Box | 1 | 0.1% |
+| Gold Sphere Puzzle Box | 1 | 0.1% |
 | Chrome Hunting Knife | 1 | 0.1% |
 | Sniper Rifle | 1 | 0.1% |
 | Toy Pop Gun | 1 | 0.1% |
 | Twin Chrome Pistols | 1 | 0.1% |
 | Telekinesis | 1 | 0.1% |
+| Gold Octahedron Puzzle Box | 1 | 0.1% |
 | Circus Mallet | 1 | 0.1% |
 | Death Nails | 1 | 0.1% |
 | Red Parasite Species Canister | 1 | 0.1% |
@@ -158,8 +161,10 @@
 | Chrome Butcher Cleaver | 1 | 0.1% |
 | Chrome Hatchet | 1 | 0.1% |
 | Gold Sickle | 1 | 0.1% |
+| Gold Cylinder Puzzle Box | 1 | 0.1% |
+| Gold Pyramid Puzzle Box | 1 | 0.1% |
 | Gold Butcher Cleaver | 1 | 0.1% |
-| Gilded Puzzle Box | 1 | 0.1% |
+| Chrome Puzzle Box | 1 | 0.1% |
 
 ## Back Weapon
 
