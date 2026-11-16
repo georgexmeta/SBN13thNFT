@@ -515,9 +515,9 @@ PUPPET_ID = 1054
 PUPPET = {"Tier": "Legendary 1/1", "1/1 Name": "The Trial Puppet", "Character": "The Trial Puppet", "Head": "Puppet Head",
            "Skin": "Chalk-White Puppet", "Hair": "Sparse Black Tufts", "Head Mark": "Red Spiral Cheeks", "Ears": "Natural",
            "Mask": "Hinged Puppet Jaw", "Held Weapon": "Red Tricycle", "Back Weapon": "None",
-           "Clothing": "Moth-Eaten Puppet Suit", "Belt": "None", "Backdrop": "Static Tape"}
-PUPPET_BASE = ("A creepy hand-carved ventriloquist-style PUPPET with an oversized bobble head (a puppet, not a living man: copy only the "
-                "reference's clay style and framing), a thin wooden-looking neck and narrow puppet shoulders, head turned three-quarters toward the viewer's right")
+           "Clothing": "Moth-Eaten Puppet Dress", "Belt": "None", "Backdrop": "Static Tape"}
+PUPPET_BASE = ("A creepy hand-carved ventriloquist-style FEMALE PUPPET, a lady doll-puppet with an oversized bobble head (a puppet, not a living person and not the man in the reference: copy only the "
+                "reference's clay style and framing), long painted black eyelashes, a thin wooden-looking neck and narrow puppet shoulders, head turned three-quarters toward the viewer's right")
 FRAMING_TRIKE = FRAMING.split(" Three-quarter view from the hips up")[0] + (" Wider shot showing the whole puppet sitting on the "
                     "tricycle from head to wheels, the whole head and the tricycle inside the frame with a little space above the head, figure "
                     "centred, square 1:1 composition. Both puppet hands grip the handlebars; nothing else held")
@@ -528,8 +528,8 @@ PUPPET_EXTRA = {
     "Head Mark": ("Red Spiral Cheeks", "a bright red painted spiral swirl on each cheek"),
     "Mask": ("Hinged Puppet Jaw", "no mask: a wooden puppet face with a hinged jaw on two straight vertical seams from the corners of the "
              "mouth to the chin, thin dark red painted lips, staring glossy dark glass eyes with tiny pinpoint amber pupils, a faint unsettling grin"),
-    "Clothing": ("Moth-Eaten Puppet Suit", "a tiny moth-eaten faded burgundy velvet waistcoat over a yellowed ruffled cream shirt with a thin "
-                 "black string tie, dusty and frayed, small white-gloved puppet hands; no bow tie, no lettering"),
+    "Clothing": ("Moth-Eaten Puppet Dress", "a tiny moth-eaten faded burgundy velvet pinafore dress over a yellowed ruffled cream "
+                 "high-collared blouse with a thin black ribbon at the throat, dusty and frayed, small white-gloved puppet hands; no bow tie, no lettering"),
     "Backdrop": ("Static Tape", "the whole background is a frozen frame of a recorded videotape full of analog static: dense grey, white "
                  "and black snow noise, a few warped horizontal tracking lines rolling across it and a faint red and green colour bleed at the "
                  "edges, as if the puppet is paused on an old tape, rendered as pressed matte clay texture; no on-screen text, no timestamp, no play symbol"),
@@ -759,7 +759,7 @@ def prompt(a, legendary_finish=None):
                 "both tentacles raised and coiling menacingly toward the viewer, dripping sea water and a little blood")
     elif held == "Red Tricycle":   # The Trial Puppet rides his little red tricycle
         hand = ("he sits riding a small old-fashioned red tricycle with chipped paint, a big front wheel and two small back wheels, "
-                "rust on the spokes, his little puppet legs on the pedals and both white-gloved hands on the handlebars, leaning forward menacingly")
+                "rust on the spokes, little puppet legs in white stockings on the pedals and both white-gloved hands on the handlebars, leaning forward menacingly")
     elif held == "Laser Lattice":   # The Overseer: her weapon is a slicing grid of red lasers projected from her raised hands
         hand = ("she holds no weapon: both hologram hands are raised with fingers spread, projecting a glowing lattice of thin bright red "
                 "laser beams that criss-cross the air in front of her in a neat grid")
@@ -838,7 +838,7 @@ def prompt(a, legendary_finish=None):
         head = [phrase("Head", a["Head"]), phrase("Skin", a["Skin"]), phrase("Head Mark", a["Head Mark"]), phrase("Ears", a["Ears"])]
     puppet = a.get("Character") == "The Trial Puppet"
     if puppet:
-        head = [phrase("Head", a["Head"]), phrase("Skin", a["Skin"]), phrase("Head Mark", a["Head Mark"]), phrase("Ears", a["Ears"])]
+        head = [phrase("Head", a["Head"]), phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"]), phrase("Head Mark", a["Head Mark"]), phrase("Ears", a["Ears"])]
     parts = [STYLE, SLEEPER_BASE if sleeper else PUPPET_BASE if puppet else OVERSEER_BASE if a.get("Character") == "The Overseer" else DOLL_BASE if doll else FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
              phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Clayson Master Ball and Golden Axe" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_PISTOLS if held in PISTOL else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held == "Death Nails" or held.endswith("Blade Nails") else FRAMING_MUTARM if a.get("Mutation") == "Mutated Claw Arm" else FRAMING_HOOKOFF if (a.get("Off Hand") or "").endswith("Hook Hand") else FRAMING_DUAL if a.get("Off Hand") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_BOX if held in PUZZLE_BOXES else FRAMING_BOTH if held in TWO_HAND_HELD else FRAMING_WHACKER if held.endswith("Saw Weed Whacker") else FRAMING_LASER if held == "Laser Lattice" else FRAMING_TENTACLE if held == "Squid Tentacle Arms" else FRAMING_TRIKE if held == "Red Tricycle" else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
     text = ". ".join(p[0].upper() + p[1:] for p in parts if p) + "."
@@ -846,6 +846,8 @@ def prompt(a, legendary_finish=None):
         text = text.replace("small sunken bloodshot eyes in swollen red-rimmed lids, ", "")
     if a.get("Eyes") in EYES:   # George 2026-11-16: eye colour trait replaces the default bloodshot eyes
         text = re.sub(r"(small sunken |both |his |one |single )?bloodshot eyes?", EYES[a["Eyes"]], text)
+    if a.get("Character") == "The Trial Puppet":   # George 2026-11-16 21:37: the puppet is female
+        text = re.sub(r"\bhis\b", "her", re.sub(r"\bHis\b", "Her", re.sub(r"\bhim\b", "her", re.sub(r"\bhe\b", "she", re.sub(r"\bHe\b", "She", text)))))
     if a.get("Mask") == "Veiled Stitched Face":   # the veil is down over her face, not trailing behind
         text = text.replace(" with a torn veil trailing from her hair", "")
     if a.get("_fix"):

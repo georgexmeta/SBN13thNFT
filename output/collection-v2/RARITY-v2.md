@@ -244,7 +244,7 @@
 | Heavy Leather Butcher Apron | 1 | 0.1% |
 | Bloody Raincoat Over Pinstripe Suit | 1 | 0.1% |
 | Rotted Kelp Shroud | 1 | 0.1% |
-| Moth-Eaten Puppet Suit | 1 | 0.1% |
+| Moth-Eaten Puppet Dress | 1 | 0.1% |
 
 ## Belt
 
