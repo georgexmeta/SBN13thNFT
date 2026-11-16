@@ -65,6 +65,10 @@
     {
       "trait_type": "Eyes",
       "value": "Pupil-less White Eyes"
+    },
+    {
+      "trait_type": "Headpiece",
+      "value": "Crown of Bones"
     }
   ]
 }

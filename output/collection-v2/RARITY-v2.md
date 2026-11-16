@@ -27,7 +27,7 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Bare Face | 206 | 15.8% |
+| Bare Face | 186 | 14.3% |
 | Hockey Half-Mask | 161 | 12.4% |
 | Burlap Pig Mask | 122 | 9.4% |
 | Patchwork Goggle Mask | 117 | 9.0% |
@@ -41,6 +41,7 @@
 | Honeycomb Half-Mask | 24 | 1.8% |
 | Rubber Seam Face | 20 | 1.5% |
 | Buckled Harness Hood | 20 | 1.5% |
+| Black-Lipped Bloody Grin | 20 | 1.5% |
 | Smeared Greasepaint | 18 | 1.4% |
 | Flayed Muscle Face | 16 | 1.2% |
 | Stitched Skin Face | 15 | 1.2% |

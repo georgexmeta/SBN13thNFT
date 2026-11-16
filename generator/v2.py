@@ -278,7 +278,7 @@ MASK_STD = {
     "Burlap Pig Mask": (14, "a frayed stitched burlap pig mask with floppy ears, a pink clay snout and a blocky burlap-toothed grin, a rusty leather strap with a buckle over the crown"),
     "Burlap Sack Hood": (12, "his huge oversized bobble head is entirely covered by a filthy lumpy burlap sack pulled all the way down over the whole skull and face, ragged cut eye holes, a cross-stitched mouth, rope tied tight at the neck; no skin or hair visible. The sack is pulled fully DOWN over the face with its eye holes right over his eyes, never pushed up on top of the head like a cap and never covering only half the face; on a pointed cone skull the sack covers the whole cone too"),
     "Patchwork Goggle Mask": (12, "a patchwork mask of stitched burlap and riveted scrap-metal plates, exactly two round brass goggles with red lenses sitting directly over his two eyes (the eyes seen through the lenses, nothing else on the nose or snout), a wire-stitched mouth, a leather strap with a buckle over the crown"),
-    "Gas Mask": (10, "a cracked black rubber respirator over his nose and mouth with an olive filter canister and ribbed hose, eyes visible above"),
+    "Gas Mask": (10, "a battered riveted rusty-steel HALF-face respirator clamped over his nose and mouth with crude rivets and bolts, a single round olive filter canister with a dull yellow face on one side, ribbed black rubber hoses looping from the mask down across his chest, scarred stitched skin around its edges, eyes visible above"),
     "Paisley Bandana": (8, "a navy paisley bandana tied snug over his nose and mouth, point hanging on the chest"),
     "Iron Muzzle": (4, "a crude welded scrap-metal jaw cage made of bent rebar bars and bolts wrapped round his mouth and chin, rusty and bloody, eyes visible above"),
 }
@@ -535,6 +535,8 @@ def prompt(a, legendary_finish=None):
     head = [phrase("Head", a["Head"]), phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"]), phrase("Head Mark", a["Head Mark"]), phrase("Ears", a.get("Ears", "Natural"))]
     if a.get("Head Wound"):
         head.append(WOUND)
+    if a.get("Headpiece") == "Crown of Bones":
+        head.append(BONE_CROWN)
     if legendary_finish and legendary_finish.startswith("MASK:"):
         mask = legendary_finish.split("|", 1)[1]
     elif legendary_finish:
@@ -754,7 +756,9 @@ def build():
         tokens[_i - 1][0]["Held Weapon"] = "Golden Saw Weed Whacker"
     common_pass(tokens)
     order_pass(tokens)
+    grin_pass(tokens)
     eyes_pass(tokens)
+    bone_crown_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -983,9 +987,45 @@ def order_pass(tokens):
 # Eyes trait (George, 2026-11-16). Only where the eyes show. Finished tokens already show the default bloodshot eyes, so they are
 # labelled Bloodshot Eyes; undrawn ones get Yellow Sickly 110 and Pupil-less White 45 (any tier but 1/1s), the rest Bloodshot.
 EYES = {"Yellow Sickly Eyes": "small sunken sickly jaundiced yellow eyes with dull yellow whites and tiny dark pupils",
-        "Pupil-less White Eyes": "small sunken blank pupil-less milky-white eyes with no iris and no pupil, dead and staring"}
-EYES_SHOW = {"Bare Face", "Hockey Half-Mask", "Gas Mask", "Paisley Bandana", "Iron Muzzle", "Honeycomb Half-Mask", "Stitched Skin Face",
+        "Pupil-less White Eyes": "small sunken blank pupil-less milky-white eyes with no iris and no pupil, dead and staring",
+        "Yellow Eyes, Green Pupils": "small sunken glowing sulphur-yellow eyes with sharp toxic-green pupils",
+        "Red Eyes, Green Pupils": "small sunken blood-red eyes with sharp toxic-green pupils"}
+EYES_SHOW = {"Black-Lipped Bloody Grin", "Bare Face", "Hockey Half-Mask", "Gas Mask", "Paisley Bandana", "Iron Muzzle", "Honeycomb Half-Mask", "Stitched Skin Face",
              "Smeared Greasepaint", "Bloody Bandage Wrap", "Buckled Harness Hood", "Rubber Seam Face"}
+
+
+# Mood-board traits (George, 2026-11-16; inspiration only, never the source characters or names).
+ALL["Mask"]["Black-Lipped Bloody Grin"] = (0, "no mask: her bare disfigured face with smeared black lipstick on cracked lips, the corners of "
+                                              "her mouth cut and stretched into a wide ragged bloody grin, dried blood dripping down her chin")
+BONE_CROWN = ("a crude crown of jagged yellowed bone shards and splintered wooden stakes standing up around his head, bound tightly to his "
+              "skull with thick coils of frayed rope")
+
+
+def grin_pass(tokens):
+    """Women only: 20 undrawn bare-faced women get the black-lipped bloody grin (Common 10, Uncommon 4, Standard 6)."""
+    st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
+    pend = set().union(*[set(b["ids"]) - set(b.get("drop", [])) for b in st["batches"] if b["state"] != "done"])
+    rng = random.Random(4949)
+    for tier, n in (("Common", 10), ("Uncommon", 4), ("Standard", 6)):
+        pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == tier and a["Character"] == "Woman" and a["Mask"] == "Bare Face"
+                and i not in pend and not os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png"))]
+        for i in rng.sample(pool, min(n, len(pool))):
+            tokens[i - 1][0]["Mask"] = "Black-Lipped Bloody Grin"
+
+
+def bone_crown_pass(tokens):
+    """Trait "Headpiece": Crown of Bones on 12 Uncommon + 8 Rare undrawn tokens; never Cone Skulls, hats, hoods or head-covering masks."""
+    st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
+    pend = set().union(*[set(b["ids"]) - set(b.get("drop", [])) for b in st["batches"] if b["state"] != "done"])
+    covered = {"Burlap Sack Hood", "Burlap Pig Mask", "Buckled Harness Hood", "Bloody Bandage Wrap", "Moaning Paper Mask", "Zipper Long Nose",
+               "Crown of Nails"}
+    rng = random.Random(1313)
+    for tier, n in (("Uncommon", 12), ("Rare", 8)):
+        pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == tier and a["Head"] != "Type 3 - Cone Skull" and a["Hair"] not in HEADWEAR
+                and a["Mask"] not in covered and a["Character"] in ("Classic", "Woman") and i not in pend
+                and not os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png"))]
+        for i in rng.sample(pool, n):
+            tokens[i - 1][0]["Headpiece"] = "Crown of Bones"
 
 
 def eyes_pass(tokens):
@@ -1000,6 +1040,9 @@ def eyes_pass(tokens):
     picks = random.Random(4444).sample(fresh, min(len(fresh), 75))
     for n, i in enumerate(picks):
         tokens[i - 1][0]["Eyes"] = "Yellow Sickly Eyes" if n < len(picks) * 2 // 3 else "Pupil-less White Eyes"
+    rest = [i for i in fresh if i not in set(picks)]   # George 2026-11-16 (mood board): green pupils in yellow or red eyes
+    for n, i in enumerate(random.Random(4545).sample(rest, min(len(rest), 14))):
+        tokens[i - 1][0]["Eyes"] = "Yellow Eyes, Green Pupils" if n < 8 else "Red Eyes, Green Pupils"
 
 
 N_COMMON = 400

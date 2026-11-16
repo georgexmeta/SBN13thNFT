@@ -60,7 +60,11 @@
     },
     {
       "trait_type": "Eyes",
-      "value": "Bloodshot Eyes"
+      "value": "Yellow Eyes, Green Pupils"
+    },
+    {
+      "trait_type": "Headpiece",
+      "value": "Crown of Bones"
     }
   ]
 }
