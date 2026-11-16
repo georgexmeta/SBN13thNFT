@@ -980,8 +980,8 @@ EXPERIMENT = {
     "Blank Specimen Tag": "a blank yellowed paper specimen tag tied to his wrist with wire, no writing on it",
 }
 LAB = ("Specimen Tank Lab", "a ruined underground experiment lab: cracked glass specimen tanks of glowing green fluid with dark shapes "
-       "floating inside, broken pipes and dangling cables, flickering green light, sculpted as a miniature claymation diorama in matte "
-       "plasticine, softly out of focus behind him, no signs, no logos, no lettering")
+       "floating inside, broken pipes and dangling cables, flickering green light, black-and-yellow biohazard warning symbols (the three-crescent trefoil, symbol only) on the tanks and walls, "
+       "sculpted as a miniature claymation diorama in matte plasticine, softly out of focus behind him, no words, no logos, no lettering")
 ALL["Backdrop"][LAB[0]] = (0, LAB[1])
 # George 2026-11-16: how many Claysons of each body-horror group get one lab trait (cut back where too few are undrawn)
 LAB_GROUPS = [("Flayed Open Chest", lambda a: a.get("Flesh") == "Flayed Open Chest", 4),
@@ -1047,7 +1047,8 @@ def lab_pass(tokens):
 
 CANISTER = ("Symbiote Containment Canister", "a heavy bio-lab containment canister held by its steel carry handle: a thick glass cylinder "
             "between riveted steel end caps with yellow-and-black hazard rings and glowing green seams, a writhing mass of glossy black "
-            "tendrils inside pressing against the cracked glass as if ready to burst out, no symbols, no logos, no lettering")
+            "tendrils inside pressing against the cracked glass as if ready to burst out, a small black biohazard warning symbol (the three-crescent trefoil) on a yellow band "
+            "around the glass, symbol only, no words, no logos, no lettering")
 ALL["Held Weapon"][CANISTER[0]] = (0, CANISTER[1])
 LAB_GROUPS_DONE = {}
 
