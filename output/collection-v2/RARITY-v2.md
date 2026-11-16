@@ -277,7 +277,7 @@
 | Jail Cell | 13 | 1.0% |
 | Specimen Tank Lab | 6 | 0.5% |
 | Terracotta Clay | 1 | 0.1% |
-| Burnt Dollhouse | 1 | 0.1% |
+| Toy Store After Hours | 1 | 0.1% |
 | Chapel Altar | 1 | 0.1% |
 | Burning Gym | 1 | 0.1% |
 | Digital Soul Prison | 1 | 0.1% |

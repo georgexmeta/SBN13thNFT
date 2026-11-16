@@ -428,6 +428,7 @@ for _t, (_v, _p) in RETRO_EXTRA.items():
     ALL[_t][_v] = (0, _p)
 ALL["Hair"]["Short Golden-Brown Curls"] = (0, "short, soft golden-brown curled hair cut just above the collar, a 1970s housewife style")
 ALL["Clothing"]["Powder-Blue Cable-Knit Sweater"] = (0, "a cosy powder-blue cable-knit wool sweater with a ribbed crew neck, sleeves pushed up, blood spattered down the front")
+ALL["Backdrop"]["Toy Store After Hours"] = (0, "the inside of an old-fashioned toy store after closing time: lights off except a few dim night lamps and moonlight through the front window, tall wooden shelves of plain unbranded dolls, teddy bears, wind-up toys and toy drums casting long shadows, a rocking horse in the aisle, no signs, no lettering and no brand boxes anywhere")
 ALL["Mask"]["Retro Purple Half-Mask"] = (0, "a chunky violet-purple HALF mask that matches his jumpsuit exactly and covers ONLY the lower half of his face, "
              "like the bottom half of a goalie mask: its top edge runs straight across the bridge of his nose just under his eyes, so both eyes, "
              "eyelids and brow are bare clay skin; rows of round black breathing holes over the mouth and chin, decorated ONLY with a few small "
@@ -542,7 +543,10 @@ def post_lock(tokens):
     _r["Hair"] = "Retro Purple Beanie"; _r["Mask"] = "Retro Purple Half-Mask"
     _g = tokens[535 - 1][0]   # George 2026-11-16 21:15: The Grieving Mother gets a blue knit sweater and short golden-brown hair (homage, own design)
     assert _g.get("1/1 Name") == "The Grieving Mother"
-    _g["Hair"] = "Short Golden-Brown Curls"; _g["Clothing"] = "Powder-Blue Cable-Knit Sweater"   # George 2026-11-16 18:37: #1085 keeps only the rarer Golden Saw Weed Whacker (pitchfork dropped)
+    _g["Hair"] = "Short Golden-Brown Curls"; _g["Clothing"] = "Powder-Blue Cable-Knit Sweater"
+    _d = tokens[170 - 1][0]   # George 2026-11-16 21:18: the Scorched Doll stalks a closed toy store
+    assert _d.get("1/1 Name") == "Scorched Doll"
+    _d["Backdrop"] = "Toy Store After Hours"   # George 2026-11-16 18:37: #1085 keeps only the rarer Golden Saw Weed Whacker (pitchfork dropped)
 # Puzzle boxes (George 2026-11-16 04:48): #1136's cube turns chrome; 5 Uncommons get differently shaped gold-filigree boxes.
 _GOLD_FILIGREE = "inlaid with intricate polished-gold filigree of our own design (thorny vines, interlocking rings and tiny skull knots)"
 PUZZLE_BOXES = {
