@@ -517,7 +517,10 @@ LOCK = json.load(open(_LOCK_PATH)) if os.path.exists(_LOCK_PATH) else None
 
 
 def post_lock(tokens):
-    """Trait changes made after the lock (none yet)."""
+    """Trait changes made after the lock."""
+    for a, _f in tokens:   # George 2026-11-16 17:19: no price-tag style specimen tags anywhere
+        if a.get("Experiment") == "Blank Specimen Tag":
+            del a["Experiment"]
 # Puzzle boxes (George 2026-11-16 04:48): #1136's cube turns chrome; 5 Uncommons get differently shaped gold-filigree boxes.
 _GOLD_FILIGREE = "inlaid with intricate polished-gold filigree of our own design (thorny vines, interlocking rings and tiny skull knots)"
 PUZZLE_BOXES = {

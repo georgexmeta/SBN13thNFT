@@ -22,6 +22,11 @@ print(len(out), "tokens to edit")
 SENT = os.path.join(ROOT, "generator", "review_sent.json")   # {id: instruction already submitted}
 sent = json.load(open(SENT)) if os.path.exists(SENT) else {}
 new = {i: t for i, t in out.items() if sent.get(str(i)) != t}
+HOLD = os.path.join(ROOT, "generator", "review_hold.json")   # ids still inside an edit batch at Google: wait for it to land
+hold = set(json.load(open(HOLD))) if os.path.exists(HOLD) else set()
+held = [i for i in new if i in hold]
+new = {i: t for i, t in new.items() if i not in hold}
+print(len(held), "held until the in-flight edits land")
 print(len(new), "new or changed since the last submit")
 if "--submit" in sys.argv and new:
     import batch_generate as bg
