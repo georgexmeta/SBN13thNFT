@@ -716,6 +716,7 @@ def build():
     saw_whacker_pass(tokens)
     jail_tier_fix(tokens)
     freezer_pass(tokens)
+    robinhood_pass(tokens)
     splatter_pass(tokens)
     two_hand_pass(tokens)
     hook_off_pass(tokens)
@@ -918,6 +919,22 @@ def zombie_pass(tokens):
                 tokens[(women if k % 2 and women else men).pop() - 1][0]["Skin"] = v
 
 
+# Robinhood green plain backdrop (George, 2026-11-16): bright neon chartreuse #CCFF00, as common as the other plain clay colours.
+# 110 undrawn tokens (not in a pending batch) taken evenly from the plain clay backdrops, any non-1/1 tier.
+ROBINHOOD = ("Robinhood Green Clay", "a bright neon chartreuse-green (hex #CCFF00) pressed-clay backdrop")
+ALL["Backdrop"][ROBINHOOD[0]] = (0, ROBINHOOD[1])
+
+
+def robinhood_pass(tokens):
+    st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
+    pend = set().union(*[set(b["ids"]) - set(b.get("drop", [])) for b in st["batches"] if b["state"] != "done"])
+    plain = {"Sage Clay", "Swamp Clay", "Slate Clay", "Teal Clay", "Rust Clay", "Bruise Clay", "Bone Clay"}
+    pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Backdrop"] in plain and a["Tier"] != "Legendary 1/1" and i not in pend
+            and not os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png"))]
+    for i in random.Random(16).sample(pool, 110):
+        tokens[i - 1][0]["Backdrop"] = ROBINHOOD[0]
+
+
 N_COMMON = 400
 
 
@@ -1055,7 +1072,7 @@ def head_strap_pass(tokens):
 def splatter_pass(tokens):
     """George 2026-11-15: blood splatter on the plain clay backdrops, five levels, applied after rendering by splatter.py.
     Slaughter exactly 13; the rest about 42% Light, 29% Mild, 18% Wild, 11% Crazy."""
-    plain = {"Sage Clay", "Swamp Clay", "Slate Clay", "Teal Clay", "Rust Clay", "Bruise Clay", "Bone Clay"}
+    plain = {"Sage Clay", "Swamp Clay", "Slate Clay", "Teal Clay", "Rust Clay", "Bruise Clay", "Bone Clay", ROBINHOOD[0]}
     pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Backdrop"] in plain and a["Tier"] != "Legendary 1/1"]
     random.Random(1666).shuffle(pool)
     for n, i in enumerate(pool):

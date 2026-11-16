@@ -226,14 +226,15 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Sage Clay | 189 | 14.5% |
-| Swamp Clay | 179 | 13.8% |
-| Slate Clay | 155 | 11.9% |
-| Teal Clay | 132 | 10.2% |
-| Rust Clay | 109 | 8.4% |
-| Bruise Clay | 101 | 7.8% |
+| Sage Clay | 166 | 12.8% |
+| Swamp Clay | 154 | 11.8% |
+| Slate Clay | 140 | 10.8% |
+| Teal Clay | 118 | 9.1% |
+| Robinhood Green Clay | 110 | 8.5% |
+| Rust Clay | 98 | 7.5% |
 | Blood Splatter | 90 | 6.9% |
-| Bone Clay | 79 | 6.1% |
+| Bruise Clay | 88 | 6.8% |
+| Bone Clay | 70 | 5.4% |
 | Lakeside Cabin | 28 | 2.2% |
 | Haunted Mansion | 26 | 2.0% |
 | Radioactive Wasteland | 24 | 1.8% |
@@ -258,13 +259,13 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Flesh Pink | 348 | 26.8% |
+| Flesh Pink | 349 | 26.8% |
 | Corpse Grey | 234 | 18.0% |
-| Sallow | 170 | 13.1% |
-| Pale Wax | 151 | 11.6% |
-| Ruddy | 134 | 10.3% |
+| Sallow | 168 | 12.9% |
+| Pale Wax | 150 | 11.5% |
+| Ruddy | 137 | 10.5% |
 | Deep Brown | 125 | 9.6% |
-| Bloodless Blue | 69 | 5.3% |
+| Bloodless Blue | 68 | 5.2% |
 | Toxic Green | 40 | 3.1% |
 | Zombie Green | 15 | 1.2% |
 | Zombie Blue | 10 | 0.8% |
@@ -307,11 +308,11 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Blue Veins | 505 | 38.8% |
-| Grey Wrinkles | 284 | 21.8% |
-| Stitched Scar | 195 | 15.0% |
-| Clean | 178 | 13.7% |
-| Boils | 125 | 9.6% |
+| Blue Veins | 506 | 38.9% |
+| Grey Wrinkles | 286 | 22.0% |
+| Stitched Scar | 192 | 14.8% |
+| Clean | 179 | 13.8% |
+| Boils | 124 | 9.5% |
 | Half-Burnt Face | 13 | 1.0% |
 
 ## Ears
