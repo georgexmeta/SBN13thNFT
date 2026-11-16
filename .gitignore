@@ -11,3 +11,4 @@ output/ipfs/
 output/opensea/images/
 output/wl/
 output/ai/edit-*.jsonl
+output/ai/editpass-*.jsonl

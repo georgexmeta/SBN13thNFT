@@ -395,8 +395,8 @@ FRAMING = ("FACING: exactly like the first reference photo, his body is in three
            "and out; his other hand is raised beside him as a menacing curled claw, gnarled fingers bent like hooks, never hanging limp")
 FRAMING_TWO_HANDS = FRAMING.split(" His right hand grips")[0] + (" Both hands hold the chainsaw firmly, one on the rear handle "
                                                               "and one on the front handle; neither hand hangs empty")
-FRAMING_WHACKER = FRAMING.split(" His right hand grips")[0] + (" Both hands hold the weed whacker, one fist on the rear trigger grip and "
-                                                             "the other on the loop handle; the shaft angled up across his body so the saw blade is raised "
+FRAMING_WHACKER = FRAMING.split(" His right hand grips")[0] + (" Both hands hold the weed whacker: his left hand wraps the loop handle in the "
+                                                             "middle of the shaft and his right fist grips the rear trigger handle by the motor, no hand up near the blade; the shaft angled up across his body so the saw blade is raised "
                                                              "beside his head, the whole tool inside the frame; neither hand hangs empty")
 FRAMING_BOX = FRAMING.split(" His right hand grips")[0] + (" Both hands hold the small puzzle box in front of his chest, fingers on its "
                                                          "faces, the whole box clearly visible and sharp; nothing else in his hands and nothing on his back")
