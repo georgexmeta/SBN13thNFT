@@ -508,6 +508,21 @@ SLEEPER_EXTRA = {
 for _t, (_v, _p) in SLEEPER_EXTRA.items():
     ALL[_t][_v] = (0, _p)
 ALL["Held Weapon"]["Squid Tentacle Arms"] = (0, "")
+# #706 The Harvester (George 2026-11-16 21:31): a backwoods chainsaw-butcher homage, our own take. Never the Leatherface name,
+# no necktie/suit, no copied mask; a hulking farm butcher in a patchwork hide mask.
+HARVESTER_EXTRA = {
+    "Hair": ("Matted Brown Mop", "a matted, greasy mop of dark brown hair sticking out in clumps above and around the mask"),
+    "Mask": ("Patchwork Hide Mask", "a crude full-face mask made of patches of tanned, leathery hide in uneven tan and greyish tones, "
+             "stitched together with thick coarse twine in big crooked stitches, ragged eye holes showing small wild eyes, a lumpy "
+             "misshapen nose and a lopsided slit mouth showing a few crooked yellow teeth, the edges curling loose at the jaw"),
+    "Clothing": ("Heavy Leather Butcher Apron", "a long heavy stained leather butcher's apron splashed with fresh blood, "
+                 "over a filthy yellowed work shirt with rolled sleeves stretched over his hulking big belly, no tie, no lettering"),
+    "Backdrop": ("Bone Farmhouse Parlor", "the inside of a rundown backwoods farmhouse at dusk: peeling wallpaper, animal skulls and bones "
+                 "hung on the walls and piled in the corners, a feather-and-bone mobile, meat hooks dangling from the ceiling, dusty light "
+                 "through a boarded window, sculpted as a miniature claymation diorama, softly out of focus behind him, no lettering"),
+}
+for _t, (_v, _p) in HARVESTER_EXTRA.items():
+    ALL[_t][_v] = (0, _p)
 # #103 The Collector (George 2026-11-16 21:24): a creature-trainer outfit as an homage, same cut but our own colours, no logos.
 ALL["Hair"]["Trainer Cap"] = (0, "a rust-red baseball cap worn forwards with a plain cream front panel, completely blank with no logo, symbol or writing, messy grey hair sticking out at the sides")
 ALL["Clothing"]["Trainer Jacket"] = (0, "a short-sleeved open olive-green zip-up jacket with cream sleeves and a cream collar, over a plain black T-shirt, "
@@ -582,6 +597,11 @@ def post_lock(tokens):
     _c = tokens[103 - 1][0]   # George 2026-11-16 21:24: creature-trainer homage outfit, own colours
     assert _c.get("1/1 Name") == "The Collector"
     _c["Hair"] = "Trainer Cap"; _c["Clothing"] = "Trainer Jacket"
+    _h = tokens[706 - 1][0]   # George 2026-11-16 21:31: The Harvester becomes a backwoods chainsaw-butcher homage (own take)
+    assert _h.get("1/1 Name") == "The Harvester"
+    _h.update({"Hair": "Matted Brown Mop", "Head Mark": "Clean", "Mask": "Patchwork Hide Mask", "Held Weapon": "Chainsaw", "Back Weapon": "None",
+               "Clothing": "Heavy Leather Butcher Apron", "Belt": "None", "Backdrop": "Bone Farmhouse Parlor"})
+    tokens[706 - 1] = (_h, None)
     _s = tokens[SLEEPER_ID - 1][0]   # George 2026-11-16 21:19: The Sleeper Below replaces The Frontman (squid tentacle arms 21:20)
     assert _s.get("1/1 Name") == "The Frontman", _s.get("1/1 Name")
     _s.clear(); _s.update(SLEEPER)

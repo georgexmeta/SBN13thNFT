@@ -85,7 +85,7 @@
 | Mad Mother's Face | 1 | 0.1% |
 | Retro Purple Half-Mask | 1 | 0.1% |
 | Blood-Red Smile | 1 | 0.1% |
-| Hockey Half-Mask (rust-stained) | 1 | 0.1% |
+| Patchwork Hide Mask | 1 | 0.1% |
 | Psycho Yuppie Grin | 1 | 0.1% |
 | Diamond Wraith Mask | 1 | 0.1% |
 | Writhing Face Tentacles | 1 | 0.1% |
@@ -95,7 +95,7 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Chainsaw | 209 | 16.1% |
+| Chainsaw | 210 | 16.2% |
 | Rusted Machete | 110 | 8.5% |
 | Meat Hook | 72 | 5.5% |
 | Nail Bat | 67 | 5.2% |
@@ -103,8 +103,8 @@
 | Rusted Butcher Cleaver | 60 | 4.6% |
 | Bloody Hunting Knife | 60 | 4.6% |
 | Rusted Hatchet | 60 | 4.6% |
-| Rusted Sickle | 54 | 4.2% |
 | Fish Hook | 53 | 4.1% |
+| Rusted Sickle | 53 | 4.1% |
 | Clean Saw Weed Whacker | 33 | 2.5% |
 | Ice Pick | 33 | 2.5% |
 | Bloody Machete | 25 | 1.9% |
@@ -178,7 +178,7 @@
 
 | Value | Count | Share |
 |---|---|---|
-| None | 863 | 66.4% |
+| None | 864 | 66.5% |
 | Rusted Saw Weed Whacker | 126 | 9.7% |
 | Oxygen Tank | 81 | 6.2% |
 | Bloody Saw Weed Whacker | 76 | 5.8% |
@@ -187,8 +187,8 @@
 | Woodcutter Axe | 17 | 1.3% |
 | Sledgehammer | 16 | 1.2% |
 | Clean Saw Weed Whacker | 14 | 1.1% |
-| Scythe (Rare+) | 13 | 1.0% |
 | Rusty Shovel | 13 | 1.0% |
+| Scythe (Rare+) | 12 | 0.9% |
 | Fuel Tanks (Rare+) | 11 | 0.8% |
 | Harpoon Gun (Rare+) | 5 | 0.4% |
 | Circus Mallet (Rare+) | 4 | 0.3% |
@@ -202,7 +202,7 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Patched Work Jacket | 175 | 13.5% |
+| Patched Work Jacket | 174 | 13.4% |
 | Plaid Flannel | 129 | 9.9% |
 | Mechanic Coveralls | 96 | 7.4% |
 | Orange Prison Jumpsuit | 96 | 7.4% |
@@ -239,6 +239,7 @@
 | Powder-Blue Cable-Knit Sweater | 1 | 0.1% |
 | Tattered Bone Jumpsuit | 1 | 0.1% |
 | White Lace Gown | 1 | 0.1% |
+| Heavy Leather Butcher Apron | 1 | 0.1% |
 | Bloody Raincoat Over Pinstripe Suit | 1 | 0.1% |
 | Rotted Kelp Shroud | 1 | 0.1% |
 
@@ -246,8 +247,8 @@
 
 | Value | Count | Share |
 |---|---|---|
-| None | 889 | 68.4% |
-| Tool Belt | 396 | 30.5% |
+| None | 890 | 68.5% |
+| Tool Belt | 395 | 30.4% |
 | Shrunken Head Bandolier | 13 | 1.0% |
 | Golden Neck Chains | 1 | 0.1% |
 | Garnet Choker | 1 | 0.1% |
@@ -275,7 +276,7 @@
 | Killer Circus | 20 | 1.5% |
 | Nightmare Sequence | 19 | 1.5% |
 | Doctor's Hospital Room | 19 | 1.5% |
-| Cornfield (Rare+) | 14 | 1.1% |
+| Cornfield (Rare+) | 13 | 1.0% |
 | Blood Moon (Rare+) | 13 | 1.0% |
 | Jail Cell | 13 | 1.0% |
 | Specimen Tank Lab | 6 | 0.5% |
@@ -286,6 +287,7 @@
 | Digital Soul Prison | 1 | 0.1% |
 | Pixel Cabin | 1 | 0.1% |
 | Candlelit Castle Hall | 1 | 0.1% |
+| Bone Farmhouse Parlor | 1 | 0.1% |
 | Penthouse Skyline | 1 | 0.1% |
 | Cult Summoning Circle | 1 | 0.1% |
 
@@ -316,7 +318,7 @@
 |---|---|---|
 | Grey Side Tufts | 337 | 25.9% |
 | Bald | 194 | 14.9% |
-| Greasy Comb-over | 135 | 10.4% |
+| Greasy Comb-over | 134 | 10.3% |
 | Wild Grey Tufts | 121 | 9.3% |
 | Greasy Bob | 93 | 7.2% |
 | Messy Grey Bun | 89 | 6.8% |
@@ -340,6 +342,7 @@
 | Short Golden-Brown Curls | 1 | 0.1% |
 | Retro Purple Beanie | 1 | 0.1% |
 | Veiled Mourning Hat | 1 | 0.1% |
+| Matted Brown Mop | 1 | 0.1% |
 | Slicked-Back Hair | 1 | 0.1% |
 | None | 1 | 0.1% |
 
@@ -349,8 +352,8 @@
 |---|---|---|
 | Blue Veins | 506 | 38.9% |
 | Grey Wrinkles | 286 | 22.0% |
-| Stitched Scar | 190 | 14.6% |
-| Clean | 179 | 13.8% |
+| Stitched Scar | 189 | 14.5% |
+| Clean | 180 | 13.8% |
 | Boils | 124 | 9.5% |
 | Half-Burnt Face | 13 | 1.0% |
 | Pixel Tears | 1 | 0.1% |
