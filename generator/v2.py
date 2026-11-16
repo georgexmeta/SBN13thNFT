@@ -479,7 +479,35 @@ OVERSEER_EXTRA = {
 for _t, (_v, _p) in OVERSEER_EXTRA.items():
     ALL[_t][_v] = (0, _p)
 ALL["Held Weapon"]["Laser Lattice"] = (0, "")
-ALL["Held Weapon"]["Diamond Blade Nails"] = (0, "")   # 3 only (#425, #396, #569), the top nail finish
+ALL["Held Weapon"]["Diamond Blade Nails"] = (0, "")
+# The Sleeper Below (George 2026-11-16 21:19, replaces The Frontman #977): an original tentacle-faced elder sea god being summoned
+# by a cult circle. Cosmic-horror homage only: never Cthulhu, R'lyeh, Necronomicon or any Lovecraft names, no readable symbols.
+SLEEPER_ID = 977
+SLEEPER = {"Tier": "Legendary 1/1", "1/1 Name": "The Sleeper Below", "Character": "The Sleeper Below", "Head": "Elder Octopoid Dome",
+           "Skin": "Abyssal Green-Black Scales", "Hair": "None", "Head Mark": "Glowing Gill Slits", "Ears": "Webbed Fin Ears",
+           "Mask": "Writhing Face Tentacles", "Held Weapon": "Squid Tentacle Arms", "Back Weapon": "Leathery Elder Wings",
+           "Clothing": "Rotted Kelp Shroud", "Belt": "None", "Backdrop": "Cult Summoning Circle"}
+SLEEPER_BASE = ("A grotesque INHUMAN elder sea-god monster (not a man and not human: copy only the reference's clay style, pose and framing), "
+                "with an oversized bobble head, a hulking hunched scaly body and broad sloping shoulders, head turned three-quarters toward the viewer's right")
+FRAMING_TENTACLE = FRAMING.split(" His right hand grips")[0] + (" He has NO human hands or fingers at all: both arms are long squid "
+                    "tentacles, fully visible, coiling up and out toward the viewer; nothing held")
+SLEEPER_EXTRA = {
+    "Head": ("Elder Octopoid Dome", "a huge bulbous soft octopus-like head dome, glistening and slightly translucent, with faint pulsing veins"),
+    "Skin": ("Abyssal Green-Black Scales", "slimy deep green-black clay skin covered in small overlapping fish scales, with a wet glossy sheen and patches of barnacles"),
+    "Head Mark": ("Glowing Gill Slits", "rows of gill slits along the sides of his neck glowing a faint sickly green"),
+    "Ears": ("Webbed Fin Ears", "spiny webbed fins in place of ears"),
+    "Mask": ("Writhing Face Tentacles", "no mask: the whole lower face is a dense beard of writhing slimy octopus tentacles with pale suckers "
+             "hanging over his chest, no nose and no human mouth, above them small cold glowing yellow eyes with slit pupils"),
+    "Clothing": ("Rotted Kelp Shroud", "a tattered rotting shroud of dripping dark seaweed and kelp strands draped over his scaly shoulders and chest, crusted with barnacles and tiny shells"),
+    "Back Weapon": ("Leathery Elder Wings", "a pair of small ragged leathery bat-like wings with bony spines folded high behind his shoulders"),
+    "Backdrop": ("Cult Summoning Circle", "a night-time ritual on a rocky sea shore: a ring of small hooded cultists in dark robes stands around a "
+                 "glowing green summoning circle on the wet stone floor, holding up candles and chanting, arms raised to the monster rising "
+                 "out of the circle, black sea and a stormy sky with a pale moon behind, green mist swirling up from the circle; the circle "
+                 "is plain rings of light with no symbols, no runes and no lettering, sculpted as a miniature claymation diorama, softly out of focus behind him"),
+}
+for _t, (_v, _p) in SLEEPER_EXTRA.items():
+    ALL[_t][_v] = (0, _p)
+ALL["Held Weapon"]["Squid Tentacle Arms"] = (0, "")   # 3 only (#425, #396, #569), the top nail finish
 CHAPEL = ("Chapel Altar", "the altar of a decaying candlelit chapel at night: a cracked stone altar draped with a stained lace cloth, dozens "
           "of dripping black and red candles, wilted funeral lilies, dusty pews and a tall gothic arched window of dark broken stained glass "
           "(abstract shapes only), cobwebs and drips of blood down the altar steps, sculpted as a miniature claymation diorama in matte "
@@ -546,7 +574,11 @@ def post_lock(tokens):
     _g["Hair"] = "Short Golden-Brown Curls"; _g["Clothing"] = "Powder-Blue Cable-Knit Sweater"
     _d = tokens[170 - 1][0]   # George 2026-11-16 21:18: the Scorched Doll stalks a closed toy store
     assert _d.get("1/1 Name") == "Scorched Doll"
-    _d["Backdrop"] = "Toy Store After Hours"   # George 2026-11-16 18:37: #1085 keeps only the rarer Golden Saw Weed Whacker (pitchfork dropped)
+    _d["Backdrop"] = "Toy Store After Hours"
+    _s = tokens[SLEEPER_ID - 1][0]   # George 2026-11-16 21:19: The Sleeper Below replaces The Frontman (squid tentacle arms 21:20)
+    assert _s.get("1/1 Name") == "The Frontman", _s.get("1/1 Name")
+    _s.clear(); _s.update(SLEEPER)
+    tokens[SLEEPER_ID - 1] = (_s, None)   # George 2026-11-16 18:37: #1085 keeps only the rarer Golden Saw Weed Whacker (pitchfork dropped)
 # Puzzle boxes (George 2026-11-16 04:48): #1136's cube turns chrome; 5 Uncommons get differently shaped gold-filigree boxes.
 _GOLD_FILIGREE = "inlaid with intricate polished-gold filigree of our own design (thorny vines, interlocking rings and tiny skull knots)"
 PUZZLE_BOXES = {
@@ -661,6 +693,10 @@ def prompt(a, legendary_finish=None):
     elif held == "Chainsaw":   # George 2026-11-14: chainsaws are always wielded with both hands
         hand = ("he wields a heavy rusty chainsaw with a bloody chain in BOTH hands: right hand gripping the rear handle, "
                 "left hand gripping the front wrap-around handle, the bar angled up and out across his body")
+    elif held == "Squid Tentacle Arms":   # The Sleeper Below: his arms ARE the weapon, biologically inhuman
+        hand = ("he has no human arms or hands: in their place two long thick muscular squid tentacles grow out of his shoulders, "
+                "slimy green-black on top and pale underneath with rows of hooked sucker rings, the tips barbed with curved bone spikes, "
+                "both tentacles raised and coiling menacingly toward the viewer, dripping sea water and a little blood")
     elif held == "Laser Lattice":   # The Overseer: her weapon is a slicing grid of red lasers projected from her raised hands
         hand = ("she holds no weapon: both hologram hands are raised with fingers spread, projecting a glowing lattice of thin bright red "
                 "laser beams that criss-cross the air in front of her in a neat grid")
@@ -733,8 +769,11 @@ def prompt(a, legendary_finish=None):
     doll = a.get("Character") == "Scorched Doll"
     if doll:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"])]
-    parts = [STYLE, OVERSEER_BASE if a.get("Character") == "The Overseer" else DOLL_BASE if doll else FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
-             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Clayson Master Ball and Golden Axe" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_PISTOLS if held in PISTOL else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held == "Death Nails" or held.endswith("Blade Nails") else FRAMING_MUTARM if a.get("Mutation") == "Mutated Claw Arm" else FRAMING_HOOKOFF if (a.get("Off Hand") or "").endswith("Hook Hand") else FRAMING_DUAL if a.get("Off Hand") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_BOX if held in PUZZLE_BOXES else FRAMING_BOTH if held in TWO_HAND_HELD else FRAMING_WHACKER if held.endswith("Saw Weed Whacker") else FRAMING_LASER if held == "Laser Lattice" else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
+    sleeper = a.get("Character") == "The Sleeper Below"
+    if sleeper:
+        head = [phrase("Head", a["Head"]), phrase("Skin", a["Skin"]), phrase("Head Mark", a["Head Mark"]), phrase("Ears", a["Ears"])]
+    parts = [STYLE, SLEEPER_BASE if sleeper else OVERSEER_BASE if a.get("Character") == "The Overseer" else DOLL_BASE if doll else FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
+             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Clayson Master Ball and Golden Axe" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_PISTOLS if held in PISTOL else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held == "Death Nails" or held.endswith("Blade Nails") else FRAMING_MUTARM if a.get("Mutation") == "Mutated Claw Arm" else FRAMING_HOOKOFF if (a.get("Off Hand") or "").endswith("Hook Hand") else FRAMING_DUAL if a.get("Off Hand") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_BOX if held in PUZZLE_BOXES else FRAMING_BOTH if held in TWO_HAND_HELD else FRAMING_WHACKER if held.endswith("Saw Weed Whacker") else FRAMING_LASER if held == "Laser Lattice" else FRAMING_TENTACLE if held == "Squid Tentacle Arms" else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
     text = ". ".join(p[0].upper() + p[1:] for p in parts if p) + "."
     if "empty black eye sockets" in (mask or ""):   # QA #232: the base "sunken eyes" line added a stray third eye
         text = text.replace("small sunken bloodshot eyes in swollen red-rimmed lids, ", "")
