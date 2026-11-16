@@ -92,12 +92,12 @@
 |---|---|---|
 | Chainsaw | 209 | 16.1% |
 | Rusted Machete | 110 | 8.5% |
-| Meat Hook | 74 | 5.7% |
+| Meat Hook | 73 | 5.6% |
 | Nail Bat | 70 | 5.4% |
 | Spear | 64 | 4.9% |
 | Rusted Butcher Cleaver | 62 | 4.8% |
-| Rusted Hatchet | 62 | 4.8% |
 | Bloody Hunting Knife | 61 | 4.7% |
+| Rusted Hatchet | 60 | 4.6% |
 | Rusted Sickle | 54 | 4.2% |
 | Fish Hook | 53 | 4.1% |
 | Clean Saw Weed Whacker | 33 | 2.5% |
@@ -131,6 +131,7 @@
 | Gold Blade Nails | 6 | 0.5% |
 | Clean Hunting Knife | 5 | 0.4% |
 | Circus Mallet | 4 | 0.3% |
+| Symbiote Containment Canister | 3 | 0.2% |
 | Nail-Knife Glove (Rare+) | 3 | 0.2% |
 | Double-Barrel Shotgun | 3 | 0.2% |
 | Double Molotov Cocktails | 3 | 0.2% |

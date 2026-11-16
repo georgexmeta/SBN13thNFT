@@ -1027,8 +1027,28 @@ def lab_pass(tokens):
                 a.pop("Off Hand", None)
         else:
             a["Experiment"] = v
+    # George 2026-11-16: the Toxic Green group was short, so the 3 undrawn Toxic Green Standards join it with their own weapon,
+    # a bio-lab canister holding a living symbiote, and move up to Common. The 3 lowest-scoring plain Commons drop to Standard
+    # so the pyramid stays 464/400/293/130/13.
+    toxic = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == "Standard" and a["Skin"] == "Toxic Green" and i not in pend
+             and a.get("Character") in ("Classic", "Woman") and not os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png"))]
+    assert len(toxic) == 3, toxic
+    for i in toxic:
+        tokens[i - 1][0].update({"Held Weapon": CANISTER[0], "Tier": "Common"})
+    skip = {"Tier", "1/1 Name", "Splatter", "Character"}
+    cnt = Counter((k, v) for a, _ in tokens for k, v in a.items() if k not in skip)
+    std_vals = {(k, v) for a, _ in tokens if a["Tier"] == "Standard" for k, v in a.items()}
+    plain_common = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == "Common" and i > 13
+                    and all((k, v) in std_vals for k, v in a.items() if k not in skip)]
+    for i in sorted(plain_common, key=lambda i: sum(1 / cnt[(k, v)] for k, v in tokens[i - 1][0].items() if k not in skip))[:3]:
+        tokens[i - 1][0]["Tier"] = "Standard"
+    LAB_GROUPS_DONE["Toxic Green skin"] = (LAB_GROUPS_DONE["Toxic Green skin"][0] + 3, 20)
 
 
+CANISTER = ("Symbiote Containment Canister", "a heavy bio-lab containment canister held by its steel carry handle: a thick glass cylinder "
+            "between riveted steel end caps with yellow-and-black hazard rings and glowing green seams, a writhing mass of glossy black "
+            "tendrils inside pressing against the cracked glass as if ready to burst out, no symbols, no logos, no lettering")
+ALL["Held Weapon"][CANISTER[0]] = (0, CANISTER[1])
 LAB_GROUPS_DONE = {}
 
 def robinhood_pass(tokens):
