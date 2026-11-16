@@ -803,6 +803,7 @@ def build():
         _a.pop("Off Hand", None)
     lab_pass(tokens)
     box_pass(tokens)
+    hockey_pass(tokens)
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):
@@ -1095,6 +1096,31 @@ def box_pass(tokens):
     for i, v in zip(random.Random(1987).sample(pool, len(gold)), gold):
         tokens[i - 1][0]["Held Weapon"] = v
         tokens[i - 1][0].pop("Off Hand", None)
+
+
+HOCKEY_FINISH = {"Rusted Hockey Half-Mask": ("Common", 13, "a heavily rusted iron HALF mask, pitted and flaking orange rust"),
+                 "Gold Hockey Half-Mask": ("Uncommon", 7, "a gleaming solid-gold HALF mask"),
+                 "Chrome Hockey Half-Mask": ("Uncommon", 3, "a mirror-polished chrome HALF mask")}
+for _v, (_t, _n, _d) in HOCKEY_FINISH.items():
+    ALL["Mask"][_v] = (0, ALL["Mask"]["Hockey Half-Mask"][1].replace("an aged yellowed HALF mask", _d))
+
+
+def hockey_pass(tokens):
+    """George 2026-11-16 06:02: metal finishes on the plain Hockey Half-Mask, undrawn wearers only (no Rare wears one undrawn,
+    so Gold and Chrome go to Uncommons): Rusted 13 on Commons, Gold 7 and Chrome 3 on Uncommons."""
+    st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
+    pend = set().union(*[set(b["ids"]) - (set(b.get("drop", [])) - LATE_DROP) for b in st["batches"] if b["state"] != "done"])
+    rng = random.Random(1313)
+    used = set()
+    for v, (tier, n, _) in HOCKEY_FINISH.items():
+        pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == tier and a["Mask"] == "Hockey Half-Mask" and i not in used
+                and a.get("Character") in ("Classic", "Woman") and i not in pend
+                and not (os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png")) or i in LATE_REDRAW)]
+        for i in rng.sample(pool, n):
+            tokens[i - 1][0]["Mask"] = v
+            used.add(i)
+        EYES_SHOW.add(v)
+        WOUND_SHOWS.add(v)
 
 
 def robinhood_pass(tokens):

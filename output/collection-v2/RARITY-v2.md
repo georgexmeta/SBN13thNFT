@@ -28,7 +28,7 @@
 | Value | Count | Share |
 |---|---|---|
 | Bare Face | 185 | 14.2% |
-| Hockey Half-Mask | 161 | 12.4% |
+| Hockey Half-Mask | 138 | 10.6% |
 | Burlap Pig Mask | 122 | 9.4% |
 | Patchwork Goggle Mask | 117 | 9.0% |
 | Burlap Sack Hood | 116 | 8.9% |
@@ -49,6 +49,7 @@
 | Stitched Skin Face | 15 | 1.2% |
 | Stitched Toy Face | 14 | 1.1% |
 | Moaning Paper Mask | 13 | 1.0% |
+| Rusted Hockey Half-Mask | 13 | 1.0% |
 | Blank Bone Mask | 12 | 0.9% |
 | Nail-Studded Leather Mask (Rare+) | 11 | 0.8% |
 | Bloody Chrome Gas Mask | 8 | 0.6% |
@@ -61,12 +62,14 @@
 | Stitched Bride Face | 8 | 0.6% |
 | Waterlogged Face | 8 | 0.6% |
 | Stitched Skin Mask (Rare+) | 7 | 0.5% |
+| Gold Hockey Half-Mask | 7 | 0.5% |
 | Porcelain Doll Face (Rare+) | 4 | 0.3% |
 | Oni Demon Mask (Rare+) | 4 | 0.3% |
 | Zipper Long Nose (Rare+) | 3 | 0.2% |
 | Sewn-On Pig Face (Rare+) | 3 | 0.2% |
 | Crown of Nails (Rare+) | 3 | 0.2% |
 | Fanged Killer Clown (Rare+) | 3 | 0.2% |
+| Chrome Hockey Half-Mask | 3 | 0.2% |
 | Bone Skull Mask (Rare+) | 2 | 0.2% |
 | Rusted Nail-Studded Mask | 2 | 0.2% |
 | Long Nose Latex (Rare+) | 2 | 0.2% |
