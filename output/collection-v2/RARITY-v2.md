@@ -38,7 +38,7 @@
 | Crude Leather Gas Mask | 33 | 2.5% |
 | Needle-Tooth Snarl | 25 | 1.9% |
 | Cracked Doll Mask | 24 | 1.8% |
-| Honeycomb Half-Mask | 24 | 1.8% |
+| Carved Ear-to-Ear Grin | 24 | 1.8% |
 | Bloody Bandage Wrap | 23 | 1.8% |
 | Weeping Four-Eye Mask | 20 | 1.5% |
 | Buckled Harness Hood | 20 | 1.5% |
