@@ -22,7 +22,7 @@
 | Type 4 - Split Cranium | 178 | 13.7% |
 | Type 3 - Cone Skull | 142 | 10.9% |
 | Doll | 1 | 0.1% |
-| Elder Octopoid Dome | 1 | 0.1% |
+| Puppet Head | 1 | 0.1% |
 
 ## Mask
 
@@ -88,7 +88,7 @@
 | Patchwork Hide Mask | 1 | 0.1% |
 | Psycho Yuppie Grin | 1 | 0.1% |
 | Diamond Wraith Mask | 1 | 0.1% |
-| Writhing Face Tentacles | 1 | 0.1% |
+| Hinged Puppet Jaw | 1 | 0.1% |
 | Hockey Half-Mask (stitched together) | 1 | 0.1% |
 
 ## Held Weapon
@@ -168,7 +168,7 @@
 | Chrome Butcher Cleaver | 1 | 0.1% |
 | Chrome Hatchet | 1 | 0.1% |
 | Gold Sickle | 1 | 0.1% |
-| Squid Tentacle Arms | 1 | 0.1% |
+| Red Tricycle | 1 | 0.1% |
 | Gold Cylinder Puzzle Box | 1 | 0.1% |
 | Gold Pyramid Puzzle Box | 1 | 0.1% |
 | Gold Butcher Cleaver | 1 | 0.1% |
@@ -178,7 +178,7 @@
 
 | Value | Count | Share |
 |---|---|---|
-| None | 864 | 66.5% |
+| None | 865 | 66.5% |
 | Rusted Saw Weed Whacker | 126 | 9.7% |
 | Oxygen Tank | 81 | 6.2% |
 | Bloody Saw Weed Whacker | 76 | 5.8% |
@@ -196,7 +196,6 @@
 | Double-Barrel Shotgun | 3 | 0.2% |
 | Sniper Rifle | 2 | 0.2% |
 | Golden Retro Axe | 1 | 0.1% |
-| Leathery Elder Wings | 1 | 0.1% |
 
 ## Clothing
 
@@ -241,7 +240,7 @@
 | White Lace Gown | 1 | 0.1% |
 | Heavy Leather Butcher Apron | 1 | 0.1% |
 | Bloody Raincoat Over Pinstripe Suit | 1 | 0.1% |
-| Rotted Kelp Shroud | 1 | 0.1% |
+| Moth-Eaten Puppet Suit | 1 | 0.1% |
 
 ## Belt
 
@@ -289,7 +288,7 @@
 | Candlelit Castle Hall | 1 | 0.1% |
 | Bone Farmhouse Parlor | 1 | 0.1% |
 | Penthouse Skyline | 1 | 0.1% |
-| Cult Summoning Circle | 1 | 0.1% |
+| Static Tape | 1 | 0.1% |
 
 ## Skin
 
@@ -310,7 +309,7 @@
 | Icy Retro Blue | 1 | 0.1% |
 | Ashen Grey | 1 | 0.1% |
 | Tanning-Bed Bronze | 1 | 0.1% |
-| Abyssal Green-Black Scales | 1 | 0.1% |
+| Chalk-White Puppet | 1 | 0.1% |
 
 ## Hair
 
@@ -344,7 +343,7 @@
 | Veiled Mourning Hat | 1 | 0.1% |
 | Matted Brown Mop | 1 | 0.1% |
 | Slicked-Back Hair | 1 | 0.1% |
-| None | 1 | 0.1% |
+| Sparse Black Tufts | 1 | 0.1% |
 
 ## Head Mark
 
@@ -357,18 +356,17 @@
 | Boils | 124 | 9.5% |
 | Half-Burnt Face | 13 | 1.0% |
 | Pixel Tears | 1 | 0.1% |
-| Glowing Gill Slits | 1 | 0.1% |
+| Red Spiral Cheeks | 1 | 0.1% |
 
 ## Ears
 
 | Value | Count | Share |
 |---|---|---|
-| Natural | 879 | 67.6% |
+| Natural | 880 | 67.7% |
 | Mostly Torn Ear | 145 | 11.2% |
 | Slightly Ripped Ear | 145 | 11.2% |
 | Gauged | 105 | 8.1% |
 | Empty Stretched Lobe | 25 | 1.9% |
-| Webbed Fin Ears | 1 | 0.1% |
 
 ## Character
 
@@ -388,4 +386,4 @@
 | The Overseer | 1 | 0.1% |
 | The Grieving Mother | 1 | 0.1% |
 | Madame Mortis | 1 | 0.1% |
-| The Sleeper Below | 1 | 0.1% |
+| The Trial Puppet | 1 | 0.1% |

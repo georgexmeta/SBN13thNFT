@@ -24,7 +24,7 @@ def main():
     # Team stage (George, 2026-11-13): the Team wallet mints first and receives token IDs 1-13. Three flagship Legendaries
     # swap places with IDs 1-3; IDs 4-13 keep their own Standard/Rare tokens and the other 10 Legendaries stay where they
     # were. Internal ids (renders, manifest) are unchanged; only the published tokenID, name number and image file move.
-    TEAM_LEGENDS = ["Old Gilded", "Diamond Wraith", "The Sleeper Below"]   # The Sleeper Below replaced The Frontman 2026-11-16
+    TEAM_LEGENDS = ["Old Gilded", "Diamond Wraith", "The Trial Puppet"]   # The Trial Puppet replaced The Frontman 2026-11-16
     by_name = {r["attributes"].get("1/1 Name"): r["id"] for r in rows}
     swap = {r["id"]: r["id"] for r in rows}
     for new, nm in enumerate(TEAM_LEGENDS, 1):

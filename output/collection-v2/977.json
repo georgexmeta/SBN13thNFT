@@ -1,5 +1,5 @@
 {
-  "name": "SBN13th #977 - The Sleeper Below",
+  "name": "SBN13th #977 - The Trial Puppet",
   "seed": 1778096426,
   "attributes": [
     {
@@ -8,47 +8,47 @@
     },
     {
       "trait_type": "1/1 Name",
-      "value": "The Sleeper Below"
+      "value": "The Trial Puppet"
     },
     {
       "trait_type": "Character",
-      "value": "The Sleeper Below"
+      "value": "The Trial Puppet"
     },
     {
       "trait_type": "Head",
-      "value": "Elder Octopoid Dome"
+      "value": "Puppet Head"
     },
     {
       "trait_type": "Skin",
-      "value": "Abyssal Green-Black Scales"
+      "value": "Chalk-White Puppet"
     },
     {
       "trait_type": "Hair",
-      "value": "None"
+      "value": "Sparse Black Tufts"
     },
     {
       "trait_type": "Head Mark",
-      "value": "Glowing Gill Slits"
+      "value": "Red Spiral Cheeks"
     },
     {
       "trait_type": "Ears",
-      "value": "Webbed Fin Ears"
+      "value": "Natural"
     },
     {
       "trait_type": "Mask",
-      "value": "Writhing Face Tentacles"
+      "value": "Hinged Puppet Jaw"
     },
     {
       "trait_type": "Held Weapon",
-      "value": "Squid Tentacle Arms"
+      "value": "Red Tricycle"
     },
     {
       "trait_type": "Back Weapon",
-      "value": "Leathery Elder Wings"
+      "value": "None"
     },
     {
       "trait_type": "Clothing",
-      "value": "Rotted Kelp Shroud"
+      "value": "Moth-Eaten Puppet Suit"
     },
     {
       "trait_type": "Belt",
@@ -56,7 +56,7 @@
     },
     {
       "trait_type": "Backdrop",
-      "value": "Cult Summoning Circle"
+      "value": "Static Tape"
     }
   ]
 }
