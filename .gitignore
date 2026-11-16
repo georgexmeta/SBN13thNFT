@@ -13,3 +13,4 @@ output/wl/
 output/ai/edit-*.jsonl
 output/ai/editpass-*.jsonl
 output/ai/qa-scan.json
+output/ai/review-*.jsonl
