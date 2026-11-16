@@ -996,9 +996,10 @@ def eyes_pass(tokens):
     fresh = [i for i in show if i not in pend and not os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png"))]
     for i in show:
         tokens[i - 1][0]["Eyes"] = "Bloodshot Eyes"
-    picks = random.Random(4444).sample(fresh, 155)
+    fresh = [i for i in fresh if tokens[i - 1][0]["Tier"] in ("Uncommon", "Rare")]   # George: Uncommon and above only
+    picks = random.Random(4444).sample(fresh, min(len(fresh), 75))
     for n, i in enumerate(picks):
-        tokens[i - 1][0]["Eyes"] = "Yellow Sickly Eyes" if n < 110 else "Pupil-less White Eyes"
+        tokens[i - 1][0]["Eyes"] = "Yellow Sickly Eyes" if n < len(picks) * 2 // 3 else "Pupil-less White Eyes"
 
 
 N_COMMON = 400
