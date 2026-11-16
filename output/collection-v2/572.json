@@ -44,7 +44,7 @@
     },
     {
       "trait_type": "Backdrop",
-      "value": "Specimen Tank Lab"
+      "value": "Robinhood Green Clay"
     },
     {
       "trait_type": "Ears",
@@ -55,12 +55,20 @@
       "value": "Classic"
     },
     {
+      "trait_type": "Splatter",
+      "value": "Light"
+    },
+    {
       "trait_type": "Off Hand",
       "value": "Steel Hook Hand"
     },
     {
       "trait_type": "Eyes",
       "value": "Yellow Eyes, Green Pupils"
+    },
+    {
+      "trait_type": "Experiment",
+      "value": "Surgical Staple Seam"
     }
   ]
 }

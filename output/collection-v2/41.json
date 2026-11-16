@@ -44,7 +44,7 @@
     },
     {
       "trait_type": "Backdrop",
-      "value": "Specimen Tank Lab"
+      "value": "Teal Clay"
     },
     {
       "trait_type": "Ears",
@@ -57,6 +57,14 @@
     {
       "trait_type": "Off Hand",
       "value": "Pitchfork"
+    },
+    {
+      "trait_type": "Splatter",
+      "value": "Mild"
+    },
+    {
+      "trait_type": "Experiment",
+      "value": "IV Drip Line"
     }
   ]
 }

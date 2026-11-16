@@ -44,7 +44,7 @@
     },
     {
       "trait_type": "Backdrop",
-      "value": "Specimen Tank Lab"
+      "value": "Sage Clay"
     },
     {
       "trait_type": "Ears",
@@ -59,8 +59,16 @@
       "value": "Pitchfork"
     },
     {
+      "trait_type": "Splatter",
+      "value": "Mild"
+    },
+    {
       "trait_type": "Flesh",
       "value": "Flayed Open Chest"
+    },
+    {
+      "trait_type": "Mutation",
+      "value": "Parasite Tendrils"
     }
   ]
 }

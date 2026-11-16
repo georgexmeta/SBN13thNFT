@@ -44,7 +44,7 @@
     },
     {
       "trait_type": "Backdrop",
-      "value": "Specimen Tank Lab"
+      "value": "Robinhood Green Clay"
     },
     {
       "trait_type": "Ears",
@@ -59,8 +59,16 @@
       "value": "Pitchfork"
     },
     {
+      "trait_type": "Splatter",
+      "value": "Mild"
+    },
+    {
       "trait_type": "Head Wound",
       "value": "Deep Forehead Gash"
+    },
+    {
+      "trait_type": "Mutation",
+      "value": "Glowing Pustules"
     }
   ]
 }

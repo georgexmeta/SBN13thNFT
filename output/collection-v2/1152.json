@@ -44,7 +44,7 @@
     },
     {
       "trait_type": "Backdrop",
-      "value": "Specimen Tank Lab"
+      "value": "Swamp Clay"
     },
     {
       "trait_type": "Ears",
@@ -55,12 +55,16 @@
       "value": "Classic"
     },
     {
-      "trait_type": "Off Hand",
-      "value": "Rusty Hook Hand"
+      "trait_type": "Splatter",
+      "value": "Wild"
     },
     {
       "trait_type": "Eyes",
       "value": "Pupil-less White Eyes"
+    },
+    {
+      "trait_type": "Mutation",
+      "value": "Mutated Claw Arm"
     }
   ]
 }

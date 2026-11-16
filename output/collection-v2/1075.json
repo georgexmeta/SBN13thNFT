@@ -44,7 +44,7 @@
     },
     {
       "trait_type": "Backdrop",
-      "value": "Teal Clay"
+      "value": "Specimen Tank Lab"
     },
     {
       "trait_type": "Ears",
@@ -59,16 +59,8 @@
       "value": "Pitchfork"
     },
     {
-      "trait_type": "Splatter",
-      "value": "Light"
-    },
-    {
       "trait_type": "Neck",
       "value": "Chrome Double Chains"
-    },
-    {
-      "trait_type": "Mutation",
-      "value": "Glowing Pustules"
     }
   ]
 }

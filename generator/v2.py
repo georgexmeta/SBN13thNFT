@@ -966,7 +966,7 @@ ALL["Backdrop"][ROBINHOOD[0]] = (0, ROBINHOOD[1])
 
 # Failed lab experiments (George 2026-11-16): original bio-lab body horror, inspired by survival-horror bio-weapons but never
 # their company, virus or creature names, logos or designs. Undrawn, not pending, ordinary Claysons only, one new trait each,
-# and only on Claysons that already show body horror: Boils, Toxic Green or Zombie skin, Flayed Muscle Face, Flayed Open Chest.
+# and only on Claysons that already show body horror (LAB_GROUPS).
 MUTATION = {
     "Mutated Claw Arm": "his left arm is a huge swollen mutated limb, far too big for his body, bulging with purple veins and raw "
                         "exposed red sinew where the skin has split, ending in three long hooked bone claws, raised and flexed",
@@ -983,10 +983,15 @@ LAB = ("Specimen Tank Lab", "a ruined underground experiment lab: cracked glass 
        "floating inside, broken pipes and dangling cables, flickering green light, sculpted as a miniature claymation diorama in matte "
        "plasticine, softly out of focus behind him, no signs, no logos, no lettering")
 ALL["Backdrop"][LAB[0]] = (0, LAB[1])
-LAB_COUNTS = [("Backdrop", LAB[0], {"Uncommon": 8, "Rare": 4}), ("Mutation", "Mutated Claw Arm", {"Uncommon": 5}),
-              ("Mutation", "Tumor Eye", {"Uncommon": 6, "Rare": 4}), ("Mutation", "Parasite Tendrils", {"Uncommon": 6, "Rare": 4}),
-              ("Mutation", "Glowing Pustules", {"Common": 8, "Uncommon": 5}), ("Experiment", "Surgical Staple Seam", {"Common": 8, "Uncommon": 3}),
-              ("Experiment", "IV Drip Line", {"Uncommon": 3, "Rare": 3}), ("Experiment", "Blank Specimen Tag", {"Common": 6})]
+# George 2026-11-16: how many Claysons of each body-horror group get one lab trait (cut back where too few are undrawn)
+LAB_GROUPS = [("Flayed Open Chest", lambda a: a.get("Flesh") == "Flayed Open Chest", 4),
+              ("Flayed Muscle Face", lambda a: a.get("Mask") == "Flayed Muscle Face", 8),
+              ("Zombie skin", lambda a: a["Skin"] in ("Zombie Green", "Zombie Blue"), 15),
+              ("Toxic Green skin", lambda a: a["Skin"] == "Toxic Green", 20),
+              ("Boils", lambda a: a.get("Head Mark") == "Boils", 24)]
+LAB_BY_TIER = {"Common": ["Glowing Pustules", "Surgical Staple Seam", "Blank Specimen Tag"],
+               "Uncommon": ["Mutated Claw Arm", "Tumor Eye", "Parasite Tendrils", "Glowing Pustules", "Surgical Staple Seam", "IV Drip Line", LAB[0]],
+               "Rare": ["Tumor Eye", "Parasite Tendrils", "IV Drip Line", LAB[0]]}
 FRAMING_MUTARM = FRAMING.split("; his other hand")[0] + "; his other arm is the huge mutated clawed limb, raised, never a limp hand"
 
 
@@ -996,26 +1001,35 @@ def lab_pass(tokens):
     plain = {"Sage Clay", "Swamp Clay", "Slate Clay", "Teal Clay", "Rust Clay", "Bruise Clay", "Bone Clay", ROBINHOOD[0]}
     used = set(CLOWN_PISTOLS) | {1136}
     rng = random.Random(6669)
-    for trait, value, counts in LAB_COUNTS:
-        for tier, n in counts.items():
-            pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] == tier and a.get("Character") in ("Classic", "Woman")
-                    and i not in pend and i not in used
-                    and (a.get("Head Mark") == "Boils" or a.get("Flesh") or a["Skin"] in ("Toxic Green", "Zombie Green", "Zombie Blue")
-                         or a.get("Mask") == "Flayed Muscle Face")
-                    and not os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png"))
-                    and (value != "Mutated Claw Arm" or (a.get("Off Hand") or "").endswith("Hook Hand"))
-                    and (trait != "Backdrop" or a["Backdrop"] in plain)]
-            for i in rng.sample(pool, n):
-                a = tokens[i - 1][0]
-                used.add(i)
-                if trait == "Backdrop":
-                    a["Backdrop"] = value
-                    a.pop("Splatter", None)
-                else:
-                    a[trait] = value
-                if value == "Mutated Claw Arm":
-                    a.pop("Off Hand", None)
+    LAB_GROUPS_DONE.clear()
+    picks = []
+    for name, test, n in LAB_GROUPS:   # rarest group first; Standards keep Standard traits only, so they are left out
+        pool = [i for i, (a, f) in enumerate(tokens, 1) if a["Tier"] in LAB_BY_TIER and a.get("Character") in ("Classic", "Woman")
+                and test(a) and i not in pend and i not in used
+                and not os.path.exists(os.path.join(ROOT, "output", "ai", "images-v2", f"{i}.png"))]
+        got = rng.sample(pool, min(n, len(pool)))
+        used.update(got)
+        picks += got
+        LAB_GROUPS_DONE[name] = (len(got), n)
+    uses = collections.Counter()
+    for i in sorted(picks, key=lambda i: tokens[i - 1][0]["Tier"] == "Rare", reverse=True):
+        a = tokens[i - 1][0]
+        options = [v for v in LAB_BY_TIER[a["Tier"]] if (v != "Mutated Claw Arm" or (a.get("Off Hand") or "").endswith("Hook Hand"))
+                   and (v != LAB[0] or a["Backdrop"] in plain)]
+        v = min(options, key=lambda v: (uses[v], rng.random()))
+        uses[v] += 1
+        if v == LAB[0]:
+            a["Backdrop"] = v
+            a.pop("Splatter", None)
+        elif v in MUTATION:
+            a["Mutation"] = v
+            if v == "Mutated Claw Arm":
+                a.pop("Off Hand", None)
+        else:
+            a["Experiment"] = v
 
+
+LAB_GROUPS_DONE = {}
 
 def robinhood_pass(tokens):
     st = json.load(open(os.path.join(ROOT, "output", "ai", "batches.json")))
