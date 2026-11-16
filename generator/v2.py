@@ -426,6 +426,8 @@ ALL["Held Weapon"]["Poison Syringe"] = (0, "a big old glass syringe filled with 
 ALL["Skin"], ALL["Belt"] = dict(ALL["Skin"]), dict(ALL["Belt"])   # copies, so the retro values never touch the SKIN/BELT pick tables
 for _t, (_v, _p) in RETRO_EXTRA.items():
     ALL[_t][_v] = (0, _p)
+ALL["Hair"]["Short Golden-Brown Curls"] = (0, "short, soft golden-brown curled hair cut just above the collar, a 1970s housewife style")
+ALL["Clothing"]["Powder-Blue Cable-Knit Sweater"] = (0, "a cosy powder-blue cable-knit wool sweater with a ribbed crew neck, sleeves pushed up, blood spattered down the front")
 ALL["Mask"]["Retro Purple Half-Mask"] = (0, "a chunky violet-purple HALF mask that matches his jumpsuit exactly and covers ONLY the lower half of his face, "
              "like the bottom half of a goalie mask: its top edge runs straight across the bridge of his nose just under his eyes, so both eyes, "
              "eyelids and brow are bare clay skin; rows of round black breathing holes over the mouth and chin, decorated ONLY with a few small "
@@ -537,7 +539,10 @@ def post_lock(tokens):
     tokens[1085 - 1][0].pop("Off Hand", None)
     _r = tokens[576 - 1][0]   # George 2026-11-16 19:46: The Retro Slasher gets a beanie matching the jumpsuit and a matching purple mask
     assert _r.get("1/1 Name") == "The Retro Slasher"
-    _r["Hair"] = "Retro Purple Beanie"; _r["Mask"] = "Retro Purple Half-Mask"   # George 2026-11-16 18:37: #1085 keeps only the rarer Golden Saw Weed Whacker (pitchfork dropped)
+    _r["Hair"] = "Retro Purple Beanie"; _r["Mask"] = "Retro Purple Half-Mask"
+    _g = tokens[535 - 1][0]   # George 2026-11-16 21:15: The Grieving Mother gets a blue knit sweater and short golden-brown hair (homage, own design)
+    assert _g.get("1/1 Name") == "The Grieving Mother"
+    _g["Hair"] = "Short Golden-Brown Curls"; _g["Clothing"] = "Powder-Blue Cable-Knit Sweater"   # George 2026-11-16 18:37: #1085 keeps only the rarer Golden Saw Weed Whacker (pitchfork dropped)
 # Puzzle boxes (George 2026-11-16 04:48): #1136's cube turns chrome; 5 Uncommons get differently shaped gold-filigree boxes.
 _GOLD_FILIGREE = "inlaid with intricate polished-gold filigree of our own design (thorny vines, interlocking rings and tiny skull knots)"
 PUZZLE_BOXES = {

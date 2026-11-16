@@ -234,7 +234,7 @@
 | Scorched Corduroy Dungarees | 1 | 0.1% |
 | Blood-Drenched Prom Gown | 1 | 0.1% |
 | Hologram Shift Dress | 1 | 0.1% |
-| Mustard Cardigan | 1 | 0.1% |
+| Powder-Blue Cable-Knit Sweater | 1 | 0.1% |
 | Tattered Bone Jumpsuit | 1 | 0.1% |
 | White Lace Gown | 1 | 0.1% |
 | Bloody Raincoat Over Pinstripe Suit | 1 | 0.1% |
@@ -332,7 +332,7 @@
 | Singed Yarn Tufts | 1 | 0.1% |
 | Blood-Matted Curls | 1 | 0.1% |
 | Hologram Bob | 1 | 0.1% |
-| Grey Curled Perm | 1 | 0.1% |
+| Short Golden-Brown Curls | 1 | 0.1% |
 | Retro Purple Beanie | 1 | 0.1% |
 | Veiled Mourning Hat | 1 | 0.1% |
 | Slicked-Back Hair | 1 | 0.1% |
