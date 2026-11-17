@@ -57,6 +57,10 @@
     {
       "trait_type": "Splatter",
       "value": "Crazy"
+    },
+    {
+      "trait_type": "Off Hand",
+      "value": "Elder Tentacle Arm"
     }
   ]
 }

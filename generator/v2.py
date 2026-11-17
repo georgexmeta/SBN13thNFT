@@ -398,6 +398,10 @@ FRAMING = ("FACING: exactly like the first reference photo, his body is in three
            "above the head, figure centred, square 1:1 composition. SCALE (the same for every figure in the series): the figure is the same size in the frame as in the first reference photo, the bobble head the same size relative to the body, and weapons true to scale with the hands, never oversized or tiny. His right hand grips the held weapon in a tight "
            "clenched fist seen from the back of the hand, knuckles toward the camera, palm hidden, the blade angled up "
            "and out; his other hand is raised beside him as a menacing curled claw, gnarled fingers bent like hooks, never hanging limp")
+FRAMING_TENT_ARM = FRAMING.split(" His right hand grips")[0] + (" His right arm ends in the iron hook, raised in front of him. His LEFT arm is the "
+                                                              "tentacle: there is no left hand at all. EXACTLY TWO ARMS: one right arm ending in the hook and one left arm that is a single "
+                                                              "tentacle; no extra hands, no extra arms, no other tentacles")
+TENTACLE_ARM_IDS = (274, 385, 488, 579, 764, 790, 994, 1185, 1204, 1283)   # George 2026-11-17: the 10 free-hand Epics get a tentacle left arm
 FRAMING_TWO_HANDS = FRAMING.split(" His right hand grips")[0] + (" Both hands hold the chainsaw firmly, one on the rear handle "
                                                               "and one on the front handle; neither hand hangs empty")
 FRAMING_WHACKER = FRAMING.split(" His right hand grips")[0] + (" Both hands hold the weed whacker: his left hand wraps the loop handle in the "
@@ -617,6 +621,9 @@ TIER_RENAME = {"Standard": "Common", "Common": "Uncommon", "Uncommon": "Rare", "
 
 def post_lock(tokens):
     """Trait changes made after the lock."""
+    for i in TENTACLE_ARM_IDS:   # George 2026-11-17: one last special weapon for the free-hand Epics
+        assert tokens[i - 1][0]["Held Weapon"] == "Hook Hand" and tokens[i - 1][0].get("Off Hand", "None") in ("None", None)
+        tokens[i - 1][0]["Off Hand"] = "Elder Tentacle Arm"
     for a, _f in tokens:   # George 2026-11-16 17:19: no price-tag style specimen tags anywhere
         if a.get("Experiment") == "Blank Specimen Tag":
             del a["Experiment"]
@@ -853,6 +860,12 @@ def prompt(a, legendary_finish=None):
     if (a.get("Off Hand") or "").endswith("Hook Hand"):   # George 2026-11-15: a free hand is never limp, it is a prosthetic hook
         hand += (f"; his LEFT hand is gone, replaced by a big curved {HOOK_FINISH[a['Off Hand'].split()[0]]} prosthetic hook on a "
                  "battered leather cuff strapped to his forearm, raised menacingly beside him")
+    elif a.get("Off Hand") == "Elder Tentacle Arm":   # George 2026-11-17: original cosmic-horror tentacle arm, skin-matched, torn sleeve
+        tone = SKIN_MATCH.get(a["Skin"], "same")
+        hand += (f"; his entire LEFT arm, from the shoulder down, is one thick writhing octopus-like tentacle instead of an arm and hand, its skin exactly "
+                 f"the {tone} colour of his face with slightly darker mottling and wet sheen, two rows of round suckers along its underside, the long "
+                 "tapering tip curling and coiling menacingly upward beside him; where he wears a sleeve, the left sleeve is torn open and "
+                 "shredded at the shoulder with ragged fabric edges, showing the tentacle bursting out of it")
     elif a.get("Off Hand"):   # George 2026-11-15: dual wield, both fists clench a weapon, no back weapon
         hand += "; his LEFT fist tightly grips " + DUAL_PHRASE[a["Off Hand"]]
     if a["Skin"] in SKIN_MATCH:   # George 2026-11-16 21:56: hands always match the face's skin tone (esp. dark skin)
@@ -871,7 +884,7 @@ def prompt(a, legendary_finish=None):
     if puppet:
         head = [phrase("Head", a["Head"]), phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"]), phrase("Head Mark", a["Head Mark"]), phrase("Ears", a["Ears"])]
     parts = [STYLE, SLEEPER_BASE if sleeper else PUPPET_BASE if puppet else OVERSEER_BASE if a.get("Character") == "The Overseer" else DOLL_BASE if doll else FEMALE_BASE if female else CHARACTER, ", ".join(p for p in head if p), mask, ", ".join(p for p in body if p),
-             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Clayson Master Ball and Golden Axe" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_PISTOLS if held in PISTOL else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held == "Death Nails" or held.endswith("Blade Nails") else FRAMING_MUTARM if a.get("Mutation") == "Mutated Claw Arm" else FRAMING_HOOKOFF if (a.get("Off Hand") or "").endswith("Hook Hand") else FRAMING_DUAL if a.get("Off Hand") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_BOX if held in PUZZLE_BOXES else FRAMING_BOTH if held in TWO_HAND_HELD else FRAMING_WHACKER if held.endswith("Saw Weed Whacker") else FRAMING_LASER if held == "Laser Lattice" else FRAMING_TENTACLE if held == "Squid Tentacle Arms" else FRAMING_TRIKE if held == "Red Tricycle" else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
+             phrase("Backdrop", a["Backdrop"]), FRAMING_COLLECTOR if held == "Clayson Master Ball and Golden Axe" else FRAMING_MOLOTOV if held == "Double Molotov Cocktails" else FRAMING_PISTOLS if held in PISTOL else FRAMING_BAND if held == "Exercise Band" else FRAMING_NAILS if held == "Death Nails" or held.endswith("Blade Nails") else FRAMING_MUTARM if a.get("Mutation") == "Mutated Claw Arm" else FRAMING_HOOKOFF if (a.get("Off Hand") or "").endswith("Hook Hand") else FRAMING_TENT_ARM if a.get("Off Hand") == "Elder Tentacle Arm" else FRAMING_DUAL if a.get("Off Hand") else FRAMING_TWO_HANDS if held == "Chainsaw" else FRAMING_BOX if held in PUZZLE_BOXES else FRAMING_BOTH if held in TWO_HAND_HELD else FRAMING_WHACKER if held.endswith("Saw Weed Whacker") else FRAMING_LASER if held == "Laser Lattice" else FRAMING_TENTACLE if held == "Squid Tentacle Arms" else FRAMING_TRIKE if held == "Red Tricycle" else FRAMING_PSYCHIC if held in ("Telekinesis", "Psychic Force") else FRAMING]
     text = ". ".join(p[0].upper() + p[1:] for p in parts if p) + "."
     if "empty black eye sockets" in (mask or ""):   # QA #232: the base "sunken eyes" line added a stray third eye
         text = text.replace("small sunken bloodshot eyes in swollen red-rimmed lids, ", "")
