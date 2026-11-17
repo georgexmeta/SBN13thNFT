@@ -6,7 +6,7 @@ from openpyxl.styles import Font, PatternFill, Alignment
 from openpyxl.utils import get_column_letter
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TIERS = ["Standard", "Common", "Uncommon", "Rare", "Legendary 1/1"]
+TIERS = ["Common", "Uncommon", "Rare", "Epic", "Legendary 1/1"]
 rows = list(csv.DictReader(open(os.path.join(ROOT, "output", "opensea", "metadata.csv"))))
 traits = [k[11:-1] for k in rows[0] if k.startswith("attributes[")]
 out = sys.argv[1]

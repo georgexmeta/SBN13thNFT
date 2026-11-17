@@ -610,6 +610,9 @@ EMPTY_LOBE = [224, 252, 369, 377, 406, 416, 537, 620, 644, 646, 868, 893, 897, 9
 WOMEN_SCYTHE_HELD = (227, 612, 839, 853, 1168)
 
 
+TIER_RENAME = {"Standard": "Common", "Common": "Uncommon", "Uncommon": "Rare", "Rare": "Epic"}   # Legendary 1/1 unchanged
+
+
 def post_lock(tokens):
     """Trait changes made after the lock."""
     for a, _f in tokens:   # George 2026-11-16 17:19: no price-tag style specimen tags anywhere
@@ -1037,6 +1040,8 @@ def build():
             _new = dict(LOCK[_n]); _new.update({k: v for k, v in _a.items() if k.startswith("_")})
             _a.clear(); _a.update(_new)
         post_lock(tokens)
+    for _a, _f in tokens:   # George 2026-11-17: published tier names shift up one; internal passes above keep the old labels
+        _a["Tier"] = TIER_RENAME.get(_a["Tier"], _a["Tier"])
     os.makedirs(OUT, exist_ok=True)
     rows = []
     for i, (a, finish) in enumerate(tokens, 1):

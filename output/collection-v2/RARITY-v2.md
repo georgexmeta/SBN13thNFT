@@ -6,10 +6,10 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Standard | 464 | 35.7% |
-| Common | 400 | 30.8% |
-| Uncommon | 293 | 22.5% |
-| Rare | 130 | 10.0% |
+| Common | 464 | 35.7% |
+| Uncommon | 400 | 30.8% |
+| Rare | 293 | 22.5% |
+| Epic | 130 | 10.0% |
 | Legendary 1/1 | 13 | 1.0% |
 
 ## Head
