@@ -135,8 +135,8 @@ N_HOMAGE = 25
 # Two more Uncommon scene backdrops (George, 2026-11-14), kept separate from BACKDROP_SCENE so earlier picks don't shift.
 SCENE2 = {
     "Killer Circus": "a rotting abandoned circus big top at night with a torn red-and-yellow striped tent, a broken carousel horse, flickering "
-                     "bulb strings and a blood-smeared ticket booth, sculpted as a miniature claymation diorama in matte plasticine, "
-                     "softly out of focus behind him, no signs or lettering",
+                     "bulb strings and a blood-smeared ticket booth with a faded hand-painted 'TICKETS' sign above its window (the only "
+                     "lettering in the backdrop), sculpted as a miniature claymation diorama in matte plasticine, softly out of focus behind him",
     "Insane Asylum": "a derelict insane asylum corridor with peeling green tiles, a rusty wheelchair, a padded cell door hanging open and "
                      "flickering fluorescent tubes, sculpted as a miniature claymation diorama in matte plasticine, softly out of focus "
                      "behind him, no signs or lettering",
