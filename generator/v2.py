@@ -409,7 +409,9 @@ FRAMING_DUAL = FRAMING.split(" His right hand grips")[0] + (" Both hands are ful
                                                           "the right fist grips the held weapon, the left fist grips the second weapon by its handle as described")
 FRAMING_BOTH = FRAMING.split(" His right hand grips")[0] + (" Both hands grip the weapon, knuckles toward the camera, the whole weapon inside the frame; "
                                                           "neither hand hangs empty and nothing is on his back")
-FRAMING_HOOKOFF = FRAMING.split("; his other hand")[0] + "; his other arm ends in a metal prosthetic hook, raised, never a limp hand or a bare stump"
+FRAMING_HOOKOFF = FRAMING.split("; his other hand")[0] + "; his LEFT arm ends in a metal prosthetic hook strapped to the left forearm, raised, in place of the left hand. EXACTLY TWO ARMS: " \
+                   "one right arm with a hand holding the weapon and one left arm ending in the hook; no third arm, no hook growing from the back or " \
+                   "shoulder, no extra hand, never a limp hand or a bare stump"
 HOOK_FINISH = {"Rusty": "rusty pitted iron", "Steel": "plain scuffed steel", "Bloody": "blood-drenched dripping steel",
                "Gold": "gleaming solid-gold", "Chrome": "mirror-polished chrome"}
 FRAMING_NAILS = FRAMING.split(" His right hand grips")[0] + " Both hands are raised and fully visible inside the frame, all ten blade nails spread; neither hand hangs down or is hidden"

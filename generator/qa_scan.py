@@ -11,7 +11,7 @@ IMG = os.path.join(ROOT, "output", "ai", "images-v2")
 OUT = os.path.join(ROOT, "output", "ai", "qa-scan.json")
 MODEL = sys.argv[sys.argv.index("--model") + 1] if "--model" in sys.argv else "gemini-3.5-flash"
 man = {r["id"]: r["attributes"] for r in json.load(open(os.path.join(ROOT, "output", "ai", "manifest-v2.json")))}
-KEYS = ("Held Weapon", "Back Weapon", "Off Hand", "Mask", "Headpiece", "Neck", "Mutation")
+KEYS = ("Held Weapon", "Back Weapon", "Off Hand", "Mask", "Clothing", "Headpiece", "Neck", "Mutation")
 
 Q = """You are QA-checking a picture from a claymation NFT collection. IMAGE 1 is the house-standard reference; IMAGE 2 is the token to check. Compare IMAGE 2 against IMAGE 1: body angle, head angle, how big the figure is in the frame. The house standard: ONE clay figure, body and head turned about
 45 degrees toward the viewer's right (three-quarter view), framed from the waist up with backdrop visible above the head and on both sides,
