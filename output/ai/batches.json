@@ -7407,9 +7407,10 @@
     1296,
     1298
    ],
-   "state": "running",
+   "state": "done",
    "submitted": 1794975126.0308495,
-   "edit": true
+   "edit": true,
+   "drop": []
   }
  ],
  "tries": {
