@@ -1077,6 +1077,9 @@ def build():
         for k, v in json.load(open(os.path.join(_gd, "mask_swap.json"))).items():   # George 2026-11-18: 100 burlap/pig -> mixed masks, same tier
             assert tokens[int(k) - 1][0]["Mask"] in ("Burlap Pig Mask", "Burlap Sack Hood")
             tokens[int(k) - 1][0]["Mask"] = v
+        for k in json.load(open(os.path.join(_gd, "zombie_green_add.json"))):   # George 2026-11-18: more Zombie Green, fewer common skins
+            assert tokens[k - 1][0]["Skin"] in ("Flesh Pink", "Corpse Grey")
+            tokens[k - 1][0]["Skin"] = "Zombie Green"
         for k, v in json.load(open(os.path.join(_gd, "backpacks.json"))).items():   # George 2026-11-18: backpacks on every empty back
             assert tokens[int(k) - 1][0].get("Back Weapon", "None") == "None"
             tokens[int(k) - 1][0]["Backpack"] = v

@@ -303,15 +303,15 @@
 
 | Value | Count | Share |
 |---|---|---|
-| Flesh Pink | 348 | 26.8% |
-| Corpse Grey | 234 | 18.0% |
+| Flesh Pink | 326 | 25.1% |
+| Corpse Grey | 221 | 17.0% |
 | Sallow | 168 | 12.9% |
 | Pale Wax | 148 | 11.4% |
 | Ruddy | 137 | 10.5% |
 | Deep Brown | 125 | 9.6% |
 | Bloodless Blue | 68 | 5.2% |
+| Zombie Green | 50 | 3.8% |
 | Toxic Green | 40 | 3.1% |
-| Zombie Green | 15 | 1.2% |
 | Zombie Blue | 10 | 0.8% |
 | Charred Plastic | 1 | 0.1% |
 | Red Hologram | 1 | 0.1% |
