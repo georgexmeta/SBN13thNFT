@@ -832,7 +832,10 @@ def prompt(a, legendary_finish=None):
     elif held == "Laser Lattice":   # The Overseer: her weapon is a slicing grid of red lasers projected from her raised hands
         hand = ("she holds no weapon: both hologram hands are raised with fingers spread, projecting a glowing lattice of thin bright red "
                 "laser beams that criss-cross the air in front of her in a neat grid")
-    elif held in ("Telekinesis", "Psychic Force"):
+    elif held == "Psychic Force":   # George 2026-11-18: broken teacups and shattered glass instead of chairs
+        hand = ("she holds no weapon: both bloody hands are raised and spread with clawed fingers, unleashing telekinetic power, "
+                "broken cracked porcelain teacups and saucers and shards of shattered glass levitating around her and a rippling shockwave bending the air, no chairs")
+    elif held == "Telekinesis":
         hand = ("she holds no weapon: both bloody hands are raised and spread with clawed fingers, unleashing telekinetic power, "
                 "chairs, glass shards and streamers levitating around her and a rippling shockwave bending the air")
     elif held in PUZZLE_BOXES:   # George 2026-11-16: original occult puzzle-box homage, the chrome cube is the only one of its kind
