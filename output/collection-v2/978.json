@@ -67,6 +67,10 @@
       "value": "Gold Double Chains with Skull Pendant"
     },
     {
+      "trait_type": "Head Shape",
+      "value": "Slightly Lopsided"
+    },
+    {
       "trait_type": "Backpack",
       "value": "Medical Backpack"
     }

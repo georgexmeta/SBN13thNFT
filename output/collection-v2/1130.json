@@ -57,6 +57,10 @@
     {
       "trait_type": "Off Hand",
       "value": "Steel Hook Hand"
+    },
+    {
+      "trait_type": "Head Shape",
+      "value": "Pristine Head"
     }
   ]
 }

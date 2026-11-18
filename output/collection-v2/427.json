@@ -59,6 +59,10 @@
       "value": "Woodcutter Axe"
     },
     {
+      "trait_type": "Head Shape",
+      "value": "Slightly Lopsided"
+    },
+    {
       "trait_type": "Backpack",
       "value": "Battery Backpack"
     }

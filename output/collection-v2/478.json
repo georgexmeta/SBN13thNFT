@@ -67,6 +67,10 @@
       "value": "Glowing Pustules"
     },
     {
+      "trait_type": "Head Shape",
+      "value": "Faint Split Scar"
+    },
+    {
       "trait_type": "Backpack",
       "value": "Cargo Backpack"
     }

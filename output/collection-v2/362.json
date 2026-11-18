@@ -71,6 +71,10 @@
       "value": "Surgical Staple Seam"
     },
     {
+      "trait_type": "Head Shape",
+      "value": "Slightly Lopsided"
+    },
+    {
       "trait_type": "Backpack",
       "value": "Cargo Backpack"
     }

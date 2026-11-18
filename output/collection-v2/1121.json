@@ -55,6 +55,10 @@
       "value": "Woman"
     },
     {
+      "trait_type": "Head Shape",
+      "value": "Soft Pointed Crown"
+    },
+    {
       "trait_type": "Backpack",
       "value": "Medical Backpack"
     }

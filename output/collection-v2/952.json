@@ -67,6 +67,10 @@
       "value": "Rusted Double Chains"
     },
     {
+      "trait_type": "Head Shape",
+      "value": "Pristine Head"
+    },
+    {
       "trait_type": "Backpack",
       "value": "Cargo Backpack"
     }

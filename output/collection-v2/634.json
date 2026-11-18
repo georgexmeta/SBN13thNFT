@@ -59,6 +59,10 @@
       "value": "Light"
     },
     {
+      "trait_type": "Head Shape",
+      "value": "Pristine Head"
+    },
+    {
       "trait_type": "Backpack",
       "value": "Common Backpack"
     }

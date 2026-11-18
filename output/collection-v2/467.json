@@ -63,6 +63,10 @@
       "value": "Rusty Hook Hand"
     },
     {
+      "trait_type": "Head Shape",
+      "value": "Lumpy Brow"
+    },
+    {
       "trait_type": "Backpack",
       "value": "Cargo Backpack"
     }

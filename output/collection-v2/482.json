@@ -67,6 +67,10 @@
       "value": "IV Drip Line"
     },
     {
+      "trait_type": "Head Shape",
+      "value": "Slightly Lopsided"
+    },
+    {
       "trait_type": "Backpack",
       "value": "Medical Backpack"
     }

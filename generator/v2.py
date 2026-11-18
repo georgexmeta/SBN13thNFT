@@ -493,6 +493,13 @@ ALL["Mask"]["Rusted Iron Eye Mask"] = (0, "a riveted rusty iron plate mask cover
                                           "holes, strapped on with leather; his nose, mouth and rotten teeth are bare below it")
 ALL["Mask"]["Bone Jaw Mask"] = (0, "a bottom-half mask made from a cracked yellowed animal jawbone with its long teeth still set in it, strapped over his "
                                    "mouth and chin with rusty wire and leather; his eyes and brow are bare above it")
+FEMALE_HEAD = {   # George 2026-11-18: subtle female versions of the men's head types; the stock head is the rare Pristine Head
+    "Pristine Head": None,
+    "Lumpy Brow": "her skull is subtly misshapen with a few soft lumpy swellings on her brow and one temple",
+    "Slightly Lopsided": "her skull and jaw are slightly lopsided, one side a little lower and softer as if faintly melted",
+    "Faint Split Scar": "a thin healed split scar runs across her scalp and forehead with a slight raised ridge of clay",
+    "Soft Pointed Crown": "the top of her skull is gently tapered into a soft, slightly elongated crown (subtle, never a sharp cone)",
+}
 BACKPACK = {
     "Common Backpack": "a grimy, stained canvas daypack worn on his back, padded straps over both shoulders, the pack visible behind his shoulder",
     "Cargo Backpack": "a rugged olive-drab canvas cargo backpack with strapped side pockets and buckles worn on his back, straps over both shoulders, "
@@ -891,7 +898,7 @@ def prompt(a, legendary_finish=None):
     body = [f"wearing {phrase('Clothing', a['Clothing'])}", FLESH.get(a.get("Flesh")), phrase("Belt", a["Belt"]), NECK.get(a.get("Neck")), MUTATION.get(a.get("Mutation")), EXPERIMENT.get(a.get("Experiment")), hand, phrase("Back Weapon", a["Back Weapon"]), BACKPACK.get(a.get("Backpack"))]
     female = a.get("Character", "Classic") in FEMALE or a.get("Character") in ("The Grieving Mother", "The Prom Queen", "The Ringmistress", "Woman", "Madame Mortis", "The Overseer")
     if female:
-        head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"]), phrase("Head Mark", a["Head Mark"]), phrase("Ears", a.get("Ears", "Natural"))]
+        head = [phrase("Skin", a["Skin"]), FEMALE_HEAD.get(a.get("Head Shape")), phrase("Hair", a["Hair"]), phrase("Head Mark", a["Head Mark"]), phrase("Ears", a.get("Ears", "Natural"))]
     doll = a.get("Character") == "Scorched Doll"
     if doll:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"])]
@@ -1077,6 +1084,9 @@ def build():
         for k, v in json.load(open(os.path.join(_gd, "mask_swap.json"))).items():   # George 2026-11-18: 100 burlap/pig -> mixed masks, same tier
             assert tokens[int(k) - 1][0]["Mask"] in ("Burlap Pig Mask", "Burlap Sack Hood")
             tokens[int(k) - 1][0]["Mask"] = v
+        for k, v in json.load(open(os.path.join(_gd, "female_heads.json"))).items():   # George 2026-11-18: female head shapes
+            assert tokens[int(k) - 1][0].get("Character") == "Woman"
+            tokens[int(k) - 1][0]["Head Shape"] = v
         for k in json.load(open(os.path.join(_gd, "zombie_green_add.json"))):   # George 2026-11-18: more Zombie Green, fewer common skins
             assert tokens[k - 1][0]["Skin"] in ("Flesh Pink", "Corpse Grey")
             tokens[k - 1][0]["Skin"] = "Zombie Green"
