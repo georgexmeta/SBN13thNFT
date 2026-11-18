@@ -1,0 +1,218 @@
+<meta charset="utf-8">
+<title>Claysons Trait Explorer</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Creepster&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: dark header, sticky chip nav, one card grid per category; full-screen overlay for trait and piece views. Single dark look by design. */
+:root{
+  --bg:#141012; --card:#1f191b; --border:#2f2629; --text:#efe6e1; --muted:#9b8f8a;
+  --accent:#b3201c; --meter:#c8f000; --gold:#f2b632; --purple:#b67cff; --blue:#5aa9ff;
+  --card-hi:#271f22;
+  --display:"Creepster","Impact",system-ui,sans-serif;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:14px;line-height:1.4;-webkit-tap-highlight-color:transparent}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));max-width:1280px;margin:0 auto}
+header{padding-block:22px 14px;border-bottom:1px solid var(--border);background:radial-gradient(120% 90% at 50% 0%,#2a1012 0%,var(--bg) 70%)}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(44px,11vw,76px);line-height:.95;margin:0;color:var(--text);letter-spacing:.02em;text-shadow:0 2px 0 var(--accent)}
+.sub{margin:8px 0 12px;color:var(--muted);font-size:14px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.r1{color:var(--gold)} .r3{color:var(--purple)} .r8{color:var(--blue)} .rc{color:var(--muted)}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:rgba(20,16,18,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--border)}
+nav .wrap{padding-block:10px;display:flex;flex-direction:column;gap:8px}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:0 calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:0 max(16px,env(safe-area-inset-left,0px))}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--border);background:var(--card);color:var(--text);font:500 13px var(--body);padding:7px 12px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.tools{display:flex;gap:8px}
+.tools input,.tools select{background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:10px;font:14px var(--body);padding:9px 11px;min-width:0}
+.tools input{flex:1}
+.tools input:focus,.tools select:focus,.chip:focus-visible,.card:focus-visible,.pc:focus-visible,button:focus-visible,tr:focus-visible{outline:2px solid var(--meter);outline-offset:2px}
+main{padding-block:8px 40px}
+section{padding-top:18px}
+section h2{font:700 13px var(--body);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0 0 10px;display:flex;justify-content:space-between;gap:8px}
+section h2 b{color:var(--text)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+@media (min-width:640px){.grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:6px 6px 9px;cursor:pointer;transition:transform .12s ease,background .12s;display:flex;flex-direction:column;gap:6px;min-width:0;text-align:left;color:inherit;font:inherit}
+.card:hover{background:var(--card-hi)}
+.card:active,.pc:active,.chip:active,tr.tap:active{transform:scale(.96)}
+.th{position:relative;width:100%;aspect-ratio:1;border-radius:9px;background-color:#0c0a0b;background-size:1000% 1000%;background-repeat:no-repeat;overflow:hidden}
+.badge{position:absolute;right:4px;bottom:4px;background:rgba(10,8,9,.82);color:var(--text);font:600 10px var(--body);padding:2px 6px;border-radius:999px;border:1px solid var(--border)}
+.badge.one{color:var(--gold);border-color:var(--gold)}
+.tn{font-weight:600;font-size:13px;line-height:1.2;overflow-wrap:anywhere;padding:0 2px}
+.meta{display:flex;justify-content:space-between;gap:4px;font-size:11.5px;color:var(--muted);padding:0 2px;font-variant-numeric:tabular-nums}
+.meta .p{font-weight:600}
+.bar{height:3px;background:var(--border);border-radius:2px;margin:0 2px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--meter);border-radius:2px}
+.empty{color:var(--muted);padding:30px 0;text-align:center}
+footer{color:var(--muted);font-size:12px;padding-block:0 30px}
+/* overlay */
+#ov{position:fixed;inset:0;z-index:20;background:var(--bg);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.ovbar{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--border);z-index:2}
+.ovbar .wrap{display:flex;align-items:center;gap:10px;padding-block:10px}
+.ovt{flex:1;min-width:0}
+.ovt small{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+.ovt b{display:block;font-size:17px;line-height:1.2;overflow-wrap:anywhere}
+.ovt span{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.btn{background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:10px;font:600 13px var(--body);padding:8px 11px;cursor:pointer;white-space:nowrap}
+.btn.x{font-size:20px;line-height:1;padding:6px 11px}
+.pgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;padding-block:14px 30px}
+@media (min-width:640px){.pgrid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}}
+.pc{cursor:pointer;background:none;border:0;padding:0;color:inherit;font:inherit;display:flex;flex-direction:column;gap:4px;transition:transform .12s ease;min-width:0}
+.pc .th{border:1px solid var(--border)}
+.pc span{font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums;text-align:center}
+.piece{display:grid;gap:16px;padding-block:16px 34px}
+@media (min-width:760px){.piece{grid-template-columns:minmax(0,420px) minmax(0,1fr);align-items:start}}
+.big{width:100%;max-width:420px;aspect-ratio:1;border-radius:16px;border:1px solid var(--border);background-color:#0c0a0b;background-repeat:no-repeat;background-size:1000% 1000%}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+td{padding:10px 6px;border-bottom:1px solid var(--border);vertical-align:top}
+td.c{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.06em;width:34%}
+td.v{font-weight:600;overflow-wrap:anywhere}
+td.pp{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+tr.tap{cursor:pointer;transition:transform .12s ease}
+tr.tap:hover td{background:var(--card)}
+td.v::after{content:" \203A";color:var(--muted);font-weight:400}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<header><div class="wrap">
+  <h1>Claysons</h1>
+  <p class="sub" id="sub"></p>
+  <div class="legend" aria-label="Rarity colours">
+    <span class="r1"><i style="background:var(--gold)"></i>≤1%</span>
+    <span class="r3"><i style="background:var(--purple)"></i>≤3%</span>
+    <span class="r8"><i style="background:var(--blue)"></i>≤8%</span>
+    <span class="rc"><i style="background:var(--muted)"></i>over 8%</span>
+  </div>
+</div></header>
+
+<nav><div class="wrap">
+  <div class="chips" id="chips" role="toolbar" aria-label="Categories"></div>
+  <div class="tools">
+    <input id="q" type="search" placeholder="Search traits" aria-label="Search traits" autocomplete="off">
+    <select id="sort" aria-label="Sort traits">
+      <option value="common">Most common</option>
+      <option value="rare">Rarest</option>
+      <option value="az">A–Z</option>
+    </select>
+  </div>
+</div></nav>
+
+<main class="wrap" id="main"></main>
+<footer class="wrap" id="foot"></footer>
+
+<div id="ov" hidden role="dialog" aria-modal="true" aria-labelledby="ovname">
+  <div class="ovbar"><div class="wrap">
+    <button class="btn" id="back" hidden>‹ Back to trait</button>
+    <div class="ovt"><small id="ovcat"></small><b id="ovname"></b><span id="ovstat"></span></div>
+    <button class="btn x" id="close" aria-label="Close">×</button>
+  </div></div>
+  <div class="wrap" id="ovbody"></div>
+</div>
+
+<script>
+const D=__DATA__;
+const N=D.supply, C=D.cats;
+// reverse index: category -> trait -> token ids
+const REV=C.map((_,ci)=>D.vals[ci].map(()=>[]));
+D.tok.forEach((row,i)=>row.forEach((vi,ci)=>REV[ci][vi].push(i+1)));
+const TIER=C.indexOf("Tier"), TYPE=C.indexOf("Type");
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pct=n=>n/N*100;
+const fmtP=p=>(p<1?p.toFixed(2):p<10?p.toFixed(1):p.toFixed(0))+"%";
+const rcls=p=>p<=1?"r1":p<=3?"r3":p<=8?"r8":"rc";
+function spr(t,big){
+  const k=Math.floor((t-1)/100), j=(t-1)%100, x=(j%10)/9*100, y=Math.floor(j/10)/9*100;
+  const img=big?`url(l/${k}.jpg),url(s/${k}.jpg)`:`url(s/${k}.jpg)`;
+  return `background-image:${img};background-position:${x}% ${y}%`+(big?`,${x}% ${y}%`:"");
+}
+function pieceName(t){
+  const r=D.tok[t-1];
+  const leg=TIER>=0&&/Legendary/.test(D.vals[TIER][r[TIER]][0]);
+  return "Claysons #"+t+(leg&&TYPE>=0?" · "+D.vals[TYPE][r[TYPE]][0]:"");
+}
+
+const traitTotal=D.vals.reduce((a,v)=>a+v.length,0);
+$("#sub").textContent=`${N.toLocaleString()} claymation slashers · ${C.length} categories · ${traitTotal} traits. Tap a trait to see every piece that has it.`;
+$("#foot").textContent=`Data: ${D.csv}. Percent is share of the ${N.toLocaleString()} supply.`;
+
+let cat=-1;
+const chips=$("#chips");
+["All",...C].forEach((name,i)=>{
+  const b=document.createElement("button");
+  b.className="chip";b.textContent=name;b.dataset.c=i-1;
+  b.setAttribute("aria-pressed",i===0);
+  b.onclick=()=>{cat=i-1;chips.querySelectorAll(".chip").forEach(c=>c.setAttribute("aria-pressed",c===b));render();window.scrollTo({top:$("header").offsetHeight,behavior:"smooth"})};
+  chips.appendChild(b);
+});
+$("#q").addEventListener("input",render);
+$("#sort").addEventListener("change",render);
+
+function render(){
+  const q=$("#q").value.trim().toLowerCase(), sort=$("#sort").value;
+  let html="";
+  C.forEach((cname,ci)=>{
+    if(cat>=0&&cat!==ci)return;
+    const vals=D.vals[ci], max=vals[0][1];
+    let idx=vals.map((_,i)=>i).filter(i=>!q||vals[i][0].toLowerCase().includes(q)||cname.toLowerCase().includes(q));
+    if(!idx.length)return;
+    if(sort==="rare")idx.sort((a,b)=>vals[a][1]-vals[b][1]||vals[a][0].localeCompare(vals[b][0]));
+    else if(sort==="az")idx.sort((a,b)=>vals[a][0].localeCompare(vals[b][0]));
+    html+=`<section><h2><b>${esc(cname)}</b><span>${vals.length} traits</span></h2><div class="grid">`;
+    for(const vi of idx){
+      const [name,n]=vals[vi], p=pct(n), t=REV[ci][vi][0];
+      html+=`<button class="card" data-c="${ci}" data-v="${vi}"><div class="th" style="${spr(t)}" role="img" aria-label="Example: #${t}">`+
+        `<span class="badge${n===1?" one":""}">${n===1?"1/1":"+"+(n-1).toLocaleString()+" more"}</span></div>`+
+        `<div class="tn">${esc(name)}</div><div class="meta"><span>${n.toLocaleString()}</span><span class="p ${rcls(p)}">${fmtP(p)}</span></div>`+
+        `<div class="bar"><i style="width:${Math.max(2,n/max*100)}%"></i></div></button>`;
+    }
+    html+="</div></section>";
+  });
+  $("#main").innerHTML=html||`<p class="empty">No trait matches “${esc(q)}”.</p>`;
+}
+$("#main").addEventListener("click",e=>{const c=e.target.closest(".card");if(c)openTrait(+c.dataset.c,+c.dataset.v)});
+
+// overlay
+const ov=$("#ov"); let lastTrait=null, opener=null;
+function lock(on){document.documentElement.style.overflow=on?"hidden":"";document.body.style.overflow=on?"hidden":""}
+function show(){if(ov.hidden){opener=document.activeElement;ov.hidden=false;lock(true)}ov.scrollTop=0;$("#close").focus({preventScroll:true})}
+function closeOv(){ov.hidden=true;lock(false);lastTrait=null;if(opener&&opener.focus)opener.focus({preventScroll:true})}
+function openTrait(ci,vi){
+  lastTrait=[ci,vi];
+  const [name,n]=D.vals[ci][vi], p=pct(n), ids=REV[ci][vi];
+  $("#back").hidden=true;
+  $("#ovcat").textContent=C[ci];$("#ovname").textContent=name;
+  $("#ovstat").innerHTML=`${n.toLocaleString()} of ${N.toLocaleString()} · <b class="${rcls(p)}" style="display:inline;font-size:inherit">${fmtP(p)}</b>`;
+  $("#ovbody").innerHTML=`<div class="pgrid">`+ids.map(t=>`<button class="pc" data-t="${t}"><div class="th" style="${spr(t)}" role="img" aria-label="${esc(pieceName(t))}"></div><span>#${t}</span></button>`).join("")+`</div>`;
+  show();
+}
+function openPiece(t){
+  const r=D.tok[t-1];
+  $("#back").hidden=!lastTrait;
+  $("#ovcat").textContent=lastTrait?`${C[lastTrait[0]]}: ${D.vals[lastTrait[0]][lastTrait[1]][0]}`:"Piece";
+  $("#ovname").textContent=pieceName(t);
+  $("#ovstat").textContent=`${C.length} traits`;
+  const rows=C.map((cn,ci)=>{const [v,n]=D.vals[ci][r[ci]],p=pct(n);
+    return `<tr class="tap" tabindex="0" data-c="${ci}" data-v="${r[ci]}"><td class="c">${esc(cn)}</td><td class="v">${esc(v)}</td><td class="pp ${rcls(p)}">${fmtP(p)}</td></tr>`}).join("");
+  $("#ovbody").innerHTML=`<div class="piece"><div class="big" style="${spr(t,true)}" role="img" aria-label="${esc(pieceName(t))}"></div><table><tbody>${rows}</tbody></table></div>`;
+  show();
+}
+$("#ovbody").addEventListener("click",e=>{
+  const pc=e.target.closest(".pc"); if(pc)return openPiece(+pc.dataset.t);
+  const tr=e.target.closest("tr.tap"); if(tr)openTrait(+tr.dataset.c,+tr.dataset.v);
+});
+$("#ovbody").addEventListener("keydown",e=>{const tr=e.target.closest("tr.tap");if(tr&&(e.key==="Enter"||e.key===" ")){e.preventDefault();openTrait(+tr.dataset.c,+tr.dataset.v)}});
+$("#back").onclick=()=>lastTrait&&openTrait(...lastTrait);
+$("#close").onclick=closeOv;
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!ov.hidden)closeOv()});
+render();
+</script>
