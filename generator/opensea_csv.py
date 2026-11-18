@@ -65,16 +65,20 @@ def main():
     # numbers in id order. The tokens that sat on those numbers move to the Legendaries' old numbers. Internal ids (renders,
     # manifest, batches) never change; only the published tokenID, name number and image file move.
     swap = legend_swap(rows) if LEGEND_RENUMBER else team_swap(rows)
+    # George 2026-11-18: his own 12-category layout (claysons-traits-v2.csv) is the published trait set; it is keyed by tokenID
+    pub_path = os.path.join(ROOT, "generator", "published_traits.csv")
+    pub = {int(r["tokenID"]): r for r in csv.DictReader(open(pub_path, encoding="utf-8-sig"))} if os.path.exists(pub_path) else None
+    traits = [k[11:-1] for k in next(iter(pub.values())) if k.startswith("attributes[")] if pub else TRAITS
     rows = sorted(rows, key=lambda r: swap[r["id"]])
     missing = []
     with open(os.path.join(out, "metadata.csv"), "w", newline="") as f:
         w = csv.writer(f)
-        w.writerow(["tokenID", "name", "description", "file_name", "external_url"] + [f"attributes[{t}]" for t in TRAITS])
+        w.writerow(["tokenID", "name", "description", "file_name", "external_url"] + [f"attributes[{t}]" for t in traits])
         for r in rows:
             a = remap(r["attributes"])
             tid = swap[r["id"]]
             name = re.sub(r"#\d+", f"#{tid}", r["name"].replace("SBN13th", NAME), count=1)
-            w.writerow([tid, name, desc, f"{tid}.png", ""] + [a.get(t, "") for t in TRAITS])
+            w.writerow([tid, name, desc, f"{tid}.png", ""] + ([pub[tid][f"attributes[{t}]"] for t in traits] if pub else [a.get(t, "") for t in TRAITS]))
             src = os.path.join(ROOT, "output", "ai", "images-final", f"{r['id']}.png")   # splatter.py output (plain backdrops)
             if not os.path.exists(src):
                 src = os.path.join(ROOT, "output", "ai", "images-v2", f"{r['id']}.png")
