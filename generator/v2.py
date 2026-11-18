@@ -510,12 +510,12 @@ BACKPACK = {
                         "visible behind his shoulder (no cross, no symbols, no lettering)",
     "Cooler Backpack": "a battered old plastic picnic cooler strapped to his back like a backpack with rope and belts, its lid cracked open a little "
                        "with dark blood dripping down the side, straps over both shoulders, the cooler visible behind his shoulder (no lettering, no logo)",
-    "Gilded Quilt Designer Bag": "an exclusive luxury designer backpack in glossy quilted black leather with heavy gold hardware and gold chain shoulder straps, "
-                                 "pristine and expensive against his grimy clothes, worn on his back (no logo, no monogram, no lettering)",
+    "Skull Monogram Designer Bag": "an exclusive luxury heritage-trunk style designer backpack in coated brown canvas covered in a small repeating gold pattern "
+                                   "of tiny skulls and crossed cleavers (our own pattern, no initials, no flowers), tan leather trim and polished gold hardware, worn on his back (no logo, no lettering)",
     "Blood Croc Designer Bag": "an exclusive luxury designer backpack in glossy blood-red crocodile-embossed leather with a polished gold clasp and gold-studded "
                                "straps, worn on his back (no logo, no monogram, no lettering)",
-    "Bone Python Designer Bag": "an exclusive luxury designer backpack in ivory bone-white python-skin leather with mirror-chrome studs and buckles, "
-                                "worn on his back (no logo, no monogram, no lettering)",
+    "Red Hype Drop Bag": "an exclusive limited-drop streetwear backpack in bold solid fire-red ripstop with black webbing straps and black zips, "
+                         "clean and box-fresh against his grimy clothes, worn on his back (no logo, no box patch, no lettering)",
     "Battery Backpack": "a heavy frame backpack carrying two old car batteries strapped together with rusty wire and coiled cables, small blue sparks at "
                         "the terminals, straps over both shoulders, the batteries visible behind his shoulder",
 }
