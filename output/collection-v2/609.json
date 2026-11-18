@@ -65,6 +65,10 @@
     {
       "trait_type": "Eyes",
       "value": "Bloodshot Eyes"
+    },
+    {
+      "trait_type": "Backpack",
+      "value": "Cargo Backpack"
     }
   ]
 }

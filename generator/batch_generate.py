@@ -208,6 +208,8 @@ def poll():
                 print(f"#{i} no image: {json.dumps(item)[:200]}", flush=True); retry.append(i); continue
             got.add(i)
             out = os.path.join(g.OUTDIR, f"{i}.png"); tmp = out + ".check.png"
+            if b.get("edit"):   # 2026-11-18: an edit keeps the original pose; keep it without the paid facing check / re-roll
+                open(out, "wb").write(img); print(f"#{i} edited", flush=True); continue
             open(tmp, "wb").write(img)
             way = g.facing(tmp)
             if way == "UNKNOWN":   # the check itself failed (quota/network): ask again, then keep rather than pay for a re-roll
@@ -223,7 +225,7 @@ def poll():
             else:
                 st["tries"][str(i)] = tries + 1; os.remove(tmp); retry.append(i)
                 print(f"  #{i} faces {way}, re-rolling", flush=True)
-        retry += [i for i in b["ids"] if i not in got and i not in retry]
+        retry += [i for i in b["ids"] if i not in got and i not in retry and not b.get("edit")]
         if b["submitted"] < st.get("redo_since", 0):
             st["redo"] = [i for i in st.get("redo", []) if i not in b["ids"]]
         b["state"] = "done"; save(st)

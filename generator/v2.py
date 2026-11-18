@@ -486,6 +486,24 @@ OVERSEER_EXTRA = {
 }
 for _t, (_v, _p) in OVERSEER_EXTRA.items():
     ALL[_t][_v] = (0, _p)
+# George 2026-11-18: burlap rebalance masks (original designs) and backpacks for empty backs
+ALL["Mask"]["Cracked Welding Mask"] = (0, "a battered old welder's mask covering his whole face: scorched dented dark-grey steel with a narrow cracked smoked-glass "
+                                          "eye slit, rusty rivets and a frayed leather head strap, bloody fingerprints on the plate")
+ALL["Mask"]["Rusted Iron Eye Mask"] = (0, "a riveted rusty iron plate mask covering ONLY the top half of his face (forehead, brow and eyes), two ragged round eye "
+                                          "holes, strapped on with leather; his nose, mouth and rotten teeth are bare below it")
+ALL["Mask"]["Bone Jaw Mask"] = (0, "a bottom-half mask made from a cracked yellowed animal jawbone with its long teeth still set in it, strapped over his "
+                                   "mouth and chin with rusty wire and leather; his eyes and brow are bare above it")
+BACKPACK = {
+    "Common Backpack": "a grimy, stained canvas daypack worn on his back, padded straps over both shoulders, the pack visible behind his shoulder",
+    "Cargo Backpack": "a rugged olive-drab canvas cargo backpack with strapped side pockets and buckles worn on his back, straps over both shoulders, "
+                      "the pack visible behind his shoulder",
+    "Camper Backpack": "a tall external-frame camping backpack on his back with a rolled bedroll strapped on top and a small rusty lantern hanging from "
+                       "it, straps over both shoulders, the frame rising behind his shoulder",
+    "Medical Backpack": "a dented white-and-red medical first-aid backpack smeared with old blood worn on his back, straps over both shoulders, the pack "
+                        "visible behind his shoulder (no cross, no symbols, no lettering)",
+    "Battery Backpack": "a heavy frame backpack carrying two old car batteries strapped together with rusty wire and coiled cables, small blue sparks at "
+                        "the terminals, straps over both shoulders, the batteries visible behind his shoulder",
+}
 ALL["Held Weapon"]["Laser Lattice"] = (0, "")
 ALL["Held Weapon"]["Diamond Blade Nails"] = (0, "")
 # The Sleeper Below (George 2026-11-16 21:19, replaces The Frontman #977): an original tentacle-faced elder sea god being summoned
@@ -870,7 +888,7 @@ def prompt(a, legendary_finish=None):
         hand += "; his LEFT fist tightly grips " + DUAL_PHRASE[a["Off Hand"]]
     if a["Skin"] in SKIN_MATCH:   # George 2026-11-16 21:56: hands always match the face's skin tone (esp. dark skin)
         hand += f"; the hands, fingers and wrists are exactly the same {SKIN_MATCH[a['Skin']]} skin colour as the face, never lighter or pinker"
-    body = [f"wearing {phrase('Clothing', a['Clothing'])}", FLESH.get(a.get("Flesh")), phrase("Belt", a["Belt"]), NECK.get(a.get("Neck")), MUTATION.get(a.get("Mutation")), EXPERIMENT.get(a.get("Experiment")), hand, phrase("Back Weapon", a["Back Weapon"])]
+    body = [f"wearing {phrase('Clothing', a['Clothing'])}", FLESH.get(a.get("Flesh")), phrase("Belt", a["Belt"]), NECK.get(a.get("Neck")), MUTATION.get(a.get("Mutation")), EXPERIMENT.get(a.get("Experiment")), hand, phrase("Back Weapon", a["Back Weapon"]), BACKPACK.get(a.get("Backpack"))]
     female = a.get("Character", "Classic") in FEMALE or a.get("Character") in ("The Grieving Mother", "The Prom Queen", "The Ringmistress", "Woman", "Madame Mortis", "The Overseer")
     if female:
         head = [phrase("Skin", a["Skin"]), phrase("Hair", a["Hair"]), phrase("Head Mark", a["Head Mark"]), phrase("Ears", a.get("Ears", "Natural"))]
@@ -1055,6 +1073,13 @@ def build():
             _new = dict(LOCK[_n]); _new.update({k: v for k, v in _a.items() if k.startswith("_")})
             _a.clear(); _a.update(_new)
         post_lock(tokens)
+        _gd = os.path.dirname(os.path.abspath(__file__))
+        for k, v in json.load(open(os.path.join(_gd, "mask_swap.json"))).items():   # George 2026-11-18: 100 burlap/pig -> mixed masks, same tier
+            assert tokens[int(k) - 1][0]["Mask"] in ("Burlap Pig Mask", "Burlap Sack Hood")
+            tokens[int(k) - 1][0]["Mask"] = v
+        for k, v in json.load(open(os.path.join(_gd, "backpacks.json"))).items():   # George 2026-11-18: backpacks on every empty back
+            assert tokens[int(k) - 1][0].get("Back Weapon", "None") == "None"
+            tokens[int(k) - 1][0]["Backpack"] = v
     for _a, _f in tokens:   # George 2026-11-17: published tier names shift up one; internal passes above keep the old labels
         _a["Tier"] = TIER_RENAME.get(_a["Tier"], _a["Tier"])
     os.makedirs(OUT, exist_ok=True)

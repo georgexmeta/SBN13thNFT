@@ -57,6 +57,10 @@
     {
       "trait_type": "Off Hand",
       "value": "Harpoon Gun"
+    },
+    {
+      "trait_type": "Backpack",
+      "value": "Battery Backpack"
     }
   ]
 }

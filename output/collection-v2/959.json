@@ -57,6 +57,10 @@
     {
       "trait_type": "Off Hand",
       "value": "Woodcutter Axe"
+    },
+    {
+      "trait_type": "Backpack",
+      "value": "Battery Backpack"
     }
   ]
 }

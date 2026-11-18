@@ -65,6 +65,10 @@
     {
       "trait_type": "Experiment",
       "value": "Surgical Staple Seam"
+    },
+    {
+      "trait_type": "Backpack",
+      "value": "Medical Backpack"
     }
   ]
 }

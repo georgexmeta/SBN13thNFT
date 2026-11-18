@@ -69,6 +69,10 @@
     {
       "trait_type": "Headpiece",
       "value": "Crown of Bones"
+    },
+    {
+      "trait_type": "Backpack",
+      "value": "Camper Backpack"
     }
   ]
 }

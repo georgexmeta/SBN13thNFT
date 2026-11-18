@@ -53,6 +53,10 @@
     {
       "trait_type": "Character",
       "value": "Rotten Bride"
+    },
+    {
+      "trait_type": "Backpack",
+      "value": "Battery Backpack"
     }
   ]
 }

@@ -24,7 +24,7 @@
     },
     {
       "trait_type": "Mask",
-      "value": "Burlap Sack Hood"
+      "value": "Bone Jaw Mask"
     },
     {
       "trait_type": "Held Weapon",
@@ -53,6 +53,10 @@
     {
       "trait_type": "Character",
       "value": "Woman"
+    },
+    {
+      "trait_type": "Backpack",
+      "value": "Cargo Backpack"
     }
   ]
 }

@@ -30,29 +30,32 @@
 | Value | Count | Share |
 |---|---|---|
 | Bare Face | 185 | 14.2% |
-| Hockey Half-Mask | 138 | 10.6% |
-| Burlap Pig Mask | 122 | 9.4% |
+| Hockey Half-Mask | 143 | 11.0% |
 | Patchwork Goggle Mask | 117 | 9.0% |
-| Burlap Sack Hood | 116 | 8.9% |
-| Paisley Bandana | 71 | 5.5% |
+| Paisley Bandana | 76 | 5.8% |
+| Burlap Pig Mask | 72 | 5.5% |
+| Burlap Sack Hood | 66 | 5.1% |
 | Riveted Respirator | 60 | 4.6% |
-| Iron Muzzle | 41 | 3.2% |
+| Iron Muzzle | 50 | 3.8% |
 | Crude Leather Gas Mask | 33 | 2.5% |
+| Bloody Bandage Wrap | 29 | 2.2% |
+| Cracked Doll Mask | 26 | 2.0% |
+| Buckled Harness Hood | 25 | 1.9% |
 | Needle-Tooth Snarl | 25 | 1.9% |
-| Cracked Doll Mask | 24 | 1.8% |
 | Carved Ear-to-Ear Grin | 24 | 1.8% |
-| Bloody Bandage Wrap | 23 | 1.8% |
-| Weeping Four-Eye Mask | 20 | 1.5% |
-| Buckled Harness Hood | 20 | 1.5% |
+| Rubber Seam Face | 23 | 1.8% |
+| Weeping Four-Eye Mask | 22 | 1.7% |
+| Rusted Hockey Half-Mask | 21 | 1.6% |
+| Stitched Skin Face | 20 | 1.5% |
 | Black-Lipped Bloody Grin | 20 | 1.5% |
-| Rubber Seam Face | 18 | 1.4% |
 | Smeared Greasepaint | 18 | 1.4% |
 | Flayed Muscle Face | 16 | 1.2% |
-| Stitched Skin Face | 15 | 1.2% |
+| Moaning Paper Mask | 15 | 1.2% |
+| Cracked Welding Mask | 14 | 1.1% |
+| Rusted Iron Eye Mask | 14 | 1.1% |
 | Stitched Toy Face | 14 | 1.1% |
-| Moaning Paper Mask | 13 | 1.0% |
-| Rusted Hockey Half-Mask | 13 | 1.0% |
-| Blank Bone Mask | 12 | 0.9% |
+| Blank Bone Mask | 14 | 1.1% |
+| Bone Jaw Mask | 12 | 0.9% |
 | Nail-Studded Leather Mask (Rare+) | 11 | 0.8% |
 | Bloody Chrome Gas Mask | 8 | 0.6% |
 | Zipper Mouth Leather (Rare+) | 8 | 0.6% |
@@ -65,6 +68,7 @@
 | Stitched Skin Mask (Rare+) | 7 | 0.5% |
 | Gold Hockey Half-Mask | 7 | 0.5% |
 | Stitched Bride Face | 7 | 0.5% |
+| Rusted Nail-Studded Mask | 6 | 0.5% |
 | Porcelain Doll Face (Rare+) | 4 | 0.3% |
 | Oni Demon Mask (Rare+) | 4 | 0.3% |
 | Zipper Long Nose (Rare+) | 3 | 0.2% |
@@ -73,7 +77,6 @@
 | Fanged Killer Clown (Rare+) | 3 | 0.2% |
 | Chrome Hockey Half-Mask | 3 | 0.2% |
 | Bone Skull Mask (Rare+) | 2 | 0.2% |
-| Rusted Nail-Studded Mask | 2 | 0.2% |
 | Long Nose Latex (Rare+) | 2 | 0.2% |
 | Golden Nail-Studded Mask | 2 | 0.2% |
 | Hockey Half-Mask (solid polished gold) | 1 | 0.1% |

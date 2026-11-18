@@ -24,7 +24,7 @@
     },
     {
       "trait_type": "Mask",
-      "value": "Burlap Sack Hood"
+      "value": "Weeping Four-Eye Mask"
     },
     {
       "trait_type": "Held Weapon",
@@ -57,6 +57,10 @@
     {
       "trait_type": "Off Hand",
       "value": "Rusty Shovel"
+    },
+    {
+      "trait_type": "Backpack",
+      "value": "Medical Backpack"
     }
   ]
 }

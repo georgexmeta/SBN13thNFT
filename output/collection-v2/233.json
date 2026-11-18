@@ -24,7 +24,7 @@
     },
     {
       "trait_type": "Mask",
-      "value": "Burlap Pig Mask"
+      "value": "Rusted Hockey Half-Mask"
     },
     {
       "trait_type": "Held Weapon",
@@ -57,6 +57,10 @@
     {
       "trait_type": "Splatter",
       "value": "Crazy"
+    },
+    {
+      "trait_type": "Backpack",
+      "value": "Camper Backpack"
     }
   ]
 }
