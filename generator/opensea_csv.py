@@ -5,12 +5,14 @@
 Columns follow OpenSea's drop template: tokenID, name, description, file_name, external_url, attributes[<trait>].
 Only string traits are used (Studio CSV uploads don't support numeric traits).
 """
-import csv, json, os, re, shutil
+import csv, json, os, re, shutil, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from display_traits import ORDER, remap  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 NAME = "Claysons"
 DESC = "Claysons: 1,300 hand-sculpted-look claymation slashers. 464 Common, 400 Uncommon, 293 Rare, 130 Epic and 13 Legendary 1/1s. Three Legendary 1/1s (#1 to #3) are held by the team."
-TRAITS = ["Tier", "1/1 Name", "Character", "Head", "Skin", "Hair", "Head Mark", "Ears", "Mask", "Held Weapon", "Back Weapon", "Clothing", "Belt", "Backdrop", "Splatter", "Off Hand", "Head Wound", "Neck", "Flesh", "Eyes", "Headpiece", "Mutation", "Experiment"]
+TRAITS = ORDER   # George 2026-11-17: published categories, see display_traits.py
 
 
 LEGEND_IDS = [1, 3, 13, 31, 103, 131, 301, 313, 1003, 1013, 1031, 1133, 1300]
@@ -69,11 +71,13 @@ def main():
         w = csv.writer(f)
         w.writerow(["tokenID", "name", "description", "file_name", "external_url"] + [f"attributes[{t}]" for t in TRAITS])
         for r in rows:
-            a = r["attributes"]
+            a = remap(r["attributes"])
             tid = swap[r["id"]]
             name = re.sub(r"#\d+", f"#{tid}", r["name"].replace("SBN13th", NAME), count=1)
             w.writerow([tid, name, desc, f"{tid}.png", ""] + [a.get(t, "") for t in TRAITS])
-            src = os.path.join(ROOT, "output", "ai", "images-v2", f"{r['id']}.png")
+            src = os.path.join(ROOT, "output", "ai", "images-final", f"{r['id']}.png")   # splatter.py output (plain backdrops)
+            if not os.path.exists(src):
+                src = os.path.join(ROOT, "output", "ai", "images-v2", f"{r['id']}.png")
             if os.path.exists(src):
                 shutil.copyfile(src, os.path.join(img, f"{tid}.png"))
             else:
