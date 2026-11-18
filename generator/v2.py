@@ -508,6 +508,8 @@ BACKPACK = {
                        "it, straps over both shoulders, the frame rising behind his shoulder",
     "Medical Backpack": "a dented white-and-red medical first-aid backpack smeared with old blood worn on his back, straps over both shoulders, the pack "
                         "visible behind his shoulder (no cross, no symbols, no lettering)",
+    "Cooler Backpack": "a battered old plastic picnic cooler strapped to his back like a backpack with rope and belts, its lid cracked open a little "
+                       "with dark blood dripping down the side, straps over both shoulders, the cooler visible behind his shoulder (no lettering, no logo)",
     "Battery Backpack": "a heavy frame backpack carrying two old car batteries strapped together with rusty wire and coiled cables, small blue sparks at "
                         "the terminals, straps over both shoulders, the batteries visible behind his shoulder",
 }
