@@ -69,7 +69,7 @@ def main():
     from collections import Counter
     n = Counter(r["attributes"]["Tier"] for r in rows)
     desc = (f"Claysons: 1,300 hand-sculpted-look claymation slashers. {n['Common']:,} Common, {n['Uncommon']:,} Uncommon, {n['Rare']:,} Rare, "
-            f"{n['Epic']:,} Epic and {n['Legendary 1/1']} Legendary 1/1s. " + ("The creator's wallets hold Legendary #1, #3, #13 and #1300." if LEGEND_RENUMBER else "Three Legendary 1/1s (#1 to #3) are held by the team."))
+            f"{n['Epic']:,} Epic and {n['Legendary 1/1']} Legendary 1/1s. " + ("The creator's wallets hold Legendary #1, #3, #13 and #1300." if LEGEND_RENUMBER else "The creator's wallets hold Legendary #1, #3, #13 and #1300."))
     out = os.path.join(ROOT, "output", "opensea"); img = os.path.join(out, "images")
     os.makedirs(img, exist_ok=True)
     # Legendary numbers (George 2026-11-17): the 13 Legendary 1/1s publish on these token IDs. The three flagship team
