@@ -16,3 +16,4 @@ output/ai/qa-scan.json
 output/ai/review-*.jsonl
 output/ai/batch-*.jsonl
 output/ai/body_builds-*.jsonl
+output/ai/*-17950*.jsonl
