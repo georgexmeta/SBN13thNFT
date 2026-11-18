@@ -8558,8 +8558,38 @@
    "ids": [
     675
    ],
-   "state": "running",
+   "state": "done",
    "submitted": 1795028406.4300568,
+   "edit": true,
+   "drop": []
+  },
+  {
+   "name": "batches/59kp0oqpx4c3xu21bxvd48qu2qax3r17edzc",
+   "ids": [
+    702
+   ],
+   "state": "done",
+   "submitted": 1795030977.1445646,
+   "edit": true,
+   "drop": []
+  },
+  {
+   "name": "batches/6zm3c9rcbwgrvmpeg2n06spccifmjv1486bj",
+   "ids": [
+    206
+   ],
+   "state": "done",
+   "submitted": 1795031360.1507874,
+   "edit": true,
+   "drop": []
+  },
+  {
+   "name": "batches/15v42jn5zreahw1lerp2m8jw20pz4mat2iwy",
+   "ids": [
+    206
+   ],
+   "state": "done",
+   "submitted": 1795031560.0449,
    "edit": true,
    "drop": []
   }
