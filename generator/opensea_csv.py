@@ -24,6 +24,8 @@ TEAM_LEGENDS = ["Old Gilded", "Diamond Wraith", "The Sleeper Below"]
 
 
 EXTRA_SWAPS = {170: 96, 576: 408}   # internal id -> published tokenID
+# George 2026-11-18 05:47: team tokens #1, #3, #13 and #1300 (his last mint) are Legendaries; #2 and #4-#12 Uncommon or Rare
+TOKEN_SWAPS = [(2, 3), (2, 13), (103, 1300), (2, 893), (4, 1262), (5, 835), (7, 355), (8, 948), (9, 308), (10, 685), (11, 318), (12, 440)]
 
 
 def team_swap(rows):
@@ -35,6 +37,10 @@ def team_swap(rows):
     for old, new in EXTRA_SWAPS.items():   # George 2026-11-18: Scorched Doll -> #96, Retro Slasher -> #408
         a, b = [k for k, v in swap.items() if v == new][0], old
         swap[a], swap[b] = swap[b], new
+    inv = {v: k for k, v in swap.items()}
+    for ta, tb in TOKEN_SWAPS:   # published tokenID pairs, applied in order
+        ia, ib = inv[ta], inv[tb]
+        swap[ia], swap[ib], inv[ta], inv[tb] = tb, ta, ib, ia
     return swap
 
 
