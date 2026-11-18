@@ -23,12 +23,18 @@ LEGEND_RENUMBER = False   # George 2026-11-17 15:32: hold the renumbering until 
 TEAM_LEGENDS = ["Old Gilded", "Diamond Wraith", "The Sleeper Below"]
 
 
+EXTRA_SWAPS = {170: 96, 576: 408}   # internal id -> published tokenID
+
+
 def team_swap(rows):
     """Previous rule (2026-11-13): three flagship Legendaries swap places with IDs 1-3."""
     by_name = {r["attributes"].get("1/1 Name"): r["id"] for r in rows}
     swap = {r["id"]: r["id"] for r in rows}
     for new, nm in enumerate(TEAM_LEGENDS, 1):
         old = by_name[nm]; swap[old], swap[new] = new, old
+    for old, new in EXTRA_SWAPS.items():   # George 2026-11-18: Scorched Doll -> #96, Retro Slasher -> #408
+        a, b = [k for k, v in swap.items() if v == new][0], old
+        swap[a], swap[b] = swap[b], new
     return swap
 
 

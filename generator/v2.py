@@ -1099,7 +1099,7 @@ def build():
             assert tokens[k - 1][0]["Skin"] in ("Flesh Pink", "Corpse Grey")
             tokens[k - 1][0]["Skin"] = "Zombie Green"
         for k, v in json.load(open(os.path.join(_gd, "backpacks.json"))).items():   # George 2026-11-18: backpacks on every empty back
-            assert tokens[int(k) - 1][0].get("Back Weapon", "None") == "None"
+            assert k == "344" or tokens[int(k) - 1][0].get("Back Weapon", "None") == "None"   # #344 wears the hype bag under its harpoon gun (George 2026-11-18)
             tokens[int(k) - 1][0]["Backpack"] = v
     for _a, _f in tokens:   # George 2026-11-17: published tier names shift up one; internal passes above keep the old labels
         _a["Tier"] = TIER_RENAME.get(_a["Tier"], _a["Tier"])
