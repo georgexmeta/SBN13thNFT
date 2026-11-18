@@ -41,6 +41,8 @@ ORDER = ["Tier", "1/1 Name", "Character", "Gender", "Head", "Skin", "Eyes", "Ear
 
 def remap(a):
     a = {k: v for k, v in a.items() if v not in (None, "", "None")}
+    if a.get("Tier") == "Legendary 1/1":   # George 2026-11-17 17:54: 1/1s show only Tier + name, so their one-off traits stay off the trait lists
+        return {"Tier": a["Tier"], "1/1 Name": a["1/1 Name"]}
     o = dict(a)
     o["Gender"] = "Female" if a.get("Head") == "Female" or a.get("Character") in FEMALE_CHARS else "Male"
     if o.get("Head") == "Female":
