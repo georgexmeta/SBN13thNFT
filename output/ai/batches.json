@@ -1,14 +1,14 @@
 {
  "refs": {
   "/home/user/SBN13thNFT/refs/master-reference.jpg": {
-   "uri": "https://generativelanguage.googleapis.com/v1beta/files/qeh8ksqcsq43",
+   "uri": "https://generativelanguage.googleapis.com/v1beta/files/i0p4bahykuzh",
    "mime": "image/jpeg",
-   "expires": 1795100122.2543788
+   "expires": 1795245461.3665204
   },
   "/home/user/SBN13thNFT/refs/goal-pig.jpg": {
-   "uri": "https://generativelanguage.googleapis.com/v1beta/files/3lnsbmuv33u3",
+   "uri": "https://generativelanguage.googleapis.com/v1beta/files/xycb9pow7o8d",
    "mime": "image/jpeg",
-   "expires": 1795100126.1077545
+   "expires": 1795245463.5276787
   },
   "/home/user/SBN13thNFT/refs/mask-reference.jpg": {
    "uri": "https://generativelanguage.googleapis.com/v1beta/files/l7tgu1n1s2di",
@@ -9462,6 +9462,26 @@
    ],
    "state": "done",
    "submitted": 1795079115.2795265,
+   "edit": true,
+   "drop": []
+  },
+  {
+   "name": "batches/t1yxekjrdp5f88yv6y7ytyfzpampcjsj9ma0",
+   "ids": [
+    723
+   ],
+   "state": "done",
+   "submitted": 1795079867.821889,
+   "edit": true,
+   "drop": []
+  },
+  {
+   "name": "batches/s20l4ckw3doi2ge9d4uaws3of4kbtn8dt7cw",
+   "ids": [
+    723
+   ],
+   "state": "done",
+   "submitted": 1795080118.5416749,
    "edit": true,
    "drop": []
   }
