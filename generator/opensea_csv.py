@@ -25,7 +25,7 @@ TEAM_LEGENDS = ["Old Gilded", "Diamond Wraith", "The Sleeper Below"]
 
 EXTRA_SWAPS = {170: 96, 576: 408}   # internal id -> published tokenID
 # George 2026-11-18 05:47: team tokens #1, #3, #13 and #1300 (his last mint) are Legendaries; #2 and #4-#12 Uncommon or Rare
-TOKEN_SWAPS = [(2, 3), (2, 13), (103, 1300), (2, 893), (4, 1262), (5, 835), (7, 355), (8, 948), (9, 308), (10, 685), (11, 318), (12, 440), (721, 1300)]   # George 2026-11-20 02:34: Night Broker -> #1300, Collector -> #721
+TOKEN_SWAPS = [(2, 3), (2, 13), (103, 1300), (2, 893), (4, 1262), (5, 835), (7, 355), (8, 948), (9, 308), (10, 685), (11, 318), (12, 440), (721, 1300), (69, 96)]   # George 2026-11-20 02:34: Night Broker -> #1300, Collector -> #721
 
 
 def team_swap(rows):
@@ -69,7 +69,7 @@ def main():
     from collections import Counter
     n = Counter(r["attributes"]["Tier"] for r in rows)
     desc = (f"Claysons: 1,300 hand-sculpted-look claymation slashers. {n['Common']:,} Common, {n['Uncommon']:,} Uncommon, {n['Rare']:,} Rare, "
-            f"{n['Epic']:,} Epic and {n['Legendary 1/1']} Legendary 1/1s. " + ("The creator's wallets hold Legendary #1, #3, #13 and #1300." if LEGEND_RENUMBER else "The creator's wallets hold Legendary #1, #3, #13 and #1300."))
+            f"{n['Epic']:,} Epic and {n['Legendary 1/1']} Legendary 1/1s. " + ("The creator's wallets hold Legendary #1, #3 and #13." if LEGEND_RENUMBER else "The creator's wallets hold Legendary #1, #3 and #13."))
     out = os.path.join(ROOT, "output", "opensea"); img = os.path.join(out, "images")
     os.makedirs(img, exist_ok=True)
     # Legendary numbers (George 2026-11-17): the 13 Legendary 1/1s publish on these token IDs. The three flagship team
