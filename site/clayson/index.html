@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Clayson Tape Deck</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Eject your Clayson: full-size art you can save.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;700;800&family=Permanent+Marker&display=swap">
+<style>
+/* Layout: one VCR front panel. Tape window shows the art behind VHS glass; the EJECT key slides the clean art out for saving. Single dark look by choice. */
+:root{
+  --tape:#060404; --tape-2:#120a0a; --bone:#efe6dc; --ash:#9a8d86; --rule:#2a1a1a;
+  --blood:#d4161a; --blood-dk:#7a0b0e;
+  --deck-hi:#3a3a3f; --deck:#1d1d21; --deck-lo:#0c0c0e; --silver:#b9b6b0;
+  --vfd:#59f2c8; --vfd-dim:#0f3a31;
+  --label:#f1ead8; --ink:#1a1410;
+  --t-Common:#9b9b9b; --t-Uncommon:#2fa84f; --t-Rare:#2f6fd6; --t-Epic:#a23ab0; --t-Legendary:#e0202a;
+  --display:"Anton","Impact","Arial Narrow Bold",sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --marker:"Permanent Marker","Comic Sans MS","Bradley Hand",cursive;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{background:var(--tape)}
+body{color:var(--bone);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--blood);outline-offset:3px}
+.wrap{max-width:880px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:14px;border-bottom:1px solid var(--rule)}
+.top img{height:34px;width:auto;display:block}
+.top a.back{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ash);text-decoration:none}
+.top a.back:hover{color:var(--bone)}
+
+/* ---------- the deck ---------- */
+.deck{margin-top:28px;border-radius:10px;padding:18px;background:linear-gradient(180deg,var(--deck-hi),var(--deck) 14%,var(--deck) 80%,var(--deck-lo));box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset 0 -2px 0 rgba(0,0,0,.6),0 30px 60px rgba(0,0,0,.6);border:1px solid #000}
+.deck-head{display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;color:var(--silver);text-transform:uppercase;padding:0 4px 12px}
+.deck-head b{font-weight:800;color:var(--bone)}
+.hifi{border:1px solid var(--silver);padding:1px 6px;border-radius:2px;font-size:10px}
+
+.bay{position:relative;background:#000;border-radius:4px;padding:10px;box-shadow:inset 0 3px 10px rgba(0,0,0,.9),0 1px 0 rgba(255,255,255,.08)}
+.slot-lip{height:10px;margin:-2px -2px 8px;border-radius:2px;background:linear-gradient(180deg,#050505,#232326 60%,#0a0a0b);box-shadow:inset 0 2px 3px rgba(0,0,0,.9)}
+.window{position:relative;aspect-ratio:1;max-width:100%;overflow:hidden;border-radius:2px;background:#050505}
+.window img.art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s cubic-bezier(.6,-0.2,.3,1.1),filter .4s}
+/* VHS glass over the art until EJECT: blocks right-click-save of the playing tape on purpose */
+.glass{position:absolute;inset:0;z-index:2;pointer-events:auto;background:repeating-linear-gradient(to bottom,rgba(0,0,0,.28) 0 1px,transparent 1px 3px),radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.55));mix-blend-mode:multiply}
+.osd{position:absolute;z-index:3;inset:0;pointer-events:none;font-family:var(--mono);font-weight:800;font-size:clamp(11px,2.2vw,15px);color:#fff;text-shadow:0 0 6px rgba(0,0,0,.9),1px 1px 0 #000;letter-spacing:.08em}
+.osd .play{position:absolute;top:12px;left:14px}
+.osd .ch{position:absolute;top:12px;right:14px}
+.osd .ctr{position:absolute;bottom:12px;right:14px}
+.window.playing img.art{filter:saturate(1.15) contrast(1.05)}
+.window.out img.art{transform:translateY(-104%)}
+.window.out .glass,.window.out .osd{opacity:0}
+.empty{position:absolute;inset:0;z-index:4;display:grid;place-items:center;text-align:center;padding:24px;background:repeating-linear-gradient(0deg,#0b0b0b 0 2px,#141414 2px 4px)}
+.empty b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(28px,6vw,46px);color:var(--blood);letter-spacing:.02em;margin-bottom:6px}
+.empty span{font-family:var(--mono);font-size:13px;color:var(--ash);letter-spacing:.06em}
+
+/* ---------- control strip ---------- */
+.controls{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;margin-top:16px}
+.vfd{background:#020806;border-radius:3px;padding:8px 12px;box-shadow:inset 0 2px 6px rgba(0,0,0,.95);font-family:var(--mono);font-weight:800;font-size:22px;letter-spacing:.12em;color:var(--vfd);text-shadow:0 0 8px rgba(89,242,200,.65);min-width:9ch;font-variant-numeric:tabular-nums}
+.vfd small{display:block;font-size:9px;letter-spacing:.24em;color:var(--vfd);opacity:.6;text-shadow:none;font-weight:700}
+.keys{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.key{appearance:none;cursor:pointer;border:0;border-radius:3px;min-width:56px;height:46px;padding:0 12px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-family:var(--mono);font-weight:800;font-size:9px;letter-spacing:.18em;color:var(--silver);background:linear-gradient(180deg,#4a4a50,#2a2a2f 45%,#1a1a1e);box-shadow:0 4px 0 #050506,0 5px 8px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.25);transition:transform .06s,box-shadow .06s;text-decoration:none}
+.key svg{width:18px;height:18px;fill:currentColor}
+.key:hover{color:#fff}
+.key:active,.key.pressed{transform:translateY(3px);box-shadow:0 1px 0 #050506,0 2px 4px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.15)}
+.key[disabled]{opacity:.35;cursor:default}
+.eject{min-width:120px;height:58px;font-size:12px;color:#fff;background:linear-gradient(180deg,#e8242a,var(--blood) 50%,var(--blood-dk));box-shadow:0 5px 0 #3a0405,0 6px 12px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,190,190,.5)}
+.eject svg{width:24px;height:24px}
+.eject:active,.eject.pressed{box-shadow:0 1px 0 #3a0405,0 2px 4px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,190,190,.3)}
+.led{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--silver)}
+.led i{width:9px;height:9px;border-radius:50%;background:#331010;box-shadow:inset 0 1px 2px #000}
+.led.on i{background:#ff3b3b;box-shadow:0 0 8px #ff3b3b}
+@media (max-width:620px){.controls{grid-template-columns:1fr auto}.keys{grid-column:1/-1;order:3}.vfd{font-size:18px}}
+
+/* ---------- ejected tray ---------- */
+.tray{margin-top:22px;border:1px dashed var(--rule);border-radius:6px;padding:16px;display:grid;gap:12px}
+.tray[hidden]{display:none!important}
+.tray img{width:100%;height:auto;display:block;border-radius:2px;max-width:100%}
+.tray .how{font-family:var(--mono);font-size:13px;color:var(--bone);letter-spacing:.04em}
+.tray .how span{color:var(--ash)}
+.save{justify-self:start;display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:800;font-size:13px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:12px 18px;border-radius:2px;color:#fff;background:linear-gradient(180deg,#e8242a,var(--blood) 55%,var(--blood-dk))}
+
+/* ---------- tape label ---------- */
+.label{margin-top:28px;background:var(--label);color:var(--ink);border-radius:3px;padding:16px 18px 18px;position:relative;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.label::before{content:"";position:absolute;inset:8px 8px auto;height:3px;background:repeating-linear-gradient(90deg,var(--blood) 0 18px,transparent 18px 22px);opacity:.8}
+.label h1{font-family:var(--marker);font-weight:400;font-size:clamp(26px,5vw,38px);line-height:1.15;margin:10px 0 2px;text-wrap:balance}
+.tier{display:inline-block;font-family:var(--mono);font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:var(--tc,#555);padding:3px 8px;border-radius:2px}
+.traits{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:0 20px;margin:14px 0 0}
+.traits div{border-top:1px solid rgba(26,20,16,.18);padding:7px 0;min-width:0}
+.traits dt{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#6d6158}
+.traits dd{margin:0;font-weight:600;font-size:15px;overflow-wrap:anywhere}
+.find{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:28px;font-family:var(--mono);font-size:12px;color:var(--ash);letter-spacing:.08em}
+.find input{width:8ch;background:var(--tape-2);border:1px solid var(--rule);color:var(--bone);font:inherit;font-size:16px;padding:8px 10px;border-radius:2px}
+.find button{font:inherit;font-weight:800;letter-spacing:.12em;text-transform:uppercase;background:var(--tape-2);color:var(--bone);border:1px solid var(--ash);padding:9px 14px;border-radius:2px;cursor:pointer}
+footer{margin-top:56px;border-top:1px solid var(--rule)}
+footer .wrap{padding-block:22px 30px;font-family:var(--mono);font-size:12px;color:var(--ash);display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between}
+footer a{text-decoration:none}footer a:hover{color:var(--bone)}
+@media (prefers-reduced-motion:reduce){.window img.art{transition:none}}
+</style>
+</head>
+<body>
+
+
+<header class="wrap top">
+  <a href="/" id="home"><img id="logo" src="/img/title.png" alt="Claysons" width="720" height="198"></a>
+  <a class="back" href="/" id="home2">Back to Claysons</a>
+</header>
+
+<main class="wrap">
+  <div class="deck" aria-label="Tape deck">
+    <div class="deck-head"><span><b>CLAYSONS</b> &nbsp;VIDEO CASSETTE RECORDER</span><span class="hifi">HI-FI STEREO</span></div>
+    <div class="bay">
+      <div class="slot-lip" aria-hidden="true"></div>
+      <div class="window playing" id="win">
+        <img class="art" id="art" alt="" width="1024" height="1024">
+        <div class="glass" aria-hidden="true"></div>
+        <div class="osd" aria-hidden="true"><span class="play">&#9654; PLAY</span><span class="ch" id="osdCh">CH 000</span><span class="ctr" id="osdCtr">SP 0:00:00</span></div>
+        <div class="empty" id="empty" hidden><div><b id="emptyT">Still on the tape</b><span id="emptyS">Art comes out at the reveal, Friday Nov 20.</span></div></div>
+      </div>
+    </div>
+    <div class="controls">
+      <div class="vfd" aria-live="polite"><small>TAPE</small><span id="vfd">----</span></div>
+      <div class="keys">
+        <a class="key" id="prev" aria-label="Previous Clayson"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 6v12L2 12zm10 0v12l-9-6z"/></svg>REW</a>
+        <a class="key" id="next" aria-label="Next Clayson"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 6v12l9-6zM3 6v12l9-6z"/></svg>F.FWD</a>
+        <button class="key eject" id="eject" type="button" aria-label="Eject the art to save it"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l9 10H3zM3 16h18v4H3z"/></svg>EJECT</button>
+      </div>
+      <div class="led on" id="led"><i></i><span id="ledT">PLAY</span></div>
+    </div>
+  </div>
+
+  <section class="tray" id="tray" hidden aria-label="Ejected art">
+    <div class="how">Ejected. <span>Right-click the art and choose "Save image as", or long-press it on your phone.</span></div>
+    <img id="clean" alt="">
+    <a class="save" id="save" download>Save full-size PNG</a>
+  </section>
+
+  <section class="label" aria-label="Tape label">
+    <span class="tier" id="tier">Tier</span>
+    <h1 id="name">Claysons</h1>
+    <dl class="traits" id="traits"></dl>
+  </section>
+
+  <form class="find" id="find">
+    <label for="tok">Load another tape #</label>
+    <input id="tok" inputmode="numeric" pattern="[0-9]*" maxlength="4" placeholder="1300">
+    <button type="submit">Insert</button>
+  </form>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Claysons &copy; 2026. Creative Art Director: George (@georgexmeta).</span>
+    <span><a href="https://opensea.io/collection/claysons" target="_blank" rel="noopener">OpenSea</a> &nbsp; <a href="https://www.instagram.com/georgexmeta/" target="_blank" rel="noopener">Instagram</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Served at claysons.xyz/clayson/N (rewrite to /clayson/index.html). Also accepts #N for previews.
+  var m=location.pathname.match(/\/clayson\/(\d+)/), onSite=!!m;
+  var ROOT=onSite?'/':'./';
+  var id=parseInt(m?m[1]:(location.hash.replace('#','')||'1'),10);
+  if(!(id>=1&&id<=1300)) id=1;
+  var $=function(x){return document.getElementById(x)};
+  if(!onSite){$('logo').src='img/title.png';$('home').href=$('home2').href='https://claysons.xyz/'}
+  function url(n){return onSite?'/clayson/'+n:'#'+n}
+  function pad(n){return String(n).padStart(4,'0')}
+  var data=null;
+
+  function render(){
+    var win=$('win'),t=data&&data[id];
+    $('vfd').textContent=pad(id); $('osdCh').textContent='CH '+String(id).padStart(3,'0');
+    $('osdCtr').textContent='SP 0:'+String(Math.floor(id/60)%60).padStart(2,'0')+':'+String(id%60).padStart(2,'0');
+    $('prev').href=url(id>1?id-1:1300); $('next').href=url(id<1300?id+1:1);
+    document.title='Clayson #'+id;
+    win.className='window playing'; $('tray').hidden=true; $('led').className='led on'; $('ledT').textContent='PLAY';
+    if(!t){
+      $('empty').hidden=false; $('eject').disabled=true; $('art').removeAttribute('src');
+      $('name').textContent='Claysons #'+id; $('tier').textContent='Sealed'; $('tier').style.setProperty('--tc','#555'); $('traits').innerHTML='';
+      return;
+    }
+    $('empty').hidden=true; $('eject').disabled=false;
+    var src=ROOT+'art/'+id+'.png';
+    $('art').src=src; $('art').alt=''; $('clean').src=src; $('clean').alt=t.name; $('save').href=src; $('save').setAttribute('download','clayson-'+id+'.png');
+    $('name').textContent=t.name;
+    var tierWord=(t.tier||'').split(' ')[0];
+    $('tier').textContent=t.tier; $('tier').style.setProperty('--tc','var(--t-'+tierWord+',#555)');
+    var dl=$('traits'); dl.innerHTML='';
+    t.traits.forEach(function(p){var d=document.createElement('div'),a=document.createElement('dt'),b=document.createElement('dd');a.textContent=p[0];b.textContent=p[1];d.appendChild(a);d.appendChild(b);dl.appendChild(d)});
+  }
+
+  $('eject').addEventListener('click',function(){
+    var b=this; if(b.disabled) return;
+    b.classList.add('pressed'); setTimeout(function(){b.classList.remove('pressed')},160);
+    $('led').className='led'; $('ledT').textContent='EJECT';
+    $('win').classList.add('out');
+    setTimeout(function(){$('tray').hidden=false;$('tray').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'})},650);
+  });
+  $('find').addEventListener('submit',function(e){
+    e.preventDefault(); var n=parseInt($('tok').value,10);
+    if(n>=1&&n<=1300){ if(onSite) location.href=url(n); else {location.hash=String(n);} }
+    else {$('tok').value='';$('tok').placeholder='1-1300'}
+  });
+  window.addEventListener('hashchange',function(){if(!onSite){var n=parseInt(location.hash.slice(1),10);if(n>=1&&n<=1300){id=n;render()}}});
+
+  render();
+  fetch(ROOT+'data/tokens.json',{cache:'no-cache'}).then(function(r){return r.ok?r.json():null}).then(function(j){data=j;render()}).catch(function(){});
+})();
+</script>
+
+</body>
+</html>
