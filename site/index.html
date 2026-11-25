@@ -152,7 +152,35 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:16px 32px;justify-content:space-bet
 footer .links{display:flex;gap:18px;flex-wrap:wrap}
 footer a{text-decoration:none}footer a:hover{color:var(--bone)}
 
-@media (prefers-reduced-motion:reduce){.rec i{animation:none}.peek img{transition:none}}
+/* ---------- melding peddler ---------- */
+.peddler{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center}
+.peddler figure{margin:0;position:relative;max-width:100%;aspect-ratio:1;overflow:hidden;border:1px solid var(--rule);background:#000}
+.peddler figure img{width:100%;height:100%;object-fit:cover;display:block}
+.peddler figure::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 40%,transparent 50%,rgba(6,4,4,.65))}
+.speech{position:relative;margin:4px 0 22px;background:var(--tape-2);border:1px solid #5a4a2a;border-radius:4px;padding:14px 18px;font-style:italic;color:#e9c46a;font-size:17px;min-height:56px;cursor:pointer}
+.speech::before{content:"";position:absolute;top:-9px;left:34px;width:16px;height:16px;background:var(--tape-2);border-left:1px solid #5a4a2a;border-top:1px solid #5a4a2a;transform:rotate(45deg)}
+.speech small{display:block;font-style:normal;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--ash);margin-top:6px}
+.meld{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:18px 0 8px;font-family:var(--mono);font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.chip{border:2px solid var(--c);color:var(--c);padding:5px 10px;border-radius:4px;background:var(--tape-2)}
+.meld .op{color:var(--ash);font-size:16px}
+.peddler p{color:var(--ash);max-width:52ch}
+.peddler p strong{color:var(--bone);font-weight:600}
+@media (max-width:820px){.peddler{grid-template-columns:1fr;gap:24px}}
+
+/* ---------- nightmare box ---------- */
+.box{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center}
+.box figure{margin:0;position:relative;max-width:100%;aspect-ratio:1;overflow:hidden;border:1px solid var(--rule);background:var(--tape-2);cursor:pointer}
+.box figure img{width:100%;height:100%;object-fit:cover;display:block;transform-origin:50% 85%}
+.box figure:hover img,.box figure.rattle img{animation:rattle .45s ease-in-out 2}
+@keyframes rattle{0%,100%{transform:rotate(0)}20%{transform:rotate(-1.4deg) translateX(-3px)}40%{transform:rotate(1.2deg) translateX(3px)}60%{transform:rotate(-.8deg)}80%{transform:rotate(.5deg)}}
+.box figure::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(6,4,4,.7))}
+.stamp{display:inline-block;font-family:var(--mono);font-weight:800;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--blood);border:2px solid var(--blood);padding:4px 10px;transform:rotate(-3deg);margin-bottom:6px}
+.box p{color:var(--ash);max-width:52ch}
+.box p strong{color:var(--bone);font-weight:600}
+.box .ctas{margin-top:22px}
+@media (max-width:820px){.box{grid-template-columns:1fr;gap:24px}}
+
+@media (prefers-reduced-motion:reduce){.rec i{animation:none}.peek img{transition:none}.box figure img{animation:none!important}}
 </style>
 <link rel="icon" href="img/title.png">
 </head>
@@ -166,6 +194,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--bone)}
       <a href="#about">About</a>
       <a href="#tiers">Tiers</a>
       <a href="#peek">Sneak peek</a>
+      <a href="#peddler">The Peddler</a>
       <a class="os" href="https://opensea.io/collection/claysons" target="_blank" rel="noopener">OpenSea</a>
     </nav>
   </div>
@@ -188,7 +217,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--bone)}
 
     <div class="under">
       <div>
-        <h1>1,300 slashers. <em>Minted out.</em> The masks come off Friday.</h1>
+        <h1 id="headline">1,300 slashers. <em>Minted out.</em> The masks come off Friday.</h1>
         <p>Grotesque, disfigured claymation characters, each one sculpted differently, living on Robinhood Chain.</p>
       </div>
       <div class="count" id="count" aria-live="polite">
@@ -277,6 +306,39 @@ footer a{text-decoration:none}footer a:hover{color:var(--bone)}
     </div>
   </section>
 
+  <section class="ch" id="peddler">
+    <div class="wrap peddler">
+      <figure><img src="img/melding-peddler.jpg" alt="The Melding Peddler: a grinning clay merchant with a third eye, a rusty halo and gold teeth, gripping a block of molten gold and silver on his stall, knives and hooks in his pack" loading="lazy" width="880" height="880"></figure>
+      <div>
+        <div class="eyebrow">Phase 2 &middot; Coming soon</div>
+        <h2>The Melding Peddler</h2>
+        <div class="speech" id="speech" role="button" tabindex="0" aria-live="polite">&hellip;come closer. I don&rsquo;t bite. Much.<small>TAP HIM AGAIN</small></div>
+        <p class="lede">He sets up his stall where the fog is thickest, and he trades in what it leaves behind.</p>
+        <p>Weapons dragged from the mud, gear stitched from regret, backdrops from places best left unvisited. Lay three of a kind on his table and he melts them down into something rarer. <strong>He always wins a little.</strong></p>
+        <div class="meld" aria-label="Melding: three of one tier become one of the next tier">
+          <span class="chip" style="--c:var(--t-common)">3&times; Common</span><span class="op">&rarr;</span><span class="chip" style="--c:var(--t-uncommon)">1&times; Uncommon</span>
+        </div>
+        <p style="font-family:var(--mono);font-size:12px;letter-spacing:.06em">The stall isn&rsquo;t open yet. Holders hear first when it is.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="ch" id="box">
+    <div class="wrap box">
+      <figure id="boxFig"><img src="img/nightmare-box.jpg" alt="The Nightmare Box: a striped clay gift box bound in rusted chains and a padlock, yellow eyes and purple tentacles pushing out from under the lid" loading="lazy" width="880" height="880"></figure>
+      <div>
+        <div class="eyebrow">Under the Peddler&rsquo;s stall</div>
+        <h2>The Nightmare Box</h2>
+        <span class="stamp">Do not open</span>
+        <p class="lede">Somebody wrapped it in bones and ribbon, then chained it shut. Whatever is inside did not like that.</p>
+        <p>Yellow eyes under the lid. Tentacles through the seams. A hand clawing its way out of the paper. <strong>What the Nightmare Box holds stays locked for now.</strong> Claysons holders will be the first to hear when the padlock comes off.</p>
+        <div class="ctas">
+          <a class="btn" href="https://www.instagram.com/georgexmeta/" target="_blank" rel="noopener">Watch for it on Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="ch" id="reveal">
     <div class="wrap">
       <div class="eyebrow">Reveal day</div>
@@ -316,6 +378,11 @@ footer a{text-decoration:none}footer a:hover{color:var(--bone)}
     tc.textContent='-'+p(d*24+h)+':'+p(m)+':'+p(sec)+':'+p(Math.floor((ms%1000)/1000*30));
   }
   tick(); setInterval(tick,1000/30);
+  if(Date.now()>=REVEAL){var h=document.getElementById('headline');if(h)h.innerHTML='1,300 slashers. <em>Revealed.</em> The masks are off.'}
+  var Q=["…come closer. I don't bite. Much.","That one screamed when I found it. Good sign.","Everything has a price. Yours is… interesting.","Careful. It's still warm.","Three for one? You drive a hard bargain. I'm lying, of course.","I trade in what the fog leaves behind.","Mind the drip. It's not water."],qi=0,sp=document.getElementById('speech');
+  function quip(){qi=(qi+1)%Q.length;sp.firstChild.nodeValue=Q[qi]}
+  if(sp){sp.addEventListener('click',quip);sp.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();quip()}})}
+  var bf=document.getElementById('boxFig');if(bf)bf.addEventListener('click',function(){bf.classList.remove('rattle');void bf.offsetWidth;bf.classList.add('rattle')});
   var b=document.getElementById('copyCa');
   b.addEventListener('click',function(){
     var t=document.getElementById('ca').textContent;
