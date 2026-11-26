@@ -16,10 +16,12 @@ SCENES = {
             "wooden dock and lake beyond it. On the LEFT wall, an open side doorway glowing with warm orange candlelight. "
             "On the RIGHT wall, an open side doorway glowing with eerie green and red Christmas lights. Clay floorboards, a rag rug, "
             "a cold fireplace, mounted antlers, cobwebs, oil lamp. Three clear exits: left, straight ahead, right.", None),
- "peddler": ("The SAME character as the reference image (keep his face, third eye, rusty halo, gold teeth, jewels and molten gold-and-silver "
-             "block exactly), seen wider at his candlelit merchant stall in a dark wooden lean-to room. Behind him, crooked shelves stacked "
-             "with chained, black-and-white striped gift boxes with red and green bows. Candles drip on the counter. He grins at the viewer.",
-             "melding-peddler.jpeg"),
+ "peddler": ("The SAME character as the FIRST reference image (keep his face, third eye, rusty halo, gold teeth, rings and black nails exactly), "
+             "seen wider at his candlelit merchant stall in a dark wooden lean-to room. There is NO gold or silver block: instead, with both hands he "
+             "is wrapping a gift box exactly like the SECOND reference image (black-and-white striped and swirled paper, red-and-green ribbon, rusty "
+             "chains, padlock, skull tag), pulling the ribbon tight while a tentacle pokes out of the half-wrapped box. Spools of striped paper, "
+             "ribbon and rusty chain on the counter. Behind him, crooked shelves stacked with finished chained Nightmare Boxes. He grins at the viewer.",
+             ["melding-peddler.jpeg", "nightmare-box.jpeg"]),
  "tree": ("A creepy Christmas tree sculpted from clay standing in a small cabin room: twisted black branches, ornaments made of tiny skulls, "
           "eyeballs, rusty hooks and padlocks, tangled green and red fairy lights, a broken star on top. Under the tree sits ONE gift box exactly "
           "like the reference image (striped box, rusty chains, padlock, tentacles, yellow eyes). Dim red glow, snow drifting through a cracked window.",
@@ -30,8 +32,8 @@ SCENES = {
 def gen(name, out):
     prompt, ref = SCENES[name]
     parts = [{"text": STYLE + "\n\n" + prompt}]
-    if ref:
-        parts.insert(0, {"inline_data": {"mime_type": "image/jpeg", "data": base64.b64encode(open(PF + ref, "rb").read()).decode()}})
+    for r in reversed([ref] if isinstance(ref, str) else (ref or [])):
+        parts.insert(0, {"inline_data": {"mime_type": "image/jpeg", "data": base64.b64encode(open(PF + r, "rb").read()).decode()}})
     body = {"contents": [{"parts": parts}], "generationConfig": {"responseModalities": ["IMAGE"], "imageConfig": {"aspectRatio": "16:9"}}}
     req = urllib.request.Request(URL, json.dumps(body).encode(), {"Content-Type": "application/json", "x-goog-api-key": "dummy"})
     r = json.load(urllib.request.urlopen(req, timeout=180))
