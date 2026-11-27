@@ -52,7 +52,11 @@ button{font:inherit;color:inherit}
   animation:drift 26s ease-in-out infinite alternate}
 @keyframes drift{to{transform:translateX(14%)}}
 
-.underbox{position:absolute;z-index:4;left:42.5%;top:93%;width:21%;aspect-ratio:1;transform:translate(-50%,-82%);pointer-events:none;filter:drop-shadow(0 10px 8px rgba(40,20,60,.45))}
+.underlayer{position:absolute;inset:0;z-index:4;pointer-events:none}
+.ubox{position:absolute;transform:translate(-50%,-88%);filter:drop-shadow(0 8px 6px rgba(40,20,60,.45));animation:pop .5s cubic-bezier(.3,1.6,.5,1) backwards,jiggle 3.2s ease-in-out infinite}
+@keyframes pop{from{transform:translate(-50%,-88%) scale(0)}}
+@keyframes jiggle{0%,86%,100%{rotate:0deg}90%{rotate:-4deg}94%{rotate:3deg}}
+.more{position:absolute;transform:translate(-50%,-50%);font-family:var(--mono);font-weight:800;font-size:13px;color:var(--bone);background:rgba(5,4,10,.8);border:1px solid var(--ooze);padding:3px 8px;border-radius:3px}
 
 /* ---------- hotspots ---------- */
 .hot{position:absolute;z-index:5;transform:translate(-50%,-50%);appearance:none;border:0;background:none;cursor:pointer;padding:0;display:grid;justify-items:center;gap:8px}
@@ -145,8 +149,8 @@ button{font:inherit;color:inherit}
 
     <section class="scene" id="s-tree" data-crumb="Nightmare Xmas tree" data-back="inside" style="--glow:#9be06f">
       <img class="bg" src="img/tree.jpg" alt="A layered clay Nightmare Christmas tree hung with skulls, eyeballs, padlocks and hooks beside a stone fireplace with stockings, snow falling past the window" width="1344" height="768">
-      <video class="underbox" autoplay muted loop playsinline aria-hidden="true"><source src="media/box-spin.webm" type="video/webm"></video>
-      <button class="hot" style="left:60%;top:88%;--glow:#9be06f" data-card="tree" aria-label="Kneel by the Nightmare Box"><span class="ring"></span><span class="tag">Your box</span></button>
+      <div class="underlayer" id="under" aria-hidden="true"></div>
+      <button class="hot" style="left:69%;top:76%;--glow:#9be06f" data-card="tree" aria-label="Look under the tree"><span class="ring"></span><span class="tag" id="treeTag">Under the tree</span></button>
     </section>
 
     <section class="scene" id="s-dock" data-crumb="The dock" data-back="inside">
@@ -169,18 +173,25 @@ button{font:inherit;color:inherit}
     <button class="btn red" type="submit">Ask him</button>
   </form>
   <div class="result" id="presult" aria-live="polite"></div>
-  <div class="demo">Rule: hold 6 or more Claysons, get 1 Nightmare Box for every 3. Counts come from the Nov 25 holder snapshot for now; the final snapshot is taken before the drop.</div>
+  <div class="demo">Rule: 1 Nightmare Box for every 3 Claysons, starting at 6 held. Counts come from the Nov 25 holder snapshot for now; the final snapshot is taken before the drop.</div>
 </div>
 
 <!-- Tree -->
 <div class="card off" id="c-tree" role="dialog" aria-labelledby="th" style="--glow:#9be06f">
   <div class="eyebrow">Under the Nightmare Xmas tree</div>
+  <div id="tlocked">
+    <h2>Nothing under the tree. Yet.</h2>
+    <p id="tlockedP">The skirt is bare. The Peddler hasn&rsquo;t checked your wallet, so nothing has been left for you.</p>
+    <div class="row"><button class="btn red" type="button" id="toPeddler">Check in with the Peddler</button></div>
+  </div>
+  <div id="topen" hidden>
   <h2 id="th">Open it, or leave it chained?</h2>
   <div class="giftwrap" id="gift"><video autoplay muted loop playsinline poster="img/nightmare-box.jpg" aria-label="Your Nightmare Box, chained and padlocked, slowly turning"><source src="media/box-spin.webm" type="video/webm"><source src="media/box-spin.mp4" type="video/mp4"></video><div class="burst"></div><div class="eyes"><i></i><i></i></div></div>
   <p id="tsay">Something under the lid is breathing. The padlock is already loose.</p>
   <div class="row" id="trow">
     <button class="btn green" type="button" id="open">Open it</button>
     <button class="btn" type="button" id="keep">Leave it chained</button>
+  </div>
   </div>
   <div class="demo">First look: nothing is opened or burned. What's inside is still George's secret.</div>
 </div>
@@ -231,9 +242,39 @@ button{font:inherit;color:inherit}
   window.addEventListener('resize',center);
   window.addEventListener('hashchange',function(){ var n=location.hash.slice(1); if(n&&n!==cur) show(n) });
 
+  // ---- Box rule (George): 1 Nightmare Box per 3 Claysons; holders need 6+ for now (Black Friday post) ----
+  var PER_BOX=3, MIN_HELD=6, verified=null;
+  function setBoxes(n){
+    verified=n; var L=$('under'); L.innerHTML='';
+    $('tlocked').hidden=n>0; $('topen').hidden=!(n>0);
+    if(n===0) $('tlockedP').textContent='Still bare. The Peddler checked: you need '+MIN_HELD+' Claysons for your first box, then one more for every '+PER_BOX+'.';
+    $('treeTag').textContent=n>0?(n+' box'+(n===1?'':'es')+' for you'):'Under the tree';
+    $('th').textContent=n>0?(n===1?'One box, just for you. Open it, or leave it chained?':n+' boxes, all yours. Open one, or leave them chained?'):'';
+    if(!(n>0)) return;
+    var slots=layout(MAX_BOXES);
+    slots.slice(0,Math.min(n,slots.length)).forEach(function(sl,k){
+      var im=document.createElement('img'); im.src='img/box-still.png'; im.alt=''; im.className='ubox';
+      im.style.left=sl.x+'%'; im.style.top=sl.y+'%'; im.style.width=sl.w+'%'; im.style.zIndex=sl.z;
+      im.style.animationDelay=(k*0.08)+'s, '+(k*0.37)+'s'; L.appendChild(im);
+    });
+  }
+  // Spots around the tree, sized for the biggest holder (MAX_BOXES). Filled front-centre first, then outwards and round the back.
+  var MAX_BOXES=14;
+  function layout(max){
+    // Sized for the biggest holder (George's wallet: 43 Claysons = 14 boxes). A front row, a back row, then boxes stacked on top.
+    var cx=42.5, H=1.2; // box height in stage-% per 1% of width (16:9 stage, still is 240x206)
+    var front=[0,-1,1,-2,2,-3].map(function(i){return {x:cx+3.4+i*7.2,y:94,w:6.4,z:3}}),
+        back=[0,-1,1,-2,2].map(function(i){return {x:cx+3.4+(i-0.5)*7.2,y:86.5,w:5.4,z:1}}),
+        out=front.concat(back);
+    // stacks: on the two middle front boxes, then the middle back box, then the rest of the front row
+    [0,1,6,2,3,4,5,7,8].forEach(function(k){ var base=out[k]; out.push({x:base.x+0.3,y:base.y-base.w*H*0.8,w:base.w*0.86,z:base.z+1}) });
+    return out.slice(0,Math.max(max,1));
+  }
+  $('toPeddler').addEventListener('click',function(){ show('peddler'); setTimeout(function(){ document.querySelector('#s-peddler .hot').click() },900) });
+
   // ---- Peddler ----
   var holders=null;
-  fetch('holders.json').then(function(r){return r.json()}).then(function(j){holders=j}).catch(function(){});
+  fetch('holders.json').then(function(r){return r.json()}).then(function(j){holders=j; var m=0; for(var k in j){ var b=j[k]>=MIN_HELD?Math.floor(j[k]/PER_BOX):0; if(b>m) m=b } if(m) MAX_BOXES=m; }).catch(function(){});
   var Q=["Careful. It's still warm.","That one screamed when I found it. Good sign.","Everything has a price. Yours is… interesting.","Mind the drip. It's not water.","I trade in what the fog leaves behind."];
   $('pform').addEventListener('submit',function(e){
     e.preventDefault();
@@ -241,13 +282,15 @@ button{font:inherit;color:inherit}
     if(!/^0x[0-9a-f]{40}$/.test(a)){ $('psay').textContent='That is not a wallet. That is a smudge. Try 0x and 40 more.'; out.innerHTML=''; return }
     if(!holders){ $('psay').textContent='My ledger is still drying. Ask again in a moment.'; return }
     var n=holders[a]||0;
-    if(!n){ $('psay').textContent='No Claysons in there. No Claysons, no boxes. Come back with clay on your hands.'; out.innerHTML=''; return }
+    if(!n){ setBoxes(0); $('psay').textContent='No Claysons in there. No Claysons, no boxes. Come back with clay on your hands.'; out.innerHTML=''; return }
     $('psay').textContent=Q[Math.floor(Math.random()*Q.length)];
-    var boxes=n>=6?Math.floor(n/3):0;
+    var boxes=n>=MIN_HELD?Math.floor(n/PER_BOX):0;
+    setBoxes(boxes);
     if(!boxes){ $('psay').textContent='Only '+n+'? Bring me six and we\u2019ll talk. One box for every three.'; out.innerHTML='<b>0 Nightmare Boxes</b>You hold '+n+' Clayson'+(n===1?'':'s')+'. Hold 6 or more to qualify.'; return }
     var html='<b>'+boxes+' Nightmare Box'+(boxes===1?'':'es')+'</b>You hold '+n+' Clayson'+(n===1?'':'s')+'. The Peddler has set aside:<div class="boxes">';
     for(var i=0;i<Math.min(boxes,40);i++) html+='<span></span>';
-    out.innerHTML=html+(boxes>40?'<em style="color:var(--ash);font-size:12px;align-self:center">+'+(boxes-40)+' more</em>':'')+'</div>';
+    out.innerHTML=html+(boxes>40?'<em style="color:var(--ash);font-size:12px;align-self:center">+'+(boxes-40)+' more</em>':'')+'</div><div class="row" style="margin-top:12px"><button class="btn green" type="button" id="toTree">They\u2019re under the tree &rarr;</button></div>';
+    $('toTree').addEventListener('click',function(){ show('tree') });
   });
 
   // ---- Tree ----
