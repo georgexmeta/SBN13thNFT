@@ -152,7 +152,7 @@ button{font:inherit;color:inherit}
     </section>
 
     <section class="scene" id="s-inside" data-crumb="The cabin" data-back="exterior">
-      <img class="bg" src="img/inside.jpg" alt="Inside the clay log cabin, warm with candles and a fire: a candlelit archway on the left, a carved clay altar with skulls and red lanterns, an archway strung with red and green lights on the right, and the back door open to the dock and lake" width="1344" height="768">
+      <img class="bg" id="insideImg" src="img/inside.jpg" alt="Inside the clay log cabin, warm with candles and a fire: a candlelit archway on the left, a carved clay altar with skulls and red lanterns, an archway strung with red and green lights on the right, and the back door open to the dock and lake" width="1344" height="768">
       <button class="hot left" style="left:16%;top:50%" data-go="peddler" aria-label="Go left to the Peddler"><span class="ring"></span><span class="tag">The Peddler</span></button>
       <button class="hot" style="left:33.5%;top:50%;--glow:#ff9a4d" data-go="altar" aria-label="Go to the Clayson altar"><span class="ring"></span><span class="tag">The altar</span></button>
       <button class="hot ahead" style="left:49%;top:61%;--glow:#9fc6ff" data-go="dock" aria-label="Go through the back door to the dock"><span class="ring"></span><span class="tag">Back door</span></button>
@@ -181,7 +181,7 @@ button{font:inherit;color:inherit}
       <img class="bg" id="dockImg" src="img/dock-night.jpg" alt="Layered clay lake view from the dock: stacked mountains, puffy clay clouds, the dock chained shut with a padlock and a clay sign reading LAKE IS CLOSED" width="1344" height="768">
       <div class="clock" id="dockClock" aria-live="polite"></div>
       <div class="fog"></div>
-      <button class="hot" style="left:74%;top:60%;--glow:#9fc6ff" data-card="dock" aria-label="Read the sign"><span class="ring"></span><span class="tag">Read the sign</span></button>
+      <button class="hot" style="left:74%;top:60%;--glow:#9fc6ff" data-card="dock" aria-label="Read the sign"><span class="ring"></span><span class="tag" id="dockTag">Read the sign</span></button>
     </section>
 
   </div>
@@ -401,13 +401,25 @@ button{font:inherit;color:inherit}
     dusk:['The sun is going down','The sky is burning out behind the mountains. Somewhere under that water is the bed he can\u2019t get back to.'],
     night:['The lake is very still tonight','The moon is up, the dock is chained, and 1,300 Claysons are somewhere out in the trees.']
   };
+  // After the holidays (George): the sign comes down and the Clayson sinks back to the bottom until Fri Aug 13, 2027.
+  var LAKE_OPEN=new Date()>=new Date(2027,0,2);
+  if(LAKE_OPEN){
+    $('insideImg').src='img/inside-open.jpg';
+    $('dockImg').alt='Layered clay lake view from the dock: stacked mountains, puffy clay clouds, calm empty water past the bare dock posts';
+    $('dockTag').textContent='Look out'; $('dockTag').parentNode.setAttribute('aria-label','Look out over the lake');
+    $('dockLore').textContent='The sign is down and the chain is gone. The holidays are over, and the Clayson has sunk back to the bottom of the lake to rest. He won\u2019t surface again until Friday, August 13, 2027.';
+    DOCK_TEXT.dawn[1]='First light on the water. The fog is lifting. Somewhere far below, something is sleeping.';
+    DOCK_TEXT.day[1]='The water is calm and the sun is high. Nothing stirs. Not yet.';
+    DOCK_TEXT.dusk[1]='The sky is burning out behind the mountains. The bed at the bottom of the lake is taken again.';
+    DOCK_TEXT.night[1]='The moon is up and the dock is open. The lake is very quiet now that he is home.';
+  }
   function dockPhase(){
     var d=new Date(), now=d.getHours()*60+d.getMinutes(), t=sunTimes(d), ph;
     if(now>=t.rise-40 && now<t.rise+60) ph='dawn';
     else if(now>=t.rise+60 && now<t.set-60) ph='day';
     else if(now>=t.set-60 && now<t.set+30) ph='dusk';
     else ph='night';
-    var img=$('dockImg'), src='img/dock-'+ph+'.jpg';
+    var img=$('dockImg'), src='img/dock-'+ph+(LAKE_OPEN?'-open':'')+'.jpg';
     if(img.getAttribute('src')!==src) img.setAttribute('src',src);
     var after=now>=t.set, before=now<t.rise;
     $('dockClock').innerHTML=fmt(now)+'<small>'+(before?'Sunrise at '+fmt(t.rise):after?'Sun set at '+fmt(t.set):'Sunset at '+fmt(t.set))+'</small>';
