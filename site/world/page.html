@@ -107,6 +107,22 @@ button{font:inherit;color:inherit}
 .giftwrap.open .eyes{animation:eyes 2.6s .9s ease-in-out forwards}
 @keyframes eyes{0%,100%{opacity:0}20%,70%{opacity:1}}
 
+/* ---------- altar ---------- */
+.fig{position:absolute;z-index:4;left:49.3%;bottom:45.6%;width:11.5%;aspect-ratio:1;transform:translateX(-50%);border-radius:4px;
+  border:5px solid #3a2414;box-shadow:0 0 0 2px #1c1009,0 8px 14px rgba(0,0,0,.6),0 0 40px rgba(255,170,80,.55);background-color:#1c1009;background-repeat:no-repeat;background-size:1000% 1000%;opacity:0;transition:opacity .8s,transform .8s}
+.fig.on{opacity:1;animation:settle .9s ease-out}
+@keyframes settle{0%{transform:translate(-50%,-18%);opacity:0}70%{transform:translate(-50%,2%)}100%{transform:translate(-50%,0);opacity:1}}
+.fig::after{content:"";position:absolute;inset:-60% -40%;background:radial-gradient(closest-side,rgba(255,200,110,.35),transparent);z-index:-1;pointer-events:none}
+.picks{display:grid;grid-template-columns:repeat(auto-fill,minmax(54px,1fr));gap:6px;max-height:190px;overflow-y:auto;margin-top:10px;padding-right:2px}
+.picks button{appearance:none;padding:0;border:2px solid var(--rule);border-radius:3px;aspect-ratio:1;background-color:#111;background-repeat:no-repeat;background-size:1000% 1000%;cursor:pointer;position:relative}
+.picks button:hover,.picks button:focus-visible{border-color:var(--gold)}
+.picks button span{position:absolute;left:0;right:0;bottom:0;font-family:var(--mono);font-size:9px;background:rgba(0,0,0,.7);color:var(--bone)}
+.picks[hidden]{display:none}
+.kbadge{position:absolute;z-index:6;left:49.3%;top:15%;transform:translateX(-50%);width:max-content;max-width:min(60%,calc(100vw - 32px));text-align:center;background:rgba(5,4,10,.78);border:1px solid #ff9a4d;border-radius:4px;padding:8px 14px;color:var(--bone);font-family:var(--mono);font-size:12px;letter-spacing:.06em;opacity:0;transition:opacity .5s}
+.kbadge.on{opacity:1}
+.kbadge .karma{font-size:28px;vertical-align:middle;margin-left:6px}
+.karma{font-family:var(--display);font-size:40px;color:var(--gold);line-height:1}
+
 /* ---------- hint ---------- */
 .hint{position:fixed;z-index:10;left:50%;top:calc(58px + env(safe-area-inset-top,0px));transform:translateX(-50%);font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ash);background:rgba(5,4,10,.7);padding:5px 10px;border-radius:3px;pointer-events:none}
 @media (min-width:900px) and (min-aspect-ratio:4/3){.hint{display:none}}
@@ -131,8 +147,9 @@ button{font:inherit;color:inherit}
     </section>
 
     <section class="scene" id="s-inside" data-crumb="The cabin" data-back="exterior">
-      <img class="bg" src="img/inside.jpg" alt="Inside the clay log cabin, warm with candles and a fire: a candlelit archway on the left, an archway strung with red and green lights on the right, and the back door open to the dock and lake" width="1344" height="768">
+      <img class="bg" src="img/inside.jpg" alt="Inside the clay log cabin, warm with candles and a fire: a candlelit archway on the left, a carved clay altar with skulls and red lanterns, an archway strung with red and green lights on the right, and the back door open to the dock and lake" width="1344" height="768">
       <button class="hot left" style="left:16%;top:50%" data-go="peddler" aria-label="Go left to the Peddler"><span class="ring"></span><span class="tag">The Peddler</span></button>
+      <button class="hot" style="left:33.5%;top:50%;--glow:#ff9a4d" data-go="altar" aria-label="Go to the Clayson altar"><span class="ring"></span><span class="tag">The altar</span></button>
       <button class="hot ahead" style="left:49%;top:61%;--glow:#9fc6ff" data-go="dock" aria-label="Go through the back door to the dock"><span class="ring"></span><span class="tag">Back door</span></button>
       <button class="hot right" style="left:82%;top:50%;--glow:#9be06f" data-go="tree" aria-label="Go right to the Nightmare Xmas tree"><span class="ring"></span><span class="tag">The tree</span></button>
     </section>
@@ -140,6 +157,13 @@ button{font:inherit;color:inherit}
     <section class="scene" id="s-peddler" data-crumb="The Peddler" data-back="inside">
       <img class="bg" src="img/peddler.jpg" alt="The Melding Peddler grinning behind his candlelit counter, shelves of chained striped Nightmare Boxes behind him" width="1344" height="768">
       <button class="hot" style="left:47.5%;top:84%" data-card="peddler" aria-label="Talk to the Peddler"><span class="ring"></span><span class="tag">Talk to him</span></button>
+    </section>
+
+    <section class="scene" id="s-altar" data-crumb="The altar" data-back="inside" style="--glow:#ff9a4d">
+      <img class="bg" src="img/altar.jpg" alt="A carved clay altar against the log wall, clay skulls, a red fringed runner and two glowing red lanterns, with an empty round plinth in the middle" width="1344" height="768">
+      <div class="fig" id="fig" role="img" aria-label=""></div>
+      <div class="kbadge" id="kbadge" aria-live="polite"></div>
+      <button class="hot" style="left:49.3%;top:70%;--glow:#ff9a4d" data-card="altar" aria-label="Place a Clayson on the altar"><span class="ring"></span><span class="tag" id="altarTag">Place a Clayson</span></button>
     </section>
 
     <section class="scene" id="s-tree" data-crumb="Nightmare Xmas tree" data-back="inside" style="--glow:#9be06f">
@@ -170,6 +194,21 @@ button{font:inherit;color:inherit}
   </form>
   <div class="result" id="presult" aria-live="polite"></div>
   <div class="demo">Rule: 1 Nightmare Box for every 3 Claysons, starting at 6 held. Counts come from the Nov 25 holder snapshot for now; the final snapshot is taken before the drop.</div>
+</div>
+
+<!-- Altar -->
+<div class="card off" id="c-altar" role="dialog" aria-labelledby="ah" style="--glow:#ff9a4d">
+  <div class="eyebrow">The Clayson altar</div>
+  <h2 id="ah">Leave a Clayson. Take some karma.</h2>
+  <p id="asay">Set one of your Claysons on the plinth. The altar remembers who comes back.</p>
+  <form class="row" id="aform">
+    <label for="awallet" class="crumb" style="flex-basis:100%">Wallet address</label>
+    <input id="awallet" placeholder="0x..." autocomplete="off" spellcheck="false">
+    <button class="btn red" type="submit">Check in</button>
+  </form>
+  <div id="apicks" class="picks" hidden></div>
+  <div class="result" id="aresult" aria-live="polite"></div>
+  <div class="demo">First look: one karma per wallet per day, kept in this browser for now. Ownership comes from the Nov 27 on-chain snapshot.</div>
 </div>
 
 <!-- Tree -->
@@ -209,7 +248,7 @@ button{font:inherit;color:inherit}
 (function(){
   var $=function(id){return document.getElementById(id)};
   var vp=$('vp'), cur=null, openCard=null;
-  var SCENES=['exterior','inside','peddler','tree','dock'];
+  var SCENES=['exterior','inside','peddler','tree','dock','altar'];
 
   function closeCard(){ if(openCard){openCard.classList.add('off');openCard=null} }
   function center(){ vp.scrollLeft=(vp.scrollWidth-vp.clientWidth)/2; $('hint').hidden=vp.scrollWidth<=vp.clientWidth+4 }
@@ -290,6 +329,44 @@ button{font:inherit;color:inherit}
     out.innerHTML=html+(boxes>40?'<em style="color:var(--ash);font-size:12px;align-self:center">+'+(boxes-40)+' more</em>':'')+'</div><div class="row" style="margin-top:12px"><button class="btn green" type="button" id="toTree">They\u2019re under the tree &rarr;</button></div>';
     $('toTree').addEventListener('click',function(){ show('tree') });
   });
+
+  // ---- Altar: place one of your Claysons, get good karma (once per wallet per day) ----
+  var owners=null;
+  fetch('owners.json').then(function(r){return r.json()}).then(function(j){owners=j}).catch(function(){});
+  function sprite(el,id){ var k=id-1, s=Math.floor(k/100), c=k%10, r=Math.floor((k%100)/10);
+    el.style.backgroundImage='url(img/thumbs/s'+s+'.jpg)'; el.style.backgroundPosition=(c*100/9)+'% '+(r*100/9)+'%'; }
+  function today(){ var d=new Date(); return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate() }
+  function kget(a){ try{ return JSON.parse(localStorage.getItem('altar:'+a))||{karma:0} }catch(e){ return {karma:0} } }
+  function kset(a,v){ try{ localStorage.setItem('altar:'+a,JSON.stringify(v)) }catch(e){} }
+  function placeFig(id){ var f=$('fig'); f.classList.remove('on'); sprite(f,id); f.setAttribute('aria-label','Clayson #'+id+' on the altar'); void f.offsetWidth; f.classList.add('on'); $('altarTag').textContent='Clayson #'+id; }
+  try{ var lastA=localStorage.getItem('altar:last'); if(lastA){ var lv=kget(lastA); if(lv.token) placeFig(lv.token) } }catch(e){}
+  var Akarma=['The lanterns flare. The altar is pleased.','Something behind the wall exhales. Good karma.','The skulls stop grinning at you. That is a good sign.','A warm hand you cannot see pats your shoulder.'];
+  $('aform').addEventListener('submit',function(e){
+    e.preventDefault();
+    var a=$('awallet').value.trim().toLowerCase(), P=$('apicks'), out=$('aresult');
+    P.hidden=true; P.innerHTML=''; out.innerHTML='';
+    if(!/^0x[0-9a-f]{40}$/.test(a)){ $('asay').textContent='The altar does not know that name. A wallet is 0x and 40 more.'; return }
+    if(!owners){ $('asay').textContent='The altar is still waking up. Try again in a moment.'; return }
+    var ids=owners[a]||[];
+    if(!ids.length){ $('asay').textContent='Empty hands. The altar only takes Claysons.'; return }
+    var st=kget(a);
+    $('asay').textContent='Choose who stands on the plinth tonight.';
+    out.innerHTML='Good karma so far <span class="karma">'+st.karma+'</span>';
+    ids.forEach(function(id){ var b=document.createElement('button'); b.type='button'; sprite(b,id); b.setAttribute('aria-label','Place Clayson #'+id); b.innerHTML='<span>#'+id+'</span>';
+      b.addEventListener('click',function(){
+        var v=kget(a), fresh=v.last!==today();
+        if(fresh){ v.karma=(v.karma||0)+1; v.last=today() }
+        v.token=id; kset(a,v); try{ localStorage.setItem('altar:last',a) }catch(e){}
+        placeFig(id); closeCard();
+        P.hidden=true; out.innerHTML='Good karma <span class="karma">'+v.karma+'</span>';
+        $('asay').textContent='Set one of your Claysons on the plinth. The altar remembers who comes back.';
+        var kb=$('kbadge'); kb.innerHTML=(fresh?Akarma[Math.floor(Math.random()*Akarma.length)]+'<br>+1 good karma \u00b7 total':'You already earned today\u2019s karma. Come back tomorrow.<br>Total')+'<span class="karma">'+v.karma+'</span>';
+        setTimeout(function(){ kb.classList.add('on') },900); clearTimeout(kb._t); kb._t=setTimeout(function(){ kb.classList.remove('on') },9000);
+      }); P.appendChild(b) });
+    P.hidden=false;
+  });
+  // carry the wallet over from the Peddler
+  $('pform').addEventListener('submit',function(){ if(!$('awallet').value) $('awallet').value=$('wallet').value.trim() });
 
   // ---- Tree ----
   var gift=$('gift');
