@@ -299,7 +299,7 @@ button{font:inherit;color:inherit}
   var MAX_BOXES=14;
   function layout(max){
     // Sized for the biggest holder (George's wallet: 43 Claysons = 14 boxes). A front row, a back row, then boxes stacked on top.
-    var cx=42.5, H=1.2; // box height in stage-% per 1% of width (16:9 stage, still is 240x206)
+    var cx=42.5, H=1.4; // box height in stage-% per 1% of width (16:9 stage, still is 240x206)
     var front=[0,-1,1,-2,2,-3].map(function(i){return {x:cx+3.4+i*7.2,y:94,w:6.4,z:3}}),
         back=[0,-1,1,-2,2].map(function(i){return {x:cx+3.4+(i-0.5)*7.2,y:86.5,w:5.4,z:1}}),
         out=front.concat(back);
