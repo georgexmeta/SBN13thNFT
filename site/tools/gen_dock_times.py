@@ -12,9 +12,12 @@ PHASES = {
          "cool misty light, light pink reflections on the water strips, no moon.",
  "day": "bright midday: a soft pale-yellow clay sun high in a light periwinkle sky, white puffy clay clouds, crisp even daylight, "
         "the water strips light blue-lilac with white highlight lines, no moon.",
- "night": "full night after the sun has set: deep indigo and navy sky, tiny pressed white clay stars, a glowing pale clay moon with a soft "
-          "halo, mountain layers in dark violet-navy silhouettes, water strips dark blue with a shimmering silver moon reflection made of clay dabs, "
+ "night": "full night after the sun has set: deep indigo and navy sky, tiny pressed white clay stars, and the moon as a flat matte pressed-plasticine disc of pale cream clay exactly like the stars, "
+          "with thumb-pressed craters and a small drop shadow, NO glow, NO halo, NO bloom, mountain layers in dark violet-navy silhouettes, water strips dark blue with a shimmering silver moon reflection made of clay dabs, "
           "the tentacle and rowboat dimly lit by moonlight, cool blue light everywhere, no sun.",
+ "moonfix": "keep it night exactly as it is. Change ONLY the moon: make it a flat, matte pressed-plasticine disc like the little clay stars, "
+            "pale cream clay with a few thumb-pressed craters and fingerprint texture, a soft raised edge and a small drop shadow on the sky layer. "
+            "NO glow, NO halo, NO bloom, NO light rays around it. Keep the moonlight reflection on the water as clay dabs.",
  "dusk": "sunset dusk: a big orange-red clay sun half sunk behind the mountain layers, sky graded from deep violet at the top to hot "
          "orange and magenta near the mountains, mountains in dark silhouette layers, orange reflection on the water strips, no moon.",
 }
