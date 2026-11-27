@@ -26,10 +26,13 @@ SCENES = {
              "chains, padlock, skull tag), pulling the ribbon tight while a tentacle pokes out of the half-wrapped box. Spools of striped paper, "
              "ribbon and rusty chain on the counter. Behind him, crooked shelves stacked with finished chained Nightmare Boxes. He grins at the viewer.",
              ["peddler-wrapping-ref.png", "nightmare-box.jpeg"]),
- "tree": ("A creepy Christmas tree sculpted from clay standing in a small cabin room: twisted black branches, ornaments made of tiny skulls, "
-          "eyeballs, rusty hooks and padlocks, tangled green and red fairy lights, a broken star on top. Under the tree sits ONE gift box exactly "
-          "like the SECOND reference image (striped box, rusty chains, padlock, tentacles, yellow eyes). Dim red glow, snow drifting through a cracked window.",
-          "nightmare-box.jpeg"),
+ "tree": ("A cosy-creepy cabin corner built as LAYERED clay relief, rich and full: a big Nightmare Christmas tree sculpted from many "
+          "stacked layers of dark green-black clay with drooping twisted branch tiers, hung with clay ornaments of tiny skulls, eyeballs, "
+          "rusty padlocks, fish hooks and little chains, glowing red and green bulb lights threaded through it, a cracked bone star on top. "
+          "Around it: a lavender log-cabin wall, a frosted window with clay snow falling outside, a stone fireplace with stockings hung on "
+          "rusty hooks, candles dripping on the mantel, a garland of bones and holly, warm candle and fairy-light glow. Under the tree a "
+          "round red-and-green clay tree skirt that is EMPTY in the centre foreground (no presents on it, leave room for one box). "
+          "Tree in the centre of the frame.", None),
  "dock": ("The view from the end of a wooden clay dock looking out over a lake at night, built entirely as LAYERED clay: many flat "
           "cut-out plasticine layers stacked one in front of another like a paper-theatre diorama, each layer with a thick soft rounded edge "
           "and its own drop shadow on the layer behind. Back to front: lavender sky slab with puffy pillow clouds and a big flat red clay moon; "

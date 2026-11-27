@@ -47,6 +47,8 @@ button{font:inherit;color:inherit}
   animation:drift 26s ease-in-out infinite alternate}
 @keyframes drift{to{transform:translateX(14%)}}
 
+.underbox{position:absolute;z-index:4;left:42.5%;top:93%;width:21%;aspect-ratio:1;transform:translate(-50%,-82%);pointer-events:none;filter:drop-shadow(0 10px 8px rgba(40,20,60,.45))}
+
 /* ---------- hotspots ---------- */
 .hot{position:absolute;z-index:5;transform:translate(-50%,-50%);appearance:none;border:0;background:none;cursor:pointer;padding:0;display:grid;justify-items:center;gap:8px}
 .hot .ring{width:46px;height:46px;border-radius:50%;border:2px solid var(--glow,var(--candle));box-shadow:0 0 18px var(--glow,var(--candle)),inset 0 0 12px var(--glow,var(--candle));
@@ -134,8 +136,9 @@ button{font:inherit;color:inherit}
     </section>
 
     <section class="scene" id="s-tree" data-crumb="Nightmare Xmas tree" data-back="inside" style="--glow:#9be06f">
-      <img class="bg" src="img/tree.jpg" alt="A twisted black clay Christmas tree hung with skulls and eyeballs, a chained Nightmare Box waiting underneath" width="1344" height="768">
-      <button class="hot" style="left:52%;top:86%;--glow:#9be06f" data-card="tree" aria-label="Kneel by the Nightmare Box"><span class="ring"></span><span class="tag">Your box</span></button>
+      <img class="bg" src="img/tree.jpg" alt="A layered clay Nightmare Christmas tree hung with skulls, eyeballs, padlocks and hooks beside a stone fireplace with stockings, snow falling past the window" width="1344" height="768">
+      <video class="underbox" autoplay muted loop playsinline aria-hidden="true"><source src="media/box-spin.webm" type="video/webm"></video>
+      <button class="hot" style="left:60%;top:88%;--glow:#9be06f" data-card="tree" aria-label="Kneel by the Nightmare Box"><span class="ring"></span><span class="tag">Your box</span></button>
     </section>
 
     <section class="scene" id="s-dock" data-crumb="The dock" data-back="inside">
