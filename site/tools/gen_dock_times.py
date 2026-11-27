@@ -18,12 +18,16 @@ PHASES = {
  "moonfix": "keep it night exactly as it is. Change ONLY the moon: make it a flat, matte pressed-plasticine disc like the little clay stars, "
             "pale cream clay with a few thumb-pressed craters and fingerprint texture, a soft raised edge and a small drop shadow on the sky layer. "
             "NO glow, NO halo, NO bloom, NO light rays around it. Keep the moonlight reflection on the water as clay dabs.",
+ "closed": "keep the time of day and lighting exactly as they are. Change ONLY this: REMOVE the purple tentacle completely (just calm clay water "
+           "there). At the end of the dock, a rusty clay chain hangs across between the two front posts with a padlock, and a crooked hand-made "
+           "wooden clay sign is nailed to the right post, with the words LAKE IS CLOSED pressed into it in big chunky clay capital letters, "
+           "spelled exactly L-A-K-E  I-S  C-L-O-S-E-D, nothing else written.",
  "dusk": "sunset dusk: a big orange-red clay sun half sunk behind the mountain layers, sky graded from deep violet at the top to hot "
          "orange and magenta near the mountains, mountains in dark silhouette layers, orange reflection on the water strips, no moon.",
 }
 def gen(src, phase, out):
     body = {"contents": [{"parts": [{"inline_data": {"mime_type": "image/jpeg", "data": base64.b64encode(open(src, "rb").read()).decode()}},
-                                    {"text": KEEP + PHASES[phase] + " No text, no letters, no logos."}]}],
+                                    {"text": KEEP + PHASES[phase] + ("" if phase=="closed" else " Keep the LAKE IS CLOSED sign and chain exactly as they are, same letters. No other text, no logos.")}]}],
             "generationConfig": {"responseModalities": ["IMAGE"], "imageConfig": {"aspectRatio": "16:9"}}}
     req = urllib.request.Request(URL, json.dumps(body).encode(), {"Content-Type": "application/json", "x-goog-api-key": "dummy"})
     r = json.load(urllib.request.urlopen(req, timeout=180))

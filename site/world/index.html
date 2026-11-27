@@ -117,9 +117,6 @@ button{font:inherit;color:inherit}
 @media (min-width:900px) and (min-aspect-ratio:4/3){.hint{display:none}}
 @media (prefers-reduced-motion:reduce){.scene,.scene.on{transition:opacity .3s}.scene.zoom{transform:none}.hot .ring,.fog{animation:none}}
 </style>
-</head>
-<body>
-
 
 <div class="bar">
   <img src="img/title.png" alt="Claysons" width="720" height="198">
@@ -157,10 +154,10 @@ button{font:inherit;color:inherit}
     </section>
 
     <section class="scene" id="s-dock" data-crumb="The dock" data-back="inside">
-      <img class="bg" id="dockImg" src="img/dock-night.jpg" alt="Layered clay lake view from the dock: stacked mountains, puffy clay clouds, a tentacle rising from the water beside a rowboat" width="1344" height="768">
+      <img class="bg" id="dockImg" src="img/dock-night.jpg" alt="Layered clay lake view from the dock: stacked mountains, puffy clay clouds, the dock chained shut with a padlock and a clay sign reading LAKE IS CLOSED" width="1344" height="768">
       <div class="clock" id="dockClock" aria-live="polite"></div>
       <div class="fog"></div>
-      <button class="hot" style="left:57.5%;top:58%;--glow:#9fc6ff" data-card="dock" aria-label="Look out over the lake"><span class="ring"></span><span class="tag">Look out</span></button>
+      <button class="hot" style="left:74%;top:60%;--glow:#9fc6ff" data-card="dock" aria-label="Read the sign"><span class="ring"></span><span class="tag">Read the sign</span></button>
     </section>
 
   </div>
@@ -204,7 +201,9 @@ button{font:inherit;color:inherit}
 <div class="card off" id="c-dock" role="dialog" aria-labelledby="dh" style="--glow:#9fc6ff">
   <div class="eyebrow">The dock</div>
   <h2 id="dh">The lake is very still tonight</h2>
-  <p id="dockP">The moon is up, and 1,300 Claysons are somewhere out in the trees. Something out past the rowboat keeps breaking the surface.</p>
+  <p id="dockP"></p>
+  <p id="dockLore" style="margin-top:.6em">The lake is closed. The Clayson is out for the holidays, and the chain keeps him from slipping back to his rest. After the holidays he sinks to the bottom, and he won&rsquo;t surface again until Friday, August 13, 2027.</p>
+  <p id="dockCount" class="eyebrow" style="margin-top:.6em"></p>
   <div class="row">
     <a class="btn red" href="https://opensea.io/collection/claysons" target="_blank" rel="noopener" style="text-decoration:none">See the Claysons</a>
     <a class="btn" href="https://www.instagram.com/georgexmeta/" target="_blank" rel="noopener" style="text-decoration:none">@georgexmeta</a>
@@ -320,10 +319,10 @@ button{font:inherit;color:inherit}
   }
   function fmt(m){ m=Math.round(m); var h=Math.floor(m/60)%24, mm=m%60, ap=h<12?'AM':'PM', h12=h%12||12; return h12+':'+String(mm).padStart(2,'0')+' '+ap }
   var DOCK_TEXT={
-    dawn:['The sun is coming up over the lake','First light on the water. The fog is lifting, and 1,300 Claysons are waking up somewhere in the trees.'],
-    day:['Bright day on the lake','The water is calm and the sun is high. Something out past the rowboat keeps breaking the surface anyway.'],
-    dusk:['The sun is going down','The sky is burning out behind the mountains. Whatever lives in this lake likes the dark.'],
-    night:['The lake is very still tonight','The moon is up, and 1,300 Claysons are somewhere out in the trees. Something out past the rowboat keeps breaking the surface.']
+    dawn:['The sun is coming up over the lake','First light on the water. The fog is lifting, and the chain across the dock is wet with dew.'],
+    day:['Bright day on the lake','The water is calm and the sun is high. Nobody swims here. The padlock makes sure of it.'],
+    dusk:['The sun is going down','The sky is burning out behind the mountains. Somewhere under that water is the bed he can\u2019t get back to.'],
+    night:['The lake is very still tonight','The moon is up, the dock is chained, and 1,300 Claysons are somewhere out in the trees.']
   };
   function dockPhase(){
     var d=new Date(), now=d.getHours()*60+d.getMinutes(), t=sunTimes(d), ph;
@@ -336,12 +335,11 @@ button{font:inherit;color:inherit}
     var after=now>=t.set, before=now<t.rise;
     $('dockClock').innerHTML=fmt(now)+'<small>'+(before?'Sunrise at '+fmt(t.rise):after?'Sun set at '+fmt(t.set):'Sunset at '+fmt(t.set))+'</small>';
     $('dh').textContent=DOCK_TEXT[ph][0]; $('dockP').textContent=DOCK_TEXT[ph][1];
+    var days=Math.ceil((new Date(2027,7,13)-d)/864e5);
+    $('dockCount').textContent=days>1?'He surfaces in '+days+' days':days===1?'He surfaces tomorrow':'He has surfaced';
   }
   dockPhase(); setInterval(dockPhase,60000);
 
   show(location.hash.slice(1)||'exterior');
 })();
 </script>
-
-</body>
-</html>
