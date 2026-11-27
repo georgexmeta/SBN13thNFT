@@ -53,6 +53,9 @@ button{font:inherit;color:inherit}
 @keyframes jiggle{0%,86%,100%{rotate:0deg}90%{rotate:-4deg}94%{rotate:3deg}}
 .more{position:absolute;transform:translate(-50%,-50%);font-family:var(--mono);font-weight:800;font-size:13px;color:var(--bone);background:rgba(5,4,10,.8);border:1px solid var(--ooze);padding:3px 8px;border-radius:3px}
 
+.clock{position:absolute;z-index:6;right:2.5%;bottom:5%;font-family:var(--mono);font-weight:800;font-size:clamp(11px,1.2vw,14px);letter-spacing:.12em;text-transform:uppercase;color:var(--bone);background:rgba(5,4,10,.6);padding:6px 10px;border-radius:3px}
+.clock small{display:block;font-weight:500;color:var(--ash);letter-spacing:.08em;margin-top:2px}
+
 /* ---------- hotspots ---------- */
 .hot{position:absolute;z-index:5;transform:translate(-50%,-50%);appearance:none;border:0;background:none;cursor:pointer;padding:0;display:grid;justify-items:center;gap:8px}
 .hot .ring{width:46px;height:46px;border-radius:50%;border:2px solid var(--glow,var(--candle));box-shadow:0 0 18px var(--glow,var(--candle)),inset 0 0 12px var(--glow,var(--candle));
@@ -146,7 +149,8 @@ button{font:inherit;color:inherit}
     </section>
 
     <section class="scene" id="s-dock" data-crumb="The dock" data-back="inside">
-      <img class="bg" src="img/dock.jpg" alt="Layered clay lake view from the dock: stacked lavender mountains, puffy clay clouds, a red clay moon, a purple tentacle rising from the water beside a rowboat" width="1344" height="768">
+      <img class="bg" id="dockImg" src="img/dock-night.jpg" alt="Layered clay lake view from the dock: stacked mountains, puffy clay clouds, a tentacle rising from the water beside a rowboat" width="1344" height="768">
+      <div class="clock" id="dockClock" aria-live="polite"></div>
       <div class="fog"></div>
       <button class="hot" style="left:57.5%;top:58%;--glow:#9fc6ff" data-card="dock" aria-label="Look out over the lake"><span class="ring"></span><span class="tag">Look out</span></button>
     </section>
@@ -192,7 +196,7 @@ button{font:inherit;color:inherit}
 <div class="card off" id="c-dock" role="dialog" aria-labelledby="dh" style="--glow:#9fc6ff">
   <div class="eyebrow">The dock</div>
   <h2 id="dh">The lake is very still tonight</h2>
-  <p>Fog on the water, a red moon, and 1,300 Claysons somewhere out in the trees. Something out past the rowboat keeps breaking the surface.</p>
+  <p id="dockP">The moon is up, and 1,300 Claysons are somewhere out in the trees. Something out past the rowboat keeps breaking the surface.</p>
   <div class="row">
     <a class="btn red" href="https://opensea.io/collection/claysons" target="_blank" rel="noopener" style="text-decoration:none">See the Claysons</a>
     <a class="btn" href="https://www.instagram.com/georgexmeta/" target="_blank" rel="noopener" style="text-decoration:none">@georgexmeta</a>
@@ -292,6 +296,40 @@ button{font:inherit;color:inherit}
     setTimeout(function(){ gift.classList.remove('shake'); gift.classList.add('open'); $('tsay').textContent='The lid lifts an inch. Two yellow eyes. Then it slams shut again. (What comes out is revealed later.)'; },1000);
   });
   $('keep').addEventListener('click',function(){ gift.classList.remove('open','shake'); $('tsay').textContent='Wise. It stays chained under the tree. For now.' });
+
+  // ---- Dock: the lake matches the visitor's own time of day ----
+  // Sunrise/sunset from the NOAA approximation. Longitude is guessed from the visitor's time zone, latitude defaults to 37.8N.
+  function sunTimes(d){
+    var lat=37.8*Math.PI/180, lng=-d.getTimezoneOffset()/4; // degrees east
+    var start=new Date(d.getFullYear(),0,0), doy=Math.floor((d-start)/864e5);
+    var g=2*Math.PI/365*(doy-1);
+    var eq=229.18*(0.000075+0.001868*Math.cos(g)-0.032077*Math.sin(g)-0.014615*Math.cos(2*g)-0.040849*Math.sin(2*g));
+    var dec=0.006918-0.399912*Math.cos(g)+0.070257*Math.sin(g)-0.006758*Math.cos(2*g)+0.000907*Math.sin(2*g)-0.002697*Math.cos(3*g)+0.00148*Math.sin(3*g);
+    var ha=Math.acos(Math.cos(90.833*Math.PI/180)/(Math.cos(lat)*Math.cos(dec))-Math.tan(lat)*Math.tan(dec))*180/Math.PI;
+    var tz=-d.getTimezoneOffset(); // minutes east of UTC
+    var noon=720-4*lng-eq+tz;
+    return {rise:noon-4*ha, set:noon+4*ha, noon:noon};
+  }
+  function fmt(m){ m=Math.round(m); var h=Math.floor(m/60)%24, mm=m%60, ap=h<12?'AM':'PM', h12=h%12||12; return h12+':'+String(mm).padStart(2,'0')+' '+ap }
+  var DOCK_TEXT={
+    dawn:['The sun is coming up over the lake','First light on the water. The fog is lifting, and 1,300 Claysons are waking up somewhere in the trees.'],
+    day:['Bright day on the lake','The water is calm and the sun is high. Something out past the rowboat keeps breaking the surface anyway.'],
+    dusk:['The sun is going down','The sky is burning out behind the mountains. Whatever lives in this lake likes the dark.'],
+    night:['The lake is very still tonight','The moon is up, and 1,300 Claysons are somewhere out in the trees. Something out past the rowboat keeps breaking the surface.']
+  };
+  function dockPhase(){
+    var d=new Date(), now=d.getHours()*60+d.getMinutes(), t=sunTimes(d), ph;
+    if(now>=t.rise-40 && now<t.rise+60) ph='dawn';
+    else if(now>=t.rise+60 && now<t.set-60) ph='day';
+    else if(now>=t.set-60 && now<t.set+30) ph='dusk';
+    else ph='night';
+    var img=$('dockImg'), src='img/dock-'+ph+'.jpg';
+    if(img.getAttribute('src')!==src) img.setAttribute('src',src);
+    var after=now>=t.set, before=now<t.rise;
+    $('dockClock').innerHTML=fmt(now)+'<small>'+(before?'Sunrise at '+fmt(t.rise):after?'Sun set at '+fmt(t.set):'Sunset at '+fmt(t.set))+'</small>';
+    $('dh').textContent=DOCK_TEXT[ph][0]; $('dockP').textContent=DOCK_TEXT[ph][1];
+  }
+  dockPhase(); setInterval(dockPhase,60000);
 
   show(location.hash.slice(1)||'exterior');
 })();
