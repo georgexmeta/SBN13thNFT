@@ -63,6 +63,10 @@ button{font:inherit;color:inherit}
 .clock small{display:block;font-weight:500;color:var(--ash);letter-spacing:.08em;margin-top:2px}
 
 /* ---------- hotspots ---------- */
+.peekbg{position:absolute;inset:0;transform:scale(1.3) translate(-4%,-14%);transition:transform .25s ease-out;will-change:transform}
+#s-dock:not(.peeking) .peekbg{animation:peekdrift 16s ease-in-out infinite alternate}
+@keyframes peekdrift{0%{transform:scale(1.3) translate(5%,-12%)}35%{transform:scale(1.3) translate(-2%,-16%)}70%{transform:scale(1.3) translate(-10%,-13%)}100%{transform:scale(1.3) translate(-5%,-15%)}}
+.boards{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:4;pointer-events:none;filter:brightness(.85)}
 .hot{position:absolute;z-index:5;transform:translate(-50%,-50%);appearance:none;border:0;background:none;cursor:pointer;padding:0;display:grid;justify-items:center;gap:8px}
 .hot .ring{width:46px;height:46px;border-radius:50%;border:2px solid var(--glow,var(--candle));box-shadow:0 0 18px var(--glow,var(--candle)),inset 0 0 12px var(--glow,var(--candle));
   animation:pulse 2.2s ease-in-out infinite;position:relative}
@@ -255,7 +259,7 @@ button{font:inherit;color:inherit}
 /* ---------- hint ---------- */
 .hint{position:fixed;z-index:10;left:50%;top:calc(58px + env(safe-area-inset-top,0px));transform:translateX(-50%);font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ash);background:rgba(5,4,10,.7);padding:5px 10px;border-radius:3px;pointer-events:none}
 @media (min-width:900px) and (min-aspect-ratio:4/3){.hint{display:none}}
-@media (prefers-reduced-motion:reduce){.scene,.scene.on{transition:opacity .3s}.scene.zoom{transform:none}.hot .ring,.fog{animation:none}}
+@media (prefers-reduced-motion:reduce){.scene,.scene.on{transition:opacity .3s}.scene.zoom{transform:none}.hot .ring,.fog,.peekbg{animation:none!important}}
 </style>
 
 <div class="bar">
@@ -278,7 +282,7 @@ button{font:inherit;color:inherit}
     </section>
 
     <section class="scene" id="s-inside" data-crumb="The cabin" data-back="exterior">
-      <img class="bg" id="insideImg" src="img/inside.jpg?v=6" alt="Inside the clay log cabin, warm with candles and a fire: a candlelit archway on the left, a big clunky 90s TV hissing with static on a stand with a VCR, an archway strung with red and green lights on the right, and the back door open to the dock and lake" width="1344" height="768">
+      <img class="bg" id="insideImg" src="img/inside.jpg?v=7" alt="Inside the clay log cabin, warm with candles and a fire: a candlelit archway on the left, a big clunky 90s TV hissing with static on a stand with a VCR, an archway strung with red and green lights on the right, and the back door open to the dock and lake" width="1344" height="768">
       <button class="secret" id="secret" style="left:44%;top:14%;width:12%;height:12%" aria-label="Antlers"></button>
       <button class="hot left" style="left:16%;top:50%" data-go="peddler" aria-label="Go left to the Peddler"><span class="ring"></span><span class="tag">The Peddler</span></button>
       <button class="hot" style="left:33.5%;top:50%;--glow:#ff9a4d" data-go="tv" aria-label="Go to the old TV"><span class="ring"></span><span class="tag">The TV</span></button>
@@ -314,10 +318,13 @@ button{font:inherit;color:inherit}
     </section>
 
     <section class="scene" id="s-dock" data-crumb="The dock" data-back="inside">
-      <img class="bg" id="dockImg" src="img/dock-night.jpg" alt="Layered clay lake view from the dock: stacked mountains, puffy clay clouds, the dock chained shut with a padlock and a clay sign reading LAKE IS CLOSED" width="1344" height="768">
+      <div class="peekbg" id="peekbg">
+        <img class="bg" id="dockImg" src="img/dock-night.jpg" alt="Peeking through the boarded, hacked-up back door at the layered clay lake view from the dock: stacked mountains, puffy clay clouds, the dock chained shut with a padlock and a clay sign reading LAKE IS CLOSED" width="1344" height="768">
+        <button class="secret" id="padlock" style="left:44%;top:82%;width:11%;height:16%;cursor:pointer" aria-label="The padlock"></button>
+        <div class="fog"></div>
+      </div>
+      <img class="boards" src="img/boards.webp?v=6" alt="" aria-hidden="true">
       <div class="clock" id="dockClock" aria-live="polite"></div>
-      <button class="secret" id="padlock" style="left:44%;top:82%;width:11%;height:16%;cursor:pointer" aria-label="The padlock"></button>
-      <div class="fog"></div>
       <button class="hot" style="left:74%;top:60%;--glow:#9fc6ff" data-card="dock" aria-label="Read the sign"><span class="ring"></span><span class="tag" id="dockTag">Read the sign</span></button>
     </section>
 
@@ -532,6 +539,12 @@ button{font:inherit;color:inherit}
     }
     $('qstart').addEventListener('click',function(){ streak=0; used={}; active=true; $('qintro').hidden=true; $('qplay').hidden=false; next() });
     paint();
+  })();
+  // ---- Peek through the boarded back door: the lake shifts behind the gaps as you move ----
+  (function(){ var sc=$('s-dock'), pb=$('peekbg');
+    sc.addEventListener('pointermove',function(e){ if(e.pointerType!=='mouse') return; var r=sc.getBoundingClientRect(), nx=(e.clientX-r.left)/r.width-.5, ny=(e.clientY-r.top)/r.height-.5;
+      sc.classList.add('peeking'); pb.style.transform='scale(1.3) translate('+(-4-nx*20).toFixed(2)+'%,'+(-14-ny*8).toFixed(2)+'%)' });
+    sc.addEventListener('pointerleave',function(){ sc.classList.remove('peeking'); pb.style.transform='' });
   })();
   function LAKE_OPEN_EARLY(){ return new Date()>=new Date(2027,0,2) }
   // ---- Roll the Bones: a clay hand throws two 3D clay dice that land on the real roll ----
@@ -819,7 +832,7 @@ button{font:inherit;color:inherit}
   // After the holidays (George): the sign comes down and the Clayson sinks back to the bottom until Fri Aug 13, 2027.
   var LAKE_OPEN=new Date()>=new Date(2027,0,2);
   if(LAKE_OPEN){
-    $('insideImg').src='img/inside-open.jpg?v=6';
+    $('insideImg').src='img/inside-open.jpg?v=7';
     $('dockImg').alt='Layered clay lake view from the dock: stacked mountains, puffy clay clouds, calm empty water past the bare dock posts';
     $('dockTag').textContent='Look out'; $('dockTag').parentNode.setAttribute('aria-label','Look out over the lake');
     $('dockLore').textContent='The sign is down and the chain is gone. The holidays are over, and the Clayson has sunk back to the bottom of the lake to rest. He won\u2019t surface again until Friday, August 13, 2027.';
