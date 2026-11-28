@@ -96,18 +96,21 @@ button{font:inherit;color:inherit}
 #signSpot{border-radius:6%;transition:box-shadow .8s,background .8s}
 #signSpot.found{cursor:pointer;background:radial-gradient(closest-side,rgba(190,215,255,.16),transparent);box-shadow:0 0 0 2px rgba(190,215,255,.0),0 0 40px 8px rgba(160,195,255,.28);animation:signglow 2.4s ease-in-out infinite alternate}
 @keyframes signglow{from{box-shadow:0 0 26px 4px rgba(160,195,255,.16)}to{box-shadow:0 0 46px 10px rgba(160,195,255,.34)}}
-.peep{position:absolute;left:57%;top:92.6%;width:7.6%;height:5%;transform:translate(-50%,-50%);z-index:3;pointer-events:none}
-.peep .gap{position:absolute;left:-10%;right:-10%;top:-30%;bottom:-20%;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.95),rgba(0,0,0,.6) 60%,transparent)}
-.peep .eye{position:absolute;top:-34%;width:36%;aspect-ratio:1;border-radius:50%;overflow:hidden;filter:brightness(.72) saturate(1.1);
-  background:radial-gradient(circle at 40% 30%,#efe3b0,#cdb877 40%,#9a6a3a 70%,#5a1a10 92%);box-shadow:inset 0 -3px 5px rgba(0,0,0,.7),inset 0 0 0 2px rgba(120,10,10,.55),0 0 10px rgba(200,40,20,.25);transition:transform .35s cubic-bezier(.5,0,.2,1)}
-.peep .eye::before{content:"";position:absolute;inset:0;border-radius:50%;background:repeating-conic-gradient(from 10deg,transparent 0 22deg,rgba(190,10,10,.6) 23deg 25deg,transparent 25deg 40deg);-webkit-mask:radial-gradient(circle,transparent 42%,#000 70%);mask:radial-gradient(circle,transparent 42%,#000 70%)}
-.peep .eye.l{left:8%}.peep .eye.r{right:8%}
-.peep .eye i{position:absolute;left:50%;top:50%;width:46%;height:46%;margin:-23% 0 0 -23%;border-radius:50%;background:radial-gradient(ellipse 14% 44% at 50% 50%,#000 0 90%,transparent 100%),radial-gradient(circle at 45% 40%,#ffb030,#c23a08 45%,#4a0a02 72%,transparent 74%);transition:transform .12s linear}
-.peep .eye b{position:absolute;inset:0;background:#2a1d16;transform-origin:top;transform:scaleY(0);border-bottom:2px solid #120a07}
-.peep.blink .eye b{animation:blink .22s ease-in-out}
+.peep{position:absolute;left:52%;top:76%;width:5.4%;height:3.65%;transform:translate(-50%,-50%);z-index:3;pointer-events:none}
+.peepgap{position:absolute;left:52%;top:75.6%;width:8.5%;height:2.6%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(5,2,2,.92),rgba(5,2,2,.55) 60%,transparent);z-index:3;pointer-events:none}
+.peepflap{position:absolute;z-index:3;pointer-events:none;background-repeat:no-repeat}
+.peep .eye{position:absolute;top:0;width:40%;aspect-ratio:1;border-radius:50%;overflow:hidden;transition:transform .7s cubic-bezier(.45,0,.25,1);
+  background:radial-gradient(circle at 38% 30%,#fbf2e2 0,#e4d3b8 38%,#b59a78 78%,#6d5640 100%);
+  box-shadow:inset 0 -4px 5px rgba(40,20,10,.45),inset 0 5px 0 rgba(40,24,16,.85),0 2px 4px rgba(0,0,0,.6);filter:brightness(.82) saturate(1.05)}
+.peep .eye::before{content:"";position:absolute;inset:0;border-radius:50%;background:repeating-conic-gradient(from 10deg,transparent 0 24deg,rgba(150,20,15,.35) 25deg 26deg,transparent 26deg 42deg);-webkit-mask:radial-gradient(circle,transparent 46%,#000 75%);mask:radial-gradient(circle,transparent 46%,#000 75%)}
+.peep .eye::after{content:"";position:absolute;left:24%;top:20%;width:18%;height:12%;border-radius:50%;background:rgba(255,255,255,.7);filter:blur(.6px);z-index:2}
+.peep .eye.l{left:6%}.peep .eye.r{right:6%}
+.peep .eye i{position:absolute;left:50%;top:52%;width:50%;height:50%;margin:-25% 0 0 -25%;border-radius:50%;
+  background:radial-gradient(ellipse 13% 42% at 50% 50%,#0b0503 0 88%,transparent 100%),radial-gradient(circle at 42% 38%,#ffc45a,#d0650f 42%,#6a1c04 70%,#2b0b03 76%,transparent 78%);box-shadow:inset 0 2px 2px rgba(0,0,0,.4)}
+.peep .eye b{position:absolute;inset:0;background:linear-gradient(#4a3226,#2c1c15);transform-origin:top;transform:scaleY(0);border-bottom:2px solid #1a0f0a;z-index:3}
+.peep.blink .eye b{animation:blink .26s ease-in-out}
 @keyframes blink{50%{transform:scaleY(1)}}
-.peep.duck .eye{transform:translateY(-120%)}
-.peep .flap{position:absolute;left:-30%;right:-30%;top:-170%;height:170%;background-repeat:no-repeat}
+.peep.duck .eye{transform:translateY(62%)}
 .fx{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
 .fx .fl{position:absolute;width:var(--s,3.2%);aspect-ratio:1;transform:translate(-50%,-55%);mix-blend-mode:screen;border-radius:50%;
   background:radial-gradient(closest-side,rgba(255,236,170,.95),rgba(255,170,70,.55) 35%,rgba(255,120,30,.18) 65%,transparent);animation:flk var(--d,1.3s) steps(9,jump-none) infinite;animation-delay:var(--dl,0s)}
@@ -203,9 +206,9 @@ button{font:inherit;color:inherit}
 
 /* ---------- haunted TV ---------- */
 .tents{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
-.tent{position:absolute;left:0;top:0;transform-origin:50% 100%;filter:brightness(.62) saturate(.85) drop-shadow(0 10px 8px rgba(0,0,0,.55))}
+.tent{position:absolute;left:0;top:0;transform-origin:50% 100%;filter:brightness(.5) saturate(.85) drop-shadow(0 10px 8px rgba(0,0,0,.55))}
 .tent i{position:absolute;left:0;display:block;background:url(img/tentacle.webp?v=1) no-repeat}
-.crackhole{position:absolute;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(closest-side,#000 0 45%,rgba(0,0,0,.75) 70%,transparent);filter:blur(1px)}
+.crackhole{position:absolute;border-radius:46% 54% 50% 50%/60% 60% 40% 40%;transform:translate(-50%,-50%);background:radial-gradient(closest-side,#030101 0 52%,rgba(3,1,1,.85) 68%,rgba(3,1,1,.35) 84%,transparent);filter:blur(.6px)}
 .screen{position:absolute;z-index:3;left:31.3%;top:28.9%;width:31.4%;height:41.2%;border-radius:10%/14%;overflow:hidden;background:#060606;box-shadow:inset 0 0 30px #000}
 .screen video,.screen img,.screen .thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background-repeat:no-repeat}
 .screen img,.screen .thumb{opacity:0;object-fit:contain}
@@ -401,7 +404,7 @@ button{font:inherit;color:inherit}
     </section>
 
     <section class="scene" id="s-tv" data-crumb="The TV" data-back="inside" style="--glow:#bcd3ff">
-      <img class="bg" src="img/tv.jpg?v=7" alt="A big clunky 1990s TV sculpted in clay with rabbit-ear antennas, on a clay stand with a VCR and a stack of VHS tapes, against rolled clay logs" width="1344" height="768">
+      <img class="bg" src="img/tv.jpg?v=8" alt="A big clunky 1990s TV sculpted in clay with rabbit-ear antennas, on a clay stand with a VCR and a stack of VHS tapes, against rolled clay logs" width="1344" height="768">
       <div class="tents" id="tents" aria-hidden="true"></div>
       <div class="screen idle off" id="screen"><video id="tvVid" playsinline preload="auto" loop muted src="media/vhs-intro.mp4?v=3"></video><img class="art" id="tvArt" alt=""><div class="thumb art" id="tvThumb"></div><div class="red"></div><div class="chan" id="chan"><canvas id="noise" width="160" height="120"></canvas><img id="chImg" alt=""><div class="bars" id="bars"></div><div class="blue" id="blue">VIDEO 1<small>Insert a tape</small></div><div class="ch13" id="ch13"><em>Channel 13 presents</em><strong>Late Night<br>Horror Quiz</strong><button type="button" id="qPlay">&#9654; Play</button></div><div class="lower" id="chLower"></div><div class="osd" id="osd">CH 03</div></div><div class="crt" id="crt"></div></div>
       <div class="tape" id="tape"><span class="lbl"><i class="art" id="tapeArt"></i><b id="tapeLbl">#1</b></span></div>
@@ -682,7 +685,7 @@ button{font:inherit;color:inherit}
   (function(){ var sc=$('s-tv'), L=$('tents'); if(!L) return;
     var still=matchMedia('(prefers-reduced-motion:reduce)').matches, N=12;
     // base point in the crack (% of scene), lean angle, height (% of scene height), flip, rhythm
-    var DEF=[{x:24.2,y:47,a:-38,h:40,f:0,p:0,per:11},{x:77.2,y:57,a:34,h:44,f:1,p:4.2,per:13},{x:8.5,y:72,a:-16,h:30,f:0,p:7.5,per:9.5}];
+    var DEF=[{x:23.4,y:50,a:-52,h:33,f:0,p:0,per:14},{x:77.4,y:50,a:40,h:34,f:1,p:5.2,per:16},{x:11.2,y:53,a:-18,h:28,f:0,p:9.5,per:12.5}];
     var T=DEF.map(function(d){ var hole=document.createElement('div'); hole.className='crackhole';
       var w=document.createElement('div'); w.className='tent'+(d.f?' flip':''); var segs=[], par=w;
       for(var i=0;i<N;i++){ var g=document.createElement('i'); par.appendChild(g); segs.push(g); par=g }
@@ -693,7 +696,7 @@ button{font:inherit;color:inherit}
         o.W=w; o.H=h; o.w.style.width=w+'px'; o.w.style.height=h+'px';
         o.segs.forEach(function(g,i){ g.style.width=w+'px'; g.style.height=(sh+ov)+'px'; g.style.top=(i?-sh:h-sh)+'px';
           g.style.transformOrigin='50% '+sh+'px'; g.style.backgroundSize=w+'px '+h+'px'; g.style.backgroundPosition='0 '+(-(N-1-i)*sh)+'px' });
-        o.hole.style.left=o.d.x+'%'; o.hole.style.top=o.d.y+'%'; o.hole.style.width=(w*1.05)+'px'; o.hole.style.height=(w*.42)+'px';
+        o.hole.style.left=o.d.x+'%'; o.hole.style.top=o.d.y+'%'; o.hole.style.width=(w*1.55)+'px'; o.hole.style.height=(w*.62)+'px';
         o.hole.style.transform='translate(-50%,-50%) rotate('+o.d.a+'deg)' }) }
     sc.addEventListener('pointermove',function(e){ var r=sc.getBoundingClientRect(); px=(e.clientX-r.left)/r.width*100; py=(e.clientY-r.top)/r.height*100 });
     sc.addEventListener('pointerleave',function(){ px=py=-1 });
@@ -701,16 +704,16 @@ button{font:inherit;color:inherit}
     function frame(now){ raf=requestAnimationFrame(frame); if(cur!=='tv'||!W) return; var t=now/1000;
       T.forEach(function(o){ var d=o.d, c=((t+d.p)%d.per)/d.per;
         // cycle: slide out of the crack, wriggle, lunge at the viewer, ease back, sink half way
-        var out=still?1:ease(c/.14)*(1-.45*ease((c-.86)/.14)), lunge=still?0:ease((c-.5)/.08)*(1-ease((c-.68)/.12));
+        var out=still?1:.55+.45*ease(c/.16)*(1-ease((c-.84)/.16)), lunge=still?0:ease((c-.48)/.14)*(1-ease((c-.66)/.16));
         var near=0, tgt=0;
         if(px>=0){ var dx=px-d.x, dy=(py-d.y)*H/W, dist=Math.hypot(dx,dy); near=Math.max(0,1-dist/45);
-          tgt=Math.atan2(dx,-dy)*180/Math.PI-d.a; if(d.f) tgt=-tgt; tgt=Math.max(-35,Math.min(35,tgt)) }
-        o.lean+=(tgt*near-o.lean)*.05; o.reach+=(Math.max(lunge,near*.7)-o.reach)*.08;
-        var sc2=(.25+.75*out)*(1+.38*o.reach);
-        o.w.style.transform='translate('+(d.x/100*W-o.W/2)+'px,'+(d.y/100*H-o.H)+'px) rotate('+(d.a+(d.f?-o.lean:o.lean)*.35)+'deg) scale('+sc2.toFixed(3)+')';
-        o.w.style.filter='brightness('+(.62+.22*o.reach).toFixed(2)+') saturate(.85) drop-shadow(0 '+(10+18*o.reach).toFixed(0)+'px '+(8+10*o.reach).toFixed(0)+'px rgba(0,0,0,.55))';
-        var amp=still?0:(9-3*o.reach), sp=still?0:(2.1+1.6*o.reach);
-        for(var i=0;i<N;i++){ var k=i/N, a=amp*Math.sin(t*sp-i*.55+d.p)*(.25+k)+ (o.lean*.9/N)*(1+k) - o.reach*(i>N-4?9:-1.2);
+          tgt=Math.atan2(dx,-dy)*180/Math.PI-d.a; if(d.f) tgt=-tgt; tgt=Math.max(-20,Math.min(20,tgt)) }
+        o.lean+=(tgt*near-o.lean)*.015; o.reach+=(Math.max(lunge,near*.6)-o.reach)*.025;
+        var sc2=out*(1+.28*o.reach);
+        o.w.style.transform='translate('+(d.x/100*W-o.W/2)+'px,'+(d.y/100*H-o.H)+'px) rotate('+(d.a+(d.f?-o.lean:o.lean)*.25).toFixed(2)+'deg) scale('+sc2.toFixed(3)+')';
+        o.w.style.filter='brightness('+(.5+.16*o.reach).toFixed(2)+') saturate(.85) drop-shadow(0 '+(10+18*o.reach).toFixed(0)+'px '+(8+10*o.reach).toFixed(0)+'px rgba(0,0,0,.55))';
+        var amp=still?0:(4.2-1.2*o.reach), sp=still?0:(1.05+.35*o.reach);
+        for(var i=0;i<N;i++){ var k=i/N, a=amp*Math.sin(t*sp-i*.55+d.p)*(.25+k)+ (o.lean*.9/N)*(1+k) - o.reach*(i>N-4?6:-.8);
           o.segs[i].style.transform='rotate('+a.toFixed(2)+'deg)' } }) }
     size(); window.addEventListener('resize',size);
     new MutationObserver(function(){ if(sc.classList.contains('on')){ size(); if(!raf) raf=requestAnimationFrame(frame) } }).observe(sc,{attributes:true,attributeFilter:['class']});
@@ -852,19 +855,26 @@ button{font:inherit;color:inherit}
   // ---- Something under the rug watches you ----
   (function(){
     var L=$('fx-inside'); if(!L) return;
+    // George 2026-11-28: clay eyes peek over the far edge of the rug; the rug in front hides their lower half
+    var G=document.createElement('div'); G.className='peepgap'; L.appendChild(G);
     var P=document.createElement('div'); P.className='peep';
-    P.innerHTML='<div class="gap"></div><div class="eye l"><i></i><b></b></div><div class="eye r"><i></i><b></b></div><div class="flap"></div>';
+    P.innerHTML='<div class="eye l"><i></i><b></b></div><div class="eye r"><i></i><b></b></div>';
     L.appendChild(P);
-    // the rug fringe sits over the top of the eyes: a slice of the room image, cut to line up exactly
-    var f=P.querySelector('.flap'), x0=57-7.6*1.6/2, w=7.6*1.6, y0=92.6-2.5-8.5, h=8.5;
+    var f=document.createElement('div'); f.className='peepflap'; var x0=46, w=12, y0=76.35, h=6.5;
+    f.style.left=x0+'%'; f.style.top=y0+'%'; f.style.width=w+'%'; f.style.height=h+'%';
     f.style.backgroundImage='url(img/inside.jpg?v=8)'; f.style.backgroundSize=(10000/w).toFixed(3)+'% '+(10000/h).toFixed(3)+'%'; f.style.backgroundPosition=(x0/(100-w)*100).toFixed(3)+'% '+(y0/(100-h)*100).toFixed(3)+'%';
-    var eyes=[].slice.call(P.querySelectorAll('.eye')), tx=null, ty=null, last=Date.now();
-    function look(x,y){ var near=false; eyes.forEach(function(e){ var r=e.getBoundingClientRect(), cx=r.left+r.width/2, cy=r.top+r.height/2, dx=x-cx, dy=y-cy, d=Math.hypot(dx,dy)||1, m=Math.min(1,d/180)*r.width*.24;
-      e.querySelector('i').style.transform='translate('+(dx/d*m).toFixed(1)+'px,'+(dy/d*m).toFixed(1)+'px)'; if(d<r.width*2.2) near=true }); P.classList.toggle('duck',near) }
+    L.appendChild(f);
+    var eyes=[].slice.call(P.querySelectorAll('.eye')), pupils=eyes.map(function(e){ return {el:e.querySelector('i'),x:0,y:0,tx:0,ty:0} }), last=0, near=false, raf=0;
+    function look(x,y){ var n=false; eyes.forEach(function(e,k){ var r=e.getBoundingClientRect(), cx=r.left+r.width/2, cy=r.top+r.height/2, dx=x-cx, dy=y-cy, d=Math.hypot(dx,dy)||1, m=Math.min(1,d/220)*r.width*.2;
+      pupils[k].tx=dx/d*m; pupils[k].ty=dy/d*m; if(d<r.width*2.6) n=true });
+      if(n!==near){ near=n; P.classList.toggle('duck',n) } }
+    function tick(){ raf=requestAnimationFrame(tick); if(cur!=='inside') return;
+      pupils.forEach(function(p){ p.x+=(p.tx-p.x)*.08; p.y+=(p.ty-p.y)*.08; p.el.style.transform='translate('+p.x.toFixed(2)+'px,'+p.y.toFixed(2)+'px)' }) }
+    raf=requestAnimationFrame(tick);
     window.addEventListener('pointermove',function(e){ if(cur!=='inside') return; last=Date.now(); look(e.clientX,e.clientY) },{passive:true});
     window.addEventListener('pointerdown',function(e){ if(cur!=='inside') return; last=Date.now(); look(e.clientX,e.clientY) },{passive:true});
-    setInterval(function(){ if(cur!=='inside') return; if(Math.random()<.35){ P.classList.remove('blink'); void P.offsetWidth; P.classList.add('blink') }
-      if(Date.now()-last>3000){ var r=P.getBoundingClientRect(); look(r.left+r.width/2+(Math.random()-.5)*600, r.top-Math.random()*400) } },1600);
+    setInterval(function(){ if(cur!=='inside') return; if(Math.random()<.3){ P.classList.remove('blink'); void P.offsetWidth; P.classList.add('blink') }
+      if(Date.now()-last>3500){ var r=P.getBoundingClientRect(); look(r.left+r.width/2+(Math.random()-.5)*500, r.top-60-Math.random()*300) } },2400);
   })();
   function LAKE_OPEN_EARLY(){ return new Date()>=new Date(2027,0,2) }
   // ---- Roll the Bones: a clay hand throws two 3D clay dice that land on the real roll ----
