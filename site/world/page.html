@@ -581,7 +581,7 @@ button{font:inherit;color:inherit}
   })();
   // ---- The dock (George): pressed up to the gap in the boards; look around with the mouse (drag on phones) to find the sign ----
   var DOCKLOOK=(function(){ var sc=$('s-dock'), pb=$('peekbg'), bd=sc.querySelector('.boards'), sg=$('signSpot'),
-      still=matchMedia('(prefers-reduced-motion:reduce)').matches, tx=0, ty=0, x=0, y=0, last=0, drag=null, raf=0, dwell=0, t0=0;
+      still=matchMedia('(prefers-reduced-motion:reduce)').matches, tx=0, ty=0, x=0, y=0, last=0, drag=null, raf=0, dwell=0, t0=0, lt=0, looked=0;
     function aim(e){ var r=sc.getBoundingClientRect(); tx=Math.max(-.5,Math.min(.5,(e.clientX-r.left)/r.width-.5)); ty=Math.max(-.5,Math.min(.5,(e.clientY-r.top)/r.height-.5)); last=performance.now() }
     sc.addEventListener('pointermove',function(e){
       if(e.pointerType==='mouse'){ aim(e); return }
@@ -601,8 +601,10 @@ button{font:inherit;color:inherit}
       // the sign counts as found once it drifts near the middle of your view
       var near=x>.18&&y>.1; if(near) dwell=Math.min(dwell+1,99); else dwell=Math.max(dwell-2,0);
       sg.classList.toggle('found',dwell>25);
+      // George: 13+ seconds searching through the boards earns one good karma (once per browser)
+      var dt=Math.min(100,now-(lt||now)); lt=now; if(!K.st.peek13){ looked+=dt; if(looked>13000){ K.st.peek13=1; K.add(1,0); K.toast('13 seconds pressed to the boards.<br>Patience pays: <b>+1 good karma</b>') } }
     }
-    return {enter:function(){ x=y=tx=ty=0; dwell=0; t0=performance.now(); last=0; sg.classList.remove('found');
+    return {enter:function(){ x=y=tx=ty=0; dwell=0; lt=0; t0=performance.now(); last=0; sg.classList.remove('found');
         sc.classList.remove('look'); pb.style.transform=''; bd.style.transform=''; sc.classList.remove('close');
         setTimeout(function(){ sc.classList.add('close'); pb.style.transform='scale(1.35) translate(0%,0%)' },250);
         setTimeout(function(){ if(cur==='dock'){ sc.classList.add('look'); if(!raf) raf=requestAnimationFrame(frame) } },1400) },
