@@ -146,6 +146,36 @@ button{font:inherit;color:inherit}
 .screen .thumb{background-size:1000% 1000%;width:auto;height:100%;aspect-ratio:1;left:0;right:0;margin:auto}
 .screen::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.28) 0 1px,transparent 1px 3px),radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.65) 100%)}
 .screen.idle video{opacity:.25}
+.tvbtn button{position:absolute;z-index:7;width:4.4%;aspect-ratio:1;margin:-2.2% 0 0 -2.2%;border-radius:50%;border:0;background:transparent;cursor:pointer;padding:0}
+.tvbtn button i{position:absolute;inset:0;border-radius:50%;box-shadow:0 0 0 2px rgba(233,196,106,.55),0 0 14px rgba(233,196,106,.35);transition:box-shadow .2s}
+.tvbtn button:hover i,.tvbtn button:focus-visible i{box-shadow:0 0 0 2px #e9c46a,0 0 20px #e9c46a}
+.tvbtn button:active i{transform:scale(.9)}
+.tvbtn button span{position:absolute;left:115%;top:50%;transform:translateY(-50%);white-space:nowrap;font-family:var(--mono);font-size:11px;font-weight:800;letter-spacing:.12em;color:var(--bone);background:rgba(10,8,9,.82);border:1px solid var(--rule);padding:3px 7px;border-radius:2px}
+#pwr i{box-shadow:0 0 0 2px rgba(255,80,70,.6),0 0 14px rgba(255,60,50,.45)}
+#pwr[aria-pressed=true] i{box-shadow:0 0 0 2px #9be06f,0 0 16px #9be06f}
+.screen .chan{position:absolute;inset:0;z-index:2}
+.screen .chan>*{position:absolute;inset:0;width:100%;height:100%;display:none}
+.screen .chan canvas{image-rendering:pixelated;opacity:.9}
+.screen .chan img{object-fit:cover;opacity:1;filter:saturate(.85) contrast(1.05) blur(.3px)}
+.screen .chan .bars{background:linear-gradient(90deg,#c0c0c0 0 14.3%,#c0c000 0 28.6%,#00c0c0 0 42.9%,#00c000 0 57.1%,#c000c0 0 71.4%,#c00000 0 85.7%,#0000c0 0)}
+.screen .chan .blue{background:#1530c8;color:#e8ecff;font-family:var(--mono);font-weight:800;font-size:clamp(12px,2.2vw,26px);letter-spacing:.1em;padding:9% 0 0 10%;box-sizing:border-box}
+.screen .chan .blue small{display:block;font-size:.5em;opacity:.8;margin-top:.6em;letter-spacing:.14em;text-transform:uppercase}
+.screen .chan .ch13{background:radial-gradient(ellipse at center,#3a0508,#0a0102 75%);color:#f3e6d0;text-align:center;flex-direction:column;align-items:center;justify-content:center;gap:4%}
+.screen .chan .ch13 em{font-family:var(--mono);font-style:normal;font-size:clamp(8px,1vw,12px);letter-spacing:.22em;text-transform:uppercase;color:#e9c46a}
+.screen .chan .ch13 strong{font-family:var(--display);font-weight:400;font-size:clamp(18px,3.4vw,44px);line-height:.95;text-transform:uppercase;color:#ff3b30;text-shadow:0 0 12px #ff000088;animation:flick 3s infinite}
+.screen .chan .ch13 button{appearance:none;cursor:pointer;border:1px solid #e9c46a;background:#120304;color:#e9c46a;font-family:var(--mono);font-weight:800;font-size:clamp(10px,1.2vw,14px);letter-spacing:.16em;padding:.5em 1.2em;border-radius:2px;text-transform:uppercase;position:relative;z-index:3}
+.screen .chan .ch13 button:hover{background:#e9c46a;color:#120304}
+@keyframes flick{0%,92%,100%{opacity:1}93%{opacity:.4}95%{opacity:1}96%{opacity:.6}}
+.screen .chan .lower{top:auto;bottom:6%;left:5%;right:5%;width:auto;height:auto;background:linear-gradient(90deg,#c8102e,#8a0a1f);color:#fff;font-family:var(--mono);font-weight:800;font-size:clamp(7px,.95vw,12px);letter-spacing:.06em;padding:.5em .8em;line-height:1.35;text-transform:uppercase;box-shadow:0 2px 0 #ffd23f}
+.screen .chan .lower b{color:#ffd23f}
+.screen .chan .osd{top:6%;right:7%;left:auto;width:auto;height:auto;color:#3cff5a;font-family:var(--mono);font-weight:800;font-size:clamp(11px,1.6vw,20px);text-shadow:0 0 6px #3cff5a,2px 2px 0 #000;letter-spacing:.08em;z-index:4}
+.screen.off .chan,.screen.off video,.screen.off .art{visibility:hidden}
+.screen.playing .chan{display:none}
+.screen .crt{position:absolute;inset:0;z-index:5;pointer-events:none;background:#fff;opacity:0}
+.screen.pon .crt{animation:pon .45s ease-out}
+@keyframes pon{0%{opacity:1;transform:scale(1,.01)}40%{opacity:.9;transform:scale(1,1)}100%{opacity:0}}
+.screen.poff .crt{animation:poff .35s ease-in forwards}
+@keyframes poff{0%{opacity:0;transform:scale(1,1)}30%{opacity:.9;transform:scale(1,.02)}80%{opacity:.9;transform:scale(.02,.02)}100%{opacity:0;transform:scale(0,0)}}
 .screen .red{position:absolute;inset:0;background:#eb0a0a;opacity:0;mix-blend-mode:screen;pointer-events:none}
 .screen.hit .art{opacity:1;animation:hit .5s ease-out}
 .screen.hit .red{animation:redf .14s steps(3) forwards}
@@ -241,14 +271,14 @@ button{font:inherit;color:inherit}
   <div class="stage" id="stage">
 
     <section class="scene" id="s-exterior" data-crumb="The lake">
-      <img class="bg" src="img/exterior.jpg?v=4" alt="A pressed-clay relief of a log cabin on a little island, lit windows and an open front door, pine trees, a red clay moon on a lavender sky" width="1344" height="768">
+      <img class="bg" src="img/exterior.jpg?v=6" alt="A pressed-clay relief of a log cabin on a little island, lit windows and an open front door, pine trees, a red clay moon on a lavender sky" width="1344" height="768">
       <div class="fog"></div>
       <div class="intro"><img src="img/title.png" alt="" width="720" height="198"><p>A cabin by the lake. The door's open.</p></div>
       <button class="hot ahead" style="left:49%;top:63%" data-go="inside" aria-label="Enter the cabin"><span class="ring"></span><span class="tag">Enter the cabin</span></button>
     </section>
 
     <section class="scene" id="s-inside" data-crumb="The cabin" data-back="exterior">
-      <img class="bg" id="insideImg" src="img/inside.jpg?v=5" alt="Inside the clay log cabin, warm with candles and a fire: a candlelit archway on the left, a big clunky 90s TV hissing with static on a stand with a VCR, an archway strung with red and green lights on the right, and the back door open to the dock and lake" width="1344" height="768">
+      <img class="bg" id="insideImg" src="img/inside.jpg?v=6" alt="Inside the clay log cabin, warm with candles and a fire: a candlelit archway on the left, a big clunky 90s TV hissing with static on a stand with a VCR, an archway strung with red and green lights on the right, and the back door open to the dock and lake" width="1344" height="768">
       <button class="secret" id="secret" style="left:44%;top:14%;width:12%;height:12%" aria-label="Antlers"></button>
       <button class="hot left" style="left:16%;top:50%" data-go="peddler" aria-label="Go left to the Peddler"><span class="ring"></span><span class="tag">The Peddler</span></button>
       <button class="hot" style="left:33.5%;top:50%;--glow:#ff9a4d" data-go="tv" aria-label="Go to the old TV"><span class="ring"></span><span class="tag">The TV</span></button>
@@ -265,16 +295,20 @@ button{font:inherit;color:inherit}
     </section>
 
     <section class="scene" id="s-tv" data-crumb="The TV" data-back="inside" style="--glow:#bcd3ff">
-      <img class="bg" src="img/tv.jpg?v=5" alt="A big clunky 1990s TV sculpted in clay with rabbit-ear antennas, on a clay stand with a VCR and a stack of VHS tapes, against rolled clay logs" width="1344" height="768">
-      <div class="screen idle" id="screen"><video id="tvVid" playsinline preload="auto" loop muted src="media/vhs-intro.mp4?v=3"></video><img class="art" id="tvArt" alt=""><div class="thumb art" id="tvThumb"></div><div class="red"></div></div>
+      <img class="bg" src="img/tv.jpg?v=6" alt="A big clunky 1990s TV sculpted in clay with rabbit-ear antennas, on a clay stand with a VCR and a stack of VHS tapes, against rolled clay logs" width="1344" height="768">
+      <div class="screen idle off" id="screen"><video id="tvVid" playsinline preload="auto" loop muted src="media/vhs-intro.mp4?v=3"></video><img class="art" id="tvArt" alt=""><div class="thumb art" id="tvThumb"></div><div class="red"></div><div class="chan" id="chan"><canvas id="noise" width="160" height="120"></canvas><img id="chImg" alt=""><div class="bars" id="bars"></div><div class="blue" id="blue">VIDEO 1<small>Insert a tape</small></div><div class="ch13" id="ch13"><em>Channel 13 presents</em><strong>Late Night<br>Horror Quiz</strong><button type="button" id="qPlay">&#9654; Play</button></div><div class="lower" id="chLower"></div><div class="osd" id="osd">CH 03</div></div><div class="crt" id="crt"></div></div>
       <div class="tape" id="tape"><span class="lbl"><i class="art" id="tapeArt"></i><b id="tapeLbl">#1</b></span></div>
       <div class="tvctl" id="tvctl" hidden><button class="btn" type="button" id="rewind">Rewind</button><button class="btn red" type="button" id="eject">Eject</button></div>
-      <button class="hot" id="qzHot" style="left:67.7%;top:33%;--glow:#e9c46a" data-card="quiz" aria-label="Turn the dial to channel 13: Late Night Horror Quiz"><span class="ring"></span><span class="tag">Channel 13 quiz</span></button>
-      <button class="hot" id="tvHot" style="left:47.2%;top:46%;--glow:#bcd3ff" data-card="tv" aria-label="Insert a tape"><span class="ring"></span><span class="tag">Insert a tape</span></button>
+      <div class="tvbtn" id="tvbtns">
+        <button type="button" id="chUp" style="left:67.9%;top:33.6%" aria-label="Channel up"><i></i><span>CH &#9650;</span></button>
+        <button type="button" id="chDn" style="left:67.9%;top:42.7%" aria-label="Channel down"><i></i><span>CH &#9660;</span></button>
+        <button type="button" id="pwr" style="left:67.9%;top:50.2%" aria-label="Power" aria-pressed="false"><i></i><span>POWER</span></button>
+      </div>
+      <button class="hot" id="tvHot" style="left:42%;top:85%;--glow:#bcd3ff" data-card="tv" aria-label="Insert a tape"><span class="ring"></span><span class="tag">Insert a tape</span></button>
     </section>
 
     <section class="scene" id="s-tree" data-crumb="Nightmare Xmas tree" data-back="inside" style="--glow:#9be06f">
-      <img class="bg" src="img/tree.jpg?v=4" alt="A layered clay Nightmare Christmas tree hung with skulls, eyeballs, padlocks and hooks beside a stone fireplace with stockings, snow falling past the window" width="1344" height="768">
+      <img class="bg" src="img/tree.jpg?v=6" alt="A layered clay Nightmare Christmas tree hung with skulls, eyeballs, padlocks and hooks beside a stone fireplace with stockings, snow falling past the window" width="1344" height="768">
       <div class="underlayer" id="under" aria-hidden="true"></div>
       <button class="hot" style="left:69%;top:76%;--glow:#9be06f" data-card="tree" aria-label="Look under the tree"><span class="ring"></span><span class="tag" id="treeTag">Under the tree</span></button>
     </section>
@@ -678,7 +712,7 @@ button{font:inherit;color:inherit}
   }
   function play(id){
     playing=id; cancelAnimationFrame(raf); setArt(id);
-    scr.classList.remove('hit','ghost','idle'); $('tvHot').style.display='none'; $('qzHot').style.display='none'; $('tvctl').hidden=false; $('rewind').hidden=true; K.tape(id);
+    scr.classList.remove('hit','ghost','idle','off'); scr.classList.add('playing'); $('tvHot').style.display='none'; TVSET.on(true); $('tvctl').hidden=false; $('rewind').hidden=true; K.tape(id);
     var tp=$('tape'); $('tapeLbl').textContent='#'+id; labelArt($('tapeArt'),id); tp.classList.remove('in'); void tp.offsetWidth; tp.classList.add('in');
     vid.pause(); vid.loop=false; vid.muted=false; vid.currentTime=0;
     setTimeout(function(){ var p=vid.play(); if(p&&p.catch) p.catch(function(){ vid.muted=true; vid.play() }); raf=requestAnimationFrame(tick) },1650);
@@ -687,10 +721,53 @@ button{font:inherit;color:inherit}
   $('rewind').addEventListener('click',function(){ if(playing) play(playing) });
   $('eject').addEventListener('click',function(){
     if(playing && !vid.ended && vid.currentTime<T_CUT) K.done('coward');
-    cancelAnimationFrame(raf); playing=null; scr.classList.remove('hit','ghost'); scr.classList.add('idle'); $('tvctl').hidden=true; $('tvHot').style.display=''; $('qzHot').style.display='';
+    cancelAnimationFrame(raf); playing=null; scr.classList.remove('hit','ghost','playing'); scr.classList.add('idle'); $('tvctl').hidden=true; $('tvHot').style.display=''; TVSET.tune();
     vid.muted=true; vid.loop=true; vid.currentTime=0; vid.play().catch(function(){});
     closeCard(); openCard=$('c-tv'); openCard.classList.remove('off');
   });
+
+  // ---- TV set: power, channel up/down; channel 13 carries the quiz ----
+  var TVSET=(function(){
+    var CH={
+      2:['ch/2.jpg','<b>The Bone Boutique</b> &middot; genuine-ish bone necklace &middot; 3 easy payments of $13.13 &middot; call 1-800-555-0113'],
+      4:['ch/4.jpg','<b>Cutlery of the Damned</b> &middot; it cuts a can. it cuts anything. &middot; only $19.99'],
+      5:['ch/5.jpg','<b>Knee-Crusher 90</b> &middot; tone those thighs &middot; results guaranteed or your knees back'],
+      6:['ch/6.jpg','<b>Roast-O-Rama 3000</b> &middot; don&rsquo;t ask what&rsquo;s on the spit &middot; call now'],
+      7:['ch/7.jpg','<b>Madame Morte&rsquo;s Psychic Line</b> &middot; she already knows you&rsquo;ll call &middot; $3.99/min'],
+      8:['ch/8.jpg','<b>Gone-by-Morning</b> stain lifter &middot; wine, grass and&hellip; other stains'],
+      10:['ch/10.jpg','<b>Instant Mane</b> &middot; hair in a can &middot; mostly hair &middot; 1-800-555-0113'],
+      11:['ch/11.jpg','<b>Lakeside Collector Plates</b> &middot; plate 1 of 13: the cabin &middot; limited edition']
+    };
+    var on=false, ch=3, noiseRaf=0, flash=0, cv=$('noise'), cx=cv.getContext('2d'), img=cx.createImageData(160,120);
+    function noise(){ var d=img.data; for(var i=0;i<d.length;i+=4){ var v=Math.random()*255|0; d[i]=d[i+1]=d[i+2]=v; d[i+3]=255 } cx.putImageData(img,0,0); noiseRaf=setTimeout(noise,60) }
+    function show(el,yes){ el.style.display=yes?(el.id==='ch13'?'flex':'block'):'none' }
+    function tune(){
+      clearTimeout(noiseRaf); clearTimeout(flash);
+      ['chImg','bars','blue','ch13','chLower'].forEach(function(id){ show($(id),false) });
+      $('osd').textContent='CH '+(ch<10?'0':'')+ch; show($('osd'),on);
+      if(!on||scr.classList.contains('playing')){ show(cv,false); return }
+      show(cv,true); noise();
+      flash=setTimeout(function(){
+        var c=CH[ch];
+        if(c){ $('chImg').src='img/'+c[0]+'?v=6'; show($('chImg'),true); $('chLower').innerHTML=c[1]; show($('chLower'),true) }
+        else if(ch===3) show($('blue'),true);
+        else if(ch===12) show($('bars'),true);
+        else if(ch===13) show($('ch13'),true);
+        if(c||ch===3||ch===12||ch===13){ clearTimeout(noiseRaf); show(cv,false) }
+        setTimeout(function(){ if($('osd').textContent==='CH '+(ch<10?'0':'')+ch) show($('osd'),false) },2200);
+      },260);
+    }
+    function power(v){
+      on=v; $('pwr').setAttribute('aria-pressed',on); scr.classList.remove('pon','poff'); void scr.offsetWidth;
+      scr.classList.toggle('off',!on); scr.classList.add(on?'pon':'poff'); tune();
+    }
+    $('pwr').addEventListener('click',function(e){ e.stopPropagation(); if(scr.classList.contains('playing')) return; power(!on) });
+    function step(d){ if(!on){ power(true); return } if(scr.classList.contains('playing')) return; ch=((ch-1+d+13)%13)+1; tune() }
+    $('chUp').addEventListener('click',function(e){ e.stopPropagation(); step(1) });
+    $('chDn').addEventListener('click',function(e){ e.stopPropagation(); step(-1) });
+    $('qPlay').addEventListener('click',function(e){ e.stopPropagation(); closeCard(); openCard=$('c-quiz'); openCard.classList.remove('off') });
+    return { on:function(){ if(!on){ on=true; $('pwr').setAttribute('aria-pressed',true) } scr.classList.remove('off'); tune() }, tune:tune };
+  })();
   vid.play&&vid.play().catch(function(){});
   $('vform').addEventListener('submit',function(e){
     e.preventDefault();
@@ -742,7 +819,7 @@ button{font:inherit;color:inherit}
   // After the holidays (George): the sign comes down and the Clayson sinks back to the bottom until Fri Aug 13, 2027.
   var LAKE_OPEN=new Date()>=new Date(2027,0,2);
   if(LAKE_OPEN){
-    $('insideImg').src='img/inside-open.jpg?v=5';
+    $('insideImg').src='img/inside-open.jpg?v=6';
     $('dockImg').alt='Layered clay lake view from the dock: stacked mountains, puffy clay clouds, calm empty water past the bare dock posts';
     $('dockTag').textContent='Look out'; $('dockTag').parentNode.setAttribute('aria-label','Look out over the lake');
     $('dockLore').textContent='The sign is down and the chain is gone. The holidays are over, and the Clayson has sunk back to the bottom of the lake to rest. He won\u2019t surface again until Friday, August 13, 2027.';
