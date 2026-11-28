@@ -67,6 +67,35 @@ button{font:inherit;color:inherit}
 #s-dock.close .peekbg{animation:none!important;transform:scale(1.04)!important;transition:transform .9s cubic-bezier(.5,0,.2,1)}
 #s-dock.close #signHot{left:73%!important;top:63%!important}
 #s-dock.close #peekBtn{top:88%!important}
+.peep{position:absolute;left:57%;top:92.6%;width:7.6%;height:5%;transform:translate(-50%,-50%);z-index:3;pointer-events:none}
+.peep .gap{position:absolute;left:-10%;right:-10%;top:-30%;bottom:-20%;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.95),rgba(0,0,0,.6) 60%,transparent)}
+.peep .eye{position:absolute;top:-34%;width:36%;aspect-ratio:1;border-radius:50%;overflow:hidden;filter:brightness(.72) saturate(1.1);
+  background:radial-gradient(circle at 40% 30%,#efe3b0,#cdb877 40%,#9a6a3a 70%,#5a1a10 92%);box-shadow:inset 0 -3px 5px rgba(0,0,0,.7),inset 0 0 0 2px rgba(120,10,10,.55),0 0 10px rgba(200,40,20,.25);transition:transform .35s cubic-bezier(.5,0,.2,1)}
+.peep .eye::before{content:"";position:absolute;inset:0;border-radius:50%;background:repeating-conic-gradient(from 10deg,transparent 0 22deg,rgba(190,10,10,.6) 23deg 25deg,transparent 25deg 40deg);-webkit-mask:radial-gradient(circle,transparent 42%,#000 70%);mask:radial-gradient(circle,transparent 42%,#000 70%)}
+.peep .eye.l{left:8%}.peep .eye.r{right:8%}
+.peep .eye i{position:absolute;left:50%;top:50%;width:46%;height:46%;margin:-23% 0 0 -23%;border-radius:50%;background:radial-gradient(ellipse 14% 44% at 50% 50%,#000 0 90%,transparent 100%),radial-gradient(circle at 45% 40%,#ffb030,#c23a08 45%,#4a0a02 72%,transparent 74%);transition:transform .12s linear}
+.peep .eye b{position:absolute;inset:0;background:#2a1d16;transform-origin:top;transform:scaleY(0);border-bottom:2px solid #120a07}
+.peep.blink .eye b{animation:blink .22s ease-in-out}
+@keyframes blink{50%{transform:scaleY(1)}}
+.peep.duck .eye{transform:translateY(-120%)}
+.peep .flap{position:absolute;left:-30%;right:-30%;top:-170%;height:170%;background-repeat:no-repeat}
+.fx{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.fx .fl{position:absolute;width:var(--s,3.2%);aspect-ratio:1;transform:translate(-50%,-55%);mix-blend-mode:screen;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(255,236,170,.95),rgba(255,170,70,.55) 35%,rgba(255,120,30,.18) 65%,transparent);animation:flk var(--d,1.3s) steps(9,jump-none) infinite;animation-delay:var(--dl,0s)}
+@keyframes flk{0%{opacity:.85;transform:translate(-50%,-55%) scale(1,1)}11%{opacity:.6;transform:translate(-52%,-57%) scale(.9,1.08)}22%{opacity:.95;transform:translate(-49%,-55%) scale(1.05,.95)}33%{opacity:.7;transform:translate(-51%,-56%) scale(.95,1.05)}44%{opacity:1;transform:translate(-50%,-54%) scale(1.08,1)}55%{opacity:.55;transform:translate(-48%,-57%) scale(.88,1.1)}66%{opacity:.9;transform:translate(-50%,-55%) scale(1,1)}77%{opacity:.75;transform:translate(-52%,-55%) scale(.96,1.04)}88%{opacity:1;transform:translate(-50%,-56%) scale(1.04,.98)}100%{opacity:.85;transform:translate(-50%,-55%) scale(1,1)}}
+.fx .halo{position:absolute;transform:translate(-50%,-50%);border-radius:50%;mix-blend-mode:screen;background:radial-gradient(closest-side,rgba(255,150,60,.32),rgba(255,110,30,.12) 55%,transparent);animation:hal 2.3s ease-in-out infinite alternate;animation-delay:var(--dl,0s)}
+@keyframes hal{0%{opacity:.55}20%{opacity:.9}35%{opacity:.6}60%{opacity:1}80%{opacity:.7}100%{opacity:.95}}
+.fx .fire{position:absolute;background-repeat:no-repeat;-webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 55%,#000 55%,transparent 100%);mask-image:radial-gradient(ellipse 50% 50% at 50% 55%,#000 55%,transparent 100%);filter:url(#heat);animation:fir .9s steps(6,jump-none) infinite}
+@keyframes fir{0%{filter:url(#heat) brightness(1)}20%{filter:url(#heat) brightness(1.25)}40%{filter:url(#heat) brightness(.9)}60%{filter:url(#heat) brightness(1.18)}80%{filter:url(#heat) brightness(.95)}100%{filter:url(#heat) brightness(1.1)}}
+.fx .bulb{position:absolute;width:var(--s,2.6%);aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%}
+.fx .bulb i{position:absolute;inset:0;border-radius:50%;mix-blend-mode:screen;background:radial-gradient(closest-side,var(--c),transparent);animation:bglow 4.2s ease-in-out infinite;animation-delay:var(--dl,0s)}
+.fx .bulb b{position:absolute;inset:32%;border-radius:50%;background:rgba(10,6,8,.75);filter:blur(1px);animation:bdim 4.2s ease-in-out infinite;animation-delay:var(--dl,0s)}
+@keyframes bglow{0%,100%{opacity:.15}50%{opacity:1}}
+@keyframes bdim{0%,100%{opacity:.85}50%{opacity:0}}
+.fx canvas{position:absolute;image-rendering:pixelated;opacity:.92;border-radius:8%/10%}
+.fx .dark{position:absolute;inset:0;background:#000;animation:lampdip 7s infinite}
+@keyframes lampdip{0%,40%,46%,100%{opacity:0}41%{opacity:.35}42%{opacity:.05}43%{opacity:.45}44%{opacity:.1}}
+@media (prefers-reduced-motion:reduce){.fx *{animation:none!important}}
 .hot{position:absolute;z-index:5;transform:translate(-50%,-50%);appearance:none;border:0;background:none;cursor:pointer;padding:0;display:grid;justify-items:center;gap:8px}
 .hot .ring{width:46px;height:46px;border-radius:50%;border:2px solid var(--glow,var(--candle));box-shadow:0 0 18px var(--glow,var(--candle)),inset 0 0 12px var(--glow,var(--candle));
   animation:pulse 2.2s ease-in-out infinite;position:relative}
@@ -274,8 +303,10 @@ button{font:inherit;color:inherit}
 <div class="viewport" id="vp">
   <div class="stage" id="stage">
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="heat" x="-10%" y="-20%" width="120%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="0.03 0.09" numOctaves="2" seed="3" result="n"><animate attributeName="baseFrequency" dur="2.6s" values="0.03 0.09;0.035 0.13;0.028 0.1;0.03 0.09" repeatCount="indefinite"/></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="9" xChannelSelector="R" yChannelSelector="G"><animate attributeName="scale" dur="1.3s" values="7;12;8;11;7" repeatCount="indefinite"/></feDisplacementMap></filter></svg>
     <section class="scene" id="s-exterior" data-crumb="The lake">
       <img class="bg" src="img/exterior.jpg?v=6" alt="A pressed-clay relief of a log cabin on a little island, lit windows and an open front door, pine trees, a red clay moon on a lavender sky" width="1344" height="768">
+      <div class="fx" id="fx-exterior" aria-hidden="true"></div>
       <div class="fog"></div>
       <div class="intro"><img src="img/title.png" alt="" width="720" height="198"><p>A cabin by the lake. The door's open.</p></div>
       <button class="hot ahead" style="left:49%;top:63%" data-go="inside" aria-label="Enter the cabin"><span class="ring"></span><span class="tag">Enter the cabin</span></button>
@@ -283,6 +314,7 @@ button{font:inherit;color:inherit}
 
     <section class="scene" id="s-inside" data-crumb="The cabin" data-back="exterior">
       <img class="bg" id="insideImg" src="img/inside.jpg?v=7" alt="Inside the clay log cabin, warm with candles and a fire: a candlelit archway on the left, a big clunky 90s TV hissing with static on a stand with a VCR, an archway strung with red and green lights on the right, and the back door open to the dock and lake" width="1344" height="768">
+      <div class="fx" id="fx-inside" aria-hidden="true"></div>
       <button class="secret" id="secret" style="left:44%;top:14%;width:12%;height:12%" aria-label="Antlers"></button>
       <button class="hot left" style="left:16%;top:50%" data-go="peddler" aria-label="Go left to the Peddler"><span class="ring"></span><span class="tag">The Peddler</span></button>
       <button class="hot" style="left:33.5%;top:50%;--glow:#ff9a4d" data-go="tv" aria-label="Go to the old TV"><span class="ring"></span><span class="tag">The TV</span></button>
@@ -292,6 +324,7 @@ button{font:inherit;color:inherit}
 
     <section class="scene" id="s-peddler" data-crumb="The Peddler" data-back="inside">
       <img class="bg" src="img/craps.jpg?v=4" alt="A dark private craps room sculpted in clay: the grinning three-eyed Peddler leans on a green felt craps table under a single hanging lamp, chained gift boxes in the shadows" width="1344" height="768">
+      <div class="fx" id="fx-peddler" aria-hidden="true"></div>
       <div class="dz" id="dz" aria-hidden="true"></div>
       <img class="hand" id="hand" src="img/arm-fist.png?v=5" alt="" width="640" height="677">
       <button class="hot" style="left:50%;top:62%" data-card="peddler" aria-label="Talk to the Peddler"><span class="ring"></span><span class="tag">Talk to him</span></button>
@@ -313,6 +346,7 @@ button{font:inherit;color:inherit}
 
     <section class="scene" id="s-tree" data-crumb="Nightmare Xmas tree" data-back="inside" style="--glow:#9be06f">
       <img class="bg" src="img/tree.jpg?v=6" alt="A layered clay Nightmare Christmas tree hung with skulls, eyeballs, padlocks and hooks beside a stone fireplace with stockings, snow falling past the window" width="1344" height="768">
+      <div class="fx" id="fx-tree" aria-hidden="true"></div>
       <div class="underlayer" id="under" aria-hidden="true"></div>
       <button class="hot" style="left:69%;top:76%;--glow:#9be06f" data-card="tree" aria-label="Look under the tree"><span class="ring"></span><span class="tag" id="treeTag">Under the tree</span></button>
     </section>
@@ -547,6 +581,54 @@ button{font:inherit;color:inherit}
     sc.addEventListener('pointermove',function(e){ if(e.pointerType!=='mouse') return; var r=sc.getBoundingClientRect(), nx=(e.clientX-r.left)/r.width-.5, ny=(e.clientY-r.top)/r.height-.5;
       sc.classList.add('peeking'); if(sc.classList.contains('close')) return; pb.style.transform='scale(1.3) translate('+(-4-nx*20).toFixed(2)+'%,'+(-14-ny*8).toFixed(2)+'%)' });
     sc.addEventListener('pointerleave',function(){ sc.classList.remove('peeking'); pb.style.transform='' });
+  })();
+  // ---- Ambient life: flickering candles, moving fire, breathing Christmas lights, live TV static ----
+  (function(){
+    var FX={
+      inside:{img:'img/inside.jpg?v=7',
+        candles:[[15.6,33,2.6],[17.8,33.5,2.4],[19.8,32,2.6],[15,51,3],[13,56.5,2.6],[14,57,2.4],[61.8,43,2.4],[64.6,42.5,2.4],[66.1,42.8,2.4],[68,43.5,2.4],[80.9,33,2.4]],
+        halos:[[17,40,16,24],[14.5,55,12,16],[65,47,12,14],[81,34,8,10]],
+        fire:[60.5,56,9,14.5], fireHalo:[65,66,24,22],
+        tv:[29.9,50.2,8.6,11.4],
+        bulbs:[[86.7,26,'#ff4a3a'],[78,30,'#ff4a3a'],[83.8,31.8,'#ff4a3a'],[81.8,33.5,'#ff4a3a'],[76.1,49.9,'#ff4a3a'],[75.3,70.8,'#ff4a3a'],[86.5,51.5,'#ff4a3a'],[80.2,32.4,'#3cff6a'],[84.4,34.6,'#3cff6a'],[82.4,35.6,'#3cff6a'],[78,47.3,'#3cff6a'],[77.2,54.6,'#3cff6a'],[77,72,'#3cff6a'],[85.4,38.4,'#3cff6a'],[75.6,43.6,'#ffd84a'],[76.2,60.8,'#ffd84a'],[78.3,34,'#ffd84a']]},
+      tree:{img:'img/tree.jpg?v=6',
+        candles:[[64.5,29.5,3.4],[66.8,31,2.8],[84,33,3],[87.4,30,3.4]],
+        halos:[[66,33,12,16],[86,33,12,16]],
+        fire:[70,64,11.5,15], fireHalo:[76,74,26,26]},
+      peddler:{lamp:true,halos:[[49,21,16,12],[49,60,46,40]]},
+      exterior:{halos:[[54.8,57,10,10],[48,57,6,8],[56,57,5,7],[63.4,57,4,6],[48.4,34,4,6]]}
+    };
+    function el(p,cls,css){ var d=document.createElement('div'); d.className=cls; for(var k in css) d.style.setProperty(k,css[k]); p.appendChild(d); return d }
+    function rnd(a,b){ return (a+Math.random()*(b-a)).toFixed(2) }
+    Object.keys(FX).forEach(function(k){
+      var c=FX[k], L=$('fx-'+k); if(!L) return;
+      (c.halos||[]).forEach(function(h){ el(L,'halo',{left:h[0]+'%',top:h[1]+'%',width:h[2]+'%',height:h[3]+'%','--dl':'-'+rnd(0,2)+'s'}) });
+      if(c.fire){ var f=c.fire; el(L,'halo',{left:c.fireHalo[0]+'%',top:c.fireHalo[1]+'%',width:c.fireHalo[2]+'%',height:c.fireHalo[3]+'%','animation-duration':'.7s'});
+        el(L,'fire',{left:f[0]+'%',top:f[1]+'%',width:f[2]+'%',height:f[3]+'%','background-image':'url('+c.img+')','background-size':(10000/f[2]).toFixed(3)+'% '+(10000/f[3]).toFixed(3)+'%','background-position':(f[0]/(100-f[2])*100).toFixed(3)+'% '+(f[1]/(100-f[3])*100).toFixed(3)+'%'}) }
+      (c.candles||[]).forEach(function(q){ el(L,'fl',{left:q[0]+'%',top:q[1]+'%','--s':q[2]+'%','--d':rnd(.9,1.6)+'s','--dl':'-'+rnd(0,1.5)+'s'}) });
+      (c.bulbs||[]).forEach(function(b){ var d=el(L,'bulb',{left:b[0]+'%',top:b[1]+'%','--c':b[2],'--dl':'-'+rnd(0,4.2)+'s'}); d.appendChild(document.createElement('b')); d.appendChild(document.createElement('i')) });
+      if(c.lamp) el(L,'dark',{});
+      if(c.tv){ var t=c.tv, cv=document.createElement('canvas'); cv.width=72; cv.height=54; cv.style.left=t[0]+'%'; cv.style.top=t[1]+'%'; cv.style.width=t[2]+'%'; cv.style.height=t[3]+'%'; L.appendChild(cv);
+        var cx=cv.getContext('2d'), im=cx.createImageData(72,54);
+        (function n(){ if(cur==='inside' && !matchMedia('(prefers-reduced-motion: reduce)').matches){ var d=im.data; for(var i=0;i<d.length;i+=4){ var v=60+Math.random()*195|0; d[i]=d[i+1]=d[i+2]=v; d[i+3]=255 } cx.putImageData(im,0,0) } setTimeout(n,70) })(); }
+    });
+  })();
+  // ---- Something under the rug watches you ----
+  (function(){
+    var L=$('fx-inside'); if(!L) return;
+    var P=document.createElement('div'); P.className='peep';
+    P.innerHTML='<div class="gap"></div><div class="eye l"><i></i><b></b></div><div class="eye r"><i></i><b></b></div><div class="flap"></div>';
+    L.appendChild(P);
+    // the rug fringe sits over the top of the eyes: a slice of the room image, cut to line up exactly
+    var f=P.querySelector('.flap'), x0=57-7.6*1.6/2, w=7.6*1.6, y0=92.6-2.5-8.5, h=8.5;
+    f.style.backgroundImage='url(img/inside.jpg?v=7)'; f.style.backgroundSize=(10000/w).toFixed(3)+'% '+(10000/h).toFixed(3)+'%'; f.style.backgroundPosition=(x0/(100-w)*100).toFixed(3)+'% '+(y0/(100-h)*100).toFixed(3)+'%';
+    var eyes=[].slice.call(P.querySelectorAll('.eye')), tx=null, ty=null, last=Date.now();
+    function look(x,y){ var near=false; eyes.forEach(function(e){ var r=e.getBoundingClientRect(), cx=r.left+r.width/2, cy=r.top+r.height/2, dx=x-cx, dy=y-cy, d=Math.hypot(dx,dy)||1, m=Math.min(1,d/180)*r.width*.24;
+      e.querySelector('i').style.transform='translate('+(dx/d*m).toFixed(1)+'px,'+(dy/d*m).toFixed(1)+'px)'; if(d<r.width*2.2) near=true }); P.classList.toggle('duck',near) }
+    window.addEventListener('pointermove',function(e){ if(cur!=='inside') return; last=Date.now(); look(e.clientX,e.clientY) },{passive:true});
+    window.addEventListener('pointerdown',function(e){ if(cur!=='inside') return; last=Date.now(); look(e.clientX,e.clientY) },{passive:true});
+    setInterval(function(){ if(cur!=='inside') return; if(Math.random()<.35){ P.classList.remove('blink'); void P.offsetWidth; P.classList.add('blink') }
+      if(Date.now()-last>3000){ var r=P.getBoundingClientRect(); look(r.left+r.width/2+(Math.random()-.5)*600, r.top-Math.random()*400) } },1600);
   })();
   function LAKE_OPEN_EARLY(){ return new Date()>=new Date(2027,0,2) }
   // ---- Roll the Bones: a clay hand throws two 3D clay dice that land on the real roll ----
