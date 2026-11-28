@@ -750,7 +750,7 @@ button{font:inherit;color:inherit}
   // ---- TV set: power, channel up/down; channel 13 carries the quiz ----
   var TVSET=(function(){
     var CH={
-      2:['ch/2.jpg','<b>The Bone Boutique</b> &middot; genuine-ish bone necklace &middot; 3 easy payments of $13.13 &middot; call 1-800-555-0113'],
+      9:['ch/2.jpg','<b>The Bone Boutique</b> &middot; genuine-ish bone necklace &middot; 3 easy payments of $13.13 &middot; call 1-800-555-0113'],
       4:['ch/4.jpg','<b>Cutlery of the Damned</b> &middot; it cuts a can. it cuts anything. &middot; only $19.99'],
       5:['ch/5.jpg','<b>Knee-Crusher 90</b> &middot; tone those thighs &middot; results guaranteed or your knees back'],
       6:['ch/6.jpg','<b>Roast-O-Rama 3000</b> &middot; don&rsquo;t ask what&rsquo;s on the spit &middot; call now'],
@@ -771,10 +771,10 @@ button{font:inherit;color:inherit}
       flash=setTimeout(function(){
         var c=CH[ch];
         if(c){ $('chImg').src='img/'+c[0]+'?v=7'; show($('chImg'),true); $('chLower').innerHTML=c[1]; show($('chLower'),true) }
-        else if(ch===3) show($('blue'),true);
+        else if(ch===2||ch===3){ $('blue').firstChild.nodeValue='VIDEO '+(ch===3?1:2); show($('blue'),true) }
         else if(ch===12) show($('bars'),true);
         else if(ch===13) show($('ch13'),true);
-        if(c||ch===3||ch===12||ch===13){ clearTimeout(noiseRaf); show(cv,false) }
+        if(c||ch===2||ch===3||ch===12||ch===13){ clearTimeout(noiseRaf); show(cv,false) }
         setTimeout(function(){ if($('osd').textContent==='CH '+(ch<10?'0':'')+ch) show($('osd'),false) },2200);
       },260);
     }
