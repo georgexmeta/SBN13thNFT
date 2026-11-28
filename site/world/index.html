@@ -86,6 +86,10 @@ button{font:inherit;color:inherit}
 #s-tree.trimming .trim .hook:not(.full),#s-tree.trimming .trim .crate,#s-tree.trimming .trimhud{display:flex}
 #s-tree:not(.trimming) .trim .tray{display:none}
 #s-tree.trimming.tlock .trim .hook,#s-tree.trimming.tlock .trim .crate,#s-tree.trimming.twon .trim .hook,#s-tree.trimming.twon .trim .crate{display:none}
+/* George: the TV starts off; POWER first, then channels and the VCR work */
+#s-tv.tvoff #tvHot{display:none!important}
+#s-tv.tvoff #pwr i{animation:pwrpulse 1.6s ease-in-out infinite}
+@keyframes pwrpulse{50%{box-shadow:0 0 0 3px #ff6b5e,0 0 26px #ff6b5e}}
 /* ---------- hotspots ---------- */
 .peekbg{position:absolute;inset:0;transform:scale(1.3) translate(-4%,-14%);transition:transform 1.1s cubic-bezier(.5,0,.2,1);will-change:transform}
 .boards{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:4;pointer-events:none;filter:brightness(.85)}
@@ -96,21 +100,19 @@ button{font:inherit;color:inherit}
 #signSpot{border-radius:6%;transition:box-shadow .8s,background .8s}
 #signSpot.found{cursor:pointer;background:radial-gradient(closest-side,rgba(190,215,255,.16),transparent);box-shadow:0 0 0 2px rgba(190,215,255,.0),0 0 40px 8px rgba(160,195,255,.28);animation:signglow 2.4s ease-in-out infinite alternate}
 @keyframes signglow{from{box-shadow:0 0 26px 4px rgba(160,195,255,.16)}to{box-shadow:0 0 46px 10px rgba(160,195,255,.34)}}
-.peep{position:absolute;left:52%;top:76%;width:5.4%;height:3.65%;transform:translate(-50%,-50%);z-index:3;pointer-events:none}
-.peepgap{position:absolute;left:52%;top:75.6%;width:8.5%;height:2.6%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(5,2,2,.92),rgba(5,2,2,.55) 60%,transparent);z-index:3;pointer-events:none}
-.peepflap{position:absolute;z-index:3;pointer-events:none;background-repeat:no-repeat}
-.peep .eye{position:absolute;top:0;width:40%;aspect-ratio:1;border-radius:50%;overflow:hidden;transition:transform .7s cubic-bezier(.45,0,.25,1);
-  background:radial-gradient(circle at 38% 30%,#fbf2e2 0,#e4d3b8 38%,#b59a78 78%,#6d5640 100%);
-  box-shadow:inset 0 -4px 5px rgba(40,20,10,.45),inset 0 5px 0 rgba(40,24,16,.85),0 2px 4px rgba(0,0,0,.6);filter:brightness(.82) saturate(1.05)}
-.peep .eye::before{content:"";position:absolute;inset:0;border-radius:50%;background:repeating-conic-gradient(from 10deg,transparent 0 24deg,rgba(150,20,15,.35) 25deg 26deg,transparent 26deg 42deg);-webkit-mask:radial-gradient(circle,transparent 46%,#000 75%);mask:radial-gradient(circle,transparent 46%,#000 75%)}
-.peep .eye::after{content:"";position:absolute;left:24%;top:20%;width:18%;height:12%;border-radius:50%;background:rgba(255,255,255,.7);filter:blur(.6px);z-index:2}
-.peep .eye.l{left:6%}.peep .eye.r{right:6%}
-.peep .eye i{position:absolute;left:50%;top:52%;width:50%;height:50%;margin:-25% 0 0 -25%;border-radius:50%;
-  background:radial-gradient(ellipse 13% 42% at 50% 50%,#0b0503 0 88%,transparent 100%),radial-gradient(circle at 42% 38%,#ffc45a,#d0650f 42%,#6a1c04 70%,#2b0b03 76%,transparent 78%);box-shadow:inset 0 2px 2px rgba(0,0,0,.4)}
-.peep .eye b{position:absolute;inset:0;background:linear-gradient(#4a3226,#2c1c15);transform-origin:top;transform:scaleY(0);border-bottom:2px solid #1a0f0a;z-index:3}
-.peep.blink .eye b{animation:blink .26s ease-in-out}
+/* Something under the rug (George 2026-11-28): the rug lifts where your pointer is and sculpted clay eyes peek out */
+.lift{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:3}
+.lift .crop{position:absolute;background-repeat:no-repeat}
+.lift .gapd{position:absolute;border-radius:50%;background:radial-gradient(closest-side,#050202 0 55%,rgba(5,2,2,.75) 75%,transparent)}
+.lift .rback{-webkit-mask-image:radial-gradient(ellipse 50% 100% at 50% 100%,#000 55%,transparent 100%);mask-image:radial-gradient(ellipse 50% 100% at 50% 100%,#000 55%,transparent 100%);filter:drop-shadow(0 5px 3px rgba(0,0,0,.75))}
+.lift .ceye{position:absolute;aspect-ratio:170/169}
+.lift .ceye img,.lift .ceye .ir,.lift .ceye .bl{position:absolute;inset:0;width:100%;height:100%}
+.lift .ceye .ir{-webkit-mask:url(img/eye-mask.png) center/100% 100% no-repeat;mask:url(img/eye-mask.png) center/100% 100% no-repeat}
+.lift .ceye .ir i{position:absolute;left:50%;top:50%;width:52%;aspect-ratio:110/112;translate:-50% -50%;background:url(img/eye-iris.webp?v=1) center/100% 100% no-repeat}
+.lift .ceye .bl{-webkit-mask:url(img/eye-mask.png) center/100% 100% no-repeat;mask:url(img/eye-mask.png) center/100% 100% no-repeat;background:linear-gradient(#5a4033,#3a2820 70%,#22150f);transform-origin:top;transform:scaleY(0)}
+.lift.blink .ceye .bl{animation:blink .28s ease-in-out}
+.lift .ceye.r{scale:-1 1}
 @keyframes blink{50%{transform:scaleY(1)}}
-.peep.duck .eye{transform:translateY(62%)}
 .fx{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
 .fx .fl{position:absolute;width:var(--s,3.2%);aspect-ratio:1;transform:translate(-50%,-55%);mix-blend-mode:screen;border-radius:50%;
   background:radial-gradient(closest-side,rgba(255,236,170,.95),rgba(255,170,70,.55) 35%,rgba(255,120,30,.18) 65%,transparent);animation:flk var(--d,1.3s) steps(9,jump-none) infinite;animation-delay:var(--dl,0s)}
@@ -403,7 +405,7 @@ button{font:inherit;color:inherit}
       <button class="hot" style="left:27%;top:84%;--glow:#9be06f" data-card="dice" aria-label="Roll the bones"><span class="ring"></span><span class="tag">Roll the bones</span></button>
     </section>
 
-    <section class="scene" id="s-tv" data-crumb="The TV" data-back="inside" style="--glow:#bcd3ff">
+    <section class="scene tvoff" id="s-tv" data-crumb="The TV" data-back="inside" style="--glow:#bcd3ff">
       <img class="bg" src="img/tv.jpg?v=8" alt="A big clunky 1990s TV sculpted in clay with rabbit-ear antennas, on a clay stand with a VCR and a stack of VHS tapes, against rolled clay logs" width="1344" height="768">
       <div class="tents" id="tents" aria-hidden="true"></div>
       <div class="screen idle off" id="screen"><video id="tvVid" playsinline preload="auto" loop muted src="media/vhs-intro.mp4?v=3"></video><img class="art" id="tvArt" alt=""><div class="thumb art" id="tvThumb"></div><div class="red"></div><div class="chan" id="chan"><canvas id="noise" width="160" height="120"></canvas><img id="chImg" alt=""><div class="bars" id="bars"></div><div class="blue" id="blue">VIDEO 1<small>Insert a tape</small></div><div class="ch13" id="ch13"><em>Channel 13 presents</em><strong>Late Night<br>Horror Quiz</strong><button type="button" id="qPlay">&#9654; Play</button></div><div class="lower" id="chLower"></div><div class="osd" id="osd">CH 03</div></div><div class="crt" id="crt"></div></div>
@@ -849,32 +851,68 @@ button{font:inherit;color:inherit}
       if(c.lamp) el(L,'dark',{});
       if(c.tv){ var t=c.tv, cv=document.createElement('canvas'); cv.width=72; cv.height=54; cv.style.left=t[0]+'%'; cv.style.top=t[1]+'%'; cv.style.width=t[2]+'%'; cv.style.height=t[3]+'%'; L.appendChild(cv);
         var cx=cv.getContext('2d'), im=cx.createImageData(72,54);
-        (function n(){ if(cur==='inside' && !matchMedia('(prefers-reduced-motion: reduce)').matches){ var d=im.data; for(var i=0;i<d.length;i+=4){ var v=60+Math.random()*195|0; d[i]=d[i+1]=d[i+2]=v; d[i+3]=255 } cx.putImageData(im,0,0) } setTimeout(n,70) })(); }
+        // George 2026-11-28: the living-room TV mirrors the big TV. Off (the default) is a dark screen; on shows the channel you left it on, static between stations, or the tape.
+        var RM=matchMedia('(prefers-reduced-motion: reduce)').matches, lastKey='';
+        function stat(){ var d=im.data; for(var i=0;i<d.length;i+=4){ var v=60+Math.random()*195|0; d[i]=d[i+1]=d[i+2]=v; d[i+3]=255 } cx.putImageData(im,0,0) }
+        function cover(src){ try{ var w=src.videoWidth||src.naturalWidth, h=src.videoHeight||src.naturalHeight; if(!w||!h) return false; var k=Math.max(72/w,54/h); cx.drawImage(src,(72-w*k)/2,(54-h*k)/2,w*k,h*k); return true }catch(e){ return false } }
+        function scan(){ cx.fillStyle='rgba(0,0,0,.18)'; for(var y=0;y<54;y+=2) cx.fillRect(0,y,72,1) }
+        (function n(){
+          if(cur==='inside'){
+            var S=(window.TVSET&&TVSET.state)?TVSET.state():{on:false,ch:3}, sc=$('screen'), key;
+            if(!S.on){ key='off'; if(lastKey!==key){ var g=cx.createRadialGradient(26,18,2,36,27,44); g.addColorStop(0,'#2a2c30'); g.addColorStop(1,'#060708'); cx.fillStyle=g; cx.fillRect(0,0,72,54) } }
+            else if(sc.classList.contains('playing')){ key='tape'; cx.fillStyle='#000'; cx.fillRect(0,0,72,54); if(!(sc.classList.contains('hit')&&cover($('tvArt')))) { if(!cover($('tvVid'))) stat() } scan() }
+            else if(S.img){ key='img'; if(!cover($('chImg'))) stat(); else scan() }
+            else if(S.ch===2||S.ch===3){ key='blue'+S.ch; if(lastKey!==key){ cx.fillStyle='#1d3fd1'; cx.fillRect(0,0,72,54); cx.fillStyle='#fff'; cx.font='bold 9px monospace'; cx.fillText('VIDEO '+(S.ch===3?1:2),8,30); scan() } }
+            else if(S.ch===12){ key='bars'; if(lastKey!==key){ ['#c0c0c0','#c0c000','#00c0c0','#00c000','#c000c0','#c00000','#0000c0'].forEach(function(c,i){ cx.fillStyle=c; cx.fillRect(i*72/7,0,72/7+1,54) }); scan() } }
+            else if(S.ch===13){ key='q'; if(lastKey!==key){ cx.fillStyle='#160a12'; cx.fillRect(0,0,72,54); cx.fillStyle='#ff3a2e'; cx.font='bold 16px serif'; cx.fillText('13',24,34); scan() } }
+            else { key='static'; if(!RM||lastKey!==key) stat() }
+            lastKey=key;
+          }
+          setTimeout(n,70) })(); }
     });
   })();
   // ---- Something under the rug watches you ----
   (function(){
     var L=$('fx-inside'); if(!L) return;
-    // George 2026-11-28: clay eyes peek over the far edge of the rug; the rug in front hides their lower half
-    var G=document.createElement('div'); G.className='peepgap'; L.appendChild(G);
-    var P=document.createElement('div'); P.className='peep';
-    P.innerHTML='<div class="eye l"><i></i><b></b></div><div class="eye r"><i></i><b></b></div>';
-    L.appendChild(P);
-    var f=document.createElement('div'); f.className='peepflap'; var x0=46, w=12, y0=76.35, h=6.5;
-    f.style.left=x0+'%'; f.style.top=y0+'%'; f.style.width=w+'%'; f.style.height=h+'%';
-    f.style.backgroundImage='url(img/inside.jpg?v=8)'; f.style.backgroundSize=(10000/w).toFixed(3)+'% '+(10000/h).toFixed(3)+'%'; f.style.backgroundPosition=(x0/(100-w)*100).toFixed(3)+'% '+(y0/(100-h)*100).toFixed(3)+'%';
-    L.appendChild(f);
-    var eyes=[].slice.call(P.querySelectorAll('.eye')), pupils=eyes.map(function(e){ return {el:e.querySelector('i'),x:0,y:0,tx:0,ty:0} }), last=0, near=false, raf=0;
-    function look(x,y){ var n=false; eyes.forEach(function(e,k){ var r=e.getBoundingClientRect(), cx=r.left+r.width/2, cy=r.top+r.height/2, dx=x-cx, dy=y-cy, d=Math.hypot(dx,dy)||1, m=Math.min(1,d/220)*r.width*.2;
-      pupils[k].tx=dx/d*m; pupils[k].ty=dy/d*m; if(d<r.width*2.6) n=true });
-      if(n!==near){ near=n; P.classList.toggle('duck',n) } }
-    function tick(){ raf=requestAnimationFrame(tick); if(cur!=='inside') return;
-      pupils.forEach(function(p){ p.x+=(p.tx-p.x)*.08; p.y+=(p.ty-p.y)*.08; p.el.style.transform='translate('+p.x.toFixed(2)+'px,'+p.y.toFixed(2)+'px)' }) }
-    raf=requestAnimationFrame(tick);
-    window.addEventListener('pointermove',function(e){ if(cur!=='inside') return; last=Date.now(); look(e.clientX,e.clientY) },{passive:true});
-    window.addEventListener('pointerdown',function(e){ if(cur!=='inside') return; last=Date.now(); look(e.clientX,e.clientY) },{passive:true});
-    setInterval(function(){ if(cur!=='inside') return; if(Math.random()<.3){ P.classList.remove('blink'); void P.offsetWidth; P.classList.add('blink') }
-      if(Date.now()-last>3500){ var r=P.getBoundingClientRect(); look(r.left+r.width/2+(Math.random()-.5)*500, r.top-60-Math.random()*300) } },2400);
+    // George 2026-11-28: wherever the pointer is over the rug, the rug lifts a little and clay eyes peek out from under it
+    var bgsrc='img/inside.jpg?v=8';
+    var Lf=document.createElement('div'); Lf.className='lift'; L.appendChild(Lf);
+    function mk(cls){ var d=document.createElement('div'); d.className=cls; Lf.appendChild(d); return d }
+    var gapd=mk('gapd'), eyesEl=[0,1].map(function(k){ var e=mk('ceye'+(k?' r':''));
+        e.innerHTML='<img src="img/eye-base.webp?v=1" alt=""><div class="ir"><i></i></div><img src="img/eye-lid.webp?v=1" alt=""><img src="img/eye-gloss.webp?v=1" alt=""><div class="bl"></div>'; return e }),
+      rfront=mk('crop rfront'), rback=mk('crop rback');
+    rfront.style.backgroundImage=rback.style.backgroundImage='url('+bgsrc+')';
+    function crop(el,x0,y0,w,h,dy){ // positions in scene %, background mapped exactly like the object-fit:cover room image
+      el.style.left=x0+'%'; el.style.top=(y0+(dy||0))+'%'; el.style.width=w+'%'; el.style.height=h+'%';
+      var k=Math.max(sw/1344,sh/768), dw=1344*k, dh=768*k, ox=(sw-dw)/2, oy=(sh-dh)/2;
+      el.style.backgroundSize=dw.toFixed(1)+'px '+dh.toFixed(1)+'px'; el.style.backgroundPosition=(ox-x0/100*sw).toFixed(1)+'px '+(oy-y0/100*sh).toFixed(1)+'px' }
+    // the rug: top edge at 76.4%, fringe at ~90%; keep the slit inside it
+    var RUG={x0:31,x1:71,y0:79.5,y1:88}, pos={x:51,y:84}, tgt={x:51,y:84}, lift=0, want=0, look={x:0,y:0}, pup={x:0,y:0}, last=0, idleT=0, sw=1, sh=1;
+    function onRug(px,py){ return px>=RUG.x0-3&&px<=RUG.x1+3&&py>=76.5&&py<=91 }
+    function rel(e){ var r=$('s-inside').getBoundingClientRect(); return {x:(e.clientX-r.left)/r.width*100, y:(e.clientY-r.top)/r.height*100} }
+    function point(e){ if(cur!=='inside') return; var p=rel(e); last=Date.now(); look=p;
+      if(onRug(p.x,p.y)){ tgt.x=Math.max(RUG.x0,Math.min(RUG.x1,p.x)); tgt.y=Math.max(RUG.y0,Math.min(RUG.y1,p.y+1.2)); want=1 } else want=0 }
+    window.addEventListener('pointermove',point,{passive:true}); window.addEventListener('pointerdown',point,{passive:true});
+    function frame(){ requestAnimationFrame(frame); if(cur!=='inside') return;
+      var R=$('s-inside').getBoundingClientRect(); if(R.width){ sw=R.width; sh=R.height }
+      var now=Date.now();
+      // nobody pointing at the rug for a while: it crawls somewhere and peeks on its own
+      if(now-last>5000){ if(now>idleT){ idleT=now+4200; if(want){ want=0 } else { tgt.x=RUG.x0+Math.random()*(RUG.x1-RUG.x0); tgt.y=RUG.y0+Math.random()*(RUG.y1-RUG.y0); want=1; look={x:20+Math.random()*60,y:30+Math.random()*30} } } }
+      var k=lift>.15?.05:.2; pos.x+=(tgt.x-pos.x)*k; pos.y+=(tgt.y-pos.y)*k;
+      lift+=(want-lift)*(want>lift?.05:.08);
+      var persp=.75+.25*(pos.y-RUG.y0)/(RUG.y1-RUG.y0), ew=3.1*persp, eh=ew*sw/sh*169/170, gap=1.9*persp*lift, w=ew*4.2;
+      // slit line at pos.y; back rug lifts by `gap`
+      crop(rfront,pos.x-w/2,pos.y,w,eh*1.2);
+      crop(rback,pos.x-w/2,pos.y-eh*1.6,w,eh*1.6,-gap);
+      gapd.style.left=(pos.x-w*.42)+'%'; gapd.style.top=(pos.y-gap-eh*.3)+'%'; gapd.style.width=(w*.84)+'%'; gapd.style.height=(gap+eh*.6)+'%'; gapd.style.opacity=Math.min(1,lift*1.6).toFixed(2);
+      var ey=pos.y-gap*.9-eh*.18+(1-lift)*eh*.6;
+      eyesEl.forEach(function(e,i){ e.style.left=(pos.x+(i?ew*.08:-ew*1.08))+'%'; e.style.top=ey+'%'; e.style.width=ew+'%'; e.style.opacity=lift>.04?1:0 });
+      var cx=pos.x, cy=ey+eh/2, dx=(look.x-cx)*sw/100, dy=(look.y-cy)*sh/100, d=Math.hypot(dx,dy)||1, m=Math.min(1,d/200)*.34;
+      pup.x+=(dx/d*m-pup.x)*.08; pup.y+=(dy/d*m-pup.y)*.08;
+      eyesEl.forEach(function(e,i){ e.querySelector('i').style.transform='translate('+((i?-1:1)*pup.x*100).toFixed(2)+'%,'+(pup.y*100).toFixed(2)+'%)' });
+    }
+    requestAnimationFrame(frame);
+    setInterval(function(){ if(cur==='inside'&&lift>.5&&Math.random()<.35){ Lf.classList.remove('blink'); void Lf.offsetWidth; Lf.classList.add('blink') } },1900);
   })();
   function LAKE_OPEN_EARLY(){ return new Date()>=new Date(2027,0,2) }
   // ---- Roll the Bones: a clay hand throws two 3D clay dice that land on the real roll ----
@@ -1104,14 +1142,14 @@ button{font:inherit;color:inherit}
     }
     function power(v){
       on=v; $('pwr').setAttribute('aria-pressed',on); scr.classList.remove('pon','poff'); void scr.offsetWidth;
-      scr.classList.toggle('off',!on); scr.classList.add(on?'pon':'poff'); tune();
+      scr.classList.toggle('off',!on); scr.classList.add(on?'pon':'poff'); $('s-tv').classList.toggle('tvoff',!on); if(!on&&openCard===$('c-tv')) closeCard(); tune();
     }
     $('pwr').addEventListener('click',function(e){ e.stopPropagation(); if(scr.classList.contains('playing')) return; power(!on) });
-    function step(d){ if(!on){ power(true); return } if(scr.classList.contains('playing')) return; ch=((ch-1+d+13)%13)+1; tune() }
+    function step(d){ if(!on){ K.toast('The TV is off. Press <b>POWER</b> first.'); return } if(scr.classList.contains('playing')) return; ch=((ch-1+d+13)%13)+1; tune() }
     $('chUp').addEventListener('click',function(e){ e.stopPropagation(); step(1) });
     $('chDn').addEventListener('click',function(e){ e.stopPropagation(); step(-1) });
     $('qPlay').addEventListener('click',function(e){ e.stopPropagation(); closeCard(); openCard=$('c-quiz'); openCard.classList.remove('off') });
-    return { on:function(){ if(!on){ on=true; $('pwr').setAttribute('aria-pressed',true) } scr.classList.remove('off'); tune() }, tune:tune };
+    return window.TVSET={ state:function(){ return {on:on,ch:ch,img:!!CH[ch]&&$('chImg').style.display==='block'} }, on:function(){ if(!on){ on=true; $('pwr').setAttribute('aria-pressed',true) } $('s-tv').classList.remove('tvoff'); scr.classList.remove('off'); tune() }, tune:tune };
   })();
   vid.play&&vid.play().catch(function(){});
   $('vform').addEventListener('submit',function(e){
