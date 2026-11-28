@@ -692,7 +692,8 @@ button{font:inherit;color:inherit}
       leave:function(){ sc.classList.remove('close','look'); pb.style.transform=''; bd.style.transform=''; if(raf){ cancelAnimationFrame(raf); raf=0 } }};
   })();
   // ---- Tentacles (George): 3 clay tentacles wriggle out of the log-wall cracks round the TV and reach for you ----
-  (function(){ var sc=$('s-tv'), L=$('tents'); if(!L) return;
+  // George 2026-11-28 07:13 UTC: tentacles removed from the TV room (code kept, switched off)
+  (function(){ var sc=$('s-tv'), L=$('tents'); if(L) L.remove(); return;
     var still=matchMedia('(prefers-reduced-motion:reduce)').matches, N=12;
     // base point in the crack (% of scene), lean angle, height (% of scene height), flip, rhythm
     var DEF=[{x:23.4,y:50,a:-52,h:33,f:0,p:0,per:14},{x:77.4,y:50,a:40,h:34,f:1,p:5.2,per:16},{x:11.2,y:53,a:-18,h:28,f:0,p:9.5,per:12.5}];
