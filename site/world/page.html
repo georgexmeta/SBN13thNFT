@@ -4,7 +4,7 @@
 <meta name="description" content="Walk into the Claysons cabin by the lake: the Melding Peddler, the Nightmare Xmas tree and the dock.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;700;800&family=Permanent+Marker&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Fredoka:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;700;800&family=Permanent+Marker&display=swap">
 <style>
 /* Layout: a point-and-click clay diorama. One 16:9 stage per room, glowing hotspots lead between rooms, story cards slide up from the floor. Single dark look by choice. */
 :root{
@@ -13,6 +13,7 @@
   --display:"Anton","Impact","Arial Narrow Bold",sans-serif;
   --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --clay:"Fredoka","Baloo 2","Arial Rounded MT Bold",system-ui,sans-serif;
   --marker:"Permanent Marker","Comic Sans MS","Bradley Hand",cursive;
   color-scheme:dark;
 }
@@ -316,6 +317,42 @@ button{font:inherit;color:inherit}
 .hint{position:fixed;z-index:10;left:50%;top:calc(58px + env(safe-area-inset-top,0px));transform:translateX(-50%);font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ash);background:rgba(5,4,10,.7);padding:5px 10px;border-radius:3px;pointer-events:none}
 @media (min-width:900px) and (min-aspect-ratio:4/3){.hint{display:none}}
 @media (prefers-reduced-motion:reduce){.scene,.scene.on{transition:opacity .3s}.scene.zoom{transform:none}.hot .ring,.fog,.peekbg{animation:none!important}}
+
+/* ---------- Clay UI (George 2026-11-28): puffy hand-rolled plasticine buttons, pills and headings ---------- */
+.btn,.back,.hot .tag,.kpill,.toast,.hint,.crumb,.clock,.tvbtn button span,.trimhud,.qz .opts button,.qz .lvl span,.row input{
+  font-family:var(--clay)!important;font-weight:600;letter-spacing:.04em}
+.btn,.back,.hot .tag,.kpill,.tvbtn button span,.clock,.hint,.qz .lvl span{
+  border:0!important;border-radius:999px!important;color:var(--bone);
+  background:linear-gradient(180deg,#5a3e33 0%,#3a2620 55%,#2a1a15 100%)!important;
+  box-shadow:inset 0 2px 1px rgba(255,236,214,.28),inset 0 -4px 3px rgba(0,0,0,.45),0 4px 0 #170d0a,0 8px 14px rgba(0,0,0,.55)!important;
+  text-shadow:0 2px 0 rgba(0,0,0,.45)}
+.btn,.back{padding:11px 20px 13px!important;font-size:13px!important;transition:transform .12s,box-shadow .12s,filter .2s}
+.btn:hover,.back:hover{filter:brightness(1.15)}
+.btn:active,.back:active{transform:translateY(3px);box-shadow:inset 0 2px 1px rgba(255,236,214,.22),inset 0 -2px 2px rgba(0,0,0,.45),0 1px 0 #170d0a,0 3px 6px rgba(0,0,0,.5)!important}
+.btn.red{background:linear-gradient(180deg,#ff5a4c 0%,#d4161a 50%,#8f0b0f 100%)!important;box-shadow:inset 0 2px 1px rgba(255,220,210,.5),inset 0 -4px 3px rgba(60,0,0,.5),0 4px 0 #4a0507,0 8px 14px rgba(0,0,0,.55)!important;color:#fff}
+.btn.green{background:linear-gradient(180deg,#8fd56a 0%,#4f9a35 55%,#2d6420 100%)!important;box-shadow:inset 0 2px 1px rgba(230,255,210,.5),inset 0 -4px 3px rgba(0,40,0,.45),0 4px 0 #173511,0 8px 14px rgba(0,0,0,.55)!important;color:#0f2209;text-shadow:0 1px 0 rgba(255,255,255,.3)}
+.hot .tag{padding:7px 14px 9px!important;font-size:13px!important;text-transform:none!important}
+.tvbtn button span{padding:4px 10px 5px!important;font-size:11px!important}
+.kpill{padding:7px 14px 9px!important}
+.clock{border-radius:16px!important;padding:8px 14px!important}
+.toast{border-radius:22px!important;border:0!important;background:linear-gradient(180deg,#4d352b,#2a1a15)!important;box-shadow:inset 0 2px 1px rgba(255,236,214,.25),inset 0 -5px 4px rgba(0,0,0,.45),0 6px 0 #170d0a,0 14px 24px rgba(0,0,0,.6)!important;font-family:var(--clay)!important;font-weight:500;letter-spacing:.02em}
+.toast.bad{background:linear-gradient(180deg,#7a1f1a,#3d0c0a)!important}
+.card{border-radius:26px!important;border:0!important;background:linear-gradient(180deg,#3d2a23 0%,#24170f 100%)!important;
+  box-shadow:inset 0 3px 2px rgba(255,236,214,.18),inset 0 -8px 10px rgba(0,0,0,.45),inset 0 0 0 3px rgba(0,0,0,.25),0 8px 0 #120a07,0 22px 40px rgba(0,0,0,.7)!important}
+.card h2{font-family:var(--clay)!important;font-weight:700!important;text-transform:none!important;letter-spacing:0!important;line-height:1.05!important;color:#f3e6d4;
+  text-shadow:0 1px 0 #d9c6ad,0 2px 0 #bfa98d,0 3px 0 #a08a6f,0 4px 0 #806b53,0 6px 4px rgba(0,0,0,.45),0 10px 14px rgba(0,0,0,.45)}
+.card .eyebrow{font-family:var(--clay)!important;font-weight:700!important;letter-spacing:.12em!important}
+.card p{color:#cdbfb2!important}
+.row input{border-radius:999px!important;border:0!important;background:#140c09!important;box-shadow:inset 0 3px 6px rgba(0,0,0,.7),inset 0 -1px 0 rgba(255,236,214,.12)!important;padding:12px 16px!important}
+.qz .opts button{border:0!important;border-radius:18px!important;background:linear-gradient(180deg,#4a3329,#2c1c16)!important;box-shadow:inset 0 2px 1px rgba(255,236,214,.22),inset 0 -4px 3px rgba(0,0,0,.45),0 4px 0 #170d0a,0 8px 12px rgba(0,0,0,.5)!important;font-weight:500!important}
+.qz .opts button.ok{background:linear-gradient(180deg,#7fd15a,#3f8a2a)!important;color:#0d1f08!important}
+.qz .opts button.no{background:linear-gradient(180deg,#b3161b,#5c070b)!important;color:#ffe3df!important}
+.qz .lvl span{padding:4px 10px 5px!important;color:#9c8d84}
+.qz .lvl span.on{background:linear-gradient(180deg,#ffe08a,#d9a63a)!important;color:#2a1a0a!important;text-shadow:none}
+.qz .streak i,.qz .timer{border-radius:999px!important;box-shadow:inset 0 2px 3px rgba(0,0,0,.6)}
+.trimhud{border-radius:20px!important;border:0!important;background:linear-gradient(180deg,#3d2a23,#22150f)!important;box-shadow:inset 0 2px 1px rgba(255,236,214,.2),inset 0 -5px 4px rgba(0,0,0,.45),0 5px 0 #120a07,0 12px 20px rgba(0,0,0,.6)!important;font-weight:500}
+.crumb{font-size:13px!important;letter-spacing:.1em!important;color:#d8c7b5!important;text-shadow:0 2px 0 rgba(0,0,0,.6)}
+.hot .ring{box-shadow:0 0 18px var(--glow,var(--candle)),inset 0 0 12px var(--glow,var(--candle)),0 4px 8px rgba(0,0,0,.5)}
 </style>
 
 <div class="bar">
@@ -332,7 +369,7 @@ button{font:inherit;color:inherit}
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="heat" x="-10%" y="-20%" width="120%" height="140%"><feTurbulence type="fractalNoise" baseFrequency="0.03 0.09" numOctaves="2" seed="3" result="n"><animate attributeName="baseFrequency" dur="2.6s" values="0.03 0.09;0.035 0.13;0.028 0.1;0.03 0.09" repeatCount="indefinite"/></feTurbulence><feDisplacementMap in="SourceGraphic" in2="n" scale="9" xChannelSelector="R" yChannelSelector="G"><animate attributeName="scale" dur="1.3s" values="7;12;8;11;7" repeatCount="indefinite"/></feDisplacementMap></filter></svg>
     <section class="scene" id="s-exterior" data-crumb="The lake">
-      <img class="bg" src="img/exterior.jpg?v=6" alt="A pressed-clay relief of a log cabin on a little island, lit windows and an open front door, pine trees, a red clay moon on a lavender sky" width="1344" height="768">
+      <img class="bg" src="img/exterior.jpg?v=7" alt="A pressed-clay relief of a log cabin on a little island, lit windows and an open front door, pine trees, a red clay moon on a lavender sky" width="1344" height="768">
       <div class="fx" id="fx-exterior" aria-hidden="true"></div>
       <div class="fog"></div>
       <div class="intro"><img src="img/title.png" alt="" width="720" height="198"><p>A cabin by the lake. The door's open.</p></div>
@@ -340,7 +377,7 @@ button{font:inherit;color:inherit}
     </section>
 
     <section class="scene" id="s-inside" data-crumb="The cabin" data-back="exterior">
-      <img class="bg" id="insideImg" src="img/inside.jpg?v=7" alt="Inside the clay log cabin, warm with candles and a fire: a candlelit archway on the left, a big clunky 90s TV hissing with static on a stand with a VCR, an archway strung with red and green lights on the right, and the back door open to the dock and lake" width="1344" height="768">
+      <img class="bg" id="insideImg" src="img/inside.jpg?v=8" alt="Inside the clay log cabin, warm with candles and a fire: a candlelit archway on the left, a big clunky 90s TV hissing with static on a stand with a VCR, an archway strung with red and green lights on the right, and the back door open to the dock and lake" width="1344" height="768">
       <div class="fx" id="fx-inside" aria-hidden="true"></div>
       <button class="secret" id="secret" style="left:44%;top:14%;width:12%;height:12%" aria-label="Antlers"></button>
       <button class="hot left" style="left:16%;top:50%" data-go="peddler" aria-label="Go left to the Peddler"><span class="ring"></span><span class="tag">The Peddler</span></button>
@@ -350,7 +387,7 @@ button{font:inherit;color:inherit}
     </section>
 
     <section class="scene" id="s-peddler" data-crumb="The Peddler" data-back="inside">
-      <img class="bg" src="img/craps.jpg?v=4" alt="A dark private craps room sculpted in clay: the grinning three-eyed Peddler leans on a green felt craps table under a single hanging lamp, chained gift boxes in the shadows" width="1344" height="768">
+      <img class="bg" src="img/craps.jpg?v=5" alt="A dark private craps room sculpted in clay: the grinning three-eyed Peddler leans on a green felt craps table under a single hanging lamp, chained gift boxes in the shadows" width="1344" height="768">
       <div class="fx" id="fx-peddler" aria-hidden="true"></div>
       <div class="dz" id="dz" aria-hidden="true"></div>
       <img class="hand" id="hand" src="img/arm-fist.png?v=5" alt="" width="640" height="677">
@@ -359,7 +396,7 @@ button{font:inherit;color:inherit}
     </section>
 
     <section class="scene" id="s-tv" data-crumb="The TV" data-back="inside" style="--glow:#bcd3ff">
-      <img class="bg" src="img/tv.jpg?v=6" alt="A big clunky 1990s TV sculpted in clay with rabbit-ear antennas, on a clay stand with a VCR and a stack of VHS tapes, against rolled clay logs" width="1344" height="768">
+      <img class="bg" src="img/tv.jpg?v=7" alt="A big clunky 1990s TV sculpted in clay with rabbit-ear antennas, on a clay stand with a VCR and a stack of VHS tapes, against rolled clay logs" width="1344" height="768">
       <div class="tents" id="tents" aria-hidden="true"></div>
       <div class="screen idle off" id="screen"><video id="tvVid" playsinline preload="auto" loop muted src="media/vhs-intro.mp4?v=3"></video><img class="art" id="tvArt" alt=""><div class="thumb art" id="tvThumb"></div><div class="red"></div><div class="chan" id="chan"><canvas id="noise" width="160" height="120"></canvas><img id="chImg" alt=""><div class="bars" id="bars"></div><div class="blue" id="blue">VIDEO 1<small>Insert a tape</small></div><div class="ch13" id="ch13"><em>Channel 13 presents</em><strong>Late Night<br>Horror Quiz</strong><button type="button" id="qPlay">&#9654; Play</button></div><div class="lower" id="chLower"></div><div class="osd" id="osd">CH 03</div></div><div class="crt" id="crt"></div></div>
       <div class="tape" id="tape"><span class="lbl"><i class="art" id="tapeArt"></i><b id="tapeLbl">#1</b></span></div>
@@ -373,7 +410,7 @@ button{font:inherit;color:inherit}
     </section>
 
     <section class="scene" id="s-tree" data-crumb="Nightmare Xmas tree" data-back="inside" style="--glow:#9be06f">
-      <img class="bg" src="img/tree.jpg?v=6" alt="A layered clay Nightmare Christmas tree hung with skulls, eyeballs, padlocks and hooks beside a stone fireplace with stockings, snow falling past the window" width="1344" height="768">
+      <img class="bg" src="img/tree.jpg?v=7" alt="A layered clay Nightmare Christmas tree hung with skulls, eyeballs, padlocks and hooks beside a stone fireplace with stockings, snow falling past the window" width="1344" height="768">
       <div class="fx" id="fx-tree" aria-hidden="true"></div>
       <div class="underlayer" id="under" aria-hidden="true"></div>
       <div class="trim" id="trim" aria-hidden="true"><div class="crate"></div></div>
@@ -384,7 +421,7 @@ button{font:inherit;color:inherit}
 
     <section class="scene" id="s-dock" data-crumb="The dock" data-back="inside">
       <div class="peekbg" id="peekbg">
-        <img class="bg" id="dockImg" src="img/dock-night.jpg?v=6" alt="Peeking through the boarded, hacked-up back door at the layered clay lake view from the dock: stacked mountains, puffy clay clouds, the dock chained shut with a padlock and a clay sign reading LAKE CLOSED, NO UNSUPERVISED ACTIVITY ALLOWED" width="1344" height="768">
+        <img class="bg" id="dockImg" src="img/dock-night.jpg?v=7" alt="Peeking through the boarded, hacked-up back door at the layered clay lake view from the dock: stacked mountains, puffy clay clouds, the dock chained shut with a padlock and a clay sign reading LAKE CLOSED, NO UNSUPERVISED ACTIVITY ALLOWED" width="1344" height="768">
         <button class="secret" id="signSpot" style="left:62.5%;top:65.5%;width:21.5%;height:23.5%" aria-label="Read the sign"></button>
         <button class="secret" id="padlock" style="left:44%;top:82%;width:11%;height:16%;cursor:pointer" aria-label="The padlock"></button>
         <div class="fog"></div>
@@ -779,13 +816,13 @@ button{font:inherit;color:inherit}
   // ---- Ambient life: flickering candles, moving fire, breathing Christmas lights, live TV static ----
   (function(){
     var FX={
-      inside:{img:'img/inside.jpg?v=7',
+      inside:{img:'img/inside.jpg?v=8',
         candles:[[15.6,33,2.6],[17.8,33.5,2.4],[19.8,32,2.6],[15,51,3],[13,56.5,2.6],[14,57,2.4],[61.8,43,2.4],[64.6,42.5,2.4],[66.1,42.8,2.4],[68,43.5,2.4],[80.9,33,2.4]],
         halos:[[17,40,16,24],[14.5,55,12,16],[65,47,12,14],[81,34,8,10]],
         fire:[60.5,56,9,14.5], fireHalo:[65,66,24,22],
         tv:[29.9,50.2,8.6,11.4],
         bulbs:[[86.7,26,'#ff4a3a'],[78,30,'#ff4a3a'],[83.8,31.8,'#ff4a3a'],[81.8,33.5,'#ff4a3a'],[76.1,49.9,'#ff4a3a'],[75.3,70.8,'#ff4a3a'],[86.5,51.5,'#ff4a3a'],[80.2,32.4,'#3cff6a'],[84.4,34.6,'#3cff6a'],[82.4,35.6,'#3cff6a'],[78,47.3,'#3cff6a'],[77.2,54.6,'#3cff6a'],[77,72,'#3cff6a'],[85.4,38.4,'#3cff6a'],[75.6,43.6,'#ffd84a'],[76.2,60.8,'#ffd84a'],[78.3,34,'#ffd84a']]},
-      tree:{img:'img/tree.jpg?v=6',
+      tree:{img:'img/tree.jpg?v=7',
         candles:[[64.5,29.5,3.4],[66.8,31,2.8],[84,33,3],[87.4,30,3.4]],
         halos:[[66,33,12,16],[86,33,12,16]],
         fire:[70,64,11.5,15], fireHalo:[76,74,26,26]},
@@ -815,7 +852,7 @@ button{font:inherit;color:inherit}
     L.appendChild(P);
     // the rug fringe sits over the top of the eyes: a slice of the room image, cut to line up exactly
     var f=P.querySelector('.flap'), x0=57-7.6*1.6/2, w=7.6*1.6, y0=92.6-2.5-8.5, h=8.5;
-    f.style.backgroundImage='url(img/inside.jpg?v=7)'; f.style.backgroundSize=(10000/w).toFixed(3)+'% '+(10000/h).toFixed(3)+'%'; f.style.backgroundPosition=(x0/(100-w)*100).toFixed(3)+'% '+(y0/(100-h)*100).toFixed(3)+'%';
+    f.style.backgroundImage='url(img/inside.jpg?v=8)'; f.style.backgroundSize=(10000/w).toFixed(3)+'% '+(10000/h).toFixed(3)+'%'; f.style.backgroundPosition=(x0/(100-w)*100).toFixed(3)+'% '+(y0/(100-h)*100).toFixed(3)+'%';
     var eyes=[].slice.call(P.querySelectorAll('.eye')), tx=null, ty=null, last=Date.now();
     function look(x,y){ var near=false; eyes.forEach(function(e){ var r=e.getBoundingClientRect(), cx=r.left+r.width/2, cy=r.top+r.height/2, dx=x-cx, dy=y-cy, d=Math.hypot(dx,dy)||1, m=Math.min(1,d/180)*r.width*.24;
       e.querySelector('i').style.transform='translate('+(dx/d*m).toFixed(1)+'px,'+(dy/d*m).toFixed(1)+'px)'; if(d<r.width*2.2) near=true }); P.classList.toggle('duck',near) }
@@ -1112,7 +1149,7 @@ button{font:inherit;color:inherit}
   // After the holidays (George): the sign comes down and the Clayson sinks back to the bottom until Fri Aug 13, 2027.
   var LAKE_OPEN=new Date()>=new Date(2027,0,2);
   if(LAKE_OPEN){
-    $('insideImg').src='img/inside-open.jpg?v=7';
+    $('insideImg').src='img/inside-open.jpg?v=8';
     $('dockImg').alt='Layered clay lake view from the dock: stacked mountains, puffy clay clouds, calm empty water past the bare dock posts';
     var ss=$('signSpot'); ss.style.left='30%'; ss.style.top='60%'; ss.style.width='30%'; ss.style.height='15%'; ss.setAttribute('aria-label','Look out over the lake');
     $('dockLore').textContent='The sign is down and the chain is gone. The holidays are over, and the Clayson has sunk back to the bottom of the lake to rest. He won\u2019t surface again until Friday, August 13, 2027.';
@@ -1128,7 +1165,7 @@ button{font:inherit;color:inherit}
     else if(now>=t.set-60 && now<t.set+30) ph='dusk';
     else ph='night';
     DOCK_PH=ph; if(cur==='dock') K.dock(ph);
-    var img=$('dockImg'), src='img/dock-'+ph+(LAKE_OPEN?'-open':'')+'.jpg?v=6';
+    var img=$('dockImg'), src='img/dock-'+ph+(LAKE_OPEN?'-open':'')+'.jpg?v=7';
     if(img.getAttribute('src')!==src) img.setAttribute('src',src);
     var after=now>=t.set, before=now<t.rise;
     $('dockClock').innerHTML=fmt(now)+'<small>'+(before?'Sunrise at '+fmt(t.rise):after?'Sun set at '+fmt(t.set):'Sunset at '+fmt(t.set))+'</small>';
