@@ -1,5 +1,6 @@
 <title>The Claysons Cabin</title>
 <meta name="claude:viewport-fit-sides" content="cover">
+<meta name="color-scheme" content="dark">
 <meta name="description" content="Walk into the Claysons cabin by the lake: the Melding Peddler, the Nightmare Xmas tree and the dock.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -136,7 +137,7 @@ button{font:inherit;color:inherit}
 .vtapes{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:14px 12px;max-height:min(330px,42vh);overflow-y:auto;margin-top:12px;padding:2px 4px 4px 2px}
 .vtapes[hidden]{display:none}
 .vtape{appearance:none;cursor:pointer;position:relative;border:0;padding:0;background:none;display:flex;flex-direction:column;align-items:center;transition:transform .15s}
-.vtape .pfp{width:100%;aspect-ratio:1;border-radius:6px;background-color:#222;background-size:cover;background-repeat:no-repeat;box-shadow:0 0 0 2px #2a1a0e,0 4px 8px rgba(0,0,0,.5)}
+.vtape .pfp{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:6px;background-color:#222;background-size:cover;background-repeat:no-repeat;box-shadow:0 0 0 2px #2a1a0e,0 4px 8px rgba(0,0,0,.5)}
 .vtape .pfp.sp{background-size:1000% 1000%}
 .vtape .cas{position:relative;width:86%;margin-top:-24%;aspect-ratio:360/252;background:url(img/vhs-tape.png?v=3) center/100% 100% no-repeat;filter:drop-shadow(0 4px 5px rgba(0,0,0,.6));transform:rotate(-3deg)}
 .vtape .cas .lbl{justify-content:center}
@@ -399,8 +400,8 @@ button{font:inherit;color:inherit}
     if(!ids.length){ $('vsay').textContent='No Claysons, no tapes. Just static.'; return }
     $('vsay').textContent=ids.length===1?'One tape with your name on it.':ids.length+' tapes with your name on them. Choose one.';
     ids.forEach(function(id){ var b=document.createElement('button'); b.type='button'; b.className='vtape'; b.setAttribute('aria-label','Play tape #'+id);
-      b.innerHTML='<i class="pfp"></i><span class="cas"><span class="lbl"><b>#'+id+'</b></span></span>';
-      labelArt(b.querySelector('.pfp'),id,true);
+      b.innerHTML=(ONSITE?'<img class="pfp" width="160" height="160" alt="" src="art/'+id+'.jpg">':'<i class="pfp"></i>')+'<span class="cas"><span class="lbl"><b>#'+id+'</b></span></span>';
+      var pf=b.querySelector('.pfp'); if(ONSITE) pf.onerror=function(){ pf.onerror=null; pf.src='t/'+id+'.jpg' }; else labelArt(pf,id,true);
       b.addEventListener('click',function(){ closeCard(); play(id) }); P.appendChild(b) });
     P.hidden=false;
   });
