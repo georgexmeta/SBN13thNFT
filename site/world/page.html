@@ -173,6 +173,10 @@ button{font:inherit;color:inherit}
 @keyframes eyes{0%,100%{opacity:0}20%,70%{opacity:1}}
 
 /* ---------- haunted TV ---------- */
+.tents{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.tent{position:absolute;left:0;top:0;transform-origin:50% 100%;filter:brightness(.62) saturate(.85) drop-shadow(0 10px 8px rgba(0,0,0,.55))}
+.tent i{position:absolute;left:0;display:block;background:url(img/tentacle.webp?v=1) no-repeat}
+.crackhole{position:absolute;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(closest-side,#000 0 45%,rgba(0,0,0,.75) 70%,transparent);filter:blur(1px)}
 .screen{position:absolute;z-index:3;left:31.3%;top:28.9%;width:31.4%;height:41.2%;border-radius:10%/14%;overflow:hidden;background:#060606;box-shadow:inset 0 0 30px #000}
 .screen video,.screen img,.screen .thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background-repeat:no-repeat}
 .screen img,.screen .thumb{opacity:0;object-fit:contain}
@@ -333,6 +337,7 @@ button{font:inherit;color:inherit}
 
     <section class="scene" id="s-tv" data-crumb="The TV" data-back="inside" style="--glow:#bcd3ff">
       <img class="bg" src="img/tv.jpg?v=6" alt="A big clunky 1990s TV sculpted in clay with rabbit-ear antennas, on a clay stand with a VCR and a stack of VHS tapes, against rolled clay logs" width="1344" height="768">
+      <div class="tents" id="tents" aria-hidden="true"></div>
       <div class="screen idle off" id="screen"><video id="tvVid" playsinline preload="auto" loop muted src="media/vhs-intro.mp4?v=3"></video><img class="art" id="tvArt" alt=""><div class="thumb art" id="tvThumb"></div><div class="red"></div><div class="chan" id="chan"><canvas id="noise" width="160" height="120"></canvas><img id="chImg" alt=""><div class="bars" id="bars"></div><div class="blue" id="blue">VIDEO 1<small>Insert a tape</small></div><div class="ch13" id="ch13"><em>Channel 13 presents</em><strong>Late Night<br>Horror Quiz</strong><button type="button" id="qPlay">&#9654; Play</button></div><div class="lower" id="chLower"></div><div class="osd" id="osd">CH 03</div></div><div class="crt" id="crt"></div></div>
       <div class="tape" id="tape"><span class="lbl"><i class="art" id="tapeArt"></i><b id="tapeLbl">#1</b></span></div>
       <div class="tvctl" id="tvctl" hidden><button class="btn" type="button" id="rewind">Rewind</button><button class="btn red" type="button" id="eject">Eject</button></div>
@@ -602,6 +607,44 @@ button{font:inherit;color:inherit}
         setTimeout(function(){ sc.classList.add('close'); pb.style.transform='scale(1.35) translate(0%,0%)' },250);
         setTimeout(function(){ if(cur==='dock'){ sc.classList.add('look'); if(!raf) raf=requestAnimationFrame(frame) } },1400) },
       leave:function(){ sc.classList.remove('close','look'); pb.style.transform=''; bd.style.transform=''; if(raf){ cancelAnimationFrame(raf); raf=0 } }};
+  })();
+  // ---- Tentacles (George): 3 clay tentacles wriggle out of the log-wall cracks round the TV and reach for you ----
+  (function(){ var sc=$('s-tv'), L=$('tents'); if(!L) return;
+    var still=matchMedia('(prefers-reduced-motion:reduce)').matches, N=12;
+    // base point in the crack (% of scene), lean angle, height (% of scene height), flip, rhythm
+    var DEF=[{x:24.2,y:47,a:-38,h:40,f:0,p:0,per:11},{x:77.2,y:57,a:34,h:44,f:1,p:4.2,per:13},{x:8.5,y:72,a:-16,h:30,f:0,p:7.5,per:9.5}];
+    var T=DEF.map(function(d){ var hole=document.createElement('div'); hole.className='crackhole';
+      var w=document.createElement('div'); w.className='tent'+(d.f?' flip':''); var segs=[], par=w;
+      for(var i=0;i<N;i++){ var g=document.createElement('i'); par.appendChild(g); segs.push(g); par=g }
+      L.appendChild(w); L.appendChild(hole); return {d:d,w:w,segs:segs,hole:hole,lean:0,reach:0} });
+    var W=0,H=0, px=-1, py=-1, raf=0;
+    function size(){ var r=sc.getBoundingClientRect(); if(!r.width) return; W=r.width; H=r.height;
+      T.forEach(function(o){ var h=o.d.h/100*H, w=h*232/635, sh=h/N, ov=Math.ceil(sh*.45);
+        o.W=w; o.H=h; o.w.style.width=w+'px'; o.w.style.height=h+'px';
+        o.segs.forEach(function(g,i){ g.style.width=w+'px'; g.style.height=(sh+ov)+'px'; g.style.top=(i?-sh:h-sh)+'px';
+          g.style.transformOrigin='50% '+sh+'px'; g.style.backgroundSize=w+'px '+h+'px'; g.style.backgroundPosition='0 '+(-(N-1-i)*sh)+'px' });
+        o.hole.style.left=o.d.x+'%'; o.hole.style.top=o.d.y+'%'; o.hole.style.width=(w*1.05)+'px'; o.hole.style.height=(w*.42)+'px';
+        o.hole.style.transform='translate(-50%,-50%) rotate('+o.d.a+'deg)' }) }
+    sc.addEventListener('pointermove',function(e){ var r=sc.getBoundingClientRect(); px=(e.clientX-r.left)/r.width*100; py=(e.clientY-r.top)/r.height*100 });
+    sc.addEventListener('pointerleave',function(){ px=py=-1 });
+    function ease(x){ x=Math.max(0,Math.min(1,x)); return x*x*(3-2*x) }
+    function frame(now){ raf=requestAnimationFrame(frame); if(cur!=='tv'||!W) return; var t=now/1000;
+      T.forEach(function(o){ var d=o.d, c=((t+d.p)%d.per)/d.per;
+        // cycle: slide out of the crack, wriggle, lunge at the viewer, ease back, sink half way
+        var out=still?1:ease(c/.14)*(1-.45*ease((c-.86)/.14)), lunge=still?0:ease((c-.5)/.08)*(1-ease((c-.68)/.12));
+        var near=0, tgt=0;
+        if(px>=0){ var dx=px-d.x, dy=(py-d.y)*H/W, dist=Math.hypot(dx,dy); near=Math.max(0,1-dist/45);
+          tgt=Math.atan2(dx,-dy)*180/Math.PI-d.a; if(d.f) tgt=-tgt; tgt=Math.max(-35,Math.min(35,tgt)) }
+        o.lean+=(tgt*near-o.lean)*.05; o.reach+=(Math.max(lunge,near*.7)-o.reach)*.08;
+        var sc2=(.25+.75*out)*(1+.38*o.reach);
+        o.w.style.transform='translate('+(d.x/100*W-o.W/2)+'px,'+(d.y/100*H-o.H)+'px) rotate('+(d.a+(d.f?-o.lean:o.lean)*.35)+'deg) scale('+sc2.toFixed(3)+')';
+        o.w.style.filter='brightness('+(.62+.22*o.reach).toFixed(2)+') saturate(.85) drop-shadow(0 '+(10+18*o.reach).toFixed(0)+'px '+(8+10*o.reach).toFixed(0)+'px rgba(0,0,0,.55))';
+        var amp=still?0:(9-3*o.reach), sp=still?0:(2.1+1.6*o.reach);
+        for(var i=0;i<N;i++){ var k=i/N, a=amp*Math.sin(t*sp-i*.55+d.p)*(.25+k)+ (o.lean*.9/N)*(1+k) - o.reach*(i>N-4?9:-1.2);
+          o.segs[i].style.transform='rotate('+a.toFixed(2)+'deg)' } }) }
+    size(); window.addEventListener('resize',size);
+    new MutationObserver(function(){ if(sc.classList.contains('on')){ size(); if(!raf) raf=requestAnimationFrame(frame) } }).observe(sc,{attributes:true,attributeFilter:['class']});
+    if(!raf) raf=requestAnimationFrame(frame);
   })();
   // ---- Ambient life: flickering candles, moving fire, breathing Christmas lights, live TV static ----
   (function(){
