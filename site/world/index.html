@@ -399,7 +399,7 @@ button{font:inherit;color:inherit}
     </section>
 
     <section class="scene" id="s-inside" data-crumb="The cabin" data-back="exterior">
-      <img class="bg" id="insideImg" src="img/inside.jpg?v=8" alt="Inside the clay log cabin, warm with candles and a fire: a candlelit archway on the left, a big clunky 90s TV hissing with static on a stand with a VCR, an archway strung with red and green lights on the right, and the back door open to the dock and lake" width="1344" height="768">
+      <img class="bg" id="insideImg" src="img/inside.jpg?v=9" alt="Inside the clay log cabin, warm with candles and a fire: a candlelit archway on the left, a big clunky 90s TV hissing with static on a stand with a VCR, an archway strung with red and green lights on the right, and the back door open to the dock and lake" width="1344" height="768">
       <div class="fx" id="fx-inside" aria-hidden="true"></div>
       <button class="secret" id="secret" style="left:44%;top:14%;width:12%;height:12%" aria-label="Antlers"></button>
       <button class="hot left" style="left:16%;top:50%" data-go="peddler" aria-label="Go left to the Peddler"><span class="ring"></span><span class="tag">The Peddler</span></button>
@@ -840,7 +840,7 @@ button{font:inherit;color:inherit}
   // ---- Ambient life: flickering candles, moving fire, breathing Christmas lights, live TV static ----
   (function(){
     var FX={
-      inside:{img:'img/inside.jpg?v=8',
+      inside:{img:'img/inside.jpg?v=9',
         candles:[[15.6,33,2.6],[17.8,33.5,2.4],[19.8,32,2.6],[15,51,3],[13,56.5,2.6],[14,57,2.4],[61.8,43,2.4],[64.6,42.5,2.4],[66.1,42.8,2.4],[68,43.5,2.4],[80.9,33,2.4]],
         halos:[[17,40,16,24],[14.5,55,12,16],[65,47,12,14],[81,34,8,10]],
         fire:[60.5,56,9,14.5], fireHalo:[65,66,24,22], clayFire:[61.9,56.9,5.9,10.6,1.25],
@@ -1200,7 +1200,7 @@ button{font:inherit;color:inherit}
   // After the holidays (George): the sign comes down and the Clayson sinks back to the bottom until Fri Aug 13, 2027.
   var LAKE_OPEN=new Date()>=new Date(2027,0,2);
   if(LAKE_OPEN){
-    $('insideImg').src='img/inside-open.jpg?v=8';
+    $('insideImg').src='img/inside-open.jpg?v=9';
     $('dockImg').alt='Layered clay lake view from the dock: stacked mountains, puffy clay clouds, calm empty water past the bare dock posts';
     var ss=$('signSpot'); ss.style.left='30%'; ss.style.top='60%'; ss.style.width='30%'; ss.style.height='15%'; ss.setAttribute('aria-label','Look out over the lake');
     $('dockLore').textContent='The sign is down and the chain is gone. The holidays are over, and the Clayson has sunk back to the bottom of the lake to rest. He won\u2019t surface again until Friday, August 13, 2027.';
