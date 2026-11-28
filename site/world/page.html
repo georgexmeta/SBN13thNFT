@@ -178,7 +178,15 @@ button{font:inherit;color:inherit}
 .die i{border-radius:50%;background:#5a0a0c;box-shadow:inset 0 2px 2px rgba(0,0,0,.6);visibility:hidden}
 .die.roll{animation:droll .55s ease-out}
 @keyframes droll{0%{transform:rotate(-200deg) translateY(-30px)}60%{transform:rotate(20deg)}100%{transform:none}}
-.bones{border-top:1px solid var(--rule);margin-top:14px;padding-top:12px}
+.dz{position:absolute;inset:0;z-index:4;pointer-events:none;perspective:900px}
+.die3{position:absolute;width:4.4%;aspect-ratio:1;transform-style:preserve-3d;margin:-2.2% 0 0 -2.2%}
+.die3 .cube{position:absolute;inset:0;transform-style:preserve-3d}
+.die3 .f{position:absolute;inset:0;border-radius:18%;background:radial-gradient(120% 120% at 30% 25%,#f6efe0,#d9ccb0 70%,#b9a986);box-shadow:inset 0 -3px 5px rgba(0,0,0,.25),inset 0 2px 3px rgba(255,255,255,.6);
+  display:grid;grid-template:repeat(3,1fr)/repeat(3,1fr);padding:14%;gap:4%;backface-visibility:hidden}
+.die3 .f i{border-radius:50%;background:#5a0a0c;box-shadow:inset 0 1px 2px rgba(0,0,0,.6);visibility:hidden}
+.die3 .sh{position:absolute;left:-10%;right:-10%;bottom:-22%;height:30%;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.55),transparent);transform:translateZ(-1px)}
+#s-peddler.rolling .hot{opacity:0;pointer-events:none;transition:opacity .3s}
+.hand{position:absolute;z-index:5;width:24%;height:auto;left:82%;top:104%;pointer-events:none;filter:drop-shadow(0 18px 18px rgba(0,0,0,.6));transform-origin:20% 20%}
 .secret{position:absolute;z-index:4;appearance:none;border:0;background:none;cursor:default;padding:0}
 
 /* ---------- hint ---------- */
@@ -216,8 +224,11 @@ button{font:inherit;color:inherit}
     </section>
 
     <section class="scene" id="s-peddler" data-crumb="The Peddler" data-back="inside">
-      <img class="bg" src="img/peddler.jpg" alt="The Melding Peddler grinning behind his candlelit counter, shelves of chained striped Nightmare Boxes behind him" width="1344" height="768">
-      <button class="hot" style="left:47.5%;top:84%" data-card="peddler" aria-label="Talk to the Peddler"><span class="ring"></span><span class="tag">Talk to him</span></button>
+      <img class="bg" src="img/craps.jpg?v=4" alt="A dark private craps room sculpted in clay: the grinning three-eyed Peddler leans on a green felt craps table under a single hanging lamp, chained gift boxes in the shadows" width="1344" height="768">
+      <div class="dz" id="dz" aria-hidden="true"></div>
+      <img class="hand" id="hand" src="img/hand-fist.png?v=4" alt="" width="480" height="521">
+      <button class="hot" style="left:50%;top:62%" data-card="peddler" aria-label="Talk to the Peddler"><span class="ring"></span><span class="tag">Talk to him</span></button>
+      <button class="hot" style="left:27%;top:84%;--glow:#9be06f" data-card="dice" aria-label="Roll the bones"><span class="ring"></span><span class="tag">Roll the bones</span></button>
     </section>
 
     <section class="scene" id="s-tv" data-crumb="The TV" data-back="inside" style="--glow:#bcd3ff">
@@ -255,6 +266,16 @@ button{font:inherit;color:inherit}
   <div class="demo">Exploring may count toward future surprises from the artist. Karma is saved in this browser for now.</div>
 </div>
 
+<!-- Dice -->
+<div class="card off" id="c-dice" role="dialog" aria-labelledby="dih" style="--glow:#9be06f">
+  <div class="eyebrow">The Peddler&rsquo;s table</div>
+  <h2 id="dih">Roll the Bones</h2>
+  <p class="say" id="disay">&ldquo;Two bones, one throw. Doubles and the house pays you. Seven&hellip; and I take a little something.&rdquo;</p>
+  <p style="font-size:14px;margin:0 0 10px">Doubles +1 good karma &middot; snake eyes +2 &middot; a 7 costs 1 bad karma &middot; 13 rolls a day</p>
+  <div class="row"><button class="btn red" type="button" id="roll">Throw the dice</button></div>
+  <div class="result" id="rollres" aria-live="polite"></div>
+</div>
+
 <!-- Peddler -->
 <div class="card off" id="c-peddler" role="dialog" aria-labelledby="ph">
   <div class="eyebrow">The Melding Peddler</div>
@@ -266,13 +287,6 @@ button{font:inherit;color:inherit}
     <button class="btn red" type="submit">Ask him</button>
   </form>
   <div class="result" id="presult" aria-live="polite"></div>
-  <div class="bones">
-    <div class="eyebrow" style="margin-bottom:2px">Roll the Bones</div>
-    <p style="margin:0 0 4px;font-size:14px">Two clay dice. Doubles earn good karma, snake eyes earn double. Roll a 7 and he takes a karma. 13 rolls a day.</p>
-    <div class="dice" aria-hidden="true"><div class="die" id="d1"></div><div class="die" id="d2"></div></div>
-    <div class="row" style="justify-content:center"><button class="btn red" type="button" id="roll">Roll the bones</button></div>
-    <div class="result" id="rollres" aria-live="polite" style="text-align:center"></div>
-  </div>
   <div class="demo">Rule: 1 Nightmare Box for every 3 Claysons, starting at 6 held. Counts come from the Nov 25 holder snapshot for now; the final snapshot is taken before the drop.</div>
 </div>
 
@@ -325,6 +339,7 @@ button{font:inherit;color:inherit}
 
 <script>
 (function(){
+  if(location.protocol==='http:' && /claysons\.xyz$/.test(location.hostname)) location.replace('https://'+location.host+location.pathname+location.search+location.hash);
   var $=function(id){return document.getElementById(id)};
   var DOCK_PH='night';
   // ---- Karma + 13 haunted objectives (browser-only for now) ----
@@ -381,24 +396,58 @@ button{font:inherit;color:inherit}
     if(DOCK_PH==='night' && !LAKE_OPEN_EARLY()){ if(!K.done('rattle')) K.toast('The chain clanks. Something below the water clanks back.',true) }
     else K.toast('The padlock is cold. Come back at night.') });
   function LAKE_OPEN_EARLY(){ return new Date()>=new Date(2027,0,2) }
-  // ---- Roll the Bones (Peddler dice, karma only) ----
+  // ---- Roll the Bones: a clay hand throws two 3D clay dice that land on the real roll ----
   var PIPS={1:[4],2:[0,8],3:[0,4,8],4:[0,2,6,8],5:[0,2,4,6,8],6:[0,2,3,5,6,8]};
-  function face(el,n){ el.innerHTML=''; for(var i=0;i<9;i++){ var p=document.createElement('i'); if(PIPS[n].indexOf(i)>=0) p.style.visibility='visible'; el.appendChild(p) } }
-  face($('d1'),6); face($('d2'),1);
+  var FACE_T={1:'translateZ(H)',2:'rotateY(90deg) translateZ(H)',3:'rotateX(90deg) translateZ(H)',4:'rotateX(-90deg) translateZ(H)',5:'rotateY(-90deg) translateZ(H)',6:'rotateY(180deg) translateZ(H)'};
+  var SHOW={1:[0,0],2:[0,-90],3:[-90,0],4:[90,0],5:[0,90],6:[0,180]};
+  function makeDie(){ var w=document.createElement('div'); w.className='die3'; var c=document.createElement('div'); c.className='cube'; w.appendChild(document.createElement('div')).className='sh';
+    for(var v=1;v<=6;v++){ var f=document.createElement('div'); f.className='f'; f.dataset.v=v; for(var i=0;i<9;i++){ var p=document.createElement('i'); if(PIPS[v].indexOf(i)>=0) p.style.visibility='visible'; f.appendChild(p) } c.appendChild(f) }
+    w.appendChild(c); return w }
+  function sizeDie(w){ var h=w.offsetWidth/2; w.querySelectorAll('.f').forEach(function(f){ f.style.transform=FACE_T[f.dataset.v].replace('H',h+'px') }) }
   function todayKey(){ var d=new Date(); return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate() }
+  var rolling=false, dz=$('dz'), hand=$('hand');
+  var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function throwDice(a,b,done){
+    dz.innerHTML=''; var D=[makeDie(),makeDie()]; D.forEach(function(d){ d.style.left='64%'; d.style.top='60%'; d.style.opacity='0'; dz.appendChild(d); sizeDie(d) });
+    hand.src='img/hand-fist.png?v=4';
+    var T=RM?0.2:1;
+    var h1=hand.animate([{left:'82%',top:'104%',transform:'rotate(10deg)'},{left:'60%',top:'50%',transform:'rotate(-4deg)'}],{duration:500*T,easing:'cubic-bezier(.2,.8,.3,1)',fill:'forwards'});
+    h1.onfinish=function(){
+      var sh=hand.animate([{transform:'rotate(-4deg) translate(0,0)'},{transform:'rotate(6deg) translate(-1%,1%)'},{transform:'rotate(-8deg) translate(1%,-1%)'},{transform:'rotate(5deg)'},{transform:'rotate(-4deg)'}],{duration:650*T,easing:'ease-in-out'});
+      sh.onfinish=function(){
+        hand.src='img/hand-open.png?v=4';
+        hand.animate([{left:'60%',top:'50%',transform:'rotate(-4deg)'},{left:'55%',top:'52%',transform:'rotate(-16deg)'},{left:'84%',top:'106%',transform:'rotate(8deg)'}],{duration:900*T,easing:'ease-in',fill:'forwards'});
+        var land=[[40+Math.random()*4,74+Math.random()*2],[48+Math.random()*4,76+Math.random()*2]];
+        [a,b].forEach(function(v,k){
+          var d=D[k], c=d.querySelector('.cube'), s=SHOW[v], tilt=' rotateX(-22deg) rotateY('+(k?-14:16)+'deg)';
+          var spinX=s[0]-720-360*k, spinY=s[1]+540+180*k;
+          d.style.opacity='1';
+          d.animate([{left:'60%',top:'58%'},{left:(land[k][0]+8)+'%',top:(land[k][1]-9)+'%',offset:.45},{left:(land[k][0]+2)+'%',top:land[k][1]+'%',offset:.7},{left:(land[k][0]+1)+'%',top:(land[k][1]-2)+'%',offset:.83},{left:land[k][0]+'%',top:land[k][1]+'%'}],{duration:1300*T,easing:'linear',fill:'forwards'});
+          c.animate([{transform:'rotateX('+spinX+'deg) rotateY('+spinY+'deg) rotateZ(90deg)'},{transform:'rotateX('+(s[0]-90)+'deg) rotateY('+(s[1]+60)+'deg)',offset:.7},{transform:'rotateX('+s[0]+'deg) rotateY('+s[1]+'deg)'+tilt}],{duration:1300*T,easing:'cubic-bezier(.15,.6,.35,1)',fill:'forwards'});
+        });
+        setTimeout(done,1400*T);
+      };
+    };
+  }
   $('roll').addEventListener('click',function(){
+    if(rolling) return;
     var R=K.st.rolls; if(R.d!==todayKey()){ R.d=todayKey(); R.n=0 }
-    if(R.n>=13){ $('rollres').textContent='He sweeps the dice away. "Thirteen is plenty. Come back tomorrow."'; return }
+    if(R.n>=13){ $('rollres').textContent='He sweeps the dice off the felt. "Thirteen is plenty. Come back tomorrow."'; return }
     var a=1+Math.floor(Math.random()*6), b=1+Math.floor(Math.random()*6); R.n++; K.save();
-    var d1=$('d1'), d2=$('d2'); [d1,d2].forEach(function(d){d.classList.remove('roll'); void d.offsetWidth; d.classList.add('roll')});
-    face(d1,a); face(d2,b); K.done('bones');
-    var left=' ('+(13-R.n)+' rolls left today)', msg;
-    if(a+b===7){ K.add(0,1); msg='<b style="color:#ff6b5e">Seven.</b> He grins and pockets a karma. +1 bad karma'+left }
-    else if(a===1&&b===1){ K.add(2,0); msg='<b style="color:#9be06f">Snake eyes.</b> Even the Peddler flinches. +2 good karma'+left }
-    else if(a===b){ K.add(1,0); msg='<b style="color:#9be06f">Doubles.</b> +1 good karma'+left }
-    else msg=(a+b)+'. Nothing stirs. Roll again or walk away.'+left;
-    $('rollres').innerHTML=msg;
+    rolling=true; closeCard(); $('rollres').innerHTML=''; $('s-peddler').classList.add('rolling'); if(vp.scrollWidth>vp.clientWidth+4) vp.scrollTo({left:vp.scrollWidth*0.5-vp.clientWidth/2,behavior:RM?'auto':'smooth'});
+    throwDice(a,b,function(){
+      rolling=false; K.done('bones');
+      var left=' ('+(13-R.n)+' rolls left today)', msg, say;
+      if(a+b===7){ K.add(0,1); msg='<b style="color:#ff6b5e">Seven</b>+1 bad karma'+left; say='\u201cSeven. Mine.\u201d He pockets a little piece of you.' }
+      else if(a===1&&b===1){ K.add(2,0); msg='<b style="color:#9be06f">Snake eyes</b>+2 good karma'+left; say='Even the Peddler flinches. The lamp flickers.' }
+      else if(a===b){ K.add(1,0); msg='<b style="color:#9be06f">Doubles</b>+1 good karma'+left; say='\u201cHmph. The house pays.\u201d' }
+      else { msg='<b>'+(a+b)+'</b>Nothing stirs.'+left; say='\u201cAgain?\u201d He slides the dice back to you.' }
+      $('disay').textContent=say; $('rollres').innerHTML=msg;
+      K.toast(a+' + '+b+' = '+(a+b)+(a+b===7?' &middot; +1 bad karma':a===b?' &middot; +'+(a===1?2:1)+' good karma':''),a+b===7);
+      setTimeout(function(){ $('s-peddler').classList.remove('rolling') },400);
+    });
   });
+  // keep the dice on the felt until the next throw; clear when leaving the room
   var vp=$('vp'), cur=null, openCard=null;
   var SCENES=['exterior','inside','peddler','tree','dock','tv'];
 
@@ -414,7 +463,7 @@ button{font:inherit;color:inherit}
       prev.classList.remove('on');
       setTimeout(function(){prev.classList.remove('zoom');prev.style.transformOrigin=''},1100);
     }
-    next.classList.add('on'); cur=name; K.visit(name);
+    next.classList.add('on'); cur=name; K.visit(name); if(name!=='peddler' && $('dz')) $('dz').innerHTML='';
     $('crumb').textContent=next.dataset.crumb;
     var b=next.dataset.back; $('back').hidden=!b; $('back').dataset.go=b||'';
     try{ if(location.hash.slice(1)!==name) history.replaceState(null,'','#'+name) }catch(e){ }
