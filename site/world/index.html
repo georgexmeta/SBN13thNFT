@@ -154,6 +154,25 @@ button{font:inherit;color:inherit}
 #signSea b{left:8.5%;top:11.8%;width:84%;height:43%;font-size:19cqw}
 #signX{left:73%;top:77.5%;width:8.3%;rotate:3deg}
 #signX b{left:6.8%;top:16%;width:74%;height:26%;font-size:15cqw}
+.pview{position:fixed;inset:0;z-index:35;display:grid;place-items:center;align-content:center;gap:18px;padding:70px 16px 24px;background:radial-gradient(ellipse at 50% 45%,rgba(40,22,14,.88),rgba(5,3,2,.96));opacity:1;transition:opacity .45s;perspective:1600px}
+.pview.off{opacity:0;pointer-events:none}
+.pflip{position:relative;height:min(70vh,128vw);aspect-ratio:600/742;transform-style:preserve-3d;transition:transform 1s cubic-bezier(.5,-.15,.3,1.2),scale .5s;scale:1}
+.pview.off .pflip{scale:.4}
+.pflip.turned{transform:rotateY(180deg)}
+.pface{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.pface img{position:absolute;display:block}
+.pfront .pfr{inset:0;width:100%;height:100%;filter:drop-shadow(0 18px 24px rgba(0,0,0,.7))}
+.pfront .pimg{left:19%;top:16%;width:62%;height:68%;object-fit:cover;object-position:50% 30%;border-radius:50%;filter:sepia(.15) contrast(1.05) brightness(.95)}
+.pfront::after{content:'';position:absolute;left:19%;top:16%;width:62%;height:68%;border-radius:50%;box-shadow:inset 0 0 40px 10px rgba(30,15,5,.75);pointer-events:none}
+.pback{transform:rotateY(180deg)}
+.pback img{inset:0;width:100%;height:100%;filter:drop-shadow(0 18px 24px rgba(0,0,0,.7))}
+.pnote{position:absolute;left:7%;top:15%;width:86%;height:74%;padding:11% 10% 9%;box-sizing:border-box;background:url(img/frame-note.webp?v=3) center/100% 100% no-repeat;color:#2b1a0e;font-family:var(--body);font-size:clamp(10px,min(1.6vh,3vw),14px);line-height:1.34;overflow:auto;rotate:-1.5deg;filter:drop-shadow(0 6px 8px rgba(0,0,0,.5));scrollbar-width:thin}
+.pnote h3{margin:0 0 .25em;font-family:"Permanent Marker",cursive;font-weight:400;font-size:1.45em;color:#5a120c;letter-spacing:.02em}
+.pnote p{margin:0 0 .8em}
+.pbtns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.pbtns button{appearance:none;cursor:pointer;border:1px solid rgba(233,196,106,.55);background:rgba(20,13,10,.85);color:var(--bone);font-family:var(--body);font-weight:600;font-size:14px;padding:10px 18px;border-radius:999px}
+.pbtns button:hover,.pbtns button:focus-visible{border-color:var(--candle);box-shadow:0 0 16px rgba(233,196,106,.35)}
+@media (prefers-reduced-motion:reduce){.pflip{transition:none}}
 .hot{position:absolute;z-index:5;transform:translate(-50%,-50%);appearance:none;border:0;background:none;cursor:pointer;padding:0;display:grid;justify-items:center;gap:8px}
 .hot .ring{width:46px;height:46px;border-radius:50%;border:2px solid var(--glow,var(--candle));box-shadow:0 0 18px var(--glow,var(--candle)),inset 0 0 12px var(--glow,var(--candle));
   animation:pulse 2.2s ease-in-out infinite;position:relative}
@@ -406,6 +425,21 @@ button{font:inherit;color:inherit}
 </div>
 <div class="hint" id="hint">Swipe to look around</div>
 <button class="kpill" id="kpill" type="button" aria-label="Your karma and haunted objectives"><span class="g" id="kg">&#9650; 0</span><span class="b" id="kb">&#9660; 0</span><span class="n" id="kn">0/13</span></button>
+<div class="pview off" id="pview" role="dialog" aria-modal="true" aria-label="The artist's portrait" aria-hidden="true">
+  <div class="pflip" id="pflip">
+    <div class="pface pfront"><img class="pimg" src="img/artist.webp?v=1" alt="Portrait of the artist: a grey clay figure in a black hoodie and cap, a paisley bandana over his face, holding a dripping red paint roller and a spray can"><img class="pfr" src="img/frame-front.webp?v=1" alt=""></div>
+    <div class="pface pback"><img src="img/frame-back.webp?v=1" alt="">
+      <div class="pnote" tabindex="0">
+        <h3>The artist</h3>
+        <p>George dreams in clay. Every Clayson grew out of his own sketches and photos, pushed, pinched and disfigured until 1,300 grotesque little faces stared back. He's a painter and street artist at heart, so there's always a little paint on the clay.</p>
+        <h3>Friday the 13th</h3>
+        <p>The Claysons minted out on Friday, November 13, 2026. That's why everything here comes in thirteens: 1,300 Claysons, 13 one-of-one Legendaries, and 13 hiding places in this cabin.</p>
+        <p>Some people stay home on Friday the 13th. George launched.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pbtns"><button type="button" id="pTurn">Look behind the frame</button><button type="button" id="pClose">Step back</button></div>
+</div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <div class="viewport" id="vp">
@@ -427,6 +461,7 @@ button{font:inherit;color:inherit}
       <div class="fx" id="fx-inside" aria-hidden="true"></div>
       <button class="secret" id="secret" style="left:44%;top:14%;width:12%;height:12%" aria-label="Antlers"></button>
       <button class="hot left" style="left:16%;top:50%" data-go="peddler" aria-label="Go left to the Peddler"><span class="ring"></span><span class="tag">The Peddler</span></button>
+      <button class="hot" style="left:26.9%;top:40%;--glow:#e9c46a" id="frameHot" aria-label="Get closer to the picture frame"><span class="ring"></span><span class="tag">The portrait</span></button>
       <button class="hot" style="left:33.5%;top:50%;--glow:#ff9a4d" data-go="tv" aria-label="Go to the old TV"><span class="ring"></span><span class="tag">The TV</span></button>
       <button class="hot ahead" style="left:49%;top:61%;--glow:#9fc6ff" data-go="dock" aria-label="Go through the back door to the dock"><span class="ring"></span><span class="tag">Back door</span></button>
       <button class="hot right" style="left:82%;top:50%;--glow:#9be06f" data-go="tree" aria-label="Go right to the Nightmare Xmas tree"><span class="ring"></span><span class="tag">The tree</span></button>
@@ -1257,7 +1292,7 @@ button{font:inherit;color:inherit}
     var KEY_SPOT=null;
     var SPOTS=[
       ['porch','exterior',44.5,75.5,'Under the porch steps','You reach under the porch steps. Something wet brushes your fingers. Nothing you want to keep.'],
-      ['frame','inside',26.9,40,'Behind the picture frame','You tilt the old frame away from the wall. A dried-out moth falls out, and a lot of dust.'],
+      ['frame','inside',26.9,40,'Behind the picture frame','A note about the artist, a dried-out moth, and a lot of dust.'],
       ['undertv','inside',34.5,67,'Under the TV','You feel around under the TV. A sticky candy wrapper and a single fingernail. Not yours.'],
       ['mantel','inside',65,46,'On the chimney shelf','You run your hand along the chimney shelf between the candles. Hot wax, soot, no key.'],
       ['mask','inside',50,21,'Behind the hockey mask','You lift the mask off its nail. The wall behind it is scratched with thirteen tally marks.'],
@@ -1275,6 +1310,7 @@ button{font:inherit;color:inherit}
     SPOTS.forEach(function(s){ var sc=$('s-'+s[1]); if(!sc) return;
       var b=document.createElement('button'); b.type='button'; b.className='hide'+(S[s[0]]?' done':''); b.style.left=s[2]+'%'; b.style.top=s[3]+'%';
       b.setAttribute('aria-label','Search: '+s[4]); b.title=s[4]; b.innerHTML='<i class="gl"></i>'; sc.appendChild(b); els.push(b);
+      if(s[0]==='frame'){ b.style.visibility='hidden'; window.searchFrame=function(){ b.click() } }
       b.addEventListener('click',function(e){ e.stopPropagation();
         b.classList.remove('search'); void b.offsetWidth; b.classList.add('search');
         var r=b.getBoundingClientRect(), R=sc.getBoundingClientRect();
@@ -1292,6 +1328,18 @@ button{font:inherit;color:inherit}
     // now and then an unsearched spot in the room you're in catches the light
     setInterval(function(){ var c=els.filter(function(b){ return !b.classList.contains('done') && b.parentNode.id==='s-'+cur }); if(!c.length) return;
       var b=c[Math.random()*c.length|0]; b.classList.remove('glint'); void b.offsetWidth; b.classList.add('glint') },5200);
+  })();
+  // ---- The artist's portrait (George 2026-11-28): get closer, then look behind the frame for the bio ----
+  (function(){
+    var V=$('pview'), F=$('pflip'), T=$('pTurn'), last=null; if(!V) return;
+    function open(){ last=document.activeElement; F.classList.remove('turned'); T.textContent='Look behind the frame'; V.classList.remove('off'); V.setAttribute('aria-hidden','false'); setTimeout(function(){ T.focus() },60) }
+    function close(){ V.classList.add('off'); V.setAttribute('aria-hidden','true'); if(last&&last.focus) last.focus() }
+    $('frameHot').addEventListener('click',function(e){ e.stopPropagation(); open() });
+    $('pClose').addEventListener('click',close);
+    V.addEventListener('click',function(e){ if(e.target===V) close() });
+    T.addEventListener('click',function(){ var t=F.classList.toggle('turned'); T.textContent=t?'Turn it back':'Look behind the frame';
+      if(t&&window.searchFrame&&!(K.st.hides||{}).frame) setTimeout(window.searchFrame,1000) });
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!V.classList.contains('off')){ e.stopImmediatePropagation(); close() } },true);
   })();
   // ---- Life at the lake (George 2026-11-28): every look out is a different sighting for the time of day ----
   (function(){
