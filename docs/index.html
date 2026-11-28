@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>The Claysons Cabin</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Walk into the Claysons cabin by the lake: the Melding Peddler, the Nightmare Xmas tree and the dock.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;700;800&family=Permanent+Marker&display=swap">
+<style>
+/* Layout: a point-and-click clay diorama. One 16:9 stage per room, glowing hotspots lead between rooms, story cards slide up from the floor. Single dark look by choice. */
+:root{
+  --night:#05040a; --panel:#140d0d; --panel-2:#1d1414; --bone:#efe6dc; --ash:#a3968e; --rule:#33231f;
+  --blood:#d4161a; --blood-dk:#7a0b0e; --candle:#ffb347; --ooze:#9be06f; --gold:#e9c46a;
+  --display:"Anton","Impact","Arial Narrow Bold",sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --marker:"Permanent Marker","Comic Sans MS","Bradley Hand",cursive;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{background:var(--night);height:100%}
+body{margin:0;color:var(--bone);font-family:var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--candle);outline-offset:3px}
+
+/* ---------- top bar ---------- */
+.bar{position:fixed;z-index:30;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:calc(10px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px));
+  background:linear-gradient(180deg,rgba(5,4,10,.85),transparent);pointer-events:none}
+.bar > *{pointer-events:auto}
+.bar img{height:34px;width:auto;display:block}
+.crumb{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ash)}
+.back{appearance:none;border:1px solid var(--rule);background:rgba(20,13,13,.8);padding:8px 14px;border-radius:999px;cursor:pointer;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.back:hover{border-color:var(--ash)}
+.back[hidden]{display:none!important}
+
+/* ---------- stage ---------- */
+.viewport{position:relative;height:100%;min-height:420px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;background:#000}
+.viewport::-webkit-scrollbar{display:none}
+.stage{position:relative;height:100%;aspect-ratio:16/9;min-width:100%;margin:0 auto}
+@media (min-aspect-ratio:16/9){.stage{height:auto;width:100%;aspect-ratio:16/9;top:50%;transform:translateY(-50%)}}
+.scene{position:absolute;inset:0;overflow:hidden;opacity:0;visibility:hidden;transition:opacity .7s ease,transform 1.1s cubic-bezier(.5,0,.2,1),visibility 0s .7s}
+.scene.on{opacity:1;visibility:visible;transition:opacity .7s ease,transform 1.1s cubic-bezier(.5,0,.2,1)}
+.scene.zoom{transform:scale(2.4);opacity:0}
+.scene img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;user-select:none;-webkit-user-drag:none}
+.scene::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 55%,transparent 60%,rgba(20,10,30,.35) 100%)}
+.fog{position:absolute;inset:auto -30% 0;height:45%;z-index:3;pointer-events:none;opacity:.5;
+  background:radial-gradient(ellipse at 30% 70%,rgba(190,180,200,.18),transparent 60%),radial-gradient(ellipse at 75% 80%,rgba(190,180,200,.14),transparent 55%);
+  animation:drift 26s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translateX(14%)}}
+
+.underlayer{position:absolute;inset:0;z-index:4;pointer-events:none}
+.ubox{position:absolute;transform:translate(-50%,-88%);filter:drop-shadow(0 8px 6px rgba(40,20,60,.45));animation:pop .5s cubic-bezier(.3,1.6,.5,1) backwards,jiggle 3.2s ease-in-out infinite}
+@keyframes pop{from{transform:translate(-50%,-88%) scale(0)}}
+@keyframes jiggle{0%,86%,100%{rotate:0deg}90%{rotate:-4deg}94%{rotate:3deg}}
+.more{position:absolute;transform:translate(-50%,-50%);font-family:var(--mono);font-weight:800;font-size:13px;color:var(--bone);background:rgba(5,4,10,.8);border:1px solid var(--ooze);padding:3px 8px;border-radius:3px}
+
+.clock{position:absolute;z-index:6;right:2.5%;bottom:5%;font-family:var(--mono);font-weight:800;font-size:clamp(11px,1.2vw,14px);letter-spacing:.12em;text-transform:uppercase;color:var(--bone);background:rgba(5,4,10,.6);padding:6px 10px;border-radius:3px}
+.clock small{display:block;font-weight:500;color:var(--ash);letter-spacing:.08em;margin-top:2px}
+
+/* ---------- hotspots ---------- */
+.hot{position:absolute;z-index:5;transform:translate(-50%,-50%);appearance:none;border:0;background:none;cursor:pointer;padding:0;display:grid;justify-items:center;gap:8px}
+.hot .ring{width:46px;height:46px;border-radius:50%;border:2px solid var(--glow,var(--candle));box-shadow:0 0 18px var(--glow,var(--candle)),inset 0 0 12px var(--glow,var(--candle));
+  animation:pulse 2.2s ease-in-out infinite;position:relative}
+.hot .ring::after{content:"";position:absolute;inset:14px;border-radius:50%;background:var(--glow,var(--candle))}
+@keyframes pulse{50%{transform:scale(1.18);opacity:.65}}
+.hot .tag{font-family:var(--mono);font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;
+  background:rgba(5,4,10,.82);border:1px solid var(--glow,var(--candle));color:var(--bone);padding:6px 10px;border-radius:3px}
+.hot:hover .ring,.hot:focus-visible .ring{animation-duration:.8s}
+.hot.left .tag::before{content:"\2190  "}.hot.right .tag::after{content:"  \2192"}.hot.ahead .tag::before{content:"\2191  "}
+
+/* ---------- intro title ---------- */
+.intro{position:absolute;z-index:6;left:21%;bottom:7%;transform:translateX(-50%);width:min(34%,440px);text-align:center;pointer-events:none}
+.intro img{width:100%;height:auto;display:block}
+.intro p{margin:2px 0 0;font-family:var(--mono);font-size:clamp(11px,1.3vw,14px);letter-spacing:.2em;text-transform:uppercase;color:var(--bone);text-shadow:0 2px 8px #000}
+
+/* ---------- story card ---------- */
+.card{position:fixed;z-index:20;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translate(-50%,0);
+  width:min(560px,calc(100% - 32px));background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--rule);border-radius:6px;
+  box-shadow:0 20px 50px rgba(0,0,0,.7);padding:18px 20px 20px;transition:transform .45s cubic-bezier(.3,1.3,.5,1),opacity .3s}
+.card.off{transform:translate(-50%,130%);opacity:0;pointer-events:none}
+.card h2{font-family:var(--display);font-weight:400;font-size:clamp(26px,4vw,36px);line-height:1;text-transform:uppercase;margin:0 0 8px;letter-spacing:.01em}
+.card .eyebrow{font-family:var(--mono);font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--glow,var(--candle));margin-bottom:6px}
+.card p{margin:0 0 12px;color:var(--ash);line-height:1.55}
+.say{font-style:italic;color:var(--gold);font-size:17px;margin:0 0 12px;min-height:1.5em}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.row input{flex:1 1 220px;min-width:0;background:#0b0707;border:1px solid var(--rule);border-radius:3px;color:var(--bone);font-family:var(--mono);font-size:14px;padding:11px 12px}
+.btn{appearance:none;cursor:pointer;border:1px solid var(--rule);background:var(--panel-2);padding:11px 16px;border-radius:3px;font-family:var(--mono);font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.btn:hover{border-color:var(--ash)}
+.btn.red{background:linear-gradient(180deg,#e8242a,var(--blood) 55%,var(--blood-dk));border-color:#0000;color:#fff}
+.btn.green{background:#173118;border-color:#3d6b2f;color:var(--ooze)}
+.result{margin-top:12px;font-family:var(--mono);font-size:13px;color:var(--bone);line-height:1.5}
+.result b{font-family:var(--display);font-weight:400;font-size:40px;color:var(--gold);letter-spacing:.02em;display:block;line-height:1}
+.demo{margin-top:12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:#7d706a}
+.boxes{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.boxes span{width:26px;height:26px;border-radius:3px;background:repeating-linear-gradient(135deg,#eee 0 4px,#111 4px 8px);border:2px solid #6b2b1a;box-shadow:0 0 0 2px #2a1a0e}
+
+/* ---------- box opening ---------- */
+.giftwrap{position:relative;width:min(220px,50%);margin:4px auto 12px;aspect-ratio:1;max-width:100%}
+.giftwrap img,.giftwrap video{width:100%;height:100%;object-fit:contain;border-radius:4px;display:block}
+.giftwrap.shake video{animation:rattle .12s linear 8}
+@keyframes rattle{0%{transform:rotate(0)}25%{transform:rotate(-4deg) translate(-3px,1px)}75%{transform:rotate(4deg) translate(3px,-1px)}100%{transform:rotate(0)}}
+.burst{position:absolute;inset:-30%;border-radius:50%;pointer-events:none;opacity:0;background:radial-gradient(circle,rgba(255,240,120,.95),rgba(155,224,111,.5) 35%,transparent 65%)}
+.giftwrap.open .burst{animation:burst 1.2s ease-out forwards}
+@keyframes burst{0%{opacity:0;transform:scale(.3)}25%{opacity:1}100%{opacity:0;transform:scale(1.3)}}
+.giftwrap.open video{filter:brightness(1.6) saturate(.4) blur(1px);transition:filter .6s}
+.eyes{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);display:flex;gap:14px;opacity:0}
+.eyes i{width:14px;height:9px;border-radius:50%;background:#ffe14d;box-shadow:0 0 12px #ffe14d}
+.giftwrap.open .eyes{animation:eyes 2.6s .9s ease-in-out forwards}
+@keyframes eyes{0%,100%{opacity:0}20%,70%{opacity:1}}
+
+/* ---------- altar ---------- */
+.fig{position:absolute;z-index:4;left:49.3%;bottom:45.6%;width:11.5%;aspect-ratio:1;transform:translateX(-50%);border-radius:4px;
+  border:5px solid #3a2414;box-shadow:0 0 0 2px #1c1009,0 8px 14px rgba(0,0,0,.6),0 0 40px rgba(255,170,80,.55);background-color:#1c1009;background-repeat:no-repeat;background-size:1000% 1000%;opacity:0;transition:opacity .8s,transform .8s}
+.fig.on{opacity:1;animation:settle .9s ease-out}
+@keyframes settle{0%{transform:translate(-50%,-18%);opacity:0}70%{transform:translate(-50%,2%)}100%{transform:translate(-50%,0);opacity:1}}
+.fig::after{content:"";position:absolute;inset:-60% -40%;background:radial-gradient(closest-side,rgba(255,200,110,.35),transparent);z-index:-1;pointer-events:none}
+.picks{display:grid;grid-template-columns:repeat(auto-fill,minmax(54px,1fr));gap:6px;max-height:190px;overflow-y:auto;margin-top:10px;padding-right:2px}
+.picks button{appearance:none;padding:0;border:2px solid var(--rule);border-radius:3px;aspect-ratio:1;background-color:#111;background-repeat:no-repeat;background-size:1000% 1000%;cursor:pointer;position:relative}
+.picks button:hover,.picks button:focus-visible{border-color:var(--gold)}
+.picks button span{position:absolute;left:0;right:0;bottom:0;font-family:var(--mono);font-size:9px;background:rgba(0,0,0,.7);color:var(--bone)}
+.picks[hidden]{display:none}
+.kbadge{position:absolute;z-index:6;left:49.3%;top:15%;transform:translateX(-50%);width:max-content;max-width:min(60%,calc(100vw - 32px));text-align:center;background:rgba(5,4,10,.78);border:1px solid #ff9a4d;border-radius:4px;padding:8px 14px;color:var(--bone);font-family:var(--mono);font-size:12px;letter-spacing:.06em;opacity:0;transition:opacity .5s}
+.kbadge.on{opacity:1}
+.kbadge .karma{font-size:28px;vertical-align:middle;margin-left:6px}
+.karma{font-family:var(--display);font-size:40px;color:var(--gold);line-height:1}
+
+/* ---------- hint ---------- */
+.hint{position:fixed;z-index:10;left:50%;top:calc(58px + env(safe-area-inset-top,0px));transform:translateX(-50%);font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ash);background:rgba(5,4,10,.7);padding:5px 10px;border-radius:3px;pointer-events:none}
+@media (min-width:900px) and (min-aspect-ratio:4/3){.hint{display:none}}
+@media (prefers-reduced-motion:reduce){.scene,.scene.on{transition:opacity .3s}.scene.zoom{transform:none}.hot .ring,.fog{animation:none}}
+</style>
+
+<div class="bar">
+  <img src="img/title.png" alt="Claysons" width="720" height="198">
+  <span class="crumb" id="crumb">The lake</span>
+  <button class="back" id="back" type="button" hidden>Back</button>
+</div>
+<div class="hint" id="hint">Swipe to look around</div>
+
+<div class="viewport" id="vp">
+  <div class="stage" id="stage">
+
+    <section class="scene" id="s-exterior" data-crumb="The lake">
+      <img class="bg" src="img/exterior.jpg" alt="A pressed-clay relief of a log cabin on a little island, lit windows and an open front door, pine trees, a red clay moon on a lavender sky" width="1344" height="768">
+      <div class="fog"></div>
+      <div class="intro"><img src="img/title.png" alt="" width="720" height="198"><p>A cabin by the lake. The door's open.</p></div>
+      <button class="hot ahead" style="left:49%;top:63%" data-go="inside" aria-label="Enter the cabin"><span class="ring"></span><span class="tag">Enter the cabin</span></button>
+    </section>
+
+    <section class="scene" id="s-inside" data-crumb="The cabin" data-back="exterior">
+      <img class="bg" id="insideImg" src="img/inside.jpg" alt="Inside the clay log cabin, warm with candles and a fire: a candlelit archway on the left, a carved clay altar with skulls and red lanterns, an archway strung with red and green lights on the right, and the back door open to the dock and lake" width="1344" height="768">
+      <button class="hot left" style="left:16%;top:50%" data-go="peddler" aria-label="Go left to the Peddler"><span class="ring"></span><span class="tag">The Peddler</span></button>
+      <button class="hot" style="left:33.5%;top:50%;--glow:#ff9a4d" data-go="altar" aria-label="Go to the Clayson altar"><span class="ring"></span><span class="tag">The altar</span></button>
+      <button class="hot ahead" style="left:49%;top:61%;--glow:#9fc6ff" data-go="dock" aria-label="Go through the back door to the dock"><span class="ring"></span><span class="tag">Back door</span></button>
+      <button class="hot right" style="left:82%;top:50%;--glow:#9be06f" data-go="tree" aria-label="Go right to the Nightmare Xmas tree"><span class="ring"></span><span class="tag">The tree</span></button>
+    </section>
+
+    <section class="scene" id="s-peddler" data-crumb="The Peddler" data-back="inside">
+      <img class="bg" src="img/peddler.jpg" alt="The Melding Peddler grinning behind his candlelit counter, shelves of chained striped Nightmare Boxes behind him" width="1344" height="768">
+      <button class="hot" style="left:47.5%;top:84%" data-card="peddler" aria-label="Talk to the Peddler"><span class="ring"></span><span class="tag">Talk to him</span></button>
+    </section>
+
+    <section class="scene" id="s-altar" data-crumb="The altar" data-back="inside" style="--glow:#ff9a4d">
+      <img class="bg" src="img/altar.jpg" alt="A carved clay altar against the log wall, clay skulls, a red fringed runner and two glowing red lanterns, with an empty round plinth in the middle" width="1344" height="768">
+      <div class="fig" id="fig" role="img" aria-label=""></div>
+      <div class="kbadge" id="kbadge" aria-live="polite"></div>
+      <button class="hot" style="left:49.3%;top:70%;--glow:#ff9a4d" data-card="altar" aria-label="Place a Clayson on the altar"><span class="ring"></span><span class="tag" id="altarTag">Place a Clayson</span></button>
+    </section>
+
+    <section class="scene" id="s-tree" data-crumb="Nightmare Xmas tree" data-back="inside" style="--glow:#9be06f">
+      <img class="bg" src="img/tree.jpg" alt="A layered clay Nightmare Christmas tree hung with skulls, eyeballs, padlocks and hooks beside a stone fireplace with stockings, snow falling past the window" width="1344" height="768">
+      <div class="underlayer" id="under" aria-hidden="true"></div>
+      <button class="hot" style="left:69%;top:76%;--glow:#9be06f" data-card="tree" aria-label="Look under the tree"><span class="ring"></span><span class="tag" id="treeTag">Under the tree</span></button>
+    </section>
+
+    <section class="scene" id="s-dock" data-crumb="The dock" data-back="inside">
+      <img class="bg" id="dockImg" src="img/dock-night.jpg" alt="Layered clay lake view from the dock: stacked mountains, puffy clay clouds, the dock chained shut with a padlock and a clay sign reading LAKE IS CLOSED" width="1344" height="768">
+      <div class="clock" id="dockClock" aria-live="polite"></div>
+      <div class="fog"></div>
+      <button class="hot" style="left:74%;top:60%;--glow:#9fc6ff" data-card="dock" aria-label="Read the sign"><span class="ring"></span><span class="tag" id="dockTag">Read the sign</span></button>
+    </section>
+
+  </div>
+</div>
+
+<!-- Peddler -->
+<div class="card off" id="c-peddler" role="dialog" aria-labelledby="ph">
+  <div class="eyebrow">The Melding Peddler</div>
+  <h2 id="ph">How many boxes are yours?</h2>
+  <p class="say" id="psay">&hellip;come closer. Show me your wallet. Six Claysons and I start wrapping.</p>
+  <form class="row" id="pform">
+    <label for="wallet" class="crumb" style="flex-basis:100%">Wallet address</label>
+    <input id="wallet" placeholder="0x..." autocomplete="off" spellcheck="false">
+    <button class="btn red" type="submit">Ask him</button>
+  </form>
+  <div class="result" id="presult" aria-live="polite"></div>
+  <div class="demo">Rule: 1 Nightmare Box for every 3 Claysons, starting at 6 held. Counts come from the Nov 25 holder snapshot for now; the final snapshot is taken before the drop.</div>
+</div>
+
+<!-- Altar -->
+<div class="card off" id="c-altar" role="dialog" aria-labelledby="ah" style="--glow:#ff9a4d">
+  <div class="eyebrow">The Clayson altar</div>
+  <h2 id="ah">Leave a Clayson. Take some karma.</h2>
+  <p id="asay">Set one of your Claysons on the plinth. The altar remembers who comes back.</p>
+  <form class="row" id="aform">
+    <label for="awallet" class="crumb" style="flex-basis:100%">Wallet address</label>
+    <input id="awallet" placeholder="0x..." autocomplete="off" spellcheck="false">
+    <button class="btn red" type="submit">Check in</button>
+  </form>
+  <div id="apicks" class="picks" hidden></div>
+  <div class="result" id="aresult" aria-live="polite"></div>
+  <div class="demo">First look: one karma per wallet per day, kept in this browser for now. Ownership comes from the Nov 27 on-chain snapshot.</div>
+</div>
+
+<!-- Tree -->
+<div class="card off" id="c-tree" role="dialog" aria-labelledby="th" style="--glow:#9be06f">
+  <div class="eyebrow">Under the Nightmare Xmas tree</div>
+  <div id="tlocked">
+    <h2>Nothing under the tree. Yet.</h2>
+    <p id="tlockedP">The skirt is bare. The Peddler hasn&rsquo;t checked your wallet, so nothing has been left for you.</p>
+    <div class="row"><button class="btn red" type="button" id="toPeddler">Check in with the Peddler</button></div>
+  </div>
+  <div id="topen" hidden>
+  <h2 id="th">Open it, or leave it chained?</h2>
+  <div class="giftwrap" id="gift"><video autoplay muted loop playsinline poster="img/nightmare-box.jpg" aria-label="Your Nightmare Box, chained and padlocked, slowly turning"><source src="media/box-spin.webm" type="video/webm"><source src="media/box-spin.mp4" type="video/mp4"></video><div class="burst"></div><div class="eyes"><i></i><i></i></div></div>
+  <p id="tsay">Something under the lid is breathing. The padlock is already loose.</p>
+  <div class="row" id="trow">
+    <button class="btn green" type="button" id="open">Open it</button>
+    <button class="btn" type="button" id="keep">Leave it chained</button>
+  </div>
+  </div>
+  <div class="demo">First look: nothing is opened or burned. What's inside is still George's secret.</div>
+</div>
+
+<!-- Dock -->
+<div class="card off" id="c-dock" role="dialog" aria-labelledby="dh" style="--glow:#9fc6ff">
+  <div class="eyebrow">The dock</div>
+  <h2 id="dh">The lake is very still tonight</h2>
+  <p id="dockP"></p>
+  <p id="dockLore" style="margin-top:.6em">The lake is closed. The Clayson is out for the holidays, and the chain keeps him from slipping back to his rest. After the holidays he sinks to the bottom, and he won&rsquo;t surface again until Friday, August 13, 2027.</p>
+  <p id="dockCount" class="eyebrow" style="margin-top:.6em"></p>
+  <div class="row">
+    <a class="btn red" href="https://opensea.io/collection/claysons" target="_blank" rel="noopener" style="text-decoration:none">See the Claysons</a>
+    <a class="btn" href="https://www.instagram.com/georgexmeta/" target="_blank" rel="noopener" style="text-decoration:none">@georgexmeta</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var vp=$('vp'), cur=null, openCard=null;
+  var SCENES=['exterior','inside','peddler','tree','dock','altar'];
+
+  function closeCard(){ if(openCard){openCard.classList.add('off');openCard=null} }
+  function center(){ vp.scrollLeft=(vp.scrollWidth-vp.clientWidth)/2; $('hint').hidden=vp.scrollWidth<=vp.clientWidth+4 }
+  function show(name, from){
+    if(SCENES.indexOf(name)<0) name='exterior';
+    closeCard();
+    var next=$('s-'+name), prev=cur&&$('s-'+cur);
+    if(prev&&prev!==next){
+      if(from){ prev.style.transformOrigin=from; prev.classList.add('zoom'); }
+      prev.classList.remove('on');
+      setTimeout(function(){prev.classList.remove('zoom');prev.style.transformOrigin=''},1100);
+    }
+    next.classList.add('on'); cur=name;
+    $('crumb').textContent=next.dataset.crumb;
+    var b=next.dataset.back; $('back').hidden=!b; $('back').dataset.go=b||'';
+    try{ if(location.hash.slice(1)!==name) history.replaceState(null,'','#'+name) }catch(e){ }
+    requestAnimationFrame(center);
+  }
+  document.querySelectorAll('.hot').forEach(function(h){
+    h.addEventListener('click',function(){
+      if(h.dataset.go) show(h.dataset.go, h.style.left+' '+h.style.top);
+      else if(h.dataset.card){ closeCard(); openCard=$('c-'+h.dataset.card); openCard.classList.remove('off'); var f=openCard.querySelector('input,button'); if(f&&matchMedia('(pointer:fine)').matches) f.focus(); }
+    });
+  });
+  $('back').addEventListener('click',function(){ show(this.dataset.go) });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ if(openCard) closeCard(); else if(!$('back').hidden) show($('back').dataset.go) } });
+  vp.addEventListener('click',function(e){ if(openCard && !e.target.closest('.hot')) closeCard() });
+  window.addEventListener('resize',center);
+  window.addEventListener('hashchange',function(){ var n=location.hash.slice(1); if(n&&n!==cur) show(n) });
+
+  // ---- Box rule (George): 1 Nightmare Box per 3 Claysons; holders need 6+ for now (Black Friday post) ----
+  var PER_BOX=3, MIN_HELD=6, verified=null;
+  function setBoxes(n){
+    verified=n; var L=$('under'); L.innerHTML='';
+    $('tlocked').hidden=n>0; $('topen').hidden=!(n>0);
+    if(n===0) $('tlockedP').textContent='Still bare. The Peddler checked: you need '+MIN_HELD+' Claysons for your first box, then one more for every '+PER_BOX+'.';
+    $('treeTag').textContent=n>0?(n+' box'+(n===1?'':'es')+' for you'):'Under the tree';
+    $('th').textContent=n>0?(n===1?'One box, just for you. Open it, or leave it chained?':n+' boxes, all yours. Open one, or leave them chained?'):'';
+    if(!(n>0)) return;
+    var slots=layout(MAX_BOXES);
+    slots.slice(0,Math.min(n,slots.length)).forEach(function(sl,k){
+      var im=document.createElement('img'); im.src='img/box-still.png'; im.alt=''; im.className='ubox';
+      im.style.left=sl.x+'%'; im.style.top=sl.y+'%'; im.style.width=sl.w+'%'; im.style.zIndex=sl.z;
+      im.style.animationDelay=(k*0.08)+'s, '+(k*0.37)+'s'; L.appendChild(im);
+    });
+  }
+  // Spots around the tree, sized for the biggest holder (MAX_BOXES). Filled front-centre first, then outwards and round the back.
+  var MAX_BOXES=14;
+  function layout(max){
+    // Sized for the biggest holder (George's wallet: 43 Claysons = 14 boxes). A front row, a back row, then boxes stacked on top.
+    var cx=42.5, H=1.4; // box height in stage-% per 1% of width (16:9 stage, still is 240x206)
+    var front=[0,-1,1,-2,2,-3].map(function(i){return {x:cx+3.4+i*7.2,y:94,w:6.4,z:3}}),
+        back=[0,-1,1,-2,2].map(function(i){return {x:cx+3.4+(i-0.5)*7.2,y:86.5,w:5.4,z:1}}),
+        out=front.concat(back);
+    // stacks: on the two middle front boxes, then the middle back box, then the rest of the front row
+    [0,1,6,2,3,4,5,7,8].forEach(function(k){ var base=out[k]; out.push({x:base.x+0.3,y:base.y-base.w*H*0.8,w:base.w*0.86,z:base.z+1}) });
+    return out.slice(0,Math.max(max,1));
+  }
+  $('toPeddler').addEventListener('click',function(){ show('peddler'); setTimeout(function(){ document.querySelector('#s-peddler .hot').click() },900) });
+
+  // ---- Peddler ----
+  var holders=null;
+  fetch('holders.json').then(function(r){return r.json()}).then(function(j){holders=j; var m=0; for(var k in j){ var b=j[k]>=MIN_HELD?Math.floor(j[k]/PER_BOX):0; if(b>m) m=b } if(m) MAX_BOXES=m; }).catch(function(){});
+  var Q=["Careful. It's still warm.","That one screamed when I found it. Good sign.","Everything has a price. Yours is… interesting.","Mind the drip. It's not water.","I trade in what the fog leaves behind."];
+  $('pform').addEventListener('submit',function(e){
+    e.preventDefault();
+    var a=$('wallet').value.trim().toLowerCase(), out=$('presult');
+    if(!/^0x[0-9a-f]{40}$/.test(a)){ $('psay').textContent='That is not a wallet. That is a smudge. Try 0x and 40 more.'; out.innerHTML=''; return }
+    if(!holders){ $('psay').textContent='My ledger is still drying. Ask again in a moment.'; return }
+    var n=holders[a]||0;
+    if(!n){ setBoxes(0); $('psay').textContent='No Claysons in there. No Claysons, no boxes. Come back with clay on your hands.'; out.innerHTML=''; return }
+    $('psay').textContent=Q[Math.floor(Math.random()*Q.length)];
+    var boxes=n>=MIN_HELD?Math.floor(n/PER_BOX):0;
+    setBoxes(boxes);
+    if(!boxes){ $('psay').textContent='Only '+n+'? Bring me six and we\u2019ll talk. One box for every three.'; out.innerHTML='<b>0 Nightmare Boxes</b>You hold '+n+' Clayson'+(n===1?'':'s')+'. Hold 6 or more to qualify.'; return }
+    var html='<b>'+boxes+' Nightmare Box'+(boxes===1?'':'es')+'</b>You hold '+n+' Clayson'+(n===1?'':'s')+'. The Peddler has set aside:<div class="boxes">';
+    for(var i=0;i<Math.min(boxes,40);i++) html+='<span></span>';
+    out.innerHTML=html+(boxes>40?'<em style="color:var(--ash);font-size:12px;align-self:center">+'+(boxes-40)+' more</em>':'')+'</div><div class="row" style="margin-top:12px"><button class="btn green" type="button" id="toTree">They\u2019re under the tree &rarr;</button></div>';
+    $('toTree').addEventListener('click',function(){ show('tree') });
+  });
+
+  // ---- Altar: place one of your Claysons, get good karma (once per wallet per day) ----
+  var owners=null;
+  fetch('owners.json').then(function(r){return r.json()}).then(function(j){owners=j}).catch(function(){});
+  function sprite(el,id){ var k=id-1, s=Math.floor(k/100), c=k%10, r=Math.floor((k%100)/10);
+    el.style.backgroundImage='url(img/thumbs/s'+s+'.jpg)'; el.style.backgroundPosition=(c*100/9)+'% '+(r*100/9)+'%'; }
+  function today(){ var d=new Date(); return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate() }
+  function kget(a){ try{ return JSON.parse(localStorage.getItem('altar:'+a))||{karma:0} }catch(e){ return {karma:0} } }
+  function kset(a,v){ try{ localStorage.setItem('altar:'+a,JSON.stringify(v)) }catch(e){} }
+  function placeFig(id){ var f=$('fig'); f.classList.remove('on'); sprite(f,id); f.setAttribute('aria-label','Clayson #'+id+' on the altar'); void f.offsetWidth; f.classList.add('on'); $('altarTag').textContent='Clayson #'+id; }
+  try{ var lastA=localStorage.getItem('altar:last'); if(lastA){ var lv=kget(lastA); if(lv.token) placeFig(lv.token) } }catch(e){}
+  var Akarma=['The lanterns flare. The altar is pleased.','Something behind the wall exhales. Good karma.','The skulls stop grinning at you. That is a good sign.','A warm hand you cannot see pats your shoulder.'];
+  $('aform').addEventListener('submit',function(e){
+    e.preventDefault();
+    var a=$('awallet').value.trim().toLowerCase(), P=$('apicks'), out=$('aresult');
+    P.hidden=true; P.innerHTML=''; out.innerHTML='';
+    if(!/^0x[0-9a-f]{40}$/.test(a)){ $('asay').textContent='The altar does not know that name. A wallet is 0x and 40 more.'; return }
+    if(!owners){ $('asay').textContent='The altar is still waking up. Try again in a moment.'; return }
+    var ids=owners[a]||[];
+    if(!ids.length){ $('asay').textContent='Empty hands. The altar only takes Claysons.'; return }
+    var st=kget(a);
+    $('asay').textContent='Choose who stands on the plinth tonight.';
+    out.innerHTML='Good karma so far <span class="karma">'+st.karma+'</span>';
+    ids.forEach(function(id){ var b=document.createElement('button'); b.type='button'; sprite(b,id); b.setAttribute('aria-label','Place Clayson #'+id); b.innerHTML='<span>#'+id+'</span>';
+      b.addEventListener('click',function(){
+        var v=kget(a), fresh=v.last!==today();
+        if(fresh){ v.karma=(v.karma||0)+1; v.last=today() }
+        v.token=id; kset(a,v); try{ localStorage.setItem('altar:last',a) }catch(e){}
+        placeFig(id); closeCard();
+        P.hidden=true; out.innerHTML='Good karma <span class="karma">'+v.karma+'</span>';
+        $('asay').textContent='Set one of your Claysons on the plinth. The altar remembers who comes back.';
+        var kb=$('kbadge'); kb.innerHTML=(fresh?Akarma[Math.floor(Math.random()*Akarma.length)]+'<br>+1 good karma \u00b7 total':'You already earned today\u2019s karma. Come back tomorrow.<br>Total')+'<span class="karma">'+v.karma+'</span>';
+        setTimeout(function(){ kb.classList.add('on') },900); clearTimeout(kb._t); kb._t=setTimeout(function(){ kb.classList.remove('on') },9000);
+      }); P.appendChild(b) });
+    P.hidden=false;
+  });
+  // carry the wallet over from the Peddler
+  $('pform').addEventListener('submit',function(){ if(!$('awallet').value) $('awallet').value=$('wallet').value.trim() });
+
+  // ---- Tree ----
+  var gift=$('gift');
+  $('open').addEventListener('click',function(){
+    gift.classList.remove('open'); gift.classList.add('shake'); $('tsay').textContent='The chains rattle…';
+    setTimeout(function(){ gift.classList.remove('shake'); gift.classList.add('open'); $('tsay').textContent='The lid lifts an inch. Two yellow eyes. Then it slams shut again. (What comes out is revealed later.)'; },1000);
+  });
+  $('keep').addEventListener('click',function(){ gift.classList.remove('open','shake'); $('tsay').textContent='Wise. It stays chained under the tree. For now.' });
+
+  // ---- Dock: the lake matches the visitor's own time of day ----
+  // Sunrise/sunset from the NOAA approximation. Longitude is guessed from the visitor's time zone, latitude defaults to 37.8N.
+  function sunTimes(d){
+    var lat=37.8*Math.PI/180, lng=-d.getTimezoneOffset()/4; // degrees east
+    var start=new Date(d.getFullYear(),0,0), doy=Math.floor((d-start)/864e5);
+    var g=2*Math.PI/365*(doy-1);
+    var eq=229.18*(0.000075+0.001868*Math.cos(g)-0.032077*Math.sin(g)-0.014615*Math.cos(2*g)-0.040849*Math.sin(2*g));
+    var dec=0.006918-0.399912*Math.cos(g)+0.070257*Math.sin(g)-0.006758*Math.cos(2*g)+0.000907*Math.sin(2*g)-0.002697*Math.cos(3*g)+0.00148*Math.sin(3*g);
+    var ha=Math.acos(Math.cos(90.833*Math.PI/180)/(Math.cos(lat)*Math.cos(dec))-Math.tan(lat)*Math.tan(dec))*180/Math.PI;
+    var tz=-d.getTimezoneOffset(); // minutes east of UTC
+    var noon=720-4*lng-eq+tz;
+    return {rise:noon-4*ha, set:noon+4*ha, noon:noon};
+  }
+  function fmt(m){ m=Math.round(m); var h=Math.floor(m/60)%24, mm=m%60, ap=h<12?'AM':'PM', h12=h%12||12; return h12+':'+String(mm).padStart(2,'0')+' '+ap }
+  var DOCK_TEXT={
+    dawn:['The sun is coming up over the lake','First light on the water. The fog is lifting, and the chain across the dock is wet with dew.'],
+    day:['Bright day on the lake','The water is calm and the sun is high. Nobody swims here. The padlock makes sure of it.'],
+    dusk:['The sun is going down','The sky is burning out behind the mountains. Somewhere under that water is the bed he can\u2019t get back to.'],
+    night:['The lake is very still tonight','The moon is up, the dock is chained, and 1,300 Claysons are somewhere out in the trees.']
+  };
+  // After the holidays (George): the sign comes down and the Clayson sinks back to the bottom until Fri Aug 13, 2027.
+  var LAKE_OPEN=new Date()>=new Date(2027,0,2);
+  if(LAKE_OPEN){
+    $('insideImg').src='img/inside-open.jpg';
+    $('dockImg').alt='Layered clay lake view from the dock: stacked mountains, puffy clay clouds, calm empty water past the bare dock posts';
+    $('dockTag').textContent='Look out'; $('dockTag').parentNode.setAttribute('aria-label','Look out over the lake');
+    $('dockLore').textContent='The sign is down and the chain is gone. The holidays are over, and the Clayson has sunk back to the bottom of the lake to rest. He won\u2019t surface again until Friday, August 13, 2027.';
+    DOCK_TEXT.dawn[1]='First light on the water. The fog is lifting. Somewhere far below, something is sleeping.';
+    DOCK_TEXT.day[1]='The water is calm and the sun is high. Nothing stirs. Not yet.';
+    DOCK_TEXT.dusk[1]='The sky is burning out behind the mountains. The bed at the bottom of the lake is taken again.';
+    DOCK_TEXT.night[1]='The moon is up and the dock is open. The lake is very quiet now that he is home.';
+  }
+  function dockPhase(){
+    var d=new Date(), now=d.getHours()*60+d.getMinutes(), t=sunTimes(d), ph;
+    if(now>=t.rise-40 && now<t.rise+60) ph='dawn';
+    else if(now>=t.rise+60 && now<t.set-60) ph='day';
+    else if(now>=t.set-60 && now<t.set+30) ph='dusk';
+    else ph='night';
+    var img=$('dockImg'), src='img/dock-'+ph+(LAKE_OPEN?'-open':'')+'.jpg';
+    if(img.getAttribute('src')!==src) img.setAttribute('src',src);
+    var after=now>=t.set, before=now<t.rise;
+    $('dockClock').innerHTML=fmt(now)+'<small>'+(before?'Sunrise at '+fmt(t.rise):after?'Sun set at '+fmt(t.set):'Sunset at '+fmt(t.set))+'</small>';
+    $('dh').textContent=DOCK_TEXT[ph][0]; $('dockP').textContent=DOCK_TEXT[ph][1];
+    var days=Math.ceil((new Date(2027,7,13)-d)/864e5);
+    $('dockCount').textContent=days>1?'He surfaces in '+days+' days':days===1?'He surfaces tomorrow':'He has surfaced';
+  }
+  dockPhase(); setInterval(dockPhase,60000);
+
+  show(location.hash.slice(1)||'exterior');
+})();
+</script>
