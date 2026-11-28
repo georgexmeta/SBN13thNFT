@@ -96,6 +96,31 @@ button{font:inherit;color:inherit}
 .btn.green{background:#173118;border-color:#3d6b2f;color:var(--ooze)}
 .result{margin-top:12px;font-family:var(--mono);font-size:13px;color:var(--bone);line-height:1.5}
 .result b{font-family:var(--display);font-weight:400;font-size:40px;color:var(--gold);letter-spacing:.02em;display:block;line-height:1}
+.qz .lvl{display:flex;gap:6px;margin:0 0 10px;font-family:var(--mono);font-size:10.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.qz .lvl span{padding:3px 7px;border:1px solid var(--rule);border-radius:2px;color:#7d706a}
+.qz .lvl span.on{color:#111;background:var(--glow);border-color:transparent}
+.qz .streak{display:flex;gap:4px;margin:0 0 10px}
+.qz .streak i{flex:1;height:7px;border-radius:2px;background:#2a2326}
+.qz .streak i.on{background:#9be06f;box-shadow:0 0 6px #9be06f88}
+.qz .timer{height:6px;border-radius:3px;background:#2a2326;overflow:hidden;margin:0 0 4px}
+.qz .timer i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#e8242a,#e9c46a);transform-origin:left}
+.qz .secs{font-family:var(--mono);font-size:11px;color:#7d706a;margin:0 0 10px;letter-spacing:.1em}
+.qz .secs.low{color:#ff6b5e}
+.qz .film{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#7d706a;margin:0 0 4px}
+.qz .qq{color:var(--bone);font-size:17px;line-height:1.4;margin:0 0 12px}
+.qz .opts{display:grid;gap:14px;padding-bottom:30px}
+.qz .opts button{appearance:none;cursor:pointer;text-align:left;padding:11px 13px;border:1px solid var(--rule);background:var(--panel-2);color:var(--bone);border-radius:3px;font:inherit;font-size:15px;line-height:1.3}
+.qz .opts button:hover:not(:disabled){border-color:var(--glow)}
+.qz .opts button{position:relative}
+.qz .opts button.ok{background:#1f3a1c;border-color:#9be06f;color:#eaffdf;animation:qok 1s ease-out both}
+@keyframes qok{0%{box-shadow:0 0 0 0 #9be06f00;background:#2c5a25}35%{box-shadow:0 0 22px 4px #9be06fcc,inset 0 0 18px #9be06f99;background:#3f7f33}100%{box-shadow:0 0 12px 1px #9be06f88,inset 0 0 8px #9be06f55;background:#1f3a1c}}
+.qz .opts button.no{border-color:#8a0d12;color:#ffe3df;background:linear-gradient(180deg,#8a0d12,#5c070b) top/100% 0 no-repeat,var(--panel-2);animation:qbleed .9s ease-in forwards;overflow:visible;z-index:2}
+@keyframes qbleed{to{background-size:100% 100%,auto}}
+.qz .drip{position:absolute;top:calc(100% - 2px);width:7px;height:0;border-radius:0 0 6px 6px;background:linear-gradient(180deg,#5c070b,#8a0d12);animation:qdrip 1.6s cubic-bezier(.5,0,.8,.6) forwards;pointer-events:none}
+.qz .drip::after{content:"";position:absolute;left:50%;bottom:-5px;width:11px;height:11px;margin-left:-5.5px;border-radius:50%;background:#8a0d12}
+@keyframes qdrip{to{height:var(--h,26px)}}
+.qz .opts button:disabled{cursor:default}
+.qz .ab{display:inline-block;width:22px;margin-right:8px;font-family:var(--mono);font-weight:800;color:var(--glow)}
 .demo{margin-top:12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:#7d706a}
 .boxes{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
 .boxes span{width:26px;height:26px;border-radius:3px;background:repeating-linear-gradient(135deg,#eee 0 4px,#111 4px 8px);border:2px solid #6b2b1a;box-shadow:0 0 0 2px #2a1a0e}
@@ -244,6 +269,7 @@ button{font:inherit;color:inherit}
       <div class="screen idle" id="screen"><video id="tvVid" playsinline preload="auto" loop muted src="media/vhs-intro.mp4?v=3"></video><img class="art" id="tvArt" alt=""><div class="thumb art" id="tvThumb"></div><div class="red"></div></div>
       <div class="tape" id="tape"><span class="lbl"><i class="art" id="tapeArt"></i><b id="tapeLbl">#1</b></span></div>
       <div class="tvctl" id="tvctl" hidden><button class="btn" type="button" id="rewind">Rewind</button><button class="btn red" type="button" id="eject">Eject</button></div>
+      <button class="hot" id="qzHot" style="left:67.7%;top:33%;--glow:#e9c46a" data-card="quiz" aria-label="Turn the dial to channel 13: Late Night Horror Quiz"><span class="ring"></span><span class="tag">Channel 13 quiz</span></button>
       <button class="hot" id="tvHot" style="left:47.2%;top:46%;--glow:#bcd3ff" data-card="tv" aria-label="Insert a tape"><span class="ring"></span><span class="tag">Insert a tape</span></button>
     </section>
 
@@ -296,6 +322,27 @@ button{font:inherit;color:inherit}
   </form>
   <div class="result" id="presult" aria-live="polite"></div>
   <div class="demo">Rule: 1 Nightmare Box for every 3 Claysons, starting at 6 held. Counts come from the Nov 25 holder snapshot for now; the final snapshot is taken before the drop.</div>
+</div>
+
+<!-- Late Night Horror Quiz -->
+<div class="card off qz" id="c-quiz" role="dialog" aria-labelledby="qh" style="--glow:#e9c46a">
+  <div class="eyebrow">Channel 13 &middot; Late Night Horror Quiz</div>
+  <h2 id="qh">Thirteen in a row</h2>
+  <div class="lvl" id="qlvl"><span>Light</span><span>Easy</span><span>Moderate</span><span>Hard</span></div>
+  <div class="streak" id="qstreak" aria-hidden="true"></div>
+  <div id="qintro">
+    <p>Classic horror, straight off the late show. Answer 13 in a row to beat it. Every 3 right answers the questions get harder. You get <b style="color:var(--gold)">13 seconds</b> per question; run out and it counts as wrong. One miss and the streak starts over.</p>
+    <div class="row"><button class="btn red" type="button" id="qstart">Turn the dial</button></div>
+  </div>
+  <div id="qplay" hidden>
+    <div class="timer"><i id="qbar"></i></div>
+    <div class="secs" id="qsecs">13</div>
+    <div class="film" id="qfilm"></div>
+    <div class="qq" id="qq" aria-live="polite"></div>
+    <div class="opts" id="qopts"></div>
+  </div>
+  <div class="result" id="qres" aria-live="polite"></div>
+  <div class="demo">Questions about the classic films, for fun. Art here is our own clay, not from the films.</div>
 </div>
 
 <!-- TV -->
@@ -359,7 +406,7 @@ button{font:inherit;color:inherit}
     ['archive','The full archive','Play 13 different tapes, or every tape you hold.',5],
     ['patience','Patience','Leave your Nightmare Boxes chained under the tree.',2],
     ['lake','Lake watcher','Visit the dock at dawn, day, dusk and night.',5],
-    ['sign','Heed the warning','Read the sign at the end of the dock.',1],
+    ['quiz','Survive the late show','Answer 13 horror questions in a row on Channel 13.',5],
     ['bones','Roll the Bones',"Play the Peddler\u2019s dice game.",1],
     ['secret','Hidden in the clay','Find the secret spot hidden in the cabin.',3],
     ['openbox','Curiosity','Open a Nightmare Box.',-2],
@@ -403,6 +450,55 @@ button{font:inherit;color:inherit}
   $('padlock').addEventListener('click',function(e){ e.stopPropagation();
     if(DOCK_PH==='night' && !LAKE_OPEN_EARLY()){ if(!K.done('rattle')) K.toast('The chain clanks. Something below the water clanks back.',true) }
     else K.toast('The padlock is cold. Come back at night.') });
+  // ---- Late Night Horror Quiz: 13 s per question, level up every 3 right, 13 in a row wins ----
+  (function(){
+    var BANK=[[0,"Friday the 13th","Who is the killer in the original Friday the 13th (1980)?","Pamela Voorhees, Jason's mother","Jason Voorhees","Crazy Ralph","Alice Hardy"],[0,"Friday the 13th","What is the name of the summer camp in Friday the 13th?","Camp Crystal Lake","Camp Silver Lake","Camp Blackwood","Camp Pine Ridge"],[1,"Friday the 13th","What does Jason wear over his head in Friday the 13th Part 2 (1981), before the hockey mask?","A burlap sack","A welding mask","A pillowcase","A gas mask"],[1,"Friday the 13th","Who is the last counselor standing at the end of the original Friday the 13th?","Alice","Ginny","Chris","Tina"],[2,"Friday the 13th","In which film does Jason first put on his hockey mask?","Friday the 13th Part III (1982)","Friday the 13th Part 2 (1981)","Friday the 13th: The Final Chapter (1984)","Friday the 13th: A New Beginning (1985)"],[2,"Friday the 13th","Who played Mrs. Voorhees in the 1980 original?","Betsy Palmer","Adrienne King","Amy Steel","Dana Kimmell"],[2,"Friday the 13th","Who directed the original Friday the 13th (1980)?","Sean S. Cunningham","Steve Miner","Joseph Zito","Tom Savini"],[3,"Friday the 13th","Who created the gore and makeup effects for the original Friday the 13th?","Tom Savini","Rob Bottin","Stan Winston","Rick Baker"],[3,"Friday the 13th","Who composed the Friday the 13th score with its famous whispered 'ki ki ki, ma ma ma'?","Harry Manfredini","John Carpenter","Charles Bernstein","Christopher Young"],[3,"Friday the 13th","Which young boy fights Jason in Friday the 13th: The Final Chapter (1984)?","Tommy Jarvis","Tommy Doyle","Andy Barclay","Jesse Walsh"],[0,"Halloween","In what town is Halloween (1978) set?","Haddonfield, Illinois","Springwood, Ohio","Crystal Lake, New Jersey","Woodsboro, California"],[0,"Halloween","Who directed Halloween (1978)?","John Carpenter","Wes Craven","Sean S. Cunningham","Tobe Hooper"],[1,"Halloween","Which actress plays Laurie Strode in Halloween (1978)?","Jamie Lee Curtis","Heather Langenkamp","Adrienne King","Ashley Laurence"],[1,"Halloween","What is the name of Michael Myers' psychiatrist?","Dr. Sam Loomis","Dr. Philip Channard","Dr. Neil Gordon","Dr. Wyatt"],[2,"Halloween","In what year is the opening scene of Halloween (1978), when young Michael kills his sister, set?","1963","1958","1968","1973"],[2,"Halloween","What is the name of the sister Michael kills as a child?","Judith","Laurie","Annie","Lynda"],[2,"Halloween","Which boy does Laurie babysit on Halloween night?","Tommy Doyle","Tommy Jarvis","Andy Barclay","Lonnie Elam"],[3,"Halloween","Michael's mask was a cheap store-bought mask of which character, painted white?","Captain Kirk","Mr. Spock","Frankenstein's monster","Richard Nixon"],[3,"Halloween","From which sanitarium does Michael escape in Halloween (1978)?","Smith's Grove","Westin Hills","Ravenhurst","Shady Pines"],[3,"Halloween","Which old monster movie are Tommy and Lindsey watching on TV?","The Thing from Another World","Night of the Living Dead","Creature from the Black Lagoon","The Wolf Man"],[0,"A Nightmare on Elm Street","What is Freddy Krueger's signature weapon?","A glove with knife blades on the fingers","A machete","A chainsaw","A hook"],[0,"A Nightmare on Elm Street","Who wrote and directed A Nightmare on Elm Street (1984)?","Wes Craven","John Carpenter","Tobe Hooper","Sean S. Cunningham"],[1,"A Nightmare on Elm Street","What colours are the stripes on Freddy's sweater?","Red and green","Black and orange","Red and black","Blue and green"],[1,"A Nightmare on Elm Street","Who plays Freddy Krueger in the original series?","Robert Englund","Kane Hodder","Brad Dourif","Doug Bradley"],[1,"A Nightmare on Elm Street","What is the name of the heroine of A Nightmare on Elm Street (1984)?","Nancy Thompson","Laurie Strode","Kirsty Cotton","Alice Hardy"],[2,"A Nightmare on Elm Street","Johnny Depp made his film debut in the 1984 original. What was his character's name?","Glen Lantz","Rod Lane","Jesse Walsh","Roland Kincaid"],[2,"A Nightmare on Elm Street","Where has Nancy's mother hidden Freddy's glove?","In the basement furnace","Buried in the backyard","Under the floorboards","In a trunk in the attic"],[2,"A Nightmare on Elm Street","What is the job of Nancy's father, Don Thompson?","Police lieutenant","Doctor","Lawyer","High school teacher"],[3,"A Nightmare on Elm Street","In Dream Warriors (1987), Freddy's mother is revealed to be a nun. What was her name?","Amanda Krueger","Margaret Krueger","Loretta Krueger","Helen Krueger"],[3,"A Nightmare on Elm Street","How does Nancy defeat Freddy at the end of the 1984 original?","She turns her back on him and takes back the energy she gave him","She burns his glove in the furnace","She traps him inside a mirror","She stabs him with his own blades"],[0,"Child's Play","What brand of doll is Chucky?","A Good Guys doll","A Pals doll","A Best Friends doll","A Kid Kins doll"],[0,"Child's Play","What is the name of the boy who owns Chucky in Child's Play (1988)?","Andy Barclay","Tommy Doyle","Tommy Jarvis","Danny Torrance"],[1,"Child's Play","Whose soul is trapped inside Chucky?","Charles Lee Ray","Fred Krueger","Frank Cotton","Michael Myers"],[1,"Child's Play","Who is the voice of Chucky in the original films?","Brad Dourif","Robert Englund","Doug Bradley","Tony Todd"],[2,"Child's Play","Which voodoo spirit does Charles Lee Ray call on to move his soul into the doll?","Damballa","Baron Samedi","Papa Legba","Erzulie"],[2,"Child's Play","What is the name of the detective who shoots Charles Lee Ray in the toy store?","Mike Norris","Don Thompson","Leigh Brackett","Sam Loomis"],[2,"Child's Play","In what city is Child's Play (1988) set?","Chicago","New York","Detroit","Los Angeles"],[3,"Child's Play","To escape the doll's body, whose body must Chucky take?","Andy's, the first person he revealed himself to","Karen's, Andy's mother","Detective Norris's","Any human who touches him at midnight"],[3,"Child's Play","Who directed Child's Play (1988)?","Tom Holland","Don Mancini","Ronny Yu","Jack Bender"],[3,"Child's Play","Who taught Charles Lee Ray voodoo?","John, known as Dr. Death","Eddie Caputo","Maggie Peterson","Mike Norris"],[0,"Hellraiser","Who wrote and directed Hellraiser (1987)?","Clive Barker","Stephen King","Wes Craven","Tobe Hooper"],[0,"Hellraiser","What object opens the door to the Cenobites?","A puzzle box","A Ouija board","A music box","A cursed mirror"],[1,"Hellraiser","What do fans call the lead Cenobite with nails in his head?","Pinhead","Butterball","Chatterer","Frank"],[1,"Hellraiser","Which actor plays the lead Cenobite?","Doug Bradley","Robert Englund","Brad Dourif","Kane Hodder"],[2,"Hellraiser","How is Frank Cotton related to Larry?","He is Larry's brother","He is Larry's father","He is Larry's cousin","He is Larry's best friend"],[2,"Hellraiser","What brings Frank back from the dead in the attic?","Larry's blood dripping onto the floor","A lightning strike on the house","Julia's tears","Kirsty solving the box again"],[2,"Hellraiser","What is the name of Larry's daughter, the heroine of Hellraiser?","Kirsty","Julia","Nancy","Laurie"],[3,"Hellraiser","Hellraiser is based on which Clive Barker novella?","The Hellbound Heart","Books of Blood","Cabal","The Damnation Game"],[3,"Hellraiser","Who composed the score for Hellraiser (1987)?","Christopher Young","Harry Manfredini","John Carpenter","Charles Bernstein"],[3,"Hellraiser","What does the mysterious drifter turn into at the end of Hellraiser?","A winged skeletal creature","A Cenobite","A swarm of flies","Frank Cotton"]], LV=['Light','Easy','Moderate','Hard'], SECS=13;
+    var streak=0, used={}, cur=null, deadline=0, tick=null, active=false;
+    var bar=$('qbar'), secs=$('qsecs'), opts=$('qopts'), card=$('c-quiz');
+    $('qstreak').innerHTML=new Array(14).join('<i></i>');
+    function shuffle(a){ for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)), t=a[i]; a[i]=a[j]; a[j]=t } return a }
+    function level(){ return Math.min(3,Math.floor(streak/3)) }
+    function paint(){ var l=level(); [].forEach.call($('qlvl').children,function(e,i){ e.classList.toggle('on',i===l) });
+      [].forEach.call($('qstreak').children,function(e,i){ e.classList.toggle('on',i<streak) }) }
+    function stop(){ clearInterval(tick); tick=null }
+    function pick(){ var l=level(), pool=[]; BANK.forEach(function(q,i){ if(q[0]===l && !used[i]) pool.push(i) });
+      if(!pool.length){ BANK.forEach(function(q,i){ if(q[0]===l){ delete used[i]; pool.push(i) } }) }
+      var i=pool[Math.floor(Math.random()*pool.length)]; used[i]=1; return BANK[i] }
+    function next(){
+      cur=pick(); paint(); $('qres').innerHTML='';
+      $('qfilm').textContent=LV[level()]+' \u00b7 '+cur[1]; $('qq').textContent=cur[2];
+      opts.innerHTML=''; shuffle([cur[3],cur[4],cur[5],cur[6]]).forEach(function(t,k){ var b=document.createElement('button'); b.type='button'; b.dataset.a=t; b.innerHTML='<span class="ab">'+'ABCD'[k]+'</span>'; b.appendChild(document.createTextNode(t)); b.addEventListener('click',function(){ answer(t,b) }); opts.appendChild(b) });
+      deadline=Date.now()+SECS*1000; stop(); tick=setInterval(run,100); run();
+    }
+    function run(){
+      if(card.classList.contains('off')){ stop(); if(active){ active=false; streak=0; used={}; reset('You walked away. The static resets your streak.') } return }
+      var left=Math.max(0,deadline-Date.now()); bar.style.transform='scaleX('+(left/(SECS*1000))+')';
+      var n=Math.ceil(left/1000); secs.textContent=n+(n===1?' second':' seconds'); secs.classList.toggle('low',n<=4);
+      if(left<=0) answer(null,null);
+    }
+    function reveal(){ [].forEach.call(opts.children,function(b){ b.disabled=true; if(b.dataset.a===cur[3]) b.classList.add('ok') }) }
+    function reset(msg){ $('qplay').hidden=true; $('qintro').hidden=false; $('qstart').textContent='Try again'; paint(); if(msg) $('qres').innerHTML=msg }
+    function answer(t,b){
+      if(!tick) return; stop(); reveal();
+      if(t===cur[3]){
+        streak++; paint();
+        if(streak>=13){ active=false;
+          var first=K.done('quiz'); if(!first){ K.add(1,0); K.toast('Channel 13 beaten again &middot; +1 good karma') }
+          $('qres').innerHTML='<b>13 / 13</b>The screen goes black. Something in the static applauds.'+(first?'':' (+1 good karma)');
+          setTimeout(function(){ reset(); $('qstart').textContent='Play again'; $('qres').innerHTML='<b>13 / 13</b>You survived the late show.' },2200);
+          streak=0; used={}; return }
+        $('qres').innerHTML=(streak%3===0?'<span style="color:var(--gold)">Level up: '+LV[level()]+'</span> &middot; ':'')+'Right. '+streak+' in a row.';
+        setTimeout(next,streak%3===0?1400:900);
+      } else {
+        if(b){ b.classList.add('no'); for(var d=0;d<6;d++){ var i=document.createElement('i'); i.className='drip'; i.style.left=(6+Math.random()*86)+'%'; i.style.setProperty('--h',(10+Math.random()*30)+'px'); i.style.animationDelay=(.5+Math.random()*.6)+'s'; i.style.width=(4+Math.random()*5)+'px'; b.appendChild(i) } }
+        var was=streak; streak=0; used={}; active=false;
+        $('qres').innerHTML=(t===null?'Time\u2019s up.':'Wrong.')+' The answer was <span style="color:#9be06f">'+cur[3].replace(/</g,'&lt;')+'</span>. Streak broken at '+was+'.';
+        setTimeout(function(){ reset($('qres').innerHTML) },2600);
+      }
+    }
+    $('qstart').addEventListener('click',function(){ streak=0; used={}; active=true; $('qintro').hidden=true; $('qplay').hidden=false; next() });
+    paint();
+  })();
   function LAKE_OPEN_EARLY(){ return new Date()>=new Date(2027,0,2) }
   // ---- Roll the Bones: a clay hand throws two 3D clay dice that land on the real roll ----
   var PIPS={1:[4],2:[0,8],3:[0,4,8],4:[0,2,6,8],5:[0,2,4,6,8],6:[0,2,3,5,6,8]};
@@ -582,7 +678,7 @@ button{font:inherit;color:inherit}
   }
   function play(id){
     playing=id; cancelAnimationFrame(raf); setArt(id);
-    scr.classList.remove('hit','ghost','idle'); $('tvHot').style.display='none'; $('tvctl').hidden=false; $('rewind').hidden=true; K.tape(id);
+    scr.classList.remove('hit','ghost','idle'); $('tvHot').style.display='none'; $('qzHot').style.display='none'; $('tvctl').hidden=false; $('rewind').hidden=true; K.tape(id);
     var tp=$('tape'); $('tapeLbl').textContent='#'+id; labelArt($('tapeArt'),id); tp.classList.remove('in'); void tp.offsetWidth; tp.classList.add('in');
     vid.pause(); vid.loop=false; vid.muted=false; vid.currentTime=0;
     setTimeout(function(){ var p=vid.play(); if(p&&p.catch) p.catch(function(){ vid.muted=true; vid.play() }); raf=requestAnimationFrame(tick) },1650);
@@ -591,7 +687,7 @@ button{font:inherit;color:inherit}
   $('rewind').addEventListener('click',function(){ if(playing) play(playing) });
   $('eject').addEventListener('click',function(){
     if(playing && !vid.ended && vid.currentTime<T_CUT) K.done('coward');
-    cancelAnimationFrame(raf); playing=null; scr.classList.remove('hit','ghost'); scr.classList.add('idle'); $('tvctl').hidden=true; $('tvHot').style.display='';
+    cancelAnimationFrame(raf); playing=null; scr.classList.remove('hit','ghost'); scr.classList.add('idle'); $('tvctl').hidden=true; $('tvHot').style.display=''; $('qzHot').style.display='';
     vid.muted=true; vid.loop=true; vid.currentTime=0; vid.play().catch(function(){});
     closeCard(); openCard=$('c-tv'); openCard.classList.remove('off');
   });
