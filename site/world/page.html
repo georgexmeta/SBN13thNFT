@@ -358,7 +358,9 @@ button{font:inherit;color:inherit}
 .die3 .rest{position:absolute;left:-10%;bottom:-9%;width:120%;height:auto;opacity:0;filter:brightness(.78) sepia(.18) drop-shadow(0 3px 3px rgba(0,0,0,.6))}
 .die3 .sh{position:absolute;left:-18%;right:-18%;bottom:-30%;height:46%;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.85),rgba(0,0,0,.45) 55%,transparent);filter:blur(1.5px)}
 #s-peddler.rolling .hot{opacity:0;pointer-events:none;transition:opacity .3s}
-.hand{position:absolute;z-index:5;width:52%;height:auto;left:80%;top:110%;pointer-events:none;filter:drop-shadow(-10px 22px 22px rgba(0,0,0,.7)) brightness(.7) sepia(.2);transform-origin:96% 86%}
+.hand img{display:block;width:100%;height:auto}#handOpen{position:absolute;left:0;top:0;opacity:0}
+.dz .dice3d{position:absolute;inset:0;width:100%;height:100%}
+.hand{position:absolute;z-index:5;width:52%;height:auto;left:80%;top:110%;pointer-events:none;will-change:transform,left,top;filter:drop-shadow(-10px 22px 22px rgba(0,0,0,.7)) brightness(.7) sepia(.2);transform-origin:96% 86%}
 .hide{position:absolute;z-index:5;width:5.2%;aspect-ratio:1;translate:-50% -50%;border:0;padding:0;background:none;border-radius:50%;cursor:zoom-in;-webkit-tap-highlight-color:transparent}
 .hide::before{content:'';position:absolute;inset:0;border-radius:50%;border:2px dashed rgba(233,196,106,0);transition:border-color .25s,background .25s}
 .hide:hover::before,.hide:focus-visible::before{border-color:rgba(233,196,106,.75);background:radial-gradient(closest-side,rgba(233,196,106,.16),transparent)}
@@ -466,7 +468,7 @@ button{font:inherit;color:inherit}
       <img class="bg" src="img/craps.jpg?v=7" alt="A dark private craps room sculpted in clay: the grinning three-eyed Peddler leans on a green felt craps table under a single hanging lamp, chained gift boxes in the shadows" width="1344" height="768">
       <div class="fx" id="fx-peddler" aria-hidden="true"></div>
       <div class="dz" id="dz" aria-hidden="true"></div>
-      <img class="hand" id="hand" src="img/arm-fist.png?v=5" alt="" width="640" height="677">
+      <div class="hand" id="hand"><img id="handFist" src="img/arm-fist.png?v=5" alt="" width="640" height="677"><img id="handOpen" src="img/arm-open.png?v=5" alt="" width="640" height="677"></div>
       <button class="hot" style="left:50%;top:62%" data-card="peddler" aria-label="Talk to the Peddler"><span class="ring"></span><span class="tag">Talk to him</span></button>
       <button class="hot" style="left:27%;top:84%;--glow:#9be06f" data-card="dice" aria-label="Roll the bones"><span class="ring"></span><span class="tag">Roll the bones</span></button>
     </section>
@@ -983,10 +985,10 @@ button{font:inherit;color:inherit}
   function shade(c){ var t=getComputedStyle(c).transform; if(!t||t==='none') return; var m=new DOMMatrix(t);
     c.querySelectorAll('.f').forEach(function(f){ var n=NORM[f.dataset.v], x=m.m11*n[0]+m.m21*n[1]+m.m31*n[2], y=m.m12*n[0]+m.m22*n[1]+m.m32*n[2], z=m.m13*n[0]+m.m23*n[1]+m.m33*n[2];
       var d=Math.max(0,x*LIGHT[0]+y*LIGHT[1]+z*LIGHT[2]); f.style.filter='brightness('+(0.32+0.78*d).toFixed(3)+') sepia(.18) blur(.3px)' }) }
-  function throwDice(a,b,done){
-    dz.innerHTML=''; var D=[makeDie(),makeDie()], fx=62, fy=48;
+  function throwDiceCSS(a,b,done){
+    dz.querySelectorAll('.die3').forEach(function(e){ e.remove() }); if(window.DICE3D) DICE3D.clear(); var D=[makeDie(),makeDie()], fx=62, fy=48;
     D.forEach(function(d){ d.style.left=fx+'%'; d.style.top=fy+'%'; d.style.opacity='0'; dz.appendChild(d); sizeDie(d) });
-    hand.src='img/arm-fist.png?v=5';
+    $('handFist').style.opacity=1; $('handOpen').style.opacity=0;
     var T=RM?0.2:1, live=true;
     (function loop(){ D.forEach(function(d){ shade(d.querySelector('.cube')) }); if(live) requestAnimationFrame(loop) })();
     var IN={left:'51.6%',top:'33.6%'};
@@ -994,7 +996,7 @@ button{font:inherit;color:inherit}
     h1.onfinish=function(){
       var sh=hand.animate([{transform:'rotate(-3deg)'},{transform:'rotate(2.5deg) translate(.4%,-.6%)'},{transform:'rotate(-4deg) translate(-.3%,.5%)'},{transform:'rotate(2deg) translate(.3%,-.4%)'},{transform:'rotate(-5deg)'},{transform:'rotate(6deg)'}],{duration:800*T,easing:'ease-in-out',fill:'forwards'});
       sh.onfinish=function(){
-        hand.src='img/arm-open.png?v=5';
+        $('handFist').style.opacity=0; $('handOpen').style.opacity=1;
         hand.animate([{left:IN.left,top:IN.top,transform:'rotate(6deg)'},{left:'49%',top:'35%',transform:'rotate(-9deg)',offset:.25},{left:'50%',top:'36%',transform:'rotate(-8deg)',offset:.55},{left:'82%',top:'112%',transform:'rotate(12deg)'}],{duration:1500*T,easing:'ease-in-out',fill:'forwards'});
         var land=[[41+Math.random()*3,77+Math.random()*1.5],[48+Math.random()*3,78.5+Math.random()*1.5]];
         [a,b].forEach(function(v,k){
@@ -1019,6 +1021,40 @@ button{font:inherit;color:inherit}
         // as they settle, the tumbling cube gives way to the sculpted clay die showing the same face
         setTimeout(function(){ D.forEach(function(d){ d.querySelector('.rest').animate([{opacity:0},{opacity:1}],{duration:220,fill:'forwards'}); d.querySelector('.cube').animate([{opacity:1},{opacity:0}],{duration:220,fill:'forwards'}) }) },1560*T);
         setTimeout(function(){ live=false; done() },1800*T);
+      };
+    };
+  }
+  // Real 3D toss (media/dice3d.js): smooth clay hand, dice simulated with physics, faces painted to the roll
+  function throwDice(a,b,done){
+    var D3=window.DICE3D;
+    if(!D3||RM){ throwDiceCSS(a,b,done); return }
+    var t=setTimeout(function(){ t=null; throwDiceCSS(a,b,done) },5000);
+    D3.load(dz).then(function(){ if(!t) return; clearTimeout(t); toss3d(D3,a,b,done) },function(){ if(!t) return; clearTimeout(t); throwDiceCSS(a,b,done) });
+  }
+  function toss3d(D3,a,b,done){
+    dz.querySelectorAll('.die3').forEach(function(e){ e.remove() }); D3.clear();
+    var fist=$('handFist'), open=$('handOpen'), E='cubic-bezier(.45,0,.55,1)';
+    fist.getAnimations().concat(open.getAnimations(),hand.getAnimations()).forEach(function(x){ x.cancel() }); fist.style.opacity=1; open.style.opacity=0;
+    var a1=hand.animate([{left:'80%',top:'110%',transform:'rotate(14deg)'},{left:'53%',top:'35.5%',transform:'rotate(-6deg)',offset:.78,easing:'cubic-bezier(.3,.7,.4,1)'},{left:'51.6%',top:'33.6%',transform:'rotate(-3deg)'}],{duration:950,easing:'cubic-bezier(.22,.9,.3,1)',fill:'forwards'});
+    a1.onfinish=function(){
+      // loose shake: the dice rattle in the fist, then a wind-up
+      var sh=hand.animate([
+        {transform:'rotate(-3deg)',easing:E},
+        {transform:'translate(.6%,-2.2%) rotate(3deg)',easing:E},
+        {transform:'translate(-.3%,1.4%) rotate(-5deg)',easing:E},
+        {transform:'translate(.7%,-2.4%) rotate(4deg)',easing:E},
+        {transform:'translate(-.2%,1.2%) rotate(-4deg)',easing:E},
+        {transform:'translate(2.2%,-3%) rotate(9deg)'}],{duration:1050,fill:'forwards'});
+      sh.onfinish=function(){
+        // the flick: fast forward and down, fingers open part-way through
+        var fl=hand.animate([{left:'51.6%',top:'33.6%',transform:'translate(2.2%,-3%) rotate(9deg)'},{left:'47%',top:'37.5%',transform:'translate(0,0) rotate(-15deg)'}],{duration:280,easing:'cubic-bezier(.5,0,.15,1)',fill:'forwards'});
+        setTimeout(function(){
+          open.animate([{opacity:0},{opacity:1}],{duration:90,fill:'forwards'}); fist.animate([{opacity:1},{opacity:0}],{duration:90,delay:70,fill:'forwards'});
+          D3.toss(a,b,function(){ setTimeout(done,250) });
+        },150);
+        fl.onfinish=function(){
+          hand.animate([{left:'47%',top:'37.5%',transform:'rotate(-15deg)'},{left:'48%',top:'38.5%',transform:'rotate(-11deg)',offset:.3,easing:'ease-in-out'},{left:'82%',top:'112%',transform:'rotate(12deg)'}],{duration:1300,easing:'cubic-bezier(.5,0,.6,1)',fill:'forwards'})
+        };
       };
     };
   }
@@ -1047,6 +1083,7 @@ button{font:inherit;color:inherit}
   function closeCard(){ if(openCard){openCard.classList.add('off');openCard=null} }
   function center(){ vp.scrollLeft=(vp.scrollWidth-vp.clientWidth)/2; $('hint').hidden=vp.scrollWidth<=vp.clientWidth+4 }
   function show(name, from){
+    if(name==='peddler'&&window.DICE3D) DICE3D.load($('dz')).catch(function(){});
     if(name!=='dock') DOCKLOOK.leave(); else if(cur!=='dock') DOCKLOOK.enter();
     if(window.LAKELIFE){ if(name!=='dock') LAKELIFE.stop(); else if(cur!=='dock') setTimeout(LAKELIFE.start,0) }
     if(name!=='tree' && window.TRIM) TRIM.leave();
@@ -1417,3 +1454,4 @@ button{font:inherit;color:inherit}
   show(location.hash.slice(1)||'exterior');
 })();
 </script>
+<script type="module">import * as D from "./media/dice3d.js?v=3"; window.DICE3D=D; if(location.hash==="#peddler") D.load(document.getElementById("dz")).catch(function(){});</script>
