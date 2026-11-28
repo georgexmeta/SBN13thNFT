@@ -328,6 +328,16 @@ button{font:inherit;color:inherit}
 .die3 .sh{position:absolute;left:-18%;right:-18%;bottom:-30%;height:46%;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.85),rgba(0,0,0,.45) 55%,transparent);filter:blur(1.5px)}
 #s-peddler.rolling .hot{opacity:0;pointer-events:none;transition:opacity .3s}
 .hand{position:absolute;z-index:5;width:52%;height:auto;left:80%;top:110%;pointer-events:none;filter:drop-shadow(-10px 22px 22px rgba(0,0,0,.7)) brightness(.7) sepia(.2);transform-origin:96% 86%}
+.hide{position:absolute;z-index:5;width:5.2%;aspect-ratio:1;translate:-50% -50%;border:0;padding:0;background:none;border-radius:50%;cursor:zoom-in;-webkit-tap-highlight-color:transparent}
+.hide::before{content:'';position:absolute;inset:0;border-radius:50%;border:2px dashed rgba(233,196,106,0);transition:border-color .25s,background .25s}
+.hide:hover::before,.hide:focus-visible::before{border-color:rgba(233,196,106,.75);background:radial-gradient(closest-side,rgba(233,196,106,.16),transparent)}
+.hide.done{cursor:pointer}.hide.done:hover::before{border-color:rgba(200,200,200,.35)}
+.hide .gl{position:absolute;left:50%;top:50%;width:22%;aspect-ratio:1;translate:-50% -50%;opacity:0;background:radial-gradient(closest-side,#fff,rgba(255,240,190,.6) 40%,transparent);clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%)}
+.hide.glint .gl{animation:glint 1.4s ease-in-out}
+@keyframes glint{0%,100%{opacity:0;scale:.3;rotate:0deg}45%{opacity:1;scale:1.2;rotate:45deg}}
+.hide.search{animation:rummage .6s ease-in-out}
+@keyframes rummage{0%,100%{transform:none}20%{transform:rotate(-8deg) scale(1.05)}40%{transform:rotate(7deg)}60%{transform:rotate(-5deg)}80%{transform:rotate(3deg)}}
+.dust{position:absolute;z-index:6;width:.7%;aspect-ratio:1;border-radius:50%;background:rgba(220,205,180,.85);pointer-events:none}
 .secret{position:absolute;z-index:4;appearance:none;border:0;background:none;cursor:default;padding:0}
 
 /* ---------- hint ---------- */
@@ -1221,6 +1231,49 @@ button{font:inherit;color:inherit}
   }
   dockPhase(); setInterval(dockPhase,60000);
 
+
+  // ---- Hiding places (George 2026-11-28): the key to the lake is hidden somewhere in the cabin. 13 spots to search. ----
+  (function(){
+    // Set KEY_SPOT to a spot id below once the key exists; until then every spot is empty.
+    var KEY_SPOT=null;
+    var SPOTS=[
+      ['porch','exterior',44.5,75.5,'Under the porch steps','You reach under the porch steps. Something wet brushes your fingers. Nothing you want to keep.'],
+      ['frame','inside',26.9,40,'Behind the picture frame','You tilt the old frame away from the wall. A dried-out moth falls out, and a lot of dust.'],
+      ['undertv','inside',34.5,67,'Under the TV','You feel around under the TV. A sticky candy wrapper and a single fingernail. Not yours.'],
+      ['mantel','inside',65,46,'On the chimney shelf','You run your hand along the chimney shelf between the candles. Hot wax, soot, no key.'],
+      ['mask','inside',50,21,'Behind the hockey mask','You lift the mask off its nail. The wall behind it is scratched with thirteen tally marks.'],
+      ['rug','inside',30.5,87,'Under the rug corner','You peel back the corner of the rug. Something underneath peels back too. You let go.'],
+      ['vcr','tv',42.5,86,'Inside the VCR','You push open the tape flap. Just a tangle of old chewed tape inside.'],
+      ['books','tv',59,85,'Behind the books','You slide the old books aside. A note in pencil: still looking?'],
+      ['web','tv',75,12,'In the cobweb','You poke the big cobweb. The spider looks at you. You stop poking the cobweb.'],
+      ['stockings','tree',72.5,55,'Inside the stockings','You check every stocking. Coal, teeth, and a very small sock inside a sock.'],
+      ['sill','tree',17,62,'On the window sill','You brush the snow off the window sill. Frost, a dead fly, and fingerprints on the outside of the glass.'],
+      ['lock','tree',40,69,'The padlock ornament','You turn the little padlock ornament over. It is locked too. It has no keyhole.'],
+      ['ashes','tree',78.5,71.5,'In the fireplace ashes','You poke through the edge of the ashes with a stick. Bones of something small, nothing else.']
+    ];
+    var S=K.st.hides||{}; K.st.hides=S;
+    var els=[];
+    SPOTS.forEach(function(s){ var sc=$('s-'+s[1]); if(!sc) return;
+      var b=document.createElement('button'); b.type='button'; b.className='hide'+(S[s[0]]?' done':''); b.style.left=s[2]+'%'; b.style.top=s[3]+'%';
+      b.setAttribute('aria-label','Search: '+s[4]); b.title=s[4]; b.innerHTML='<i class="gl"></i>'; sc.appendChild(b); els.push(b);
+      b.addEventListener('click',function(e){ e.stopPropagation();
+        b.classList.remove('search'); void b.offsetWidth; b.classList.add('search');
+        var r=b.getBoundingClientRect(), R=sc.getBoundingClientRect();
+        for(var k=0;k<9;k++){ (function(){ var d=document.createElement('i'); d.className='dust'; d.style.left=((r.left+r.width/2-R.left)/R.width*100)+'%'; d.style.top=((r.top+r.height/2-R.top)/R.height*100)+'%'; sc.appendChild(d);
+          var a=Math.random()*6.28, v=20+Math.random()*40; d.animate([{transform:'translate(-50%,-50%)',opacity:.9},{transform:'translate('+(Math.cos(a)*v)+'px,'+(Math.sin(a)*v-20)+'px) scale(.4)',opacity:0}],{duration:700+Math.random()*400,easing:'ease-out',fill:'forwards'}).onfinish=function(){ d.remove() } })() }
+        var first=!S[s[0]]; S[s[0]]=1; b.classList.add('done'); K.save();
+        var n=SPOTS.filter(function(q){ return S[q[0]] }).length;
+        setTimeout(function(){
+          if(KEY_SPOT===s[0]){ K.toast('<b>'+s[4]+'.</b> Something cold and heavy. <b>The key to the lake.</b>'); return }
+          K.toast('<b>'+s[4]+'.</b> '+s[5]+'<br><small>'+(first?'Searched '+n+' of 13 hiding places':'Already searched')+'</small>');
+          if(first&&n===13) setTimeout(function(){ K.toast('Every hiding place searched. <b>The key isn’t here... yet.</b>') },3800);
+        },450);
+      });
+    });
+    // now and then an unsearched spot in the room you're in catches the light
+    setInterval(function(){ var c=els.filter(function(b){ return !b.classList.contains('done') && b.parentNode.id==='s-'+cur }); if(!c.length) return;
+      var b=c[Math.random()*c.length|0]; b.classList.remove('glint'); void b.offsetWidth; b.classList.add('glint') },5200);
+  })();
   // ---- Life at the lake (George 2026-11-28): every look out is a different sighting for the time of day ----
   (function(){
     var LL=$('lakeLife'), sc=$('s-dock'); if(!LL) return;
