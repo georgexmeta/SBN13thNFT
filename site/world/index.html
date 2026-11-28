@@ -233,6 +233,8 @@ button{font:inherit;color:inherit}
 .qz .ab{display:inline-block;width:22px;margin-right:8px;font-family:var(--mono);font-weight:800;color:var(--glow)}
 .demo{margin-top:12px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:#7d706a}
 .boxes{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.kgate{margin:0 0 10px;padding:8px 12px;border-radius:10px;font-size:13px;font-weight:600;background:rgba(255,107,94,.12);border:1px solid rgba(255,107,94,.35);color:#ffb3aa}
+.kgate.ok{background:rgba(155,224,111,.12);border-color:rgba(155,224,111,.4);color:#c8f0ad}
 .boxes span{width:26px;height:26px;border-radius:3px;background:repeating-linear-gradient(135deg,#eee 0 4px,#111 4px 8px);border:2px solid #6b2b1a;box-shadow:0 0 0 2px #2a1a0e}
 
 /* ---------- box opening ---------- */
@@ -381,6 +383,17 @@ button{font:inherit;color:inherit}
 /* ---------- hint ---------- */
 .hint{position:fixed;z-index:10;left:50%;top:calc(58px + env(safe-area-inset-top,0px));transform:translateX(-50%);font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ash);background:rgba(5,4,10,.7);padding:5px 10px;border-radius:3px;pointer-events:none}
 @media (min-width:900px) and (min-aspect-ratio:4/3){.hint{display:none}}
+/* phones (George 2026-11-28): hint at the bottom so it never collides with the karma pill; edge arrows show there's more room to either side */
+.hint{top:auto;bottom:calc(14px + env(safe-area-inset-bottom,0px));transition:opacity .6s}
+.hint.gone{opacity:0}
+.edge{position:fixed;z-index:9;top:50%;translate:0 -50%;width:40px;height:64px;border:0;padding:0;cursor:pointer;background:rgba(10,6,4,.55);color:var(--bone);font-size:22px;line-height:64px;text-align:center;opacity:0;pointer-events:none;transition:opacity .3s;-webkit-tap-highlight-color:transparent}
+.edge.l{left:0;border-radius:0 14px 14px 0}.edge.r{right:0;border-radius:14px 0 0 14px}
+.edge.on{opacity:.85;pointer-events:auto}
+.edge.on.ping{animation:edgeping 1.6s ease-in-out 2}
+@keyframes edgeping{50%{translate:var(--px,0) -50%}}
+.edge.l{--px:-5px}.edge.r{--px:5px}
+@media (max-aspect-ratio:4/5){.intro{left:50%;width:min(34%,78vw);bottom:12%}}
+@media (min-width:900px) and (min-aspect-ratio:4/3){.edge{display:none}}
 @media (prefers-reduced-motion:reduce){.scene,.scene.on{transition:opacity .3s}.scene.zoom{transform:none}.hot .ring,.fog,.peekbg{animation:none!important}}
 
 /* ---------- Clay UI (George 2026-11-28): puffy hand-rolled plasticine buttons, pills and headings ---------- */
@@ -426,6 +439,7 @@ button{font:inherit;color:inherit}
   <button class="back" id="back" type="button" hidden>Back</button>
 </div>
 <div class="hint" id="hint">Swipe to look around</div>
+<button class="edge l" id="edgeL" type="button" aria-label="Look left">&#8249;</button><button class="edge r" id="edgeR" type="button" aria-label="Look right">&#8250;</button>
 <button class="kpill" id="kpill" type="button" aria-label="Your karma and haunted objectives"><span class="g" id="kg">&#9650; 0</span><span class="b" id="kb">&#9660; 0</span><span class="n" id="kn">0/13</span></button>
 <div class="pview off" id="pview" role="dialog" aria-modal="true" aria-label="The artist's portrait" aria-hidden="true">
   <div class="pflip" id="pflip">
@@ -470,7 +484,7 @@ button{font:inherit;color:inherit}
     </section>
 
     <section class="scene" id="s-peddler" data-crumb="The Peddler" data-back="inside">
-      <img class="bg" src="img/craps.jpg?v=7" alt="A dark private craps room sculpted in clay: the grinning three-eyed Peddler leans on a green felt craps table under a single hanging lamp, chained gift boxes in the shadows" width="1344" height="768">
+      <img class="bg" src="img/craps.jpg?v=8" alt="A dark private craps room sculpted in clay: the grinning three-eyed Peddler leans on a green felt craps table under a single hanging lamp, two piles of chained Nightmare Boxes stacked on the floor behind him" width="1344" height="768">
       <div class="fx" id="fx-peddler" aria-hidden="true"></div>
       <div class="dz" id="dz" aria-hidden="true"></div>
       <div class="hand" id="hand"><img id="handFist" src="img/arm-fist.png?v=5" alt="" width="640" height="677"><img id="handOpen" src="img/arm-open.png?v=5" alt="" width="640" height="677"></div>
@@ -541,14 +555,15 @@ button{font:inherit;color:inherit}
 <div class="card off" id="c-peddler" role="dialog" aria-labelledby="ph">
   <div class="eyebrow">The Melding Peddler</div>
   <h2 id="ph">How many boxes are yours?</h2>
-  <p class="say" id="psay">&hellip;come closer. Show me your wallet. Six Claysons and I start wrapping.</p>
+  <p class="say" id="psay">&hellip;come closer. Earn me thirteen good karma first. Then show me your wallet, and for every three Claysons I wrap you a box.</p>
+  <p class="kgate" id="kgate"></p>
   <form class="row" id="pform">
     <label for="wallet" class="crumb" style="flex-basis:100%">Wallet address</label>
     <input id="wallet" placeholder="0x..." autocomplete="off" spellcheck="false">
     <button class="btn red" type="submit">Ask him</button>
   </form>
   <div class="result" id="presult" aria-live="polite"></div>
-  <div class="demo">Rule: 1 Nightmare Box for every 3 Claysons, starting at 6 held. Counts come from the Nov 25 holder snapshot for now; the final snapshot is taken before the drop.</div>
+  <div class="demo">Rule: earn 13 good karma by playing the games and searching the cabin, then check in. 1 Nightmare Box for every 3 Claysons, starting at 6 held. Counts come from the Nov 25 holder snapshot for now; the final snapshot is taken before the drop.</div>
 </div>
 
 <!-- Late Night Horror Quiz -->
@@ -1086,7 +1101,7 @@ button{font:inherit;color:inherit}
   var SCENES=['exterior','inside','peddler','tree','dock','tv'];
 
   function closeCard(){ if(openCard){openCard.classList.add('off');openCard=null} }
-  function center(){ vp.scrollLeft=(vp.scrollWidth-vp.clientWidth)/2; $('hint').hidden=vp.scrollWidth<=vp.clientWidth+4 }
+  function center(){ vp.scrollLeft=(vp.scrollWidth-vp.clientWidth)/2; $('hint').hidden=vp.scrollWidth<=vp.clientWidth+4; if(window.__edges) setTimeout(__edges,50) }
   function show(name, from){
     if(name==='peddler'&&window.DICE3D) DICE3D.load($('dz')).catch(function(){});
     if(name!=='dock') DOCKLOOK.leave(); else if(cur!=='dock') DOCKLOOK.enter();
@@ -1110,17 +1125,29 @@ button{font:inherit;color:inherit}
   document.querySelectorAll('.hot').forEach(function(h){
     h.addEventListener('click',function(){
       if(h.dataset.go) show(h.dataset.go, h.style.left+' '+h.style.top);
-      else if(h.dataset.card){ if(h.dataset.card==='dock') K.done('sign'); closeCard(); openCard=$('c-'+h.dataset.card); openCard.classList.remove('off'); var f=openCard.querySelector('input,button'); if(f&&matchMedia('(pointer:fine)').matches) f.focus(); }
+      else if(h.dataset.card){ if(h.dataset.card==='dock') K.done('sign'); closeCard(); openCard=$('c-'+h.dataset.card); openCard.classList.remove('off'); if(h.dataset.card==='peddler'&&window.__gate) __gate(); var f=openCard.querySelector('input,button'); if(f&&matchMedia('(pointer:fine)').matches) f.focus(); }
     });
   });
   $('back').addEventListener('click',function(){ show(this.dataset.go) });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ if(openCard) closeCard(); else if(!$('back').hidden) show($('back').dataset.go) } });
   vp.addEventListener('click',function(e){ if(openCard && !e.target.closest('.hot')) closeCard() });
   window.addEventListener('resize',center);
+  // edge arrows on narrow screens: shown when more of the room lies that way; the swipe hint fades after the first look around
+  (function(){ var L=$('edgeL'), Rt=$('edgeR'), moved=false;
+    function upd(){ var max=vp.scrollWidth-vp.clientWidth; L.classList.toggle('on',max>4&&vp.scrollLeft>8); Rt.classList.toggle('on',max>4&&vp.scrollLeft<max-8) }
+    vp.addEventListener('scroll',function(){ upd(); if(!moved&&Math.abs(vp.scrollLeft-(vp.scrollWidth-vp.clientWidth)/2)>40){ moved=true; $('hint').classList.add('gone') } },{passive:true});
+    window.addEventListener('resize',upd);
+    L.addEventListener('click',function(){ vp.scrollBy({left:-vp.clientWidth*.6,behavior:'smooth'}) });
+    Rt.addEventListener('click',function(){ vp.scrollBy({left:vp.clientWidth*.6,behavior:'smooth'}) });
+    window.__edges=function(){ upd(); [L,Rt].forEach(function(e){ e.classList.remove('ping'); void e.offsetWidth; e.classList.add('ping') }) };
+    setTimeout(upd,300) })();
   window.addEventListener('hashchange',function(){ var n=location.hash.slice(1); if(n&&n!==cur) show(n) });
 
   // ---- Box rule (George): 1 Nightmare Box per 3 Claysons; holders need 6+ for now (Black Friday post) ----
-  var PER_BOX=3, MIN_HELD=6, verified=null;
+  var PER_BOX=3, MIN_HELD=6, KARMA_NEED=13, verified=null;
+  window.__gate=function(){ gate() };
+  function gate(){ var g=K.st.good, ok=g>=KARMA_NEED, el=$('kgate'); if(!el) return; el.className='kgate'+(ok?' ok':'');
+    el.innerHTML=ok?'&#9650; '+g+' good karma. The Peddler will see you now.':'&#9650; '+g+' of '+KARMA_NEED+' good karma. Play the games and search the cabin to earn the rest.' }
   function setBoxes(n){
     verified=n; var L=$('under'); L.innerHTML='';
     $('tlocked').hidden=n>0; $('topen').hidden=!(n>0);
@@ -1156,6 +1183,7 @@ button{font:inherit;color:inherit}
   $('pform').addEventListener('submit',function(e){
     e.preventDefault();
     var a=$('wallet').value.trim().toLowerCase(), out=$('presult');
+    if(K.st.good<KARMA_NEED){ gate(); $('psay').textContent='Not yet. Thirteen good karma, then we talk. Play my games. Search the cabin.'; out.innerHTML=''; return }
     if(!/^0x[0-9a-f]{40}$/.test(a)){ $('psay').textContent='That is not a wallet. That is a smudge. Try 0x and 40 more.'; out.innerHTML=''; return }
     if(!holders){ $('psay').textContent='My ledger is still drying. Ask again in a moment.'; return }
     var n=holders[a]||0;
@@ -1353,11 +1381,11 @@ button{font:inherit;color:inherit}
         var r=b.getBoundingClientRect(), R=sc.getBoundingClientRect();
         for(var k=0;k<9;k++){ (function(){ var d=document.createElement('i'); d.className='dust'; d.style.left=((r.left+r.width/2-R.left)/R.width*100)+'%'; d.style.top=((r.top+r.height/2-R.top)/R.height*100)+'%'; sc.appendChild(d);
           var a=Math.random()*6.28, v=20+Math.random()*40; d.animate([{transform:'translate(-50%,-50%)',opacity:.9},{transform:'translate('+(Math.cos(a)*v)+'px,'+(Math.sin(a)*v-20)+'px) scale(.4)',opacity:0}],{duration:700+Math.random()*400,easing:'ease-out',fill:'forwards'}).onfinish=function(){ d.remove() } })() }
-        var first=!S[s[0]]; S[s[0]]=1; b.classList.add('done'); K.save();
+        var first=!S[s[0]]; S[s[0]]=1; b.classList.add('done'); K.save(); if(first) K.add(1,0);
         var n=SPOTS.filter(function(q){ return S[q[0]] }).length;
         setTimeout(function(){
           if(KEY_SPOT===s[0]){ K.toast('<b>'+s[4]+'.</b> Something cold and heavy. <b>The key to the lake.</b>'); return }
-          K.toast('<b>'+s[4]+'.</b> '+s[5]+'<br><small>'+(first?'Searched '+n+' of 13 hiding places':'Already searched')+'</small>');
+          K.toast('<b>'+s[4]+'.</b> '+s[5]+'<br><small>'+(first?'+1 good karma &middot; searched '+n+' of 13 hiding places':'Already searched')+'</small>');
           if(first&&n===13) setTimeout(function(){ K.toast('Every hiding place searched. <b>The key isn’t here... yet.</b>') },3800);
         },450);
       });
