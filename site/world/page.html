@@ -77,6 +77,7 @@ button{font:inherit;color:inherit}
 .card{position:fixed;z-index:20;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translate(-50%,0);
   width:min(560px,calc(100% - 32px));background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--rule);border-radius:6px;
   box-shadow:0 20px 50px rgba(0,0,0,.7);padding:18px 20px 20px;transition:transform .45s cubic-bezier(.3,1.3,.5,1),opacity .3s}
+.card{max-height:calc(100dvh - 100px - env(safe-area-inset-top,0px));overflow-y:auto;overscroll-behavior:contain}
 .card.off{transform:translate(-50%,130%);opacity:0;pointer-events:none}
 .card h2{font-family:var(--display);font-weight:400;font-size:clamp(26px,4vw,36px);line-height:1;text-transform:uppercase;margin:0 0 8px;letter-spacing:.01em}
 .card .eyebrow{font-family:var(--mono);font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--glow,var(--candle));margin-bottom:6px}
@@ -150,6 +151,36 @@ button{font:inherit;color:inherit}
 .picks button:hover,.picks button:focus-visible{border-color:var(--gold)}
 .picks button span{position:absolute;left:0;right:0;bottom:0;font-family:var(--mono);font-size:9px;background:rgba(0,0,0,.7);color:var(--bone)}
 
+/* ---------- karma ---------- */
+.kpill{position:fixed;z-index:31;right:max(16px,env(safe-area-inset-right,0px));top:calc(56px + env(safe-area-inset-top,0px));appearance:none;cursor:pointer;
+  display:flex;gap:10px;align-items:center;background:rgba(5,4,10,.8);border:1px solid var(--rule);border-radius:999px;padding:6px 12px;font-family:var(--mono);font-size:12px;font-weight:800;color:var(--bone);letter-spacing:.06em}
+.kpill .g{color:#9be06f}.kpill .b{color:#ff6b5e}.kpill .n{color:var(--gold)}
+.kpill.bump{animation:bump .5s}
+@keyframes bump{40%{transform:scale(1.15)}}
+.toast{position:fixed;z-index:40;left:50%;top:calc(98px + env(safe-area-inset-top,0px));transform:translate(-50%,-10px);opacity:0;pointer-events:none;transition:opacity .35s,transform .35s;
+  background:rgba(5,4,10,.92);border:1px solid var(--gold);border-radius:4px;padding:10px 14px;font-family:var(--mono);font-size:12px;color:var(--bone);max-width:calc(100vw - 32px);text-align:center;line-height:1.5}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.toast.bad{border-color:#ff6b5e}
+.objs{list-style:none;margin:6px 0 10px;padding:0;max-height:min(340px,44vh);overflow-y:auto;display:grid;gap:6px}
+.objs li{display:grid;grid-template-columns:22px 1fr auto;gap:8px;align-items:start;font-size:14px;color:var(--ash);line-height:1.35}
+.objs li b{color:var(--bone);font-weight:700}
+.objs li .ck{width:18px;height:18px;border:1.5px solid var(--rule);border-radius:3px;margin-top:1px;display:grid;place-items:center;font-size:12px}
+.objs li.done .ck{background:#173118;border-color:#3d6b2f;color:#9be06f}
+.objs li.done.badk .ck{background:#3a1210;border-color:#7a2a22;color:#ff6b5e}
+.objs li .pts{font-family:var(--mono);font-size:12px;font-weight:800;color:#9be06f}.objs li .pts.neg{color:#ff6b5e}
+.kbar{display:flex;gap:18px;font-family:var(--mono);font-size:13px;margin:4px 0 8px}
+.kbar span b{font-family:var(--display);font-weight:400;font-size:34px;display:block;line-height:1}
+.badge13{display:none;margin:4px 0 10px;padding:8px 10px;border:1px solid var(--gold);border-radius:4px;color:var(--gold);font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.badge13.on{display:block}
+.dice{display:flex;gap:14px;justify-content:center;margin:10px 0 6px}
+.die{width:58px;height:58px;border-radius:12px;background:radial-gradient(120% 120% at 30% 25%,#f6efe0,#d9ccb0 70%,#b9a986);box-shadow:inset 0 -4px 6px rgba(0,0,0,.25),inset 0 3px 4px rgba(255,255,255,.6),0 6px 10px rgba(0,0,0,.5);
+  display:grid;grid-template:repeat(3,1fr)/repeat(3,1fr);padding:9px;gap:2px}
+.die i{border-radius:50%;background:#5a0a0c;box-shadow:inset 0 2px 2px rgba(0,0,0,.6);visibility:hidden}
+.die.roll{animation:droll .55s ease-out}
+@keyframes droll{0%{transform:rotate(-200deg) translateY(-30px)}60%{transform:rotate(20deg)}100%{transform:none}}
+.bones{border-top:1px solid var(--rule);margin-top:14px;padding-top:12px}
+.secret{position:absolute;z-index:4;appearance:none;border:0;background:none;cursor:default;padding:0}
+
 /* ---------- hint ---------- */
 .hint{position:fixed;z-index:10;left:50%;top:calc(58px + env(safe-area-inset-top,0px));transform:translateX(-50%);font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ash);background:rgba(5,4,10,.7);padding:5px 10px;border-radius:3px;pointer-events:none}
 @media (min-width:900px) and (min-aspect-ratio:4/3){.hint{display:none}}
@@ -162,6 +193,8 @@ button{font:inherit;color:inherit}
   <button class="back" id="back" type="button" hidden>Back</button>
 </div>
 <div class="hint" id="hint">Swipe to look around</div>
+<button class="kpill" id="kpill" type="button" aria-label="Your karma and haunted objectives"><span class="g" id="kg">&#9650; 0</span><span class="b" id="kb">&#9660; 0</span><span class="n" id="kn">0/13</span></button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <div class="viewport" id="vp">
   <div class="stage" id="stage">
@@ -175,6 +208,7 @@ button{font:inherit;color:inherit}
 
     <section class="scene" id="s-inside" data-crumb="The cabin" data-back="exterior">
       <img class="bg" id="insideImg" src="img/inside.jpg?v=3" alt="Inside the clay log cabin, warm with candles and a fire: a candlelit archway on the left, a big clunky 90s TV hissing with static on a stand with a VCR, an archway strung with red and green lights on the right, and the back door open to the dock and lake" width="1344" height="768">
+      <button class="secret" id="secret" style="left:44%;top:14%;width:12%;height:12%" aria-label="Antlers"></button>
       <button class="hot left" style="left:16%;top:50%" data-go="peddler" aria-label="Go left to the Peddler"><span class="ring"></span><span class="tag">The Peddler</span></button>
       <button class="hot" style="left:33.5%;top:50%;--glow:#ff9a4d" data-go="tv" aria-label="Go to the old TV"><span class="ring"></span><span class="tag">The TV</span></button>
       <button class="hot ahead" style="left:49%;top:61%;--glow:#9fc6ff" data-go="dock" aria-label="Go through the back door to the dock"><span class="ring"></span><span class="tag">Back door</span></button>
@@ -203,11 +237,22 @@ button{font:inherit;color:inherit}
     <section class="scene" id="s-dock" data-crumb="The dock" data-back="inside">
       <img class="bg" id="dockImg" src="img/dock-night.jpg" alt="Layered clay lake view from the dock: stacked mountains, puffy clay clouds, the dock chained shut with a padlock and a clay sign reading LAKE IS CLOSED" width="1344" height="768">
       <div class="clock" id="dockClock" aria-live="polite"></div>
+      <button class="secret" id="padlock" style="left:44%;top:82%;width:11%;height:16%;cursor:pointer" aria-label="The padlock"></button>
       <div class="fog"></div>
       <button class="hot" style="left:74%;top:60%;--glow:#9fc6ff" data-card="dock" aria-label="Read the sign"><span class="ring"></span><span class="tag" id="dockTag">Read the sign</span></button>
     </section>
 
   </div>
+</div>
+
+<!-- Karma -->
+<div class="card off" id="c-karma" role="dialog" aria-labelledby="kh" style="--glow:#e9c46a">
+  <div class="eyebrow">13 haunted objectives</div>
+  <h2 id="kh">Your karma</h2>
+  <div class="kbar"><span style="color:#9be06f">Good karma<b id="kgood">0</b></span><span style="color:#ff6b5e">Bad karma<b id="kbad">0</b></span><span style="color:var(--gold)">Objectives<b id="kdone">0/13</b></span></div>
+  <div class="badge13" id="badge13">All 13 done. The cabin knows your name.</div>
+  <ul class="objs" id="objs"></ul>
+  <div class="demo">Exploring may count toward future surprises from the artist. Karma is saved in this browser for now.</div>
 </div>
 
 <!-- Peddler -->
@@ -221,6 +266,13 @@ button{font:inherit;color:inherit}
     <button class="btn red" type="submit">Ask him</button>
   </form>
   <div class="result" id="presult" aria-live="polite"></div>
+  <div class="bones">
+    <div class="eyebrow" style="margin-bottom:2px">Roll the Bones</div>
+    <p style="margin:0 0 4px;font-size:14px">Two clay dice. Doubles earn good karma, snake eyes earn double. Roll a 7 and he takes a karma. 13 rolls a day.</p>
+    <div class="dice" aria-hidden="true"><div class="die" id="d1"></div><div class="die" id="d2"></div></div>
+    <div class="row" style="justify-content:center"><button class="btn red" type="button" id="roll">Roll the bones</button></div>
+    <div class="result" id="rollres" aria-live="polite" style="text-align:center"></div>
+  </div>
   <div class="demo">Rule: 1 Nightmare Box for every 3 Claysons, starting at 6 held. Counts come from the Nov 25 holder snapshot for now; the final snapshot is taken before the drop.</div>
 </div>
 
@@ -274,6 +326,79 @@ button{font:inherit;color:inherit}
 <script>
 (function(){
   var $=function(id){return document.getElementById(id)};
+  var DOCK_PH='night';
+  // ---- Karma + 13 haunted objectives (browser-only for now) ----
+  var OBJ=[
+    ['enter','Step inside','Enter the cabin.',1],
+    ['peddler','Show your clay','Check your wallet with the Peddler.',2],
+    ['tape','Press play','Play one tape from your collection.',3],
+    ['watch',"Don\u2019t look away",'Watch a tape all the way to the jump-scare.',2],
+    ['archive','The full archive','Play 13 different tapes, or every tape you hold.',5],
+    ['patience','Patience','Leave your Nightmare Boxes chained under the tree.',2],
+    ['lake','Lake watcher','Visit the dock at dawn, day, dusk and night.',5],
+    ['sign','Heed the warning','Read the sign at the end of the dock.',1],
+    ['bones','Roll the Bones',"Play the Peddler\u2019s dice game.",1],
+    ['secret','Hidden in the clay','Find the secret spot hidden in the cabin.',3],
+    ['openbox','Curiosity','Open a Nightmare Box.',-2],
+    ['rattle','Rattle the chain','Mess with the padlock on the dock at night.',-3],
+    ['coward','Coward','Eject a tape before the jump-scare.',-1]
+  ];
+  var K=(function(){
+    var st={good:0,bad:0,done:{},dock:{},tapes:[],owned:0,rolls:{d:'',n:0}};
+    try{ var j=JSON.parse(localStorage.getItem('cabin:karma')); if(j) for(var k in j) st[k]=j[k] }catch(e){}
+    function save(){ try{ localStorage.setItem('cabin:karma',JSON.stringify(st)) }catch(e){} }
+    var tt;
+    function toast(msg,bad){ var t=$('toast'); t.innerHTML=msg; t.classList.toggle('bad',!!bad); t.classList.add('on'); clearTimeout(tt); tt=setTimeout(function(){t.classList.remove('on')},4200) }
+    function count(){ return OBJ.filter(function(o){return st.done[o[0]]}).length }
+    function render(){
+      $('kg').innerHTML='&#9650; '+st.good; $('kb').innerHTML='&#9660; '+st.bad; $('kn').textContent=count()+'/13';
+      $('kgood').textContent=st.good; $('kbad').textContent=st.bad; $('kdone').textContent=count()+'/13';
+      $('badge13').classList.toggle('on',count()===13);
+      $('objs').innerHTML=OBJ.map(function(o){ var d=st.done[o[0]];
+        return '<li class="'+(d?'done':'')+(o[3]<0?' badk':'')+'"><span class="ck">'+(d?'&#10003;':'')+'</span><span><b>'+o[1]+'</b><br>'+o[2]+'</span><span class="pts'+(o[3]<0?' neg':'')+'">'+(o[3]>0?'+':'\u2212')+Math.abs(o[3])+'</span></li>' }).join('');
+    }
+    function bump(){ var p=$('kpill'); p.classList.remove('bump'); void p.offsetWidth; p.classList.add('bump') }
+    function add(g,b){ st.good+=g; st.bad+=b; save(); render(); bump() }
+    function done(id){
+      if(st.done[id]) return false;
+      var o=OBJ.filter(function(x){return x[0]===id})[0]; if(!o) return false;
+      st.done[id]=Date.now(); if(o[3]>0) st.good+=o[3]; else st.bad+=-o[3]; save(); render(); bump();
+      toast('Objective '+count()+'/13: <b>'+o[1]+'</b><br>'+(o[3]>0?'+'+o[3]+' good karma':'+'+(-o[3])+' bad karma')+(count()===13?'<br>All 13 done. The cabin knows your name.':''),o[3]<0);
+      return true;
+    }
+    render();
+    return {
+      done:done, add:add, toast:toast, st:st, save:save,
+      visit:function(n){ if(n==='inside') done('enter'); if(n==='dock') this.dock(DOCK_PH) },
+      dock:function(ph){ if(!st.dock[ph]){ st.dock[ph]=1; save() } if(st.dock.dawn&&st.dock.day&&st.dock.dusk&&st.dock.night) done('lake') },
+      tape:function(id){ done('tape'); if(st.tapes.indexOf(id)<0){ st.tapes.push(id); save() } if(st.tapes.length>=Math.min(13,st.owned||13)) done('archive') },
+      owned:function(n){ st.owned=n; save(); if(n && st.tapes.length>=Math.min(13,n)) done('archive') }
+    };
+  })();
+  $('kpill').addEventListener('click',function(e){ e.stopPropagation(); var c=$('c-karma'); if(openCard===c){ closeCard(); return } closeCard(); openCard=c; c.classList.remove('off') });
+  $('secret').addEventListener('click',function(e){ e.stopPropagation(); if(!K.done('secret')) K.toast('The antlers twitch. You already found this one.') });
+  $('padlock').addEventListener('click',function(e){ e.stopPropagation();
+    if(DOCK_PH==='night' && !LAKE_OPEN_EARLY()){ if(!K.done('rattle')) K.toast('The chain clanks. Something below the water clanks back.',true) }
+    else K.toast('The padlock is cold. Come back at night.') });
+  function LAKE_OPEN_EARLY(){ return new Date()>=new Date(2027,0,2) }
+  // ---- Roll the Bones (Peddler dice, karma only) ----
+  var PIPS={1:[4],2:[0,8],3:[0,4,8],4:[0,2,6,8],5:[0,2,4,6,8],6:[0,2,3,5,6,8]};
+  function face(el,n){ el.innerHTML=''; for(var i=0;i<9;i++){ var p=document.createElement('i'); if(PIPS[n].indexOf(i)>=0) p.style.visibility='visible'; el.appendChild(p) } }
+  face($('d1'),6); face($('d2'),1);
+  function todayKey(){ var d=new Date(); return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate() }
+  $('roll').addEventListener('click',function(){
+    var R=K.st.rolls; if(R.d!==todayKey()){ R.d=todayKey(); R.n=0 }
+    if(R.n>=13){ $('rollres').textContent='He sweeps the dice away. "Thirteen is plenty. Come back tomorrow."'; return }
+    var a=1+Math.floor(Math.random()*6), b=1+Math.floor(Math.random()*6); R.n++; K.save();
+    var d1=$('d1'), d2=$('d2'); [d1,d2].forEach(function(d){d.classList.remove('roll'); void d.offsetWidth; d.classList.add('roll')});
+    face(d1,a); face(d2,b); K.done('bones');
+    var left=' ('+(13-R.n)+' rolls left today)', msg;
+    if(a+b===7){ K.add(0,1); msg='<b style="color:#ff6b5e">Seven.</b> He grins and pockets a karma. +1 bad karma'+left }
+    else if(a===1&&b===1){ K.add(2,0); msg='<b style="color:#9be06f">Snake eyes.</b> Even the Peddler flinches. +2 good karma'+left }
+    else if(a===b){ K.add(1,0); msg='<b style="color:#9be06f">Doubles.</b> +1 good karma'+left }
+    else msg=(a+b)+'. Nothing stirs. Roll again or walk away.'+left;
+    $('rollres').innerHTML=msg;
+  });
   var vp=$('vp'), cur=null, openCard=null;
   var SCENES=['exterior','inside','peddler','tree','dock','tv'];
 
@@ -289,7 +414,7 @@ button{font:inherit;color:inherit}
       prev.classList.remove('on');
       setTimeout(function(){prev.classList.remove('zoom');prev.style.transformOrigin=''},1100);
     }
-    next.classList.add('on'); cur=name;
+    next.classList.add('on'); cur=name; K.visit(name);
     $('crumb').textContent=next.dataset.crumb;
     var b=next.dataset.back; $('back').hidden=!b; $('back').dataset.go=b||'';
     try{ if(location.hash.slice(1)!==name) history.replaceState(null,'','#'+name) }catch(e){ }
@@ -298,7 +423,7 @@ button{font:inherit;color:inherit}
   document.querySelectorAll('.hot').forEach(function(h){
     h.addEventListener('click',function(){
       if(h.dataset.go) show(h.dataset.go, h.style.left+' '+h.style.top);
-      else if(h.dataset.card){ closeCard(); openCard=$('c-'+h.dataset.card); openCard.classList.remove('off'); var f=openCard.querySelector('input,button'); if(f&&matchMedia('(pointer:fine)').matches) f.focus(); }
+      else if(h.dataset.card){ if(h.dataset.card==='dock') K.done('sign'); closeCard(); openCard=$('c-'+h.dataset.card); openCard.classList.remove('off'); var f=openCard.querySelector('input,button'); if(f&&matchMedia('(pointer:fine)').matches) f.focus(); }
     });
   });
   $('back').addEventListener('click',function(){ show(this.dataset.go) });
@@ -348,7 +473,7 @@ button{font:inherit;color:inherit}
     if(!holders){ $('psay').textContent='My ledger is still drying. Ask again in a moment.'; return }
     var n=holders[a]||0;
     if(!n){ setBoxes(0); $('psay').textContent='No Claysons in there. No Claysons, no boxes. Come back with clay on your hands.'; out.innerHTML=''; return }
-    $('psay').textContent=Q[Math.floor(Math.random()*Q.length)];
+    $('psay').textContent=Q[Math.floor(Math.random()*Q.length)]; K.done('peddler');
     var boxes=n>=MIN_HELD?Math.floor(n/PER_BOX):0;
     setBoxes(boxes);
     if(!boxes){ $('psay').textContent='Only '+n+'? Bring me six and we\u2019ll talk. One box for every three.'; out.innerHTML='<b>0 Nightmare Boxes</b>You hold '+n+' Clayson'+(n===1?'':'s')+'. Hold 6 or more to qualify.'; return }
@@ -377,14 +502,15 @@ button{font:inherit;color:inherit}
   }
   function play(id){
     playing=id; cancelAnimationFrame(raf); setArt(id);
-    scr.classList.remove('hit','ghost','idle'); $('tvHot').style.display='none'; $('tvctl').hidden=true;
+    scr.classList.remove('hit','ghost','idle'); $('tvHot').style.display='none'; $('tvctl').hidden=false; $('rewind').hidden=true; K.tape(id);
     var tp=$('tape'); $('tapeLbl').textContent='#'+id; labelArt($('tapeArt'),id); tp.classList.remove('in'); void tp.offsetWidth; tp.classList.add('in');
     vid.pause(); vid.loop=false; vid.muted=false; vid.currentTime=0;
     setTimeout(function(){ var p=vid.play(); if(p&&p.catch) p.catch(function(){ vid.muted=true; vid.play() }); raf=requestAnimationFrame(tick) },1650);
   }
-  vid.addEventListener('ended',function(){ scr.classList.add('hit'); $('tvctl').hidden=false });
+  vid.addEventListener('ended',function(){ scr.classList.add('hit'); $('tvctl').hidden=false; $('rewind').hidden=false; if(playing) K.done('watch') });
   $('rewind').addEventListener('click',function(){ if(playing) play(playing) });
   $('eject').addEventListener('click',function(){
+    if(playing && !vid.ended && vid.currentTime<T_CUT) K.done('coward');
     cancelAnimationFrame(raf); playing=null; scr.classList.remove('hit','ghost'); scr.classList.add('idle'); $('tvctl').hidden=true; $('tvHot').style.display='';
     vid.muted=true; vid.loop=true; vid.currentTime=0; vid.play().catch(function(){});
     closeCard(); openCard=$('c-tv'); openCard.classList.remove('off');
@@ -398,6 +524,7 @@ button{font:inherit;color:inherit}
     if(!owners){ $('vsay').textContent='The tapes are still rewinding. Try again in a moment.'; return }
     var ids=owners[a]||[];
     if(!ids.length){ $('vsay').textContent='No Claysons, no tapes. Just static.'; return }
+    K.owned(ids.length);
     $('vsay').textContent=ids.length===1?'One tape with your name on it.':ids.length+' tapes with your name on them. Choose one.';
     ids.forEach(function(id){ var b=document.createElement('button'); b.type='button'; b.className='vtape'; b.setAttribute('aria-label','Play tape #'+id);
       b.innerHTML=(ONSITE?'<img class="pfp" width="160" height="160" alt="" src="art/'+id+'.jpg">':'<i class="pfp"></i>')+'<span class="cas"><span class="lbl"><b>#'+id+'</b></span></span>';
@@ -410,10 +537,11 @@ button{font:inherit;color:inherit}
   // ---- Tree ----
   var gift=$('gift');
   $('open').addEventListener('click',function(){
+    K.done('openbox');
     gift.classList.remove('open'); gift.classList.add('shake'); $('tsay').textContent='The chains rattle…';
     setTimeout(function(){ gift.classList.remove('shake'); gift.classList.add('open'); $('tsay').textContent='The lid lifts an inch. Two yellow eyes. Then it slams shut again. (What comes out is revealed later.)'; },1000);
   });
-  $('keep').addEventListener('click',function(){ gift.classList.remove('open','shake'); $('tsay').textContent='Wise. It stays chained under the tree. For now.' });
+  $('keep').addEventListener('click',function(){ gift.classList.remove('open','shake'); $('tsay').textContent='Wise. It stays chained under the tree. For now.'; K.done('patience') });
 
   // ---- Dock: the lake matches the visitor's own time of day ----
   // Sunrise/sunset from the NOAA approximation. Longitude is guessed from the visitor's time zone, latitude defaults to 37.8N.
@@ -453,6 +581,7 @@ button{font:inherit;color:inherit}
     else if(now>=t.rise+60 && now<t.set-60) ph='day';
     else if(now>=t.set-60 && now<t.set+30) ph='dusk';
     else ph='night';
+    DOCK_PH=ph; if(cur==='dock') K.dock(ph);
     var img=$('dockImg'), src='img/dock-'+ph+(LAKE_OPEN?'-open':'')+'.jpg';
     if(img.getAttribute('src')!==src) img.setAttribute('src',src);
     var after=now>=t.set, before=now<t.rise;
