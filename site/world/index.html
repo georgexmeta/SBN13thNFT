@@ -127,7 +127,7 @@ button{font:inherit;color:inherit}
   20%{transform:scale(1.1) translate(3%,-2%)}40%{transform:scale(1.05) translate(-2%,1%);filter:drop-shadow(4px 0 0 rgba(255,0,0,.6)) drop-shadow(-4px 0 0 rgba(0,255,255,.5))}
   100%{transform:none;filter:none}}
 @keyframes redf{0%{opacity:.75}50%{opacity:.5}100%{opacity:0}}
-.tape{position:absolute;z-index:4;left:42.8%;top:96%;width:9%;aspect-ratio:360/252;transform:translate(-50%,0);background:url(img/vhs-tape.png) center/100% 100% no-repeat;filter:drop-shadow(0 6px 8px rgba(0,0,0,.6));opacity:0}
+.tape{position:absolute;z-index:4;left:42.8%;top:96%;width:9%;aspect-ratio:360/252;transform:translate(-50%,0);background:url(img/vhs-tape.png?v=3) center/100% 100% no-repeat;filter:drop-shadow(0 6px 8px rgba(0,0,0,.6));opacity:0}
 .tape .lbl,.vtape .lbl{position:absolute;left:8%;right:8%;top:14%;height:31%;display:flex;align-items:center;gap:6%;padding:0 4%}
 .tape .art,.vtape .art{height:88%;aspect-ratio:1;border-radius:3px;background-color:#222;background-size:cover;background-repeat:no-repeat;box-shadow:0 0 0 1px #2a1a0e}
 .tape .art.sp,.vtape .art.sp{background-size:1000% 1000%}
@@ -143,7 +143,7 @@ button{font:inherit;color:inherit}
 .vtape{appearance:none;cursor:pointer;position:relative;border:0;padding:0;background:none;display:flex;flex-direction:column;align-items:center;transition:transform .15s}
 .vtape .pfp{width:100%;aspect-ratio:1;border-radius:6px;background-color:#222;background-size:cover;background-repeat:no-repeat;box-shadow:0 0 0 2px #2a1a0e,0 4px 8px rgba(0,0,0,.5)}
 .vtape .pfp.sp{background-size:1000% 1000%}
-.vtape .cas{position:relative;width:86%;margin-top:-24%;aspect-ratio:360/252;background:url(img/vhs-tape.png) center/100% 100% no-repeat;filter:drop-shadow(0 4px 5px rgba(0,0,0,.6));transform:rotate(-3deg)}
+.vtape .cas{position:relative;width:86%;margin-top:-24%;aspect-ratio:360/252;background:url(img/vhs-tape.png?v=3) center/100% 100% no-repeat;filter:drop-shadow(0 4px 5px rgba(0,0,0,.6));transform:rotate(-3deg)}
 .vtape .cas .lbl{justify-content:center}
 .vtape b{font-size:clamp(16px,2.2vw,22px)}
 .vtape:hover,.vtape:focus-visible{transform:translateY(-3px);outline:none}
@@ -178,7 +178,7 @@ button{font:inherit;color:inherit}
     </section>
 
     <section class="scene" id="s-inside" data-crumb="The cabin" data-back="exterior">
-      <img class="bg" id="insideImg" src="img/inside.jpg" alt="Inside the clay log cabin, warm with candles and a fire: a candlelit archway on the left, a big clunky 90s TV hissing with static on a stand with a VCR, an archway strung with red and green lights on the right, and the back door open to the dock and lake" width="1344" height="768">
+      <img class="bg" id="insideImg" src="img/inside.jpg?v=3" alt="Inside the clay log cabin, warm with candles and a fire: a candlelit archway on the left, a big clunky 90s TV hissing with static on a stand with a VCR, an archway strung with red and green lights on the right, and the back door open to the dock and lake" width="1344" height="768">
       <button class="hot left" style="left:16%;top:50%" data-go="peddler" aria-label="Go left to the Peddler"><span class="ring"></span><span class="tag">The Peddler</span></button>
       <button class="hot" style="left:33.5%;top:50%;--glow:#ff9a4d" data-go="tv" aria-label="Go to the old TV"><span class="ring"></span><span class="tag">The TV</span></button>
       <button class="hot ahead" style="left:49%;top:61%;--glow:#9fc6ff" data-go="dock" aria-label="Go through the back door to the dock"><span class="ring"></span><span class="tag">Back door</span></button>
@@ -191,8 +191,8 @@ button{font:inherit;color:inherit}
     </section>
 
     <section class="scene" id="s-tv" data-crumb="The TV" data-back="inside" style="--glow:#bcd3ff">
-      <img class="bg" src="img/tv.jpg" alt="A big clunky 1990s TV sculpted in clay with rabbit-ear antennas, on a clay stand with a VCR and a stack of VHS tapes, against rolled clay logs" width="1344" height="768">
-      <div class="screen idle" id="screen"><video id="tvVid" playsinline preload="auto" loop muted src="media/vhs-intro.mp4"></video><img class="art" id="tvArt" alt=""><div class="thumb art" id="tvThumb"></div><div class="red"></div></div>
+      <img class="bg" src="img/tv.jpg?v=3" alt="A big clunky 1990s TV sculpted in clay with rabbit-ear antennas, on a clay stand with a VCR and a stack of VHS tapes, against rolled clay logs" width="1344" height="768">
+      <div class="screen idle" id="screen"><video id="tvVid" playsinline preload="auto" loop muted src="media/vhs-intro.mp4?v=3"></video><img class="art" id="tvArt" alt=""><div class="thumb art" id="tvThumb"></div><div class="red"></div></div>
       <div class="tape" id="tape"><span class="lbl"><i class="art" id="tapeArt"></i><b id="tapeLbl">#1</b></span></div>
       <div class="tvctl" id="tvctl" hidden><button class="btn" type="button" id="rewind">Rewind</button><button class="btn red" type="button" id="eject">Eject</button></div>
       <button class="hot" id="tvHot" style="left:47.2%;top:46%;--glow:#bcd3ff" data-card="tv" aria-label="Insert a tape"><span class="ring"></span><span class="tag">Insert a tape</span></button>
@@ -442,7 +442,7 @@ button{font:inherit;color:inherit}
   // After the holidays (George): the sign comes down and the Clayson sinks back to the bottom until Fri Aug 13, 2027.
   var LAKE_OPEN=new Date()>=new Date(2027,0,2);
   if(LAKE_OPEN){
-    $('insideImg').src='img/inside-open.jpg';
+    $('insideImg').src='img/inside-open.jpg?v=3';
     $('dockImg').alt='Layered clay lake view from the dock: stacked mountains, puffy clay clouds, calm empty water past the bare dock posts';
     $('dockTag').textContent='Look out'; $('dockTag').parentNode.setAttribute('aria-label','Look out over the lake');
     $('dockLore').textContent='The sign is down and the chain is gone. The holidays are over, and the Clayson has sunk back to the bottom of the lake to rest. He won\u2019t surface again until Friday, August 13, 2027.';
