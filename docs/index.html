@@ -127,12 +127,27 @@ button{font:inherit;color:inherit}
   20%{transform:scale(1.1) translate(3%,-2%)}40%{transform:scale(1.05) translate(-2%,1%);filter:drop-shadow(4px 0 0 rgba(255,0,0,.6)) drop-shadow(-4px 0 0 rgba(0,255,255,.5))}
   100%{transform:none;filter:none}}
 @keyframes redf{0%{opacity:.75}50%{opacity:.5}100%{opacity:0}}
-.tape{position:absolute;z-index:4;left:42.8%;top:96%;width:8.5%;aspect-ratio:1.75;transform:translate(-50%,0);background:linear-gradient(180deg,#1b1b1d,#0b0b0c);border-radius:3px;box-shadow:0 6px 12px rgba(0,0,0,.6);opacity:0;display:grid;place-items:center}
-.tape b{font-family:var(--mono);font-size:clamp(8px,1vw,12px);background:#efe6cf;color:#2a1a0e;padding:2px 6px;border-radius:2px;letter-spacing:.08em}
-.tape.in{animation:tapein 1.1s cubic-bezier(.5,0,.6,1) forwards}
-@keyframes tapein{0%{opacity:1;top:100%;transform:translate(-50%,0) scale(1.15)}55%{opacity:1;top:83.2%;transform:translate(-50%,0) scale(1)}100%{opacity:0;top:83.7%;transform:translate(-50%,0) scaleY(.15)}}
+.tape{position:absolute;z-index:4;left:42.8%;top:96%;width:9%;aspect-ratio:360/252;transform:translate(-50%,0);background:url(img/vhs-tape.png) center/100% 100% no-repeat;filter:drop-shadow(0 6px 8px rgba(0,0,0,.6));opacity:0}
+.tape .lbl,.vtape .lbl{position:absolute;left:8%;right:8%;top:14%;height:31%;display:flex;align-items:center;gap:6%;padding:0 4%}
+.tape .art,.vtape .art{height:88%;aspect-ratio:1;border-radius:3px;background-color:#222;background-size:cover;background-repeat:no-repeat;box-shadow:0 0 0 1px #2a1a0e}
+.tape .art.sp,.vtape .art.sp{background-size:1000% 1000%}
+.tape b,.vtape b{font-family:var(--display);font-weight:400;color:#7a0b0e;letter-spacing:.02em;line-height:1}
+.tape b{font-size:clamp(9px,1.3vw,18px)}
+.tape.in{animation:tapein 1.6s cubic-bezier(.5,0,.6,1) forwards}
+@keyframes tapein{0%{opacity:0;top:58%;transform:translate(-50%,-50%) scale(3)}12%{opacity:1}45%{opacity:1;top:58%;transform:translate(-50%,-50%) scale(3) rotate(-3deg)}
+  80%{opacity:1;top:83.2%;transform:translate(-50%,0) scale(1)}100%{opacity:0;top:83.6%;transform:translate(-50%,0) scaleY(.12)}}
 .tvctl{position:absolute;z-index:6;left:47.2%;top:76.5%;transform:translateX(-50%);display:flex;gap:8px}
 .tvctl[hidden]{display:none}
+.vtapes{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:14px 12px;max-height:min(330px,42vh);overflow-y:auto;margin-top:12px;padding:2px 4px 4px 2px}
+.vtapes[hidden]{display:none}
+.vtape{appearance:none;cursor:pointer;position:relative;border:0;padding:0;background:none;display:flex;flex-direction:column;align-items:center;transition:transform .15s}
+.vtape .pfp{width:100%;aspect-ratio:1;border-radius:6px;background-color:#222;background-size:cover;background-repeat:no-repeat;box-shadow:0 0 0 2px #2a1a0e,0 4px 8px rgba(0,0,0,.5)}
+.vtape .pfp.sp{background-size:1000% 1000%}
+.vtape .cas{position:relative;width:86%;margin-top:-24%;aspect-ratio:360/252;background:url(img/vhs-tape.png) center/100% 100% no-repeat;filter:drop-shadow(0 4px 5px rgba(0,0,0,.6));transform:rotate(-3deg)}
+.vtape .cas .lbl{justify-content:center}
+.vtape b{font-size:clamp(16px,2.2vw,22px)}
+.vtape:hover,.vtape:focus-visible{transform:translateY(-3px);outline:none}
+.vtape:hover .pfp,.vtape:focus-visible .pfp{box-shadow:0 0 0 2px var(--gold),0 0 14px rgba(233,196,106,.5)}
 .picks{display:grid;grid-template-columns:repeat(auto-fill,minmax(54px,1fr));gap:6px;max-height:190px;overflow-y:auto;margin-top:10px;padding-right:2px}
 .picks[hidden]{display:none}
 .picks button{appearance:none;padding:0;border:2px solid var(--rule);border-radius:3px;aspect-ratio:1;background-color:#111;background-repeat:no-repeat;background-size:1000% 1000%;cursor:pointer;position:relative}
@@ -178,7 +193,7 @@ button{font:inherit;color:inherit}
     <section class="scene" id="s-tv" data-crumb="The TV" data-back="inside" style="--glow:#bcd3ff">
       <img class="bg" src="img/tv.jpg" alt="A big clunky 1990s TV sculpted in clay with rabbit-ear antennas, on a clay stand with a VCR and a stack of VHS tapes, against rolled clay logs" width="1344" height="768">
       <div class="screen idle" id="screen"><video id="tvVid" playsinline preload="auto" loop muted src="media/vhs-intro.mp4"></video><img class="art" id="tvArt" alt=""><div class="thumb art" id="tvThumb"></div><div class="red"></div></div>
-      <div class="tape" id="tape"><b id="tapeLbl">#1</b></div>
+      <div class="tape" id="tape"><span class="lbl"><i class="art" id="tapeArt"></i><b id="tapeLbl">#1</b></span></div>
       <div class="tvctl" id="tvctl" hidden><button class="btn" type="button" id="rewind">Rewind</button><button class="btn red" type="button" id="eject">Eject</button></div>
       <button class="hot" id="tvHot" style="left:47.2%;top:46%;--glow:#bcd3ff" data-card="tv" aria-label="Insert a tape"><span class="ring"></span><span class="tag">Insert a tape</span></button>
     </section>
@@ -223,7 +238,7 @@ button{font:inherit;color:inherit}
     <input id="vwallet" placeholder="0x..." autocomplete="off" spellcheck="false">
     <button class="btn red" type="submit">Find my tapes</button>
   </form>
-  <div id="vpicks" class="picks" hidden></div>
+  <div id="vpicks" class="vtapes" hidden></div>
   <div class="demo">Turn your sound on. Ownership comes from the Nov 27 on-chain snapshot.</div>
 </div>
 
@@ -353,9 +368,10 @@ button{font:inherit;color:inherit}
   fetch('owners.json').then(function(r){return r.json()}).then(function(j){owners=j}).catch(function(){});
   function sprite(el,id){ var k=id-1, s=Math.floor(k/100), c=k%10, r=Math.floor((k%100)/10);
     el.style.backgroundImage='url(img/thumbs/s'+s+'.jpg)'; el.style.backgroundPosition=(c*100/9)+'% '+(r*100/9)+'%'; }
-  var ART=/claysons\.xyz$/.test(location.hostname)?'art/':'https://claysons.xyz/art/';
+  var ONSITE=/claysons\.xyz$/.test(location.hostname), ART=ONSITE?'art/':'https://claysons.xyz/art/';
   var vid=$('tvVid'), scr=$('screen'), art=$('tvArt'), th=$('tvThumb'), T_CUT=10.25, GHOSTS=[[6.25,6.33],[9.0,9.05]], raf=0, playing=null;
   art.onerror=function(){ art.hidden=true; th.hidden=false };
+  function labelArt(a,id,big){ a.classList.remove('sp'); if(ONSITE){ a.style.backgroundImage='url('+(big?'art/':'t/')+id+'.jpg)'; a.style.backgroundPosition='' } else { a.classList.add('sp'); sprite(a,id) } }
   function setArt(id){ art.hidden=false; th.hidden=true; art.src=ART+id+'.jpg'; sprite(th,id); art.alt='Clayson #'+id }
   function tick(){
     var t=vid.currentTime, g=GHOSTS.some(function(w){return t>=w[0]&&t<w[1]});
@@ -366,9 +382,9 @@ button{font:inherit;color:inherit}
   function play(id){
     playing=id; cancelAnimationFrame(raf); setArt(id);
     scr.classList.remove('hit','ghost','idle'); $('tvHot').style.display='none'; $('tvctl').hidden=true;
-    var tp=$('tape'); $('tapeLbl').textContent='#'+id; tp.classList.remove('in'); void tp.offsetWidth; tp.classList.add('in');
+    var tp=$('tape'); $('tapeLbl').textContent='#'+id; labelArt($('tapeArt'),id); tp.classList.remove('in'); void tp.offsetWidth; tp.classList.add('in');
     vid.pause(); vid.loop=false; vid.muted=false; vid.currentTime=0;
-    setTimeout(function(){ var p=vid.play(); if(p&&p.catch) p.catch(function(){ vid.muted=true; vid.play() }); raf=requestAnimationFrame(tick) },1150);
+    setTimeout(function(){ var p=vid.play(); if(p&&p.catch) p.catch(function(){ vid.muted=true; vid.play() }); raf=requestAnimationFrame(tick) },1650);
   }
   vid.addEventListener('ended',function(){ scr.classList.add('hit'); $('tvctl').hidden=false });
   $('rewind').addEventListener('click',function(){ if(playing) play(playing) });
@@ -387,7 +403,9 @@ button{font:inherit;color:inherit}
     var ids=owners[a]||[];
     if(!ids.length){ $('vsay').textContent='No Claysons, no tapes. Just static.'; return }
     $('vsay').textContent=ids.length===1?'One tape with your name on it.':ids.length+' tapes with your name on them. Choose one.';
-    ids.forEach(function(id){ var b=document.createElement('button'); b.type='button'; sprite(b,id); b.setAttribute('aria-label','Play tape #'+id); b.innerHTML='<span>#'+id+'</span>';
+    ids.forEach(function(id){ var b=document.createElement('button'); b.type='button'; b.className='vtape'; b.setAttribute('aria-label','Play tape #'+id);
+      b.innerHTML='<i class="pfp"></i><span class="cas"><span class="lbl"><b>#'+id+'</b></span></span>';
+      labelArt(b.querySelector('.pfp'),id,true);
       b.addEventListener('click',function(){ closeCard(); play(id) }); P.appendChild(b) });
     P.hidden=false;
   });
