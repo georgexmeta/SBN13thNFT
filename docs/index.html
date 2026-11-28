@@ -145,6 +145,15 @@ button{font:inherit;color:inherit}
 .fx .dark{position:absolute;inset:0;background:#000;animation:lampdip 7s infinite}
 @keyframes lampdip{0%,40%,46%,100%{opacity:0}41%{opacity:.35}42%{opacity:.05}43%{opacity:.45}44%{opacity:.1}}
 @media (prefers-reduced-motion:reduce){.fx *{animation:none!important}}
+.sign{position:absolute;z-index:5;translate:-50% -100%;display:block;container-type:inline-size;text-decoration:none;transition:transform .2s;transform-origin:50% 100%}
+.sign img{display:block;width:100%;height:auto;filter:drop-shadow(0 6px 6px rgba(0,0,0,.55))}
+.sign b{position:absolute;display:grid;place-items:center;font-family:"Permanent Marker",cursive;font-weight:400;color:#2a160c;line-height:1;text-align:center;text-shadow:0 1px 0 rgba(255,220,180,.35);pointer-events:none}
+.sign:hover,.sign:focus-visible{transform:rotate(-3deg) scale(1.06)}
+.sign:focus-visible{outline:2px solid var(--candle);outline-offset:4px}
+#signSea{left:30%;top:77%;width:7.2%;rotate:-4deg}
+#signSea b{left:8.5%;top:11.8%;width:84%;height:43%;font-size:19cqw}
+#signX{left:73%;top:77.5%;width:8.3%;rotate:3deg}
+#signX b{left:6.8%;top:16%;width:74%;height:26%;font-size:15cqw}
 .hot{position:absolute;z-index:5;transform:translate(-50%,-50%);appearance:none;border:0;background:none;cursor:pointer;padding:0;display:grid;justify-items:center;gap:8px}
 .hot .ring{width:46px;height:46px;border-radius:50%;border:2px solid var(--glow,var(--candle));box-shadow:0 0 18px var(--glow,var(--candle)),inset 0 0 12px var(--glow,var(--candle));
   animation:pulse 2.2s ease-in-out infinite;position:relative}
@@ -408,6 +417,8 @@ button{font:inherit;color:inherit}
       <div class="fx" id="fx-exterior" aria-hidden="true"></div>
       <div class="fog"></div>
       <div class="intro"><img src="img/title.png" alt="" width="720" height="198"><p>A cabin by the lake. The door's open.</p></div>
+      <a class="sign" id="signSea" href="https://opensea.io/collection/claysons" target="_blank" rel="noopener" aria-label="The Claysons collection on OpenSea (opens in a new tab)"><img src="img/sign-left.webp?v=1" alt="" width="289" height="360"><b>OpenSea</b></a>
+      <a class="sign" id="signX" target="_blank" rel="noopener" aria-label="Claysons on X (opens in a new tab)"><img src="img/sign-right.webp?v=1" alt="" width="333" height="360"><b>Follow on X</b></a>
       <button class="hot ahead" style="left:49%;top:63%" data-go="inside" aria-label="Enter the cabin"><span class="ring"></span><span class="tag">Enter the cabin</span></button>
     </section>
 
