@@ -236,14 +236,14 @@ button{font:inherit;color:inherit}
   <div class="stage" id="stage">
 
     <section class="scene" id="s-exterior" data-crumb="The lake">
-      <img class="bg" src="img/exterior.jpg" alt="A pressed-clay relief of a log cabin on a little island, lit windows and an open front door, pine trees, a red clay moon on a lavender sky" width="1344" height="768">
+      <img class="bg" src="img/exterior.jpg?v=4" alt="A pressed-clay relief of a log cabin on a little island, lit windows and an open front door, pine trees, a red clay moon on a lavender sky" width="1344" height="768">
       <div class="fog"></div>
       <div class="intro"><img src="img/title.png" alt="" width="720" height="198"><p>A cabin by the lake. The door's open.</p></div>
       <button class="hot ahead" style="left:49%;top:63%" data-go="inside" aria-label="Enter the cabin"><span class="ring"></span><span class="tag">Enter the cabin</span></button>
     </section>
 
     <section class="scene" id="s-inside" data-crumb="The cabin" data-back="exterior">
-      <img class="bg" id="insideImg" src="img/inside.jpg?v=3" alt="Inside the clay log cabin, warm with candles and a fire: a candlelit archway on the left, a big clunky 90s TV hissing with static on a stand with a VCR, an archway strung with red and green lights on the right, and the back door open to the dock and lake" width="1344" height="768">
+      <img class="bg" id="insideImg" src="img/inside.jpg?v=5" alt="Inside the clay log cabin, warm with candles and a fire: a candlelit archway on the left, a big clunky 90s TV hissing with static on a stand with a VCR, an archway strung with red and green lights on the right, and the back door open to the dock and lake" width="1344" height="768">
       <button class="secret" id="secret" style="left:44%;top:14%;width:12%;height:12%" aria-label="Antlers"></button>
       <button class="hot left" style="left:16%;top:50%" data-go="peddler" aria-label="Go left to the Peddler"><span class="ring"></span><span class="tag">The Peddler</span></button>
       <button class="hot" style="left:33.5%;top:50%;--glow:#ff9a4d" data-go="tv" aria-label="Go to the old TV"><span class="ring"></span><span class="tag">The TV</span></button>
@@ -260,7 +260,7 @@ button{font:inherit;color:inherit}
     </section>
 
     <section class="scene" id="s-tv" data-crumb="The TV" data-back="inside" style="--glow:#bcd3ff">
-      <img class="bg" src="img/tv.jpg?v=3" alt="A big clunky 1990s TV sculpted in clay with rabbit-ear antennas, on a clay stand with a VCR and a stack of VHS tapes, against rolled clay logs" width="1344" height="768">
+      <img class="bg" src="img/tv.jpg?v=5" alt="A big clunky 1990s TV sculpted in clay with rabbit-ear antennas, on a clay stand with a VCR and a stack of VHS tapes, against rolled clay logs" width="1344" height="768">
       <div class="screen idle" id="screen"><video id="tvVid" playsinline preload="auto" loop muted src="media/vhs-intro.mp4?v=3"></video><img class="art" id="tvArt" alt=""><div class="thumb art" id="tvThumb"></div><div class="red"></div></div>
       <div class="tape" id="tape"><span class="lbl"><i class="art" id="tapeArt"></i><b id="tapeLbl">#1</b></span></div>
       <div class="tvctl" id="tvctl" hidden><button class="btn" type="button" id="rewind">Rewind</button><button class="btn red" type="button" id="eject">Eject</button></div>
@@ -269,7 +269,7 @@ button{font:inherit;color:inherit}
     </section>
 
     <section class="scene" id="s-tree" data-crumb="Nightmare Xmas tree" data-back="inside" style="--glow:#9be06f">
-      <img class="bg" src="img/tree.jpg" alt="A layered clay Nightmare Christmas tree hung with skulls, eyeballs, padlocks and hooks beside a stone fireplace with stockings, snow falling past the window" width="1344" height="768">
+      <img class="bg" src="img/tree.jpg?v=4" alt="A layered clay Nightmare Christmas tree hung with skulls, eyeballs, padlocks and hooks beside a stone fireplace with stockings, snow falling past the window" width="1344" height="768">
       <div class="underlayer" id="under" aria-hidden="true"></div>
       <button class="hot" style="left:69%;top:76%;--glow:#9be06f" data-card="tree" aria-label="Look under the tree"><span class="ring"></span><span class="tag" id="treeTag">Under the tree</span></button>
     </section>
@@ -737,7 +737,7 @@ button{font:inherit;color:inherit}
   // After the holidays (George): the sign comes down and the Clayson sinks back to the bottom until Fri Aug 13, 2027.
   var LAKE_OPEN=new Date()>=new Date(2027,0,2);
   if(LAKE_OPEN){
-    $('insideImg').src='img/inside-open.jpg?v=3';
+    $('insideImg').src='img/inside-open.jpg?v=5';
     $('dockImg').alt='Layered clay lake view from the dock: stacked mountains, puffy clay clouds, calm empty water past the bare dock posts';
     $('dockTag').textContent='Look out'; $('dockTag').parentNode.setAttribute('aria-label','Look out over the lake');
     $('dockLore').textContent='The sign is down and the chain is gone. The holidays are over, and the Clayson has sunk back to the bottom of the lake to rest. He won\u2019t surface again until Friday, August 13, 2027.';
