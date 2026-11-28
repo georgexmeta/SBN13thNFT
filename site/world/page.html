@@ -58,15 +58,15 @@ button{font:inherit;color:inherit}
 .clock small{display:block;font-weight:500;color:var(--ash);letter-spacing:.08em;margin-top:2px}
 
 /* ---------- hotspots ---------- */
-.peekbg{position:absolute;inset:0;transform:scale(1.3) translate(-4%,-14%);transition:transform .25s ease-out;will-change:transform}
-#s-dock:not(.peeking) .peekbg{animation:peekdrift 16s ease-in-out infinite alternate}
-@keyframes peekdrift{0%{transform:scale(1.3) translate(5%,-12%)}35%{transform:scale(1.3) translate(-2%,-16%)}70%{transform:scale(1.3) translate(-10%,-13%)}100%{transform:scale(1.3) translate(-5%,-15%)}}
+.peekbg{position:absolute;inset:0;transform:scale(1.3) translate(-4%,-14%);transition:transform 1.1s cubic-bezier(.5,0,.2,1);will-change:transform}
 .boards{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:4;pointer-events:none;filter:brightness(.85)}
-.boards{transition:transform .9s cubic-bezier(.5,0,.2,1),filter .9s;transform-origin:51% 43%}
+.boards{transition:transform 1.1s cubic-bezier(.5,0,.2,1),filter 1.1s;transform-origin:51% 43%;will-change:transform}
+#s-dock{touch-action:none}
 #s-dock.close .boards{transform:scale(5.2);filter:brightness(.55) blur(1.5px)}
-#s-dock.close .peekbg{animation:none!important;transform:scale(1.04)!important;transition:transform .9s cubic-bezier(.5,0,.2,1)}
-#s-dock.close #signHot{left:73%!important;top:63%!important}
-#s-dock.close #peekBtn{top:88%!important}
+#s-dock.look .peekbg,#s-dock.look .boards{transition:none}
+#signSpot{border-radius:6%;transition:box-shadow .8s,background .8s}
+#signSpot.found{cursor:pointer;background:radial-gradient(closest-side,rgba(190,215,255,.16),transparent);box-shadow:0 0 0 2px rgba(190,215,255,.0),0 0 40px 8px rgba(160,195,255,.28);animation:signglow 2.4s ease-in-out infinite alternate}
+@keyframes signglow{from{box-shadow:0 0 26px 4px rgba(160,195,255,.16)}to{box-shadow:0 0 46px 10px rgba(160,195,255,.34)}}
 .peep{position:absolute;left:57%;top:92.6%;width:7.6%;height:5%;transform:translate(-50%,-50%);z-index:3;pointer-events:none}
 .peep .gap{position:absolute;left:-10%;right:-10%;top:-30%;bottom:-20%;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.95),rgba(0,0,0,.6) 60%,transparent)}
 .peep .eye{position:absolute;top:-34%;width:36%;aspect-ratio:1;border-radius:50%;overflow:hidden;filter:brightness(.72) saturate(1.1);
@@ -354,13 +354,12 @@ button{font:inherit;color:inherit}
     <section class="scene" id="s-dock" data-crumb="The dock" data-back="inside">
       <div class="peekbg" id="peekbg">
         <img class="bg" id="dockImg" src="img/dock-night.jpg?v=6" alt="Peeking through the boarded, hacked-up back door at the layered clay lake view from the dock: stacked mountains, puffy clay clouds, the dock chained shut with a padlock and a clay sign reading LAKE CLOSED, NO UNSUPERVISED ACTIVITY ALLOWED" width="1344" height="768">
+        <button class="secret" id="signSpot" style="left:62.5%;top:65.5%;width:21.5%;height:23.5%" aria-label="Read the sign"></button>
         <button class="secret" id="padlock" style="left:44%;top:82%;width:11%;height:16%;cursor:pointer" aria-label="The padlock"></button>
         <div class="fog"></div>
       </div>
       <img class="boards" src="img/boards.webp?v=6" alt="" aria-hidden="true">
       <div class="clock" id="dockClock" aria-live="polite"></div>
-      <button class="hot" id="peekBtn" style="left:51%;top:44%;--glow:#e9c46a" aria-label="Press up to the gap in the boards"><span class="ring"></span><span class="tag" id="peekTag">Press up to the gap</span></button>
-      <button class="hot" id="signHot" style="left:74%;top:60%;--glow:#9fc6ff" data-card="dock" aria-label="Read the sign"><span class="ring"></span><span class="tag" id="dockTag">Read the sign</span></button>
     </section>
 
   </div>
@@ -575,12 +574,34 @@ button{font:inherit;color:inherit}
     $('qstart').addEventListener('click',function(){ streak=0; used={}; active=true; $('qintro').hidden=true; $('qplay').hidden=false; next() });
     paint();
   })();
-  $('peekBtn').addEventListener('click',function(e){ e.stopPropagation(); var sc=$('s-dock'), c=!sc.classList.contains('close'); sc.classList.toggle('close',c); $('peekTag').textContent=c?'Step back':'Press up to the gap'; $('peekBtn').setAttribute('aria-label',c?'Step back from the boards':'Press up to the gap in the boards'); });
-  // ---- Peek through the boarded back door: the lake shifts behind the gaps as you move ----
-  (function(){ var sc=$('s-dock'), pb=$('peekbg');
-    sc.addEventListener('pointermove',function(e){ if(e.pointerType!=='mouse') return; var r=sc.getBoundingClientRect(), nx=(e.clientX-r.left)/r.width-.5, ny=(e.clientY-r.top)/r.height-.5;
-      sc.classList.add('peeking'); if(sc.classList.contains('close')) return; pb.style.transform='scale(1.3) translate('+(-4-nx*20).toFixed(2)+'%,'+(-14-ny*8).toFixed(2)+'%)' });
-    sc.addEventListener('pointerleave',function(){ sc.classList.remove('peeking'); pb.style.transform='' });
+  // ---- The dock (George): pressed up to the gap in the boards; look around with the mouse (drag on phones) to find the sign ----
+  var DOCKLOOK=(function(){ var sc=$('s-dock'), pb=$('peekbg'), bd=sc.querySelector('.boards'), sg=$('signSpot'),
+      still=matchMedia('(prefers-reduced-motion:reduce)').matches, tx=0, ty=0, x=0, y=0, last=0, drag=null, raf=0, dwell=0, t0=0;
+    function aim(e){ var r=sc.getBoundingClientRect(); tx=Math.max(-.5,Math.min(.5,(e.clientX-r.left)/r.width-.5)); ty=Math.max(-.5,Math.min(.5,(e.clientY-r.top)/r.height-.5)); last=performance.now() }
+    sc.addEventListener('pointermove',function(e){
+      if(e.pointerType==='mouse'){ aim(e); return }
+      if(!drag) return; var r=sc.getBoundingClientRect();
+      tx=Math.max(-.5,Math.min(.5,drag.x-(e.clientX-drag.cx)/r.width*1.4)); ty=Math.max(-.5,Math.min(.5,drag.y-(e.clientY-drag.cy)/r.height*1.4)); last=performance.now() });
+    sc.addEventListener('pointerdown',function(e){ if(e.pointerType!=='mouse') drag={cx:e.clientX,cy:e.clientY,x:tx,y:ty} });
+    ['pointerup','pointercancel'].forEach(function(n){ sc.addEventListener(n,function(){ drag=null }) });
+    function open(){ K.done('sign'); closeCard(); openCard=$('c-dock'); openCard.classList.remove('off') }
+    sg.addEventListener('click',function(e){ e.stopPropagation(); open() });
+    function frame(now){ raf=requestAnimationFrame(frame);
+      if(!sc.classList.contains('look')) return;
+      var idle=now-last>2600&&!drag;
+      if(idle&&!still){ var t=(now-t0)/1000; tx=.42*Math.sin(t*.23)+.06*Math.sin(t*.9); ty=.16*Math.sin(t*.31+1)+.1 }
+      var k=idle?.02:.09; x+=(tx-x)*k; y+=(ty-y)*k;
+      pb.style.transform='scale(1.35) translate('+(-x*24).toFixed(2)+'%,'+(-y*22).toFixed(2)+'%)';
+      bd.style.transform='translate('+(x*11).toFixed(2)+'%,'+(y*7).toFixed(2)+'%) scale(5.2)';
+      // the sign counts as found once it drifts near the middle of your view
+      var near=x>.18&&y>.1; if(near) dwell=Math.min(dwell+1,99); else dwell=Math.max(dwell-2,0);
+      sg.classList.toggle('found',dwell>25);
+    }
+    return {enter:function(){ x=y=tx=ty=0; dwell=0; t0=performance.now(); last=0; sg.classList.remove('found');
+        sc.classList.remove('look'); pb.style.transform=''; bd.style.transform=''; sc.classList.remove('close');
+        setTimeout(function(){ sc.classList.add('close'); pb.style.transform='scale(1.35) translate(0%,0%)' },250);
+        setTimeout(function(){ if(cur==='dock'){ sc.classList.add('look'); if(!raf) raf=requestAnimationFrame(frame) } },1400) },
+      leave:function(){ sc.classList.remove('close','look'); pb.style.transform=''; bd.style.transform=''; if(raf){ cancelAnimationFrame(raf); raf=0 } }};
   })();
   // ---- Ambient life: flickering candles, moving fire, breathing Christmas lights, live TV static ----
   (function(){
@@ -712,7 +733,7 @@ button{font:inherit;color:inherit}
   function closeCard(){ if(openCard){openCard.classList.add('off');openCard=null} }
   function center(){ vp.scrollLeft=(vp.scrollWidth-vp.clientWidth)/2; $('hint').hidden=vp.scrollWidth<=vp.clientWidth+4 }
   function show(name, from){
-    if(name!=='dock'){ $('s-dock').classList.remove('close'); $('peekTag').textContent='Press up to the gap' }
+    if(name!=='dock') DOCKLOOK.leave(); else if(cur!=='dock') DOCKLOOK.enter();
     if(name==='altar') name='tv';
     if(SCENES.indexOf(name)<0) name='exterior';
     closeCard();
@@ -919,7 +940,7 @@ button{font:inherit;color:inherit}
   if(LAKE_OPEN){
     $('insideImg').src='img/inside-open.jpg?v=7';
     $('dockImg').alt='Layered clay lake view from the dock: stacked mountains, puffy clay clouds, calm empty water past the bare dock posts';
-    $('dockTag').textContent='Look out'; $('dockTag').parentNode.setAttribute('aria-label','Look out over the lake');
+    var ss=$('signSpot'); ss.style.left='30%'; ss.style.top='60%'; ss.style.width='30%'; ss.style.height='15%'; ss.setAttribute('aria-label','Look out over the lake');
     $('dockLore').textContent='The sign is down and the chain is gone. The holidays are over, and the Clayson has sunk back to the bottom of the lake to rest. He won\u2019t surface again until Friday, August 13, 2027.';
     DOCK_TEXT.dawn[1]='First light on the water. The fog is lifting. Somewhere far below, something is sleeping.';
     DOCK_TEXT.day[1]='The water is calm and the sun is high. Nothing stirs. Not yet.';
