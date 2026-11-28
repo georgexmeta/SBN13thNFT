@@ -128,6 +128,7 @@ button{font:inherit;color:inherit}
 @keyframes bglow{0%,100%{opacity:.15}50%{opacity:1}}
 @keyframes bdim{0%,100%{opacity:.85}50%{opacity:0}}
 .fx canvas{position:absolute;image-rendering:pixelated;opacity:.92;border-radius:8%/10%}
+.fx .lampdim{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 20% 30% at 49.6% 17%,rgba(0,0,0,.34),rgba(0,0,0,.18) 55%,transparent)}
 .fx .dark{position:absolute;inset:0;background:#000;animation:lampdip 7s infinite}
 @keyframes lampdip{0%,40%,46%,100%{opacity:0}41%{opacity:.35}42%{opacity:.05}43%{opacity:.45}44%{opacity:.1}}
 @media (prefers-reduced-motion:reduce){.fx *{animation:none!important}}
@@ -398,7 +399,7 @@ button{font:inherit;color:inherit}
     </section>
 
     <section class="scene" id="s-peddler" data-crumb="The Peddler" data-back="inside">
-      <img class="bg" src="img/craps.jpg?v=5" alt="A dark private craps room sculpted in clay: the grinning three-eyed Peddler leans on a green felt craps table under a single hanging lamp, chained gift boxes in the shadows" width="1344" height="768">
+      <img class="bg" src="img/craps.jpg?v=6" alt="A dark private craps room sculpted in clay: the grinning three-eyed Peddler leans on a green felt craps table under a single hanging lamp, chained gift boxes in the shadows" width="1344" height="768">
       <div class="fx" id="fx-peddler" aria-hidden="true"></div>
       <div class="dz" id="dz" aria-hidden="true"></div>
       <img class="hand" id="hand" src="img/arm-fist.png?v=5" alt="" width="640" height="677">
@@ -838,7 +839,7 @@ button{font:inherit;color:inherit}
         candles:[[64.5,29.5,3.4],[66.8,31,2.8],[84,33,3],[87.4,30,3.4]], cflames:[[64.2, 31.6, 1.75, 4.6], [66.3, 33.0, 1.5, 4.0], [83.0, 35.3, 1.6, 4.6], [86.7, 32.6, 1.75, 5.2]],
         halos:[[66,33,12,16],[86,33,12,16]],
         fire:[70,64,11.5,15], fireHalo:[76,74,26,26], clayFire:[72.1,63.8,7,10.6,1.4]},
-      peddler:{lamp:true,halos:[[49,21,16,12],[49,60,46,40]]},
+      peddler:{lamp:true,dimLamp:true,halos:[[49,21,16,12],[49,60,46,40],[15.5,42,9,16],[84.5,42,9,16]],cflames:[[16.52, 40.1, 1.05, 3.4], [13.84, 45.7, 1.05, 3.4], [16.74, 51.69, 1.05, 3.4], [84.08, 40.1, 1.05, 3.4], [86.53, 46.35, 1.05, 3.4], [83.78, 51.3, 1.05, 3.4]]},
       exterior:{halos:[[54.8,57,10,10],[48,57,6,8],[56,57,5,7],[63.4,57,4,6],[48.4,34,4,6]]}
     };
     function el(p,cls,css){ var d=document.createElement('div'); d.className=cls; for(var k in css) d.style.setProperty(k,css[k]); p.appendChild(d); return d }
@@ -855,6 +856,8 @@ button{font:inherit;color:inherit}
       (c.cflames||[]).forEach(function(q){ el(L,'cfl',{left:q[0]+'%',top:q[1]+'%',width:q[2]+'%',height:q[3]+'%','animation-duration':rnd(1.7,2.3)+'s','animation-delay':'-'+rnd(0,2)+'s'}) });
       (c.bulbs||[]).forEach(function(b){ var d=el(L,'bulb',{left:b[0]+'%',top:b[1]+'%','--c':b[2],'--dl':'-'+rnd(0,4.2)+'s'}); d.appendChild(document.createElement('b')); d.appendChild(document.createElement('i')) });
       if(c.lamp) el(L,'dark',{});
+      // George 2026-11-28: keep the flickering bulb, just a touch dimmer
+      if(c.dimLamp) el(L,'lampdim',{});
       if(c.tv){ var t=c.tv, cv=document.createElement('canvas'); cv.width=72; cv.height=54; cv.style.left=t[0]+'%'; cv.style.top=t[1]+'%'; cv.style.width=t[2]+'%'; cv.style.height=t[3]+'%'; L.appendChild(cv);
         var cx=cv.getContext('2d'), im=cx.createImageData(72,54);
         // George 2026-11-28: the living-room TV mirrors the big TV. Off (the default) is a dark screen; on shows the channel you left it on, static between stations, or the tape.
