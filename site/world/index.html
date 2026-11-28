@@ -113,7 +113,7 @@ button{font:inherit;color:inherit}
 @keyframes eyes{0%,100%{opacity:0}20%,70%{opacity:1}}
 
 /* ---------- haunted TV ---------- */
-.screen{position:absolute;z-index:3;left:35.9%;top:26.7%;width:26.3%;height:35.5%;border-radius:9%/12%;overflow:hidden;background:#060606;box-shadow:inset 0 0 30px #000}
+.screen{position:absolute;z-index:3;left:31.3%;top:28.9%;width:31.4%;height:41.2%;border-radius:10%/14%;overflow:hidden;background:#060606;box-shadow:inset 0 0 30px #000}
 .screen video,.screen img,.screen .thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background-repeat:no-repeat}
 .screen img,.screen .thumb{opacity:0;object-fit:contain}
 .screen .thumb{background-size:1000% 1000%;width:auto;height:100%;aspect-ratio:1;left:0;right:0;margin:auto}
@@ -127,11 +127,11 @@ button{font:inherit;color:inherit}
   20%{transform:scale(1.1) translate(3%,-2%)}40%{transform:scale(1.05) translate(-2%,1%);filter:drop-shadow(4px 0 0 rgba(255,0,0,.6)) drop-shadow(-4px 0 0 rgba(0,255,255,.5))}
   100%{transform:none;filter:none}}
 @keyframes redf{0%{opacity:.75}50%{opacity:.5}100%{opacity:0}}
-.tape{position:absolute;z-index:4;left:45.3%;top:96%;width:11%;aspect-ratio:1.75;transform:translate(-50%,0);background:linear-gradient(180deg,#1b1b1d,#0b0b0c);border-radius:3px;box-shadow:0 6px 12px rgba(0,0,0,.6);opacity:0;display:grid;place-items:center}
+.tape{position:absolute;z-index:4;left:42.8%;top:96%;width:8.5%;aspect-ratio:1.75;transform:translate(-50%,0);background:linear-gradient(180deg,#1b1b1d,#0b0b0c);border-radius:3px;box-shadow:0 6px 12px rgba(0,0,0,.6);opacity:0;display:grid;place-items:center}
 .tape b{font-family:var(--mono);font-size:clamp(8px,1vw,12px);background:#efe6cf;color:#2a1a0e;padding:2px 6px;border-radius:2px;letter-spacing:.08em}
 .tape.in{animation:tapein 1.1s cubic-bezier(.5,0,.6,1) forwards}
-@keyframes tapein{0%{opacity:1;top:100%;transform:translate(-50%,0) scale(1.15)}55%{opacity:1;top:86%;transform:translate(-50%,0) scale(1)}100%{opacity:0;top:86.5%;transform:translate(-50%,0) scaleY(.15)}}
-.tvctl{position:absolute;z-index:6;left:49%;top:65%;transform:translateX(-50%);display:flex;gap:8px}
+@keyframes tapein{0%{opacity:1;top:100%;transform:translate(-50%,0) scale(1.15)}55%{opacity:1;top:83.2%;transform:translate(-50%,0) scale(1)}100%{opacity:0;top:83.7%;transform:translate(-50%,0) scaleY(.15)}}
+.tvctl{position:absolute;z-index:6;left:47.2%;top:76.5%;transform:translateX(-50%);display:flex;gap:8px}
 .tvctl[hidden]{display:none}
 .picks{display:grid;grid-template-columns:repeat(auto-fill,minmax(54px,1fr));gap:6px;max-height:190px;overflow-y:auto;margin-top:10px;padding-right:2px}
 .picks[hidden]{display:none}
@@ -176,11 +176,11 @@ button{font:inherit;color:inherit}
     </section>
 
     <section class="scene" id="s-tv" data-crumb="The TV" data-back="inside" style="--glow:#bcd3ff">
-      <img class="bg" src="img/tv.jpg" alt="A big clunky 1990s clay TV with rabbit-ear antennas on a wooden stand, a VCR and a stack of VHS tapes on the shelf below" width="1344" height="768">
+      <img class="bg" src="img/tv.jpg" alt="A big clunky 1990s TV sculpted in clay with rabbit-ear antennas, on a clay stand with a VCR and a stack of VHS tapes, against rolled clay logs" width="1344" height="768">
       <div class="screen idle" id="screen"><video id="tvVid" playsinline preload="auto" loop muted src="media/vhs-intro.mp4"></video><img class="art" id="tvArt" alt=""><div class="thumb art" id="tvThumb"></div><div class="red"></div></div>
       <div class="tape" id="tape"><b id="tapeLbl">#1</b></div>
       <div class="tvctl" id="tvctl" hidden><button class="btn" type="button" id="rewind">Rewind</button><button class="btn red" type="button" id="eject">Eject</button></div>
-      <button class="hot" id="tvHot" style="left:49.3%;top:44%;--glow:#bcd3ff" data-card="tv" aria-label="Insert a tape"><span class="ring"></span><span class="tag">Insert a tape</span></button>
+      <button class="hot" id="tvHot" style="left:47.2%;top:46%;--glow:#bcd3ff" data-card="tv" aria-label="Insert a tape"><span class="ring"></span><span class="tag">Insert a tape</span></button>
     </section>
 
     <section class="scene" id="s-tree" data-crumb="Nightmare Xmas tree" data-back="inside" style="--glow:#9be06f">
