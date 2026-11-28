@@ -184,14 +184,17 @@ button{font:inherit;color:inherit}
 .die.roll{animation:droll .55s ease-out}
 @keyframes droll{0%{transform:rotate(-200deg) translateY(-30px)}60%{transform:rotate(20deg)}100%{transform:none}}
 .dz{position:absolute;inset:0;z-index:4;pointer-events:none;perspective:900px}
-.die3{position:absolute;width:4.4%;aspect-ratio:1;transform-style:preserve-3d;margin:-2.2% 0 0 -2.2%}
+.die3{position:absolute;width:3.4%;aspect-ratio:1;transform-style:preserve-3d;margin:-1.7% 0 0 -1.7%}
 .die3 .cube{position:absolute;inset:0;transform-style:preserve-3d}
-.die3 .f{position:absolute;inset:0;border-radius:18%;background:radial-gradient(120% 120% at 30% 25%,#f6efe0,#d9ccb0 70%,#b9a986);box-shadow:inset 0 -3px 5px rgba(0,0,0,.25),inset 0 2px 3px rgba(255,255,255,.6);
-  display:grid;grid-template:repeat(3,1fr)/repeat(3,1fr);padding:14%;gap:4%;backface-visibility:hidden}
-.die3 .f i{border-radius:50%;background:#5a0a0c;box-shadow:inset 0 1px 2px rgba(0,0,0,.6);visibility:hidden}
-.die3 .sh{position:absolute;left:-10%;right:-10%;bottom:-22%;height:30%;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.55),transparent);transform:translateZ(-1px)}
+.die3 .f,.die3 .in{position:absolute;inset:0;backface-visibility:hidden}
+.die3 .f{border-radius:24% 20% 26% 21%;background:#cdb894 url(img/die-face.jpg?v=5) center/cover;box-shadow:inset 0 0 0 1px rgba(60,40,20,.35),inset 0 -2px 4px rgba(40,25,10,.35),inset 0 2px 3px rgba(255,245,220,.35);
+  display:grid;grid-template:repeat(3,1fr)/repeat(3,1fr);padding:15%;gap:5%;filter:brightness(.75) sepia(.15)}
+.die3 .in{background:#a8916b;backface-visibility:visible;border-radius:10%}
+.die3 .f i{border-radius:50%;visibility:hidden;background:radial-gradient(circle at 50% 38%,#1c0505 0 38%,#3e0c0b 55%,#6b2a1c 68%,rgba(255,236,200,.55) 80%,rgba(255,236,200,0) 92%);transform:scale(1.08)}
+.die3 .rest{position:absolute;left:-10%;bottom:-9%;width:120%;height:auto;opacity:0;filter:brightness(.78) sepia(.18) drop-shadow(0 3px 3px rgba(0,0,0,.6))}
+.die3 .sh{position:absolute;left:-18%;right:-18%;bottom:-30%;height:46%;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.85),rgba(0,0,0,.45) 55%,transparent);filter:blur(1.5px)}
 #s-peddler.rolling .hot{opacity:0;pointer-events:none;transition:opacity .3s}
-.hand{position:absolute;z-index:5;width:24%;height:auto;left:82%;top:104%;pointer-events:none;filter:drop-shadow(0 18px 18px rgba(0,0,0,.6));transform-origin:20% 20%}
+.hand{position:absolute;z-index:5;width:52%;height:auto;left:80%;top:110%;pointer-events:none;filter:drop-shadow(-10px 22px 22px rgba(0,0,0,.7)) brightness(.7) sepia(.2);transform-origin:96% 86%}
 .secret{position:absolute;z-index:4;appearance:none;border:0;background:none;cursor:default;padding:0}
 
 /* ---------- hint ---------- */
@@ -231,7 +234,7 @@ button{font:inherit;color:inherit}
     <section class="scene" id="s-peddler" data-crumb="The Peddler" data-back="inside">
       <img class="bg" src="img/craps.jpg?v=4" alt="A dark private craps room sculpted in clay: the grinning three-eyed Peddler leans on a green felt craps table under a single hanging lamp, chained gift boxes in the shadows" width="1344" height="768">
       <div class="dz" id="dz" aria-hidden="true"></div>
-      <img class="hand" id="hand" src="img/hand-fist.png?v=4" alt="" width="480" height="521">
+      <img class="hand" id="hand" src="img/arm-fist.png?v=5" alt="" width="640" height="677">
       <button class="hot" style="left:50%;top:62%" data-card="peddler" aria-label="Talk to the Peddler"><span class="ring"></span><span class="tag">Talk to him</span></button>
       <button class="hot" style="left:27%;top:84%;--glow:#9be06f" data-card="dice" aria-label="Roll the bones"><span class="ring"></span><span class="tag">Roll the bones</span></button>
     </section>
@@ -406,31 +409,54 @@ button{font:inherit;color:inherit}
   var FACE_T={1:'translateZ(H)',2:'rotateY(90deg) translateZ(H)',3:'rotateX(90deg) translateZ(H)',4:'rotateX(-90deg) translateZ(H)',5:'rotateY(-90deg) translateZ(H)',6:'rotateY(180deg) translateZ(H)'};
   var SHOW={1:[0,0],2:[0,-90],3:[-90,0],4:[90,0],5:[0,90],6:[0,180]};
   function makeDie(){ var w=document.createElement('div'); w.className='die3'; var c=document.createElement('div'); c.className='cube'; w.appendChild(document.createElement('div')).className='sh';
-    for(var v=1;v<=6;v++){ var f=document.createElement('div'); f.className='f'; f.dataset.v=v; for(var i=0;i<9;i++){ var p=document.createElement('i'); if(PIPS[v].indexOf(i)>=0) p.style.visibility='visible'; f.appendChild(p) } c.appendChild(f) }
-    w.appendChild(c); return w }
+    for(var v=1;v<=6;v++){ var f=document.createElement('div'); f.className='f'; f.dataset.v=v; for(var i=0;i<9;i++){ var p=document.createElement('i'); if(PIPS[v].indexOf(i)>=0){ p.style.visibility='visible'; p.style.transform='translate('+(Math.random()*16-8)+'%,'+(Math.random()*16-8)+'%) scale('+(0.95+Math.random()*.25)+','+(0.95+Math.random()*.2)+') rotate('+(Math.random()*90)+'deg)'; p.style.borderRadius=(42+Math.random()*16)+'% '+(42+Math.random()*16)+'% '+(42+Math.random()*16)+'% '+(42+Math.random()*16)+'%' } f.appendChild(p) } c.appendChild(f) }
+    ['rotateX(90deg)','rotateY(90deg)','none'].forEach(function(t){ var q=document.createElement('div'); q.className='in'; q.style.transform=t; q.style.inset='3%'; c.appendChild(q) });
+    w.appendChild(c); var r=document.createElement('img'); r.className='rest'; r.alt=''; w.appendChild(r); return w }
   function sizeDie(w){ var h=w.offsetWidth/2; w.querySelectorAll('.f').forEach(function(f){ f.style.transform=FACE_T[f.dataset.v].replace('H',h+'px') }) }
   function todayKey(){ var d=new Date(); return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate() }
   var rolling=false, dz=$('dz'), hand=$('hand');
   var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  (new Image()).src='img/arm-open.png?v=5'; for(var di=1;di<=6;di++) (new Image()).src='img/die-'+di+'.png?v=5';
+  var NORM={1:[0,0,1],2:[1,0,0],3:[0,-1,0],4:[0,1,0],5:[-1,0,0],6:[0,0,-1]}, LIGHT=(function(){var v=[-.25,-.85,.5],l=Math.hypot(v[0],v[1],v[2]);return v.map(function(x){return x/l})})();
+  function shade(c){ var t=getComputedStyle(c).transform; if(!t||t==='none') return; var m=new DOMMatrix(t);
+    c.querySelectorAll('.f').forEach(function(f){ var n=NORM[f.dataset.v], x=m.m11*n[0]+m.m21*n[1]+m.m31*n[2], y=m.m12*n[0]+m.m22*n[1]+m.m32*n[2], z=m.m13*n[0]+m.m23*n[1]+m.m33*n[2];
+      var d=Math.max(0,x*LIGHT[0]+y*LIGHT[1]+z*LIGHT[2]); f.style.filter='brightness('+(0.32+0.78*d).toFixed(3)+') sepia(.18) blur(.3px)' }) }
   function throwDice(a,b,done){
-    dz.innerHTML=''; var D=[makeDie(),makeDie()]; D.forEach(function(d){ d.style.left='64%'; d.style.top='60%'; d.style.opacity='0'; dz.appendChild(d); sizeDie(d) });
-    hand.src='img/hand-fist.png?v=4';
-    var T=RM?0.2:1;
-    var h1=hand.animate([{left:'82%',top:'104%',transform:'rotate(10deg)'},{left:'60%',top:'50%',transform:'rotate(-4deg)'}],{duration:500*T,easing:'cubic-bezier(.2,.8,.3,1)',fill:'forwards'});
+    dz.innerHTML=''; var D=[makeDie(),makeDie()], fx=62, fy=48;
+    D.forEach(function(d){ d.style.left=fx+'%'; d.style.top=fy+'%'; d.style.opacity='0'; dz.appendChild(d); sizeDie(d) });
+    hand.src='img/arm-fist.png?v=5';
+    var T=RM?0.2:1, live=true;
+    (function loop(){ D.forEach(function(d){ shade(d.querySelector('.cube')) }); if(live) requestAnimationFrame(loop) })();
+    var IN={left:'51.6%',top:'33.6%'};
+    var h1=hand.animate([{left:'80%',top:'110%',transform:'rotate(14deg)'},{left:IN.left,top:IN.top,transform:'rotate(-3deg)'}],{duration:700*T,easing:'cubic-bezier(.2,.8,.3,1)',fill:'forwards'});
     h1.onfinish=function(){
-      var sh=hand.animate([{transform:'rotate(-4deg) translate(0,0)'},{transform:'rotate(6deg) translate(-1%,1%)'},{transform:'rotate(-8deg) translate(1%,-1%)'},{transform:'rotate(5deg)'},{transform:'rotate(-4deg)'}],{duration:650*T,easing:'ease-in-out'});
+      var sh=hand.animate([{transform:'rotate(-3deg)'},{transform:'rotate(2.5deg) translate(.4%,-.6%)'},{transform:'rotate(-4deg) translate(-.3%,.5%)'},{transform:'rotate(2deg) translate(.3%,-.4%)'},{transform:'rotate(-5deg)'},{transform:'rotate(6deg)'}],{duration:800*T,easing:'ease-in-out',fill:'forwards'});
       sh.onfinish=function(){
-        hand.src='img/hand-open.png?v=4';
-        hand.animate([{left:'60%',top:'50%',transform:'rotate(-4deg)'},{left:'55%',top:'52%',transform:'rotate(-16deg)'},{left:'84%',top:'106%',transform:'rotate(8deg)'}],{duration:900*T,easing:'ease-in',fill:'forwards'});
-        var land=[[40+Math.random()*4,74+Math.random()*2],[48+Math.random()*4,76+Math.random()*2]];
+        hand.src='img/arm-open.png?v=5';
+        hand.animate([{left:IN.left,top:IN.top,transform:'rotate(6deg)'},{left:'49%',top:'35%',transform:'rotate(-9deg)',offset:.25},{left:'50%',top:'36%',transform:'rotate(-8deg)',offset:.55},{left:'82%',top:'112%',transform:'rotate(12deg)'}],{duration:1500*T,easing:'ease-in-out',fill:'forwards'});
+        var land=[[41+Math.random()*3,77+Math.random()*1.5],[48+Math.random()*3,78.5+Math.random()*1.5]];
         [a,b].forEach(function(v,k){
-          var d=D[k], c=d.querySelector('.cube'), s=SHOW[v], tilt=' rotateX(-22deg) rotateY('+(k?-14:16)+'deg)';
-          var spinX=s[0]-720-360*k, spinY=s[1]+540+180*k;
+          var d=D[k], c=d.querySelector('.cube'), s=SHOW[v], tilt=' rotateX(-24deg)', rz=(k?-1:1)*(4+Math.random()*7);
+          d.querySelector('.rest').src='img/die-'+v+'.png?v=5';
+          var L=land[k], sx=fx+(k?1.2:-1.2), dx=L[0]-sx, dur=1700*T;
           d.style.opacity='1';
-          d.animate([{left:'60%',top:'58%'},{left:(land[k][0]+8)+'%',top:(land[k][1]-9)+'%',offset:.45},{left:(land[k][0]+2)+'%',top:land[k][1]+'%',offset:.7},{left:(land[k][0]+1)+'%',top:(land[k][1]-2)+'%',offset:.83},{left:land[k][0]+'%',top:land[k][1]+'%'}],{duration:1300*T,easing:'linear',fill:'forwards'});
-          c.animate([{transform:'rotateX('+spinX+'deg) rotateY('+spinY+'deg) rotateZ(90deg)'},{transform:'rotateX('+(s[0]-90)+'deg) rotateY('+(s[1]+60)+'deg)',offset:.7},{transform:'rotateX('+s[0]+'deg) rotateY('+s[1]+'deg)'+tilt}],{duration:1300*T,easing:'cubic-bezier(.15,.6,.35,1)',fill:'forwards'});
+          // arc down to the felt, one short hop, then a heavy roll that drags to a stop
+          d.animate([
+            {left:sx+'%',top:fy+'%',transform:'scale(1.35)'},
+            {left:(sx+dx*.45)+'%',top:(L[1]-1)+'%',transform:'scale(1.12)',offset:.32,easing:'ease-out'},
+            {left:(sx+dx*.62)+'%',top:(L[1]-3.2)+'%',transform:'scale(1.06)',offset:.45,easing:'ease-in'},
+            {left:(sx+dx*.8)+'%',top:L[1]+'%',transform:'scale(1)',offset:.58,easing:'cubic-bezier(.2,.7,.3,1)'},
+            {left:L[0]+'%',top:L[1]+'%',transform:'scale(1) rotate('+rz+'deg)'}],{duration:dur,fill:'forwards'});
+          d.querySelector('.sh').animate([{opacity:.15,transform:'scale(.6) translateY(140%)'},{opacity:.9,transform:'none',offset:.32},{opacity:.6,transform:'translateY(25%)',offset:.45},{opacity:1,transform:'none',offset:.58},{opacity:1,transform:'none'}],{duration:dur,fill:'forwards'});
+          c.animate([
+            {transform:'rotateX('+(s[0]-430-90*k)+'deg) rotateY('+(s[1]+250+90*k)+'deg) rotateZ(40deg)'},
+            {transform:'rotateX('+(s[0]-200)+'deg) rotateY('+(s[1]+120)+'deg) rotateZ(15deg)',offset:.32},
+            {transform:'rotateX('+(s[0]-100)+'deg) rotateY('+(s[1]+50)+'deg) rotateZ(5deg)',offset:.58},
+            {transform:'rotateX('+s[0]+'deg) rotateY('+s[1]+'deg)'+tilt}],{duration:dur,easing:'cubic-bezier(.25,.6,.3,1)',fill:'forwards'});
         });
-        setTimeout(done,1400*T);
+        // as they settle, the tumbling cube gives way to the sculpted clay die showing the same face
+        setTimeout(function(){ D.forEach(function(d){ d.querySelector('.rest').animate([{opacity:0},{opacity:1}],{duration:220,fill:'forwards'}); d.querySelector('.cube').animate([{opacity:1},{opacity:0}],{duration:220,fill:'forwards'}) }) },1560*T);
+        setTimeout(function(){ live=false; done() },1800*T);
       };
     };
   }
